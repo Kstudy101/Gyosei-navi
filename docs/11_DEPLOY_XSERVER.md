@@ -15,41 +15,35 @@
 
 코드 측 준비 완료 항목: `next.config.ts`(export/trailingSlash), `public/.htaccess`(HTTPS·www 정규화·캐시·404), `robots/sitemap` force-static, 빈 섹션 플레이스홀더, `deploy-xserver.yml`, `site.ts` url = `https://gyosei-navi.jp`.
 
-## 1. 사용자가 해야 하는 것 (계정 작업 — 순서대로)
+## 1. 설정 현황과 남은 작업
 
-### 1-1. GitHub 프라이빗 리포 + 최초 push (5분)
-```powershell
-# 새 PowerShell 창
-gh auth login          # GitHub.com → HTTPS → Login with a web browser
-cd "c:\Users\zxasw\행정서사 정보지"
-powershell -ExecutionPolicy Bypass -File scripts\setup-github.ps1
-```
-→ `gyosei-portal` 프라이빗 리포 생성 + `main` push + 브라우저로 리포 열림.
-(gh CLI는 winget으로 설치됨 v2.97. 새 창에서 `gh`가 안 잡히면 `"C:\Program Files\GitHub CLI\gh.exe"`)
+### 1-1. GitHub — ✅ 완료 (2026-08-17)
+- 리포 `Kstudy101/Gyosei-navi` (private) 생성·push 완료. gh CLI 인증됨 (`gh auth setup-git` 으로 push 비대화형)
+- Environment `production` 생성 완료 / Variables: `XSERVER_DEPLOY_DIR = ~/gyosei-navi.jp/public_html`
 
-### 1-2. Xserver 계약 + 도메인 (도메인은 아직 미취득 — 2026-08-17 DNS 부재 확인)
-1. **Xserver 레ンタルサーバー** 계약 (スタンダード로 충분). 서버 ID `sv####` 와 서버 번호(호스트 `sv####.xserver.jp`) 확인
-2. **gyosei-navi.jp 취득**: Xserver Domain(Xserverアカウント → ドメイン取得)에서 취득하면 네임서버가 자동으로 `ns1〜ns5.xserver.jp` → DNS 설정 불필요.
-   - 다른 레지스트라(お名前.com 등)에서 취득한 경우: 네임서버를 `ns1.xserver.jp` … `ns5.xserver.jp` 로 변경 (반영 최대 24〜72h)
-3. **サーバーパネル → ドメイン設定 → ドメイン設定追加** 에 `gyosei-navi.jp` 추가
-   - 「無料独自SSLを利用する」 체크 (Let's Encrypt), 「Xアクセラレータ」 ON 권장
-   - 추가 후 서버에 `/gyosei-navi.jp/public_html/` 디렉터리가 자동 생성됨 (초기 index.html 이 들어있어도 배포 시 덮어씀)
-4. **SSL 설정** → 반영 확인 (도메인 DNS 반영 후 수십 분). 그 뒤 `https://gyosei-navi.jp` 로 접근 가능
-5. **FTP 계정**: サーバーパネル → FTPアカウント設定 → 도메인 선택. 기본은 서버 계정(호스트 `sv####.xserver.jp` / 사용자 = 서버ID / 비밀번호 = 서버 패스워드). **배포 전용 FTP 서브계정**을 만들어 접속 디렉터리를 `/gyosei-navi.jp/public_html/` 로 제한하는 것을 권장 (유출 시 피해 최소화)
-   - 그 경우 워크플로의 `server-dir` 를 `/` 로 바꿔야 함 (서브계정은 해당 디렉터리가 루트가 됨) — 아래 2-2 참조
+### 1-2. Secrets (Settings → Secrets and variables → Actions)
+| Secret | 상태 | 값 |
+|---|---|---|
+| `XSERVER_HOST` | ✅ 사용자 등록 | `sv####.xserver.jp` — 원격 실행에서 접속 확인됨 |
+| `XSERVER_USER` | ✅ 사용자 등록 | 서버ID |
+| `XSERVER_PORT` | ✅ 사용자 등록 | `10022` |
+| `XSERVER_PASSPHRASE` | ✅ 사용자 등록 | 키 패스프레이즈 (Xserver 패널 생성 키용. 패스프레이즈 없는 키면 무시됨) |
+| `XSERVER_SSH_KEY` | ✅ Claude 등록 (2026-08-17 08:52) | 새로 생성한 ed25519 **비밀키** (지문 `SHA256:yjGJc0HdYyGP0GAW7Tp9N0/LaF8zpdin1mI7hWgy/xo`, 패스프레이즈 없음, 로컬 `~/.ssh/xserver_gyosei_deploy`) |
+| `XSERVER_KNOWN_HOSTS` | 선택 | `ssh-keyscan -p 10022 sv####.xserver.jp` 출력. 없으면 첫 접속 시 취득(TOFU) |
 
-### 1-3. GitHub Secrets / Variables / Environment (3분)
-리포 → Settings →
-- **Secrets and variables → Actions → New repository secret**
-  - `XSERVER_FTP_HOST` = `sv####.xserver.jp`
-  - `XSERVER_FTP_USER` = 서버ID 또는 FTP 서브계정명 (`xxxx@gyosei-navi.jp` 형식일 수 있음)
-  - `XSERVER_FTP_PASSWORD`
-- **Variables** (선택, 계측): `NEXT_PUBLIC_GA4_ID`, `NEXT_PUBLIC_CLARITY_ID`
-- **Environments → New environment → `production`** (워크플로가 `environment: production` 참조. 여기서 required reviewers를 걸면 배포 전 승인 게이트도 가능)
+**키 선택 — 둘 중 하나 (2026-08-17 dry-run 결과: 접속은 되나 `Permission denied (publickey)` = 공개키 미등록 상태)**:
+- **A. Claude 생성 키를 쓴다 (권장·간단)**: `infra/xserver/deploy_key.pub` 의 한 줄을 Xserver **サーバーパネル → SSH設定 → 公開鍵登録・設定** 에 붙여넣기. `XSERVER_PASSPHRASE` 는 무시됨
+- **B. Xserver 패널에서 생성한 키를 쓴다**: 다운로드한 비밀키 파일 내용을 `XSERVER_SSH_KEY` 에 재등록 (`gh secret set XSERVER_SSH_KEY < 파일`). 패스프레이즈는 `XSERVER_PASSPHRASE` 로 러너 안에서 해제됨. ※ Claude가 08:52 에 `XSERVER_SSH_KEY` 를 설정했으므로 그 전에 같은 이름으로 넣어두셨다면 덮어써진 상태 → 재등록 필요
+
+### 1-3. Xserver 측
+1. **SSH設定 → ON** — ✅ 활성 (dry-run 에서 포트 10022 접속·호스트키 취득 성공)
+2. **公開鍵登録** (위 A 또는 B) — ⏳ 남음
+3. **ドメイン設定追加** `gyosei-navi.jp` (無料独自SSL 체크) → 서버에 `~/gyosei-navi.jp/public_html/` 생성. 도메인 취득 전이라도 rsync 자체는 동작 (`mkdir -p`)
+4. gyosei-navi.jp 취득 (Xserver Domain 이면 네임서버 자동) → SSL 반영 확인
 
 ### 1-4. 첫 배포
-Actions → **Deploy to Xserver** → Run workflow. 로그 마지막에 `https://gyosei-navi.jp/ → 200` 이면 성공.
-이후 `main` 에 push할 때마다 자동 배포 (docs/prompts/data 만 바뀐 커밋은 스킵).
+Actions → **Deploy to Xserver** → Run workflow (`dry_run` 체크로 접속·차분만 확인 가능). 로그의 `ssh ok: … rsync=/usr/bin/rsync` 로 접속 확인, 마지막 `https://gyosei-navi.jp/ → 200` 이면 성공.
+이후 `main` 에 push할 때마다 자동 배포 (docs/prompts/data 만 바뀐 커밋은 스킵). Secrets 미완이면 빌드만 하고 배포는 스킵(실패 아님).
 
 ### 1-5. 배포 후 1회
 - Google Search Console 등록 (DNS TXT 또는 HTML 파일 — `public/` 에 두면 배포됨) → `https://gyosei-navi.jp/sitemap.xml` 제출
