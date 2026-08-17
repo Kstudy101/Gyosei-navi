@@ -81,6 +81,27 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* 読者が再訪する「道具」の予告枠（docs/youtube.md §3: 情報の羅列でなく使う価値） */}
+      <section className="mt-12 rounded-xl border border-brand-100 bg-brand-50 p-6">
+        <div className="flex flex-wrap items-center justify-between gap-4">
+          <div>
+            <p className="text-xs font-bold text-brand-600">診断ツール（準備中）</p>
+            <p className="mt-1 text-lg font-bold text-gray-900">
+              永住要件セルフ診断 — 改定案対応版を開発中
+            </p>
+            <p className="mt-1 text-sm leading-relaxed text-gray-600">
+              記事を読むだけでなく、「自分の場合はどうか」を確認できるツールを順次公開します。
+            </p>
+          </div>
+          <Link
+            href="/tools"
+            className="rounded-md bg-brand-600 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-brand-700"
+          >
+            ツール一覧へ →
+          </Link>
+        </div>
+      </section>
+
       {/* その他セクション */}
       <section className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {(["practice", "exam", "tools", "data"] as const).map((key) => (
@@ -92,6 +113,36 @@ export default function HomePage() {
             <p className="font-semibold text-gray-900">{SECTIONS[key].label}</p>
           </Link>
         ))}
+      </section>
+
+      {/* 信頼の可視化（docs/youtube.md §1: 今すぐ売らない、信頼を積む） */}
+      <section className="mt-12">
+        <h2 className="text-xl font-bold text-gray-900">本サイトの編集方針</h2>
+        <div className="mt-4 grid gap-4 sm:grid-cols-3">
+          <div className="rounded-lg border border-gray-200 p-5">
+            <p className="font-bold text-brand-800">一次情報主義</p>
+            <p className="mt-2 text-sm leading-relaxed text-gray-600">
+              官報・法令・官公庁の公表資料を原文で確認し、全記事に出典を明記します。
+            </p>
+          </div>
+          <div className="rounded-lg border border-gray-200 p-5">
+            <p className="font-bold text-brand-800">制度ステータスの明示</p>
+            <p className="mt-2 text-sm leading-relaxed text-gray-600">
+              「改定案」と「施行済み」を明確に区別し、記事上部にラベルで表示します。
+            </p>
+          </div>
+          <div className="rounded-lg border border-gray-200 p-5">
+            <p className="font-bold text-brand-800">訂正の公開</p>
+            <p className="mt-2 text-sm leading-relaxed text-gray-600">
+              誤りは記事を修正のうえ、更新履歴に訂正内容を残します。
+            </p>
+          </div>
+        </div>
+        <p className="mt-3 text-sm">
+          <Link href="/about" className="text-brand-600 hover:underline">
+            運営者情報・編集方針の詳細 →
+          </Link>
+        </p>
       </section>
     </div>
   );

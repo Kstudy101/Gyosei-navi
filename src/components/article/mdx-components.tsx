@@ -7,6 +7,7 @@ import { Disclaimer } from "@/components/article/Disclaimer";
 import { FaqList } from "@/components/article/FaqList";
 import { LegalBasisList } from "@/components/article/LegalBasisList";
 import { NoticeBanner } from "@/components/article/NoticeBanner";
+import { PrNotice } from "@/components/article/PrNotice";
 import { UpdateLog } from "@/components/article/UpdateLog";
 import { LineCta } from "@/components/cta/LineCta";
 import { ConsultCta } from "@/components/cta/ConsultCta";
@@ -24,6 +25,7 @@ export function buildMdxComponents(fm: ArticleFrontmatter): MDXComponents {
     Disclaimer,
     LineCta,
     ConsultCta,
+    PrNotice,
     FAQ: () => <FaqList items={fm.faq} />,
     LegalBasisList: () => <LegalBasisList items={fm.legalBasis} />,
     UpdateLog: () => <UpdateLog changelog={fm.changelog} />,

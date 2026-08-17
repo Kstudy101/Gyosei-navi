@@ -37,8 +37,9 @@ export const siteConfig = {
     line: "", // TODO: LINE公式アカウント
   },
   analytics: {
-    ga4: "", // TODO: G-XXXXXXX
-    clarity: "", // TODO
+    // 計測 ID はハードコードせず .env.local で設定する（docs/youtube.md §2）
+    ga4: process.env.NEXT_PUBLIC_GA4_ID ?? "",
+    clarity: process.env.NEXT_PUBLIC_CLARITY_ID ?? "",
   },
   /** 1ページあたりの記事表示件数 */
   postsPerPage: 12,
