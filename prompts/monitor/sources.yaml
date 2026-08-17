@@ -1,52 +1,100 @@
 # 一次情報 監視ソース定義
-# scripts/monitor.ts が毎日巡回し、変更を検知したら Issue を自動起票する。
+# scripts/monitor.ts が巡回し、変更を検知したらレポート（--github-issue で Issue 起票）。
+# スキーマ: src/lib/sources/monitor.ts (zod)
+#
+# フィールド:
+#   id / name / url / priority(P0-P3) / checkFrequency(daily|weekly|monthly)  ← 必須
+#   category / subcategory / keywords / note                                    ← 任意
+#   selector        監視する領域の CSS セレクタ（未指定は body）
+#   ignoreSelectors 無視する要素（日付・広告・カウンタ等。誤検知の抑制に使う）
+#   enabled         false で一時停止
+#   notifyOn        ["content", "newLink"]  本文変更 / 新規リンク出現
+#
+# ★誤検知が出たら、まず ignoreSelectors を足す。初期1週間は --dry-run で運用する。
+
+defaults: &defaults
+  enabled: true
+  notifyOn: ["content", "newLink"]
+  ignoreSelectors: ["script", "style", "noscript", "nav", "footer", "header", "iframe", ".date", ".update", "time"]
 
 sources:
   # ===== 入管・国際業務 (P0) =====
-  - id: isa-news
+  # 入管庁サイトは <main> が無く #contentsArea が本文。meta refresh 多用（monitor が自動追跡）
+  - <<: *defaults
+    id: isa-news
     name: 出入国在留管理庁 新着情報
     url: https://www.moj.go.jp/isa/
     category: nyukan
     priority: P0
     checkFrequency: daily
+    selector: "#contentsArea"
 
-  - id: isa-eiju-guideline
+  - <<: *defaults
+    id: isa-eiju-guideline
     name: 永住許可に関するガイドライン
-    url: https://www.moj.go.jp/isa/applications/guide/
+    url: https://www.moj.go.jp/isa/applications/resources/nyukan_nyukan50.html
     category: nyukan
     subcategory: eiju
     priority: P0
     checkFrequency: daily
-    note: 2026-08-04 改定案公表。パブコメ 2026-09-04 締切。施行は2027年4月見込み。
+    selector: "#contentsArea"
+    note: 2026-08-04 改定案公表。パブコメ 2026-09-04 締切。施行は2027年4月見込み。（旧URL /isa/applications/guide/ は meta refresh の入口）
 
-  - id: ikusei-shuro
+  - <<: *defaults
+    id: isa-eiju-procedure
+    name: 永住許可申請（入管法第22条）手続ページ
+    url: https://www.moj.go.jp/isa/applications/procedures/eizyuu_00001.html
+    category: nyukan
+    subcategory: eiju
+    priority: P0
+    checkFrequency: daily
+    selector: "#contentsArea"
+
+  - <<: *defaults
+    id: ikusei-shuro
     name: 育成就労制度 関連情報
     url: https://www.moj.go.jp/isa/
     category: nyukan
     subcategory: ikusei
     priority: P0
     checkFrequency: daily
+    selector: "main"
+    enabled: false   # isa-news と同一URL。専用ページ確定後に url を差し替えて有効化
     note: 2027-04 施行。運用要領は2026-04-06改正版が最新。
 
   # ===== パブリックコメント =====
-  - id: egov-pubcomment
-    name: e-Gov パブリックコメント
-    url: https://public-comment.e-gov.go.jp/
+  # → 専用スクリプト scripts/watch-pubcomment.ts (RSS + 一覧巡回) で監視するため monitor 対象外
+  - <<: *defaults
+    id: egov-pubcomment
+    name: e-Gov パブリックコメント（RSS）
+    url: https://public-comment.e-gov.go.jp/rss/pcm_list.xml
     keywords: ["行政書士", "在留資格", "入管", "永住", "育成就労", "外国人"]
     priority: P0
     checkFrequency: daily
+    enabled: false   # watch-pubcomment.ts が担当
 
   # ===== 行政書士制度 =====
-  - id: soumu-gyoseishoshi
+  - <<: *defaults
+    id: soumu-gyoseishoshi
     name: 総務省 行政書士制度
-    url: https://www.soumu.go.jp/
+    url: https://www.soumu.go.jp/main_sosiki/jichi_gyousei/gyouseishoshi/index.html
     keywords: ["行政書士"]
     category: seido
     priority: P1
     checkFrequency: weekly
-    note: 2026-01-01 施行の改正行政書士法（使命明文化・デジタル対応努力義務・両罰規定強化）
+    note: 2026-01-01 施行の改正行政書士法（使命明文化・デジタル対応努力義務・両罰規定強化）。所管は自治行政局（jichi_gyousei）。
 
-  - id: nichigyoren
+  - <<: *defaults
+    id: soumu-gyoseishoshi-tsuchi
+    name: 総務省 行政書士制度 通知・事務連絡
+    url: https://www.soumu.go.jp/main_sosiki/jichi_gyousei/gyouseishoshi/02gyosei07_04000176.html
+    keywords: ["行政書士"]
+    category: seido
+    priority: P1
+    checkFrequency: weekly
+
+  - <<: *defaults
+    id: nichigyoren
     name: 日本行政書士会連合会
     url: https://www.gyosei.or.jp/
     category: seido
@@ -54,7 +102,8 @@ sources:
     checkFrequency: weekly
 
   # ===== DX・電子申請 =====
-  - id: digital-agency
+  - <<: *defaults
+    id: digital-agency
     name: デジタル庁
     url: https://www.digital.go.jp/
     keywords: ["電子申請", "オンライン申請", "行政手続"]
@@ -63,23 +112,26 @@ sources:
     checkFrequency: weekly
 
   # ===== 許認可（Phase 2以降） =====
-  - id: mlit-kensetsu
+  - <<: *defaults
+    id: mlit-kensetsu
     name: 国土交通省 建設業許可
-    url: https://www.mlit.go.jp/
+    url: https://www.mlit.go.jp/totikensangyo/const/1_6_bt_000080.html
     category: kyoninka
     priority: P3
     checkFrequency: monthly
 
   # ===== 補助金（Phase 2以降） =====
-  - id: jgrants
+  - <<: *defaults
+    id: jgrants
     name: jGrants 補助金ポータル
     url: https://www.jgrants-portal.go.jp/
     category: hojokin
     priority: P3
     checkFrequency: weekly
+    enabled: false   # JS レンダリング(SPA)のため静的取得では本文0字。TASK-04 changedetection.io (browserless) で監視
 
 # 検知時のアクション
 onChange:
-  - createGithubIssue: true
-  - labels: ["content-opportunity"]
-  - assignPriority: fromSource
+  createGithubIssue: true
+  labels: ["content-opportunity"]
+  assignPriority: fromSource

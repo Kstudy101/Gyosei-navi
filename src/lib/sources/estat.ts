@@ -1,0 +1,183 @@
+import fs from "node:fs";
+import path from "node:path";
+import { z } from "zod";
+import { fetchJson } from "@/lib/sources/http";
+
+/**
+ * e-Stat API 3.0 래퍼 (TASK-05)
+ * 스펙: docs/api/estat-api.md
+ *   appId 는 .env.local の ESTAT_APP_ID からのみ読む (C2/C3)
+ */
+
+const BASE = "https://api.e-stat.go.jp/rest/3.0/app/json";
+const CACHE = { dir: "estat", ttlMs: 24 * 60 * 60 * 1000 };
+export const STATS_DIR = path.join(process.cwd(), "data", "stats");
+
+export function getAppId(): string {
+  const id = process.env.ESTAT_APP_ID;
+  if (!id) {
+    throw new Error(
+      [
+        "ESTAT_APP_ID 가 설정되어 있지 않습니다.",
+        "  1) https://www.e-stat.go.jp/api/ 에서 이용등록 → アプリケーションID 발급 (무료)",
+        "  2) .env.local 에 ESTAT_APP_ID=발급받은ID 추가 (커밋 금지)",
+        "  3) 다시 실행",
+      ].join("\n")
+    );
+  }
+  return id;
+}
+
+/* ---------------- 스키마 ---------------- */
+
+const resultSchema = z.object({
+  STATUS: z.number(),
+  ERROR_MSG: z.string().optional(),
+  DATE: z.string().optional(),
+});
+
+/** e-Stat JSON은 1건이면 객체, 여러 건이면 배열로 오므로 정규화 */
+function oneOrMany<T>(s: z.ZodType<T, z.ZodTypeDef, unknown>): z.ZodType<T[], z.ZodTypeDef, unknown> {
+  return z.union([s, z.array(s)]).transform((v): T[] => (Array.isArray(v) ? v : [v]));
+}
+
+/** 「文字列」または「{ "$": "文字列", "@code": … }」 → 文字列 */
+const nameLike: z.ZodType<string, z.ZodTypeDef, unknown> = z
+  .union([z.string(), z.object({ $: z.string() }).passthrough()])
+  .transform((v): string => (typeof v === "string" ? v : v.$));
+
+interface TableInf {
+  "@id": string;
+  STAT_NAME?: string;
+  GOV_ORG?: string;
+  TITLE?: string;
+  SURVEY_DATE?: string | number;
+  OPEN_DATE?: string;
+  UPDATED_DATE?: string;
+  OVERALL_TOTAL_NUMBER?: number;
+}
+
+const tableInfSchema: z.ZodType<TableInf, z.ZodTypeDef, unknown> = z
+  .object({
+    "@id": z.string(),
+    STAT_NAME: nameLike.optional(),
+    GOV_ORG: nameLike.optional(),
+    TITLE: nameLike.optional(),
+    SURVEY_DATE: z.union([z.string(), z.number()]).optional(),
+    OPEN_DATE: z.string().optional(),
+    UPDATED_DATE: z.string().optional(),
+    OVERALL_TOTAL_NUMBER: z.number().optional(),
+  })
+  .passthrough();
+
+const statsListSchema = z.object({
+  GET_STATS_LIST: z.object({
+    RESULT: resultSchema,
+    DATALIST_INF: z
+      .object({
+        NUMBER: z.number().optional(),
+        TABLE_INF: oneOrMany(tableInfSchema).optional(),
+      })
+      .optional(),
+  }),
+});
+
+const valueSchema: z.ZodType<Record<string, string | number>> = z
+  .object({ $: z.string() })
+  .catchall(z.union([z.string(), z.number()]));
+
+const statsDataSchema = z.object({
+  GET_STATS_DATA: z.object({
+    RESULT: resultSchema,
+    STATISTICAL_DATA: z
+      .object({
+        TABLE_INF: tableInfSchema.optional(),
+        DATA_INF: z.object({ VALUE: oneOrMany(valueSchema).optional() }).optional(),
+      })
+      .passthrough()
+      .optional(),
+  }),
+});
+
+function assertOk(result: z.infer<typeof resultSchema>, ctx: string): void {
+  // STATUS 0-2 = 성공, 100+ = 오류 (HTTP 200 이어도)
+  if (result.STATUS >= 100) {
+    throw new Error(`e-Stat API 오류 (${ctx}): STATUS ${result.STATUS} ${result.ERROR_MSG ?? ""}`);
+  }
+}
+
+/* ---------------- 공개 API ---------------- */
+
+export interface StatsTable {
+  statsDataId: string;
+  statName: string;
+  title: string;
+  govOrg: string;
+  surveyDate: string;
+  openDate: string;
+  url: string;
+}
+
+export async function searchStats(params: { searchWord: string; limit?: number }): Promise<StatsTable[]> {
+  const sp = new URLSearchParams({
+    appId: getAppId(),
+    searchWord: params.searchWord,
+    limit: String(params.limit ?? 30),
+  });
+  const raw = await fetchJson(`${BASE}/getStatsList?${sp}`, { cache: CACHE });
+  const parsed = statsListSchema.parse(raw);
+  assertOk(parsed.GET_STATS_LIST.RESULT, "getStatsList");
+  const tables = parsed.GET_STATS_LIST.DATALIST_INF?.TABLE_INF ?? [];
+  return tables.map((t) => ({
+    statsDataId: t["@id"],
+    statName: t.STAT_NAME ?? "",
+    title: t.TITLE ?? "",
+    govOrg: t.GOV_ORG ?? "",
+    surveyDate: String(t.SURVEY_DATE ?? ""),
+    openDate: t.OPEN_DATE ?? "",
+    url: `https://www.e-stat.go.jp/dbview?sid=${t["@id"]}`,
+  }));
+}
+
+export interface StatsDataResult {
+  meta: StatsTable & { retrievedAt: string; apiUrl: string };
+  values: Record<string, string | number>[];
+}
+
+export async function getStatsData(statsDataId: string, extra: Record<string, string> = {}): Promise<StatsDataResult> {
+  const sp = new URLSearchParams({ appId: getAppId(), statsDataId, ...extra });
+  const url = `${BASE}/getStatsData?${sp}`;
+  const raw = await fetchJson(url, { cache: CACHE });
+  const parsed = statsDataSchema.parse(raw);
+  assertOk(parsed.GET_STATS_DATA.RESULT, "getStatsData");
+  const sd = parsed.GET_STATS_DATA.STATISTICAL_DATA;
+  const t = sd?.TABLE_INF;
+  const values = sd?.DATA_INF?.VALUE ?? [];
+  if (values.length === 0) {
+    throw new Error(`데이터가 0건입니다 (statsDataId=${statsDataId}). 조건 또는 ID를 확인하세요.`);
+  }
+  return {
+    meta: {
+      statsDataId,
+      statName: t?.STAT_NAME ?? "",
+      title: t?.TITLE ?? "",
+      govOrg: t?.GOV_ORG ?? "",
+      surveyDate: String(t?.SURVEY_DATE ?? ""),
+      openDate: t?.OPEN_DATE ?? "",
+      url: `https://www.e-stat.go.jp/dbview?sid=${statsDataId}`,
+      retrievedAt: new Date().toISOString(),
+      apiUrl: url.replace(/appId=[^&]+/, "appId=***"),
+    },
+    values,
+  };
+}
+
+/** data/stats/ 에 JSON + 메타 저장 (기사 인용용 출처 정보 포함) */
+export function saveStats(result: StatsDataResult): { dataFile: string; metaFile: string } {
+  fs.mkdirSync(STATS_DIR, { recursive: true });
+  const dataFile = path.join(STATS_DIR, `${result.meta.statsDataId}.json`);
+  const metaFile = path.join(STATS_DIR, `${result.meta.statsDataId}.meta.json`);
+  fs.writeFileSync(dataFile, JSON.stringify(result.values, null, 2), "utf-8");
+  fs.writeFileSync(metaFile, JSON.stringify(result.meta, null, 2), "utf-8");
+  return { dataFile, metaFile };
+}

@@ -1,0 +1,100 @@
+# 一次情報 変更検知 + パブコメ監視 — 毎日 JST 08:00 (TASK-06)
+# 変更/新規があった時だけ Issue を作る（ノイズ0）。失敗時は monitoring-failure ラベルの Issue。
+name: Daily Monitor
+
+on:
+  schedule:
+    - cron: "0 23 * * *" # 23:00 UTC = 08:00 JST
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "状態ファイルを更新せず確認のみ"
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: daily-monitor
+  cancel-in-progress: false
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - run: npm ci
+
+      # .cache/ を実行間で維持（毎回「初期化」にならないように）
+      # key は毎回変え、restore-keys で前回分を復元 → 実行後に新しい key で保存される
+      - name: Restore monitor state
+        uses: actions/cache/restore@v4
+        with:
+          path: .cache
+          key: monitor-state-${{ github.run_id }}
+          restore-keys: |
+            monitor-state-
+
+      - name: Run monitor (一次情報 変更検知)
+        id: monitor
+        continue-on-error: true
+        run: |
+          npm run monitor --silent -- ${{ inputs.dry_run && '--dry-run' || '' }} --report monitor-report.md
+          echo "changed=$([ -s monitor-report.md ] && echo true || echo false)" >> "$GITHUB_OUTPUT"
+
+      - name: Run pubcomment watcher (パブコメ 新着)
+        id: pubcomment
+        continue-on-error: true
+        run: |
+          npm run pubcomment --silent -- ${{ inputs.dry_run && '--dry-run' || '' }} --pages 5 --report pubcomment-report.md
+          echo "fresh=$(grep -q '新規パブリックコメント' pubcomment-report.md && echo true || echo false)" >> "$GITHUB_OUTPUT"
+
+      - name: Save monitor state
+        if: ${{ !inputs.dry_run }}
+        uses: actions/cache/save@v4
+        with:
+          path: .cache
+          key: monitor-state-${{ github.run_id }}
+
+      - name: Create issue on changes
+        if: steps.monitor.outputs.changed == 'true' || steps.pubcomment.outputs.fresh == 'true'
+        run: |
+          {
+            echo "自動監視 $(date -u +%Y-%m-%d) の検知結果です。記事機会を確認してください。"
+            echo
+            if [ -s monitor-report.md ]; then cat monitor-report.md; echo; fi
+            if grep -q '新規パブリックコメント' pubcomment-report.md; then
+              echo "# パブリックコメント 新着"; echo; cat pubcomment-report.md
+            fi
+            echo; echo "---"; echo "Run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          } > issue-body.md
+          # P0 変更が含まれていれば priority:P0、なければ P1
+          PRIO=$( (grep -q '(P0' monitor-report.md 2>/dev/null || grep -q '記事機会: 高' pubcomment-report.md 2>/dev/null) && echo P0 || echo P1 )
+          gh issue create \
+            --title "[監視] 一次情報の変更/新着パブコメ ($(date -u +%Y-%m-%d))" \
+            --body-file issue-body.md \
+            --label "content-opportunity" --label "priority:${PRIO}"
+
+      - name: Create issue on failure
+        if: steps.monitor.outcome == 'failure' || steps.pubcomment.outcome == 'failure'
+        run: |
+          gh issue create \
+            --title "[監視失敗] daily-monitor $(date -u +%Y-%m-%d)" \
+            --body "monitor: ${{ steps.monitor.outcome }} / pubcomment: ${{ steps.pubcomment.outcome }}
+          サイト構造の変更またはネットワーク障害の可能性があります。ログ: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}" \
+            --label "monitoring-failure"
+
+      - name: Fail job if any step failed
+        if: steps.monitor.outcome == 'failure' || steps.pubcomment.outcome == 'failure'
+        run: exit 1

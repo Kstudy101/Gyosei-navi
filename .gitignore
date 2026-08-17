@@ -1,5 +1,9 @@
 node_modules/
 .next/
+.cache/
+infra/changedetection/.env
+# 통계 데이터는 재취득 가능. 一次情報 원문(data/sources)은 커밋한다
+data/stats/
 next-env.d.ts
 tsconfig.tsbuildinfo
 gyosei-portal-scaffold.zip
