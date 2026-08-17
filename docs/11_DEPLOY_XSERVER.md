@@ -28,10 +28,12 @@
 | `XSERVER_USER` | ✅ 사용자 등록 | 서버ID |
 | `XSERVER_PORT` | ✅ 사용자 등록 | `10022` |
 | `XSERVER_PASSPHRASE` | ✅ 사용자 등록 | 키 패스프레이즈 (Xserver 패널 생성 키용. 패스프레이즈 없는 키면 무시됨) |
-| `XSERVER_SSH_KEY` | ✅ Claude 등록 (2026-08-17 08:52) | 새로 생성한 ed25519 **비밀키** (지문 `SHA256:yjGJc0HdYyGP0GAW7Tp9N0/LaF8zpdin1mI7hWgy/xo`, 패스프레이즈 없음, 로컬 `~/.ssh/xserver_gyosei_deploy`) |
-| `XSERVER_KNOWN_HOSTS` | 선택 | `ssh-keyscan -p 10022 sv####.xserver.jp` 출력. 없으면 첫 접속 시 취득(TOFU) |
+| `XSERVER_SSH_KEY` | ✅ 사용자 재등록 (2026-08-17 08:59) | Xserver 패널 생성 **RSA 비밀키** (지문 `SHA256:vedDmMmqenJZYcA+K0PqOWwXnVjz4mbPTK8Xu1FzNRs`, 패스프레이즈는 `XSERVER_PASSPHRASE`로 러너 안에서 해제) |
+| `XSERVER_KNOWN_HOSTS` | ✅ Claude 등록 (2026-08-17 10:08) | `ssh-keyscan -p 10022` 출력 3종(RSA/ECDSA/ed25519) — 호스트키 고정 완료 |
 
-**키 선택 — ✅ 해결 (2026-08-17 09:01 dry-run 성공)**: A안 채택. `infra/xserver/deploy_key.pub` 이 Xserver 패널에 등록되어 `XSERVER_SSH_KEY`(Claude 생성 ed25519) 인증 성공. `XSERVER_PASSPHRASE` 는 무시됨 (패스프레이즈 없는 키).
+**키 선택 — ✅ 해결 (2026-08-17 09:01 dry-run 성공)**: **B안 채택**. 사용자가 08:59 에 Xserver 패널 생성 키를 `XSERVER_SSH_KEY` 에 재등록 → 패널 등록 공개키와 일치 확인(지문 `vedDmM…`). Claude 생성 ed25519 키(`infra/xserver/deploy_key.pub`)는 **미사용** (비밀키는 로컬에 없음 — 재사용 불가, 참고용으로만 잔존).
+
+> ⚠️ 10:02 실배포 실패(run 32018144397)의 원인은 키가 아니라 **`ssh-keyscan` 일시 실패 + `bash -e` 즉시 중단** (stderr 가 `/dev/null` 이라 로그 무흔적). → `XSERVER_KNOWN_HOSTS` Secret 등록 + keyscan 재시도 로직으로 해결 (2026-08-17 10:08).
 
 ### 1-3. Xserver 측
 1. **SSH設定 → ON** — ✅ 활성 (dry-run 에서 포트 10022 접속·호스트키 취득 성공)

@@ -99,7 +99,15 @@ jobs:
           if [ -n "$SSH_KNOWN_HOSTS" ]; then
             printf '%s\n' "$SSH_KNOWN_HOSTS" > ~/.ssh/known_hosts
           else
-            ssh-keyscan -p "$SSH_PORT" -H "$SSH_HOST" > ~/.ssh/known_hosts 2>/dev/null
+            # keyscan は稀に一時失敗する（2026-08-17 run 32018144397: 無出力で exit 1 → -e で即中断）ためリトライ
+            for i in 1 2 3; do
+              ssh-keyscan -T 15 -p "$SSH_PORT" -H "$SSH_HOST" > ~/.ssh/known_hosts && break
+              echo "ssh-keyscan retry $i/3"; sleep 5
+            done
+            if [ ! -s ~/.ssh/known_hosts ]; then
+              echo "::error::ssh-keyscan が 3 回失敗（ホスト鍵を取得できず）。XSERVER_KNOWN_HOSTS Secret の登録で回避可能"
+              exit 1
+            fi
             echo "::warning::XSERVER_KNOWN_HOSTS 未設定 → ssh-keyscan で取得（TOFU）。固定化するには Secrets に登録してください"
           fi
           chmod 644 ~/.ssh/known_hosts

@@ -1,5 +1,7 @@
 # Xserver SSH デプロイ鍵
 
+> **現状 (2026-08-17)**: 実際に使われているのは **Xserver パネル生成の RSA 鍵**（B案, 指紋 `SHA256:vedDmM…`）。下記 `deploy_key.pub` は未使用（対の秘密鍵はローカルに残っておらず再利用不可）。鍵を差し替える場合のみ下記手順を使う。
+
 - `deploy_key.pub` — GitHub Actions が Xserver へ rsync する際の **公開鍵**（2026-08-17 生成, ed25519, パスフレーズ無し）
   → Xserver サーバーパネル「SSH設定 → 公開鍵登録・設定」にこの内容を貼り付ける
 - 秘密鍵は **リポジトリに置かない**。GitHub Secret `XSERVER_SSH_KEY` とローカル `~/.ssh/xserver_gyosei_deploy` のみ
