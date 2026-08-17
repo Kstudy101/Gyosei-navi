@@ -91,6 +91,17 @@
 
 ---
 
+## 추가 보고 (2026-08-17 후반) — sources.yaml v2.1 대응 / TASK-05 검증 / 기사 2건
+
+- **sources.yaml v2.1 (83소스, docs/10) 대응**: `monitor.ts` 스키마에 `method/status/publishPriority/frequencyHint/baseUrl/docUrl/related` 명시, `deadUrls` 로드 시 거부, `method!=diff` 자동 제외, 리포트에 「未検証」·「希望頻度」 배지, moj.go.jp 에 `#contentsArea` 자동 적용, `nav/header/footer/aside/time` 상시 제거, 링크 캐시버스터(`?1786951130`, `?v=`) 정규화
+  - 실측: enabled diff 70건 → 68건 베이스라인 / 2건 403(中小企業庁·経産省 → `status: blocked, enabled: false`) / 2회차 오탐 1건(大阪会 캐시버스터) → 수정 후 3회 반복 오탐 0
+  - v2.1 자체 오류 정정: `isa-eiju-guideline` URL(구 `/guide/` → 手続一覧으로 튀던 것)을 `nyukan_nyukan50.html` 로, note 締切을 9/3 必着으로. `isa-eiju-procedure`, `isa-ikusei-shuro-unyo` 추가
+  - docs/10 TASK-03 확인: RDF 파싱 ✔ / 키워드 병행 ✔ / **1일 2회** → daily-monitor.yml cron 2개(08:00·20:00 JST)로 변경
+- **TASK-05 e-Stat**: 사용자 appId 발급 → 실호출 검증 완료 (AC 3/3). `data/stats/0004019020.*` 저장 확인
+- **기사 초안 2건 추가** (status: review): `eiju-guideline-kaitei-genbun-taisho`(#2 原文対照, 관련 案件 315000141·315000139 원문 확보·대조), `eiju-nenshu-yoken-setai`(#3 年収要件)
+- **GA4/Clarity 스크립트** `src/components/seo/Analytics.tsx` (production + ID 있을 때만 출력) → layout 삽입
+- docs/10 신규 TASK-08(jGrants)/09(官報)/10(RSS 파서) — **미착수**, 사용자 우선순위 판단 대기
+
 ## 다음 사람에게 넘기는 것 (우선순위순)
 
 1. **기사 초안 2건 검수·수정** — `data/sources/pubcomment-315000140/README.md` 의 차이점 5개 반영 (締切 0時 / 연수입 10月 선행 시행 / 누락 포인트) → legalBasis 를 案件 직링크로 교체 → `status: published`

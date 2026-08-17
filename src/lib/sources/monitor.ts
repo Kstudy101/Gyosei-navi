@@ -15,6 +15,12 @@ import { fetchText, CACHE_ROOT } from "@/lib/sources/http";
 
 /* ---------------- sources.yaml スキーマ ---------------- */
 
+/**
+ * v2.1 レジストリ（docs/10_MONITORING_REGISTRY.md）対応。
+ *   method: diff のみ本モジュールが処理。rss/api は TASK-10 / 専用スクリプト。
+ *   status: unverified|blocked はレポートに「未検証」バッジ。
+ *   frequencyHint: 本来望ましい頻度（enum に丸められた場合の元値）。
+ */
 export const sourceSchema = z.object({
   id: z.string().min(1),
   name: z.string().min(1),
@@ -29,10 +35,20 @@ export const sourceSchema = z.object({
   ignoreSelectors: z.array(z.string()).default([]),
   enabled: z.boolean().default(true),
   notifyOn: z.array(z.enum(["content", "newLink"])).default(["content", "newLink"]),
+  // ---- v2.1 拡張フィールド ----
+  method: z.enum(["diff", "rss", "api"]).default("diff"),
+  status: z.enum(["confirmed", "listed", "unverified", "blocked"]).optional(),
+  publishPriority: z.enum(["P0", "P1", "P2", "P3"]).optional(),
+  frequencyHint: z.string().optional(),
+  baseUrl: z.string().optional(),
+  docUrl: z.string().optional(),
+  related: z.array(z.string()).optional(),
 });
 export type MonitorSource = z.infer<typeof sourceSchema>;
 
 const sourcesFileSchema = z.object({
+  version: z.union([z.string(), z.number()]).optional(),
+  updated: z.string().optional(),
   sources: z.array(sourceSchema).min(1),
   onChange: z
     .object({
@@ -42,21 +58,51 @@ const sourcesFileSchema = z.object({
     })
     .passthrough()
     .optional(),
+  /** 実地確認で死んでいた URL。sources[].url に現れたらロード時に拒否する */
+  deadUrls: z.array(z.string()).default([]),
+  todoVerify: z.array(z.object({ id: z.string(), issue: z.string(), severity: z.string().optional() })).optional(),
+  automationPriority: z.array(z.record(z.unknown())).optional(),
 });
 
-export function loadSources(file = path.join(process.cwd(), "prompts/monitor/sources.yaml")): MonitorSource[] {
+/** 既知の本文コンテナ（selector 未指定ソースの誤検知抑制）。ホスト単位で適用 */
+const KNOWN_CONTENT_SELECTORS: { host: RegExp; selector: string }[] = [
+  { host: /^www\.moj\.go\.jp$/, selector: "#contentsArea" },
+];
+
+export interface LoadOptions {
+  /** true なら method !== "diff" のソースも返す（既定 false = diff のみ） */
+  includeNonDiff?: boolean;
+}
+
+export function loadSources(
+  file = path.join(process.cwd(), "prompts/monitor/sources.yaml"),
+  opts: LoadOptions = {}
+): MonitorSource[] {
   const raw = YAML.parse(fs.readFileSync(file, "utf-8")) as unknown;
   const parsed = sourcesFileSchema.safeParse(raw);
   if (!parsed.success) {
     const issues = parsed.error.issues.map((i) => `  - ${i.path.join(".")}: ${i.message}`).join("\n");
     throw new Error(`sources.yaml 스키마 오류:\n${issues}`);
   }
+  const dead = new Set(parsed.data.deadUrls);
   const ids = new Set<string>();
+  const out: MonitorSource[] = [];
   for (const s of parsed.data.sources) {
     if (ids.has(s.id)) throw new Error(`sources.yaml: id 중복「${s.id}」`);
     ids.add(s.id);
+    if (dead.has(s.url)) {
+      throw new Error(`sources.yaml: 「${s.id}」の url は deadUrls に登録済み（死リンク）: ${s.url}`);
+    }
+    if (s.method !== "diff" && !opts.includeNonDiff) continue;
+    // selector 未指定でも既知サイトは本文コンテナに絞る
+    let selector = s.selector;
+    if (!selector) {
+      const host = new URL(s.url).hostname;
+      selector = KNOWN_CONTENT_SELECTORS.find((k) => k.host.test(host))?.selector;
+    }
+    out.push({ ...s, selector });
   }
-  return parsed.data.sources;
+  return out;
 }
 
 /* ---------------- 状態ファイル ---------------- */
@@ -90,7 +136,15 @@ export function saveState(state: MonitorState, file = STATE_FILE): void {
 
 /* ---------------- 本文抽出・正規化 ---------------- */
 
-const ALWAYS_IGNORE = ["script", "style", "noscript", "template", "svg"];
+/**
+ * 常に除去する要素。nav/header/footer/aside は「新着リンク」「更新日」などで
+ * 毎日変わりやすく、本文の変更検知には不要（v2.1 は selector 未指定ソースが多いため必須）。
+ */
+const ALWAYS_IGNORE = [
+  "script", "style", "noscript", "template", "svg", "iframe",
+  "nav", "header", "footer", "aside", "time",
+  "[role=navigation]", "[role=banner]", "[role=contentinfo]",
+];
 
 /** 매번 바뀌는 문자열 패턴을 정규화 (날짜·시각·카운터·세션ID) */
 function normalizeText(text: string): string {
@@ -145,6 +199,11 @@ export function extract(html: string, source: MonitorSource, baseUrl: string): E
     try {
       const abs = new URL(href, baseUrl);
       abs.hash = "";
+      // キャッシュバスター（?1786951130 / ?v=…/ ?t=… / ?_=…）は毎回変わる → 除去
+      if (/^\d{6,}$/.test(abs.search.slice(1))) abs.search = "";
+      for (const k of ["v", "ver", "t", "ts", "_", "cache", "cachebuster", "rev", "nocache"]) {
+        abs.searchParams.delete(k);
+      }
       links.add(abs.toString());
     } catch {
       /* 무효 URL 무시 */
@@ -262,9 +321,12 @@ export async function checkSource(
 /** レポート本文（コンソール / GitHub Issue 共用） */
 export function formatChangeReport(r: CheckResult): string {
   const lines: string[] = [];
-  lines.push(`## ${r.source.name} (${r.source.priority}${r.source.category ? " / " + r.source.category : ""})`);
+  const badges: string[] = [];
+  if (r.source.status === "unverified" || r.source.status === "blocked") badges.push(`【未検証: ${r.source.status}】`);
+  if (r.source.frequencyHint) badges.push(`【希望頻度: ${r.source.frequencyHint}】`);
+  lines.push(`## ${r.source.name} (${r.source.priority}${r.source.category ? " / " + r.source.category : ""}) ${badges.join(" ")}`.trimEnd());
   lines.push(r.source.url);
-  if (r.source.note) lines.push(`> ${r.source.note}`);
+  if (r.source.note) lines.push(`> ${r.source.note.trim().replace(/\n/g, "\n> ")}`);
   if (r.newLinks && r.newLinks.length > 0) {
     lines.push("", `### 新規リンク (${r.newLinks.length})`);
     for (const l of r.newLinks.slice(0, 20)) lines.push(`- ${l}`);

@@ -2,7 +2,7 @@
 
 > 조사일: 2026-08-17 / 조사자: Claude Code (TASK-05 사전 조사)
 > 출처: https://www.e-stat.go.jp/api/api-info/api-spec , https://www.e-stat.go.jp/api/api-info/e-stat-manual3-0
-> ※ appId 미발급 상태라 **실호출 검증은 미실시**. 사용자가 appId 발급 후 `npm run stats -- --search 在留外国人` 로 첫 검증할 것.
+> ✅ 2026-08-17 appId 발급 후 **실호출 검증 완료**: `--search 在留外国人` → 22건 (최신 `0004019020` 国籍・地域別 在留資格別 在留外国人, 調査 202512, 公開 2026-07-10) / `--id 0004019020 --limit 50` → `data/stats/` 저장·메타(appId 마스킹) 확인.
 
 ## 기본 정보
 
@@ -41,6 +41,12 @@
 ```
 - `RESULT.STATUS`: **0~2 = 성공, 100 이상 = 오류** (ERROR_MSG에 사유). HTTP 200이어도 STATUS로 실패 판정해야 함.
 - `TABLE_INF`는 결과 1건이면 객체, 여러 건이면 배열 (JSON 변환 특성) → 정규화 필요
+
+## 실측 메모 (2026-08-17)
+
+- `在留外国人統計` 계열은 `SURVEY_DATE`가 0으로 오는 구표(2019 공개)와 최신표가 섞여 있음 → 최신 `OPEN_DATE` 우선
+- `getStatsData` 응답 VALUE 는 `{ "@tab","@cat01","@cat02","@area","@time","@unit","$" }` 형태 (cat 코드→명칭은 CLASS_INF 참조. 현 구현은 VALUE 만 저장, CLASS_INF 매핑은 그래프 작성 시 추가)
+- 데이터가 큰 표는 `--limit` 로 시험 취득 후 `cdCat01`/`cdTime` 로 좁힐 것
 
 ## 우선 대상 통계 (기사용)
 

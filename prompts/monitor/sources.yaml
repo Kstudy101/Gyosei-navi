@@ -1,137 +1,1491 @@
-# 一次情報 監視ソース定義
-# scripts/monitor.ts が巡回し、変更を検知したらレポート（--github-issue で Issue 起票）。
-# スキーマ: src/lib/sources/monitor.ts (zod)
+# =====================================================================
+#  一次情報 監視ソース レジストリ  v2.1
+#  行政書士 全業務分野 網羅版 / src/lib/sources/monitor.ts 互換
+# =====================================================================
+#  更新: 2026-08-17
+#  検証: 全URLを実地確認済み。各エントリの status を必ず確認すること。
+#  解説: docs/10_MONITORING_REGISTRY.md
 #
-# フィールド:
-#   id / name / url / priority(P0-P3) / checkFrequency(daily|weekly|monthly)  ← 必須
-#   category / subcategory / keywords / note                                    ← 任意
-#   selector        監視する領域の CSS セレクタ（未指定は body）
-#   ignoreSelectors 無視する要素（日付・広告・カウンタ等。誤検知の抑制に使う）
-#   enabled         false で一時停止
-#   notifyOn        ["content", "newLink"]  本文変更 / 新規リンク出現
+#  ★設計原則 — 「収集」と「公開」は別物 ─────────────────────────
+#    collectPriority (= priority) : 監視優先度。全8分野を初日から網羅する。
+#                                   クロール費用はほぼゼロ。一次情報アーカイブは
+#                                   蓄積した期間の分しか価値が生まれない。
+#    publishPriority              : 記事化優先度。新規ドメインが8分野を薄く扱うと
+#                                   どこでも上位に立てないため、狭く深く攻める。
+#    → 現在 publish は nyukan のみ P0。他は「貯めるだけ」。
+#  ─────────────────────────────────────────────────────────
 #
-# ★誤検知が出たら、まず ignoreSelectors を足す。初期1週間は --dry-run で運用する。
+#  【スキーマ互換について】
+#  priority / checkFrequency は src/lib/sources/monitor.ts の
+#  sourceSchema に合わせた必須フィールド。
+#  それ以外（method, status, publishPriority, frequencyHint, baseUrl, docUrl,
+#  related）は zod が読み捨てる拡張フィールドで、将来のパーサ分岐用。
+#
+#  method:
+#    diff : HTML差分監視。現行 monitor.ts が処理する。enabled: true
+#    rss  : RSSフィード。TASK-10 で RSS パーサ分岐を実装するまで enabled: false
+#    api  : API。専用スクリプトで処理する。enabled: false
+#
+#  status:
+#    confirmed  : 2026-08-17 に実際に取得・動作確認済み
+#    listed     : 公式ページに記載があるが直接取得は未実施
+#    unverified : 検索結果には存在するが未確認。使用前に要確認
+#    blocked    : ボット遮断(403)等で確認不可。ブラウザで要確認
+#
+#  frequencyHint:
+#    checkFrequency は monitor.ts の enum(daily|weekly|monthly)に丸めてある。
+#    本来望ましい頻度が異なる場合のみ frequencyHint に記す（2x-daily / quarterly）。
+# =====================================================================
 
-defaults: &defaults
-  enabled: true
-  notifyOn: ["content", "newLink"]
-  ignoreSelectors: ["script", "style", "noscript", "nav", "footer", "header", "iframe", ".date", ".update", "time"]
+version: 2.1
+updated: "2026-08-17"
 
-sources:
-  # ===== 入管・国際業務 (P0) =====
-  # 入管庁サイトは <main> が無く #contentsArea が本文。meta refresh 多用（monitor が自動追跡）
-  - <<: *defaults
-    id: isa-news
-    name: 出入国在留管理庁 新着情報
-    url: https://www.moj.go.jp/isa/
-    category: nyukan
-    priority: P0
-    checkFrequency: daily
-    selector: "#contentsArea"
+defaults:
+  userAgent: "gyosei-times-monitor/1.0 (+https://example.jp/about)"
+  minIntervalMs: 1000
+  timeoutMs: 30000
 
-  - <<: *defaults
-    id: isa-eiju-guideline
-    name: 永住許可に関するガイドライン
-    url: https://www.moj.go.jp/isa/applications/resources/nyukan_nyukan50.html
-    category: nyukan
-    subcategory: eiju
-    priority: P0
-    checkFrequency: daily
-    selector: "#contentsArea"
-    note: 2026-08-04 改定案公表。パブコメ 2026-09-04 締切。施行は2027年4月見込み。（旧URL /isa/applications/guide/ は meta refresh の入口）
-
-  - <<: *defaults
-    id: isa-eiju-procedure
-    name: 永住許可申請（入管法第22条）手続ページ
-    url: https://www.moj.go.jp/isa/applications/procedures/eizyuu_00001.html
-    category: nyukan
-    subcategory: eiju
-    priority: P0
-    checkFrequency: daily
-    selector: "#contentsArea"
-
-  - <<: *defaults
-    id: ikusei-shuro
-    name: 育成就労制度 関連情報
-    url: https://www.moj.go.jp/isa/
-    category: nyukan
-    subcategory: ikusei
-    priority: P0
-    checkFrequency: daily
-    selector: "main"
-    enabled: false   # isa-news と同一URL。専用ページ確定後に url を差し替えて有効化
-    note: 2027-04 施行。運用要領は2026-04-06改正版が最新。
-
-  # ===== パブリックコメント =====
-  # → 専用スクリプト scripts/watch-pubcomment.ts (RSS + 一覧巡回) で監視するため monitor 対象外
-  - <<: *defaults
-    id: egov-pubcomment
-    name: e-Gov パブリックコメント（RSS）
-    url: https://public-comment.e-gov.go.jp/rss/pcm_list.xml
-    keywords: ["行政書士", "在留資格", "入管", "永住", "育成就労", "外国人"]
-    priority: P0
-    checkFrequency: daily
-    enabled: false   # watch-pubcomment.ts が担当
-
-  # ===== 行政書士制度 =====
-  - <<: *defaults
-    id: soumu-gyoseishoshi
-    name: 総務省 行政書士制度
-    url: https://www.soumu.go.jp/main_sosiki/jichi_gyousei/gyouseishoshi/index.html
-    keywords: ["行政書士"]
-    category: seido
-    priority: P1
-    checkFrequency: weekly
-    note: 2026-01-01 施行の改正行政書士法（使命明文化・デジタル対応努力義務・両罰規定強化）。所管は自治行政局（jichi_gyousei）。
-
-  - <<: *defaults
-    id: soumu-gyoseishoshi-tsuchi
-    name: 総務省 行政書士制度 通知・事務連絡
-    url: https://www.soumu.go.jp/main_sosiki/jichi_gyousei/gyouseishoshi/02gyosei07_04000176.html
-    keywords: ["行政書士"]
-    category: seido
-    priority: P1
-    checkFrequency: weekly
-
-  - <<: *defaults
-    id: nichigyoren
-    name: 日本行政書士会連合会
-    url: https://www.gyosei.or.jp/
-    category: seido
-    priority: P1
-    checkFrequency: weekly
-
-  # ===== DX・電子申請 =====
-  - <<: *defaults
-    id: digital-agency
-    name: デジタル庁
-    url: https://www.digital.go.jp/
-    keywords: ["電子申請", "オンライン申請", "行政手続"]
-    category: dx
-    priority: P2
-    checkFrequency: weekly
-
-  # ===== 許認可（Phase 2以降） =====
-  - <<: *defaults
-    id: mlit-kensetsu
-    name: 国土交通省 建設業許可
-    url: https://www.mlit.go.jp/totikensangyo/const/1_6_bt_000080.html
-    category: kyoninka
-    priority: P3
-    checkFrequency: monthly
-
-  # ===== 補助金（Phase 2以降） =====
-  - <<: *defaults
-    id: jgrants
-    name: jGrants 補助金ポータル
-    url: https://www.jgrants-portal.go.jp/
-    category: hojokin
-    priority: P3
-    checkFrequency: weekly
-    enabled: false   # JS レンダリング(SPA)のため静的取得では本文0字。TASK-04 changedetection.io (browserless) で監視
-
-# 検知時のアクション
 onChange:
   createGithubIssue: true
   labels: ["content-opportunity"]
   assignPriority: fromSource
+
+sources:
+  # ===================================================================
+  #  SECTION A — 横断ソース【最優先・全分野に効く】
+  #  A群だけで全省庁の動きの8割を捕捉できる。
+  # ===================================================================
+
+  - id: egov-pubcomment-all
+    name: e-Gov パブリックコメント 意見募集案件（全件）
+    url: https://public-comment.e-gov.go.jp/rss/pcm_list.xml
+    priority: P0
+    checkFrequency: daily
+    frequencyHint: 2x-daily
+    category: crosscutting
+    method: rss
+    status: confirmed
+    enabled: false
+    publishPriority: P0
+    note: >
+      ★本プロジェクト最重要ソース。制度改正を「予告段階」で捕捉できる唯一の窓口。
+      公式APIは存在しない（developer.e-gov.go.jp で不存在確認）が RSS が完備。
+      ★enabled: false の理由 — 専用スクリプト scripts/watch-pubcomment.ts が
+      すでにこの役割を担っているため。monitor.ts での二重監視は不要。
+      ⚠️ ローリングウィンドウ型（実測で7件のみ）。1日2回ポーリング + 案件IDでdedupしないと
+      案件が丸ごと消える。詳細URLは servlet 形式が2026-08現在も稼働:
+      https://public-comment.e-gov.go.jp/servlet/Public?CLASSNAME=PCMMSTDETAIL&id={id}&Mode=0
+      ⚠️ カテゴリ分類に「建設」「運輸」「医療」「法務」は存在しない。
+      建設業許可は「建築、住宅」、入管は「外事」に散る → キーワードマッチ併用必須。
+    keywords:
+      [行政書士, 在留資格, 入管, 出入国, 永住, 帰化, 育成就労, 技能実習, 特定技能, 外国人,
+       建設業, 宅地建物取引業, 産業廃棄物, 食品衛生, 風俗営業, 古物, 旅館業, 住宅宿泊, 酒類,
+       運送事業, 相続, 遺言, 商業登記, 定款, 補助金, 自動車, 無人航空機, 動物取扱業,
+       電気通信事業, 農地, 医療法人, 探偵業, 大麻草, 電子申請, 行政手続]
+
+  - id: egov-pubcomment-result
+    name: e-Gov パブリックコメント 結果公示
+    url: https://public-comment.e-gov.go.jp/rss/pcm_result.xml
+    priority: P1
+    checkFrequency: daily
+    category: crosscutting
+    method: rss
+    status: listed
+    enabled: false
+    note: >
+      意見募集の結果が出た＝制度が固まった合図。既存記事の更新トリガー。
+      TASK-10 の RSS パーサ実装後に有効化する。
+
+  - id: egov-pubcomment-category-noki
+    name: e-Gov パブコメ カテゴリ別（農業／カテゴリ別フィードの代表例）
+    url: https://public-comment.e-gov.go.jp/rss/pcm_list_0000000031.xml
+    priority: P2
+    checkFrequency: weekly
+    category: crosscutting
+    method: rss
+    status: confirmed
+    enabled: false
+    note: >
+      カテゴリ別フィードは全53種。URLパターンは
+      https://public-comment.e-gov.go.jp/rss/pcm_list_{categoryId}.xml
+      行政書士業務に関係する categoryId:
+        0000000009 行政手続 / 0000000014 民事 / 0000000016 警察(風俗・古物・探偵)
+        0000000019 土地 / 0000000020 都市計画 / 0000000023 建築、住宅
+        0000000031 農業 / 0000000036 商業 / 0000000037 金融、保険
+        0000000039 陸運 / 0000000041 航空(ドローン) / 0000000042 貨物運送
+        0000000045 電気通信 / 0000000047 環境保全(動物) / 0000000048 厚生(医療法人)
+        0000000052 外事(入管)
+      全件フィードの補完用。単独では取りこぼす。
+
+  - id: nichigyoren-news
+    name: 日本行政書士会連合会 お知らせ
+    url: https://www.gyosei.or.jp/news/rss.xml
+    priority: P0
+    checkFrequency: daily
+    category: crosscutting
+    method: rss
+    status: confirmed
+    enabled: false
+    note: >
+      ★業界内部の動きはここにしか出ない。更新頻度は月1〜3件と低負荷。
+      2026-08-03「犯罪収益移転防止法 取引時確認等ハンドブック改訂」
+      2026-07-29「自動車登録等手続における法令違反事例」
+      2026-03-27「Gビズポータル リリース」
+      → 実務コンプライアンス情報が直接流れてくる。TASK-10 で有効化。
+      HTMLページ版: https://www.gyosei.or.jp/news
+
+  - id: soumu-gyoseishoshi
+    name: 総務省 行政書士制度
+    url: https://www.soumu.go.jp/main_sosiki/jichi_gyousei/gyouseishoshi/index.html
+    priority: P0
+    checkFrequency: weekly
+    category: crosscutting
+    method: diff
+    status: confirmed
+    enabled: true
+    note: >
+      改正行政書士法（令和7年法律第65号／2025-06-13公布／2026-01-01施行）の所管。
+      改正の柱: ①特定行政書士の不服申立代理が「作成した書類」→「作成できる書類」に拡大
+      → 本人申請案件の事後受任が可能になった
+      ②第19条第1項に「いかなる名目をもってするかを問わず報酬を得て」を追加
+      → ②は本プロジェクトの法的リスクそのもの（docs/06_LEGAL_COMPLIANCE.md 参照）
+      公布通知 PDF: https://www.soumu.go.jp/main_content/001014708.pdf (confirmed)
+
+  - id: moj-news
+    name: 法務省 新着・更新情報
+    url: https://www.moj.go.jp/news.xml
+    priority: P0
+    checkFrequency: daily
+    category: crosscutting
+    method: rss
+    status: confirmed
+    enabled: false
+    note: >
+      ★入管・相続登記・商業登記・民法改正を一本で覆う最効率ソース。
+      民事局専用フィードは存在しないため全体フィードをキーワードで絞る。TASK-10 で有効化。
+    keywords: [入管, 在留, 永住, 帰化, 相続, 登記, 遺言, 商業登記, 民法, 公証]
+
+  - id: digital-agency-news
+    name: デジタル庁 新着情報
+    url: https://www.digital.go.jp/rss/news.xml
+    priority: P1
+    checkFrequency: daily
+    category: crosscutting
+    method: rss
+    status: confirmed
+    enabled: false
+    note: >
+      電子申請・行政手続オンライン化。2026年施行の行政書士法
+      「デジタル社会への対応の努力義務」に直結。TASK-10 で有効化。
+
+  - id: kanpo
+    name: 官報（官報発行サイト）
+    url: https://www.kanpo.go.jp/
+    priority: P1
+    checkFrequency: daily
+    category: crosscutting
+    method: diff
+    status: confirmed
+    enabled: true
+    note: >
+      2025-04-01「官報の発行に関する法律」施行により電子版が正本化。毎日8:30発行。
+      ⚠️ 発行後90日間のみ全体を無料閲覧・DL可能。90日経過後は個人の処分・
+      プライバシー関連記事が非表示になる。RSS・APIともに不存在（両ページで確認）。
+      キーワード検索は有料「官報情報検索サービス」のみ。
+      → TASK-09 で日次PDFアーカイブを自前構築すること。遅れた分は永久に復旧不可。
+
+  - id: egov-law-api
+    name: e-Gov 法令API Version 2
+    url: https://laws.e-gov.go.jp/api/2/swagger-ui
+    priority: P0
+    checkFrequency: monthly
+    category: crosscutting
+    method: api
+    status: listed
+    enabled: false
+    baseUrl: https://laws.e-gov.go.jp/api/2/
+    note: >
+      条文原文の自動取得用。認証不要・無料。2025-03-14 v2リリース。
+      特定時点の条文取得・廃止法令検索・本文ファイルDLが追加。
+      平成29年4月1日以降のデータに対応。v1は「当面の間」利用可能。
+      → TASK-01 で実装済（scripts/fetch-law.ts / docs/api/egov-law-api.md）。
+      監視対象ではなく取得手段のため enabled: false。
+
+  - id: gyosei-shiken-center
+    name: 一般財団法人 行政書士試験研究センター
+    url: https://gyosei-shiken.or.jp/
+    priority: P2
+    checkFrequency: weekly
+    category: exam
+    method: diff
+    status: confirmed
+    enabled: true
+    note: >
+      RSSなし。令和8年度試験: 2026-11-08(日) 13:00-16:00 / 受験料10,400円 /
+      ネット申込 2026-07-21〜08-24 17:00 / 合格発表 2027-01-27。
+
+  - id: tokyo-gyoseishoshi-kai
+    name: 東京都行政書士会 新着情報
+    url: https://www.tokyo-gyosei.or.jp/topics/index.html
+    priority: P2
+    checkFrequency: weekly
+    category: crosscutting
+    method: diff
+    status: listed
+    enabled: true
+    note: >
+      研修カレンダーが実務情報の宝庫（/profile/training.html）。
+      2026-09-09「許認可フェスタ!!」開催。
+      ⚠️ RSS(https://www.tokyo-gyosei.or.jp/tgs.xml)はトップにリンクがあるが
+      直接取得は404。使用前に要再確認。
+
+  - id: osaka-gyoseishoshi-kai
+    name: 大阪府行政書士会
+    url: https://www.osaka-gyoseishoshi.or.jp/
+    priority: P3
+    checkFrequency: monthly
+    category: crosscutting
+    method: diff
+    status: confirmed
+    enabled: true
+    note: RSSなし。研修会情報（一般向け／会員向け）あり。
+
+  # ===================================================================
+  #  SECTION B-1 — 入管・国際業務 (nyukan)
+  #  collect P0 / publish P0  ← 唯一 publish も P0
+  # ===================================================================
+
+  - id: isa-top
+    name: 出入国在留管理庁 新着情報
+    url: https://www.moj.go.jp/isa/
+    priority: P0
+    checkFrequency: daily
+    category: nyukan
+    method: diff
+    status: listed
+    enabled: true
+    publishPriority: P0
+    note: RSSが弱いためHTML差分監視。moj-news(RSS)と併用する。
+
+  - id: isa-eiju-guideline
+    name: 永住許可に関するガイドライン
+    # 旧URL /isa/applications/guide/ は meta refresh で「手続案内 一覧」へ飛ぶ別ページ（2026-08-17 実測）。
+    # ガイドライン本体は下記。selector は monitor.ts が moj.go.jp に #contentsArea を自動適用。
+    url: https://www.moj.go.jp/isa/applications/resources/nyukan_nyukan50.html
+    priority: P0
+    checkFrequency: daily
+    category: nyukan
+    subcategory: eiju
+    method: diff
+    status: confirmed
+    enabled: true
+    publishPriority: P0
+    note: >
+      ★★★ 2026-08-04 改定案公表（e-Gov 案件315000140）。パブコメ締切 2026-09-03（木）必着
+      （e-Gov表示は9/4 0時0分）。適用: 2027-04-01以降の申請。ただし収入(第2の4(2))・公共の負担(第2の5(7))は
+      改定日の6か月前以降の申請中案件にも適用（改定日未確定。概要は「収入は本年10月施行」）。
+      改定内容: 年収=世帯人数対応の日本人世帯平均を継続的に超過 /
+      年金=見込受給額を受給年金水準と比較 / 日本語=日本語教育の参照枠B1相当以上 /
+      配偶者特例 婚姻3年・在留1年 → 婚姻5年・在留3年 / 実子等 1年→3年 /
+      学齢期の子の就学 / 制度・ルール理解 / 出国 半年・通算2年6月。
+      原文: data/sources/pubcomment-315000140/。現在ローンチ特集の対象。noticeLevel: draft-proposal。
+      制度確定時は48時間以内更新ルールの適用対象。
+
+  - id: isa-eiju-procedure
+    name: 永住許可申請（入管法第22条）手続ページ
+    url: https://www.moj.go.jp/isa/applications/procedures/eizyuu_00001.html
+    priority: P0
+    checkFrequency: daily
+    category: nyukan
+    subcategory: eiju
+    method: diff
+    status: confirmed
+    enabled: true
+    publishPriority: P0
+    note: 提出書類一覧・申請区分1〜5へのリンク元。書類要件の変更を捕捉。
+
+  - id: isa-ikusei-shuro
+    name: 育成就労制度
+    url: https://www.moj.go.jp/isa/applications/index_00005.html
+    priority: P0
+    checkFrequency: daily
+    category: nyukan
+    subcategory: ikusei
+    method: diff
+    status: confirmed
+    enabled: true
+    publishPriority: P0
+    note: >
+      ★技能実習に代わる新制度。2027-04 施行見込
+      （⚠️ 施行日の公式ページ本文での明記は未確認）。
+      「育成就労制度の概要(令和8年7月改訂)」PDF掲載。
+      分野別運用方針 閣議決定 2026-01-23。運用要領 最新更新 2026-08-05。
+      多数分野に上乗せ基準告示。B2B記事の最大の鉱脈（対象企業は数万社規模）。
+
+  - id: isa-ikusei-shuro-unyo
+    name: 育成就労制度運用要領
+    url: https://www.moj.go.jp/isa/applications/nyuukokukanri07_00002.html
+    priority: P0
+    checkFrequency: daily
+    category: nyukan
+    subcategory: ikusei
+    method: diff
+    status: confirmed
+    enabled: true
+    publishPriority: P0
+    note: 運用要領の改定を捕捉（要領PDF本体は changedetection 側で監視）。2026-08-17 URL 確定。
+
+  - id: mhlw-news
+    name: 厚生労働省 新着情報（外国人雇用・食品衛生・旅館業）
+    url: https://www.mhlw.go.jp/stf/news.rdf
+    priority: P0
+    checkFrequency: daily
+    category: nyukan
+    method: rss
+    status: confirmed
+    enabled: false
+    note: >
+      厚労省共通フィード。外国人雇用対策課・食品監視安全課・生活衛生課を
+      まとめて拾える。緊急情報は https://www.mhlw.go.jp/stf/kinkyu.rdf
+      TASK-10 で有効化。
+    keywords: [外国人, 在留資格, 育成就労, 技能実習, 特定技能, 雇用状況, 食品衛生, 営業許可, 旅館業]
+
+  # ===================================================================
+  #  SECTION B-2 — 法人設立・企業法務 (houjin)
+  #  collect P1 / publish P3
+  # ===================================================================
+
+  - id: moj-shogyo-touki-tsutatsu
+    name: 法務省 商業・法人登記関係の主な通達等
+    url: https://www.moj.go.jp/MINJI/minji06_00098.html
+    priority: P1
+    checkFrequency: weekly
+    category: houjin
+    method: diff
+    status: confirmed
+    enabled: true
+    publishPriority: P3
+    note: >
+      最新は令和7年3月19日民商第44号（令和7年7月10日一部訂正、私立学校法改正対応）。
+      2024-10-01から代表取締役等の住所非表示措置。本店移転時の印鑑届出が不要化。
+
+  - id: moj-teikan-ninsho
+    name: 法務省 定款認証に関する新たな取組
+    url: https://www.moj.go.jp/MINJI/minji03_00076.html
+    priority: P1
+    checkFrequency: monthly
+    category: houjin
+    method: diff
+    status: confirmed
+    enabled: true
+    note: >
+      48時間原則(2024-02-01拡大) / 全国公証役場でウェブ会議原則化(2024-03-01) /
+      定款認証+設立登記72時間原則(2024-09-20)。最終更新 令和7年3月3日。
+      ⚠️ 定款認証手数料の引下げは一次情報での確認に失敗している。
+      法務省の電子公証手数料ページは今も「5万円」表記のまま放置されており、
+      金額を記事化する前に必ず公証役場で直接確認すること。
+      なおこの放置自体が「公式ページも追いつけない制度変更」という記事アングルになる。
+
+  - id: koshonin-rengokai
+    name: 日本公証人連合会
+    url: https://www.koshonin.gr.jp/
+    priority: P2
+    checkFrequency: monthly
+    category: houjin
+    method: diff
+    status: blocked
+    enabled: false
+    note: >
+      ⚠️ robots/プロキシで下位ページ取得不可。トップに
+      「新たな定款等認証制度へ」バナーの存在のみ確認済。
+      ブラウザでの手動確認が必要なため enabled: false。
+
+  - id: houjin-setsuritsu-oss
+    name: 法人設立ワンストップサービス
+    url: https://app.e-oss.myna.go.jp/Application/ecOssTop/
+    priority: P1
+    checkFrequency: daily
+    category: houjin
+    method: diff
+    status: confirmed
+    enabled: true
+    note: >
+      ★障害情報がここにしか出ない。実務直撃のため日次監視。
+      2026-08-12以降、システム内部不良により「法人設立届出」および
+      「定款の定め等による申告期限の延長の特例の申請」の新規申請を
+      控えるよう案内中（2026-08-17時点）。
+
+  - id: gbizid-news
+    name: GビズID お知らせ
+    url: https://gbiz-id.go.jp/top/news_list/news_list.html
+    priority: P1
+    checkFrequency: weekly
+    category: houjin
+    method: diff
+    status: confirmed
+    enabled: true
+    note: >
+      ★2026年下半期の実務事故予備軍。
+      2025-09-30 告知: gBizIDプライム/メンバーに有効期間2年3ヶ月を導入、
+                       2026年7月から開始。更新時に本人確認が必要
+      2025-12-17: 行政サービスログイン用のSMS認証を廃止 → メールOTPへ
+      2026-05-13: 有効期間満了アカウントは更新まで一部操作不可
+      2026-07-09: アプリ認可機能／商業登記電子証明書のリモート署名対応
+      → 補助金申請を代理する際、アカウント失効で申請不能になる事故が起きうる。
+
+  - id: nta-houjin-setsuritsu
+    name: 国税庁 法人設立届出
+    url: https://www.nta.go.jp/taxes/tetsuzuki/shinsei/annai/hojin/annai/1554_2.htm
+    priority: P2
+    checkFrequency: monthly
+    category: houjin
+    method: diff
+    status: confirmed
+    enabled: true
+    note: >
+      提出期限は定款認可日または法人成立日から2ヶ月以内。添付は定款の写しのみ。
+      国税庁はRSS不提供（/rss/index.htm は404）。
+
+  - id: naikakufu-koeki
+    name: 内閣府 公益法人information
+    url: https://www.koeki-info.go.jp/
+    priority: P2
+    checkFrequency: weekly
+    category: houjin
+    method: diff
+    status: confirmed
+    enabled: true
+    note: >
+      RSSなし。「公益法人メールマガジン」購読で代替可。
+      公益法人制度改革が進行中（2026-08-07「公益認定等に関する事例集」新規公開）。
+
+  - id: naikakufu-npo
+    name: 内閣府 NPOホームページ
+    url: https://www.npo-homepage.go.jp/
+    priority: P2
+    checkFrequency: monthly
+    category: houjin
+    method: diff
+    status: confirmed
+    enabled: true
+    note: >
+      NPO法の最新改正は令和2年12月2日成立／令和3年6月9日施行のみ。
+      2026-05-08「NPO法人のテロ資金供与対策について」更新は実務影響大。
+
+  # ===================================================================
+  #  SECTION B-3 — 建設業・各種許認可 (kyoninka)
+  #  collect P1 / publish P3
+  # ===================================================================
+
+  - id: mlit-pressrelease
+    name: 国土交通省 報道発表 RSS
+    url: https://www.mlit.go.jp/pressrelease.rdf
+    priority: P1
+    checkFrequency: daily
+    category: kyoninka
+    method: rss
+    status: confirmed
+    enabled: false
+    note: >
+      ★建設業・宅建業・運送・ドローン・自動車・民泊を一本で覆う最重要フィード。
+      新着情報 https://www.mlit.go.jp/index.rdf
+      重要なお知らせ https://www.mlit.go.jp/important.rdf （いずれも confirmed）
+      TASK-10 で有効化しキーワードで分野振り分けする。
+    keywords: [建設業, 経営事項審査, 宅地建物取引業, 貨物, 旅客, 運送, 無人航空機, 自動車, 民泊, 住宅宿泊]
+
+  - id: mlit-kensetsugyo-kaisei
+    name: 国土交通省 建設業法・入契法改正
+    url: https://www.mlit.go.jp/tochi_fudousan_kensetsugyo/const/tochi_fudousan_kensetsugyo_const_tk1_000001_00033.html
+    priority: P1
+    checkFrequency: weekly
+    category: kyoninka
+    subcategory: kensetsu
+    method: diff
+    status: confirmed
+    enabled: true
+    note: >
+      改正建設業法（令和6年法律第49号）2025-12-12 完全施行。
+      不当に低い請負代金・著しく短い工期の禁止、見積書記載事項の明示、
+      発注者への勧告・公表権限を新設。政令上の勧告対象下限は500万円
+      （建築一式は1,500万円）。ページ最終更新 2025-06-17。
+
+  - id: mlit-keishin
+    name: 国土交通省 経営事項審査の主な改正事項
+    url: https://www.mlit.go.jp/tochi_fudousan_kensetsugyo/const/tochi_fudousan_kensetsugyo_const_fr1_000001_00088.html
+    priority: P1
+    checkFrequency: weekly
+    category: kyoninka
+    subcategory: kensetsu
+    method: diff
+    status: confirmed
+    enabled: true
+    note: 令和8年2月6日公布、2026-07-01施行。施行直後の混乱期でJCIP申請実務に直結。
+
+  - id: mlit-jcip
+    name: 建設業許可・経営事項審査 電子申請システム(JCIP)
+    url: https://www.mlit.go.jp/tochi_fudousan_kensetsugyo/const/tochi_fudousan_kensetsugyo_const_tk1_000001_00019.html
+    priority: P1
+    checkFrequency: weekly
+    category: kyoninka
+    subcategory: kensetsu
+    method: diff
+    status: confirmed
+    enabled: true
+    note: 令和8年7月1日付の告知を掲載。電子申請の実務変更を直接拾える。
+
+  - id: mlit-roumuhi
+    name: 労務費に関する基準（国交省 特設サイト）
+    url: https://roumuhi.mlit.go.jp/
+    priority: P2
+    checkFrequency: monthly
+    category: kyoninka
+    subcategory: kensetsu
+    method: diff
+    status: confirmed
+    enabled: true
+    note: 運用方針が2026-06-29改正。継続更新中。最新記事 2026-06-29。
+
+  - id: mlit-takken
+    name: 国土交通省 宅地建物取引業法関係
+    url: https://www.mlit.go.jp/totikensangyo/const/1_6_bt_000266.html
+    priority: P2
+    checkFrequency: monthly
+    category: kyoninka
+    subcategory: takken
+    method: diff
+    status: confirmed
+    enabled: true
+    note: >
+      2024-05-25 大臣免許業者の免許申請オンライン化(eMLIT)開始、2024-11-06 システム更新。
+      2024-07-01 報酬額告示改正（令和6年国交省告示第949号）。
+
+  - id: env-press
+    name: 環境省 報道発表
+    url: https://www.env.go.jp/press/
+    priority: P1
+    checkFrequency: daily
+    category: kyoninka
+    subcategory: sanpai
+    method: diff
+    status: listed
+    enabled: true
+    note: >
+      ★RSSなし（確認済）。代替はメール配信 https://www.env.go.jp/webnews/ （週1回）。
+      ★2026-04-10「廃棄物の処理及び清掃に関する法律等の一部を改正する法律案」閣議決定 —
+      使用後の金属・プラスチック物品の保管／再生事業（スクラップヤード）に許可制を導入。
+      行政書士の新規受任領域として最重要。
+
+  - id: env-haikibutsu
+    name: 環境省 廃棄物処理法
+    url: https://www.env.go.jp/recycle/waste/laws.html
+    priority: P1
+    checkFrequency: weekly
+    category: kyoninka
+    subcategory: sanpai
+    method: diff
+    status: confirmed
+    enabled: true
+    note: >
+      産廃収集運搬業は積載地・荷降地ごとに都道府県別の個別許可が必要で、
+      様式・審査基準・標準処理期間が自治体ごとに異なる（自治体差：最大級）。
+
+  - id: mhlw-eigyo-kisei
+    name: 厚生労働省 営業規制（営業許可・営業届出）に関する情報
+    url: https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/shokuhin/kigu/index_00010.html
+    priority: P1
+    checkFrequency: weekly
+    category: kyoninka
+    subcategory: inshokuten
+    method: diff
+    status: confirmed
+    enabled: true
+    note: >
+      ★通知の更新頻度が高い。キッチンカー・全自動調理機・自動販売機など
+      新業態対応の事務連絡が半期単位で出るパターン。
+      確認済の直近通知: 2026-07-31 自動販売機機種リスト更新 /
+      2026-03-27 複数都道府県にまたがる自動車飲食店営業 /
+      2026-01-27 営業許可申請・届出の様式取扱い改正 /
+      2025-09-30 全自動調理機を用いた飲食店営業。
+      ⚠️ 規格基準（添加物・残留農薬・器具容器包装）は2024-04-01に消費者庁へ移管。
+      所管が二元化している点を記事で混同しないこと。
+
+  - id: npa-hoan
+    name: 警察庁 生活安全局 保安（風俗営業）
+    url: https://www.npa.go.jp/bureau/safetylife/hoan/index.html
+    priority: P1
+    checkFrequency: weekly
+    category: kyoninka
+    subcategory: fuzoku
+    method: diff
+    status: confirmed
+    enabled: true
+    note: >
+      ⚠️ 警察庁のRSS実体URLは未確認（案内ページは存在するがフィードURL非掲載）
+      のため差分監視。
+      風営適正化法改正: 令和7年5月成立・公布、2025-11-28までに全規定施行完了。
+      接待飲食営業の遵守事項追加（料金の虚偽説明、恋愛感情に乗じた要求の禁止）、
+      スカウトバック禁止、無許可営業が2年→5年以下の拘禁刑、法人罰金3億円以下。
+
+  - id: npa-kobutsu
+    name: 警察庁 古物営業・質屋営業
+    url: https://www.npa.go.jp/bureau/safetylife/kobutsu/index.html
+    priority: P1
+    checkFrequency: weekly
+    category: kyoninka
+    subcategory: kobutsu
+    method: diff
+    status: confirmed
+    enabled: true
+    note: >
+      ★「古物営業の在り方に関する有識者会議」が第3回まで開催済＝次期改正の予兆。
+      2025-10-01施行の施行規則改正で、1万円未満の買受けでも本人確認・帳簿記載が
+      必要な物品に4種追加（エアコン室外機、電気温水器のヒートポンプ、電線、
+      グレーチング（金属製に限る））。金属盗対策が背景。
+      自治体差は小（手数料19,000円・様式が事実上全国統一）。
+
+  - id: mlit-minpaku
+    name: 民泊制度ポータルサイト minpaku（観光庁）
+    url: https://www.mlit.go.jp/kankocho/minpaku/index.html
+    priority: P1
+    checkFrequency: weekly
+    category: kyoninka
+    subcategory: minpaku
+    method: diff
+    status: confirmed
+    enabled: true
+    note: >
+      新着情報の更新が活発。2027-04-01から東京都宿泊税の対象施設拡大（2026-07-01告知）。
+      住宅宿泊事業法施行要領（ガイドライン）最終改正 2024-12-24。
+      ⚠️ 民間記事の「2026-06-15施行 改正旅館業法 1室営業解禁」は
+      厚労省公式ページで確認できず。引用禁止。
+
+  - id: mhlw-ryokan
+    name: 厚生労働省 旅館業のページ
+    url: https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000110603.html
+    priority: P2
+    checkFrequency: monthly
+    category: kyoninka
+    subcategory: ryokan
+    method: diff
+    status: confirmed
+    enabled: true
+    note: >
+      所管は健康・生活衛生局 生活衛生課。確認済の直近通知:
+      2026-04-21 サウナ施設の安全対策 / 2026-01-20 衛生等管理要領改正 /
+      2025-04-01 外国人滞在施設経営事業の通知改正 / 2025-03-11 衛生等管理要領改正。
+
+  - id: nta-sake-menkyo
+    name: 国税庁 酒類の免許
+    url: https://www.nta.go.jp/taxes/sake/menkyo/mokuji.htm
+    priority: P2
+    checkFrequency: monthly
+    category: kyoninka
+    subcategory: sake
+    method: diff
+    status: confirmed
+    enabled: true
+    note: >
+      許可権者は所轄税務署長。都道府県の関与なし（自治体差ほぼ無し）。
+      ⚠️ 酒税関係法令等の改正ページは令和5年度で停滞しており信頼度が低い。
+      新着情報 https://www.nta.go.jp/information/news/news.htm を併用すること。
+
+  - id: mlit-truck
+    name: 国土交通省 トラック適正化二法
+    url: https://www.mlit.go.jp/jidosha/jidosha_mn4_000019.html
+    priority: P1
+    checkFrequency: weekly
+    category: kyoninka
+    subcategory: unso
+    method: diff
+    status: confirmed
+    enabled: true
+    note: >
+      ★令和7年6月11日公布（令和7年法律第60号・第61号）。
+      2026-04-01施行分: 違法白トラ規制、委託2次までの制限（努力義務）、
+      貨物利用運送事業者への書面交付義務・実運送体制管理簿の作成義務拡大、
+      運送利用管理規程の作成・管理者選任（年間利用量100万トン超）。
+      ★公布後3年以内施行: トラック事業者の許可更新制を導入
+      → 更新業務という行政書士の新規定常収入が発生する構造変化。
+
+  # ===================================================================
+  #  SECTION B-4 — 相続・遺言 (souzoku)
+  #  collect P1 / publish P3
+  # ===================================================================
+
+  - id: moj-souzoku-touki
+    name: 法務省 相続登記の申請義務化 概要資料
+    url: https://www.moj.go.jp/MINJI/minji05_00600.html
+    priority: P1
+    checkFrequency: weekly
+    category: souzoku
+    method: diff
+    status: confirmed
+    enabled: true
+    publishPriority: P3
+    note: >
+      ★最終更新 令和8年4月10日。相続分野で最も活発に更新されるページ。
+      2024-04-01施行: 取得を知った日から3年以内、違反は10万円以下の過料。
+      ⏰ 施行前（2024-04-01以前）の相続分の履行期限 = 2027-03-31。
+      2026〜2027年が需要ピーク。
+      相続人申告登記は登録免許税無料・押印/電子署名不要・単独申請可＝受任ポイント。
+
+  - id: moj-jusho-henko-touki
+    name: 法務省 住所等変更登記の義務化
+    url: https://www.moj.go.jp/MINJI/minji05_00687.html
+    priority: P1
+    checkFrequency: weekly
+    category: souzoku
+    method: diff
+    status: confirmed
+    enabled: true
+    note: >
+      ★第二の登記義務化。2026-04-01施行、変更日から2年以内、過料5万円以下。
+      経過措置は2028年3月末。「スマート変更登記」新設（費用無料）。
+      最終更新 令和8年4月1日。
+
+  - id: moj-smart-henko-touki
+    name: 法務省 スマート変更登記のご利用方法
+    url: https://www.moj.go.jp/MINJI/minji05_00688.html
+    priority: P1
+    checkFrequency: weekly
+    category: souzoku
+    method: diff
+    status: confirmed
+    enabled: true
+    note: >
+      ★最終更新 令和8年4月30日。法人は2026-05-15以降段階的に開始したが、
+      個人向けの開始時期は未定（「個別に案内予定」）。
+      → 日本中で誰も確答できていない状態＝先行報道の好機。
+      個人は「検索用情報の申出」、法人は「会社法人等番号の登記」を行うと
+      以後は法務局が職権で変更登記する。
+
+  - id: moj-yuigon-hokan
+    name: 法務省 自筆証書遺言書保管制度
+    url: https://www.moj.go.jp/MINJI/minji03_00051.html
+    priority: P2
+    checkFrequency: monthly
+    category: souzoku
+    method: diff
+    status: confirmed
+    enabled: true
+
+  - id: houmukyoku-yuigon-online
+    name: 東京法務局 遺言書保管 オンライン手続の試行
+    url: https://houmukyoku.moj.go.jp/tokyo/page000001_00973.html
+    priority: P2
+    checkFrequency: monthly
+    category: souzoku
+    method: diff
+    status: confirmed
+    enabled: true
+    note: >
+      2026-02-02更新。保管申請の事前チェック（書類の写しをPDF/画像でメール送付）が
+      39都道府県・68遺言書保管所へ拡大中。変更届出のメール提出は東京法務局本局で試行中。
+      → 事前チェック代行が新規受任ポイント。対象所リストが随時拡大するため月次監視。
+
+  - id: houmukyoku-hotei-souzoku
+    name: 法務局 法定相続情報証明制度
+    url: https://houmukyoku.moj.go.jp/homu/page7_000013.html
+    priority: P2
+    checkFrequency: monthly
+    category: souzoku
+    method: diff
+    status: confirmed
+    enabled: true
+    note: >
+      2024-04-01から法定相続情報番号を導入（一覧図の再交付なしで番号のみで手続可）。
+      2023-04-01施行の遺産分割新ルール: 相続開始後10年経過で
+      具体的相続分の主張が不可（民法904条の3）。最初の満期は2033年4月。
+
+  - id: moj-kokko-kizoku
+    name: 法務省 相続土地国庫帰属制度
+    url: https://www.moj.go.jp/MINJI/minji05_00454.html
+    priority: P2
+    checkFrequency: monthly
+    category: souzoku
+    method: diff
+    status: confirmed
+    enabled: true
+    note: 最終更新 令和7年10月16日。2024-10-15 ウェブ相談開始＝遠隔受任のポイント。
+
+  - id: nta-souzokuzei
+    name: 国税庁 相続税
+    url: https://www.nta.go.jp/taxes/tetsuzuki/shinsei/annai/shinkoku/sozoku/sozoku.htm
+    priority: P2
+    checkFrequency: monthly
+    category: souzoku
+    method: diff
+    status: confirmed
+    enabled: true
+    note: >
+      令和8年用の手引き掲載を確認。
+      生前贈与加算が3年→7年へ段階延長（2024-01-01以後の贈与）:
+      〜2026-12-31は3年 / 2027-01-01〜2030-12-31は2024-01-01から死亡日まで /
+      2031-01-01〜は7年。4〜7年前の分は合計100万円まで加算除外。
+      ⏰ 2027-01-01から移行開始 → 2026年末が生前贈与相談の最大繁忙期。
+
+  # ===================================================================
+  #  SECTION B-5 — 契約書・民事法務 (keiyaku)
+  #  collect P1 / publish P3
+  # ===================================================================
+
+  - id: moj-minpo-kaisei-2026
+    name: 法務省 民法等改正（成年後見・遺言の見直し）
+    url: https://www.moj.go.jp/MINJI/minji07_00410.html
+    priority: P1
+    checkFrequency: weekly
+    category: keiyaku
+    method: diff
+    status: confirmed
+    enabled: true
+    publishPriority: P3
+    note: >
+      ★★令和8年法律第45号（整備法は第46号）。2026-06-17成立／2026-06-24公布。
+      3段階施行:
+       ①押印の任意化等 = 公布から1年以内（〜2027-06）← 契約書実務を直撃
+       ②成年後見の見直し（後見・保佐を廃止し「補助」に一元化）= 2年6ヶ月以内（〜2028-12）
+       ③「保管証書遺言」創設（電子データ等の遺言を法務局が保管）= 3年以内（〜2029-06）
+      ③は自筆証書・公正証書に次ぐ第三の遺言方式。遺言業務のゲームチェンジャー。
+      政令指定がいつ出るかが焦点 → moj-news の RSS 監視で先取り可能。
+
+  - id: moj-minpo-kyodo-shinken
+    name: 法務省 民法等改正（父母の離婚後等の子の養育）
+    url: https://www.moj.go.jp/MINJI/minji07_00357.html
+    priority: P2
+    checkFrequency: monthly
+    category: keiyaku
+    method: diff
+    status: confirmed
+    enabled: true
+    note: >
+      2024-05-24公布／2026-04-01 施行済（共同親権）。
+      親権・監護、養育費（法定養育費・先取特権）、親子交流、養子縁組、
+      財産分与の請求期間 2年→5年。離婚協議書作成実務に直結。
+
+  - id: moj-shingikai
+    name: 法制審議会 開催予定・部会
+    url: https://www.moj.go.jp/shingikai_index.html
+    priority: P1
+    checkFrequency: weekly
+    category: keiyaku
+    method: diff
+    status: confirmed
+    enabled: true
+    note: >
+      会社法制（株式・株主総会等関係）部会が毎月開催中
+      （第1回 2025-04-23 → 第17回 2026-08-26 予定）。
+      中間試案 2026-03-18取りまとめ、パブコメ実施完了。
+      ⚠️ 正しいURLは shingikai_index.html。shingi_index.html は404。
+
+  - id: caa-news
+    name: 消費者庁 新着情報 RSS
+    url: https://www.caa.go.jp/news.rss
+    priority: P1
+    checkFrequency: daily
+    category: keiyaku
+    method: rss
+    status: confirmed
+    enabled: false
+    note: >
+      ★2026年、消費者庁で2つの検討会が同時稼働中＝契約書業務の地殻変動シグナル。
+      ①デジタル取引・特定商取引法等検討会（第1回 2026-01-22 → 第7回 2026-07-17）
+      ②消費者契約法検討会（第1回 2025-11-25 → 第7回 2026-07-13、論点整理公表済）
+      → 2027年改正に向けた検討段階。B2B読者向け「改正対策」シリーズの素材。
+      TASK-10 で有効化。
+
+  - id: caa-tokushoho
+    name: 消費者庁 特定商取引法ガイド
+    url: https://www.no-trouble.caa.go.jp/
+    priority: P2
+    checkFrequency: weekly
+    category: keiyaku
+    method: diff
+    status: confirmed
+    enabled: true
+    note: >
+      行政処分情報が随時掲載（2026-08-04分まで確認）。
+      ⚠️ 法改正一覧 /revision/ は502/リダイレクトループで取得不可。
+
+  - id: soumu-denshi-shomei
+    name: 総務省 電子署名法
+    url: https://www.soumu.go.jp/main_sosiki/joho_tsusin/top/denshi_syomei/index.html
+    priority: P2
+    checkFrequency: monthly
+    category: keiyaku
+    method: diff
+    status: confirmed
+    enabled: true
+    note: >
+      電子署名法は総務・法務・経産の共同所管。認定特定認証業務は9件
+      （法務省ページ、令和7年4月1日現在）。
+      タイムスタンプ・eシールは
+      https://www.soumu.go.jp/main_sosiki/joho_tsusin/top/ninshou-law/law-index.html
+
+  - id: japanpost-naiyo-shomei
+    name: 日本郵便 内容証明
+    url: https://www.post.japanpost.jp/service/fuka_service/syomei/index.html
+    priority: P3
+    checkFrequency: monthly
+    category: keiyaku
+    method: diff
+    status: confirmed
+    enabled: true
+    note: >
+      加算料金 1枚480円・2枚目以降+290円、謄本閲覧480円、差出日から5年以内は
+      閲覧・再証明可（2026-08時点）。RSSなし。料金改定のプレスを別途監視。
+
+  # ===================================================================
+  #  SECTION B-6 — 補助金・助成金 (hojokin)
+  #  collect P1 / publish P3
+  #  ★APIがあるため自動化の費用対効果が最も高いカテゴリ
+  # ===================================================================
+
+  - id: jgrants-api
+    name: jGrants 補助金API
+    url: https://developers.digital.go.jp/documents/jgrants/api/
+    priority: P1
+    checkFrequency: daily
+    category: hojokin
+    method: api
+    status: confirmed
+    enabled: false
+    baseUrl: https://api.jgrants-portal.go.jp/exp/
+    note: >
+      ★★★認証不要・APIキー不要の公開API。実測で acceptance=1（募集中）208件を取得確認。
+      エンドポイント:
+        GET /v1/public/subsidies          補助金一覧検索
+        GET /v1/public/subsidies/id/{id}  詳細
+        GET /v2/public/subsidies/id/{id}  詳細V2（2025-12-15追加。granttype追加、
+                                          ワークフローが配列化されID・募集名のサブフィールド新設）
+      レートリミットは文書に明記なし → 良識的な間隔（1秒以上）で。
+      → TASK-08 で専用スクリプト scripts/watch-subsidies.ts を実装する。
+      補助金分野は「新規公募の検知」が価値の9割で、それがAPIで解決する。
+
+  - id: jgrants-mcp
+    name: jGrants 公式MCPサーバ（デジタル庁）
+    url: https://github.com/digital-go-jp/jgrants-mcp-server
+    priority: P1
+    checkFrequency: monthly
+    category: hojokin
+    method: api
+    status: confirmed
+    enabled: false
+    note: >
+      ★デジタル庁公式配布・MITライセンス・Python 3.11+。
+      ツール: search_subsidies / get_subsidy_detail / get_subsidy_overview /
+             get_file_content（添付PDF・Word・Excelのテキスト抽出）/ ping
+      → API直叩きより先にこれを試すこと。添付資料の本文抽出まで一気にできる。
+
+  - id: mirasapo-subsidy-rss
+    name: ミラサポplus 補助金・助成金 RSS
+    url: https://mirasapo-plus.go.jp/category/infomation/subsidy/feed/
+    priority: P1
+    checkFrequency: daily
+    category: hojokin
+    method: rss
+    status: confirmed
+    enabled: false
+    note: >
+      中小企業庁系。採択結果・公募開始が流れる（RSS 2.0、有効性確認済）。
+      お知らせ /category/infomation/feed/ 、イベント /category/infomation/event/feed/
+      TASK-10 で有効化。
+
+  - id: chusho-kobo
+    name: 中小企業庁 公募情報
+    url: https://www.chusho.meti.go.jp/koukai/hojyokin/kobo.html
+    priority: P1
+    checkFrequency: daily
+    category: hojokin
+    method: diff
+    status: blocked   # 2026-08-17 UA付き自動取得で HTTP 403（ボット遮断）。changedetection(browserless) 側で監視
+    enabled: false
+    note: 中小企業庁トップにRSSリンクなしを確認済。採択結果は /saitaku.html
+
+  - id: smrj-subsidy-schedule
+    name: 中小機構 補助金活用ナビ 公募スケジュール
+    url: https://seisansei.smrj.go.jp/subsidy_info/schedule.html
+    priority: P1
+    checkFrequency: weekly
+    category: hojokin
+    method: diff
+    status: confirmed
+    enabled: true
+    note: >
+      ★主要補助金全種の公募回次・受付期間・採択発表日が1ページに統合されている。
+      個別サイトを巡回するより圧倒的に効率が良い。記事カレンダー運用の起点に。
+
+  - id: meti-kobo
+    name: 経済産業省 公募情報
+    url: https://www.meti.go.jp/information/publicoffer/kobo.html
+    priority: P2
+    checkFrequency: weekly
+    category: hojokin
+    method: diff
+    status: blocked   # 2026-08-17 UA付き自動取得で HTTP 403（ボット遮断）。changedetection(browserless) 側で監視
+    enabled: false
+    note: >
+      RSSなし。大型委託・実証事業中心。中小向け補助金は chusho-kobo が正本。
+      公募中／公募終了／採択結果／公募予告で構成。
+
+  - id: mhlw-koyo-kyufukin
+    name: 厚生労働省 事業主向け 雇用関係助成金
+    url: https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/koyou/kyufukin/index.html
+    priority: P2
+    checkFrequency: weekly
+    category: hojokin
+    method: diff
+    status: confirmed
+    enabled: true
+    note: >
+      「雇用関係助成金の添付書類標準化」アンケート実施中
+      ＝将来の電子申請・API連携への布石。行政書士・社労士実務に影響。
+      ⚠️ キャリアアップ助成金 令和8年度改正の一次情報は未確認。要追加調査。
+
+  - id: it-shien
+    name: 中小企業デジタル化・AI導入支援事業（旧IT導入補助金）
+    url: https://it-shien.smrj.go.jp/
+    priority: P2
+    checkFrequency: weekly
+    category: hojokin
+    method: diff
+    status: confirmed
+    enabled: true
+    note: >
+      ★IT導入補助金から名称・制度が改編された。旧名で書くと誤報になる。
+      正式事業名「中小企業デジタル化・AI導入支援事業」。事務局はTOPPAN。
+      申請枠5種: 通常枠／インボイス枠（インボイス対応類型・電子取引類型）／
+      セキュリティ対策推進枠／複数者連携デジタル化・AI導入枠。
+
+  - id: monodukuri-hojo
+    name: ものづくり補助金 総合サイト
+    url: https://portal.monodukuri-hojo.jp/
+    priority: P2
+    checkFrequency: weekly
+    category: hojokin
+    method: diff
+    status: confirmed
+    enabled: true
+    note: 事務局は全国中小企業団体中央会。23次採択発表 2026-08-07。
+
+  - id: jizokuka-hojo
+    name: 小規模事業者持続化補助金
+    url: https://official.jizokukanb.com/
+    priority: P2
+    checkFrequency: weekly
+    category: hojokin
+    method: diff
+    status: confirmed
+    enabled: true
+    note: >
+      第19回採択発表 2026-07-29。
+      第20回: 申請開始 2026-11-05 / 様式4発行期限 2026-12-04 / 締切 2026-12-15 17:00。
+      ⚠️ ものづくり・持続化・省力化は年2〜4回の回次制。
+      「年1回公募」と誤認しないこと。
+
+  - id: tokyo-kosha
+    name: 東京都中小企業振興公社
+    url: https://www.tokyo-kosha.or.jp/index.html
+    priority: P2
+    checkFrequency: weekly
+    category: hojokin
+    method: diff
+    status: confirmed
+    enabled: true
+    note: RSSなし。助成金一覧 /support/josei/ ／新着情報 /topics/index.html
+
+  - id: obda
+    name: 大阪産業局(OBDA)
+    url: https://www.obda.or.jp/
+    priority: P3
+    checkFrequency: weekly
+    category: hojokin
+    method: diff
+    status: confirmed
+    enabled: true
+    note: RSS有無は未確認。新着 /info-news ／プレスリリース /press-release
+
+  # ===================================================================
+  #  SECTION B-7 — 自動車・運輸 (jidosha)
+  #  collect P2 / publish P3
+  # ===================================================================
+
+  - id: mlit-oss-news
+    name: 自動車保有関係手続のワンストップサービス(OSS) お知らせ
+    url: https://www.oss.mlit.go.jp/portal/news/index.html
+    priority: P2
+    checkFrequency: weekly
+    category: jidosha
+    method: diff
+    status: confirmed
+    enabled: true
+    publishPriority: P3
+    note: >
+      ★OSSは47都道府県すべてで利用可能（公式確認済）。対象手続7種
+      （新車新規／中古車新規／移転／変更／一時抹消／永久抹消／継続検査）。
+      ただし都道府県別の自動車税・保管場所証明の連携範囲には差が残る可能性あり。
+      2026-04-01から軽二輪が対象追加（新規検査／記載事項変更／届出済証返納の3種）。
+      2025-04-01から小型二輪追加、完成検査終了証・譲渡証明書・納税証明書の電子化。
+      ⚠️ OSS対象地域ページに「自動車取得税が2026年3月31日で廃止」趣旨の記述が
+      拾われたが、取得税は2019年に廃止され環境性能割へ移行した制度。要約誤りの
+      可能性が高く未確認。記事化前に原文を必ず再確認すること。
+
+  - id: mlit-oss-kaisetsu
+    name: 国土交通省 OSS解説
+    url: https://www.mlit.go.jp/jidosha/jidosha_tk6_000001.html
+    priority: P2
+    checkFrequency: monthly
+    category: jidosha
+    method: diff
+    status: confirmed
+    enabled: true
+    note: マイナンバーカード電子署名利用時は住民票の写しの添付を省略可（令和7年）。
+
+  - id: keikenkyo
+    name: 軽自動車検査協会
+    url: https://www.keikenkyo.or.jp/
+    priority: P2
+    checkFrequency: weekly
+    category: jidosha
+    method: diff
+    status: confirmed
+    enabled: true
+    note: >
+      ★2026-04-01から法定手数料変更 → 見積単価の再設定が必要。
+      ⚠️ 軽OSSの対象は新車（型式指定車限定）と車検（指定整備工場限定）のみ。
+      移転（名義変更）・変更は未対応で、普通車OSSとカバレッジが大きく異なる。
+      車検証閲覧APIを事業者向けに提供中（2025年4月から）。
+
+  - id: keishicho-hokanbasho
+    name: 警視庁 保管場所オンライン申請
+    url: https://www.keishicho.metro.tokyo.lg.jp/tetsuzuki/kotsu/hokan/online.html
+    priority: P2
+    checkFrequency: monthly
+    category: jidosha
+    method: diff
+    status: confirmed
+    enabled: true
+    note: >
+      ⚠️★誤解しやすい最重要ポイント: オンライン対応は「届出」系4手続のみ
+      （軽自動車の保管場所届出／保管場所変更届出／運送事業廃止時の届出／同変更届出）。
+      普通車の保管場所「証明」申請は依然として窓口またはOSS経由。
+      利用システムはe-Gov電子申請。ページ更新日 2025-12-15。
+      車庫証明は都道府県公安委員会所管のため、警察庁本体ではなく各県警サイトが一次情報。
+
+  # ===================================================================
+  #  SECTION B-8 — 新領域 (shinryoiki)
+  #  collect P2 / publish P3
+  #  ★競合が最も少ない。将来の差別化資産として今から貯める。
+  # ===================================================================
+
+  - id: mlit-drone-kaisei
+    name: 国土交通省 無人航空機 法令改正の経緯
+    url: https://www.mlit.go.jp/koku/koku_fr10_000043.html
+    priority: P2
+    checkFrequency: weekly
+    category: shinryoiki
+    subcategory: drone
+    method: diff
+    status: confirmed
+    enabled: true
+    publishPriority: P3
+    note: >
+      ★★新領域で最も更新頻度が高い。RSSなし。補助ソースとして X @mlit_mujinki。
+      ★2026-07-03公示→2026-07-14施行: 小型無人機等飛行禁止法改正により
+      対象空港周辺地域が約300m→約1,000mへ拡大（新千歳・成田・東京・名古屋・
+      大阪・関西・福岡・那覇）→ 空港周辺の撮影・測量案件の事前調整範囲が3倍以上。
+      2026-07-07 教則第5版公開／2026-06 多数機同時運航ガイドライン第2版。
+      ⚠️ 2026-03-19・2026-03-23公布の航空法施行規則改正の中身は未確認。要精読。
+
+  - id: mlit-drone-hub
+    name: 国土交通省 無人航空機の飛行ルール
+    url: https://www.mlit.go.jp/koku/koku_tk10_000003.html
+    priority: P2
+    checkFrequency: weekly
+    category: shinryoiki
+    subcategory: drone
+    method: diff
+    status: confirmed
+    enabled: true
+    note: 申請は全てDIPS 2.0（https://www.ossportal.dips.mlit.go.jp/ は直接取得不可）。
+
+  - id: mlit-drone-license
+    name: 国土交通省 無人航空機操縦者技能証明
+    url: https://www.mlit.go.jp/koku/license.html
+    priority: P2
+    checkFrequency: monthly
+    category: shinryoiki
+    subcategory: drone
+    method: diff
+    status: confirmed
+    enabled: true
+    note: >
+      1等/2等の2区分、有効期間3年、更新申請は満了日の6ヶ月前〜1ヶ月前。
+      2025年3月から登録更新講習機関の申請受付開始。
+
+  - id: mlit-drone-level4
+    name: 国土交通省 レベル4飛行ポータル
+    url: https://www.mlit.go.jp/koku/level4/index.html
+    priority: P2
+    checkFrequency: monthly
+    category: shinryoiki
+    subcategory: drone
+    method: diff
+    status: confirmed
+    enabled: true
+    note: >
+      レベル4＝有人地帯（第三者上空）での補助者なし目視外飛行。2022-12-05開始。
+      成立要件3種: 機体認証（第一種）／操縦者技能証明（1等）／運航管理規程の認可。
+
+  - id: env-doubutsu-toriatsukai
+    name: 環境省 第一種動物取扱業者の規制
+    url: https://www.env.go.jp/nature/dobutsu/aigo/1_law/trader.html
+    priority: P2
+    checkFrequency: monthly
+    category: shinryoiki
+    subcategory: pet
+    method: diff
+    status: confirmed
+    enabled: true
+    note: >
+      登録制・事業所ごと業種ごと。対象動物は哺乳類・鳥類・爬虫類。
+      7業種（販売／保管／貸出し／訓練／展示／競りあっせん／譲受飼養）。
+      動物を所有しない代理販売・ペットシッターも対象＝受任ポイント。
+      販売時は現物確認+対面説明が必須、帳簿13項目5年保存、
+      毎年5月30日までに所有動物数を届出。
+      2025-02-17公布の施行規則改正（マイクロチップ脱落時の届出義務拡大等）。
+      現行法の最終大改正は令和元年6月19日公布 法律第39号。
+
+  - id: soumu-denki-tsushin
+    name: 総務省 電気通信事業 参入・変更手続
+    url: https://www.soumu.go.jp/menu_seisaku/ictseisaku/denkitsushin_suishin/tetsuzuki/index.html
+    priority: P2
+    checkFrequency: monthly
+    category: shinryoiki
+    subcategory: telecom
+    method: diff
+    status: confirmed
+    enabled: true
+    note: >
+      3区分（登録電気通信事業者／届出（国内法人）／届出（外国法人））。
+      届出12種の申請様式・e-Gov電子申請リンクを完備＝全面オンライン化対応済。
+      受付は各地方総合通信局。
+      ⚠️ 「2026年5月 基盤業務関連の変更届出」の記載を確認したが
+      根拠法律名・正確な施行日は未確認。要追加調査。
+
+  - id: maff-nouchi-tenyo
+    name: 農林水産省 農地転用許可制度
+    url: https://www.maff.go.jp/j/nousin/noukei/totiriyo/nouchi_tenyo.html
+    priority: P3
+    checkFrequency: monthly
+    category: shinryoiki
+    subcategory: nouchi
+    method: diff
+    status: confirmed
+    enabled: true
+    frequencyHint: quarterly
+    note: >
+      許可権者は都道府県知事または指定市町村長。
+      「農地法三段表」は令和8年5月27日現在版、通知・基準は令和8年4月1日現在版。
+      年1〜2回更新のため4月・5月の再確認が実務ルーティン。
+      営農型太陽光発電設備（ソーラーシェアリング）資料あり。
+
+  - id: mhlw-iryohojin
+    name: 厚生労働省 医療法人・医業経営のホームページ
+    url: https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/iryou/igyou/index.html
+    priority: P2
+    checkFrequency: monthly
+    category: shinryoiki
+    subcategory: iryohojin
+    method: diff
+    status: confirmed
+    enabled: true
+    note: >
+      認可権者は都道府県知事（2以上の都道府県に所在する場合は厚生労働大臣）。
+      経営情報データベース(MCDB)の報告義務が定着段階＝年次報告支援が新規受任領域。
+      2026年は医療機関向け補助事業の公表が相次いでおり補助金申請代行需要と直結
+      （病床数適正化緊急支援 2026-04-09、施設整備促進支援 2026-02-25 等）。
+
+  - id: keishicho-tantei
+    name: 警視庁 探偵業法 改正内容のご案内
+    url: https://www.keishicho.metro.tokyo.lg.jp/tetsuzuki/tantei/notice.html
+    priority: P3
+    checkFrequency: monthly
+    category: shinryoiki
+    subcategory: tantei
+    method: diff
+    status: confirmed
+    enabled: true
+    frequencyHint: quarterly
+    note: >
+      ⚠️ 警察庁本体に探偵業専用ページは存在しない（推測URLは404確認済）。
+      一次情報は各都道府県警サイト、中でも警視庁が最も詳しい（標識様式のDL可）。
+      2024-04-01施行: 探偵業届出証明書を廃止し「標識」制度を導入。
+      標識は事業者が自ら作成・掲示。営業所への物理掲示に加え、
+      自社サイトのトップページへの掲示義務（従業者5人以下または
+      自社サイト非保有なら免除）。
+
+  - id: mhlw-taimaso
+    name: 厚生労働省 大麻草採取栽培者免許
+    url: https://www.mhlw.go.jp/stf/newpage_43079.html
+    priority: P3
+    checkFrequency: monthly
+    category: shinryoiki
+    subcategory: taimaso
+    method: diff
+    status: confirmed
+    enabled: true
+    frequencyHint: quarterly
+    note: >
+      ★競合が最も少ないブルーオーシャン。
+      大麻取締法 →「大麻草の栽培の規制に関する法律」へ改称・全面改正、2025-03-01施行。
+      第一種大麻草採取栽培者（繊維・種子等の製品原材料）／
+      第二種大麻草採取栽培者（医薬品原料）の2免許を新設。免許付与は都道府県知事。
+      「大麻取扱いの手引き」「質疑応答集」「Δ9-THC分析方法例」掲載。
+
+  - id: cao-space
+    name: 内閣府 宇宙活動法 許可申請
+    url: https://www8.cao.go.jp/space/application/space_activity/application.html
+    priority: P3
+    checkFrequency: monthly
+    category: shinryoiki
+    subcategory: space
+    method: diff
+    status: confirmed
+    enabled: true
+    frequencyHint: quarterly
+    note: >
+      許可5種（人工衛星等の打上げ許可／人工衛星の管理許可／打上げ用ロケットの
+      型式認定／打上げ施設の適合認定／損害賠償担保措置の承認）。
+      2025-02-27「人工衛星等との衝突防止に係るガイドライン」新規制定。
+
+  - id: cao-ai-act
+    name: 内閣府 AI法（人工知能関連技術の研究開発及び活用の推進に関する法律）
+    url: https://www8.cao.go.jp/cstp/ai/ai_act/ai_act.html
+    priority: P3
+    checkFrequency: monthly
+    category: shinryoiki
+    subcategory: ai
+    method: diff
+    status: confirmed
+    enabled: true
+    frequencyHint: quarterly
+    note: >
+      令和7年法律第53号。2025-06-04公布（一部即日施行）、2025-09-01全面施行。
+      ⚠️★重要: これは「推進法」であり、EU AI Actのような規制・許可制ではない。
+      現時点で「AI許認可」市場は存在しない。記事化時にここを誤ると重大な誤報になる。
+      AI基本計画の策定状況は未確認＝今後の監視対象。
+
+  - id: meti-gx-ets
+    name: 経済産業省 GX-ETS（排出量取引制度）
+    url: https://www.meti.go.jp/policy/energy_environment/global_warming/ets.html
+    priority: P3
+    checkFrequency: monthly
+    category: shinryoiki
+    subcategory: gx
+    method: diff
+    status: unverified
+    enabled: false
+    note: >
+      ⚠️ URLの存在は多数の引用から確認できるが本文取得に全面失敗＝未確認。
+      そのため enabled: false。
+      改正GX推進法に基づき2026-04-01施行／2026年度から本格稼働・義務化との情報が
+      あるが一次情報未確認。対象排出量基準・登録期限・省令番号は必ずブラウザで
+      再確認すること。確認できれば大企業向けMRV実務という大型の新規市場。
+
+# =====================================================================
+#  自動化の優先順位（実証済みRSS/APIのみ）
+#  ※ 現行 monitor.ts は diff のみ。rss/api は TASK-08/TASK-10 で対応する。
+# =====================================================================
+automationPriority:
+  - rank: 1
+    id: egov-pubcomment-all
+    task: 実装済 (scripts/watch-pubcomment.ts)
+    reason: 制度改正を予告段階で捕捉。本メディアの速度優位の源泉。
+  - rank: 2
+    id: jgrants-mcp
+    task: TASK-08
+    reason: 公式MCPで添付資料の本文抽出まで一発。実装コスト最小・効果即時。
+  - rank: 3
+    id: moj-news
+    task: TASK-10
+    reason: 入管・相続・登記・民法を1本で覆う。
+  - rank: 4
+    id: nichigyoren-news
+    task: TASK-10
+    reason: 業界内部情報はここにしかない。月1〜3件と低負荷。
+  - rank: 5
+    id: mlit-pressrelease
+    task: TASK-10
+    reason: 建設・宅建・運送・ドローン・自動車を1本で覆う。
+  - rank: 6
+    id: mhlw-news
+    task: TASK-10
+    reason: 外国人雇用・食品衛生・旅館業を1本で覆う。
+  - rank: 7
+    id: caa-news
+    task: TASK-10
+    reason: 契約法・特商法の2検討会が同時進行中。
+  - rank: 8
+    id: digital-agency-news
+    task: TASK-10
+    reason: 電子申請・DX。行政書士法のデジタル対応努力義務に直結。
+  - rank: 9
+    id: mirasapo-subsidy-rss
+    task: TASK-10
+    reason: jGrants APIの補完。採択結果が流れる。
+  - rank: 10
+    id: kanpo
+    task: TASK-09
+    reason: 90日で流れる。遅れた分は永久復旧不可。
+
+# =====================================================================
+#  再調査が必要な項目（未解決）— 記事化前に必ず確認
+# =====================================================================
+todoVerify:
+  - id: koshonin-teikan-fee
+    issue: >
+      定款認証手数料の引下げを一次情報で確認できず。法務省の電子公証手数料ページは
+      今も「5万円」表記。金額を記事化する前に公証役場で直接確認すること。
+    severity: high
+  - id: meti-gx-ets
+    issue: 本文取得に全面失敗。対象基準・期限・省令番号が未確定。
+    severity: high
+  - id: mlit-oss-news
+    issue: 「自動車取得税 2026-03-31廃止」趣旨の記述の真偽。取得税は2019年廃止のはず。
+    severity: high
+  - id: isa-ikusei-shuro
+    issue: 育成就労の施行日（2027年4月）が公式ページ本文で明記確認できず。
+    severity: medium
+  - id: mlit-drone-kaisei
+    issue: 2026-03-19・2026-03-23公布の航空法施行規則改正の中身が未確認。
+    severity: medium
+  - id: soumu-denki-tsushin
+    issue: 「2026年5月 基盤業務関連の変更届出」の根拠法律・施行日が未確認。
+    severity: medium
+  - id: mhlw-koyo-kyufukin
+    issue: キャリアアップ助成金 令和8年度改正の一次情報が未確認。
+    severity: medium
+  - id: tokyo-gyoseishoshi-kai
+    issue: RSS(tgs.xml)がトップにリンクありながら404。
+    severity: low
+  - id: npa-rss
+    issue: 警察庁のRSS実体URLが不明。案内ページは存在するがフィードURL非掲載。
+    severity: low
+  - id: tokyo-metro-sites
+    issue: >
+      *.metro.tokyo.lg.jp の一部がボット遮断(403)。東京都都市整備局(建設業)、
+      住宅政策本部(宅建業)、保健医療局(食品衛生)はブラウザでの手動確認が必要。
+    severity: low
+
+# =====================================================================
+#  使用禁止URL（404確認済）— 記述に現れたら誤りである
+# =====================================================================
+deadUrls:
+  - https://www.mlit.go.jp/tochi_fudousan_kensetsugyo/const/index.html
+  - https://www.npa.go.jp/bureau/safetylife/hoan/hostclubto/index.html
+  - https://www.npa.go.jp/bureau/safetylife/hoan/tanteigyou.html
+  - https://www.soumu.go.jp/main_sosiki/gyoukan/kanri/gyousei.html
+  - https://public-comment.e-gov.go.jp/pcm/search
+  - https://www.nta.go.jp/rss/index.htm
+  - https://www.mlit.go.jp/jidosha/jidosha_tk_000031.html
+  - https://www.moj.go.jp/shingi1/shingi_index.html

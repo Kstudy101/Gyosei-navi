@@ -101,10 +101,10 @@
 ```
 [--priority P0] [--id isa-eiju-guideline] [--dry-run] [--github-issue] [--report out.md]
 ```
-1. `prompts/monitor/sources.yaml`을 zod로 로드 (id 중복 검사). 현재 **enabled 8소스**: 입관청 톱/永住ガイドライン/永住手続, 총무성 行政書士制度·通知, 日行連, 디지털청, 국교성 建設業 (jGrants·育成就労·パブコメ RSS는 disabled — 각각 SPA/URL 미확정/전용 스크립트)
+1. `prompts/monitor/sources.yaml` **v2.1 (83소스, 全8분야 — 해설 docs/10)** 을 zod로 로드. id 중복·`deadUrls` 해당 URL은 로드 거부. `method: diff`만 처리(rss 10·api 3은 제외 — TASK-10 예정). 현재 **enabled 68건** 베이스라인 기록 완료, 2건은 403으로 `blocked`
 2. fetch — **`<meta http-equiv=refresh>` 최대 3단 자동 추적** (입관청 사이트 특성)
-3. cheerio로 `selector`(입관청 `#contentsArea`) 영역만 추출, `ignoreSelectors`+script/style/nav/footer/time 제거, block 요소 개행
-4. **정규화(오탐 억제)**: 日付(和暦·西暦·슬래시)·時刻·24자+ HEX·세션ID 파라미터·공백 연속 → 토큰화
+3. cheerio로 `selector` 영역만 추출 (미지정이어도 moj.go.jp는 `#contentsArea` 자동), `nav/header/footer/aside/time/iframe/script/style` 상시 제거 + `ignoreSelectors`, block 요소 개행
+4. **정규화(오탐 억제)**: 日付(和暦·西暦·슬래시)·時刻·24자+ HEX·세션ID 파라미터·공백 연속 → 토큰화. 링크는 `#`·캐시버스터 쿼리(`?1786951130`, `?v=`) 제거
 5. SHA-256 해시 + 링크 집합을 `.cache/monitor-state.json`의 이전 값과 비교
 6. 결과: `初期化`(첫 실행) / `変更なし` / `★変更`(추가·삭제 행 diff 최대 20 + 신규 링크) / `✖ エラー`(개별 격리, 전체는 계속)
 7. `--github-issue`면 `gh issue create` (라벨 `content-opportunity`, `priority:P0..`) / `--dry-run`은 상태 미갱신 / 전건 에러만 exit 1

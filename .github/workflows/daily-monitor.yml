@@ -1,10 +1,12 @@
-# 一次情報 変更検知 + パブコメ監視 — 毎日 JST 08:00 (TASK-06)
+# 一次情報 変更検知 + パブコメ監視 — 毎日 JST 08:00 / 20:00 (TASK-06)
+# パブコメ RSS はローリングウィンドウ型（最新6〜7件のみ）のため 1日2回（docs/10 §6）。
 # 変更/新規があった時だけ Issue を作る（ノイズ0）。失敗時は monitoring-failure ラベルの Issue。
 name: Daily Monitor
 
 on:
   schedule:
     - cron: "0 23 * * *" # 23:00 UTC = 08:00 JST
+    - cron: "0 11 * * *" # 11:00 UTC = 20:00 JST
   workflow_dispatch:
     inputs:
       dry_run:
