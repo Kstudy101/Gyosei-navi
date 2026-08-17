@@ -102,6 +102,17 @@
 - **GA4/Clarity 스크립트** `src/components/seo/Analytics.tsx` (production + ID 있을 때만 출력) → layout 삽입
 - docs/10 신규 TASK-08(jGrants)/09(官報)/10(RSS 파서) — **미착수**, 사용자 우선순위 판단 대기
 
+## 추가 보고 (2026-08-17 저녁) — GitHub 원격 연결 · TASK-06 원격 검증
+
+- **리포**: `https://github.com/Kstudy101/Gyosei-navi` (private). gh CLI(winget 설치) + `gh auth setup-git` 로 비대화형 push. 워크플로 4종 등록 확인
+- **CI**: push 트리거 성공 (validate:content + build)
+- **Deploy to Xserver**: 빌드·out/ 검증까지 성공. Secrets 미등록 시 FTP 단계 **스킵**하도록 보강(계약 전 실패 노이즈 방지) → 성공
+- **TASK-06 Daily Monitor 원격 실검증** (workflow_dispatch 2회):
+  - monitor: 68소스 초기화 → 2회차 캐시 복원·変更なし ✔ (AC「.cache 유지」충족)
+  - **발견**: e-Gov パブコメ 목록 서블릿이 **GitHub 러너(해외 IP)에서 HTTP 403**. RSS는 정상 → 목록 실패 시 RSS만으로 판정하고 리포트에 ⚠ 명시하도록 강등 처리 (RSS도 실패하면 여전히 hard fail). 하루 2회 폴링이므로 RSS(최신 6〜7건)만으로도 신착 포착 가능. 완전 백필이 필요하면 일본 IP 셀프호스트 러너 또는 로컬 cron 병행
+  - Issue 라벨 6종 생성 + 워크플로에서 `gh label create --force` 로 보장. 첫 실행은 「新規」로 보고하지 않도록 수정 (Issue #1 은 초기화 아티팩트로 close)
+  - AC: [x] workflow_dispatch [x] 변경 없는 날 Issue 0 (2회차 확인) [x] .cache 유지
+
 ## 다음 사람에게 넘기는 것 (우선순위순)
 
 1. **기사 초안 2건 검수·수정** — `data/sources/pubcomment-315000140/README.md` 의 차이점 5개 반영 (締切 0時 / 연수입 10月 선행 시행 / 누락 포인트) → legalBasis 를 案件 직링크로 교체 → `status: published`
