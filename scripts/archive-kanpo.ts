@@ -68,7 +68,9 @@ async function main(): Promise<void> {
   console.log(`\n取得 ${archived.length} / 既存 ${results.length - archived.length - errors.length} / 失敗 ${errors.length}`);
 
   if (manifestFile) {
-    fs.writeFileSync(manifestFile, archived.map((r) => r.pdfFile).filter(Boolean).join("\n"), "utf-8");
+    // 말미 개행 필수: 없으면 shell 의 `while read` 가 마지막 줄을 버린다 (2026-08-17 실증)
+    const list = archived.map((r) => r.pdfFile).filter(Boolean);
+    fs.writeFileSync(manifestFile, list.length > 0 ? list.join("\n") + "\n" : "", "utf-8");
   }
 
   // 실패는 반드시 알림 (AC): 놓친 날은 90일 후 영구 복구 불가

@@ -58,7 +58,7 @@ jobs:
       - name: Upload PDFs to release
         run: |
           if [ ! -s .cache/kanpo-new.txt ]; then echo "新規PDFなし"; exit 0; fi
-          while IFS= read -r f; do
+          while IFS= read -r f || [ -n "$f" ]; do
             [ -f "$f" ] || continue
             # .cache/kanpo/YYYY/MM/DD/xxx.pdf → 태그 kanpo-YYYY-MM
             ym=$(echo "$f" | sed -E 's#.*kanpo[/\\]([0-9]{4})[/\\]([0-9]{2}).*#\1-\2#')
