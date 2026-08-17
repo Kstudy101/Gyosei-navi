@@ -40,6 +40,7 @@ async function main(): Promise<void> {
   const onlyDate = arg("date");
   const days = flag("all") ? Number.POSITIVE_INFINITY : Number(arg("days") ?? "7");
   const manifestFile = arg("manifest");
+  const forcePdf = flag("force-pdf");
 
   const index = await fetchIssueIndex();
   const dates = [...index.keys()].sort().reverse();
@@ -56,7 +57,7 @@ async function main(): Promise<void> {
   const results: ArchiveResult[] = [];
   for (const date of targets) {
     for (const issue of index.get(date) ?? []) {
-      const r = await archiveIssue(issue);
+      const r = await archiveIssue(issue, { forcePdf });
       results.push(r);
       const mark = { archived: "★取得", skipped: "既存", error: "✖ 失敗" }[r.status];
       console.log(`  ${issue.id} (${issue.typeLabel} ${issue.pageCount ?? "?"}p) … ${mark}${r.error ? `: ${r.error}` : ""}`);

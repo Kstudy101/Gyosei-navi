@@ -134,10 +134,29 @@ export interface ArchiveResult {
   error?: string;
 }
 
-/** 1号を아카이브. 텍스트 파일이 이미 있으면 skip (멱등) */
-export async function archiveIssue(issue: KanpoIssue): Promise<ArchiveResult> {
+/**
+ * 1号를 아카이브. 텍스트 파일이 이미 있으면 skip (멱등).
+ * forcePdf: 텍스트는 있지만 PDF 원본이 없는 경우(예: 업로드 실패 후 재취득)에
+ *           PDF만 다시 내려받아 manifest 에 올린다 (텍스트 재추출은 하지 않음).
+ */
+export async function archiveIssue(
+  issue: KanpoIssue,
+  opts: { forcePdf?: boolean } = {}
+): Promise<ArchiveResult> {
   const textFile = textPathFor(issue);
-  if (fs.existsSync(textFile)) return { issue, status: "skipped", textFile };
+  if (fs.existsSync(textFile)) {
+    if (!opts.forcePdf) return { issue, status: "skipped", textFile };
+    const pdfFile = pdfPathFor(issue);
+    if (fs.existsSync(pdfFile)) return { issue, status: "skipped", textFile, pdfFile };
+    try {
+      const pdf = await fetchBinary(issue.pdfUrl);
+      fs.mkdirSync(path.dirname(pdfFile), { recursive: true });
+      fs.writeFileSync(pdfFile, pdf);
+      return { issue, status: "archived", pdfFile, textFile };
+    } catch (e) {
+      return { issue, status: "error", error: e instanceof Error ? e.message : String(e) };
+    }
+  }
   try {
     const pdf = await fetchBinary(issue.pdfUrl);
     const pdfFile = pdfPathFor(issue);
