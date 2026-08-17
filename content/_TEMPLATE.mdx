@@ -1,0 +1,86 @@
+---
+# ============================================================
+# 記事テンプレート — content/ 配下にコピーして使用
+# 全フィールド必須（optional 記載のもの以外）
+# ============================================================
+title: "【32文字以内】検索意図を含むタイトル｜年号・数字を入れる"
+slug: "kebab-case-romaji-slug"
+category: "nyukan"                # nyukan|houjin|kyoninka|souzoku|hojokin|jidosha|keiyaku|shinryoiki
+subcategory: "eiju"               # optional
+type: "cluster"                   # pillar|cluster|news|checklist|interview|tool
+audience: ["for-individual"]      # for-individual|for-business|for-pro|for-exam
+tags: ["eiju-guideline", "nyukan"]
+description: "50〜160文字。検索結果に出る説明文。結論を先に書き、記事を読む利益を明示する。"
+publishedAt: "2026-09-01"
+updatedAt: "2026-09-01"
+author: "editorial"
+reviewedBy: null                  # 有資格者の監修が付いたら氏名＋登録番号
+status: "draft"                   # draft|review|published|archived
+noticeLevel: "enforced"           # enforced|scheduled|draft-proposal|outdated
+legalBasis:                       # ★公開には最低1件必須
+  - label: "出入国在留管理庁「◯◯について」"
+    url: "https://www.moj.go.jp/isa/..."
+    accessedAt: "2026-08-17"
+relatedSlugs: []
+faq:                              # ★GEO/LLMO対策。3件以上推奨
+  - q: "よくある質問1"
+    a: "簡潔な回答。AI検索が引用しやすいよう完結した一文で。"
+ogImage: "/og/kebab-case-romaji-slug.png"
+targetKeywords: ["主軸KW", "副KW1", "副KW2"]
+changelog:
+  - date: "2026-09-01"
+    note: "初版公開"
+---
+
+{/* ================= リード（導入） ================= */}
+{/* 2〜3文。この記事で何がわかるか、読者にどんな利益があるかを冒頭で明示。
+    ★AI検索対策: 記事の結論・定義を第1段落に置く。 */}
+
+## この記事の結論
+
+{/* 3行以内の要約。表 or 箇条書き推奨 */}
+
+<Callout type="warning">
+  {/* noticeLevel が draft-proposal / scheduled の場合、自動バナーとは別に個別注意書き */}
+</Callout>
+
+## 1. 制度・手続きの詳細解説
+
+{/* 一次情報の原文を引用しながら解説。条文番号・ガイドライン項番を必ず示す。 */}
+
+> 【原文】
+> ここに引用（引用要件：主従関係・出典明示を守る）
+
+## 2. 実務上の注意点
+
+{/* 「ここで落ちる」ポイント。自治体差、審査傾向、よくある不許可理由。 */}
+
+### IT・オンラインでの解決策
+
+{/* 電子申請、オンライン予約、LINE事前診断など。全記事に必ず1ブロック入れる。 */}
+
+## 3. 必要書類チェックリスト
+
+<Checklist items={[
+  "書類A（取得先：◯◯／有効期限：発行後3ヶ月）",
+  "書類B",
+]} />
+
+## まとめ
+
+| 項目 | 内容 |
+| --- | --- |
+| 費用 | ◯◯円（内訳：法定手数料◯◯円＋実費） |
+| 期間 | 標準処理期間 ◯ヶ月 |
+| 申請先 | ◯◯ |
+| 根拠法令 | ◯◯法第◯条 |
+
+## よくある質問
+
+<FAQ />   {/* frontmatter の faq を自動展開 */}
+
+## 編集長の一言
+
+{/* 専門家的見解 or IT解決策を1〜2文で。ここが差別化ポイント。 */}
+
+<Disclaimer />  {/* 法19条対応の定型免責。全記事末尾に自動挿入 */}

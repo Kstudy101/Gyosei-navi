@@ -1,0 +1,21 @@
+# 매주 링크 생존·노후 기사 점검 (docs/02)
+# TODO(Phase 1): 결과를 GitHub Issue로 자동 기립 (prompts/monitor/sources.yaml onChange 참조)
+name: Weekly Audit
+
+on:
+  schedule:
+    - cron: "0 21 * * 0" # 매주 월요일 06:00 JST
+  workflow_dispatch:
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run check:links
+      - run: npm run stale

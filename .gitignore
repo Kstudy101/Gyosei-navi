@@ -1,0 +1,12 @@
+node_modules/
+.next/
+next-env.d.ts
+tsconfig.tsbuildinfo
+gyosei-portal-scaffold.zip
+out/
+.env*
+!.env.example
+.DS_Store
+*.log
+.vercel
+.contentlayer

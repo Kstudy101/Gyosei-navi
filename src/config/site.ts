@@ -1,0 +1,47 @@
+/**
+ * サイト全体の基本設定
+ * ※ 法的注意: 有資格者になるまで「行政書士事務所」を名乗る表現は使用しない。
+ */
+
+export const siteConfig = {
+  name: "行政タイムズ", // 2026-08-17 正式名称確定
+  shortName: "行政タイムズ",
+  url: "https://example.jp", // TODO: ドメイン取得後に差し替え
+  locale: "ja_JP",
+  lang: "ja",
+  description:
+    "在留資格・許認可・法人設立・相続まで、行政書士業務の全分野を一次情報から解説する総合情報メディア。制度改正を最速でお届けします。",
+  keywords: [
+    "行政書士",
+    "在留資格",
+    "永住許可",
+    "育成就労",
+    "建設業許可",
+    "法人設立",
+    "相続",
+    "補助金",
+  ],
+  publisher: {
+    // 運営者情報（E-E-A-T 必須）
+    name: "編集部", // TODO: 実名 or 屋号
+    type: "Organization",
+    // 資格状況は正直に記載する（信頼獲得 + 法19条リスク回避）
+    qualificationNote: "本サイト運営者は行政書士試験受験中であり、有資格者ではありません。",
+  },
+  // 全ページ共通の免責文（フッター固定）
+  disclaimer:
+    "本サイトは行政書士業務に関する一般的な情報提供を目的としており、個別の法律相談・書類作成代行は行っておりません。個別のご相談は有資格の行政書士へご依頼ください。掲載情報は執筆時点のものであり、最新の法令・運用と異なる場合があります。",
+  social: {
+    x: "", // TODO
+    note: "", // TODO
+    line: "", // TODO: LINE公式アカウント
+  },
+  analytics: {
+    ga4: "", // TODO: G-XXXXXXX
+    clarity: "", // TODO
+  },
+  /** 1ページあたりの記事表示件数 */
+  postsPerPage: 12,
+} as const;
+
+export type SiteConfig = typeof siteConfig;
