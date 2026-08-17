@@ -62,6 +62,13 @@ jobs:
           npm run pubcomment --silent -- ${{ inputs.dry_run && '--dry-run' || '' }} --pages 5 --report pubcomment-report.md
           echo "fresh=$(grep -q '新規パブリックコメント' pubcomment-report.md && echo true || echo false)" >> "$GITHUB_OUTPUT"
 
+      - name: Run subsidies watcher (jGrants 新規公募)
+        id: subsidies
+        continue-on-error: true
+        run: |
+          npm run subsidies --silent -- ${{ inputs.dry_run && '--dry-run' || '' }} --report subsidies-report.md
+          echo "fresh=$(grep -q '新規補助金公募' subsidies-report.md && echo true || echo false)" >> "$GITHUB_OUTPUT"
+
       - name: Save monitor state
         if: ${{ !inputs.dry_run }}
         uses: actions/cache/save@v4
@@ -80,7 +87,7 @@ jobs:
           gh label create "priority:P3" --color "EDEDED" --force
 
       - name: Create issue on changes
-        if: steps.monitor.outputs.changed == 'true' || steps.pubcomment.outputs.fresh == 'true'
+        if: steps.monitor.outputs.changed == 'true' || steps.pubcomment.outputs.fresh == 'true' || steps.subsidies.outputs.fresh == 'true'
         run: |
           {
             echo "自動監視 $(date -u +%Y-%m-%d) の検知結果です。記事機会を確認してください。"
@@ -88,6 +95,9 @@ jobs:
             if [ -s monitor-report.md ]; then cat monitor-report.md; echo; fi
             if grep -q '新規パブリックコメント' pubcomment-report.md; then
               echo "# パブリックコメント 新着"; echo; cat pubcomment-report.md
+            fi
+            if grep -q '新規補助金公募' subsidies-report.md 2>/dev/null; then
+              echo "# 補助金 新規公募 (jGrants)"; echo; cat subsidies-report.md
             fi
             echo; echo "---"; echo "Run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
           } > issue-body.md
@@ -99,14 +109,14 @@ jobs:
             --label "content-opportunity" --label "priority:${PRIO}"
 
       - name: Create issue on failure
-        if: steps.monitor.outcome == 'failure' || steps.pubcomment.outcome == 'failure'
+        if: steps.monitor.outcome == 'failure' || steps.pubcomment.outcome == 'failure' || steps.subsidies.outcome == 'failure'
         run: |
           gh issue create \
             --title "[監視失敗] daily-monitor $(date -u +%Y-%m-%d)" \
-            --body "monitor: ${{ steps.monitor.outcome }} / pubcomment: ${{ steps.pubcomment.outcome }}
+            --body "monitor: ${{ steps.monitor.outcome }} / pubcomment: ${{ steps.pubcomment.outcome }} / subsidies: ${{ steps.subsidies.outcome }}
           サイト構造の変更またはネットワーク障害の可能性があります。ログ: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}" \
             --label "monitoring-failure"
 
       - name: Fail job if any step failed
-        if: steps.monitor.outcome == 'failure' || steps.pubcomment.outcome == 'failure'
+        if: steps.monitor.outcome == 'failure' || steps.pubcomment.outcome == 'failure' || steps.subsidies.outcome == 'failure'
         run: exit 1

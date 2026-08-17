@@ -958,7 +958,8 @@ sources:
         GET /v2/public/subsidies/id/{id}  詳細V2（2025-12-15追加。granttype追加、
                                           ワークフローが配列化されID・募集名のサブフィールド新設）
       レートリミットは文書に明記なし → 良識的な間隔（1秒以上）で。
-      → TASK-08 で専用スクリプト scripts/watch-subsidies.ts を実装する。
+      → TASK-08 実装済み (2026-08-17): scripts/watch-subsidies.ts が daily-monitor で稼働。
+         keyword必須のため広域7語の和集合で取得（実測296件）。docs/api/jgrants-api.md 参照。
       補助金分野は「新規公募の検知」が価値の9割で、それがAPIで解決する。
 
   - id: jgrants-mcp

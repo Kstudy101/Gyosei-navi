@@ -100,7 +100,14 @@
 - **TASK-05 e-Stat**: 사용자 appId 발급 → 실호출 검증 완료 (AC 3/3). `data/stats/0004019020.*` 저장 확인
 - **기사 초안 2건 추가** (status: review): `eiju-guideline-kaitei-genbun-taisho`(#2 原文対照, 관련 案件 315000141·315000139 원문 확보·대조), `eiju-nenshu-yoken-setai`(#3 年収要件)
 - **GA4/Clarity 스크립트** `src/components/seo/Analytics.tsx` (production + ID 있을 때만 출력) → layout 삽입
-- docs/10 신규 TASK-08(jGrants)/09(官報) — 미착수 / TASK-10(RSS) — ✅ 완료 (아래)
+- docs/10 신규 TASK-09(官報) — 미착수 / TASK-08(jGrants)·TASK-10(RSS) — ✅ 완료 (아래)
+
+## TASK-08 완료 보고 — jGrants 보조금 감시 (2026-08-17)
+
+- **생성/수정**: `src/lib/sources/jgrants.ts`, `scripts/watch-subsidies.ts`, `docs/api/jgrants-api.md`, package.json `subsidies`, daily-monitor.yml 편입(신규 시 Issue·실패 시 monitoring-failure)
+- **사양**: keyword 필수(전건 파라미터 부재) → 광역 7어 화집합(실측 296건, 조사시점 208→증가) / v2 상세 zod 파싱(granttype nullable·workflow 배열·첨부 data(base64)는 name만 보존) / `.cache/subsidies-seen.json` dedup / 締切 승순·D-7 이하 ★緊急 / 초회 베이스라인만 / 일부 키워드 실패는 경고·전멸은 에러 / 1초 간격은 http.ts 전역 스로틀
+- **AC 실측 (2026-08-17)**: [x] 목록 296건 취득 [x] 2회차 신규 0·재출력 없음 [x] 신착 재현 → ★緊急 D-6 리포트 + v2 상세(補助率 1/2以内) 취득 [x] 요청 간 1초 [x] jgrants-api.md 실측 스키마 기록
+- **채택 판단**: 공식 MCP 서버(Python)는 TS/npm 리포에 embed하지 않고 API 직접 호출 (docs/10 상정대로)
 
 ## TASK-10 완료 보고 — RSS 파서 분기 (2026-08-17)
 

@@ -18,7 +18,8 @@
     "monitor": "tsx scripts/monitor.ts",
     "pubcomment": "tsx scripts/watch-pubcomment.ts",
     "stats": "tsx scripts/fetch-stats.ts",
-    "keywords:seed": "tsx scripts/seed-keywords.ts"
+    "keywords:seed": "tsx scripts/seed-keywords.ts",
+    "subsidies": "tsx scripts/watch-subsidies.ts"
   },
   "dependencies": {
     "@mdx-js/mdx": "^3.1.0",
