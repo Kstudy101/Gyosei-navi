@@ -16,6 +16,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...Object.keys(PRACTICE_CATEGORIES).map((c) => `/practice/${c}`),
     "/exam",
     "/tools",
+    "/tools/eiju-shindan",
     "/data",
     "/about",
     "/contact",
