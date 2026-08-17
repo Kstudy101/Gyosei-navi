@@ -4,8 +4,8 @@
  */
 
 export const siteConfig = {
-  name: "行政タイムズ", // 2026-08-17 正式名称確定
-  shortName: "行政タイムズ",
+  name: "行政書士ナビ・ジャーナル", // 2026-08-17 行政タイムズ案を検討の後、原案を維持と確定
+  shortName: "行政書士ナビ",
   url: "https://example.jp", // TODO: ドメイン取得後に差し替え
   locale: "ja_JP",
   lang: "ja",

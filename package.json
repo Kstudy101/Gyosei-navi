@@ -1,8 +1,8 @@
 {
-  "name": "gyosei-times",
+  "name": "gyosei-portal",
   "version": "0.1.0",
   "private": true,
-  "description": "行政タイムズ — 行政書士業務の全分野を一次情報から解説する総合情報メディア",
+  "description": "行政書士ナビ・ジャーナル — 行政書士業務の全分野を一次情報から解説する総合情報メディア",
   "engines": {
     "node": ">=20"
   },
