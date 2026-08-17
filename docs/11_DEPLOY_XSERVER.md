@@ -46,9 +46,9 @@
 이후 `main` 에 push할 때마다 자동 배포 (docs/prompts/data 만 바뀐 커밋은 스킵). Secrets 미완이면 빌드만 하고 배포는 스킵(실패 아님).
 
 ### 1-5. 배포 후 1회 — 2026-08-17 반영
-- Google Search Console: ✅ HTML 파일(`/google156c1e98f95b9d18.html` 200) + meta 태그 이중 배포 완료 → **남은 것: Search Console 화면에서「확인」클릭 + `sitemap.xml` 제출** (사용자)
+- Google Search Console: ✅ **인증 완료 (URL 접두어 속성, meta/HTML 파일 방식) + `sitemap.xml` 제출 완료** (2026-08-17). ※ 도메인 속성으로 승격하려면 DNS TXT `google-site-verification=qtLMFQ…` 를 Xserver DNSレコード設定에 추가
 - GA4: ✅ `G-MSE8ZDYPMB` Variables 등록·배포 완료 (anonymize_ip 적용, production 만 출력)
-- AdSense: ✅ `ca-pub-1754834273377558` 스크립트 + `ads.txt` 배포 완료 → **남은 것: AdSense 심사 신청** (사용자)
+- AdSense: ✅ `ca-pub-1754834273377558` 코드가 정적 HTML `<head>` 에 직접 출력(크롤러 검출 대응) + `ads.txt` 배포 완료 → **남은 것: AdSense 심사 신청** (기사 10~20건 쌓인 뒤 권장)
 - Daily Monitor 초기 실행: ✅ 완료 (10:11, `.cache` 초기화)
 
 ## 2. 운용 규칙
@@ -86,7 +86,7 @@ npm run build && npx serve out             # 로컬 미리보기 http://localhos
 - [x] 없는 URL → 404 페이지 (Next 의 404.html)
 - [x] 푸터 면책문·자격상태 표시 (HTML 에 免責·行政書士 확인)
 - [x] `Cache-Control`: CSS `public, max-age=31536000, immutable` / HTML `max-age=600`
-- [ ] Search Console 색인 요청 (§1-5 — 사용자 Google 계정 필요)
+- [x] Search Console 등록·sitemap 제출 (2026-08-17, URL 접두어 속성)
 
 ## 4. 나중에 필요해질 것
 - **문의 폼 / LINE 리드**: 정적 사이트라 서버 처리는 Xserver PHP(간단 메일 폼) 또는 Cloudflare Workers/Formspree 류. `src/components/cta/` 는 그대로 두고 백엔드만 외부화
