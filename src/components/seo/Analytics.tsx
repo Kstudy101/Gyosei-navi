@@ -32,9 +32,12 @@ export function Analytics() {
         </Script>
       )}
       {adsense && (
-        <Script
+        // next/script(afterInteractive) だと静的 HTML に <script> タグが残らず
+        // AdSense のサイト審査クローラーがコードを検出できない（2026-08-17 確認）。
+        // React 19 は async script を <head> にホイストするため素の <script> で出力する
+        <script
+          async
           src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${encodeURIComponent(adsense)}`}
-          strategy="afterInteractive"
           crossOrigin="anonymous"
         />
       )}
