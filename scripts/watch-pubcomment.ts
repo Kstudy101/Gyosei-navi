@@ -40,8 +40,17 @@ async function main(): Promise<void> {
 
   // 1) RSS (실패 = 전체 실패. 사이트 구조 변경을 놓치지 않기 위해)
   const rss = await fetchRss();
-  // 2) 목록 백필
-  const list = await fetchListPages(pages);
+  // 2) 목록 백필 — GitHub Actions 러너(해외 IP)에서는 servlet 이 403 을 반환하는 것을 확인 (2026-08-17).
+  //    RSS 가 성공했다면 목록 실패는 경고로 강등하고 RSS 만으로 판정한다 (하루 2회 폴링이 전제).
+  //    RSS 도 실패했다면 위에서 이미 throw 되어 있다.
+  let list: PubComment[] = [];
+  let listWarning: string | null = null;
+  try {
+    list = await fetchListPages(pages);
+  } catch (e) {
+    listWarning = e instanceof Error ? e.message.split("\n")[0] : String(e);
+    console.warn(`⚠ 一覧取得失敗 → RSS ${rss.length}件のみで判定: ${listWarning}`);
+  }
 
   const merged = new Map<string, PubComment>();
   for (const c of [...rss, ...list]) if (!merged.has(c.id)) merged.set(c.id, c);
@@ -64,6 +73,7 @@ async function main(): Promise<void> {
 
   const lines: string[] = [];
   lines.push(`取得: RSS ${rss.length}件 + 一覧 ${list.length}件 → 重複除去 ${candidates.length}件 / キーワード一致 ${matched.length}件`);
+  if (listWarning) lines.push(`⚠ 一覧ページ取得失敗（RSS のみで判定）: ${listWarning}`);
   if (firstRun) lines.push(`（初回実行: 既知案件として ${matched.length}件を記録${dryRun ? "予定 (dry-run)" : ""}）`);
   lines.push("");
 

@@ -69,6 +69,16 @@ jobs:
           path: .cache
           key: monitor-state-${{ github.run_id }}
 
+      # Issue 用ラベルを冪等に用意（無いと gh issue create が失敗する）
+      - name: Ensure labels
+        run: |
+          gh label create "content-opportunity" --color "0E8A16" --description "一次情報の変更/新着 → 記事機会" --force
+          gh label create "monitoring-failure"  --color "B60205" --description "監視ジョブの失敗" --force
+          gh label create "priority:P0" --color "D93F0B" --force
+          gh label create "priority:P1" --color "FBCA04" --force
+          gh label create "priority:P2" --color "C5DEF5" --force
+          gh label create "priority:P3" --color "EDEDED" --force
+
       - name: Create issue on changes
         if: steps.monitor.outputs.changed == 'true' || steps.pubcomment.outputs.fresh == 'true'
         run: |
