@@ -31,18 +31,16 @@
 | `XSERVER_SSH_KEY` | ✅ Claude 등록 (2026-08-17 08:52) | 새로 생성한 ed25519 **비밀키** (지문 `SHA256:yjGJc0HdYyGP0GAW7Tp9N0/LaF8zpdin1mI7hWgy/xo`, 패스프레이즈 없음, 로컬 `~/.ssh/xserver_gyosei_deploy`) |
 | `XSERVER_KNOWN_HOSTS` | 선택 | `ssh-keyscan -p 10022 sv####.xserver.jp` 출력. 없으면 첫 접속 시 취득(TOFU) |
 
-**키 선택 — 둘 중 하나 (2026-08-17 dry-run 결과: 접속은 되나 `Permission denied (publickey)` = 공개키 미등록 상태)**:
-- **A. Claude 생성 키를 쓴다 (권장·간단)**: `infra/xserver/deploy_key.pub` 의 한 줄을 Xserver **サーバーパネル → SSH設定 → 公開鍵登録・設定** 에 붙여넣기. `XSERVER_PASSPHRASE` 는 무시됨
-- **B. Xserver 패널에서 생성한 키를 쓴다**: 다운로드한 비밀키 파일 내용을 `XSERVER_SSH_KEY` 에 재등록 (`gh secret set XSERVER_SSH_KEY < 파일`). 패스프레이즈는 `XSERVER_PASSPHRASE` 로 러너 안에서 해제됨. ※ Claude가 08:52 에 `XSERVER_SSH_KEY` 를 설정했으므로 그 전에 같은 이름으로 넣어두셨다면 덮어써진 상태 → 재등록 필요
+**키 선택 — ✅ 해결 (2026-08-17 09:01 dry-run 성공)**: A안 채택. `infra/xserver/deploy_key.pub` 이 Xserver 패널에 등록되어 `XSERVER_SSH_KEY`(Claude 생성 ed25519) 인증 성공. `XSERVER_PASSPHRASE` 는 무시됨 (패스프레이즈 없는 키).
 
 ### 1-3. Xserver 측
 1. **SSH設定 → ON** — ✅ 활성 (dry-run 에서 포트 10022 접속·호스트키 취득 성공)
-2. **公開鍵登録** (위 A 또는 B) — ⏳ 남음
+2. **公開鍵登録** — ✅ 완료 (2026-08-17 09:01 run #32013181975: `ssh ok … rsync=/usr/bin/rsync`, dry-run 차분 = 생성 153 / 삭제 1 / 전송 95파일)
 3. **ドメイン設定追加** `gyosei-navi.jp` (無料独自SSL 체크) → 서버에 `~/gyosei-navi.jp/public_html/` 생성. 도메인 취득 전이라도 rsync 자체는 동작 (`mkdir -p`)
 4. gyosei-navi.jp 취득 (Xserver Domain 이면 네임서버 자동) → SSL 반영 확인
 
-### 1-4. 첫 배포
-Actions → **Deploy to Xserver** → Run workflow (`dry_run` 체크로 접속·차분만 확인 가능). 로그의 `ssh ok: … rsync=/usr/bin/rsync` 로 접속 확인, 마지막 `https://gyosei-navi.jp/ → 200` 이면 성공.
+### 1-4. 첫 배포 — ⏳ 다음 단계 (dry-run 은 09:01 성공, 실배포만 남음)
+Actions → **Deploy to Xserver** → Run workflow (**dry_run 체크 해제**), 또는 CLI: `gh workflow run "Deploy to Xserver" -f dry_run=false`. 로그의 `ssh ok: … rsync=/usr/bin/rsync` 로 접속 확인, 마지막 `https://gyosei-navi.jp/ → 200` 이면 성공.
 이후 `main` 에 push할 때마다 자동 배포 (docs/prompts/data 만 바뀐 커밋은 스킵). Secrets 미완이면 빌드만 하고 배포는 스킵(실패 아님).
 
 ### 1-5. 배포 후 1회
