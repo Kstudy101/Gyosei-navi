@@ -100,7 +100,15 @@
 - **TASK-05 e-Stat**: 사용자 appId 발급 → 실호출 검증 완료 (AC 3/3). `data/stats/0004019020.*` 저장 확인
 - **기사 초안 2건 추가** (status: review): `eiju-guideline-kaitei-genbun-taisho`(#2 原文対照, 관련 案件 315000141·315000139 원문 확보·대조), `eiju-nenshu-yoken-setai`(#3 年収要件)
 - **GA4/Clarity 스크립트** `src/components/seo/Analytics.tsx` (production + ID 있을 때만 출력) → layout 삽입
-- docs/10 신규 TASK-09(官報) — 미착수 / TASK-08(jGrants)·TASK-10(RSS) — ✅ 완료 (아래)
+- docs/10 신규 TASK-08(jGrants)·TASK-09(官報)·TASK-10(RSS) — ✅ 전부 완료 (아래)
+
+## TASK-09 완료 보고 — 官報 일일 아카이빙 (2026-08-17)
+
+- **생성**: `src/lib/sources/kanpo.ts`, `scripts/archive-kanpo.ts`, `.github/workflows/kanpo-archive.yml`, package.json `kanpo`, deps `pdfjs-dist`
+- **실측 구조**: 톱페이지(index.html)에 직근 90일 색인 평면 나열 / 号URL `{YYYYMMDD}{種別h·g·c·t·m}{5자리}` / PDF `…/pdf/{id}full{NNNN}{PPPP}.pdf`. pdf-parse는 CID 폰트 깨짐 → pdfjs-dist(legacy)+CMap으로 해결 (Windows는 경로를 /구분·말미/ URL형으로)
+- **설계**: 멱등 키 = data/kanpo-text/ 텍스트 파일 존재 (리포가 상태) → 7일 백필 창으로 결측 자기복구 / PDF 원본은 Release 자산(kanpo-YYYY-MM)으로 영구화(리포 비대화 방지) / 추출 텍스트는 리포 커밋 → `npm run kanpo -- --search 키워드`로 과거분 검색
+- **AC 실측 (2026-08-17)**: [x] 당일 4号(本紙32p·号外80p·政府調達72p·特別号外4p) 취득·텍스트 추출 성공 [x] 매일 자동 = kanpo-archive.yml cron 09:00 JST [x] 실패 시 monitoring-failure Issue (외 90일 영구손실 경고 문구) [x] 검색: 「建設業」19건 히트 확인
+- **주의**: 목차의 한자 숫자·일부 문자 배열은 PDF 레이아웃 순서라 완벽하지 않음 — 키워드 검색 목적으로는 충분
 
 ## TASK-08 완료 보고 — jGrants 보조금 감시 (2026-08-17)
 

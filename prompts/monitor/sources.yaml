@@ -192,7 +192,8 @@ sources:
       ⚠️ 発行後90日間のみ全体を無料閲覧・DL可能。90日経過後は個人の処分・
       プライバシー関連記事が非表示になる。RSS・APIともに不存在（両ページで確認）。
       キーワード検索は有料「官報情報検索サービス」のみ。
-      → TASK-09 で日次PDFアーカイブを自前構築すること。遅れた分は永久に復旧不可。
+      → TASK-09 実装済み (2026-08-17): kanpo-archive.yml が毎日 09:00 JST に取得。
+         テキストは data/kanpo-text/、PDF は Release 資産 (kanpo-YYYY-MM)。7日バックフィル窓。
 
   - id: egov-law-api
     name: e-Gov 法令API Version 2
