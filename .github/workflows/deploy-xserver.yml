@@ -128,7 +128,7 @@ jobs:
             --exclude '.well-known/' \
             --exclude '.user.ini' \
             --exclude '.ftp-deploy-sync-state.json' \
-            -e "ssh -F ~/.ssh/config" \
+            -e ssh \
             ./out/ "xserver:$DEPLOY_DIR/"
 
       - name: Verify live site
