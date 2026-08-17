@@ -1,4 +1,4 @@
-# changedetection.io 초기 감시 URL 목록
+# changedetection.io 초기 감시 URL 목록 — ✅ 2026-08-18 등록 완료 (10건, 오류 0)
 
 > `prompts/monitor/sources.yaml`의 P0/P1 + JS/PDF 전용. Tag는 sources.yaml의 어휘와 동일하게.
 > ★ = 코드 파이프라인이 못 보는 것 (changedetection 전담)
@@ -15,7 +15,7 @@
 | P1 seido | 総務省 行政書士制度 通知・事務連絡 | https://www.soumu.go.jp/main_sosiki/jichi_gyousei/gyouseishoshi/02gyosei07_04000176.html | Basic | 〃 | |
 | P1 seido | 日本行政書士会連合会 お知らせ | https://www.gyosei.or.jp/ | Basic | 本文領域 (要確認) | |
 | P2 dx | デジタル庁 政策 | https://www.digital.go.jp/policies | Basic | `main` | |
-| ★P3 hojokin | jGrants 補助金ポータル | https://www.jgrants-portal.go.jp/ | **Playwright** | `main` (要確認) | Angular SPA — 정적 취득 불가 |
-| ★P0 nyukan | 育成就労制度 専用ページ | (URL 未確定 — 入管庁サイト内で確定後追加) | Basic | | 2027-04 施行 |
+| ~~★P3 hojokin~~ | ~~jGrants ポータル~~ | — | — | — | **제외 (2026-08-18)**: TASK-08 jGrants API 감시가 전담 |
+| ★P0 nyukan | 育成就労制度 特設ページ | https://www.moj.go.jp/isa/applications/index_00005.html | Basic | `#contentsArea` | ✅ 등록됨 (2026-08-18) |
 
 등록 후 각 항목의 첫 Diff를 보고 CSS Filter / Ignore text를 조정할 것.

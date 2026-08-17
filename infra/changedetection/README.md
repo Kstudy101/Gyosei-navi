@@ -62,8 +62,23 @@ changedetection.io는 알림에 **Apprise** 라이브러리를 쓰므로 URL 한
 - 코드 파이프라인(`npm run monitor`)과의 역할 분담: 정적 페이지는 둘 다 봐도 되지만, **JS/PDF는 changedetection 전담**
 - 백업: `docker run --rm -v changedetection_changedetection-data:/data -v $PWD:/backup alpine tar czf /backup/cd-backup.tgz /data`
 
-## 5. AC 체크
+## 5. 실기동 기록 (2026-08-18 — 네이티브 실행으로 가동 중)
+
+로컬 PC에 Docker/WSL이 없어 **pip판으로 네이티브 실기동**했다 (compose 파일은 서버 이전 시용으로 유지).
+
+| 항목 | 내용 |
+|---|---|
+| 실행 | `changedetection.io` v0.55.8 (pip, Python 3.14) / 포트 5000 / http://localhost:5000 |
+| 데이터 | `C:/Users/zxasw/changedetection-data` (OneDrive 밖 — 동기화 충돌 방지) |
+| 자동 기동 | 시작프로그램 `changedetection.vbs` → `start-changedetection.bat` (숨김 실행, TZ=Asia/Tokyo, poppler PATH 포함) |
+| PDF 감시 | poppler(winget `oschwartz10612.Poppler`)의 `pdftohtml` 로 동작 확인 |
+| 감시 | watchlist 기반 **10건 등록·베이스라인 완료 (오류 0)**. 재체크 간격 3시간 |
+| 알림 | **ntfy** `ntfy://ntfy.sh/gyosei-navi-alert-7c9682` — 송신→수신 실측 검증 완료. 구독: https://ntfy.sh/gyosei-navi-alert-7c9682 |
+| jGrants SPA | **감시 제외** — TASK-08(jGrants 공개 API 감시)이 전담하므로 브라우저 렌더링 불요 |
+| 제약 | PC 가동 중에만 체크 (꺼진 동안은 다음 기동 시 재개). 상시성 필요 시 compose 파일로 VPS 이전 |
+
+## 6. AC 체크
 
 - [x] `docker compose up -d` 만으로 기동 (compose 파일 완비, 환경변수는 .env)
 - [x] README에 등록 절차를 스크린샷 없이 서술
-- [ ] **알림 채널 실동작 확인** — 사용자 환경(Docker + 메일 계정)에서 「Send test notification」 필요
+- [x] **알림 채널 실동작 확인** — ntfy 송수신 실측 (2026-08-18). 채널 교체는 Settings → Notifications에서 Apprise URL 변경

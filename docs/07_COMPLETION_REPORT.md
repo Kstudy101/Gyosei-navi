@@ -9,7 +9,7 @@
 | TASK-01 e-Gov 法令API 래퍼 | ✅ 완료 (AC 7/7) | 실호출 검증 완료 |
 | TASK-02 一次情報 변경 감지 | ✅ 완료 (AC 7/7) | 8소스 베이스라인 기록, 오탐 0 |
 | TASK-03 퍼블릭코멘트 감시 | ✅ 완료 (AC 4/4) | **永住ガイドライン改定案 案件 발견 → 원문 PDF 3종 확보** |
-| TASK-04 changedetection.io | 🟡 파일 완비 (AC 2/3) | 알림 실동작 확인은 사용자 환경 필요 |
+| TASK-04 changedetection.io | ✅ 실기동 완료 (AC 3/3, 2026-08-18) | pip판 네이티브 실행·시작프로그램 자동기동·ntfy 알림 실측·감시 10건 가동. infra/changedetection/README §5 |
 | TASK-05 e-Stat 래퍼 | 🟡 골격 완료 (AC 1/3) | appId 발급(사용자) 후 실호출 검증 필요 |
 | TASK-06 GitHub Actions | 🟡 파일 완비 (AC 미검증) | 원격 리포 연결 후 workflow_dispatch 로 검증 |
 | TASK-07 키워드 대장 | ✅ 초기 47행 시드 | 수동 컬럼은 운용 시 채움 |
