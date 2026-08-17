@@ -133,3 +133,15 @@ export function getArticleBySlug(slug: string): Article | undefined {
 export function getLatestArticles(n: number): Article[] {
   return getAllArticles().slice(0, n);
 }
+
+/**
+ * output: "export" では generateStaticParams が空配列だと
+ * 「missing generateStaticParams」扱いでビルドが落ちる（記事0件のセクションで発生）。
+ * 空のときはプレースホルダを1件返し、ページ側は notFound() で 404 を生成させる。
+ * 生成される /guide/_/_/index.html 等は 404 内容で、sitemap にも載らない。
+ */
+export const EXPORT_PLACEHOLDER = "_";
+
+export function orPlaceholder<T extends Record<string, string>>(params: T[], placeholder: T): T[] {
+  return params.length > 0 ? params : [placeholder];
+}

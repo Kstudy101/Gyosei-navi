@@ -2,8 +2,15 @@ import type { Metadata } from "next";
 import { siteConfig } from "@/config/site";
 import type { Article } from "@/lib/content";
 
+/**
+ * 絶対URL。next.config の trailingSlash: true に合わせ、ファイル（.xml 等）以外は末尾スラッシュを付ける
+ * （canonical / sitemap / JSON-LD の URL を実際に配信される URL と一致させる）。
+ */
 export function absoluteUrl(pathname: string): string {
-  return new URL(pathname, siteConfig.url).toString();
+  const url = new URL(pathname, siteConfig.url);
+  const last = url.pathname.split("/").pop() ?? "";
+  if (!url.pathname.endsWith("/") && !last.includes(".")) url.pathname += "/";
+  return url.toString();
 }
 
 /** 記事ページの generateMetadata 用ヘルパ */

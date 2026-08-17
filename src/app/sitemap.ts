@@ -3,6 +3,9 @@ import { absoluteUrl } from "@/lib/seo";
 import { getAllArticles } from "@/lib/content";
 import { CATEGORY_CODES, PRACTICE_CATEGORIES } from "@/config/taxonomy";
 
+// output: "export"（静的ホスティング）ではメタデータルートも静的生成を明示する必要がある
+export const dynamic = "force-static";
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticPaths = [
     "/",

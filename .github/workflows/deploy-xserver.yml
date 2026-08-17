@@ -1,0 +1,77 @@
+# 本番デプロイ: main への push → 静的 export → Xserver public_html へ FTPS 転送
+# 前提（GitHub Secrets）: XSERVER_FTP_HOST / XSERVER_FTP_USER / XSERVER_FTP_PASSWORD
+#   例: HOST=sv12345.xserver.jp  USER=（サーバーID または FTPアカウント）  PASSWORD=（FTPパスワード）
+# サーバー側ディレクトリ: /gyosei-navi.jp/public_html/（Xserver の独自ドメイン設定で自動作成される）
+# 手順書: docs/11_DEPLOY_XSERVER.md
+name: Deploy to Xserver
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - "docs/**"
+      - "prompts/**"
+      - "data/**"
+      - "infra/**"
+      - "scripts/monitor.ts"
+      - "scripts/watch-pubcomment.ts"
+      - "**/*.md"
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-xserver
+  cancel-in-progress: true
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    environment: production
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - run: npm ci
+
+      # 品質ゲート: frontmatter 検証（legalBasis 無し公開記事はここで落ちる）
+      - run: npm run validate:content
+
+      # 静的 export（out/）。計測IDは production ビルド時に埋め込まれる
+      - name: Build (static export)
+        run: npm run build
+        env:
+          NEXT_PUBLIC_GA4_ID: ${{ vars.NEXT_PUBLIC_GA4_ID }}
+          NEXT_PUBLIC_CLARITY_ID: ${{ vars.NEXT_PUBLIC_CLARITY_ID }}
+
+      - name: Sanity check out/
+        run: |
+          test -f out/index.html && test -f out/sitemap.xml && test -f out/.htaccess
+          echo "files: $(find out -type f | wc -l)"
+
+      # FTPS（明示的TLS）で差分同期。dangerous-clean-slate は使わない（誤消去防止）
+      - name: Deploy via FTPS
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.XSERVER_FTP_HOST }}
+          username: ${{ secrets.XSERVER_FTP_USER }}
+          password: ${{ secrets.XSERVER_FTP_PASSWORD }}
+          protocol: ftps
+          port: 21
+          local-dir: ./out/
+          server-dir: /gyosei-navi.jp/public_html/
+          state-name: .ftp-deploy-sync-state.json
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+
+      - name: Verify live site
+        run: |
+          sleep 10
+          code=$(curl -s -o /dev/null -w "%{http_code}" https://gyosei-navi.jp/ || echo "000")
+          echo "https://gyosei-navi.jp/ → $code"
+          # DNS/SSL 未反映の初期は失敗しても止めない（本文ログで確認）

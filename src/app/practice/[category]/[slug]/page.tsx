@@ -1,17 +1,17 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { PRACTICE_CATEGORIES } from "@/config/taxonomy";
-import { getArticle, getArticlesBySection } from "@/lib/content";
+import { getArticle, getArticlesBySection, orPlaceholder, EXPORT_PLACEHOLDER } from "@/lib/content";
 import { articleMetadata } from "@/lib/seo";
 import { ArticleView } from "@/components/article/ArticleView";
 
 export const dynamicParams = false;
 
 export function generateStaticParams() {
-  return getArticlesBySection("practice").map((a) => ({
-    category: a.category!,
-    slug: a.frontmatter.slug,
-  }));
+  return orPlaceholder(
+    getArticlesBySection("practice").map((a) => ({ category: a.category!, slug: a.frontmatter.slug })),
+    { category: EXPORT_PLACEHOLDER, slug: EXPORT_PLACEHOLDER }
+  );
 }
 
 export async function generateMetadata({

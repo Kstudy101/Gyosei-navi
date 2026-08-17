@@ -6,7 +6,7 @@
 export const siteConfig = {
   name: "行政書士ナビ・ジャーナル", // 2026-08-17 行政タイムズ案を検討の後、原案を維持と確定
   shortName: "行政書士ナビ",
-  url: "https://example.jp", // TODO: ドメイン取得後に差し替え
+  url: "https://gyosei-navi.jp", // 2026-08-17 ドメイン確定（Xserver）。取得・DNS 反映は docs/11 参照
   locale: "ja_JP",
   lang: "ja",
   description:
