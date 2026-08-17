@@ -23,7 +23,7 @@
 #
 #  method:
 #    diff : HTML差分監視。現行 monitor.ts が処理する。enabled: true
-#    rss  : RSSフィード。TASK-10 で RSS パーサ分岐を実装するまで enabled: false
+#    rss  : RSSフィード。TASK-10 実装済み（src/lib/sources/rss.ts）— 新着 item のみ報告
 #    api  : API。専用スクリプトで処理する。enabled: false
 #
 #  status:
@@ -91,7 +91,7 @@ sources:
     category: crosscutting
     method: rss
     status: listed
-    enabled: false
+    enabled: true
     note: >
       意見募集の結果が出た＝制度が固まった合図。既存記事の更新トリガー。
       TASK-10 の RSS パーサ実装後に有効化する。
@@ -104,7 +104,7 @@ sources:
     category: crosscutting
     method: rss
     status: confirmed
-    enabled: false
+    enabled: true
     note: >
       カテゴリ別フィードは全53種。URLパターンは
       https://public-comment.e-gov.go.jp/rss/pcm_list_{categoryId}.xml
@@ -125,7 +125,7 @@ sources:
     category: crosscutting
     method: rss
     status: confirmed
-    enabled: false
+    enabled: true
     note: >
       ★業界内部の動きはここにしか出ない。更新頻度は月1〜3件と低負荷。
       2026-08-03「犯罪収益移転防止法 取引時確認等ハンドブック改訂」
@@ -159,7 +159,7 @@ sources:
     category: crosscutting
     method: rss
     status: confirmed
-    enabled: false
+    enabled: true
     note: >
       ★入管・相続登記・商業登記・民法改正を一本で覆う最効率ソース。
       民事局専用フィードは存在しないため全体フィードをキーワードで絞る。TASK-10 で有効化。
@@ -173,7 +173,7 @@ sources:
     category: crosscutting
     method: rss
     status: confirmed
-    enabled: false
+    enabled: true
     note: >
       電子申請・行政手続オンライン化。2026年施行の行政書士法
       「デジタル社会への対応の努力義務」に直結。TASK-10 で有効化。
@@ -343,7 +343,7 @@ sources:
     category: nyukan
     method: rss
     status: confirmed
-    enabled: false
+    enabled: true
     note: >
       厚労省共通フィード。外国人雇用対策課・食品監視安全課・生活衛生課を
       まとめて拾える。緊急情報は https://www.mhlw.go.jp/stf/kinkyu.rdf
@@ -485,7 +485,7 @@ sources:
     category: kyoninka
     method: rss
     status: confirmed
-    enabled: false
+    enabled: true
     note: >
       ★建設業・宅建業・運送・ドローン・自動車・民泊を一本で覆う最重要フィード。
       新着情報 https://www.mlit.go.jp/index.rdf
@@ -885,7 +885,7 @@ sources:
     category: keiyaku
     method: rss
     status: confirmed
-    enabled: false
+    enabled: true
     note: >
       ★2026年、消費者庁で2つの検討会が同時稼働中＝契約書業務の地殻変動シグナル。
       ①デジタル取引・特定商取引法等検討会（第1回 2026-01-22 → 第7回 2026-07-17）
@@ -984,7 +984,7 @@ sources:
     category: hojokin
     method: rss
     status: confirmed
-    enabled: false
+    enabled: true
     note: >
       中小企業庁系。採択結果・公募開始が流れる（RSS 2.0、有効性確認済）。
       お知らせ /category/infomation/feed/ 、イベント /category/infomation/event/feed/

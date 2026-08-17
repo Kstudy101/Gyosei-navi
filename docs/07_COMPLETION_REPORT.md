@@ -100,7 +100,14 @@
 - **TASK-05 e-Stat**: 사용자 appId 발급 → 실호출 검증 완료 (AC 3/3). `data/stats/0004019020.*` 저장 확인
 - **기사 초안 2건 추가** (status: review): `eiju-guideline-kaitei-genbun-taisho`(#2 原文対照, 관련 案件 315000141·315000139 원문 확보·대조), `eiju-nenshu-yoken-setai`(#3 年収要件)
 - **GA4/Clarity 스크립트** `src/components/seo/Analytics.tsx` (production + ID 있을 때만 출력) → layout 삽입
-- docs/10 신규 TASK-08(jGrants)/09(官報)/10(RSS 파서) — **미착수**, 사용자 우선순위 판단 대기
+- docs/10 신규 TASK-08(jGrants)/09(官報) — 미착수 / TASK-10(RSS) — ✅ 완료 (아래)
+
+## TASK-10 완료 보고 — RSS 파서 분기 (2026-08-17)
+
+- **생성/수정**: `src/lib/sources/rss.ts`(신규), `src/lib/sources/monitor.ts`(CheckResult.rssItems + 리포트 「新着記事」), `scripts/monitor.ts`(method 분기), sources.yaml rss 9건 `enabled: true`
+- **사양**: RSS 2.0·RDF 양대응(cheerio xml) / guid∥link 키로 `.cache/rss-seen.json` dedup(소스당 500키 상한) / keywords는 title+description 부분일치 필터(비매칭 신규도 기지 처리) / pubDate·dc:date → ISO 정규화 / item 0건·파싱 실패는 명시적 에러 / 초회는 베이스라인만(신착 미보고)
+- **AC 실측 (2026-08-17)**: [x] RDF(mlit·mhlw·caa·e-Gov 결과공시·카테고리) + RSS2.0(moj·日行連·デジ庁·ミラサポ) 9피드 전부 파싱 [x] 2회차 재출력 0 [x] 신착 재현 테스트에서 ★変更 리포트 + 직후 재실행 変更なし [x] moj-news 키워드 필터 동작(비매칭 신착 → 変更なし) [x] diff 소스 회귀 없음(P0 배치 혼합 실행 정상)
+- **비고**: `egov-pubcomment-all`은 watch-pubcomment.ts 담당이므로 계속 disabled. CI 첫 실행 시 rss 9건은 1회 初期化 후 정상 가동
 
 ## 추가 보고 (2026-08-17 저녁) — GitHub 원격 연결 · TASK-06 원격 검증
 

@@ -16,6 +16,7 @@ import {
   formatChangeReport,
   type CheckResult,
 } from "../src/lib/sources/monitor";
+import { loadRssSeen, saveRssSeen, checkRssSource } from "../src/lib/sources/rss";
 import { createGithubIssue } from "../src/lib/sources/github-issue";
 
 function arg(name: string): string | undefined {
@@ -31,7 +32,10 @@ async function main(): Promise<void> {
   const onlyId = arg("id");
   const reportFile = arg("report");
 
-  let sources = loadSources().filter((s) => s.enabled);
+  // diff + rss を対象にする（api は専用スクリプト）。TASK-10 で rss 分岐を追加
+  let sources = loadSources(undefined, { includeNonDiff: true }).filter(
+    (s) => s.enabled && (s.method === "diff" || s.method === "rss")
+  );
   if (onlyPriority) sources = sources.filter((s) => s.priority === onlyPriority);
   if (onlyId) sources = sources.filter((s) => s.id === onlyId);
   if (sources.length === 0) {
@@ -41,18 +45,34 @@ async function main(): Promise<void> {
   }
 
   const state = loadState();
-  console.log(`監視 ${sources.length}件${dryRun ? " (dry-run)" : ""}\n`);
+  const rssSeen = loadRssSeen();
+  const nRss = sources.filter((s) => s.method === "rss").length;
+  console.log(`監視 ${sources.length}件（diff ${sources.length - nRss} / rss ${nRss}）${dryRun ? " (dry-run)" : ""}\n`);
 
   const results: CheckResult[] = [];
   for (const s of sources) {
     process.stdout.write(`  ${s.id} … `);
-    const r = await checkSource(s, state, { dryRun });
+    let r: CheckResult;
+    if (s.method === "rss") {
+      const rr = await checkRssSource(s, rssSeen, { dryRun });
+      r = {
+        source: s,
+        status: rr.status,
+        rssItems: rr.newItems?.map((i) => ({ title: i.title, link: i.link, date: i.date })),
+        error: rr.error,
+      };
+    } else {
+      r = await checkSource(s, state, { dryRun });
+    }
     results.push(r);
     const mark = { initialized: "初期化", unchanged: "変更なし", changed: "★変更", error: "✖ エラー" }[r.status];
     console.log(mark + (r.error ? `: ${r.error.split("\n")[0]}` : ""));
   }
 
-  if (!dryRun) saveState(state);
+  if (!dryRun) {
+    saveState(state);
+    saveRssSeen(rssSeen);
+  }
 
   const changed = results.filter((r) => r.status === "changed");
   const errors = results.filter((r) => r.status === "error");

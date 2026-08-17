@@ -237,6 +237,8 @@ export interface CheckResult {
   hash?: string;
   newLinks?: string[];
   diff?: { added: string[]; removed: string[] };
+  /** method: "rss" のソースの新着記事 (TASK-10) */
+  rssItems?: { title: string; link: string; date?: string }[];
   error?: string;
 }
 
@@ -327,6 +329,13 @@ export function formatChangeReport(r: CheckResult): string {
   lines.push(`## ${r.source.name} (${r.source.priority}${r.source.category ? " / " + r.source.category : ""}) ${badges.join(" ")}`.trimEnd());
   lines.push(r.source.url);
   if (r.source.note) lines.push(`> ${r.source.note.trim().replace(/\n/g, "\n> ")}`);
+  if (r.rssItems && r.rssItems.length > 0) {
+    lines.push("", `### 新着記事 (${r.rssItems.length})`);
+    for (const it of r.rssItems.slice(0, 20)) {
+      lines.push(`- ${it.date ? `[${it.date.slice(0, 10)}] ` : ""}${it.title}\n  ${it.link}`);
+    }
+    if (r.rssItems.length > 20) lines.push(`- …他 ${r.rssItems.length - 20} 件`);
+  }
   if (r.newLinks && r.newLinks.length > 0) {
     lines.push("", `### 新規リンク (${r.newLinks.length})`);
     for (const l of r.newLinks.slice(0, 20)) lines.push(`- ${l}`);
