@@ -45,10 +45,11 @@
 93파일 전송(1.86MB), `https://gyosei-navi.jp/ → 200`. 도메인·무료 SSL 도 반영 확인.
 이후 `main` 에 push할 때마다 자동 배포 (docs/prompts/data 만 바뀐 커밋은 스킵). Secrets 미완이면 빌드만 하고 배포는 스킵(실패 아님).
 
-### 1-5. 배포 후 1회
-- Google Search Console 등록 (DNS TXT 또는 HTML 파일 — `public/` 에 두면 배포됨) → `https://gyosei-navi.jp/sitemap.xml` 제출
-- GA4 프로퍼티 생성 → 측정 ID를 Variables 에 넣고 재배포
-- Actions → **Daily Monitor** → Run workflow 1회 (`.cache` 초기화)
+### 1-5. 배포 후 1회 — 2026-08-17 반영
+- Google Search Console: ✅ HTML 파일(`/google156c1e98f95b9d18.html` 200) + meta 태그 이중 배포 완료 → **남은 것: Search Console 화면에서「확인」클릭 + `sitemap.xml` 제출** (사용자)
+- GA4: ✅ `G-MSE8ZDYPMB` Variables 등록·배포 완료 (anonymize_ip 적용, production 만 출력)
+- AdSense: ✅ `ca-pub-1754834273377558` 스크립트 + `ads.txt` 배포 완료 → **남은 것: AdSense 심사 신청** (사용자)
+- Daily Monitor 초기 실행: ✅ 완료 (10:11, `.cache` 초기화)
 
 ## 2. 운용 규칙
 
