@@ -1,7 +1,13 @@
-# 本番デプロイ: main への push → 静的 export → Xserver public_html へ FTPS 転送
-# 前提（GitHub Secrets）: XSERVER_FTP_HOST / XSERVER_FTP_USER / XSERVER_FTP_PASSWORD
-#   例: HOST=sv12345.xserver.jp  USER=（サーバーID または FTPアカウント）  PASSWORD=（FTPパスワード）
-# サーバー側ディレクトリ: /gyosei-navi.jp/public_html/（Xserver の独自ドメイン設定で自動作成される）
+# 本番デプロイ: main への push → 静的 export → SSH + rsync で Xserver public_html へ差分同期
+#
+# GitHub Secrets（リポジトリ Settings → Secrets and variables → Actions）:
+#   XSERVER_HOST        = sv####.xserver.jp   （サーバーパネル「サーバー情報」ホスト名）
+#   XSERVER_USER        = サーバーID           （例 xs123456）
+#   XSERVER_PORT        = 10022               （Xserver の SSH ポート）
+#   XSERVER_SSH_KEY     = 秘密鍵（OpenSSH/PEM 形式の全文）。公開鍵は Xserver「SSH設定」に登録
+#   XSERVER_PASSPHRASE  = 秘密鍵のパスフレーズ（Xserver パネルで生成した鍵など。無ければ未設定でよい）
+#   XSERVER_KNOWN_HOSTS = 任意。`ssh-keyscan -p 10022 sv####.xserver.jp` の出力。無ければ初回接続時に取得
+# Variables（任意）: XSERVER_DEPLOY_DIR（既定 ~/gyosei-navi.jp/public_html）, NEXT_PUBLIC_GA4_ID, NEXT_PUBLIC_CLARITY_ID
 # 手順書: docs/11_DEPLOY_XSERVER.md
 name: Deploy to Xserver
 
@@ -17,6 +23,11 @@ on:
       - "scripts/watch-pubcomment.ts"
       - "**/*.md"
   workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "rsync --dry-run（転送せず差分だけ表示）"
+        type: boolean
+        default: false
 
 concurrency:
   group: deploy-xserver
@@ -27,6 +38,9 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     environment: production
+    env:
+      SSH_PORT: ${{ secrets.XSERVER_PORT || '10022' }}
+      DEPLOY_DIR: ${{ vars.XSERVER_DEPLOY_DIR || '~/gyosei-navi.jp/public_html' }}
     steps:
       - uses: actions/checkout@v4
 
@@ -50,41 +64,77 @@ jobs:
       - name: Sanity check out/
         run: |
           test -f out/index.html && test -f out/sitemap.xml && test -f out/.htaccess
-          echo "files: $(find out -type f | wc -l)"
+          echo "files: $(find out -type f | wc -l), size: $(du -sh out | cut -f1)"
 
       # Xserver 契約前（Secrets 未登録）はビルド検証だけで正常終了させる
-      - name: Check FTP secrets
+      - name: Check SSH secrets
         id: secrets
         run: |
-          if [ -n "${{ secrets.XSERVER_FTP_HOST }}" ] && [ -n "${{ secrets.XSERVER_FTP_USER }}" ] && [ -n "${{ secrets.XSERVER_FTP_PASSWORD }}" ]; then
+          if [ -n "${{ secrets.XSERVER_HOST }}" ] && [ -n "${{ secrets.XSERVER_USER }}" ] && [ -n "${{ secrets.XSERVER_SSH_KEY }}" ]; then
             echo "ready=true" >> "$GITHUB_OUTPUT"
           else
             echo "ready=false" >> "$GITHUB_OUTPUT"
-            echo "::notice::XSERVER_FTP_* Secrets 未登録のためデプロイをスキップ（ビルドは成功）。docs/11 §1-3 参照"
+            echo "::notice::XSERVER_HOST / XSERVER_USER / XSERVER_SSH_KEY のいずれかが未登録のためデプロイをスキップ（ビルドは成功）。docs/11 §1-3 参照"
           fi
 
-      # FTPS（明示的TLS）で差分同期。dangerous-clean-slate は使わない（誤消去防止）
-      - name: Deploy via FTPS
+      - name: Set up SSH
         if: steps.secrets.outputs.ready == 'true'
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-        with:
-          server: ${{ secrets.XSERVER_FTP_HOST }}
-          username: ${{ secrets.XSERVER_FTP_USER }}
-          password: ${{ secrets.XSERVER_FTP_PASSWORD }}
-          protocol: ftps
-          port: 21
-          local-dir: ./out/
-          server-dir: /gyosei-navi.jp/public_html/
-          state-name: .ftp-deploy-sync-state.json
-          exclude: |
-            **/.git*
-            **/.git*/**
-            **/node_modules/**
+        env:
+          SSH_KEY: ${{ secrets.XSERVER_SSH_KEY }}
+          SSH_PASSPHRASE: ${{ secrets.XSERVER_PASSPHRASE }}
+          SSH_KNOWN_HOSTS: ${{ secrets.XSERVER_KNOWN_HOSTS }}
+          SSH_HOST: ${{ secrets.XSERVER_HOST }}
+          SSH_USER: ${{ secrets.XSERVER_USER }}
+        run: |
+          mkdir -p ~/.ssh && chmod 700 ~/.ssh
+          # 改行が \n リテラルや CRLF になっていても復元する
+          printf '%s\n' "$SSH_KEY" | sed 's/\\n/\n/g' | tr -d '\r' > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          # パスフレーズ付き鍵（Xserver パネル生成など）は runner 内で外して使う
+          if [ -n "$SSH_PASSPHRASE" ]; then
+            ssh-keygen -p -P "$SSH_PASSPHRASE" -N "" -f ~/.ssh/deploy_key >/dev/null
+          fi
+          ssh-keygen -y -f ~/.ssh/deploy_key > ~/.ssh/deploy_key.pub
+          echo "deploy key fingerprint: $(ssh-keygen -lf ~/.ssh/deploy_key.pub | cut -d' ' -f2)"
+          if [ -n "$SSH_KNOWN_HOSTS" ]; then
+            printf '%s\n' "$SSH_KNOWN_HOSTS" > ~/.ssh/known_hosts
+          else
+            ssh-keyscan -p "$SSH_PORT" -H "$SSH_HOST" > ~/.ssh/known_hosts 2>/dev/null
+            echo "::warning::XSERVER_KNOWN_HOSTS 未設定 → ssh-keyscan で取得（TOFU）。固定化するには Secrets に登録してください"
+          fi
+          chmod 644 ~/.ssh/known_hosts
+          cat > ~/.ssh/config <<EOF
+          Host xserver
+            HostName $SSH_HOST
+            User $SSH_USER
+            Port $SSH_PORT
+            IdentityFile ~/.ssh/deploy_key
+            IdentitiesOnly yes
+            StrictHostKeyChecking yes
+            ServerAliveInterval 30
+          EOF
+          chmod 600 ~/.ssh/config
+          ssh -o BatchMode=yes xserver 'echo "ssh ok: $(hostname) rsync=$(command -v rsync || echo MISSING)"'
 
-      - name: Verify live site
+      # rsync 差分同期。--delete で消えたページをサーバーからも削除（.well-known 等は保護）
+      - name: Deploy via rsync
         if: steps.secrets.outputs.ready == 'true'
         run: |
-          sleep 10
+          DRY=""
+          if [ "${{ inputs.dry_run }}" = "true" ]; then DRY="--dry-run"; fi
+          ssh xserver "mkdir -p $DEPLOY_DIR"
+          rsync -az --delete $DRY \
+            --itemize-changes --stats \
+            --exclude '.well-known/' \
+            --exclude '.user.ini' \
+            --exclude '.ftp-deploy-sync-state.json' \
+            -e "ssh -F ~/.ssh/config" \
+            ./out/ "xserver:$DEPLOY_DIR/"
+
+      - name: Verify live site
+        if: steps.secrets.outputs.ready == 'true' && inputs.dry_run != true
+        run: |
+          sleep 5
           code=$(curl -s -o /dev/null -w "%{http_code}" https://gyosei-navi.jp/ || echo "000")
           echo "https://gyosei-navi.jp/ → $code"
           # DNS/SSL 未反映の初期は失敗しても止めない（本文ログで確認）

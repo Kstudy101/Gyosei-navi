@@ -1,7 +1,8 @@
 # 배포 구축 — GitHub(private) → Xserver → gyosei-navi.jp
 
 > 작성: 2026-08-17 / 상위: `docs/00_MASTER_PLAN.md` §6 (원안은 Vercel → **Xserver 정적 호스팅으로 변경**, 사용자 결정 2026-08-17)
-> 아키텍처: `main` push → GitHub Actions → `next build`(output: export) → **FTPS로 Xserver public_html 동기화**
+> 아키텍처: `main` push → GitHub Actions → `next build`(output: export) → **SSH + rsync 로 Xserver public_html 차분 동기화** (FTPS 방식에서 2026-08-17 전환)
+> 리포: https://github.com/Kstudy101/Gyosei-navi (private)
 
 ## 0. 왜 이 구성인가
 
@@ -60,19 +61,27 @@ Actions → **Deploy to Xserver** → Run workflow. 로그 마지막에 `https:/
 ### 2-1. 무엇이 배포되는가
 - `out/` 전체 = 정적 HTML/CSS/JS + `public/`(.htaccess, og, downloads 등)
 - **`status: published` 기사만** 포함 (draft/review는 빌드에서 제외, 플레이스홀더 404만 생성)
-- `.ftp-deploy-sync-state.json` 이 서버에 남아 차분 동기화 (첫 회는 전체 업로드)
-- 삭제된 페이지는 서버에서도 삭제됨 (`dangerous-clean-slate` 는 사용하지 않음 → 서버에 직접 올린 다른 파일은 보존)
+- `rsync -az --delete` 차분 동기화: 바뀐 파일만 전송, **사라진 페이지는 서버에서도 삭제**. `.well-known/`·`.user.ini` 는 보호(제외)
+- 실행마다 `--itemize-changes --stats` 로 무엇이 바뀌었는지 로그에 남음
 
-### 2-2. FTP 서브계정을 쓸 때
-`.github/workflows/deploy-xserver.yml` 의 `server-dir: /gyosei-navi.jp/public_html/` → `server-dir: /` 로 변경.
+### 2-2. 안전장치
+- `StrictHostKeyChecking yes` — `XSERVER_KNOWN_HOSTS` 를 등록하면 호스트키 고정 (미등록 시 실행마다 keyscan)
+- 비밀키는 러너의 `~/.ssh/deploy_key` 에만 잠시 존재. 패스프레이즈 키는 `ssh-keygen -p` 로 러너 안에서만 해제
+- Environment `production` 에 required reviewers 를 걸면 배포 전 승인 게이트
 
 ### 2-3. 롤백
 Actions 에서 이전 성공 커밋의 워크플로를 **Re-run** 하거나, `git revert` 후 push. 서버에는 항상 마지막 빌드만 있으므로 Git 이 롤백의 원천.
 
-### 2-4. 로컬에서 미리보기
+### 2-4. 로컬에서 수동 배포 / 미리보기
 ```bash
-npm run build          # out/ 생성
-npx serve out          # http://localhost:3000 (trailingSlash 동작 확인)
+# ~/.ssh/config に
+#   Host xserver
+#     HostName sv####.xserver.jp  / User 서버ID / Port 10022
+#     IdentityFile ~/.ssh/xserver_gyosei_deploy
+bash scripts/deploy-xserver.sh --dry-run   # 차분만 확인
+bash scripts/deploy-xserver.sh             # 실제 배포 (WSL/macOS/Linux, rsync 필요)
+
+npm run build && npx serve out             # 로컬 미리보기 http://localhost:3000
 ```
 ※ `npm run dev` 는 export 설정과 무관하게 평소대로 동작.
 

@@ -26,8 +26,8 @@ if ($LASTEXITCODE -ne 0) { Write-Error "push 실패"; exit 1 }
 
 Write-Host ""
 Write-Host "완료. 다음 단계:" -ForegroundColor Green
-Write-Host "  1) GitHub → Settings → Secrets and variables → Actions 에 다음 3개 등록"
-Write-Host "       XSERVER_FTP_HOST / XSERVER_FTP_USER / XSERVER_FTP_PASSWORD"
+Write-Host "  1) GitHub → Settings → Secrets and variables → Actions 에 다음 등록"
+Write-Host "       XSERVER_HOST / XSERVER_USER / XSERVER_PORT / XSERVER_SSH_KEY [/ XSERVER_PASSPHRASE]"
 Write-Host "     (선택) Variables: NEXT_PUBLIC_GA4_ID / NEXT_PUBLIC_CLARITY_ID"
 Write-Host "  2) Settings → Environments → 'production' 생성 (deploy-xserver.yml 이 참조)"
 Write-Host "  3) Actions 탭 → 'Deploy to Xserver' → Run workflow (또는 main 에 push)"
