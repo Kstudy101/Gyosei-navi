@@ -79,6 +79,10 @@ async function main(): Promise<void> {
 
   if (fresh.length === 0) {
     lines.push("🆕 新規案件なし");
+  } else if (firstRun) {
+    // 初回はベースライン記録のみ。「新規」見出しを出さないことで CI の Issue 起票条件に掛からない
+    lines.push(`（初回実行）既知案件として記録した ${fresh.length}件（通知対象外）`, "");
+    for (const { c, kws } of fresh) lines.push(formatItem(c, kws), "");
   } else {
     lines.push(`🆕 新規パブリックコメント ${fresh.length}件`, "");
     const urgent = fresh.filter(({ c }) => daysUntil(c.deadline) <= 7);
