@@ -40,6 +40,8 @@ export const siteConfig = {
     // 計測 ID はハードコードせず .env.local で設定する（docs/youtube.md §2）
     ga4: process.env.NEXT_PUBLIC_GA4_ID ?? "",
     clarity: process.env.NEXT_PUBLIC_CLARITY_ID ?? "",
+    // AdSense クライアント ID（ca-pub-…）。public/ads.txt と対で管理
+    adsense: process.env.NEXT_PUBLIC_ADSENSE_CLIENT ?? "",
   },
   /** 1ページあたりの記事表示件数 */
   postsPerPage: 12,
