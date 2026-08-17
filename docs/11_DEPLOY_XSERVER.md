@@ -38,11 +38,11 @@
 ### 1-3. Xserver 측
 1. **SSH設定 → ON** — ✅ 활성 (dry-run 에서 포트 10022 접속·호스트키 취득 성공)
 2. **公開鍵登録** — ✅ 완료 (2026-08-17 09:01 run #32013181975: `ssh ok … rsync=/usr/bin/rsync`, dry-run 차분 = 생성 153 / 삭제 1 / 전송 95파일)
-3. **ドメイン設定追加** `gyosei-navi.jp` (無料独自SSL 체크) → 서버에 `~/gyosei-navi.jp/public_html/` 생성. 도메인 취득 전이라도 rsync 자체는 동작 (`mkdir -p`)
-4. gyosei-navi.jp 취득 (Xserver Domain 이면 네임서버 자동) → SSL 반영 확인
+3. **ドメイン設定追加** `gyosei-navi.jp` — ✅ 완료 (HTTPS 200 확인)
+4. gyosei-navi.jp 취득·SSL — ✅ 완료 (2026-08-17 라이브 확인)
 
-### 1-4. 첫 배포 — ⏳ 다음 단계 (dry-run 은 09:01 성공, 실배포만 남음)
-Actions → **Deploy to Xserver** → Run workflow (**dry_run 체크 해제**), 또는 CLI: `gh workflow run "Deploy to Xserver" -f dry_run=false`. 로그의 `ssh ok: … rsync=/usr/bin/rsync` 로 접속 확인, 마지막 `https://gyosei-navi.jp/ → 200` 이면 성공.
+### 1-4. 첫 배포 — ✅ 완료 (2026-08-17 10:10, run 32018783875)
+93파일 전송(1.86MB), `https://gyosei-navi.jp/ → 200`. 도메인·무료 SSL 도 반영 확인.
 이후 `main` 에 push할 때마다 자동 배포 (docs/prompts/data 만 바뀐 커밋은 스킵). Secrets 미완이면 빌드만 하고 배포는 스킵(실패 아님).
 
 ### 1-5. 배포 후 1회
@@ -79,13 +79,13 @@ npm run build && npx serve out             # 로컬 미리보기 http://localhos
 ```
 ※ `npm run dev` 는 export 설정과 무관하게 평소대로 동작.
 
-## 3. 검증 체크리스트 (배포 후)
-- [ ] `https://gyosei-navi.jp/` 200, `http://` → `https://` 301, `www.` → 裸ドメイン 301
-- [ ] `/about/`, `/policy/disclaimer/`, `/sitemap.xml`, `/robots.txt` 200
-- [ ] 없는 URL → 404 페이지 (Next 의 404.html)
-- [ ] 푸터 면책문·자격상태 표시
-- [ ] 브라우저 개발자도구 Network: JS/CSS 에 `Cache-Control: immutable`, HTML 은 10분
-- [ ] Search Console 색인 요청
+## 3. 검증 체크리스트 (배포 후) — 2026-08-17 검증
+- [x] `https://gyosei-navi.jp/` 200, `http://` → `https://` 301, `www.` → 裸ドメイン 301
+- [x] `/about/`, `/policy/disclaimer/`, `/sitemap.xml`, `/robots.txt` 200
+- [x] 없는 URL → 404 페이지 (Next 의 404.html)
+- [x] 푸터 면책문·자격상태 표시 (HTML 에 免責·行政書士 확인)
+- [x] `Cache-Control`: CSS `public, max-age=31536000, immutable` / HTML `max-age=600`
+- [ ] Search Console 색인 요청 (§1-5 — 사용자 Google 계정 필요)
 
 ## 4. 나중에 필요해질 것
 - **문의 폼 / LINE 리드**: 정적 사이트라 서버 처리는 Xserver PHP(간단 메일 폼) 또는 Cloudflare Workers/Formspree 류. `src/components/cta/` 는 그대로 두고 백엔드만 외부화
