@@ -4,6 +4,7 @@
  *   - slug ↔ 파일명 일치
  *   - category ↔ 디렉토리 일치 (guide/practice)
  *   - 경고: 타이틀 32자 초과 / FAQ 3건 미만 (docs/04 §4)
+ *   - 경고: published 기사의 OG 이미지 파일 부재 (`npm run og` 실행 누락 검출)
  *
  * 사용: npm run validate:content
  */
@@ -65,6 +66,14 @@ for (const file of files) {
   if (fm.faq.length < 3) {
     warnings++;
     console.warn(`⚠ ${rel}: FAQ ${fm.faq.length}건 (GEO 대응으로 3건 이상 권장)`);
+  }
+  // published 기사의 OG 이미지 실재 확인 (frontmatter 지정분 또는 생성분 /og/{slug}.png)
+  if (fm.status === "published") {
+    const ogPath = fm.ogImage ?? `/og/${fm.slug}.png`;
+    if (!fs.existsSync(path.join(process.cwd(), "public", ogPath))) {
+      warnings++;
+      console.warn(`⚠ ${rel}: OG 이미지 없음 (${ogPath}) — \`npm run og\` 실행 필요`);
+    }
   }
 }
 

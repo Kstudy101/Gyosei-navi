@@ -1,3 +1,5 @@
+import fs from "node:fs";
+import path from "node:path";
 import type { Metadata } from "next";
 import { siteConfig } from "@/config/site";
 import type { Article } from "@/lib/content";
@@ -13,9 +15,20 @@ export function absoluteUrl(pathname: string): string {
   return url.toString();
 }
 
+/**
+ * 記事の OG 画像。frontmatter の ogImage が無ければ scripts/generate-og.ts が
+ * 生成した /og/{slug}.png にフォールバックする（ビルド時に実在確認 — 無い画像 URL を出さない）。
+ */
+export function resolveOgImage(fm: { ogImage?: string; slug: string }): string | undefined {
+  if (fm.ogImage) return fm.ogImage;
+  const generated = `/og/${fm.slug}.png`;
+  return fs.existsSync(path.join(process.cwd(), "public", generated)) ? generated : undefined;
+}
+
 /** 記事ページの generateMetadata 用ヘルパ */
 export function articleMetadata(article: Article): Metadata {
   const { frontmatter: fm } = article;
+  const ogImage = resolveOgImage(fm);
   return {
     title: fm.title,
     description: fm.description,
@@ -29,7 +42,7 @@ export function articleMetadata(article: Article): Metadata {
       type: "article",
       publishedTime: fm.publishedAt,
       modifiedTime: fm.updatedAt,
-      ...(fm.ogImage ? { images: [{ url: absoluteUrl(fm.ogImage) }] } : {}),
+      ...(ogImage ? { images: [{ url: absoluteUrl(ogImage) }] } : {}),
     },
   };
 }
@@ -58,6 +71,7 @@ export function websiteJsonLd() {
 
 export function articleJsonLd(article: Article) {
   const { frontmatter: fm } = article;
+  const ogImage = resolveOgImage(fm);
   return {
     "@context": "https://schema.org",
     "@type": "Article",
@@ -76,7 +90,7 @@ export function articleJsonLd(article: Article) {
       name: siteConfig.name,
       url: siteConfig.url,
     },
-    ...(fm.ogImage ? { image: [absoluteUrl(fm.ogImage)] } : {}),
+    ...(ogImage ? { image: [absoluteUrl(ogImage)] } : {}),
   };
 }
 

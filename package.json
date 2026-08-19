@@ -20,7 +20,8 @@
     "stats": "tsx scripts/fetch-stats.ts",
     "keywords:seed": "tsx scripts/seed-keywords.ts",
     "subsidies": "tsx scripts/watch-subsidies.ts",
-    "kanpo": "tsx scripts/archive-kanpo.ts"
+    "kanpo": "tsx scripts/archive-kanpo.ts",
+    "og": "tsx scripts/generate-og.ts"
   },
   "dependencies": {
     "@mdx-js/mdx": "^3.1.0",
@@ -37,12 +38,14 @@
     "zod": "^3.24.1"
   },
   "devDependencies": {
+    "@resvg/resvg-js": "^2.6.2",
     "@tailwindcss/postcss": "^4.0.0",
     "@tailwindcss/typography": "^0.5.15",
     "@types/mdx": "^2.0.13",
     "@types/node": "^22.0.0",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
+    "satori": "^0.29.0",
     "tailwindcss": "^4.0.0",
     "tsx": "^4.19.0",
     "typescript": "^5.5.0"

@@ -20,6 +20,7 @@ export const metadata: Metadata = {
     siteName: siteConfig.name,
     locale: siteConfig.locale,
     type: "website",
+    images: [{ url: "/og/default.png" }], // scripts/generate-og.ts 生成（記事ページは articleMetadata が上書き）
   },
   verification: {
     google: "qtLMFQLhUFKVaMdo8UxKErTB_gVUDYP2ymnhGE6paM0",
