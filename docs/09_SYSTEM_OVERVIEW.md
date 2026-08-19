@@ -173,7 +173,7 @@
 ---
 
 ## E. 아직 없는 것 (2026-08-19 갱신)
-- GA4/Clarity/AdSense **계측 ID 미발급** (삽입 코드는 `Analytics.tsx`에 구현 완료 — Secrets/Variables에 ID를 넣으면 활성화)
+- ~~계측 ID~~ → **GA4(G-MSE8ZDYPMB)·AdSense(ca-pub-…7558) 가동 중** (GitHub Variables 8/17 설정, 실사이트 태그 출력 확인 2026-08-19. ads.txt와 ID 일치). Clarity만 미도입
 - `api/lead` LINE 연동, `src/lib/line.ts`, OG 이미지 생성, Pagefind 검색
 - ~~도메인·원격·배포~~ → **Xserver 실배포 가동 중** / ~~e-Stat appId~~ → 실호출 완료(B-4) / ~~changedetection~~ → 네이티브 가동(TASK-04) / ~~daily-monitor~~ → 1일 2회 가동(B-6)
 - 기사: **published 34건 / draft 1건** (2026-08-19 실측. 8/17 22건 일괄 공개 후 증분)
