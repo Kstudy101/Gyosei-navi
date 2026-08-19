@@ -9,6 +9,12 @@ export const metadata: Metadata = {
 
 const LIVE_TOOLS = [
   {
+    name: "在留資格判定ナビ",
+    href: "/tools/visa-navi",
+    description:
+      "「日本で何をするか」をカードで選ぶだけで、29種の在留資格と特定活動の中から候補になる在留資格・主な要件・在留期間・家族帯同・申請ルートを表示。入管庁の在留資格一覧表と各ガイドラインに基づく候補提示です。",
+  },
+  {
     name: "【診断】改定後もあなたは永住申請できるか",
     href: "/tools/eiju-shindan",
     description:
@@ -17,10 +23,6 @@ const LIVE_TOOLS = [
 ] as const;
 
 const PLANNED_TOOLS = [
-  {
-    name: "在留資格判定ナビ",
-    description: "活動内容から該当しうる在留資格の候補を確認できるナビゲーション。",
-  },
   {
     name: "費用シミュレーター",
     description: "各種手続きの法定手数料・実費の目安を試算できるツール。",
