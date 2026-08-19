@@ -9,10 +9,10 @@
 |---|---|---|---|
 | `01_意見募集要領.pdf` / **`.txt`** | 意見募集要領 | 2 | https://public-comment.e-gov.go.jp/pcm/download?seqNo=0000318903 |
 | `02_永住許可ガイドライン改定案.pdf` / **`.txt`** | 永住許可に関するガイドライン改定案 | 13 | https://public-comment.e-gov.go.jp/pcm/download?seqNo=0000318904 |
-| `03_改定案_概要.pdf` | 永住許可に関するガイドライン改定（案）（概要） | 1 | https://public-comment.e-gov.go.jp/pcm/download?seqNo=0000318905 |
+| `03_改定案_概要.pdf` / **`.txt`** | 永住許可に関するガイドライン改定（案）（概要） | 1 | https://public-comment.e-gov.go.jp/pcm/download?seqNo=0000318905 |
 | `00_現行ガイドライン_令和8年2月24日改訂_snapshot.txt` | 現行 ガイドライン (입관청 페이지 본문, monitor 스냅샷) | — | https://www.moj.go.jp/isa/applications/resources/nyukan_nyukan50.html |
 
-> ⚠️ **PDF 원본은 이 PC(Windows Enterprise)의 정책으로 저장 직후 Microsoft Azure Information Protection 래퍼로 자동 보호(암호화)되어 일반 툴로 열리지 않는다** (크기가 382KB→503KB로 바뀜, 2026-08-17 확인). **원문 텍스트는 `.txt` 추출본(pdf-parse, 보호 전 즉시 추출)을 정본으로 사용**하고, 원본이 필요하면 위 URL에서 재취득한다. `.txt`는 개행·공백만 다르고 문언은 원문 그대로 (N3 준수).
+> ⚠️ **PDF 원본은 이 PC(Windows Enterprise)의 정책으로 저장 직후 Microsoft Azure Information Protection 래퍼로 자동 보호(암호화)되어 일반 툴로 열리지 않는다** (크기가 382KB→503KB로 바뀜, 2026-08-17 확인). **원문 텍스트는 `.txt` 추출본(보호 전 즉시 추출)을 정본으로 사용**하고, 원본이 필요하면 위 URL에서 재취득한다 (다운로드와 **같은 프로세스 안에서** 텍스트 추출까지 끝낼 것). 커밋된 PDF도 이미 암호화 껍데기였으므로 **PDF는 더 이상 커밋하지 않는다** (`.gitignore`: `data/**/*.pdf`, 2026-08-19). `03_改定案_概要.txt`는 2026-08-19에 위 URL에서 재취득해 추출한 것이다. `.txt`는 개행·공백만 다르고 문언은 원문 그대로 (N3 준수).
 
 ## 검수 상태
 

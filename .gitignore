@@ -2,8 +2,12 @@ node_modules/
 .next/
 .cache/
 infra/changedetection/.env
-# 통계 데이터는 재취득 가능. 一次情報 원문(data/sources)은 커밋한다
+# 통계 데이터는 재취득 가능. 一次情報 원문(data/sources)의 .txt 추출본은 커밋한다
 data/stats/
+# PDF는 이 PC 정책(Azure Information Protection)으로 저장 직후 자동 암호화되어
+# 커밋해도 「보호된 문서」 껍데기만 남는다. 정본은 .txt 추출본이고,
+# 재취득 URL은 각 폴더의 README.md에 있다 (2026-08-19)
+data/**/*.pdf
 next-env.d.ts
 tsconfig.tsbuildinfo
 gyosei-portal-scaffold.zip
