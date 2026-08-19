@@ -56,6 +56,9 @@ export function Footer() {
               <Link href="/contact" className="hover:text-brand-600">お問い合わせ</Link>
             </li>
             <li>
+              <Link href="/ads" className="hover:text-brand-600">広告掲載について</Link>
+            </li>
+            <li>
               <Link href="/policy/disclaimer" className="hover:text-brand-600">免責事項</Link>
             </li>
             <li>

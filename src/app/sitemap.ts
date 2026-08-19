@@ -20,6 +20,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/data",
     "/about",
     "/contact",
+    "/ads",
     "/policy/disclaimer",
     "/policy/privacy",
   ].map((p) => ({

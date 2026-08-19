@@ -12,6 +12,9 @@ import { LegalBasisList } from "@/components/article/LegalBasisList";
 import { UpdateLog } from "@/components/article/UpdateLog";
 import { ArticleCard } from "@/components/article/ArticleCard";
 import { JsonLd } from "@/components/seo/JsonLd";
+import { AdRail } from "@/components/ads/AdRail";
+import { AdCard } from "@/components/ads/AdCard";
+import { getAdSlot } from "@/config/ads";
 
 /** 本文に該当コンポーネントが手書きされているか（重複自動挿入の防止） */
 function bodyHas(body: string, name: string): boolean {
@@ -29,9 +32,19 @@ export async function ArticleView({
   const category = getCategory(fm.category);
   const related = getRelatedArticles(article, getAllArticles());
   const body = await renderMdx(article.body, buildMdxComponents(fm));
+  const railLeft = getAdSlot("rail-left");
+  const railRight = getAdSlot("rail-right");
+  const bottomAd = getAdSlot("article-bottom");
 
   return (
-    <div className="mx-auto max-w-3xl px-4 py-8">
+    // xl 以上: 両脇に広告レールを持つ 3 カラム。xl 未満は従来どおり単一カラム
+    //（本文カラムは max-w-3xl のまま — 既存記事のレイアウトを変えない）
+    <div className="mx-auto max-w-6xl px-4 py-8 xl:grid xl:grid-cols-[11rem_minmax(0,1fr)_11rem] xl:gap-6">
+      <aside className="hidden xl:block" aria-label="広告">
+        {railLeft && <AdRail slot={railLeft} />}
+      </aside>
+
+      <div className="mx-auto w-full max-w-3xl">
       <JsonLd data={articleJsonLd(article)} />
       <JsonLd data={breadcrumbJsonLd(crumbs)} />
       {fm.faq.length > 0 && <JsonLd data={faqJsonLd(fm.faq)} />}
@@ -86,6 +99,13 @@ export async function ArticleView({
       )}
       {!bodyHas(article.body, "Disclaimer") && <Disclaimer />}
 
+      {/* デスクトップのレールが見えない幅の代替広告枠 */}
+      {bottomAd && (
+        <div className="mt-10 xl:hidden">
+          <AdCard slot={bottomAd} />
+        </div>
+      )}
+
       {related.length > 0 && (
         <section className="mt-12">
           <h2 className="text-lg font-bold text-gray-900">関連記事</h2>
@@ -96,6 +116,11 @@ export async function ArticleView({
           </div>
         </section>
       )}
+      </div>
+
+      <aside className="hidden xl:block" aria-label="広告">
+        {railRight && <AdRail slot={railRight} />}
+      </aside>
     </div>
   );
 }

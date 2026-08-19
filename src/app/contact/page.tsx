@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
@@ -23,6 +24,13 @@ export default function ContactPage() {
         <p>
           記事の誤りに関するご指摘は、今後開設する SNS
           アカウントまたはフォームより受け付けます。
+        </p>
+        <p>
+          広告掲載・掲載依頼については
+          <Link href="/ads" className="font-semibold text-brand-600 hover:underline">
+            広告掲載のご案内
+          </Link>
+          をご覧ください。
         </p>
       </div>
     </div>
