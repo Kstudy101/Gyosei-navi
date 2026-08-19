@@ -119,8 +119,9 @@
 4. `.cache/pubcomment-seen.json`에 없는 것만 출력. JST 기준 D-day 계산, **D-7 이하 ★緊急 상단**, 記事機会 高/中/低
 5. **N4 준수**: RSS `<channel>` 없음 / 목록 `totalPage`·`li` 없음 / 항목 필드 결손 → throw (0건으로 위장 금지)
 
-### B-4. `npm run stats` — e-Stat 3.0 (`estat.ts`) — appId 대기
-- `ESTAT_APP_ID` 없으면 3단계 안내 + exit 1. `getStatsList`/`getStatsData` JSON, `RESULT.STATUS≥100` 오류 판정, 1건/다건 정규화, `data/stats/{id}.json + .meta.json`(출처 메타) 저장
+### B-4. `npm run stats` — e-Stat 3.0 (`estat.ts`) — **실가동 (2026-08-19, TASK-05 AC 3/3)**
+- `ESTAT_APP_ID` 없으면 3단계 안내 + exit 1. `getStatsList`/`getStatsData` JSON, `RESULT.STATUS≥100` 오류 판정, 1건/다건 정규화, `data/stats/{id}.json + .meta.json`(출처 메타 + **CLASS_INF 코드사전**) 저장
+- 취득 실적: 0004019020 在留外国人統計 943건 (재류자격별×반기, 2012→2025-12). 帰化許可申請者数는 **e-Stat 부존재 확정** → 法務省 민사국 페이지가 정본 (docs/api/estat-api.md)
 
 ### B-5. 운영 스크립트
 | 명령 | 기능 |

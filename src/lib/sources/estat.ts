@@ -86,12 +86,23 @@ const valueSchema: z.ZodType<Record<string, string | number>> = z
   .object({ $: z.string() })
   .catchall(z.union([z.string(), z.number()]));
 
+/** 分類事典: VALUE の "@cat01": "1010" 등의 코드를 명칭으로 풀기 위한 CLASS_INF */
+const classItemSchema = z.object({ "@code": z.string(), "@name": z.string() }).passthrough();
+const classObjSchema = z
+  .object({
+    "@id": z.string(),
+    "@name": z.string(),
+    CLASS: oneOrMany(classItemSchema),
+  })
+  .passthrough();
+
 const statsDataSchema = z.object({
   GET_STATS_DATA: z.object({
     RESULT: resultSchema,
     STATISTICAL_DATA: z
       .object({
         TABLE_INF: tableInfSchema.optional(),
+        CLASS_INF: z.object({ CLASS_OBJ: oneOrMany(classObjSchema) }).optional(),
         DATA_INF: z.object({ VALUE: oneOrMany(valueSchema).optional() }).optional(),
       })
       .passthrough()
@@ -124,7 +135,8 @@ export async function searchStats(params: { searchWord: string; limit?: number }
     searchWord: params.searchWord,
     limit: String(params.limit ?? 30),
   });
-  const raw = await fetchJson(`${BASE}/getStatsList?${sp}`, { cache: CACHE });
+  // 검색은 서버 측이 느릴 때가 있다 (「帰化」 등 광범위 매칭어에서 30초 초과 실측, 2026-08-19)
+  const raw = await fetchJson(`${BASE}/getStatsList?${sp}`, { cache: CACHE, timeoutMs: 60_000 });
   const parsed = statsListSchema.parse(raw);
   assertOk(parsed.GET_STATS_LIST.RESULT, "getStatsList");
   const tables = parsed.GET_STATS_LIST.DATALIST_INF?.TABLE_INF ?? [];
@@ -141,6 +153,8 @@ export async function searchStats(params: { searchWord: string; limit?: number }
 
 export interface StatsDataResult {
   meta: StatsTable & { retrievedAt: string; apiUrl: string };
+  /** 축별 코드→명칭 사전 (예: classes.cat01.name="在留資格", .items["1010"]="総数") */
+  classes: Record<string, { name: string; items: Record<string, string> }>;
   values: Record<string, string | number>[];
 }
 
@@ -153,6 +167,13 @@ export async function getStatsData(statsDataId: string, extra: Record<string, st
   const sd = parsed.GET_STATS_DATA.STATISTICAL_DATA;
   const t = sd?.TABLE_INF;
   const values = sd?.DATA_INF?.VALUE ?? [];
+  const classes: StatsDataResult["classes"] = {};
+  for (const c of sd?.CLASS_INF?.CLASS_OBJ ?? []) {
+    classes[c["@id"]] = {
+      name: c["@name"],
+      items: Object.fromEntries(c.CLASS.map((it) => [it["@code"], it["@name"]])),
+    };
+  }
   if (values.length === 0) {
     throw new Error(`데이터가 0건입니다 (statsDataId=${statsDataId}). 조건 또는 ID를 확인하세요.`);
   }
@@ -168,6 +189,7 @@ export async function getStatsData(statsDataId: string, extra: Record<string, st
       retrievedAt: new Date().toISOString(),
       apiUrl: url.replace(/appId=[^&]+/, "appId=***"),
     },
+    classes,
     values,
   };
 }
@@ -178,6 +200,10 @@ export function saveStats(result: StatsDataResult): { dataFile: string; metaFile
   const dataFile = path.join(STATS_DIR, `${result.meta.statsDataId}.json`);
   const metaFile = path.join(STATS_DIR, `${result.meta.statsDataId}.meta.json`);
   fs.writeFileSync(dataFile, JSON.stringify(result.values, null, 2), "utf-8");
-  fs.writeFileSync(metaFile, JSON.stringify(result.meta, null, 2), "utf-8");
+  fs.writeFileSync(
+    metaFile,
+    JSON.stringify({ ...result.meta, classes: result.classes }, null, 2),
+    "utf-8"
+  );
   return { dataFile, metaFile };
 }
