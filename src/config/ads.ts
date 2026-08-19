@@ -12,8 +12,8 @@
  * 「広告主募集中」プレースホルダー（/ads へのリンク）が表示される。
  */
 
-/** 広告掲載の問い合わせ先（Xserver のドメインメール。パネルで作成する） */
-export const ADS_CONTACT_EMAIL = "ads@gyosei-navi.jp";
+/** 広告掲載の問い合わせ先（Xserver のドメインメール — 2026-08-19 作成済み） */
+export const ADS_CONTACT_EMAIL = "info@gyosei-navi.jp";
 
 export type Advertiser = {
   /** 表示名（例: 行政書士◯◯事務所） */

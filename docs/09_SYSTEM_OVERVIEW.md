@@ -56,7 +56,7 @@
 - **정본: `src/config/ads.ts`** — 슬롯 3개(rail-left / rail-right / article-bottom)와 광고주 정보. `advertiser: null`이면 「広告主募集中」 플레이스홀더(→ `/ads`)가 렌더. 광고주 확정 시 이 파일 기입 + `public/ad-banners/`에 배너.
 - 컴포넌트: `components/ads/AdRail.tsx`(xl 이상 양옆 sticky 레일)·`AdCard.tsx`(xl 미만 기사 말미 카드). 전 슬롯 「広告」 라벨 상시(景表法), 광고주 링크는 `rel="sponsored"`.
 - 레이아웃: ArticleView가 xl 이상에서 `max-w-6xl` 3컬럼 그리드(11rem+본문 max-w-3xl+11rem). xl 미만은 종전과 동일 단일 컬럼.
-- 법적 설계: **월액 고정 게재료만, 알선·성과보수 배제** (docs/06 §2). 안내 페이지 `/ads`, 문의 `ads@gyosei-navi.jp`(Xserver 도메인 메일 — 패널에서 생성 필요).
+- 법적 설계: **월액 고정 게재료만, 알선·성과보수 배제** (docs/06 §2). 안내 페이지 `/ads`, 문의 `info@gyosei-navi.jp`(Xserver 도메인 메일, 2026-08-19 생성 완료).
 
 ### A-5. 라우트 (27 페이지, 전부 SSG)
 | 경로 | 내용 |
