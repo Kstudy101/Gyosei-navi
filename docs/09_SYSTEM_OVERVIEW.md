@@ -132,12 +132,16 @@
 | `new:article -- --section guide --category nyukan --slug x --type cluster` | 템플릿 복사·날짜/slug 치환 |
 | `keywords:seed` | taxonomy seedKeywords + 기사 targetKeywords → `data/keywords.csv` (idempotent, 현재 47행) |
 
-### B-6. 자동화 (GitHub Actions — 원격 미연결이라 미가동)
-| 워크플로 | 트리거 | 동작 |
-|---|---|---|
-| `ci.yml` | push/PR | `npm ci` → validate:content → build |
-| `weekly-audit.yml` | 월 06:00 JST | check:links + stale |
-| `daily-monitor.yml` | **매일 08:00 JST** + 수동 | monitor + pubcomment → `.cache/`를 actions/cache로 유지 → **변경/신착 있을 때만** Issue(`content-opportunity`, `priority:P0/P1`), 실패 시 `monitoring-failure` Issue |
+### B-6. 자동화 (GitHub Actions — **전부 실가동 중**, 2026-08-19 실행 이력으로 확인)
+원격: `github.com/Kstudy101/Gyosei-navi` (TASK-06 완료 — 「원격 미연결」은 구정보)
+
+| 워크플로 | 트리거 | 동작 | 실가동 확인 |
+|---|---|---|---|
+| `ci.yml` | push/PR | `npm ci` → validate:content → build | ✅ 8/17~ 연속 success |
+| `deploy-xserver.yml` | main push(코드·콘텐츠 경로만) + 수동 | 빌드 → rsync로 Xserver `public_html` 차분 동기 (docs/11) | ✅ 8/17 기사 22건 공개분 배포 success |
+| `weekly-audit.yml` | 월 06:00 JST | check:links + stale | 스케줄 대기 |
+| `daily-monitor.yml` | **매일 08:00/20:00 JST** + 수동 | monitor + pubcomment + subsidies → `.cache/`를 actions/cache로 유지 → **변경/신착 있을 때만** Issue(`content-opportunity`, `priority:P0/P1`), 실패 시 `monitoring-failure` Issue | ✅ 1일 2회 success |
+| `kanpo-archive.yml` | 매일 09:00 JST + 수동 | 官報 텍스트 → `data/kanpo-text/` 자동 커밋, PDF → Release 자산 | ✅ 매일 자동 커밋 중 |
 
 ### B-7. 인프라 파일 (미가동)
 - `infra/changedetection/` — docker-compose(changedetection.io + browserless Chrome), README(등록 절차·알림: LINE Notify 종료 → 이메일/Discord/Slack/Messaging API), watchlist(JS SPA·PDF 전담 12건)
@@ -168,8 +172,8 @@
 
 ---
 
-## E. 아직 없는 것 (설계·문서만 있음)
-- 도메인·Vercel·GitHub 원격 (배포 자체 미실시), GA4/Clarity **스크립트 삽입 코드**(ID 읽기만 구현)
-- `/tools/eiju-check` 진단 툴, `api/lead` LINE 연동, `src/lib/line.ts`, OG 이미지 생성, Pagefind 검색
-- e-Stat 실호출(appId), changedetection 기동, daily-monitor 실가동
-- 기사: Month 1 캘린더 11건 중 2건 초안 (검수 대기), 나머지 9건 미착수
+## E. 아직 없는 것 (2026-08-19 갱신)
+- GA4/Clarity/AdSense **계측 ID 미발급** (삽입 코드는 `Analytics.tsx`에 구현 완료 — Secrets/Variables에 ID를 넣으면 활성화)
+- `api/lead` LINE 연동, `src/lib/line.ts`, OG 이미지 생성, Pagefind 검색
+- ~~도메인·원격·배포~~ → **Xserver 실배포 가동 중** / ~~e-Stat appId~~ → 실호출 완료(B-4) / ~~changedetection~~ → 네이티브 가동(TASK-04) / ~~daily-monitor~~ → 1일 2회 가동(B-6)
+- 기사: **published 34건 / draft 1건** (2026-08-19 실측. 8/17 22건 일괄 공개 후 증분)
