@@ -9,6 +9,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "postbuild": "pagefind --site out",
     "start": "next start",
     "validate:content": "tsx scripts/validate-content.ts",
     "check:links": "tsx scripts/check-links.ts",
@@ -45,6 +46,7 @@
     "@types/node": "^22.0.0",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
+    "pagefind": "^1.5.2",
     "satori": "^0.29.0",
     "tailwindcss": "^4.0.0",
     "tsx": "^4.19.0",

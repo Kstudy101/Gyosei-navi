@@ -71,6 +71,7 @@
 | `/about` | 運営者情報 — **자격상태 정직 기재**, 編集方針 3원칙, 사이트 개요 표 |
 | `/contact` | 「個別のご相談にはお答えできません」 고정 + 폼 준비중 |
 | `/policy/disclaimer`, `/policy/privacy` | 5개 조항씩, 制定日 2026-08-17 |
+| `/search` | **사이트 내 검색 (2026-08-19 도입)** — Pagefind. postbuild(`pagefind --site out`)가 기사 36건의 본문을 인덱싱(`data-pagefind-body`로 기사 범위 한정, 광고·관련기사 제외). 클라이언트에서 `/pagefind/pagefind-ui.js` 동적 로드, dev에서는 인덱스 부재 안내 |
 | `/sitemap.xml`, `/robots.txt` | 정적 경로 + **published 기사만** 사이트맵 수록 |
 | 404 | not-found.tsx |
 
@@ -180,6 +181,7 @@
 
 ## E. 아직 없는 것 (2026-08-19 갱신)
 - ~~계측 ID~~ → **GA4(G-MSE8ZDYPMB)·AdSense(ca-pub-…7558) 가동 중** (GitHub Variables 8/17 설정, 실사이트 태그 출력 확인 2026-08-19. ads.txt와 ID 일치). Clarity만 미도입
-- `api/lead` LINE 연동, `src/lib/line.ts`, OG 이미지 생성, Pagefind 검색
+- `api/lead` LINE 연동, `src/lib/line.ts` (LINE 계정 개설 선행 필요) / Clarity (ID 발급 필요)
+- ~~OG 이미지~~ → 생성 도입 완료(8/19) / ~~Pagefind~~ → `/search` 가동(8/19)
 - ~~도메인·원격·배포~~ → **Xserver 실배포 가동 중** / ~~e-Stat appId~~ → 실호출 완료(B-4) / ~~changedetection~~ → 네이티브 가동(TASK-04) / ~~daily-monitor~~ → 1일 2회 가동(B-6)
 - 기사: **published 34건 / draft 1건** (2026-08-19 실측. 8/17 22건 일괄 공개 후 증분)

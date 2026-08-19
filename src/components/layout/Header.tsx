@@ -33,6 +33,26 @@ export function Header() {
                 運営者情報
               </Link>
             </li>
+            <li>
+              <Link
+                href="/search"
+                className="inline-flex items-center gap-1 font-semibold text-brand-600 transition-colors hover:text-brand-800"
+                aria-label="記事検索"
+              >
+                <svg
+                  aria-hidden="true"
+                  viewBox="0 0 20 20"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  className="h-3.5 w-3.5"
+                >
+                  <circle cx="8.5" cy="8.5" r="5.5" />
+                  <path d="m17 17-4.2-4.2" strokeLinecap="round" />
+                </svg>
+                検索
+              </Link>
+            </li>
           </ul>
         </nav>
       </div>

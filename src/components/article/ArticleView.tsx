@@ -44,7 +44,8 @@ export async function ArticleView({
         {railLeft && <AdRail slot={railLeft} />}
       </aside>
 
-      <div className="mx-auto w-full max-w-3xl">
+      {/* data-pagefind-body: 検索インデックスは記事ページのこの範囲のみ（広告・関連記事は除外） */}
+      <div className="mx-auto w-full max-w-3xl" data-pagefind-body>
       <JsonLd data={articleJsonLd(article)} />
       <JsonLd data={breadcrumbJsonLd(crumbs)} />
       {fm.faq.length > 0 && <JsonLd data={faqJsonLd(fm.faq)} />}
@@ -101,13 +102,13 @@ export async function ArticleView({
 
       {/* デスクトップのレールが見えない幅の代替広告枠 */}
       {bottomAd && (
-        <div className="mt-10 xl:hidden">
+        <div className="mt-10 xl:hidden" data-pagefind-ignore>
           <AdCard slot={bottomAd} />
         </div>
       )}
 
       {related.length > 0 && (
-        <section className="mt-12">
+        <section className="mt-12" data-pagefind-ignore>
           <h2 className="text-lg font-bold text-gray-900">関連記事</h2>
           <div className="mt-4 grid gap-4 sm:grid-cols-2">
             {related.map((r) => (
