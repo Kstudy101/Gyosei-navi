@@ -160,7 +160,7 @@
 1. **legalBasis 없는 published 기사 = 빌드 실패** (zod refine)
 2. **면책문 전 페이지 푸터 고정** + 기사 말미 `<Disclaimer/>` 자동 삽입 (본문에 없어도)
 3. `noticeLevel: draft-proposal` → 「改定案」 배너 자동 (「案」을 「決定」으로 오독 방지)
-4. `/about`·푸터에 **자격상태(受験中) 명시**, `/contact`에 개별상담 불가 명시
+4. `/about`에 **자격상태(受験中) 명시**(2026-08-19 푸터에서는 제거 — 사용자 지시), `/contact`에 개별상담 불가 명시. 푸터의 면책문(개별상담·서류작성 불가 + 유자격자에게 의뢰 안내)은 전 페이지 고정 유지
 5. `ConsultCta`는 `null` 반환 (Phase C까지 상담 CTA 물리적 부재), `LineCta`는 URL 없으면 「準備中」
 6. `PrNotice` 컴포넌트 준비 (광고 도입 시 스테마 규제 대응)
 7. sitemap·production 빌드에서 미공개 기사 자동 제외 → **사람이 status를 바꾸기 전엔 절대 공개되지 않음**

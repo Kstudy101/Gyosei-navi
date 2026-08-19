@@ -45,7 +45,6 @@ export function Footer() {
         {/* 法19条対応: 全ページ固定の免責文（docs/06 §3.1） */}
         <div className="mt-8 rounded-md border border-gray-200 bg-white p-4 text-xs leading-relaxed text-gray-500">
           <p>{siteConfig.disclaimer}</p>
-          <p className="mt-1">{siteConfig.publisher.qualificationNote}</p>
         </div>
 
         <div className="mt-6 flex flex-wrap items-center justify-between gap-2 text-xs text-gray-500">
