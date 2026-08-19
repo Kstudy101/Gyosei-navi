@@ -49,6 +49,45 @@ export const DEADLINES = {
     verifiedAt: "2026-08-17",
   },
 
+  /** content/news/eiju-torikeshi-guideline-2026.mdx — 意見募集要領（令和8年8月4日 出入国在留管理庁）原文で確認 */
+  "eiju-torikeshi-pubcomme-2026": {
+    dueDate: "2026-09-03",
+    closesAt: "2026-09-04T00:00:00+09:00",
+    eyebrow: "意見募集の締切まで",
+    dueLabel: "2026年9月3日（木）必着",
+    lead:
+      "永住者の在留資格の取消しに関するガイドライン案への意見は、e-Govフォーム・電子メール・郵送のいずれかで提出できます。郵送も募集期間内の必着です。",
+    closesLabel:
+      "e-Govの案件ページの「受付締切日時 2026年9月4日0時0分」は、9月3日いっぱいという意味です。",
+    closedTitle: "この意見募集は2026年9月3日（木）で終了しました",
+    closedLead:
+      "新たな意見の提出はできません。提出された意見の概要と考え方は、結果公示として同じ案件ページで公表されます。",
+    officialUrl:
+      "https://public-comment.e-gov.go.jp/servlet/Public?CLASSNAME=PCMMSTDETAIL&id=315000141&Mode=0",
+    officialLabel: "e-Gov パブリック・コメント（案件番号315000141）",
+    verifiedAt: "2026-08-19",
+  },
+
+  /** content/news/tokutei-gino-2go-5nen-shorei.mdx — 意見募集要領（令和8年8月4日 出入国在留管理庁）原文で確認。
+   *  ⚠️ 締切は他の2案件（9/3）と違い 9/2 必着 */
+  "tokutei-gino2-shorei-2026": {
+    dueDate: "2026-09-02",
+    closesAt: "2026-09-03T00:00:00+09:00",
+    eyebrow: "意見募集の締切まで",
+    dueLabel: "2026年9月2日（水）必着",
+    lead:
+      "特定技能2号の在留期間に「5年」を加える省令案への意見は、e-Govフォーム・電子メール・郵送のいずれかで提出できます。同日公表の永住関連2案件（9月3日締切）より1日早い締切です。",
+    closesLabel:
+      "e-Govの案件ページの「受付締切日時 2026年9月3日0時0分」は、9月2日いっぱいという意味です。",
+    closedTitle: "この意見募集は2026年9月2日（水）で終了しました",
+    closedLead:
+      "新たな意見の提出はできません。省令は令和9年（2027年）1月上旬に公布、公布の日に施行される予定です。",
+    officialUrl:
+      "https://public-comment.e-gov.go.jp/servlet/Public?CLASSNAME=PCMMSTDETAIL&id=315000139&Mode=0",
+    officialLabel: "e-Gov パブリック・コメント（案件番号315000139）",
+    verifiedAt: "2026-08-19",
+  },
+
   /** content/guide/hojokin/jizokuka-hojokin-kaijisei.mdx — 公式サイト・中小機構の公募スケジュールで確認 */
   "jizokuka-20": {
     dueDate: "2026-12-15",
