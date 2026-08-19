@@ -60,6 +60,11 @@ pnpm new:article --category nyukan --slug eiju-guideline-kaitei-2026 --type pill
 | `<CompareTable />` | 現行 vs 改定案 비교 |
 | `<LineCta />` | LINE 유도 (리드 마그넷 연동) |
 | `<ConsultCta />` | **Phase C에서만 활성화** — 상담 예약 |
+| `<Deadline id="..." />` | 마감 카운트다운. `id`는 `src/config/deadlines.ts`에 등록된 것만 (미등록이면 빌드 실패) |
+
+> `<Deadline />`은 마감이 지나면 자동으로 「受付終了」 표시로 바뀌므로 **방치해도 오보가 되지 않는다.**
+> 단 「다음 회차로 갱신」은 사람이 해야 하며, `npm run stale`이 마감 임박(D-7)·경과 건을 알려준다.
+> 날짜는 반드시 一次情報 원문에서 확인해 `verifiedAt`과 함께 등록하고, 본문 표기와 일치시킬 것.
 
 ## 5. 본문 구조 (고정)
 
