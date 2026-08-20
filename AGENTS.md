@@ -59,6 +59,9 @@ TypeScript strict: true
 5. **관공서 서버에 초당 1회 이상 요청 금지.** User-Agent를 명시한다.
 6. **파싱 실패를 「0건」으로 처리 금지.** 명확히 실패시킨다.
 7. **법령 원문을 가공해서 「원문」이라고 저장 금지.**
+   요약 도구(WebFetch 등)의 출력은 요약이지 원문이 아니다. HTML 페이지는 `npm run source`로
+   취득한다(태그만 제거하고 문자는 치환하지 않음). PDF는 직접 다운로드해 읽는다.
+   `src/lib/sources/monitor.ts`의 `extract()`는 差分검지용으로 날짜를 `<DATE>`로 치환하므로 원문 저장에 쓰지 말 것.
 8. **`legalBasis` 없는 기사는 published 불가** — zod 스키마가 빌드를 막는다. 우회하지 말 것.
 
 ## 법적 제약 (중요)
@@ -82,6 +85,7 @@ npm run check:links        # legalBasis URL 생존 확인
 npm run stale              # 6개월 미갱신 기사 리포트
 npm run new:article        # 템플릿에서 기사 생성
 npm run law -- --law "行政書士法" --article 19   # 법령 조문 취득 (e-Gov 法令API v2)
+npm run source -- --url <URL> --out data/sources/<topic>/NN_<name>.txt   # 一次情報 페이지 원문 취득
 npm run monitor            # 一次情報 변경 감지 (prompts/monitor/sources.yaml)
 npm run pubcomment         # e-Gov パブコメ 신착 감시
 npm run stats              # e-Stat 통계 (ESTAT_APP_ID 필요)
