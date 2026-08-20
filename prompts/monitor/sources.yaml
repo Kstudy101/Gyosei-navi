@@ -2,7 +2,7 @@
 #  一次情報 監視ソース レジストリ  v2.1
 #  行政書士 全業務分野 網羅版 / src/lib/sources/monitor.ts 互換
 # =====================================================================
-#  更新: 2026-08-17
+#  更新: 2026-08-20
 #  検証: 全URLを実地確認済み。各エントリの status を必ず確認すること。
 #  解説: docs/10_MONITORING_REGISTRY.md
 #
@@ -38,7 +38,7 @@
 # =====================================================================
 
 version: 2.1
-updated: "2026-08-17"
+updated: "2026-08-20"
 
 defaults:
   userAgent: "gyosei-times-monitor/1.0 (+https://example.jp/about)"
@@ -335,6 +335,60 @@ sources:
     enabled: true
     publishPriority: P0
     note: 運用要領の改定を捕捉（要領PDF本体は changedetection 側で監視）。2026-08-17 URL 確定。
+
+  - id: isa-tokutei-gino-unyo
+    name: 特定技能運用要領
+    url: https://www.moj.go.jp/isa/applications/ssw/nyuukokukanri07_00201.html
+    priority: P0
+    checkFrequency: daily
+    category: nyukan
+    subcategory: tokutei-gino
+    method: diff
+    status: confirmed
+    enabled: true
+    publishPriority: P0
+    related: ["isa-ikusei-shuro-unyo", "isa-tokutei-gino"]
+    note: >
+      ★2026-08-20 追加。改定のたびに本体PDFのURLが変わり、記事の legalBasis が
+      404 になる（実例: 令和8年4月版 001460079.pdf → 令和8年8月20日改正版 001468647.pdf）。
+      本体PDFを直接監視せずこの一覧ページを見るのは、URL 変更そのものを捕捉するため。
+      改定時は新旧対照表PDFが併載されるので差分の把握が早い。
+      関連記事: tokutei-gino-1go-2go-zentaizo / kanri-shien-toroku-shien-chigai /
+      gaikokujin-koyo-zairyu-shikaku-hayamihyo。
+
+  - id: isa-tokutei-gino
+    name: 在留資格「特定技能」（制度概要・対象分野）
+    url: https://www.moj.go.jp/isa/applications/status/specifiedskilledworker.html
+    priority: P0
+    checkFrequency: daily
+    category: nyukan
+    subcategory: tokutei-gino
+    method: diff
+    status: confirmed
+    enabled: true
+    publishPriority: P0
+    related: ["isa-tokutei-gino-unyo"]
+    note: >
+      ★2026-08-20 追加。特定産業分野の追加・2号対象分野の拡大を捕捉。
+      育成就労（2027-04 施行）の移行先であり、B2B記事の中核。
+
+  - id: isa-tokutei-gino-bunya
+    name: 特定技能制度に係る制度の運用に関する基本方針・分野別運用方針・運用要領
+    url: https://www.moj.go.jp/isa/applications/ssw/nyuukokukanri01_00132.html
+    priority: P1
+    checkFrequency: weekly
+    category: nyukan
+    subcategory: tokutei-gino
+    method: diff
+    status: confirmed
+    enabled: true
+    publishPriority: P1
+    related: ["isa-tokutei-gino-unyo"]
+    note: >
+      ★2026-08-20 追加・実地取得確認済み（本文1,923字を取得）。分野別運用方針は閣議決定事項で、
+      分野追加・上乗せ基準告示のたびに改定される。
+      URL は /isa/policies/ssw/nyuukokukanri01_00132.html からのリダイレクト先（/isa/applications/ 配下）を
+      直接指定している。有識者会議の情報もこのページから辿れる。
 
   - id: mhlw-news
     name: 厚生労働省 新着情報（外国人雇用・食品衛生・旅館業）
