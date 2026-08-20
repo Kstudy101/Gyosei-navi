@@ -8,7 +8,13 @@
 |---|---|---|---|
 | `01_isa-tokutei-katsudo-46go-kokuji.txt` | 在留資格「特定活動（告示46号）」（告示131号 別表十一 全4号要件） | https://www.moj.go.jp/isa/content/001369972.pdf | ✅ verbatim (PDF 직접 읽기) |
 
-## ⚠️ 검수 시 원문 재확인 권장 (WebFetch 요약)
+## ✅ verbatim 확보 완료 (2026-08-20 `npm run source`)
+
+| 파일 | 원 제목 | 원본 | 상태 |
+|---|---|---|---|
+| `02_isa-designatedactivities11.txt` | 在留資格「特定活動」（本邦大学等卒業者及びその配偶者等・필요서류 전문, 10,861자） | https://www.moj.go.jp/isa/applications/status/designatedactivities11.html | ✅ verbatim |
+
+## (구) 확인 이력
 
 | 페이지 | 원본 | 확인된 요지 |
 |---|---|---|

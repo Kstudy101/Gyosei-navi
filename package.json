@@ -23,6 +23,7 @@
     "subsidies": "tsx scripts/watch-subsidies.ts",
     "kanpo": "tsx scripts/archive-kanpo.ts",
     "og": "tsx scripts/generate-og.ts",
+    "source": "tsx scripts/fetch-source.ts",
     "test:visa-navi": "tsx scripts/test-visa-navi.ts"
   },
   "dependencies": {
