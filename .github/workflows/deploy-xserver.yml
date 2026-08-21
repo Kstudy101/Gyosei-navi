@@ -42,9 +42,9 @@ jobs:
       SSH_PORT: ${{ secrets.XSERVER_PORT || '10022' }}
       DEPLOY_DIR: ${{ vars.XSERVER_DEPLOY_DIR || '~/gyosei-navi.jp/public_html' }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v5
         with:
           node-version: 24
           cache: npm
