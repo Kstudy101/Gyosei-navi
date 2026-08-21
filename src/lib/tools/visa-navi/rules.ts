@@ -189,6 +189,9 @@ export function crossNotes(a: Answers, cands: Candidate[]): Note[] {
   const codes = new Set(cands.map((x) => x.code));
   const wishes = a.wishes ?? [];
 
+  if (a.identityDetail === "divorce") {
+    notes.push({ id: "X13", tone: "info", text: "離婚・死別後の在留資格の考え方（6か月ルール・定住者への変更）は解説記事にまとめています。", href: "/guide/nyukan/haigusha-visa-rikon-6kagetsu", hrefLabel: "離婚したら在留資格はどうなる" });
+  }
   if (wishes.includes("inadmissible")) {
     notes.push({ id: "X4", tone: "warn", text: "退去強制歴・一定の犯罪歴・感染症等の上陸拒否事由に該当し得る場合は、候補にかかわらず個別の判断になります。有資格者にご相談ください。" });
   }

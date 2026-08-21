@@ -117,6 +117,28 @@ for (const [id, ans] of Object.entries(leafFixtures)) {
 }
 for (const l of LEAVES) for (const cnd of l.candidates) if (!STATUSES[cnd.code]) fail(`リーフ ${l.id} が未定義の在留資格コード "${cnd.code}" を参照`);
 
+/* 2b) 記事リンクの実在・公開状態（statuses/rules 内の /guide・/practice・/tools href） */
+import { readdirSync, readFileSync, statSync } from "node:fs";
+import { join } from "node:path";
+function walk(dir: string): string[] { return readdirSync(dir).flatMap((f) => { const p = join(dir, f); return statSync(p).isDirectory() ? walk(p) : p.endsWith(".mdx") ? [p] : []; }); }
+const published = new Set<string>();
+for (const f of walk("content")) {
+  const src = readFileSync(f, "utf-8");
+  const slug = /^slug:\s*"([^"]+)"/m.exec(src)?.[1];
+  const status = /^status:\s*"([^"]+)"/m.exec(src)?.[1];
+  if (slug && status === "published") published.add(slug);
+}
+const hrefs = new Set<string>();
+for (const m of Object.values(STATUSES)) for (const a of m.articles ?? []) hrefs.add(a.href);
+const rulesSrc = readFileSync("src/lib/tools/visa-navi/rules.ts", "utf-8");
+for (const m of rulesSrc.matchAll(/href: "(\/[^"]+)"/g)) hrefs.add(m[1]);
+for (const h of hrefs) {
+  if (h.startsWith("/tools/")) continue;
+  const slug = h.split("/").filter(Boolean).pop() ?? "";
+  if (!published.has(slug)) fail(`記事リンク ${h} は公開済み記事に存在しません`);
+}
+console.log(`記事リンク ${hrefs.size} 件 → 公開記事 ${published.size} 件と照合 OK`);
+
 /* 3) §5-1 全在留資格が参照されている */
 const referenced = new Set(LEAVES.flatMap((l) => l.candidates.map((x) => x.code)));
 for (const code of Object.keys(STATUSES)) if (STATUSES[code].group !== "out" && !referenced.has(code)) fail(`在留資格 "${code}"（${STATUSES[code].name}）に到達するリーフがありません`);

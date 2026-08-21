@@ -123,6 +123,15 @@ const A = {
   eijuTool: { label: "【診断】永住要件セルフチェック", href: "/tools/eiju-shindan" },
   kika: { label: "永住と帰化の比較", href: "/guide/nyukan/eiju-vs-kika-2027" },
   online: { label: "入管オンライン申請システム 実務マニュアル", href: "/practice/dx/nyukan-online-shinsei-manual" },
+  haigusha: { label: "日本人の配偶者等ビザ 完全ガイド", href: "/guide/nyukan/nihonjin-haigusha-visa-guide" },
+  haigushaShorui: { label: "【DL資料】配偶者ビザ 必要書類チェックリスト", href: "/guide/nyukan/haigusha-visa-shorui-checklist" },
+  rikon: { label: "離婚したら在留資格はどうなる｜6ヶ月ルール", href: "/guide/nyukan/haigusha-visa-rikon-6kagetsu" },
+  kazokuTaizai: { label: "家族滞在ビザ｜呼び寄せの要件と収入の目安", href: "/guide/nyukan/kazoku-taizai-visa-yoken" },
+  teijusha: { label: "定住者ビザとは｜告示定住・告示外定住の違い", href: "/guide/nyukan/teijusha-visa-guide" },
+  kodo: { label: "高度専門職ポイント制とJ-Skip", href: "/guide/nyukan/kodo-senmonshoku-point-jskip" },
+  sa46: { label: "特定活動46号とは｜留学生の就職を広げる要件", href: "/guide/nyukan/tokutei-katsudo-46go-guide" },
+  kikaGuide: { label: "帰化申請 完全ガイド", href: "/guide/nyukan/kika-shinsei-guide" },
+  naviArticle: { label: "【診断】在留資格判定ナビの使い方", href: "/guide/nyukan/zairyu-shikaku-hantei-navi" },
 };
 
 const unknown = () => "unknown" as const;
@@ -144,7 +153,7 @@ export const STATUSES: Record<string, StatusMeta> = {
       { text: "身元保証人（日本人配偶者等）", check: unknown },
     ],
     sources: [ICHIRAN, { label: "入管庁「日本人の配偶者等」", url: `${ISA}/applications/status/spouseorchildofjapanese.html` }],
-    articles: [A.hayamihyo],
+    articles: [A.eijuTool, A.eiju, A.kikaGuide],
   },
   "pr-spouse": {
     code: "pr-spouse",
@@ -160,7 +169,7 @@ export const STATUSES: Record<string, StatusMeta> = {
       { text: "（配偶者）実体を伴った婚姻関係・生計", check: unknown },
     ],
     sources: [ICHIRAN, { label: "入管庁「永住者の配偶者等」", url: `${ISA}/applications/status/spouseorchildofpermanentresident.html` }],
-    articles: [A.hayamihyo],
+    articles: [A.haigusha, A.haigushaShorui, A.rikon],
   },
   teijusha: {
     code: "teijusha",
@@ -275,6 +284,7 @@ export const STATUSES: Record<string, StatusMeta> = {
       { text: "活動類型（研究／専門・技術／経営）に応じた契約・基準（技人国・経営管理等の基準に準ずる）", check: unknown },
     ],
     sources: [ICHIRAN, { label: "入管庁「高度専門職」", url: `${ISA}/applications/status/designatedactivities02_00004.html` }],
+    articles: [A.kodo],
   },
   hsp2: {
     code: "hsp2",
@@ -290,6 +300,7 @@ export const STATUSES: Record<string, StatusMeta> = {
       { text: "（J-Skip）修士＋年収2,000万円、または年収4,000万円 等", check: unknown },
     ],
     sources: [ICHIRAN, { label: "入管庁「高度専門職」", url: `${ISA}/applications/status/designatedactivities02_00004.html` }],
+    articles: [A.kodo],
   },
   "keiei-kanri": {
     code: "keiei-kanri",
@@ -569,7 +580,7 @@ export const STATUSES: Record<string, StatusMeta> = {
       { text: "扶養者の扶養能力（収入）", check: unknown },
     ],
     sources: [ICHIRAN, { label: "入管庁「家族滞在」", url: `${ISA}/applications/status/dependent.html` }],
-    articles: [A.shikakugai],
+    articles: [A.kazokuTaizai, A.shikakugai],
   },
 
   /* ─────────── 特定活動（告示） ─────────── */
@@ -664,6 +675,7 @@ export const STATUSES: Record<string, StatusMeta> = {
     work: "（33号）技人国等の業務",
     requirements: [{ text: "世帯年収・子の養育等の条件（34号）", check: unknown }],
     sources: [{ label: "入管庁「高度専門職」", url: `${ISA}/applications/status/designatedactivities02_00004.html` }],
+    articles: [A.kodo, A.kazokuTaizai],
   },
   "sa-research-it": {
     code: "sa-research-it",
@@ -749,6 +761,7 @@ export const STATUSES: Record<string, StatusMeta> = {
       { text: "常勤・日本人同等以上の報酬", check: unknown },
     ],
     sources: [{ label: "入管庁「特定活動」", url: `${ISA}/applications/status/designatedactivities.html` }],
+    articles: [A.sa46, A.shikakugai],
   },
   "sa-ski": {
     code: "sa-ski",
@@ -778,6 +791,7 @@ export const STATUSES: Record<string, StatusMeta> = {
       { text: "（内定者）内定後1年以内・卒業後1年6月以内の採用、企業の誓約", check: unknown },
     ],
     sources: [{ label: "入管庁「大学等を卒業後就職活動のための滞在をご希望のみなさまへ」", url: `${ISA}/applications/resources/nyukan_nyukan84.html` }],
+    articles: [A.sa46],
   },
   "sa-medical": {
     code: "sa-medical",
@@ -827,6 +841,7 @@ export const STATUSES: Record<string, StatusMeta> = {
     work: "指定内容による",
     requirements: [{ text: "個別の人道的事情・総合判断（公表基準なし）", check: unknown }],
     sources: [{ label: "入管庁「特定活動」", url: `${ISA}/applications/status/designatedactivities.html` }],
+    articles: [A.teijusha],
   },
 
   /* ─────────── 在留資格以外の結果 ─────────── */
@@ -899,7 +914,7 @@ export const STATUSES: Record<string, StatusMeta> = {
     work: "—",
     requirements: [],
     sources: [ICHIRAN],
-    articles: [A.hayamihyo],
+    articles: [A.hayamihyo, A.naviArticle],
   },
 };
 
