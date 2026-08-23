@@ -18,6 +18,38 @@
 | 구현 현황 | `docs/09_SYSTEM_OVERVIEW.md` | IDE 에이전트 작성 |
 | 작업지시서 | `docs/07_DATA_PIPELINE_WORKORDER.md` | §5에 개정사항 |
 
+### ⚠️ 2026-08-23 — `checkFrequency` 가 드디어 실제로 지켜진다
+
+그동안 `checkFrequency` 는 **스키마로 파싱만 되고 실행 게이팅에는 쓰이지 않았다**
+(`scripts/monitor.ts` 헤더에도 「checkFrequency 무시」라고 적혀 있었다).
+그 결과 weekly/monthly 로 선언한 P2/P3 소스까지 **하루 2회** diff 되어,
+카운터·이벤트 목록 같은 무의미한 변경이 매일 Issue 로 올라왔다.
+
+실측 (2026-08-17〜23, Issue 13건):
+
+| | 건수 |
+|---|---|
+| 총 검지 | 67건 |
+| 記事機会 **高** | **3건** (그나마 1건은 입관 채용정보 = 실질 0) |
+| 記事機会 中 | 25건 |
+| 記事機会 低 | 39건 |
+
+최다 노이즈원: 内閣府 NPO(8회, 전건 低 — 認定件数 카운터), 大阪産業局(7회, 전건 低),
+官報(7회, 전건 中 — **이미 TASK-09 가 전호 아카이브하므로 정보가치 없음**),
+東京都中小企業振興公社(6회, 전건 低), 警視庁 探偵業法(4회, 전건 低 — 조달공고를 잡고 있음).
+
+**대응**: `checkedAt` 기준으로 주기 미도래 소스를 건너뛴다 (`status: "skipped"`).
+- daily 는 간격 0 → 종전과 동일. **P0 11건 중 10건이 daily 라 영향 없음**
+- 정례 실행 기준 검사 대상 80건 → **18건** (weekly 34 / monthly 28 스킵)
+- 베이스라인이 없는 신규 소스는 주기와 무관하게 즉시 검사
+- 스킵 건수는 반드시 출력한다 (침묵하면 「전건 확인」으로 오인)
+- 전건 강제 검사: `npm run monitor -- --all-frequencies`
+
+**남은 판단 과제** (설정 문제이므로 편집 판단 필요):
+- `soumu-gyoseishoshi` 는 **P0 인데 weekly** — 유일한 예외. changedetection 이 중복 감시 중이라 당장은 무해
+- `kanpo-go-jp` 는 TASK-09 와 완전 중복 → `enabled: false` 검토
+- `keishicho-tantei` 는 페이지 전체를 diff 해 조달공고를 잡는다 → selector 지정 필요
+
 ### ⚠️ v2.0 → v2.1 에서 무엇을 고쳤는가
 
 v2.0은 `crosscutting:` + `categories.<code>.sources` 의 **계층 구조**였고,

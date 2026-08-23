@@ -1,6 +1,7 @@
 /**
  * 一次情報 変更検知 CLI (TASK-02)
- *   npm run monitor                      # 전체 (enabled 소스, checkFrequency 무시)
+ *   npm run monitor                      # 전체 (enabled 소스, checkFrequency 준수)
+ *   npm run monitor -- --all-frequencies # weekly/monthly 소스도 주기 무시하고 전건 검사
  *   npm run monitor -- --priority P0     # P0만
  *   npm run monitor -- --id isa-eiju-guideline
  *   npm run monitor -- --dry-run         # 상태 파일 갱신 없이 확인
@@ -27,6 +28,7 @@ const flag = (name: string) => process.argv.includes(`--${name}`);
 
 async function main(): Promise<void> {
   const dryRun = flag("dry-run");
+  const ignoreFrequency = flag("all-frequencies");
   const wantIssue = flag("github-issue");
   const onlyPriority = arg("priority");
   const onlyId = arg("id");
@@ -62,10 +64,16 @@ async function main(): Promise<void> {
         error: rr.error,
       };
     } else {
-      r = await checkSource(s, state, { dryRun });
+      r = await checkSource(s, state, { dryRun, ignoreFrequency });
     }
     results.push(r);
-    const mark = { initialized: "初期化", unchanged: "変更なし", changed: "★変更", error: "✖ エラー" }[r.status];
+    const mark = {
+      initialized: "初期化",
+      unchanged: "変更なし",
+      changed: "★変更",
+      error: "✖ エラー",
+      skipped: `- スキップ (${s.checkFrequency})`,
+    }[r.status];
     console.log(mark + (r.error ? `: ${r.error.split("\n")[0]}` : ""));
   }
 
@@ -77,6 +85,7 @@ async function main(): Promise<void> {
   const changed = results.filter((r) => r.status === "changed");
   const errors = results.filter((r) => r.status === "error");
   const initialized = results.filter((r) => r.status === "initialized");
+  const skipped = results.filter((r) => r.status === "skipped");
 
   const reportParts: string[] = [];
   if (changed.length > 0) {
@@ -87,6 +96,10 @@ async function main(): Promise<void> {
 
   console.log("");
   if (initialized.length > 0) console.log(`初期化完了: ${initialized.length}件（ベースライン記録）`);
+  // 스킵은 반드시 보고한다 — 침묵하면 「전건 확인했다」로 오인된다
+  if (skipped.length > 0) {
+    console.log(`スキップ: ${skipped.length}件（checkFrequency 未到来。全件見るには --all-frequencies）`);
+  }
   if (changed.length === 0 && errors.length === 0 && initialized.length === 0) console.log("変更なし");
   if (changed.length > 0) console.log("\n" + report);
   if (errors.length > 0) {

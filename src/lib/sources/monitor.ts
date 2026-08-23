@@ -233,7 +233,7 @@ export function summarizeDiff(before: string, after: string, max = 20): { added:
 
 export interface CheckResult {
   source: MonitorSource;
-  status: "initialized" | "unchanged" | "changed" | "error";
+  status: "initialized" | "unchanged" | "changed" | "error" | "skipped";
   hash?: string;
   newLinks?: string[];
   diff?: { added: string[]; removed: string[] };
@@ -243,6 +243,37 @@ export interface CheckResult {
 }
 
 const SNAPSHOT_LIMIT = 200_000;
+
+/** checkFrequency 별 최소 재검사 간격 (ms) */
+const FREQUENCY_INTERVAL_MS: Record<MonitorSource["checkFrequency"], number> = {
+  daily: 0, // 매 실행 검사 (일 2회 실행이므로 하한을 두지 않는다)
+  weekly: 7 * 24 * 60 * 60 * 1000,
+  monthly: 30 * 24 * 60 * 60 * 1000,
+};
+
+/**
+ * checkFrequency 를 아직 채우지 못한 소스인가.
+ *
+ * sources.yaml 은 소스별 검사 주기를 선언하는데 예전에는 코드가 이를 무시하고
+ * 전건을 매 실행 검사했다. 그 결과 weekly/monthly 로 선언된 P2/P3 소스가
+ * 하루 2회 diff 되어, 카운터·이벤트 목록 같은 무의미한 변경이 매일 Issue 로
+ * 올라왔다 (실측 2026-08-17〜23: 검지 67건 중 記事機会 高 는 3건뿐).
+ * daily 소스(P0 다수)는 간격 0 이라 영향을 받지 않는다.
+ */
+export function isWithinFrequencyWindow(
+  source: MonitorSource,
+  state: MonitorState,
+  now: number = Date.now()
+): boolean {
+  const interval = FREQUENCY_INTERVAL_MS[source.checkFrequency];
+  if (interval === 0) return false;
+  const prev = state[source.id];
+  // 베이스라인이 없으면 주기와 무관하게 즉시 검사한다
+  if (!prev?.checkedAt) return false;
+  const last = Date.parse(prev.checkedAt);
+  if (Number.isNaN(last)) return false;
+  return now - last < interval;
+}
 
 /**
  * <meta http-equiv="Refresh" content="0;URL=..."> を最大 depth 回追跡する。
@@ -267,8 +298,12 @@ export async function fetchFollowingMetaRefresh(
 export async function checkSource(
   source: MonitorSource,
   state: MonitorState,
-  opts: { dryRun: boolean }
+  opts: { dryRun: boolean; ignoreFrequency?: boolean }
 ): Promise<CheckResult> {
+  // 주기가 아직 안 됐으면 네트워크 요청 자체를 하지 않는다 (관공서 서버 배려 겸함)
+  if (!opts.ignoreFrequency && isWithinFrequencyWindow(source, state)) {
+    return { source, status: "skipped" };
+  }
   let html: string;
   let finalUrl = source.url;
   try {

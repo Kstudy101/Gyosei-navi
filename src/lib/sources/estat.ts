@@ -9,6 +9,8 @@ import { fetchJson } from "@/lib/sources/http";
  *   appId 는 .env.local の ESTAT_APP_ID からのみ読む (C2/C3)
  */
 
+const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
+
 const BASE = "https://api.e-stat.go.jp/rest/3.0/app/json";
 const CACHE = { dir: "estat", ttlMs: 24 * 60 * 60 * 1000 };
 export const STATS_DIR = path.join(process.cwd(), "data", "stats");
@@ -96,11 +98,25 @@ const classObjSchema = z
   })
   .passthrough();
 
+/**
+ * RESULT_INF: 1회 요청은 최대 10万건까지만 돌려준다.
+ * 더 있으면 NEXT_KEY(다음 レコード 번호)가 붙으므로 startPosition 에 넣어 이어받는다.
+ */
+const resultInfSchema = z
+  .object({
+    TOTAL_NUMBER: z.number().optional(),
+    FROM_NUMBER: z.number().optional(),
+    TO_NUMBER: z.number().optional(),
+    NEXT_KEY: z.union([z.number(), z.string()]).optional(),
+  })
+  .passthrough();
+
 const statsDataSchema = z.object({
   GET_STATS_DATA: z.object({
     RESULT: resultSchema,
     STATISTICAL_DATA: z
       .object({
+        RESULT_INF: resultInfSchema.optional(),
         TABLE_INF: tableInfSchema.optional(),
         CLASS_INF: z.object({ CLASS_OBJ: oneOrMany(classObjSchema) }).optional(),
         DATA_INF: z.object({ VALUE: oneOrMany(valueSchema).optional() }).optional(),
@@ -159,24 +175,63 @@ export interface StatsDataResult {
 }
 
 export async function getStatsData(statsDataId: string, extra: Record<string, string> = {}): Promise<StatsDataResult> {
-  const sp = new URLSearchParams({ appId: getAppId(), statsDataId, ...extra });
-  const url = `${BASE}/getStatsData?${sp}`;
-  const raw = await fetchJson(url, { cache: CACHE });
-  const parsed = statsDataSchema.parse(raw);
-  assertOk(parsed.GET_STATS_DATA.RESULT, "getStatsData");
-  const sd = parsed.GET_STATS_DATA.STATISTICAL_DATA;
-  const t = sd?.TABLE_INF;
-  const values = sd?.DATA_INF?.VALUE ?? [];
+  // e-Stat 는 1회 최대 10万건. 이어받지 않으면 대형 통계표가 조용히 잘린다
+  // (실증 2026-08-23: 0004019020 은 全191,475건인데 100,000건만 저장돼 있었다).
+  // 잘린 통계로 기사를 쓰면 一次情報 원칙이 무너지므로 NEXT_KEY 를 끝까지 따라간다.
+  const values: StatsDataResult["values"] = [];
   const classes: StatsDataResult["classes"] = {};
-  for (const c of sd?.CLASS_INF?.CLASS_OBJ ?? []) {
-    classes[c["@id"]] = {
-      name: c["@name"],
-      items: Object.fromEntries(c.CLASS.map((it) => [it["@code"], it["@name"]])),
-    };
-  }
+  let t: TableInf | undefined;
+  let firstUrl = "";
+  let total: number | undefined;
+  let startPosition: string | undefined;
+  let page = 0;
+
+  do {
+    const sp = new URLSearchParams({
+      appId: getAppId(),
+      statsDataId,
+      ...extra,
+      ...(startPosition ? { startPosition } : {}),
+    });
+    const url = `${BASE}/getStatsData?${sp}`;
+    if (page === 0) firstUrl = url;
+    // 페이지마다 URL 이 달라 캐시 키도 달라진다 (캐시 그대로 활용 가능)
+    const raw = await fetchJson(url, { cache: CACHE });
+    const parsed = statsDataSchema.parse(raw);
+    assertOk(parsed.GET_STATS_DATA.RESULT, "getStatsData");
+    const sd = parsed.GET_STATS_DATA.STATISTICAL_DATA;
+    t ??= sd?.TABLE_INF;
+    total ??= sd?.RESULT_INF?.TOTAL_NUMBER;
+    values.push(...(sd?.DATA_INF?.VALUE ?? []));
+    // CLASS_INF 는 매 페이지 동일하지만 1회만 채운다
+    if (page === 0) {
+      for (const c of sd?.CLASS_INF?.CLASS_OBJ ?? []) {
+        classes[c["@id"]] = {
+          name: c["@name"],
+          items: Object.fromEntries(c.CLASS.map((it) => [it["@code"], it["@name"]])),
+        };
+      }
+    }
+    const next = sd?.RESULT_INF?.NEXT_KEY;
+    startPosition = next === undefined ? undefined : String(next);
+    page++;
+    if (startPosition) {
+      console.log(`  … ${values.length}${total ? `/${total}` : ""}건 취득 (계속)`);
+      await sleep(1000); // 절대규칙5: 연속 요청은 1초 간격
+    }
+  } while (startPosition);
+
   if (values.length === 0) {
     throw new Error(`데이터가 0건입니다 (statsDataId=${statsDataId}). 조건 또는 ID를 확인하세요.`);
   }
+  // 잘림은 침묵시키지 않는다 — 부분 데이터를 전체로 오인하면 기사가 틀린다
+  if (total !== undefined && values.length !== total) {
+    throw new Error(
+      `취득 건수 불일치 (statsDataId=${statsDataId}): ${values.length}건 / 전체 ${total}건. ` +
+        `페이징이 중단됐습니다 — 부분 데이터로 기사를 쓰지 말 것.`
+    );
+  }
+  const url = firstUrl;
   return {
     meta: {
       statsDataId,

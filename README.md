@@ -48,6 +48,7 @@ npm run build
 npm run law -- --law "行政書士法" --article 19     # 법령 조문 원문 → MDX 인용 블록
 npm run law -- --law "行政書士法" --article 19 --legal-basis   # frontmatter legalBasis 용
 npm run monitor [-- --dry-run|--priority P0]      # 一次情報 변경 감지 (prompts/monitor/sources.yaml)
+npm run monitor -- --all-frequencies              # weekly/monthly 소스도 주기 무시하고 전건 검사
 npm run pubcomment [-- --dry-run --pages 5]       # e-Gov パブコメ 신착 (키워드 필터)
 npm run stats -- --search "在留外国人"             # e-Stat 통계 (ESTAT_APP_ID 필요)
 npm run keywords:seed                             # 키워드 대장 시드 (data/keywords.csv)
