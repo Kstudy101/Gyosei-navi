@@ -10,6 +10,7 @@
  *   ⚠ 발행 후 90일 경과분은 사이트에서 사라진다. 취득 실패는 exit 1 (CI가 Issue 기표).
  */
 import fs from "node:fs";
+import path from "node:path";
 import {
   fetchIssueIndex,
   archiveIssue,
@@ -69,6 +70,9 @@ async function main(): Promise<void> {
   console.log(`\n取得 ${archived.length} / 既存 ${results.length - archived.length - errors.length} / 失敗 ${errors.length}`);
 
   if (manifestFile) {
+    // 신규 0건인 날(휴일 등 발행 없음)은 .cache/ 가 생성되지 않아 쓰기가 ENOENT 로 죽는다 (2026-08-23 실증).
+    // manifest 는 빈 파일이라도 반드시 남겨야 CI 후속 스텝이 판정할 수 있으므로 부모 디렉토리를 보장한다.
+    fs.mkdirSync(path.dirname(path.resolve(manifestFile)), { recursive: true });
     // 말미 개행 필수: 없으면 shell 의 `while read` 가 마지막 줄을 버린다 (2026-08-17 실증)
     const list = archived.map((r) => r.pdfFile).filter(Boolean);
     fs.writeFileSync(manifestFile, list.length > 0 ? list.join("\n") + "\n" : "", "utf-8");
