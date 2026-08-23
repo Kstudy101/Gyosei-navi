@@ -33,6 +33,13 @@ export const sourceSchema = z.object({
   note: z.string().optional(),
   selector: z.string().optional(),
   ignoreSelectors: z.array(z.string()).default([]),
+  /**
+   * 텍스트 단위 무시 패턴 (정규식 문자열).
+   * CSS 로는 걸러낼 수 없는 「같은 목록 안의 관심 밖 항목」용.
+   * 본문 행과 <a> 앵커 텍스트 양쪽에 적용된다 — 앵커가 걸리면 그 링크도 신규 판정에서 빠진다.
+   * 예: 입관 톱의 「採用情報」「開閉庁日」은 기사 가치가 없는데 매번 変更 로 올라온다.
+   */
+  ignorePatterns: z.array(z.string()).default([]),
   enabled: z.boolean().default(true),
   notifyOn: z.array(z.enum(["content", "newLink"])).default(["content", "newLink"]),
   // ---- v2.1 拡張フィールド ----
@@ -176,8 +183,23 @@ export interface Extracted {
   links: string[];
 }
 
+/** ignorePatterns 를 컴파일한다. 무효한 정규식은 조용히 넘기지 않고 경고 후 제외. */
+function compileIgnorePatterns(source: MonitorSource): RegExp[] {
+  const out: RegExp[] = [];
+  for (const p of source.ignorePatterns) {
+    try {
+      out.push(new RegExp(p));
+    } catch {
+      console.warn(`  ⚠ ${source.id}: 무효한 ignorePattern「${p}」`);
+    }
+  }
+  return out;
+}
+
 export function extract(html: string, source: MonitorSource, baseUrl: string): Extracted {
   const $ = cheerio.load(html);
+  const ignoreRe = compileIgnorePatterns(source);
+  const ignored = (s: string) => ignoreRe.some((re) => re.test(s));
   for (const sel of [...ALWAYS_IGNORE, ...source.ignoreSelectors]) {
     try {
       $(sel).remove();
@@ -196,6 +218,9 @@ export function extract(html: string, source: MonitorSource, baseUrl: string): E
   root.find("a[href]").each((_, el) => {
     const href = $(el).attr("href");
     if (!href || href.startsWith("#") || href.startsWith("javascript:") || href.startsWith("mailto:")) return;
+    // 앵커 텍스트가 무시 대상이면 링크도 신규 판정에서 뺀다.
+    // (URL 만으로는 採用情報인지 알 수 없다 — 예: /isa/16_00643.html)
+    if (ignoreRe.length > 0 && ignored($(el).text().replace(/\s+/g, " ").trim())) return;
     try {
       const abs = new URL(href, baseUrl);
       abs.hash = "";
@@ -214,7 +239,15 @@ export function extract(html: string, source: MonitorSource, baseUrl: string): E
   root.find("br, p, div, li, h1, h2, h3, h4, h5, h6, tr, dt, dd, section, article").each((_, el) => {
     $(el).append("\n");
   });
-  const text = normalizeText(root.text());
+  // 정규화 후에 거른다 — 패턴을 <DATE> 치환된 형태에 맞출 수 있어야 한다
+  const normalized = normalizeText(root.text());
+  const text =
+    ignoreRe.length > 0
+      ? normalized
+          .split("\n")
+          .filter((l) => !ignored(l))
+          .join("\n")
+      : normalized;
   const hash = crypto.createHash("sha256").update(text).digest("hex");
   return { text, hash, links: [...links].sort() };
 }

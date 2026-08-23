@@ -186,7 +186,11 @@ sources:
     category: crosscutting
     method: diff
     status: confirmed
-    enabled: true
+    # 2026-08-23 무효화. TASK-09(kanpo-archive.yml)가 매일 전 号를 취득·아카이브하므로
+    # 이 톱페이지 diff 는 완전 중복이다. 실제로 7일간 7회 검지 전건이 「그날의 号 링크가
+    # 늘었다」는 내용뿐이었고(記事機会 中 고정), 記事機会 로 이어진 적이 한 번도 없다.
+    # 官報 본문 검색은 `npm run kanpo -- --search <키워드>` 로 아카이브를 직접 조회할 것.
+    enabled: false
     note: >
       2025-04-01「官報の発行に関する法律」施行により電子版が正本化。毎日8:30発行。
       ⚠️ 発行後90日間のみ全体を無料閲覧・DL可能。90日経過後は個人の処分・
@@ -266,7 +270,18 @@ sources:
     status: listed
     enabled: true
     publishPriority: P0
-    note: RSSが弱いためHTML差分監視。moj-news(RSS)と併用する。
+    # 2026-08-23 追加。P0 なので「変更＝記事機会 高」と表示されるが、実際に上がってくるのは
+    # 採用情報・開閉庁日案内・入札公告など記事価値ゼロの更新が大半だった（Issue #9 実測）。
+    # 誤報を止めないと本当の入管の動きが埋もれる。
+    ignorePatterns:
+      - "採用(情報|案内|試験)"
+      - "開[閉庁]庁日|年末年始|お盆期間"
+      - "入札|調達|公告|見積|契約公表"
+      - "職員募集|会計年度任用"
+    note: >
+      RSSが弱いためHTML差分監視。moj-news(RSS)と併用する。
+      ignorePatterns は上記の理由（2026-08-23）。本当の制度変更を落としていないか
+      四半期ごとに Issue の diff と実ページを突き合わせて見直すこと。
 
   - id: isa-eiju-guideline
     name: 永住許可に関するガイドライン
@@ -1372,6 +1387,11 @@ sources:
     status: confirmed
     enabled: true
     frequencyHint: quarterly
+    # 2026-08-23 追加。selector 未指定でページ全体を diff していたため、本文（更新日 2024-04-01
+    # から不変）ではなくサイト共通のナビ・入札公告を拾っていた。実測: 7日間4回の検知すべてが
+    # 「ドッグフード12品目の買入れ単価契約」等の調達公告（Issue #9）。
+    # #main は探偵業の本文のみを含み、リンクは0件（27件すべて #main 外）。
+    selector: "#main"
     note: >
       ⚠️ 警察庁本体に探偵業専用ページは存在しない（推測URLは404確認済）。
       一次情報は各都道府県警サイト、中でも警視庁が最も詳しい（標識様式のDL可）。
