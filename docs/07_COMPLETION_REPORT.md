@@ -214,8 +214,29 @@
 
 ## 다음 사람에게 넘기는 것 (우선순위순)
 
-1. **기사 초안 2건 검수·수정** — `data/sources/pubcomment-315000140/README.md` 의 차이점 5개 반영 (締切 0時 / 연수입 10月 선행 시행 / 누락 포인트) → legalBasis 를 案件 직링크로 교체 → `status: published`
-2. GitHub 원격 리포 + Vercel 연결 → `daily-monitor.yml` 수동 실행 검증
+> ⚠️ 아래 원본 목록은 2026-08-20 시점. **2026-08-23 재점검 결과는 그 아래 표를 볼 것.**
+
+1. ~~**기사 초안 2건 검수·수정**~~ — `data/sources/pubcomment-315000140/README.md` 의 차이점 5개 반영 (締切 0時 / 연수입 10月 선행 시행 / 누락 포인트) → legalBasis 를 案件 직링크로 교체 → `status: published`
+2. ~~GitHub 원격 리포 + Vercel 연결~~ → `daily-monitor.yml` 수동 실행 검증
 3. e-Stat appId 발급 → `npm run stats -- --search 在留外国人` 첫 검증
-4. Docker 환경에서 changedetection 기동 → 이메일 알림 테스트
-5. `prompts/monitor/sources.yaml` 의 育成就労 전용 페이지 URL 확정
+4. ~~Docker 환경에서~~ changedetection 기동 → 알림 테스트
+5. ~~`prompts/monitor/sources.yaml` 의 育成就労 전용 페이지 URL 확정~~
+
+### 2026-08-23 재점검 — 위 5건의 실제 상태
+
+| # | 상태 | 근거 |
+|---|---|---|
+| 1 | ✅ 완료 | Month 1〜4 전건(#1〜#37) published. `validate:content` 61건 0오류 |
+| 2 | ✅ 완료 (단 **Vercel 아님**) | 배포처는 **Xserver** (`deploy-xserver.yml`). daily-monitor 는 08-17부터 매일 2회 자동 실행 중이며 전건 success |
+| 3 | ⛔ **미해결 — 본인 등록 필요** | 스크립트는 안내와 함께 정상 종료. e-Stat 계정 발급은 대행 불가 |
+| 4 | ✅ 완료 (**Docker 아닌 네이티브 pip**) | 감시 11건 베이스라인 오류 0 / 알림은 **ntfy** (이메일 아님) 로 수신 실측. `infra/changedetection/README.md` §5-1 |
+| 5 | ✅ 완료 (실은 2026-08-17에 이미 확정) | `isa-ikusei-shuro` = `https://www.moj.go.jp/isa/applications/index_00005.html` (title `育成就労制度`), `isa-ikusei-shuro-unyo` = `.../nyuukokukanri07_00002.html` (title `運用要領`). 2026-08-23 HTTP 200 실측 재확인 |
+
+**남은 실유효 항목은 #3 하나뿐이다.**
+
+### 2026-08-23 추가로 처리한 것
+
+- **kanpo-archive 휴일 실패 버그 수정** (7ead0fe). `.cache/` 미생성으로 신규 0건인 날마다 manifest 쓰기가 ENOENT.
+  90일 전수 점검 결과 `取得 0 / 既存 218 / 失敗 0` — 아카이브 결손 없음. 오탐 Issue #15·#3 종료.
+- **감시 실패 Issue 0건** 달성.
+- ⚠️ **`[監視]` content-opportunity Issue 13건이 미분류로 적체** (하루 2건씩 증가). 분류 규칙 필요.

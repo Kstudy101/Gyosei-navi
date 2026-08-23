@@ -77,6 +77,32 @@ changedetection.io는 알림에 **Apprise** 라이브러리를 쓰므로 URL 한
 | jGrants SPA | **감시 제외** — TASK-08(jGrants 공개 API 감시)이 전담하므로 브라우저 렌더링 불요 |
 | 제약 | PC 가동 중에만 체크 (꺼진 동안은 다음 기동 시 재개). 상시성 필요 시 compose 파일로 VPS 이전 |
 
+## 5-1. 재구축 기록 (2026-08-23 — PC 포맷으로 전소 → 원상복구)
+
+PC를 포맷해 §5의 네이티브 설치가 **전부 소실**됐다 (데이터스토어·시작프로그램·poppler·Python 모두 없음).
+Docker/WSL은 여전히 미설치라 **동일하게 네이티브 pip로 재구축**했다.
+
+| 항목 | 내용 |
+|---|---|
+| 실행 | `changedetection.io` v0.55.8 (pip) / **Python 3.13.15** (3.14 → 3.13, winget `Python.Python.3.13`) / 포트 5000 |
+| 데이터 | `C:\Users\zxaswe\changedetection-data` — §5의 `zxasw` 표기는 오기였음 (실제 사용자명 `zxaswe`) |
+| 기동 스크립트 | `C:\Users\zxaswe\changedetection\start-changedetection.bat` + `changedetection.vbs` (숨김 실행) |
+| 자동 기동 | 시작프로그램에 `changedetection.lnk` → `wscript.exe changedetection.vbs` |
+| PDF 감시 | poppler 25.07.0 (winget `oschwartz10612.Poppler`). `pdftohtml` 재체크로 동작 확인 |
+| 감시 | watchlist 전건 **11건 등록·베이스라인 완료 (오류 0)**. 재체크 간격 3시간 |
+| 알림 | ntfy 동일 토픽 복원 → apprise 송신 후 **ntfy 서버에서 되읽어 수신 실측 확인** |
+
+**재구축 시 걸린 함정 3개 (다음 사람 주의)**
+
+1. `python -m changedetectionio` 는 **동작하지 않는다** (0.55.x는 `__main__` 없음).
+   `%PYDIR%\Scripts\changedetection.io.exe` 를 직접 호출할 것.
+2. `.bat` 은 **ASCII 전용으로 작성**한다. cmd.exe가 OEM 코드페이지(949)로 읽어
+   한글/일본어 주석이 깨지면 파일 전체 파싱이 실패한다 (증상: `'TZ' is not recognized`).
+3. CLI `-u`/`-uN` 시드 시 부모 프로세스의 PATH를 물려주면 poppler를 놓쳐
+   PDF 감시만 `pdftohtml ... not found` 로 실패한다. 반드시 위 `.bat` 경유로 기동할 것.
+
+> 설정 파일은 0.55.x 기준 `changedetection.json` (감시는 `{uuid}/watch.json`). 구버전의 `url-watches.json` 아님.
+
 ## 6. AC 체크
 
 - [x] `docker compose up -d` 만으로 기동 (compose 파일 완비, 환경변수는 .env)

@@ -1,4 +1,7 @@
-# changedetection.io 초기 감시 URL 목록 — ✅ 2026-08-18 등록 완료 (10건, 오류 0)
+# changedetection.io 초기 감시 URL 목록 — ✅ 2026-08-23 재등록 완료 (11건, 오류 0)
+
+> 2026-08-18 최초 등록(10건) → PC 포맷으로 전소 → **2026-08-23 전건 재등록** (育成就労 포함 11건).
+> 재구축 절차·함정은 `README.md` §5-1.
 
 > `prompts/monitor/sources.yaml`의 P0/P1 + JS/PDF 전용. Tag는 sources.yaml의 어휘와 동일하게.
 > ★ = 코드 파이프라인이 못 보는 것 (changedetection 전담)
