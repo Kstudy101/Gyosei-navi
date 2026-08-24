@@ -25,7 +25,7 @@
 | Headings | ✅ | docs/04 §4.3 고정 골격(리드→結論 블록→H2 구조→FAQ→編集長の一言) + rehype-slug/autolink | — |
 | URL Optimization | ✅ | `/guide/{category}/{slug}` 로마자 슬러그, 계층 = 분류체계. 정적 export 라 트레일링 일관 | — |
 | Internal Linking | ✅ | ① `relatedSlugs` **61/61 기사** (3〜5건 규정) ② docs/04 §4.5 Cluster↔Pillar 상호 링크 규칙 ③ 判定ナビ 87리프→관련기사 역링크 (`test:visa-navi` 가 실재·公開 검증) | — |
-| Anchor Text | 🟡 | 본문 링크는 기사 제목·설명형 텍스트 관례 (docs/04 §3 문체) | 명문 규정 없음. 「こちら」류 금지를 docs/04 §4.5 에 1줄 추가할 것 |
+| Anchor Text | ✅ | docs/04 §4.5 에 설명형 앵커 의무·「こちら」류 금지 명문화 (2026-08-25). 기존 61건 전수 검사 위반 0건 | — |
 | Image SEO | ⬜ | OG 이미지 62건뿐. **본문 내 이미지 0건** (도해는 전부 텍스트·표) | 캘린더에 「도해는 이미지로 추후」(Month 1 #6) 부채 있음. 이미지 도해 도입 시 alt 규정을 docs/04 에 신설 |
 
 ## 3. Content SEO
@@ -59,7 +59,7 @@
 | XML Sitemaps | ✅ | `src/app/sitemap.ts` — published 만 게재, lastModified=updatedAt. ⚠️ **/tools/visa-navi 누락을 2026-08-25 감사에서 발견·수정** | — |
 | RobotsTXT | ✅ | `src/app/robots.ts` — 전체 허용 + sitemap 참조 | — |
 | Canonicals | ✅ | `articleMetadata()` 가 전 기사에 canonical 출력 (`seo.ts:35`) | — |
-| Schema Markup | ✅ | `src/lib/seo.ts`: Organization + WebSite (layout) / **Article + BreadcrumbList + FAQPage** (전 기사, `ArticleView.tsx:49-51`) | 도구 페이지에 스키마 없음 — visa-navi/eiju-shindan 에 `WebApplication` 또는 `HowTo` 검토 (소폭) |
+| Schema Markup | ✅ | `src/lib/seo.ts`: Organization + WebSite (layout) / **Article + BreadcrumbList + FAQPage** (전 기사) / **WebApplication** (도구 2종, 2026-08-25 추가 — isAccessibleForFree + canonical 동시 정비) | — |
 | Core Web Vitals | 🟡 | 정적 export + First Load JS 103〜133kB — 구조적으로 유리 | 실측 없음. GSC CWV 리포트 or PageSpeed Insights 로 첫 계측 |
 | Page Speed | ✅ | 정적 배포(Xserver) + 이미지 없음 + pagefind 지연 로드 | — |
 
@@ -99,7 +99,7 @@
 |---|---|---|---|
 | AI Overviews | ✅ | docs/04 §4.4 체크리스트: 완결 정의문·인용 가능 FAQ 답변·표 구조·기준일 명시 — **FAQ 62/62 기사 100%** + FAQPage JSON-LD | — |
 | AI Mode / AI Search | 🟡 | 구조 대응은 완료 (상동). 一次情報 인용(legalBasis 203건)이 AI 인용 신뢰도 근거 | **인용 발생 실측 없음** — KPI 「M0 구조 설계 → 인용 발생 확인」(00_MASTER_PLAN §7)의 후반이 미계측. 월 1회 주요 쿼리를 AI 검색에서 수동 확인하는 루틴 신설 |
-| ChatGPT SEO | ⬜ | — | **`public/llms.txt` 미작성** — 정적 export 라 파일 1개 추가로 끝남. 사이트 개요 + 주요 pillar·도구 URL 목록. 저비용 고효율, 즉시 착수 가능 |
+| ChatGPT SEO | ✅ | `/llms.txt` **빌드 시 자동 생성** (`src/app/llms.txt/route.ts`, 2026-08-25) — published 기사 61건 전량 + 도구·정책 페이지를 sitemap.ts 패턴으로 생성. 정적 파일이 아니라 기사 증가 시 자동 갱신 | — |
 
 ## 10. Analytics
 
@@ -144,12 +144,10 @@
 
 ## 종합 — 상태 분포와 우선순위
 
-**분포**: ✅ 31 / 🟡 11 / ⬜ 12 / ➖ 8 (62항목)
+**분포**: ✅ 34 / 🟡 9 / ⬜ 11 / ➖ 8 (62항목 — 2026-08-25 갱신: llms.txt·도구 스키마·앵커 규정 완료)
 
-구조·콘텐츠·기술·자동화(§2〜5, 13)는 상위 수준으로 완비. 갭은 **측정과 확산**에 집중되어 있다:
+구조·콘텐츠·기술·자동화(§2〜5, 13)는 상위 수준으로 완비. 남은 갭은 **측정과 확산**에 집중되어 있다:
 
-1. **GSC 가동 확인** — ⬜/🟡 의 절반(CTR·Rank·Indexing·Reporting·keywords.csv·SEO Wins)이 이것 하나에 막혀 있다. 최우선
-2. **`public/llms.txt` 작성** — 파일 1개, GEO 축의 마지막 조각. 즉시 가능
-3. **Clarity 주입** — Variables 1개 (기존 백로그)
-4. 도구 페이지 스키마 + 앵커 텍스트 규정 1줄 — 소폭 정비
-5. Off-page 는 Phase 1 이후 — 結果公示 뉴스(docs/14 §6)가 첫 Digital PR
+1. **GSC 가동 확인** — ⬜/🟡 의 절반(CTR·Rank·Indexing·Reporting·keywords.csv·SEO Wins)이 이것 하나에 막혀 있다. 최우선 (계정 접속 필요 — 사용자 작업)
+2. **Clarity 주입** — GitHub Variables 1개 (계정 발급 필요 — 사용자 작업)
+3. Off-page 는 Phase 1 이후 — 結果公示 뉴스(docs/14 §6)가 첫 Digital PR

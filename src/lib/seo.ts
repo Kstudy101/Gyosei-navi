@@ -106,6 +106,26 @@ export function faqJsonLd(faq: readonly { q: string; a: string }[]) {
   };
 }
 
+/**
+ * 無料診断ツール（/tools/*）用。isAccessibleForFree と「ブラウザ内処理・送信なし」の
+ * 特性を機械可読にする。offers price:0 は「無料ツール」検索面での必須シグナル。
+ */
+export function webApplicationJsonLd(tool: { name: string; description: string; path: string }) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    name: tool.name,
+    description: tool.description,
+    url: absoluteUrl(tool.path),
+    applicationCategory: "UtilityApplication",
+    operatingSystem: "Web",
+    inLanguage: siteConfig.lang,
+    isAccessibleForFree: true,
+    offers: { "@type": "Offer", price: "0", priceCurrency: "JPY" },
+    publisher: { "@type": "Organization", name: siteConfig.name, url: siteConfig.url },
+  };
+}
+
 export function breadcrumbJsonLd(items: { label: string; href: string }[]) {
   return {
     "@context": "https://schema.org",

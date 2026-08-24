@@ -1,16 +1,28 @@
 import type { Metadata } from "next";
 import { EijuShindan } from "@/components/tools/EijuShindan";
 import { Disclaimer } from "@/components/article/Disclaimer";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { absoluteUrl, webApplicationJsonLd } from "@/lib/seo";
+
+const DESCRIPTION =
+  "永住許可ガイドライン改定案（2027年4月適用）に対応したセルフ診断。立場・年数・申請時期を選ぶだけで、特例年数の充足と適用される新しい考慮要素（世帯収入・年金・日本語B1など）をブラウザ内で確認できます。入力内容は送信・保存されません。";
 
 export const metadata: Metadata = {
   title: "【診断】改定後もあなたは永住申請できるか｜セルフチェック",
-  description:
-    "永住許可ガイドライン改定案（2027年4月適用）に対応したセルフ診断。立場・年数・申請時期を選ぶだけで、特例年数の充足と適用される新しい考慮要素（世帯収入・年金・日本語B1など）をブラウザ内で確認できます。入力内容は送信・保存されません。",
+  description: DESCRIPTION,
+  alternates: { canonical: absoluteUrl("/tools/eiju-shindan") },
 };
 
 export default function EijuShindanPage() {
   return (
     <div className="mx-auto max-w-3xl px-4 py-10">
+      <JsonLd
+        data={webApplicationJsonLd({
+          name: "永住要件セルフチェック",
+          description: DESCRIPTION,
+          path: "/tools/eiju-shindan",
+        })}
+      />
       <p className="text-xs font-semibold text-brand-600">診断ツール</p>
       <h1 className="mt-1 text-2xl font-bold text-gray-900">
         【診断】改定後もあなたは永住申請できるか

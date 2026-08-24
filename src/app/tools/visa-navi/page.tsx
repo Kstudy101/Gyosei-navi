@@ -1,16 +1,28 @@
 import type { Metadata } from "next";
 import { VisaNavi } from "@/components/tools/VisaNavi";
 import { Disclaimer } from "@/components/article/Disclaimer";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { absoluteUrl, webApplicationJsonLd } from "@/lib/seo";
+
+const DESCRIPTION =
+  "日本で何をするか・家族関係・学歴や試験の状況をカードで選ぶだけで、入管法別表の29種の在留資格と特定活動の中から候補になる在留資格と主な要件・申請ルートを表示します。入管庁の在留資格一覧表・各ガイドラインに基づく候補提示で、許可の可否を判定するものではありません。入力内容は送信・保存されません。";
 
 export const metadata: Metadata = {
   title: "在留資格判定ナビ｜あなたに合う在留資格の候補を数クリックで確認",
-  description:
-    "日本で何をするか・家族関係・学歴や試験の状況をカードで選ぶだけで、入管法別表の29種の在留資格と特定活動の中から候補になる在留資格と主な要件・申請ルートを表示します。入管庁の在留資格一覧表・各ガイドラインに基づく候補提示で、許可の可否を判定するものではありません。入力内容は送信・保存されません。",
+  description: DESCRIPTION,
+  alternates: { canonical: absoluteUrl("/tools/visa-navi") },
 };
 
 export default function VisaNaviPage() {
   return (
     <div className="mx-auto max-w-3xl px-4 py-10">
+      <JsonLd
+        data={webApplicationJsonLd({
+          name: "在留資格判定ナビ",
+          description: DESCRIPTION,
+          path: "/tools/visa-navi",
+        })}
+      />
       <p className="text-xs font-semibold text-brand-600">判定ナビ</p>
       <h1 className="mt-1 text-2xl font-bold text-gray-900">在留資格判定ナビ</h1>
       <p className="mt-3 text-sm leading-relaxed text-gray-600">
