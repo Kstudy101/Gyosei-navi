@@ -23,6 +23,7 @@
 | `docs/04_EDITORIAL_GUIDELINE.md` | 편집 규범·문체·SEO/GEO·품질 게이트 |
 | `docs/05_CONTENT_CALENDAR.md` | 90일 콘텐츠 캘린더 |
 | `docs/06_LEGAL_COMPLIANCE.md` | ★ 행정서사법 제19조 대응 |
+| `docs/14_PUBCOMMENT_RESULT_RUNBOOK.md` | ⏰ 結果公示 대응 런북 — 永住·特定技能 3案件 감지 시 48h 갱신 절차 |
 
 ## 코드 정본 (문서보다 우선)
 
