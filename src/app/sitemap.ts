@@ -17,6 +17,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/exam",
     "/tools",
     "/tools/eiju-shindan",
+    "/tools/visa-navi",
     "/data",
     "/about",
     "/contact",
