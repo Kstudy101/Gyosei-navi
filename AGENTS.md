@@ -15,22 +15,12 @@
 
 > 갱신: 2026-08-29. 이력은 `docs/07_COMPLETION_REPORT.md` 말미 「추가 보고」 참조.
 
-**현황**: 파이프라인 TASK-01〜10 전건 완료. 콘텐츠 **published 70기사**(Month 1〜4 전건 + Month 5 #38〜#41·#42-2·#43〜#45 + WH 뉴스). `category: nyukan` **45건**(Phase 1 목표 60 — 75%, 잔여 15건).
+**현황**: 파이프라인 TASK-01〜10 전건 완료. 콘텐츠 **published 72기사**(Month 1〜4 전건 + Month 5 #38〜#41·#42-2·#43〜#45 + WH 뉴스 + 永住수수료 pillar·뉴스). `category: nyukan` **47건**(Phase 1 목표 60 — 78%, 잔여 13건).
 본번 `https://gyosei-navi.jp` 자동배포 가동 중(main push → Actions → Xserver rsync).
 SEO 62항목 대입 완료(`docs/15`) — 남은 갭은 **계정 작업(GSC·Clarity)** 과 Phase 1 이후 항목뿐.
 
 **다음 우선순위**
-0. 🔴 **검수 4건 대기** (2026-08-29, 永住 수수료 20배 인상 대응 — 전건 원문 대조 완료)
-
-   | slug | 내용 |
-   |---|---|
-   | `guide/nyukan/eiju-kyoka-shinsei-tetsuzuki` | 永住許可申請 절차 신규 pillar (기존 11기사의 「절차」 공백을 메움) |
-   | `news/zairyu-tesuryo-kaitei-2026` | 재류手続 수수료 개정 종합 속보 (永住 20万円·変更갱신 단계제, 10/1 시행) |
-   | `guide/nyukan/zairyu-shikaku-henko-ryugaku-shuro` | **기발행분에 추가 갱신만** — 10/1 시행 예고 섹션 |
-   | `guide/nyukan/zairyu-koshin-shorui-shori-kikan` | 상동 |
-
-   근거: `data/kanpo-text/2026/08/28/` 관보 원문(政令268号, 08-28 공포) — e-Gov 案件 페이지는 접근 실패했으나
-   기취득 kanpo-archive 에서 발견. 상세: `data/sources/zairyu-tesuryo-kaitei-2026/README.md`.
+0. ✅ **검수·발행 완료** (2026-08-29) — 永住 수수료 20배 인상 대응 신규 2건 + 기존 2건 갱신. **published 누적 72기사**
 1. ⏰ **永住ガイドライン 퍼블릭코멘트 결과 공시 감시** — 締切 2026-09-03 必着. 공시되면 Month 1 기사 11건 + 도구 4파일 **48시간 내 일괄 갱신**이 신규 집필보다 우선. 절차는 `docs/14_PUBCOMMENT_RESULT_RUNBOOK.md` 그대로 따라갈 것
 2. **Month 5 집필 착수** — 계획은 `docs/05_CONTENT_CALENDAR.md` §Month 5 (#38〜#47 「申請手続」축). **착수 전 필수 조건(감시 등록)은 2026-08-29 해소 완료** — 제도측 9소스 신설·전건 취득 확인. 이제 #38(COE) 부터 一次情報 취득 → 집필로 바로 들어가면 된다
 3. LINE 공식계정 개설 + X 계정 운영 개시 (Phase 1 미착수 항목. 리드마그넷 3호는 Month 5 #47 로 계획됨)

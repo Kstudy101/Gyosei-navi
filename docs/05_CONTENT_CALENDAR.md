@@ -101,9 +101,9 @@
 
 | 산출물 | 내용 | 상태 |
 |---|---|---|
-| 신규 pillar | `eiju-kyoka-shinsei-tetsuzuki` — 永住許可申請**절차 자체**(요건 아님)를 다룬 첫 기사. 기존 11기사의 공백을 메움 | 🟡 검수대기 |
-| 신규 뉴스 | `zairyu-tesuryo-kaitei-2026` — 수수료 개정 전체(변경·갱신·영주) 종합 속보 | 🟡 검수대기 |
-| 기존 갱신 | #39(`zairyu-shikaku-henko-ryugaku-shuro`)·#40(`zairyu-koshin-shorui-shori-kikan`)에 10/1 시행 예고 섹션 추가 | 🟡 검수대기(추가분만) |
+| 신규 pillar | `eiju-kyoka-shinsei-tetsuzuki` — 永住許可申請**절차 자체**(요건 아님)를 다룬 첫 기사. 기존 11기사의 공백을 메움 | ✅ **발행 (08-29)** |
+| 신규 뉴스 | `zairyu-tesuryo-kaitei-2026` — 수수료 개정 전체(변경·갱신·영주) 종합 속보 | ✅ **발행 (08-29)** |
+| 기존 갱신 | #39(`zairyu-shikaku-henko-ryugaku-shuro`)·#40(`zairyu-koshin-shorui-shori-kikan`)에 10/1 시행 예고 섹션 추가 | ✅ **검수완료·반영 (08-29)** |
 
 기존 published 기사 영향 교차확인: #41(就労資格証明書)·#42-2(在留カード)·#43(재입국허가)의 수수료는
 **정령268호 대상 외라 변경 없음** — 재확인 완료, 수정 불요.
