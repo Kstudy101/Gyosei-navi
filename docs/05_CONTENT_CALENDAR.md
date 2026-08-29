@@ -108,9 +108,9 @@
 
 | 順 | 제목(가) | type | 타겟 | 주력 KW | 一次情報 | 상태 |
 |---|---|---|---|---|---|---|
-| 38 | 在留資格認定証明書（COE）完全ガイド｜要件・流れ・電子交付 | pillar | 個人/企業/Pro | 在留資格認定証明書 | ✅ `data/sources/coe-koufu/` (手続案内·電子化·법7조의2·규칙6조의2) | 🟡 **초고 완료·검수대기** (`zairyu-shikaku-nintei-shomeisho`) |
-| 39 | 在留資格変更許可申請｜留学から就労への切り替え実務 | cluster | 個人/企業 | 在留資格 変更 | ✅ `henko-kyoka/`(手続案内·법20조) + ♻️ `henko-koshin-guideline` | 🟡 **초고 완료·검수대기** (`zairyu-shikaku-henko-ryugaku-shuro`) |
-| 40 | 在留期間更新の**申請時期**と標準処理期間｜出し直しを防ぐ | cluster | 個人/企業 | 在留期間 更新 いつから | ✅ `koshin-kyoka/`(手続案内·법20조6항) + ♻️ `henko-koshin-guideline` | 🟡 **초고 완료·검수대기** (`zairyu-koshin-shorui-shori-kikan`) |
+| 38 | 在留資格認定証明書（COE）完全ガイド｜要件・流れ・電子交付 | pillar | 個人/企業/Pro | 在留資格認定証明書 | ✅ `data/sources/coe-koufu/` (手続案内·電子化·법7조의2·규칙6조의2) | ✅ **발행 (08-29)** (`zairyu-shikaku-nintei-shomeisho`) |
+| 39 | 在留資格変更許可申請｜留学から就労への切り替え実務 | cluster | 個人/企業 | 在留資格 変更 | ✅ `henko-kyoka/`(手続案内·법20조) + ♻️ `henko-koshin-guideline` | ✅ **발행 (08-29)** (`zairyu-shikaku-henko-ryugaku-shuro`) |
+| 40 | 在留期間更新の**申請時期**と標準処理期間｜出し直しを防ぐ | cluster | 個人/企業 | 在留期間 更新 いつから | ✅ `koshin-kyoka/`(手続案内·법20조6항) + ♻️ `henko-koshin-guideline` | ✅ **발행 (08-29)** (`zairyu-koshin-shorui-shori-kikan`) |
 | 41 | 就労資格証明書とは｜転職時に取るべきか判断する | cluster | 個人/企業 | 就労資格証明書 | 신규 취득 | ⬜ |
 | 42 | 在留カードの手続き総まとめ｜住所変更・紛失・常時携帯義務 | cluster | 個人 | 在留カード 住所変更 | 신규 취득 | ⬜ |
 | 43 | 再入国許可とみなし再入国｜出国前に必ず確認すること | cluster | 個人 | みなし再入国許可 | 신규 취득 | ⬜ |
@@ -152,7 +152,7 @@ URL 은 전건 입관청 공식 인덱스(`/isa/applications/procedures/`)의 �
 
 | 산출물 | 내용 |
 |---|---|
-| 기사 | `content/news/working-holiday-panama-brazil-2026.mdx` — **`status: review`**(R7: AI 초고 무검수 발행 금지). 검수 후 `published` 전환 |
+| 기사 | `content/news/working-holiday-panama-brazil-2026.mdx` — ✅ **검수 완료·발행 (2026-08-29)** |
 | 원문 | `data/sources/pubcomment-315000143/` · `-315000144/` (要領·新旧対照·概要 + README) |
 | 締切 마스터 | `src/config/deadlines.ts` 에 `wh-kokuji-2026` 등록 (09-22 必着 / e-Gov 「9/23 0時」 함정 명기) |
 | 감시 | `prompts/monitor/sources.yaml` 에 `isa-tokutei-katsudo` 신설 — 기존 特定活動46号 기사도 감시 미등록이었던 갭을 동시 해소 |
