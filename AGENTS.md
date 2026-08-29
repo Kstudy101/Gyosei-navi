@@ -15,7 +15,7 @@
 
 > 갱신: 2026-08-29. 이력은 `docs/07_COMPLETION_REPORT.md` 말미 「추가 보고」 참조.
 
-**현황**: 파이프라인 TASK-01〜10 전건 완료. 콘텐츠 **published 67기사**(Month 1〜4 전건 + Month 5 #38〜#41·#42-2 + WH 뉴스). `category: nyukan` **42건**(Phase 1 목표 60 — 70%, 잔여 18건).
+**현황**: 파이프라인 TASK-01〜10 전건 완료. 콘텐츠 **published 68기사**(Month 1〜4 전건 + Month 5 #38〜#41·#42-2·#43 + WH 뉴스). `category: nyukan` **43건**(Phase 1 목표 60 — 72%, 잔여 17건).
 본번 `https://gyosei-navi.jp` 자동배포 가동 중(main push → Actions → Xserver rsync).
 SEO 62항목 대입 완료(`docs/15`) — 남은 갭은 **계정 작업(GSC·Clarity)** 과 Phase 1 이후 항목뿐.
 
@@ -25,10 +25,16 @@ SEO 62항목 대입 완료(`docs/15`) — 남은 갭은 **계정 작업(GSC·Cla
 2. **Month 5 집필 착수** — 계획은 `docs/05_CONTENT_CALENDAR.md` §Month 5 (#38〜#47 「申請手続」축). **착수 전 필수 조건(감시 등록)은 2026-08-29 해소 완료** — 제도측 9소스 신설·전건 취득 확인. 이제 #38(COE) 부터 一次情報 취득 → 집필로 바로 들어가면 된다
 3. LINE 공식계정 개설 + X 계정 운영 개시 (Phase 1 미착수 항목. 리드마그넷 3호는 Month 5 #47 로 계획됨)
 
-**⛔ 현재 블로커 (2026-08-29 발견, 사용자 조치 필요)**
-- **GitHub 원격 접근 불가.** `git fetch` → `Repository not found`. 저장된 자격증명이 `pakujitae2-jpg` 계정이라
-  비공개 리포 `Kstudy101/Gyosei-navi` 에 권한이 없다. **push·Actions 확인·Issue 분류가 전부 막혀 있다.**
-- 영향: 로컬 kanpo 아카이브가 08-24에서 정지(원격 상태 확인 불가), `[監視]` Issue 적체 분류 착수 불가
+**⛔ 현재 블로커 (2026-08-29, 사용자 조치 필요)**
+- **push 불가.** 리포를 **공개로 전환**해 `git fetch`·Actions·Issue **읽기는 복구**됐으나,
+  `git push` → `Permission to Kstudy101/Gyosei-navi.git denied to pakujitae2-jpg` (403).
+  **공개화로는 해결되지 않는다** — 쓰기는 여전히 권한이 필요하고, 저장된 자격증명이 소유자 계정이 아니다.
+  → `Kstudy101` 로 재로그인해야 한다(브라우저 OAuth `gh auth login`, 또는 Windows 자격증명 관리자의
+  `git:https://github.com` 항목 교체). 로컬 커밋은 정상이라 복구 후 한 번에 push 하면 된다.
+- ⚠️ **공개 전환에 따른 노출 1건**: `docs/14` 와 `infra/changedetection/README.md` 에 적힌
+  ntfy 토픽 `gyosei-navi-alert-7c9682` 가 이제 누구나 읽을 수 있다. ntfy 토픽명은 사실상 유일한 인증수단이라
+  **제3자가 감시 알림을 구독하거나 가짜 알림을 발신할 수 있다**. 토픽 재발급 + 리포 밖 보관 권장.
+  (자격증명·비밀키 유출은 이력 전수 스캔 결과 **없음**)
 
 **주의**: 기사를 쓴 제도는 반드시 `prompts/monitor/sources.yaml` 에 감시 등록할 것.
 등록 누락으로 特定技能運用要領 개정(2026-08-20)을 놓쳐 published 기사의 링크가 절단된 사례가 있다 (docs/10 §6-2).
