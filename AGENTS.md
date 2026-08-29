@@ -15,7 +15,7 @@
 
 > 갱신: 2026-08-29. 이력은 `docs/07_COMPLETION_REPORT.md` 말미 「추가 보고」 참조.
 
-**현황**: 파이프라인 TASK-01〜10 전건 완료. 콘텐츠 **published 68기사**(Month 1〜4 전건 + Month 5 #38〜#41·#42-2·#43 + WH 뉴스). `category: nyukan` **43건**(Phase 1 목표 60 — 72%, 잔여 17건).
+**현황**: 파이프라인 TASK-01〜10 전건 완료. 콘텐츠 **published 69기사**(Month 1〜4 전건 + Month 5 #38〜#41·#42-2·#43·#44 + WH 뉴스). `category: nyukan` **44건**(Phase 1 목표 60 — 73%, 잔여 16건).
 본번 `https://gyosei-navi.jp` 자동배포 가동 중(main push → Actions → Xserver rsync).
 SEO 62항목 대입 완료(`docs/15`) — 남은 갭은 **계정 작업(GSC·Clarity)** 과 Phase 1 이후 항목뿐.
 
