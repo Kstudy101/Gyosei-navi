@@ -42,6 +42,14 @@
    curl -sL -A "gyosei-navi-source-fetcher/1.0" -o /tmp/r.pdf "<PDF URL>" && pdftotext -layout /tmp/r.pdf data/sources/pubcomment-3150001XX-result/NN_<이름>.txt
    ```
    (pdftotext 는 poppler — 2026-08-23 설치 확인. 세로쓰기 PDF는 1자 1행으로 나올 수 있으나 내용은 유효 — 139의 新旧対照条文 선례)
+
+   ⚠️ **`-layout` 이 빈 결과를 내면 즉시 `-raw` 로 재시도할 것** (2026-08-29 추가). 入管庁의 세로쓰기 告示 PDF는
+   `-layout` 이 공백만 출력해 **「취득 실패」가 아니라 「내용 없음」처럼 보인다** — AGENTS.md 절대규칙 6(파싱 실패를 0건으로 처리 금지)에 걸리는 함정이다.
+   案件 315000143/144 에서 실제로 발생했고, `-raw` 로 전문 취득에 성공했다:
+   ```bash
+   pdftotext -raw -enc UTF-8 /tmp/r.pdf data/sources/<topic>/NN_<이름>.txt
+   ```
+   판별법: `pdffonts` 가 임베드 CID 폰트(uni yes)를 보여주는데 텍스트가 안 나오면 스캔본이 아니라 **추출 모드 문제**다.
 2. **확정판 vs 改定案 差分 작성** — 갱신의 근거가 되는 핵심 산출물:
    - 개정안 정본: `data/sources/pubcomment-315000140/02_永住許可ガイドライン改定案.txt` (139는 `02_新旧対照条文.txt`, 141은 `02_永住者取消ガイドライン案.txt`)
    - 差分 결과를 `data/sources/pubcomment-3150001XX-result/DIFF.md`로 남긴다 (항번 단위: 第2の4(2) 등)

@@ -88,6 +88,26 @@ export const DEADLINES = {
     verifiedAt: "2026-08-19",
   },
 
+  /** content/news/working-holiday-panama-brazil-2026.mdx — 意見募集要領（令和8年8月24日 出入国在留管理庁）原文で確認。
+   *  案件 315000143（パナマ）・315000144（ブラジル）の2件は募集期間が同一 */
+  "wh-kokuji-2026": {
+    dueDate: "2026-09-22",
+    closesAt: "2026-09-23T00:00:00+09:00",
+    eyebrow: "意見募集の締切まで",
+    dueLabel: "2026年9月22日（火）必着",
+    lead:
+      "ワーキング・ホリデーの対象国・地域にパナマ共和国・ブラジル連邦共和国を加える特定活動告示の改正案への意見は、e-Govフォーム・電子メール・郵送のいずれかで提出できます。2件は別案件で、電子メールの宛先も件名も異なります。",
+    closesLabel:
+      "e-Govの案件ページの「受付締切日時 2026年9月23日0時0分」は、9月22日いっぱいという意味です（意見募集要領の原文は「令和8年9月22日（火）必着」）。",
+    closedTitle: "この意見募集は2026年9月22日（火）で終了しました",
+    closedLead:
+      "新たな意見の提出はできません。告示はパナマ分が令和8年10月30日公布・11月1日施行、ブラジル分が令和8年12月1日公布・施行の予定です。",
+    officialUrl:
+      "https://public-comment.e-gov.go.jp/servlet/Public?CLASSNAME=PCMMSTDETAIL&id=315000143&Mode=0",
+    officialLabel: "e-Gov パブリック・コメント（案件番号315000143／パナマ）",
+    verifiedAt: "2026-08-29",
+  },
+
   /** content/guide/hojokin/jizokuka-hojokin-kaijisei.mdx — 公式サイト・中小機構の公募スケジュールで確認 */
   "jizokuka-20": {
     dueDate: "2026-12-15",

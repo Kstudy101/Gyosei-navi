@@ -405,6 +405,29 @@ sources:
       URL は /isa/policies/ssw/nyuukokukanri01_00132.html からのリダイレクト先（/isa/applications/ 配下）を
       直接指定している。有識者会議の情報もこのページから辿れる。
 
+  - id: isa-tokutei-katsudo
+    name: 在留資格「特定活動」（特定活動告示）
+    # URL は入管庁「在留資格一覧表」の「24. 特定活動」リンク先を実測確認（2026-08-29 / HTTP 200）。
+    # selector は monitor.ts が moj.go.jp に #contentsArea を自動適用。
+    url: https://www.moj.go.jp/isa/applications/status/designatedactivities.html
+    priority: P1
+    checkFrequency: weekly
+    category: nyukan
+    subcategory: tokutei-katsudo
+    method: diff
+    status: confirmed
+    enabled: true
+    publishPriority: P1
+    note: >
+      2026-08-29 追加。記事 /guide/nyukan/tokutei-katsudo-46go-guide と
+      /news/working-holiday-panama-brazil-2026 の制度側ページ（AGENTS.md「記事を書いた制度は監視登録」規則）。
+      特定活動告示（平成2年法務省告示第131号）は号ごとに独立した類型の束で、
+      ワーキング・ホリデー（第5号）の対象国追加のように小規模改正が頻発する。
+      ⏰ 係属中: e-Gov 案件315000143（パナマ / 令和8年10月30日公布・11月1日施行予定）、
+      315000144（ブラジル / 令和8年12月1日公布・同日施行予定）。いずれも意見募集は 2026-09-22 必着。
+      公布・施行の各時点で記事の noticeLevel を draft-proposal → scheduled → enforced に更新すること。
+      原文: data/sources/pubcomment-315000143/ ・ -315000144/（縦書きPDF: pdftotext は -raw 必須）。
+
   - id: mhlw-news
     name: 厚生労働省 新着情報（外国人雇用・食品衛生・旅館業）
     url: https://www.mhlw.go.jp/stf/news.rdf

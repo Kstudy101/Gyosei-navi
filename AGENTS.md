@@ -13,15 +13,24 @@
 
 ## 지금 해야 할 일
 
-> 갱신: 2026-08-20. 이력은 `docs/07_COMPLETION_REPORT.md` 말미 「추가 보고」 참조.
+> 갱신: 2026-08-29. 이력은 `docs/07_COMPLETION_REPORT.md` 말미 「추가 보고」 참조.
 
-**현황**: 파이프라인 TASK-01〜10 전건 완료. 콘텐츠 **누적 61기사**(Month 1〜4 전건 발행).
+**현황**: 파이프라인 TASK-01〜10 전건 완료. 콘텐츠 **published 61기사**(Month 1〜4 전건 발행) + **검수대기 1건**. `category: nyukan` 은 37건(Phase 1 목표 60).
 본번 `https://gyosei-navi.jp` 자동배포 가동 중(main push → Actions → Xserver rsync).
+SEO 62항목 대입 완료(`docs/15`) — 남은 갭은 **계정 작업(GSC·Clarity)** 과 Phase 1 이후 항목뿐.
 
 **다음 우선순위**
-1. **Month 5 계획 수립** — `docs/05_CONTENT_CALENDAR.md` 에 추가. Phase 1 목표(入管 60기사 / 리드마그넷 3종 / LINE·X 계정) 대비 현황 점검부터
-2. ⏰ **永住ガイドライン 퍼블릭코멘트 결과 공시 감시** — 締切 2026-09-03 必着. 공시되면 Month 1 기사 12건 **48시간 내 일괄 갱신**이 신규 집필보다 우선
-3. 리드 마그넷 3호 + LINE 공식계정 개설 (Phase 1 미착수 항목)
+0. 🔴 **검수 1건 대기** — `content/news/working-holiday-panama-brazil-2026.mdx` (`status: review`).
+   ワーキング・ホリデー 대상국에 パナマ・ブラジル 추가하는 特定活動告示 개정案 2건(締切 **2026-09-22 必着**) 기사.
+   원문 대조는 완료(`data/sources/pubcomment-315000143/`·`-315000144/`). R7에 따라 **사람 검수 후** `published` 로 바꾸고 changelog 1행 추가할 것
+1. ⏰ **永住ガイドライン 퍼블릭코멘트 결과 공시 감시** — 締切 2026-09-03 必着. 공시되면 Month 1 기사 11건 + 도구 4파일 **48시간 내 일괄 갱신**이 신규 집필보다 우선. 절차는 `docs/14_PUBCOMMENT_RESULT_RUNBOOK.md` 그대로 따라갈 것
+2. **Month 5 집필 착수** — 계획은 `docs/05_CONTENT_CALENDAR.md` §Month 5 에 수립 완료(2026-08-29, #38〜#47 「申請手続」축). **착수 전 그 절의 「착수 전 필수 조건」(감시 등록 6건) 을 먼저 처리**
+3. LINE 공식계정 개설 + X 계정 운영 개시 (Phase 1 미착수 항목. 리드마그넷 3호는 Month 5 #47 로 계획됨)
+
+**⛔ 현재 블로커 (2026-08-29 발견, 사용자 조치 필요)**
+- **GitHub 원격 접근 불가.** `git fetch` → `Repository not found`. 저장된 자격증명이 `pakujitae2-jpg` 계정이라
+  비공개 리포 `Kstudy101/Gyosei-navi` 에 권한이 없다. **push·Actions 확인·Issue 분류가 전부 막혀 있다.**
+- 영향: 로컬 kanpo 아카이브가 08-24에서 정지(원격 상태 확인 불가), `[監視]` Issue 적체 분류 착수 불가
 
 **주의**: 기사를 쓴 제도는 반드시 `prompts/monitor/sources.yaml` 에 감시 등록할 것.
 등록 누락으로 特定技能運用要領 개정(2026-08-20)을 놓쳐 published 기사의 링크가 절단된 사례가 있다 (docs/10 §6-2).
