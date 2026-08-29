@@ -138,15 +138,17 @@
 | 39 | 在留資格変更許可申請｜留学から就労への切り替え実務 | cluster | 個人/企業 | 在留資格 変更 | ✅ `henko-kyoka/`(手続案内·법20조) + ♻️ `henko-koshin-guideline` | ✅ **발행 (08-29)** (`zairyu-shikaku-henko-ryugaku-shuro`) |
 | 40 | 在留期間更新の**申請時期**と標準処理期間｜出し直しを防ぐ | cluster | 個人/企業 | 在留期間 更新 いつから | ✅ `koshin-kyoka/`(手続案内·법20조6항) + ♻️ `henko-koshin-guideline` | ✅ **발행 (08-29)** (`zairyu-koshin-shorui-shori-kikan`) |
 | 41 | 就労資格証明書とは｜転職時に取るべきか判断する | cluster | 個人/企業/Pro | 就労資格証明書 | ✅ `shuro-shikaku-shomei/` (手続案内·법19조의2) | ✅ **발행 (08-29)** (`shuro-shikaku-shomeisho`) |
-| 42 | 在留カードの手続き総まとめ｜住所変更・紛失・常時携帯義務 | cluster | 個人/Pro | 在留カード 住所変更 | ✅ `zairyu-card-tetsuduki/` (手続案内7건+법19조의9·19조의14·23조) | 🟡 **초고 완료·검수대기** (`zairyu-card-tetsuduki-matome`) |
+| 42 | 在留カードの手続き総まとめ｜住所変更・紛失・常時携帯義務 | cluster | 個人/Pro | 在留カード 住所変更 | ✅ `zairyu-card-tetsuduki/` (手続案内7건+법19조의9·19조의14·23조) | ✅ **발행 (08-29)** (`zairyu-card-tetsuduki-matome`) |
 | 42-2 | 新様式の在留カードと特定在留カード｜2026年6月14日から | cluster | 企業/Pro/個人 | 特定在留カード | ✅ `zairyu-card/` (在留カードとは·特定在留カード案内·법19조의15의2) | ✅ **발행 (08-29)** (`shin-yoshiki-zairyu-card-tokutei`) — 계획 시 「단독 기사 후보」로 기록해 둔 건을 시의성 우선으로 앞당김 |
 | 43 | 再入国許可とみなし再入国｜出国前に必ず確認すること | cluster | 個人/企業/Pro | みなし再入国許可 | ✅ `sainyukoku/` (手続案内·みなし해설·법26조·26조의2) | ✅ **발행 (08-29)** (`sainyukoku-kyoka-minashi`) |
 | 44 | 特定技能の分野別要件｜試験・協議会・受入れ上限の確認手順 | cluster | 企業/Pro | 特定技能 分野 一覧 | ✅ `tokutei-gino-bunya/` + ♻️ `tokutei-gino` | ✅ **발행 (08-29)** (`tokutei-gino-bunyabetsu-yoken`) — 감시 Issue #22(8/28 분야별 요령 3분야 폐지) 반영 |
 | 45 | 登録支援機関の登録要件と1号特定技能外国人支援計画 | cluster | 企業/Pro | 登録支援機関 要件 | ✅ `toroku-shien-kikan/` + ♻️ `tokutei-gino` | ✅ **발행 (08-29)** (`toroku-shien-kikan-yoken`) |
-| 46 | 特定技能外国人の転職｜手続きと空白期間のリスク | cluster | 個人/企業 | 特定技能 転職 | ✅ `tokutei-gino-tenshoku/` (법22조의4·19조의16) + ♻️ `tokutei-gino` | 🟡 **초고 완료·검수대기** (`tokutei-gino-tenshoku`) |
-| 47 | 【DL資料】在留手続き早見表｜認定・変更・更新・永住の条件比較 | checklist | 個人/企業/Pro | 在留資格 必要書類 一覧 | 38〜40+永住절차 검수완료분 재사용 | 🟡 **초고 완료·검수대기** (`zairyu-tetsuzuki-hayamihyo`) ★리드마그넷 3호 — 제목을 「공통서류」에서 「조건비교」로 조정(사유는 기사 내부메모) |
+| 46 | 特定技能外国人の転職｜手続きと空白期間のリスク | cluster | 個人/企業 | 特定技能 転職 | ✅ `tokutei-gino-tenshoku/` (법22조의4·19조의16) + ♻️ `tokutei-gino` | ✅ **발행 (08-29)** (`tokutei-gino-tenshoku`) |
+| 47 | 【DL資料】在留手続き早見表｜認定・変更・更新・永住の条件比較 | checklist | 個人/企業/Pro | 在留資格 必要書類 一覧 | 38〜40+永住절차 검수완료분 재사용 | ✅ **발행 (08-29)** (`zairyu-tetsuzuki-hayamihyo`) ★리드마그넷 3호 — 제목을 「공통서류」에서 「조건비교」로 조정(사유는 기사 내부메모) |
 
-**Month 5 목표**: 누적 72기사(+42-2 로 73) / `category: nyukan` **47〜48기사(Phase 1 60의 78〜80%)** / **리드마그넷 3종 완성 = Phase 1 목표 1개 항목 달성** / 手続き→종류 내부링크 왕복 성립
+**Month 5 목표**: 누적 72기사(+42-2 로 73) / `category: nyukan` **47〜48기사(Phase 1 60의 78〜80%)**
+
+> ✅ **Month 5 전건(#38〜#47) 발행 완료 (2026-08-29)**. 실제 누적 published **75기사**. / **리드마그넷 3종 완성 = Phase 1 목표 1개 항목 달성** / 手続き→종류 내부링크 왕복 성립
 
 ### 착수 전 필수 조건 — ✅ **해소 완료 (2026-08-29)**
 

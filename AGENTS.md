@@ -15,23 +15,15 @@
 
 > 갱신: 2026-08-29. 이력은 `docs/07_COMPLETION_REPORT.md` 말미 「추가 보고」 참조.
 
-**현황**: 파이프라인 TASK-01〜10 전건 완료. 콘텐츠 **published 72기사**(Month 1〜4 전건 + Month 5 #38〜#41·#42-2·#43〜#45 + WH 뉴스 + 永住수수료 pillar·뉴스). `category: nyukan` **47건**(Phase 1 목표 60 — 78%, 잔여 13건).
+**현황**: 파이프라인 TASK-01〜10 전건 완료. 콘텐츠 **published 75기사**. Month 5 계획(#38〜#47 「申請手続」축) **전건 발행 완료**. `category: nyukan` **50건**(Phase 1 목표 60 — 83%, 잔여 10건).
 본번 `https://gyosei-navi.jp` 자동배포 가동 중(main push → Actions → Xserver rsync).
 SEO 62항목 대입 완료(`docs/15`) — 남은 갭은 **계정 작업(GSC·Clarity)** 과 Phase 1 이후 항목뿐.
 
 **다음 우선순위**
-0. 🔴 **검수 3건 대기** (2026-08-29, Month 5 마지막 3건 — #38〜#47 전건 집필 완료)
-
-   | slug | 내용 |
-   |---|---|
-   | `guide/nyukan/zairyu-card-tetsuduki-matome` | 在留カード 각종 수속 총정리 (#42 본체) |
-   | `guide/nyukan/tokutei-gino-tenshoku` | 特定技能 전직·공백기간 리스크 (#46) |
-   | `guide/nyukan/zairyu-tetsuzuki-hayamihyo` | 재류手続 4종 조건비교 早見表 + CSV (#47, 리드마그넷 3호) |
-
-   검수 완료 시 published 전환 + push. **Month 5 계획(#38〜#47) 전건 집필 완료** — 검수만 남음.
+0. ✅ **Month 5 전건(#38〜#47) 검수·발행 완료** (2026-08-29). **published 누적 75기사**. 리드마그넷 3호(#47)도 발행됨
 1. ⏰ **永住ガイドライン 퍼블릭코멘트 결과 공시 감시** — 締切 2026-09-03 必着. 공시되면 Month 1 기사 11건 + 도구 4파일 **48시간 내 일괄 갱신**이 신규 집필보다 우선. 절차는 `docs/14_PUBCOMMENT_RESULT_RUNBOOK.md` 그대로 따라갈 것
-2. Month 5 계획(#38〜#47 「申請手続」축) **전건 집필 완료** — 위 검수 3건만 남음. 검수 후 Month 6 계획 수립으로 이어갈 것
-3. LINE 공식계정 개설 + X 계정 운영 개시 (Phase 1 미착수 항목. 리드마그넷 3호는 #47 로 초고 완료·검수대기)
+2. **Month 6 계획 수립** — Month 5로 `category: nyukan` 50건(Phase 1 목표 60의 83%, 잔여 10건). 다음 축 검토 필요
+3. LINE 공식계정 개설 + X 계정 운영 개시 — **리드마그넷 3종은 #19·#37·#47로 완성** (Phase 1 목표 1개 항목 달성). LINE·X만 미착수
 
 **⛔ 현재 블로커 (2026-08-29, 사용자 조치 필요)**
 - **push 불가.** 리포를 **공개로 전환**해 `git fetch`·Actions·Issue **읽기는 복구**됐으나,
