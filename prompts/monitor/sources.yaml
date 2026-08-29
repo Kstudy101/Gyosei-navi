@@ -428,6 +428,142 @@ sources:
       公布・施行の各時点で記事の noticeLevel を draft-proposal → scheduled → enforced に更新すること。
       原文: data/sources/pubcomment-315000143/ ・ -315000144/（縦書きPDF: pdftotext は -raw 必須）。
 
+  # ── 在留諸申請の手続ページ群（docs/05 Month 5「申請手続」축의 제도측 감시） ──
+  # URL は入管庁「在留申請のオンライン手続」配下の手続案内インデックス
+  # https://www.moj.go.jp/isa/applications/procedures/ のリンクを実測確認（2026-08-29 / 全件 HTTP 200）。
+  # selector は monitor.ts が moj.go.jp に #contentsArea を自動適用。
+
+  - id: isa-coe-koufu
+    name: 在留資格認定証明書交付申請
+    url: https://www.moj.go.jp/isa/applications/procedures/16-1.html
+    priority: P0
+    checkFrequency: weekly
+    category: nyukan
+    subcategory: zairyu
+    method: diff
+    status: confirmed
+    enabled: true
+    publishPriority: P0
+    note: >
+      2026-08-29 追加。docs/05 Month 5 #38（COE 完全ガイド）の制度側ページ。
+      呼び寄せ手続の起点であり、必要書類一覧が在留資格ごとにぶら下がる。
+      ⚠️ 必要書類の各PDFは本ページからリンクされる別URL。改定は本ページ本文に出ないことがあるので、
+      記事更新時は書類一覧の実物も確認すること（Month 4 で WebFetch が要約しか返さなかった事例あり）。
+
+  - id: isa-henko-kyoka
+    name: 在留資格変更許可申請
+    url: https://www.moj.go.jp/isa/applications/procedures/16-2.html
+    priority: P0
+    checkFrequency: weekly
+    category: nyukan
+    subcategory: zairyu
+    method: diff
+    status: confirmed
+    enabled: true
+    publishPriority: P0
+    related: ["isa-koshin-kyoka"]
+    note: >
+      2026-08-29 追加。docs/05 Month 5 #39（留学→就労の変更）の制度側ページ。
+      審査の考え方は「在留資格の変更・在留期間の更新許可のガイドライン」で、原文は
+      data/sources/henko-koshin-guideline/ に取得済み（記事 zairyu-koshin-fukyoka-10sen で使用）。
+
+  - id: isa-koshin-kyoka
+    name: 在留期間更新許可申請
+    url: https://www.moj.go.jp/isa/applications/procedures/16-3.html
+    priority: P0
+    checkFrequency: weekly
+    category: nyukan
+    subcategory: zairyu
+    method: diff
+    status: confirmed
+    enabled: true
+    publishPriority: P0
+    related: ["isa-henko-kyoka"]
+    note: >
+      2026-08-29 追加。docs/05 Month 5 #40（更新の必要書類・標準処理期間）の制度側ページ。
+      既存記事 zairyu-koshin-fukyoka-10sen（不許可理由10選）の制度側でもあり、
+      本来 Month 3 時点で登録すべきだった漏れを併せて解消する。
+
+  - id: isa-shuro-shikaku-shomei
+    name: 就労資格証明書交付申請
+    url: https://www.moj.go.jp/isa/applications/procedures/16-9.html
+    priority: P1
+    checkFrequency: weekly
+    category: nyukan
+    subcategory: zairyu
+    method: diff
+    status: confirmed
+    enabled: true
+    publishPriority: P1
+    note: >
+      2026-08-29 追加。docs/05 Month 5 #41（転職時に取るべきか）の制度側ページ。
+
+  - id: isa-zairyu-card
+    name: 在留カード（制度説明・各種手続）
+    url: https://www.moj.go.jp/isa/applications/procedures/whatzairyu_00001.html
+    priority: P1
+    checkFrequency: weekly
+    category: nyukan
+    subcategory: zairyu
+    method: diff
+    status: confirmed
+    enabled: true
+    publishPriority: P1
+    related: ["isa-tokutei-zairyu-card"]
+    note: >
+      2026-08-29 追加。docs/05 Month 5 #42（在留カード手続き総まとめ）の制度側ページ。
+      ⚠️ 記載事項変更・有効期間更新・再交付は入管庁だが、**住居地の届出は市区町村**が窓口で所管が分かれる。
+      記事では所管の分岐を明示すること。
+
+  - id: isa-tokutei-zairyu-card
+    name: 特定在留カード等に係る案内（マイナンバーカードとの一体化）
+    url: https://www.moj.go.jp/isa/tokutei.html
+    priority: P1
+    checkFrequency: weekly
+    category: nyukan
+    subcategory: zairyu
+    method: diff
+    status: confirmed
+    enabled: true
+    publishPriority: P1
+    related: ["isa-zairyu-card"]
+    note: >
+      2026-08-29 追加。在留カードとマイナンバーカードを一体化した「特定在留カード」の案内ページ。
+      Month 5 #42 の派生ネタであり、単独記事化の候補でもある（制度の新しさ＝検索需要の先取り余地）。
+      ⚠️ 制度の正式名称・根拠法・開始時期は本ページ原文で確認すること。未確認のまま記事化しない。
+
+  - id: isa-sainyukoku-kyoka
+    name: 再入国許可申請（みなし再入国許可を含む）
+    # ⚠️ 他の手続ページと違い /isa/immigration/ 配下（/isa/applications/ ではない）。実測確認済み。
+    url: https://www.moj.go.jp/isa/immigration/procedures/16-5.html
+    priority: P1
+    checkFrequency: weekly
+    category: nyukan
+    subcategory: zairyu
+    method: diff
+    status: confirmed
+    enabled: true
+    publishPriority: P1
+    note: >
+      2026-08-29 追加。docs/05 Month 5 #43（再入国許可とみなし再入国）の制度側ページ。
+
+  - id: isa-toroku-shien-kikan
+    name: 登録支援機関の登録申請
+    url: https://www.moj.go.jp/isa/applications/procedures/nyuukokukanri07_00183.html
+    priority: P1
+    checkFrequency: weekly
+    category: nyukan
+    subcategory: tokutei-gino
+    method: diff
+    status: confirmed
+    enabled: true
+    publishPriority: P1
+    related: ["isa-tokutei-gino-unyo"]
+    note: >
+      2026-08-29 追加。docs/05 Month 5 #45（登録支援機関の登録要件と支援計画）の制度側ページ。
+      支援計画の中身は既登録の isa-tokutei-gino-unyo（1号特定技能外国人支援に関する運用要領）が正。
+      既存記事 kanri-shien-toroku-shien-chigai（監理支援機関との違い）の制度側でもある。
+
   - id: mhlw-news
     name: 厚生労働省 新着情報（外国人雇用・食品衛生・旅館業）
     url: https://www.mhlw.go.jp/stf/news.rdf
