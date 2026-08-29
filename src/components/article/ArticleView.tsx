@@ -68,6 +68,11 @@ export async function ArticleView({
             {TYPE_TAGS[fm.type]}
           </span>
           {category && <span className="text-gray-500">{category.labelJa}</span>}
+          {fm.updatedAt !== fm.publishedAt && (
+            <span className="rounded border border-emerald-500 px-1.5 py-0.5 font-bold text-emerald-700">
+              最新情報に更新済み（{fm.updatedAt}）
+            </span>
+          )}
         </div>
         <h1 className="mt-2 text-2xl font-bold leading-snug text-gray-900 sm:text-3xl">
           {fm.title}
@@ -75,7 +80,12 @@ export async function ArticleView({
         <p className="mt-3 text-xs text-gray-500">
           <time dateTime={fm.publishedAt}>公開: {fm.publishedAt}</time>
           <span className="mx-2">|</span>
-          <time dateTime={fm.updatedAt}>最終更新: {fm.updatedAt}</time>
+          <time
+            dateTime={fm.updatedAt}
+            className={fm.updatedAt !== fm.publishedAt ? "font-semibold text-emerald-700" : undefined}
+          >
+            最終更新: {fm.updatedAt}
+          </time>
           <span className="mx-2">|</span>
           執筆: 編集部
         </p>

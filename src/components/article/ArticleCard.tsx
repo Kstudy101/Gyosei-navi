@@ -22,6 +22,11 @@ export function ArticleCard({ article }: { article: Article }) {
             未公開: {fm.status}
           </span>
         )}
+        {fm.updatedAt !== fm.publishedAt && (
+          <span className="rounded border border-emerald-500 px-1.5 py-0.5 font-semibold text-emerald-700">
+            最新情報に更新済み
+          </span>
+        )}
       </div>
       <h3 className="mt-2 font-bold leading-snug text-gray-900">
         <Link href={article.href} className="hover:text-brand-600">
@@ -32,7 +37,9 @@ export function ArticleCard({ article }: { article: Article }) {
         {fm.description}
       </p>
       <p className="mt-2 text-xs text-gray-400">
-        <time dateTime={fm.updatedAt}>更新: {fm.updatedAt}</time>
+        <time dateTime={fm.updatedAt}>
+          {fm.updatedAt !== fm.publishedAt ? "最終更新" : "更新"}: {fm.updatedAt}
+        </time>
       </p>
     </article>
   );
