@@ -20,9 +20,16 @@
 SEO 62항목 대입 완료(`docs/15`) — 남은 갭은 **계정 작업(GSC·Clarity)** 과 Phase 1 이후 항목뿐.
 
 **다음 우선순위**
-0. 🔴 **검수 1건 대기** — `content/news/working-holiday-panama-brazil-2026.mdx` (`status: review`).
-   ワーキング・ホリデー 대상국에 パナマ・ブラジル 추가하는 特定活動告示 개정案 2건(締切 **2026-09-22 必着**) 기사.
-   원문 대조는 완료(`data/sources/pubcomment-315000143/`·`-315000144/`). R7에 따라 **사람 검수 후** `published` 로 바꾸고 changelog 1행 추가할 것
+0. 🔴 **검수 4건 대기** (전건 원문 대조 완료 / R7에 따라 **사람 검수 후** `published` 전환 + changelog 1행)
+
+   | 우선 | slug | 내용 | 원문 |
+   |---|---|---|---|
+   | ⏰1 | `news/working-holiday-panama-brazil-2026` | WH 대상국에 パナマ·ブラジル 추가하는 特定活動告示 개정案 2건. **締切 2026-09-22 必着** — 마감 전 발행해야 의미가 있다 | `pubcomment-315000143/`·`-144/` |
+   | 2 | `guide/nyukan/zairyu-shikaku-nintei-shomeisho` | COE 完全ガイド (pillar, Month 5 #38) | `coe-koufu/` |
+   | 3 | `guide/nyukan/zairyu-shikaku-henko-ryugaku-shuro` | 在留資格変更(留学→就労) (#39) | `henko-kyoka/` |
+   | 4 | `guide/nyukan/zairyu-koshin-shorui-shori-kikan` | 在留期間更新의 시기·기간 (#40) | `koshin-kyoka/` |
+
+   ※ #38〜#40 은 서로 링크하므로 **묶어서 발행**할 것 (한쪽만 발행하면 데드링크).
 1. ⏰ **永住ガイドライン 퍼블릭코멘트 결과 공시 감시** — 締切 2026-09-03 必着. 공시되면 Month 1 기사 11건 + 도구 4파일 **48시간 내 일괄 갱신**이 신규 집필보다 우선. 절차는 `docs/14_PUBCOMMENT_RESULT_RUNBOOK.md` 그대로 따라갈 것
 2. **Month 5 집필 착수** — 계획은 `docs/05_CONTENT_CALENDAR.md` §Month 5 (#38〜#47 「申請手続」축). **착수 전 필수 조건(감시 등록)은 2026-08-29 해소 완료** — 제도측 9소스 신설·전건 취득 확인. 이제 #38(COE) 부터 一次情報 취득 → 집필로 바로 들어가면 된다
 3. LINE 공식계정 개설 + X 계정 운영 개시 (Phase 1 미착수 항목. 리드마그넷 3호는 Month 5 #47 로 계획됨)
