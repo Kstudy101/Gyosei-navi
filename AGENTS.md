@@ -112,7 +112,15 @@ npm run monitor            # 一次情報 변경 감지 (prompts/monitor/sources
 npm run pubcomment         # e-Gov パブコメ 신착 감시
 npm run stats              # e-Stat 통계 (ESTAT_APP_ID 필요)
 npm run keywords:seed      # 키워드 대장 시드
+npm run rotate:next        # 자동 발행 파이프라인의 카테고리 로테이션 (docs/16)
 ```
+
+## 자동 발행 파이프라인 (2026-09-03 도입)
+
+매일 3회(08:03/13:07/19:11 JST) 작업 스케줄러가 헤드리스 Claude 세션을 띄워
+카테고리 로테이션 → 소재 수집 → 원문 취득 → 집필 → 게이트 → 발행까지 수행한다.
+**절차서는 `docs/16_AUTO_PUBLISH_PIPELINE.md` 가 정본** — 자동 세션은 그 문서만 따른다.
+자동 커밋은 `[auto]` 접두사, 실패 시 draft 로 남긴다 (`[auto-draft]`). 발행 정책 근거: docs/04 §7 개정.
 
 API 스펙은 `docs/api/*.md` 에 조사 결과가 있다. **엔드포인트를 새로 쓸 때는 반드시 거기부터 읽고, 없으면 공식 문서를 열어 확인 후 추가한다.**
 

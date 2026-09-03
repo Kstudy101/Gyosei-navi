@@ -24,7 +24,8 @@
     "kanpo": "tsx scripts/archive-kanpo.ts",
     "og": "tsx scripts/generate-og.ts",
     "source": "tsx scripts/fetch-source.ts",
-    "test:visa-navi": "tsx scripts/test-visa-navi.ts"
+    "test:visa-navi": "tsx scripts/test-visa-navi.ts",
+    "rotate:next": "tsx scripts/rotate-category.ts"
   },
   "dependencies": {
     "@mdx-js/mdx": "^3.1.0",

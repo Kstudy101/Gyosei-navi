@@ -18,3 +18,6 @@ out/
 *.log
 .vercel
 .contentlayer
+
+# MCP 도구 산출물 (로컬 전용)
+.serena/
