@@ -180,6 +180,13 @@ export interface MunicipalityDef {
  *   団体コード281000＝検査数字込み6桁を確認、このファイルの他エントリに合わせ検査数字を除いた5桁「28100」で登録。
  *   兵庫県として初の市区町村登録。slugは県スラッグ「hyogo」との混同はないため「kobe」とした。一次情報:
  *   data/sources/kobe-sumikaeru/README.md, data/sources/kobe-shi-code/01_soumu-zenkoku-chihoukoukyoudantai-code.pdf 参照）。
+ * 2026-09-21: 姫路市を追加登録（kekkon カテゴリの姫路市結婚新生活支援補助金記事のため）。兵庫県は既に神戸市
+ *   （28100）を登録済みのため、同県2件目の市区町村登録。総務省「全国地方公共団体コード」一覧PDF
+ *   （000925834.pdf、https://www.soumu.go.jp/main_content/000925834.pdf）を神戸市登録時に取得済みのコピー
+ *   （data/sources/kobe-shi-code/01_soumu-zenkoku-chihoukoukyoudantai-code.pdf）21ページ目・兵庫県セクションで
+ *   団体コード282014＝検査数字込み6桁を確認、このファイルの他エントリに合わせ検査数字を除いた5桁「28201」で
+ *   登録（topic-scout の事前推定28201と一致）。slugは県スラッグ「hyogo」との混同がないため「himeji」とした。
+ *   一次情報: data/sources/himeji-kekkon-shinseikatsu-shien/README.md 参照）。
  * 2026-09-21: 広島市を追加登録（shogaisha カテゴリの重度心身障害者医療費補助制度記事のため）。政令指定都市のため
  *   横浜市・名古屋市・仙台市・札幌市・さいたま市・京都市・福岡市・静岡市・北九州市・熊本市等と同様に区単位では
  *   なく市全体を1エントリとして登録。総務省「全国地方公共団体コード」一覧PDF（000925834.pdf、
@@ -235,6 +242,7 @@ export const MUNICIPALITIES: readonly MunicipalityDef[] = [
   { code: "43100", slug: "kumamoto-shi", labelJa: "熊本市", prefCode: "43" },
   { code: "34100", slug: "hiroshima-shi", labelJa: "広島市", prefCode: "34" },
   { code: "28100", slug: "kobe", labelJa: "神戸市", prefCode: "28" },
+  { code: "28201", slug: "himeji", labelJa: "姫路市", prefCode: "28" },
 ];
 
 export const getPrefectureBySlug = (slug: string): PrefectureDef | undefined =>
