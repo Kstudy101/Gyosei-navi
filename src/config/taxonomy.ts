@@ -72,6 +72,34 @@ export const CATEGORIES: readonly CategoryDef[] = [
     description: "太陽光発電、断熱リフォーム、EV導入などに関する補助金。",
     seedKeywords: ["太陽光 補助金", "断熱リフォーム 補助金", "EV 補助金"],
   },
+  {
+    code: "pet",
+    labelJa: "ペット",
+    labelShort: "ペット",
+    description: "犬猫の不妊去勢手術費助成、マイクロチップ装着助成など飼い主向けの給付制度。",
+    seedKeywords: ["犬 去勢 助成金", "猫 不妊手術 補助金", "ペット マイクロチップ 補助"],
+  },
+  {
+    code: "shogaisha",
+    labelJa: "障害者支援",
+    labelShort: "障害者支援",
+    description: "補装具費・日常生活用具給付、タクシー利用助成など障害のある人・家族向けの給付制度。",
+    seedKeywords: ["障害者 補助金", "補装具費 支給", "障害福祉 助成金"],
+  },
+  {
+    code: "kyoiku",
+    labelJa: "教育・奨学金",
+    labelShort: "教育",
+    description: "高等学校等就学支援金、給付型奨学金、就学援助など教育費に関する給付制度。",
+    seedKeywords: ["高校 就学支援金", "給付型奨学金", "就学援助 補助金"],
+  },
+  {
+    code: "kekkon",
+    labelJa: "結婚",
+    labelShort: "結婚",
+    description: "結婚新生活支援事業など、新婚世帯の住居費・引っ越し費用を補助する制度。",
+    seedKeywords: ["結婚新生活支援事業", "新婚 補助金", "結婚 助成金"],
+  },
 ] as const;
 
 export const CATEGORY_CODES = CATEGORIES.map((c) => c.code);

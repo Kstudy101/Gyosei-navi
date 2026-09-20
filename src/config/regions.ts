@@ -87,14 +87,24 @@ export interface MunicipalityDef {
  * 2026-09-20: 大阪市の人口上位6区を追加登録（総務省統計局・国勢調査統計表のe-Stat API「getMetaInfo」
  *   area軸メタデータでコードを確認、大阪市公式「推計人口年報（令和６年）」表4-1で人口順位を確認。
  *   一次情報: data/sources/osaka-wards-codes/README.md 参照）。
+ * 2026-09-20: 立川市・青梅市（東京都）、川口市（埼玉県）を追加登録（kekkon カテゴリの結婚新生活支援事業
+ *   記事のため）。総務省「全国地方公共団体コード一覧」PDF（000925834.pdf）で団体コード132021・132055・
+ *   112038＝検査数字込み6桁を確認、このファイルの他エントリに合わせ検査数字を除いた5桁で登録。
+ *   埼玉県として初の市区町村登録（一般コースの結婚新生活支援補助金は国基準ではなく市独自基準を採用）。
+ * 2026-09-20: 中央区を追加登録（東京23区を千代田・港・新宿・品川・世田谷・渋谷の6区から23区へ
+ *   段階拡大する一環。総務省「都道府県コード及び市区町村コード」PDFで団体コード131024を確認、
+ *   検査数字を除いた5桁「13102」で登録）。
  */
 export const MUNICIPALITIES: readonly MunicipalityDef[] = [
   { code: "13101", slug: "chiyoda", labelJa: "千代田区", prefCode: "13" },
+  { code: "13102", slug: "chuo", labelJa: "中央区", prefCode: "13" },
   { code: "13103", slug: "minato", labelJa: "港区", prefCode: "13" },
   { code: "13104", slug: "shinjuku", labelJa: "新宿区", prefCode: "13" },
   { code: "13109", slug: "shinagawa", labelJa: "品川区", prefCode: "13" },
   { code: "13112", slug: "setagaya", labelJa: "世田谷区", prefCode: "13" },
   { code: "13113", slug: "shibuya", labelJa: "渋谷区", prefCode: "13" },
+  { code: "13202", slug: "tachikawa", labelJa: "立川市", prefCode: "13" },
+  { code: "13205", slug: "ome", labelJa: "青梅市", prefCode: "13" },
   { code: "14100", slug: "yokohama", labelJa: "横浜市", prefCode: "14" },
   { code: "23100", slug: "nagoya", labelJa: "名古屋市", prefCode: "23" },
   { code: "27123", slug: "yodogawa", labelJa: "淀川区", prefCode: "27" },
@@ -103,6 +113,7 @@ export const MUNICIPALITIES: readonly MunicipalityDef[] = [
   { code: "27118", slug: "joto", labelJa: "城東区", prefCode: "27" },
   { code: "27120", slug: "sumiyoshi", labelJa: "住吉区", prefCode: "27" },
   { code: "27127", slug: "kita-osaka", labelJa: "北区", prefCode: "27" },
+  { code: "11203", slug: "kawaguchi", labelJa: "川口市", prefCode: "11" },
 ];
 
 export const getPrefectureBySlug = (slug: string): PrefectureDef | undefined =>
