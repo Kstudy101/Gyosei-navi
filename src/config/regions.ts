@@ -212,6 +212,11 @@ export interface MunicipalityDef {
  *   19ページ目・三重県セクションで団体コード242012＝検査数字込み6桁を確認、このファイルの他エントリに合わせ
  *   検査数字を除いた5桁「24201」で登録。三重県として初の市区町村登録。一次情報: data/sources/tsu-shi-code/
  *   01_soumu-zenkoku-chihoukoukyoudantai-code.pdf, data/sources/tsu-neko-funinkyosei/README.md 参照）。
+ * 2026-09-21: 下関市を追加登録（shogaisha カテゴリの軽度・中等度難聴児補聴器購入費等の助成記事のため）。総務省
+ *   「全国地方公共団体コード」一覧PDF（000925834.pdf、https://www.soumu.go.jp/main_content/000925834.pdf）
+ *   24ページ目・山口県セクションで団体コード352012＝検査数字込み6桁を確認、このファイルの他エントリに合わせ
+ *   検査数字を除いた5桁「35201」で登録。山口県として初の市区町村登録。一次情報:
+ *   data/sources/shimonoseki-nancho-hochoki-josei/03_soumu-zenkoku-chihoukoukyoudantai-code.pdf, README.md 参照）。
  */
 export const MUNICIPALITIES: readonly MunicipalityDef[] = [
   { code: "13101", slug: "chiyoda", labelJa: "千代田区", prefCode: "13" },
@@ -263,6 +268,7 @@ export const MUNICIPALITIES: readonly MunicipalityDef[] = [
   { code: "28201", slug: "himeji", labelJa: "姫路市", prefCode: "28" },
   { code: "02201", slug: "aomori-shi", labelJa: "青森市", prefCode: "02" },
   { code: "24201", slug: "tsu", labelJa: "津市", prefCode: "24" },
+  { code: "35201", slug: "shimonoseki", labelJa: "下関市", prefCode: "35" },
 ];
 
 export const getPrefectureBySlug = (slug: string): PrefectureDef | undefined =>
