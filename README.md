@@ -18,14 +18,18 @@
 **완료**:
 - 마스터플랜・IA/택소노미・리포구조・콘텐츠템플릿・편집가이드・법적포지셔닝 문서를 v2로 전면 재작성. v1 운영 문서(07~16)에는 유산 표시 삽입.
 - v1 콘텐츠(기사 76건)・`prompts/`・v1 전용 라우트/컴포넌트/lib/scripts 삭제.
-- `src/config/{site,taxonomy,regions}.ts`, `src/lib/content-schema.ts`를 v2 스키마로 재작성. `npm run build` 정상 통과(정적 8페이지).
+- `src/config/{site,taxonomy,regions}.ts`, `src/lib/content-schema.ts`를 v2 스키마로 재작성.
+- **MDX 콘텐츠 파이프라인 재구축** — `content.ts`・`seo.ts`・`mdx.tsx`・`related.ts` 실제 동작 확인. 신규 라우트 `/subsidy/[category]/[slug]`・`/area/[pref]/[city]`・`/compare/[slug]`・`/news/[slug]` 생성.
+- `src/components/article/*` 8종 재작성(신규: 금액・마감을 카드로 보여주는 `SubsidyInfoCard`, 지역 횡단 비교표 `CompareTable`).
+- 5개 카테고리(`shussan`・`jutaku`・`sogyo`・`kaigo`・`energy`) 각 Pillar 1건을 draft로 작성해 구조 검증(금액・URL은 실조사 전 플레이스홀더).
+- `validate-content`・`check-links`・`stale-report`・`new-article` 스크립트 v2 복원.
 - `src/lib/sources/jgrants.ts`, `http.ts` 등은 **보존・재활용** (전국 보조금 API 연동의 핵심 자산).
+- `npm run build` 정상 통과(63페이지 색인, draft는 자동 제외 확인).
 
-**다음 단계 (미착수)**:
-- MDX 콘텐츠 파이프라인 재구축 여부 결정 — 현재 `src/lib/content.ts`・`seo.ts`는 빈 배열만 반환하는 임시 스텁.
-- `/subsidy/[category]`・`/area/[pref]/[city]`・`/compare/[slug]` 라우트 신설.
+**다음 단계**:
+- 실제 지자체・국가 공식 사이트를 조사해 draft 중 최소 1건을 published로 전환.
 - `src/config/regions.ts`에 시구정촌 데이터 추가(현재 47도도부현만 등록).
-- 초기 카테고리 확정 후 `docs/05_CONTENT_CALENDAR.md` 재수립.
+- 콘텐츠가 쌓이는 대로 `docs/05_CONTENT_CALENDAR.md` 갱신.
 
 ## 문서 지도 (v2)
 
@@ -48,7 +52,8 @@
 | `src/config/taxonomy.ts` | 분류체계 | v2 작성 완료(카테고리 5개 초안) |
 | `src/config/regions.ts` | 지역 코드-슬러그 매핑 | v2 작성 완료(도도부현만, 시구정촌 단계적 확대 예정) |
 | `src/lib/content-schema.ts` | frontmatter zod 스키마 | v2 작성 완료(subsidy 필드군 포함) |
-| `src/lib/content.ts`, `seo.ts` | MDX 로딩・SEO 헬퍼 | 임시 스텁 — MDX 파이프라인 결정 후 교체 |
+| `src/lib/content.ts`, `seo.ts`, `mdx.tsx`, `related.ts` | MDX 로딩・렌더링・SEO 헬퍼 | v2 작성 완료 — 실제 동작 |
+| `src/components/article/*` | 기사 렌더링 컴포넌트 8종 | v2 작성 완료 |
 | `src/lib/sources/jgrants.ts`, `http.ts` | 전국 보조금 API 연동 | **계승・재활용** |
 
 ## 개발
@@ -57,9 +62,11 @@
 npm install
 npm run dev
 npm run build
+npm run validate:content   # 전 기사 frontmatter 검증
+npm run new:article -- --section subsidy --category shussan --slug <slug> --type cluster
 ```
 
-> `npm run build`는 정적 export(out/)로 정상 생성된다. 실제 기사 콘텐츠는 아직 없다(`content.ts`가 스텁이므로 sitemap 등은 빈 목록을 반환).
+> `npm run build`는 정적 export(out/)로 정상 생성된다. 콘텐츠는 5개 카테고리에 draft 각 1건(구조 검증용 플레이스홀더)만 있고, 실지조사를 거친 published 기사는 아직 0건이다.
 
 ## 3대 원칙 (v2)
 
