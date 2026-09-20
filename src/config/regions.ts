@@ -239,6 +239,14 @@ export interface MunicipalityDef {
  *   を除いた5桁「12100」で登録。千葉県として初の市区町村登録。slugは県スラッグ「chiba」との混同を避けるため
  *   「chiba-shi」とした（さいたま市・京都市・熊本市等と同じパターン）。一次情報: data/sources/chiba-shi-kekkon-shinseikatsu/
  *   06_soumu-zenkoku-chihoukoukyoudantai-code.pdf, README.md 参照）。
+ * 2026-09-21: 岐阜市を追加登録（jutaku カテゴリの空き家取得費・改修費補助金記事のため）。岐阜市は
+ *   政令指定都市ではないため区単位に分割せず市全体を1エントリとして登録。総務省「全国地方公共団体コード」
+ *   一覧PDF（000925834.pdf、https://www.soumu.go.jp/main_content/000925834.pdf）16ページ目・岐阜県セクションで
+ *   団体コード212016＝検査数字込み6桁を確認、このファイルの他エントリに合わせ検査数字を除いた5桁「21201」で
+ *   登録。岐阜県として初の市区町村登録。slugは県スラッグ「gifu」との混同を避けるため「gifu-shi」とした
+ *   （さいたま市・京都市・熊本市等と同じパターン）。令和8年度は予算上限到達により受付停止中（原文で確認済み）。
+ *   一次情報: data/sources/gifu-shi-code/01_soumu-zenkoku-chihoukoukyoudantai-code.pdf, README.md,
+ *   data/sources/gifu-shi-akiya-shutoku-kaishu-hojokin/README.md 参照）。
  */
 export const MUNICIPALITIES: readonly MunicipalityDef[] = [
   { code: "13101", slug: "chiyoda", labelJa: "千代田区", prefCode: "13" },
@@ -296,6 +304,7 @@ export const MUNICIPALITIES: readonly MunicipalityDef[] = [
   { code: "46201", slug: "kagoshima-shi", labelJa: "鹿児島市", prefCode: "46" },
   { code: "11222", slug: "koshigaya", labelJa: "越谷市", prefCode: "11" },
   { code: "12100", slug: "chiba-shi", labelJa: "千葉市", prefCode: "12" },
+  { code: "21201", slug: "gifu-shi", labelJa: "岐阜市", prefCode: "21" },
 ];
 
 export const getPrefectureBySlug = (slug: string): PrefectureDef | undefined =>
