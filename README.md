@@ -24,11 +24,13 @@
 - 5개 카테고리(`shussan`・`jutaku`・`sogyo`・`kaigo`・`energy`) 각 Pillar 1건을 draft로 작성해 구조 검증(금액・URL은 실조사 전 플레이스홀더).
 - `validate-content`・`check-links`・`stale-report`・`new-article` 스크립트 v2 복원.
 - `src/lib/sources/jgrants.ts`, `http.ts` 등은 **보존・재활용** (전국 보조금 API 연동의 핵심 자산).
-- `npm run build` 정상 통과(63페이지 색인, draft는 자동 제외 확인).
+- **첫 실제 published 기사 발행** — jGrants 공개API로 취득한 실제 원문을 근거로 `content/subsidy/sogyo/jizokuka-hojokin-kyodo-kyogyo.mdx` 작성. 원문은 `data/sources/jizokuka-hojokin-kyodo-kyogyo/`에 가공 없이 보관.
+- v1 `data/` 잔재(원문 아카이브 36건, 관보 텍스트 82MB, 키워드 대장 등) 삭제.
+- `npm run build` 정상 통과, published 기사 1건이 정적 생성·검색 색인됨을 확인.
 
 **다음 단계**:
-- 실제 지자체・국가 공식 사이트를 조사해 draft 중 최소 1건을 published로 전환.
-- `src/config/regions.ts`에 시구정촌 데이터 추가(현재 47도도부현만 등록).
+- `jizokuka-hojokin-kyodo-kyogyo.mdx`를 템플릿 삼아 나머지 4개 카테고리에도 실제 조사 기반 기사를 최소 1건씩 확보.
+- `src/config/regions.ts`에 시구정촌 데이터 추가(현재 47도도부현만 등록) — 지자체 단위 기사를 쓰려면 선행 필요.
 - 콘텐츠가 쌓이는 대로 `docs/05_CONTENT_CALENDAR.md` 갱신.
 
 ## 문서 지도 (v2)

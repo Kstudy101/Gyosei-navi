@@ -24,23 +24,24 @@
 
 ## 지금 해야 할 일
 
-> 갱신: 2026-09-20. v1 시절 진행 상황(`published 75기사` 등)은 전부 무효 — 새 콘텐츠는 0건부터 시작한다(published 기준. draft는 아래 참조).
+> 갱신: 2026-09-20. v1 시절 진행 상황(`published 75기사` 등)은 전부 무효.
 
-**현황**: 문서 재설계, v1 콘텐츠・코드 정리, v2 스캐폴딩, **MDX 콘텐츠 파이프라인 재구축까지 완료.**
-- `content/`(v1 기사 76건)・`prompts/`・v1 전용 라우트/컴포넌트/lib/scripts 삭제.
+**현황**: 문서 재설계, v1 콘텐츠・코드・데이터 정리, v2 스캐폴딩, MDX 콘텐츠 파이프라인 재구축, **첫 실제 published 기사 발행까지 완료.**
+- `content/`(v1 기사 76건)・`prompts/`・v1 전용 라우트/컴포넌트/lib/scripts 삭제. `data/sources/`(36개, 행정서사 원문)・`data/kanpo-text/`(82MB, 관보 아카이브)・`data/keywords.csv`・`data/auto-rotation.json`도 뒤늦게 발견해 정리 완료 — `data/`에는 이제 `data/stats/`(e-Stat 캐시, 재활용)와 `data/sources/jizokuka-hojokin-kyodo-kyogyo/`(v2 신규 원문)만 남음.
 - `src/config/{site,taxonomy,regions}.ts`・`src/lib/content-schema.ts` v2 스키마로 재작성.
 - `src/lib/content.ts`・`seo.ts`・`mdx.tsx`・`related.ts`를 실제 동작하는 로직으로 재구축(섹션: `subsidy`/`compare`/`news`).
-- 신규 라우트 4종 생성: `/subsidy/[category]/[slug]`, `/area/[pref]/[city]`, `/compare/[slug]`, `/news/[slug]`.
-- `src/components/article/*` 8종 재작성(신규: `SubsidyInfoCard` 금액・마감・모집상태 카드, `CompareTable` 지역 횡단 비교표).
-- 5개 카테고리(`shussan`・`jutaku`・`sogyo`・`kaigo`・`energy`) 각 Pillar 1건을 **status: draft**로 작성 — frontmatter/컴포넌트 구조 검증용 플레이스홀더이며 **금액・URL은 실제 조사 없이 채운 자리표시자다.** published 전환 전 반드시 원문 확인 필요(`content/subsidy/*/[slug].mdx` 파일 상단 경고 참조).
-- `validate-content`・`check-links`・`stale-report`・`new-article` 스크립트 v2 복원, `package.json`에 재연결.
-- `npm run build` 정상 통과(63페이지 색인 확인), draft 기사는 프로덕션 빌드에서 자동 제외됨을 검증.
+- 신규 라우트 4종: `/subsidy/[category]/[slug]`, `/area/[pref]/[city]`, `/compare/[slug]`, `/news/[slug]`.
+- `src/components/article/*` 8종(신규: `SubsidyInfoCard`, `CompareTable`).
+- `validate-content`・`check-links`・`stale-report`・`new-article` 스크립트 v2 복원.
+- **`content/subsidy/sogyo/jizokuka-hojokin-kyodo-kyogyo.mdx`** — jGrants 공개API(v2詳細)로 실제 취득한 원문을 근거로 작성한 **첫 published 기사.** 원문은 `data/sources/jizokuka-hojokin-kyodo-kyogyo/`에 가공 없이 보관(절대규칙 7 준수). 이 기사가 published 콘텐츠의 유일한 실사례이며, 향후 기사 작성 시 형식・sourceLinks 기재・data/sources 아카이빙 방식의 참고 템플릿으로 삼을 것.
+- 5개 카테고리(`shussan`・`jutaku`・`sogyo`・`kaigo`・`energy`) 각 Pillar 1건은 여전히 **status: draft**(구조 검증용, 금액・URL 플레이스홀더) — published 전환 전 반드시 원문 확인 필요.
+- `npm run build` 정상 통과, published 기사 1건만 정적 생성·검색 색인됨을 확인.
 
 **다음 우선순위**
-1. **실제 콘텐츠 조사 착수** — 5개 draft 중 최소 1건을 실제 지자체・국가 공식 사이트 조사로 채워 `published`로 전환. `sogyo`(창업・사업)는 `npm run subsidies`(jGrants API)로 실데이터 확보가 가장 빠르다.
-2. **초기 착수 카테고리 우선순위 압축 검토** — 5개 동시 착수로 확정했으나(2026-09-20), 실제 집필 리소스에 따라 1~2개 우선 완성 후 확장하는 방식도 재검토 가능.
-3. **`src/config/regions.ts`에 시구정촌 데이터 추가** — 현재 47도도부현만 등록, `MUNICIPALITIES`는 빈 배열. 기사화할 지자체가 정해지는 대로 추가(`docs/01` §4.1 예시 참조).
-4. 실제 기사가 쌓이기 시작하면 `docs/05_CONTENT_CALENDAR.md`를 진행 상황에 맞춰 갱신.
+1. **`sogyo` 외 카테고리에도 실제 기사 1건씩 확보** — `jizokuka-hojokin-kyodo-kyogyo.mdx`를 템플릿 삼아, `shussan`・`jutaku`・`kaigo`・`energy`도 실제 지자체・국가 공식 사이트를 조사해 최소 1건씩 published로 만드는 것이 다음 단계.
+2. **jGrants 상위 캐치(`data/sources/*/README.md`) 관행 정착** — 앞으로 jGrants 기반 기사를 쓸 때마다 `fetchSubsidyDetail()` 원응답을 `data/sources/<slug>/`에 JSON 그대로 저장하고 README로 근거를 정리하는 절차를 유지할 것(이번 기사가 그 첫 사례).
+3. **`src/config/regions.ts`에 시구정촌 데이터 추가** — 현재 47도도부현만 등록, `MUNICIPALITIES`는 빈 배열. 지자체 단위 기사(`shussan`의 출산축하금 등)를 쓰려면 먼저 해당 지자체를 여기 등록해야 한다.
+4. 실제 기사가 쌓이는 대로 `docs/05_CONTENT_CALENDAR.md`를 진행 상황에 맞춰 갱신.
 
 **주의**:
 - **draft 기사에 적힌 금액・마감일・URL은 전부 플레이스홀더다.** 절대 그대로 published로 바꾸지 말 것 — AGENTS.md 절대규칙 7(원문 확인 없이 쓰기 금지)・9(AI가 만든 수치 그대로 쓰기 금지) 위반이 된다.
