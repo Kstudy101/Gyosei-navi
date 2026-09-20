@@ -18,6 +18,7 @@
     "check:links": "tsx scripts/check-links.ts",
     "stale": "tsx scripts/stale-report.ts",
     "new:article": "tsx scripts/new-article.ts",
+    "export:articles-for-seo": "tsx scripts/export-articles-for-seo.ts",
     "ads:rakuten": "tsx scripts/fetch-rakuten-products.ts",
     "test": "node --import tsx --test src/lib/ads/flags.test.ts src/lib/ads/rakuten/client.test.ts src/lib/ads/rakuten/mapping.test.ts"
   },
