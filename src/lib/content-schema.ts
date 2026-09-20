@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { CATEGORY_CODES } from "@/config/taxonomy";
+import { CATEGORY_CODES, TOKUSHU_CATEGORY_CODES } from "@/config/taxonomy";
 
 /**
  * MDX frontmatter のバリデーションスキーマ v2。
@@ -43,14 +43,28 @@ export const subsidySchema = z.object({
   verifiedAt: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
 });
 
+/** 特集（tokushu）の順位1件 — docs/03 §3-2 */
+export const rankingItemSchema = z.object({
+  rank: z.number().int().min(1),
+  /** 根拠となる subsidy または compare 記事の slug */
+  slug: z.string().min(1),
+  /** 見出しに使う短いラベル（例: 「渋谷区」） */
+  label: z.string().min(1),
+  /** この順位である理由の要約 */
+  summary: z.string().min(1),
+});
+
 export const articleFrontmatterSchema = z
   .object({
     title: z.string().min(10).max(60),
     slug: z
       .string()
       .regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, "slugは英小文字・数字・ハイフンのみ（日本語URL禁止）"),
-    category: z.enum(CATEGORY_CODES as [string, ...string[]]).or(z.string()),
-    type: z.enum(["pillar", "cluster", "compare", "news", "checklist", "tool"]),
+    /** subsidy 記事は CATEGORY_CODES、tokushu 記事は TOKUSHU_CATEGORY_CODES を使う（下の refine で検証） */
+    category: z
+      .enum([...CATEGORY_CODES, ...TOKUSHU_CATEGORY_CODES] as [string, ...string[]])
+      .or(z.string()),
+    type: z.enum(["pillar", "cluster", "compare", "tokushu", "news", "checklist", "tool"]),
     tags: z.array(z.string()).default([]),
     description: z.string().min(50).max(160), // meta description 最適長
     publishedAt: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
@@ -67,10 +81,12 @@ export const articleFrontmatterSchema = z
     targetKeywords: z.array(z.string()).default([]),
     /** 更新履歴 */
     changelog: z.array(z.object({ date: z.string(), note: z.string() })).default([]),
-    /** type: cluster/pillar/news の記事が扱う補助金の構造化データ。compare 記事は不要 */
+    /** type: cluster/pillar/news の記事が扱う補助金の構造化データ。compare/tokushu 記事は不要 */
     subsidy: subsidySchema.optional(),
     /** type: compare 専用。比較対象の記事 slug（最低5件 — docs/03 §3） */
     compareTargets: z.array(z.string()).default([]),
+    /** type: tokushu 専用。順位リスト（最低5件 — docs/03 §3-2, docs/01 §7.1） */
+    rankings: z.array(rankingItemSchema).default([]),
   })
   .refine((d) => d.status !== "published" || d.sourceLinks.length > 0, {
     message: "公開記事には一次情報（sourceLinks）が最低1件必要です",
@@ -80,13 +96,28 @@ export const articleFrontmatterSchema = z
     message: "updatedAt は publishedAt 以降である必要があります",
     path: ["updatedAt"],
   })
-  .refine((d) => d.type === "compare" || d.subsidy !== undefined, {
-    message: "compare以外の記事には subsidy フィールドが必須です",
+  .refine((d) => d.type === "compare" || d.type === "tokushu" || d.subsidy !== undefined, {
+    message: "compare・tokushu以外の記事には subsidy フィールドが必須です",
     path: ["subsidy"],
   })
   .refine((d) => d.type !== "compare" || d.compareTargets.length >= 5, {
     message: "compare記事は比較対象（compareTargets）が最低5件必要です",
     path: ["compareTargets"],
-  });
+  })
+  .refine((d) => d.type !== "tokushu" || d.rankings.length >= 5, {
+    message: "tokushu記事は順位（rankings）が最低5件必要です — DB不足時の推測ランキングを防ぐゲート（docs/01 §7.1）",
+    path: ["rankings"],
+  })
+  .refine(
+    (d) => {
+      if (d.type !== "tokushu") return true;
+      const ranks = d.rankings.map((r) => r.rank).sort((a, b) => a - b);
+      return ranks.every((r, i) => r === i + 1);
+    },
+    {
+      message: "tokushu記事の rankings.rank は 1 から連番でなければなりません（欠番・重複禁止）",
+      path: ["rankings"],
+    }
+  );
 
 export type ArticleFrontmatter = z.infer<typeof articleFrontmatterSchema>;

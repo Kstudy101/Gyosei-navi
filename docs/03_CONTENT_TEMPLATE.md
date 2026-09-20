@@ -28,8 +28,8 @@ v1은 frontmatter가 **기사(해설 콘텐츠)** 단위였다. v2는 그 위에
 |---|:---:|---|---|
 | `title` | ● | string(10-60) | 32자 이내 권장 |
 | `slug` | ● | kebab-case | 영소문자・숫자・하이픈만 |
-| `category` | ● | enum | `docs/01` §3 카테고리 코드 |
-| `type` | ● | enum | `pillar` / `cluster` / `compare` / `news` / `checklist` / `tool` — **`compare` 신설, v1의 `interview`는 제외(용도 없음)** |
+| `category` | ● | enum | `docs/01` §3 카테고리 코드(`type: tokushu`는 §3-2의 특집 전용 카테고리) |
+| `type` | ● | enum | `pillar` / `cluster` / `compare` / `tokushu` / `news` / `checklist` / `tool` — **`compare`・`tokushu` 신설, v1의 `interview`는 제외(용도 없음)** |
 | `description` | ● | string(50-160) | meta description |
 | `publishedAt` | ● | YYYY-MM-DD | |
 | `updatedAt` | ● | YYYY-MM-DD | ≥ publishedAt |
@@ -83,6 +83,17 @@ published 기사는 최소 1건 필수 — zod `refine`으로 빌드 게이트 �
 
 상세 구현은 `content-schema.ts`・`components/article/CompareTable.tsx` 작성 시 확정한다.
 
+## 3-2. `type: tokushu` 전용 필드 (특집 페이지, 2026-09-20 신설)
+
+`docs/01` §7의 편집적 랭킹 콘텐츠. `compare`와 달리 순위・서열이 있고, 편집부의 판단(누가 1위인가)이 들어간다.
+
+- `category`는 §3의 `subsidy` 목적별 카테고리가 아니라 **`TOKUSHU_CATEGORIES`(taxonomy.ts, 특집 전용)** 를 쓴다.
+- `rankings: { rank: number; slug: string; label: string; summary: string }[]` — 순위 목록. `slug`는 근거가 되는 `subsidy` 기사(또는 `compare` 기사)를 가리킨다. **최소 5건**(§7.1의 발행 전제조건과 동일 기준).
+- `subsidy` 필드는 불필요(compare와 동일하게 `content-schema.ts`의 refine에서 `tokushu`도 `compare`와 함께 제외 대상).
+- 본문은 MDX 컴포넌트 `<TokushuRanking items={[...]} />`로 순위를 렌더링(각 순위별 근거 서술 포함).
+
+> **발행 게이트**: `rankings`가 5건 미만이면 빌드를 막는다(zod refine) — 표본 부족 상태의 추측성 랭킹 발행을 원천 차단한다(`docs/01` §7.1).
+
 ## 4. 본문 MDX 컴포넌트 (설계안)
 
 | 컴포넌트 | 용도 |
@@ -93,6 +104,7 @@ published 기사는 최소 1건 필수 — zod `refine`으로 빌드 게이트 �
 | `<Disclaimer />` | 기사 말미 정형 면책문 — v1 계승, 문구는 v2로 완화(`docs/06`) |
 | `<SubsidyInfoCard />` | ★신규 — `subsidy` 필드를 카드 형태로 요약 표시(금액・마감・상태 배지) |
 | `<CompareTable targets={[...]} />` | ★신규 — 비교 페이지 전용 |
+| `<TokushuRanking items={[...]} />` | ★신규 — 특집 순위 페이지 전용 |
 | `<SourceLinkList />` | `sourceLinks` 자동 전개(v1 `<LegalBasisList />` 개명) |
 | `<Deadline id="..." />` | 마감 카운트다운 — v1 계승, `subsidy.periodEnd`와 연동 검토 |
 
@@ -119,6 +131,7 @@ published 기사는 최소 1건 필수 — zod `refine`으로 빌드 게이트 �
 | cluster | 2,000~3,500자 | 개별 보조금 해설 |
 | pillar | 4,000~8,000자 | 카테고리 종합 가이드 |
 | compare | — | 표 중심, 비교 대상 5건 이상 필수 |
+| tokushu | 2,000~4,000자 | 순위 5건 이상 필수, 순위별 근거 서술 |
 | checklist | 800자+ 자료 | 리드마그넷 |
 
 ## 7. 발행 전 확인

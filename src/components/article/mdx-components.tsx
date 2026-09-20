@@ -3,6 +3,7 @@ import type { ArticleFrontmatter } from "@/lib/content-schema";
 import { Callout } from "@/components/article/Callout";
 import { Checklist } from "@/components/article/Checklist";
 import { CompareTable } from "@/components/article/CompareTable";
+import { TokushuRanking } from "@/components/article/TokushuRanking";
 import { Disclaimer } from "@/components/article/Disclaimer";
 import { FaqList } from "@/components/article/FaqList";
 import { SourceLinkList } from "@/components/article/SourceLinkList";
@@ -27,6 +28,7 @@ export function buildMdxComponents(fm: ArticleFrontmatter): MDXComponents {
     Callout,
     Checklist,
     CompareTable: () => <CompareTable targets={fm.compareTargets} />,
+    TokushuRanking: () => <TokushuRanking items={fm.rankings} />,
     Disclaimer,
     FAQ: () => <FaqList items={fm.faq} />,
     SourceLinkList: () => <SourceLinkList items={fm.sourceLinks} />,

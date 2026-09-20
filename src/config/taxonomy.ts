@@ -13,6 +13,7 @@ export const SECTIONS = {
   subsidy: { label: "補助金を探す", path: "/subsidy", audience: "all" },
   area: { label: "地域から探す", path: "/area", audience: "all" },
   compare: { label: "地域比較", path: "/compare", audience: "all" },
+  tokushu: { label: "特集", path: "/tokushu", audience: "all" },
   news: { label: "新着・締切情報", path: "/news", audience: "all" },
 } as const;
 
@@ -80,6 +81,36 @@ export const getCategory = (code: string): CategoryDef | undefined =>
   CATEGORIES.find((c) => c.code === code);
 
 /* ------------------------------------------------------------------ */
+/* 2-2. 特集のカテゴリ（tokushu 配下、subsidy の CATEGORIES とは別体系）    */
+/* ------------------------------------------------------------------ */
+
+/**
+ * 特集（編集的ランキングコンテンツ）のテーマ軸。docs/01 §7。
+ * subsidy の目的別カテゴリと違い、複数の subsidy カテゴリを横断してよい
+ * （例: 「子育てに手厚い市」は shussan + kaigo のデータを併用しうる）。
+ * 今後継続的に追加していく前提で設計する — 新設条件は docs/01 §7.2。
+ *
+ * 2026-09-20 時点: 実際の特集記事はまだ0件（比較対象の自治体データが
+ * 最低5件に達したカテゴリのみ発行可 — content-schema.ts の refine で強制）。
+ * ここではカテゴリの器だけを先に用意する。
+ */
+export const TOKUSHU_CATEGORIES: readonly CategoryDef[] = [
+  {
+    code: "kosodate",
+    labelJa: "子育て支援",
+    labelShort: "子育て",
+    description: "出産祝い金・保育料補助など、子育て世帯への支援が手厚い自治体のランキング特集。",
+    seedKeywords: ["子育て 手厚い 市", "出産祝い金 ランキング", "子育て支援 自治体 比較"],
+  },
+] as const;
+
+export const TOKUSHU_CATEGORY_CODES = TOKUSHU_CATEGORIES.map((c) => c.code);
+export type TokushuCategoryCode = (typeof TOKUSHU_CATEGORIES)[number]["code"];
+
+export const getTokushuCategory = (code: string): CategoryDef | undefined =>
+  TOKUSHU_CATEGORIES.find((c) => c.code === code);
+
+/* ------------------------------------------------------------------ */
 /* 3. 補助金の実施主体レベル                                            */
 /* ------------------------------------------------------------------ */
 
@@ -111,6 +142,7 @@ export const TYPE_TAGS = {
   pillar: "総合ガイド",
   cluster: "個別解説",
   compare: "地域比較",
+  tokushu: "特集",
   news: "速報",
   checklist: "チェックリスト",
   tool: "診断ツール",

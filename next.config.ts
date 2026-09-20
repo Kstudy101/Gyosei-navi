@@ -14,6 +14,10 @@ const nextConfig: NextConfig = {
   trailingSlash: true,
   images: { unoptimized: true },
   reactStrictMode: true,
+  // ユーザーホーム直下に無関係な package-lock.json があり、Next.js がそれを
+  // workspace root と誤認してビルドが失敗することがある（2026-09-20 発覚）。
+  // 明示的にこのプロジェクトのディレクトリを指定して誤認を防ぐ。
+  outputFileTracingRoot: __dirname,
 };
 
 export default nextConfig;

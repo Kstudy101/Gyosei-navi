@@ -1,8 +1,14 @@
 import Link from "next/link";
 import { siteConfig } from "@/config/site";
 import { SECTIONS } from "@/config/taxonomy";
+import { TokushuNavDropdown } from "@/components/layout/TokushuNavDropdown";
 
-const NAV_ORDER = ["subsidy", "area", "compare", "news"] as const;
+/**
+ * "tokushu" はドロップダウン（TokushuNavDropdown）として別枠で描画するため除外。
+ * NAV_BEFORE_TOKUSHU の直後に <TokushuNavDropdown /> を挟み、NAV_AFTER_TOKUSHU を続ける。
+ */
+const NAV_BEFORE_TOKUSHU = ["subsidy", "area", "compare"] as const;
+const NAV_AFTER_TOKUSHU = ["news"] as const;
 
 export function Header() {
   return (
@@ -17,8 +23,19 @@ export function Header() {
           </span>
         </Link>
         <nav aria-label="メインナビゲーション">
-          <ul className="flex flex-wrap gap-x-4 gap-y-1 text-sm">
-            {NAV_ORDER.map((key) => (
+          <ul className="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm">
+            {NAV_BEFORE_TOKUSHU.map((key) => (
+              <li key={key}>
+                <Link
+                  href={SECTIONS[key].path}
+                  className="text-gray-700 transition-colors hover:text-brand-600"
+                >
+                  {SECTIONS[key].label}
+                </Link>
+              </li>
+            ))}
+            <TokushuNavDropdown />
+            {NAV_AFTER_TOKUSHU.map((key) => (
               <li key={key}>
                 <Link
                   href={SECTIONS[key].path}
