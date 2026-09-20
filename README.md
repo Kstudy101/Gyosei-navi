@@ -24,12 +24,19 @@
 - 5개 카테고리(`shussan`・`jutaku`・`sogyo`・`kaigo`・`energy`) 각 Pillar 1건을 draft로 작성해 구조 검증(금액・URL은 실조사 전 플레이스홀더).
 - `validate-content`・`check-links`・`stale-report`・`new-article` 스크립트 v2 복원.
 - `src/lib/sources/jgrants.ts`, `http.ts` 등은 **보존・재활용** (전국 보조금 API 연동의 핵심 자산).
-- **첫 실제 published 기사 발행** — jGrants 공개API로 취득한 실제 원문을 근거로 `content/subsidy/sogyo/jizokuka-hojokin-kyodo-kyogyo.mdx` 작성. 원문은 `data/sources/jizokuka-hojokin-kyodo-kyogyo/`에 가공 없이 보관.
 - v1 `data/` 잔재(원문 아카이브 36건, 관보 텍스트 82MB, 키워드 대장 등) 삭제.
-- `npm run build` 정상 통과, published 기사 1건이 정적 생성·검색 색인됨을 확인.
+- **5개 카테고리 전부 실제 published 기사 확보** — 전부 공식 정부 사이트(jGrants API・環境省・厚生労働省・経済産業省) 원문을 취득해 작성:
+  - `sogyo`: 小規模事業者持続化補助金＜共同・協業型＞（jGrants API）
+  - `jutaku`: 先進的窓リノベ2026事業（環境省、窓・ドア断熱改修で最大100万円）
+  - `kaigo`: 介護保険の住宅改修費（厚生労働省、生涯20万円まで）
+  - `energy`: 給湯省エネ2026事業（経済産業省、エコキュート等で7万円〜17万円）
+  - `shussan`: 出産育児一時金（厚生労働省、子1人につき原則50万円）
+  - 각 원문은 `data/sources/<slug>/`에 가공 없이 보관(README에 근거표 포함).
+- `npm run build` 정상 통과, published 기사 5건 모두 정적 생성・검색 색인됨을 확인.
+- **AGENTS.md 절대규칙 7 개정** — 원문 아카이브는 여전히 정본으로 가공 없이 보관하되, 기사 본문은 그 원문을 근거로 독자용으로 요약・재구성해도 된다는 점을 명문화.
 
 **다음 단계**:
-- `jizokuka-hojokin-kyodo-kyogyo.mdx`를 템플릿 삼아 나머지 4개 카테고리에도 실제 조사 기반 기사를 최소 1건씩 확보.
+- 카테고리당 기사를 더 쌓거나(`docs/01` §6의 Pillar1+Cluster3 규칙), 지자체 단위 비교 기사(`/compare/`)로 확장.
 - `src/config/regions.ts`에 시구정촌 데이터 추가(현재 47도도부현만 등록) — 지자체 단위 기사를 쓰려면 선행 필요.
 - 콘텐츠가 쌓이는 대로 `docs/05_CONTENT_CALENDAR.md` 갱신.
 

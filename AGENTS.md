@@ -26,25 +26,32 @@
 
 > 갱신: 2026-09-20. v1 시절 진행 상황(`published 75기사` 등)은 전부 무효.
 
-**현황**: 문서 재설계, v1 콘텐츠・코드・데이터 정리, v2 스캐폴딩, MDX 콘텐츠 파이프라인 재구축, **첫 실제 published 기사 발행까지 완료.**
-- `content/`(v1 기사 76건)・`prompts/`・v1 전용 라우트/컴포넌트/lib/scripts 삭제. `data/sources/`(36개, 행정서사 원문)・`data/kanpo-text/`(82MB, 관보 아카이브)・`data/keywords.csv`・`data/auto-rotation.json`도 뒤늦게 발견해 정리 완료 — `data/`에는 이제 `data/stats/`(e-Stat 캐시, 재활용)와 `data/sources/jizokuka-hojokin-kyodo-kyogyo/`(v2 신규 원문)만 남음.
+**현황**: 문서 재설계, v1 콘텐츠・코드・데이터 정리, v2 스캐폴딩, MDX 콘텐츠 파이프라인 재구축, **5개 카테고리 전부 실제 published 기사 확보까지 완료.**
+- `content/`(v1 기사 76건)・`prompts/`・v1 전용 라우트/컴포넌트/lib/scripts 삭제. `data/sources/`(v1 원문 36개)・`data/kanpo-text/`(82MB)・`data/keywords.csv`・`data/auto-rotation.json`도 정리 완료 — `data/`에는 `data/stats/`(e-Stat 캐시)와 v2 신규 원문(`data/sources/<slug>/`, 아래 참조)만 남음.
 - `src/config/{site,taxonomy,regions}.ts`・`src/lib/content-schema.ts` v2 스키마로 재작성.
 - `src/lib/content.ts`・`seo.ts`・`mdx.tsx`・`related.ts`를 실제 동작하는 로직으로 재구축(섹션: `subsidy`/`compare`/`news`).
 - 신규 라우트 4종: `/subsidy/[category]/[slug]`, `/area/[pref]/[city]`, `/compare/[slug]`, `/news/[slug]`.
 - `src/components/article/*` 8종(신규: `SubsidyInfoCard`, `CompareTable`).
 - `validate-content`・`check-links`・`stale-report`・`new-article` 스크립트 v2 복원.
-- **`content/subsidy/sogyo/jizokuka-hojokin-kyodo-kyogyo.mdx`** — jGrants 공개API(v2詳細)로 실제 취득한 원문을 근거로 작성한 **첫 published 기사.** 원문은 `data/sources/jizokuka-hojokin-kyodo-kyogyo/`에 가공 없이 보관(절대규칙 7 준수). 이 기사가 published 콘텐츠의 유일한 실사례이며, 향후 기사 작성 시 형식・sourceLinks 기재・data/sources 아카이빙 방식의 참고 템플릿으로 삼을 것.
-- 5개 카테고리(`shussan`・`jutaku`・`sogyo`・`kaigo`・`energy`) 각 Pillar 1건은 여전히 **status: draft**(구조 검증용, 금액・URL 플레이스홀더) — published 전환 전 반드시 원문 확인 필요.
-- `npm run build` 정상 통과, published 기사 1건만 정적 생성·검색 색인됨을 확인.
+- **5개 카테고리 전부 published 기사 1건씩 확보** (2026-09-20). 전부 공식 정부 사이트 원문을 `npm run source`(HTML) 또는 직접 다운로드(PDF)로 취득해 근거로 삼았다:
+  - `sogyo`: `jizokuka-hojokin-kyodo-kyogyo.mdx` — jGrants API(v2詳細). 원문 `data/sources/jizokuka-hojokin-kyodo-kyogyo/`
+  - `jutaku`: `madorinobe2026.mdx` — 先進的窓リノベ2026事業(環境省). 원문 `data/sources/madorinobe2026/`
+  - `kaigo`: `kaigo-hoken-jutaku-kaishuu.mdx` — 介護保険住宅改修費(厚生労働省). 원문 `data/sources/kaigo-hoken-jutaku-kaishuu/`(PDF는 gitignore 대상이라 로컬에만 있음, README에 재다운로드 URL 기재)
+  - `energy`: `kyutou-shoene2026.mdx` — 給湯省エネ2026事業(経済産業省). 원문 `data/sources/kyutou-shoene2026/`
+  - `shussan`: `shussan-ikuji-ichijikin.mdx` — 出産育児一時金(厚生労働省). 원문 `data/sources/shussan-ikuji-ichijikin/`
+  - 각 `data/sources/<slug>/README.md`에 원문 근거표 + 「확인되지 않은 것」 섹션 정리 — 새 기사 쓸 때 이 형식을 그대로 따를 것.
+- 5개 카테고리 개요용 Pillar draft(`*-hojokin-kanzen-guide.mdx`)는 여전히 **status: draft**(구조 검증용, 금액・URL 플레이스홀더) — published 전환 전 반드시 원문 확인 필요.
+- `npm run build` 정상 통과, published 기사 5건 모두 정적 생성・검색 색인 확인.
+- **AGENTS.md 절대규칙 7 개정(2026-09-20)** — 원문 아카이브(`data/sources/`)는 여전히 가공 없이 정본 보관하지만, **기사 본문은 그 원문을 근거로 독자용으로 요약・재구성해도 된다**는 점을 명문화했다(수치・취지는 원문과 일치 필수). 이전에는 이 구분이 불명확해 원문 재구성 자체가 금지된다고 오독될 여지가 있었다.
 
 **다음 우선순위**
-1. **`sogyo` 외 카테고리에도 실제 기사 1건씩 확보** — `jizokuka-hojokin-kyodo-kyogyo.mdx`를 템플릿 삼아, `shussan`・`jutaku`・`kaigo`・`energy`도 실제 지자체・국가 공식 사이트를 조사해 최소 1건씩 published로 만드는 것이 다음 단계.
-2. **jGrants 상위 캐치(`data/sources/*/README.md`) 관행 정착** — 앞으로 jGrants 기반 기사를 쓸 때마다 `fetchSubsidyDetail()` 원응답을 `data/sources/<slug>/`에 JSON 그대로 저장하고 README로 근거를 정리하는 절차를 유지할 것(이번 기사가 그 첫 사례).
-3. **`src/config/regions.ts`에 시구정촌 데이터 추가** — 현재 47도도부현만 등록, `MUNICIPALITIES`는 빈 배열. 지자체 단위 기사(`shussan`의 출산축하금 등)를 쓰려면 먼저 해당 지자체를 여기 등록해야 한다.
+1. **카테고리별 2번째 기사 이상 확보 + 비교 페이지(`/compare/`) 착수** — 각 카테고리 1건씩은 확보했으니, 다음은 카테고리당 Cluster를 더 쌓거나(`docs/01` §6의 Pillar1+Cluster3 규칙 충족), 지자체 단위 비교 기사(`type: compare`, 최소 5개 지자체 데이터 필요)로 확장하는 방향을 검토.
+2. **`src/config/regions.ts`에 시구정촌 데이터 추가** — 현재 47도도부현만 등록, `MUNICIPALITIES`는 빈 배열. 지자체 단위 기사(예: 특정 구의 출산축하금)나 `/area/[pref]/[city]` 페이지를 쓰려면 먼저 해당 지자체를 여기 등록해야 한다.
+3. jGrants 기반 기사를 또 쓸 때는 `fetchSubsidyDetail()` 원응답을 `data/sources/<slug>/`에 JSON 그대로 저장하는 절차(`sogyo` 기사가 선례)를 유지할 것.
 4. 실제 기사가 쌓이는 대로 `docs/05_CONTENT_CALENDAR.md`를 진행 상황에 맞춰 갱신.
 
 **주의**:
-- **draft 기사에 적힌 금액・마감일・URL은 전부 플레이스홀더다.** 절대 그대로 published로 바꾸지 말 것 — AGENTS.md 절대규칙 7(원문 확인 없이 쓰기 금지)・9(AI가 만든 수치 그대로 쓰기 금지) 위반이 된다.
+- **draft 기사(Pillar 5건)에 적힌 금액・마감일・URL은 전부 플레이스홀더다.** 절대 그대로 published로 바꾸지 말 것 — 절대규칙 7(원문 확인 없이 쓰기 금지)・9(AI가 만든 수치 그대로 쓰기 금지) 위반이 된다.
 - v1 시절 「기사를 쓴 제도는 감시 등록」 원칙은 보조금 마감・조건 변경 추종에도 유효한 발상이다 — 감시 체계 재구축 시 이 교훈을 계승할 것(`docs/10_MONITORING_REGISTRY.md` 상단 배너 참조). `prompts/monitor/`는 삭제됐으므로 새로 설계해야 한다.
 - 일본어 문체 점검 시 `docs/04_EDITORIAL_GUIDELINE.md` §3.4(AI 특유 번역투・상투구 카탈로그, 2026-09-20 신설)를 참고할 것 — `github.com/coji/natural-japanese` 스킬의 검증된 패턴을 요약 반영했다.
 
