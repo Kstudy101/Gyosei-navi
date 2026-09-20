@@ -230,6 +230,15 @@ export interface MunicipalityDef {
  *   「11222」）は sogyo カテゴリの越谷市創業者支援補助金記事のため。いずれも regionCode と
  *   data/sources/taito-shussan-hiyou-josei/README.md・data/sources/koshigaya-sogyosha-shien-hojokin/README.md
  *   の記載と一致確認済み。
+ * 2026-09-21: 千葉市を追加登録（kekkon カテゴリの千葉市結婚新生活支援事業〔団地住替え支援事業・新婚世帯〕
+ *   記事のため）。政令指定都市のため横浜市・名古屋市・仙台市・札幌市・さいたま市・京都市・福岡市・静岡市・
+ *   北九州市・熊本市・神戸市・広島市等と同様に区単位ではなく市全体を1エントリとして登録。総務省「全国地方
+ *   公共団体コード」一覧PDF（000925834.pdf、https://www.soumu.go.jp/main_content/000925834.pdf。青森市登録時に
+ *   取得済みのコピー data/sources/aomori-shi-code/01_soumu-zenkoku-chihoukoukyoudantai-code.pdf 11ページ目・
+ *   千葉県セクションで確認）で団体コード121002＝検査数字込み6桁を確認、このファイルの他エントリに合わせ検査数字
+ *   を除いた5桁「12100」で登録。千葉県として初の市区町村登録。slugは県スラッグ「chiba」との混同を避けるため
+ *   「chiba-shi」とした（さいたま市・京都市・熊本市等と同じパターン）。一次情報: data/sources/chiba-shi-kekkon-shinseikatsu/
+ *   06_soumu-zenkoku-chihoukoukyoudantai-code.pdf, README.md 参照）。
  */
 export const MUNICIPALITIES: readonly MunicipalityDef[] = [
   { code: "13101", slug: "chiyoda", labelJa: "千代田区", prefCode: "13" },
@@ -286,6 +295,7 @@ export const MUNICIPALITIES: readonly MunicipalityDef[] = [
   { code: "20201", slug: "nagano-shi", labelJa: "長野市", prefCode: "20" },
   { code: "46201", slug: "kagoshima-shi", labelJa: "鹿児島市", prefCode: "46" },
   { code: "11222", slug: "koshigaya", labelJa: "越谷市", prefCode: "11" },
+  { code: "12100", slug: "chiba-shi", labelJa: "千葉市", prefCode: "12" },
 ];
 
 export const getPrefectureBySlug = (slug: string): PrefectureDef | undefined =>
