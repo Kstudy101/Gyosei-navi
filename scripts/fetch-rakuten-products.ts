@@ -2,7 +2,8 @@
  * 楽天ウェブサービス 商品取得 CLI（作業指示書 §3, §19）
  *   npm run ads:rakuten                 # 全カテゴリ再取得 → data/ads/rakuten/*.json
  *   npm run ads:rakuten -- --category sogyo   # 1カテゴリのみ
- * 事전: .env.local に RAKUTEN_APP_ID（必須）/ RAKUTEN_AFFILIATE_ID（affiliateUrl 取得に必須）
+ * 事전: .env.local に RAKUTEN_APP_ID + RAKUTEN_ACCESS_KEY（両方必須, 2026-02 API 移行後）
+ *       / RAKUTEN_AFFILIATE_ID（affiliateUrl 取得に必須）
  *
  * 静的 export サイトのため、この結果 JSON は data/sources と同様にリポジトリへコミットする
  * （data/stats と違い .gitignore 対象ではない — CI の build ステップは何も取得しないため、

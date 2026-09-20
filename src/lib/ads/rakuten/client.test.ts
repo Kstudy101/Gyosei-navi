@@ -3,6 +3,7 @@ import assert from "node:assert/strict";
 import {
   searchItems,
   getAppId,
+  getAccessKey,
   RakutenTimeoutError,
   RakutenHttpStatusError,
   RakutenInvalidResponseError,
@@ -13,7 +14,9 @@ type FetchStub = (input: string | URL | Request, init?: RequestInit) => Promise<
 
 let originalFetch: typeof globalThis.fetch;
 let originalAppId: string | undefined;
+let originalAccessKey: string | undefined;
 let originalAffiliateId: string | undefined;
+let originalReferer: string | undefined;
 
 function stubFetch(fn: FetchStub): void {
   globalThis.fetch = fn as typeof globalThis.fetch;
@@ -29,17 +32,25 @@ function jsonResponse(body: unknown, status = 200): Response {
 before(() => {
   originalFetch = globalThis.fetch;
   originalAppId = process.env.RAKUTEN_APP_ID;
+  originalAccessKey = process.env.RAKUTEN_ACCESS_KEY;
   originalAffiliateId = process.env.RAKUTEN_AFFILIATE_ID;
+  originalReferer = process.env.RAKUTEN_APP_REFERER;
   process.env.RAKUTEN_APP_ID = "test-app-id";
+  process.env.RAKUTEN_ACCESS_KEY = "test-access-key";
   process.env.RAKUTEN_AFFILIATE_ID = "test-affiliate-id";
+  process.env.RAKUTEN_APP_REFERER = "https://example.test/";
 });
 
 after(() => {
   globalThis.fetch = originalFetch;
   if (originalAppId === undefined) delete process.env.RAKUTEN_APP_ID;
   else process.env.RAKUTEN_APP_ID = originalAppId;
+  if (originalAccessKey === undefined) delete process.env.RAKUTEN_ACCESS_KEY;
+  else process.env.RAKUTEN_ACCESS_KEY = originalAccessKey;
   if (originalAffiliateId === undefined) delete process.env.RAKUTEN_AFFILIATE_ID;
   else process.env.RAKUTEN_AFFILIATE_ID = originalAffiliateId;
+  if (originalReferer === undefined) delete process.env.RAKUTEN_APP_REFERER;
+  else process.env.RAKUTEN_APP_REFERER = originalReferer;
 });
 
 afterEach(() => {
@@ -53,6 +64,16 @@ test("getAppId throws a descriptive error when RAKUTEN_APP_ID is missing", () =>
     assert.throws(() => getAppId(), RakutenApiError);
   } finally {
     process.env.RAKUTEN_APP_ID = saved;
+  }
+});
+
+test("getAccessKey throws a descriptive error when RAKUTEN_ACCESS_KEY is missing", () => {
+  const saved = process.env.RAKUTEN_ACCESS_KEY;
+  delete process.env.RAKUTEN_ACCESS_KEY;
+  try {
+    assert.throws(() => getAccessKey(), RakutenApiError);
+  } finally {
+    process.env.RAKUTEN_ACCESS_KEY = saved;
   }
 });
 

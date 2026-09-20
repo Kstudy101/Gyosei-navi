@@ -5,9 +5,12 @@ import type { RakutenProduct } from "@/lib/ads/rakuten/types";
 /**
  * Rakuten Web Service — IchibaItem/Search 래퍼（作業指示書 §3 RakutenApiClient）。
  * ビルド前の取得スクリプト（scripts/fetch-rakuten-products.ts）専用。
- * RAKUTEN_APP_ID は Node（スクリプト）context でのみ読む — クライアントバンドルには一切含まれない。
+ * RAKUTEN_APP_ID / RAKUTEN_ACCESS_KEY は Node（スクリプト）context でのみ読む — クライアントバンドルには一切含まれない。
+ *
+ * 2026-02 API 移行: 旧エンドポイント(app.rakuten.co.jp/services/api)は 2026-05-14 に完全停止。
+ * 新エンドポイント(openapi.rakuten.co.jp/ichibams/api)は applicationId に加えて accessKey も必須。
  */
-const SEARCH_ENDPOINT = "https://app.rakuten.co.jp/services/api/IchibaItem/Search/20220601";
+const SEARCH_ENDPOINT = "https://openapi.rakuten.co.jp/ichibams/api/IchibaItem/Search/20260701";
 
 export class RakutenApiError extends Error {}
 export class RakutenTimeoutError extends RakutenApiError {}
@@ -27,7 +30,7 @@ export function getAppId(): string {
     throw new RakutenApiError(
       [
         "RAKUTEN_APP_ID가 설정되어 있지 않습니다.",
-        "  1) https://webservice.rakuten.co.jp/ 에서 アプリID 발급 (무료)",
+        "  1) https://webservice.rakuten.co.jp/app/list 에서 アプリID 발급 (무료)",
         "  2) .env.local 에 RAKUTEN_APP_ID=발급받은ID 추가 (커밋 금지)",
         "  3) 다시 실행",
       ].join("\n")
@@ -36,9 +39,45 @@ export function getAppId(): string {
   return id;
 }
 
+/** 2026-02 API 이전 후 필수 — applicationId만으로는 wrong_parameter 에러 발생 */
+export function getAccessKey(): string {
+  const key = process.env.RAKUTEN_ACCESS_KEY;
+  if (!key) {
+    throw new RakutenApiError(
+      [
+        "RAKUTEN_ACCESS_KEY가 설정되어 있지 않습니다.",
+        "  1) https://webservice.rakuten.co.jp/app/list 에서 Access Key 확인 (아이콘 클릭 시 표시)",
+        "  2) .env.local 에 RAKUTEN_ACCESS_KEY=발급받은Key 추가 (커밋 금지)",
+        "  3) 다시 실행",
+      ].join("\n")
+    );
+  }
+  return key;
+}
+
 /** 미설정이어도 예외를 던지지 않음 — affiliateId 없이도 검색 자체는 가능하므로 */
 export function getAffiliateId(): string | undefined {
   return process.env.RAKUTEN_AFFILIATE_ID || undefined;
+}
+
+/**
+ * 2026-02 API 移行後、リクエストの Referer/Origin と楽天ウェブサービス側に登録した
+ * Application URL が一致しないと 403 REQUEST_CONTEXT_BODY_HTTP_REFERRER_MISSING になる。
+ * https://webservice.rakuten.co.jp/app/list に登録した Application URL と同じ値を使うこと。
+ */
+export function getAppReferer(): string {
+  const referer = process.env.RAKUTEN_APP_REFERER;
+  if (!referer) {
+    throw new RakutenApiError(
+      [
+        "RAKUTEN_APP_REFERER가 설정되어 있지 않습니다.",
+        "  1) https://webservice.rakuten.co.jp/app/list 에서 앱의 Application URL 확인",
+        "  2) .env.local 에 RAKUTEN_APP_REFERER=해당URL 추가",
+        "  3) 다시 실행",
+      ].join("\n")
+    );
+  }
+  return referer;
 }
 
 const itemSchema = z
@@ -85,6 +124,7 @@ export async function searchItems({
 }: SearchItemsParams): Promise<RakutenProduct[]> {
   const params = new URLSearchParams({
     applicationId: getAppId(),
+    accessKey: getAccessKey(),
     keyword,
     hits: String(Math.min(Math.max(hits, 1), 30)),
     page: String(page),
@@ -95,9 +135,14 @@ export async function searchItems({
   const affiliateId = getAffiliateId();
   if (affiliateId) params.set("affiliateId", affiliateId);
 
+  const referer = getAppReferer();
+
   let raw: unknown;
   try {
-    raw = await fetchJson(`${SEARCH_ENDPOINT}?${params.toString()}`, { timeoutMs });
+    raw = await fetchJson(`${SEARCH_ENDPOINT}?${params.toString()}`, {
+      timeoutMs,
+      headers: { referer, origin: new URL(referer).origin },
+    });
   } catch (e) {
     if (e instanceof HttpError) {
       throw new RakutenHttpStatusError(e.status, `Rakuten API HTTP ${e.status}: ${e.bodySnippet}`);
