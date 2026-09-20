@@ -21,6 +21,12 @@ export const metadata: Metadata = {
     locale: siteConfig.locale,
     type: "website",
   },
+  verification: {
+    google: "qtLMFQLhUFKVaMdo8UxKErTB_gVUDYP2ymnhGE6paM0",
+  },
+  other: siteConfig.analytics.adsense
+    ? { "google-adsense-account": siteConfig.analytics.adsense }
+    : undefined,
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {

@@ -33,14 +33,28 @@ const SECTIONS = [
     ],
   },
   {
-    heading: "5. 広告・アフィリエイトについて",
+    heading: "5. 広告について（Google AdSense を含む）",
+    body: [
+      "本サイトは、第三者配信の広告サービス（Google AdSense を含む）を利用しています。このような広告配信事業者は、ユーザーの興味に応じた広告を表示するため、Cookie を使用して当サイトや他サイトへのアクセス情報を収集することがあります。",
+      "Google が広告配信に Cookie を使用することにより、当サイトや他サイトへのアクセス情報に基づいて、ユーザーに適切な広告を表示しています。Cookie を無効にする設定や Google の広告設定に関する詳細は「広告設定」（https://adssettings.google.com/）をご覧ください。",
+      "また、Google 広告におけるパーソナライズ広告や第三者配信事業者による Cookie の使用の詳細については、Google のポリシーと規約ページ（https://policies.google.com/technologies/ads）をご確認ください。",
+    ],
+  },
+  {
+    heading: "6. アフィリエイトについて",
     body: [
       "本サイトは、楽天アフィリエイトを利用して商品を紹介する場合があります。紹介する商品には、当サイトを経由した購入等の実績に応じて楽天グループ株式会社よりアフィリエイト報酬が支払われるリンク（広告）を含みます。該当箇所には「PR」または「広告」の表示を付けています。",
       "楽天が提供する広告（モーションウィジェット等）の表示にあたり、楽天側で Cookie 等を用いたアクセス情報の取得が行われる場合があります。詳細は楽天株式会社のプライバシーポリシーをご確認ください。",
     ],
   },
   {
-    heading: "6. 本ポリシーの変更",
+    heading: "7. お問い合わせフォームについて",
+    body: [
+      "お問い合わせフォームでご提供いただいた氏名・メールアドレス・お問い合わせ内容は、メール送信サービス（Resend）を経由して運営者に送信されます。送信された情報は、お問い合わせへの対応以外の目的には利用しません。",
+    ],
+  },
+  {
+    heading: "8. 本ポリシーの変更",
     body: [
       "本ポリシーの内容は、法令の改正やサイト機能の追加に応じて変更することがあります。変更後の内容は本ページに掲載した時点で効力を生じます。",
     ],
@@ -50,20 +64,20 @@ const SECTIONS = [
 export default function PrivacyPage() {
   return (
     <div className="mx-auto max-w-3xl px-4 py-10">
-      <h1 className="text-2xl font-bold text-gray-900">プライバシーポリシー</h1>
+      <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100">プライバシーポリシー</h1>
       {SECTIONS.map((s) => (
         <section key={s.heading} className="mt-8">
-          <h2 className="border-b border-gray-200 pb-2 text-lg font-bold text-gray-900">
+          <h2 className="border-b border-gray-200 pb-2 text-lg font-bold text-gray-900 dark:border-gray-800 dark:text-gray-100">
             {s.heading}
           </h2>
-          <div className="mt-3 space-y-2 text-sm leading-relaxed text-gray-700">
+          <div className="mt-3 space-y-2 text-sm leading-relaxed text-gray-700 dark:text-gray-300">
             {s.body.map((p) => (
               <p key={p}>{p}</p>
             ))}
           </div>
         </section>
       ))}
-      <p className="mt-10 text-xs text-gray-500">制定日: 2026年8月17日</p>
+      <p className="mt-10 text-xs text-gray-500 dark:text-gray-400">制定日: 2026年8月17日</p>
     </div>
   );
 }
