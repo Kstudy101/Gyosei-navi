@@ -41,12 +41,17 @@
   - `shussan`: `shussan-ikuji-ichijikin.mdx` — 出産育児一時金(厚生労働省). 원문 `data/sources/shussan-ikuji-ichijikin/`
   - 각 `data/sources/<slug>/README.md`에 원문 근거표 + 「확인되지 않은 것」 섹션 정리 — 새 기사 쓸 때 이 형식을 그대로 따를 것.
 - 5개 카테고리 개요용 Pillar draft(`*-hojokin-kanzen-guide.mdx`)는 여전히 **status: draft**(구조 검증용, 금액・URL 플레이스홀더) — published 전환 전 반드시 원문 확인 필요.
-- `npm run build` 정상 통과, published 기사 5건 모두 정적 생성・검색 색인 확인.
-- **AGENTS.md 절대규칙 7 개정(2026-09-20)** — 원문 아카이브(`data/sources/`)는 여전히 가공 없이 정본 보관하지만, **기사 본문은 그 원문을 근거로 독자용으로 요약・재구성해도 된다**는 점을 명문화했다(수치・취지는 원문과 일치 필수). 이전에는 이 구분이 불명확해 원문 재구성 자체가 금지된다고 오독될 여지가 있었다.
+- **AGENTS.md 절대규칙 7 개정(2026-09-20)** — 원문 아카이브(`data/sources/`)는 여전히 가공 없이 정본 보관하지만, **기사 본문은 그 원문을 근거로 독자용으로 요약・재구성해도 된다**는 점을 명문화했다(수치・취지는 원문과 일치 필수).
+- **지역 비교 페이지(`/area/`, `/compare/`) 실제 동작 확인** (2026-09-20). `docs/01` §5가 설계한 카테고리×지역 2축 + 지역횡단비교 구조를 처음으로 콘텐츠로 채웠다.
+  - `src/config/regions.ts`에 도쿄도 5개 구(千代田・港・品川・世田谷・渋谷, 총무성 코드 기준) 등록.
+  - `shussan` 카테고리에 5개 구별 출산급여 기사 신규 — 전부 각 구 공식 홈페이지 원문 취득. 제도 구조가 3패턴(실비연동형: 港区・千代田区 최대31만엔 / 정액형: 渋谷区 상한10만엔 / 2단조합형: 世田谷区 국가+구독자, 品川区 국가제도만 확인)으로 갈리는 것을 확인.
+  - `content/compare/shussan-oiwaikin-tokyo23ku-hikaku.mdx` — 5개 구를 `compareTargets`로 참조하는 첫 `type: compare` 기사.
+  - `/area/tokyo/{chiyoda,minato,shinagawa,setagaya,shibuya}` 5개 지역페이지, `/compare/shussan-oiwaikin-tokyo23ku-hikaku` 정상 생성, `CompareTable` 컴포넌트가 5개 구 데이터를 정확히 렌더링함을 빌드 산출물에서 확인.
+- `npm run build` 정상 통과, published 기사 10건(카테고리별 1건 + shussan 지자체 5건 + compare 1건) 모두 정적 생성・검색 색인 확인.
 
 **다음 우선순위**
-1. **카테고리별 2번째 기사 이상 확보 + 비교 페이지(`/compare/`) 착수** — 각 카테고리 1건씩은 확보했으니, 다음은 카테고리당 Cluster를 더 쌓거나(`docs/01` §6의 Pillar1+Cluster3 규칙 충족), 지자체 단위 비교 기사(`type: compare`, 최소 5개 지자체 데이터 필요)로 확장하는 방향을 검토.
-2. **`src/config/regions.ts`에 시구정촌 데이터 추가** — 현재 47도도부현만 등록, `MUNICIPALITIES`는 빈 배열. 지자체 단위 기사(예: 특정 구의 출산축하금)나 `/area/[pref]/[city]` 페이지를 쓰려면 먼저 해당 지자체를 여기 등록해야 한다.
+1. **다른 카테고리(jutaku・kaigo・energy・sogyo)에도 지자체 단위 비교 확장** — `shussan`에서 검증한 「5개 구 원문조사→개별기사→compare기사」 패턴을 다른 카테고리에도 적용할 수 있는지 검토. 다만 국가 단위 제도가 이미 있는 `sogyo`・`energy`・`kaigo`는 지자체 비교보다 jGrants 등에서 카테고리당 Cluster를 추가하는 쪽이 더 자연스러울 수 있음.
+2. **`src/config/regions.ts`에 도쿄 23구 잔여 18개 구 및 타 도도부현 시구정촌 추가** — 현재 도쿄도 5개 구만 등록. 새 지자체 기사를 쓸 때마다 먼저 여기 등록.
 3. jGrants 기반 기사를 또 쓸 때는 `fetchSubsidyDetail()` 원응답을 `data/sources/<slug>/`에 JSON 그대로 저장하는 절차(`sogyo` 기사가 선례)를 유지할 것.
 4. 실제 기사가 쌓이는 대로 `docs/05_CONTENT_CALENDAR.md`를 진행 상황에 맞춰 갱신.
 
