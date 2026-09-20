@@ -1,0 +1,41 @@
+import { notFound } from "next/navigation";
+import type { Metadata } from "next";
+import { getArticle, getArticlesBySection, orPlaceholder, EXPORT_PLACEHOLDER } from "@/lib/content";
+import { articleMetadata } from "@/lib/seo";
+import { ArticleView } from "@/components/article/ArticleView";
+
+export const dynamicParams = false;
+
+export function generateStaticParams() {
+  return orPlaceholder(
+    getArticlesBySection("compare").map((a) => ({ slug: a.frontmatter.slug })),
+    { slug: EXPORT_PLACEHOLDER }
+  );
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const article = getArticle("compare", slug);
+  return article ? articleMetadata(article) : {};
+}
+
+export default async function CompareArticlePage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const article = getArticle("compare", slug);
+  if (!article) notFound();
+
+  return (
+    <ArticleView
+      article={article}
+      crumbs={[
+        { label: "ホーム", href: "/" },
+        { label: "地域比較", href: "/compare" },
+        { label: article.frontmatter.title, href: article.href },
+      ]}
+    />
+  );
+}

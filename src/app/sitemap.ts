@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { absoluteUrl } from "@/lib/seo";
 import { getAllArticles } from "@/lib/content";
 import { CATEGORY_CODES } from "@/config/taxonomy";
+import { PREFECTURES } from "@/config/regions";
 
 // output: "export"（静的ホスティング）ではメタデータルートも静的生成を明示する必要がある
 export const dynamic = "force-static";
@@ -12,7 +13,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/subsidy",
     ...CATEGORY_CODES.map((c) => `/subsidy/${c}`),
     "/area",
+    ...PREFECTURES.map((p) => `/area/${p.slug}`),
     "/compare",
+    "/news",
     "/about",
     "/contact",
     "/policy/disclaimer",
