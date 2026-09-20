@@ -12,6 +12,8 @@ import { SubsidyInfoCard } from "@/components/article/SubsidyInfoCard";
 import { UpdateLog } from "@/components/article/UpdateLog";
 import { ArticleCard } from "@/components/article/ArticleCard";
 import { JsonLd } from "@/components/seo/JsonLd";
+import { RakutenRelatedProducts } from "@/components/ads/RakutenRelatedProducts";
+import { RakutenMotionWidget } from "@/components/ads/RakutenMotionWidget";
 
 /** 本文に該当コンポーネントが手書きされているか（重複自動挿入の防止） */
 function bodyHas(body: string, name: string): boolean {
@@ -76,6 +78,12 @@ export async function ArticleView({ article, crumbs }: { article: Article; crumb
 
       <div className="article-body mt-8">{body}</div>
 
+      {article.section === "subsidy" &&
+        fm.category &&
+        !bodyHas(article.body, "RakutenRelatedProducts") && (
+          <RakutenRelatedProducts category={fm.category} articleId={fm.slug} />
+        )}
+
       {/* 本文に無い場合の自動挿入（docs/03 §5 の固定構造を保証） */}
       {fm.faq.length > 0 && !bodyHas(article.body, "FAQ") && (
         <section>
@@ -98,6 +106,10 @@ export async function ArticleView({ article, crumbs }: { article: Article; crumb
             ))}
           </div>
         </section>
+      )}
+
+      {article.section === "subsidy" && !bodyHas(article.body, "RakutenMotionWidget") && (
+        <RakutenMotionWidget placement="article-bottom" />
       )}
     </div>
   );
