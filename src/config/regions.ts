@@ -151,6 +151,11 @@ export interface MunicipalityDef {
  *   このファイルの他エントリに合わせ検査数字を除いた5桁「40203」で登録。福岡県として3件目の市区町村登録。
  *   一次情報: data/sources/kurume-kekkon-shinseikatsu-shien/04_soumu-zenkoku-chihoukoukyoudantai-code.pdf,
  *   README.md 参照）。
+ * 2026-09-21: 八女市を追加登録（kekkon カテゴリの結婚新生活支援事業補助金記事のため）。総務省「全国地方公共団体コード」
+ *   一覧PDF（000925834.pdf）26ページ目・福岡県セクションで団体コード402109＝検査数字込み6桁を確認、
+ *   このファイルの他エントリに合わせ検査数字を除いた5桁「40210」で登録。福岡県として4件目の市区町村登録。
+ *   slugは県スラッグ「fukuoka」と衝突しないため「yame」とした。一次情報:
+ *   data/sources/yame-kekkon-shin-seikatsu/03_soumu-zenkoku-chihoukoukyoudantai-code.pdf, README.md 参照）。
  *
  * 2026-09-21: 岡山市を追加登録（energy カテゴリの令和8年度岡山市住宅用スマートエネルギー導入促進補助事業
  *   記事のため）。岡山市は政令指定都市ではないため区単位に分割せず市全体を1エントリとして登録。
@@ -242,6 +247,7 @@ export const MUNICIPALITIES: readonly MunicipalityDef[] = [
   { code: "40130", slug: "fukuoka-shi", labelJa: "福岡市", prefCode: "40" },
   { code: "40100", slug: "kitakyushu", labelJa: "北九州市", prefCode: "40" },
   { code: "40203", slug: "kurume", labelJa: "久留米市", prefCode: "40" },
+  { code: "40210", slug: "yame", labelJa: "八女市", prefCode: "40" },
   { code: "22100", slug: "shizuoka-shi", labelJa: "静岡市", prefCode: "22" },
   { code: "33100", slug: "okayama-shi", labelJa: "岡山市", prefCode: "33" },
   { code: "47201", slug: "naha", labelJa: "那覇市", prefCode: "47" },
