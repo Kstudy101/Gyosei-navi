@@ -207,6 +207,11 @@ export interface MunicipalityDef {
  *   登録。青森県として初の市区町村登録。slugは県スラッグ「aomori」との混同を避けるため「aomori-shi」とした
  *   （さいたま市・京都市・熊本市等と同じパターン）。一次情報: data/sources/aomori-shi-hari-kyu-massage-josei/README.md,
  *   data/sources/aomori-shi-code/README.md 参照）。
+ * 2026-09-21: 津市を追加登録（pet カテゴリの飼い主のいない猫の不妊・去勢手術費補助制度記事のため）。総務省
+ *   「全国地方公共団体コード」一覧PDF（000925834.pdf、https://www.soumu.go.jp/main_content/000925834.pdf）
+ *   19ページ目・三重県セクションで団体コード242012＝検査数字込み6桁を確認、このファイルの他エントリに合わせ
+ *   検査数字を除いた5桁「24201」で登録。三重県として初の市区町村登録。一次情報: data/sources/tsu-shi-code/
+ *   01_soumu-zenkoku-chihoukoukyoudantai-code.pdf, data/sources/tsu-neko-funinkyosei/README.md 参照）。
  */
 export const MUNICIPALITIES: readonly MunicipalityDef[] = [
   { code: "13101", slug: "chiyoda", labelJa: "千代田区", prefCode: "13" },
@@ -257,6 +262,7 @@ export const MUNICIPALITIES: readonly MunicipalityDef[] = [
   { code: "28100", slug: "kobe", labelJa: "神戸市", prefCode: "28" },
   { code: "28201", slug: "himeji", labelJa: "姫路市", prefCode: "28" },
   { code: "02201", slug: "aomori-shi", labelJa: "青森市", prefCode: "02" },
+  { code: "24201", slug: "tsu", labelJa: "津市", prefCode: "24" },
 ];
 
 export const getPrefectureBySlug = (slug: string): PrefectureDef | undefined =>
