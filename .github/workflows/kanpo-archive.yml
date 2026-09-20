@@ -1,14 +1,12 @@
-# 官報 일일 아카이빙 (TASK-09)
-#   官報 전자판은 발행(매일 08:30 JST) 후 90일만 무료 공개 → 매일 자동 취득.
-#   - 추출 텍스트 → data/kanpo-text/ 에 커밋 (키워드 검색용 영구 아카이브)
-#   - PDF 원본   → Release 자산 (태그 kanpo-YYYY-MM, 리포 비대화 방지)
-#   - 멱등: 텍스트 파일이 이미 있는 号는 스킵 → 결측일은 다음 실행(7일 백필 창)에서 자동 회수
-#   - 실패는 monitoring-failure Issue (놓친 날은 90일 후 영구 복구 불가)
+# 官報 일일 아카이빙 (v1 행정서사 미디어 시절 구현)
+#
+# ⚠️ 2026-09-20 스케줄 정지: 전국 보조금 정보 사이트(v2)로 전면 전환되면서
+# npm run kanpo(v1 전용 스크립트)와 data/kanpo-text/(82MB 아카이브)가 함께 삭제됐다.
+# 자동 실행하면 매번 실패한다. v2 감시체계 재설계 전까지 수동 실행(workflow_dispatch)만
+# 남기고 cron 트리거는 제거했다. 구조 참고용으로만 남겨둠(AGENTS.md 「지금 해야 할 일」 참조).
 name: Kanpo Archive
 
 on:
-  schedule:
-    - cron: "0 0 * * *" # 00:00 UTC = 09:00 JST
   workflow_dispatch:
     inputs:
       days:

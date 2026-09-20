@@ -1,12 +1,13 @@
-# 一次情報 変更検知 + パブコメ監視 — 毎日 JST 08:00 / 20:00 (TASK-06)
-# パブコメ RSS はローリングウィンドウ型（最新6〜7件のみ）のため 1日2回（docs/10 §6）。
-# 変更/新規があった時だけ Issue を作る（ノイズ0）。失敗時は monitoring-failure ラベルの Issue。
+# 一次情報 変更検知 + パブコメ監視（v1 行政書士メディア時代の実装）
+#
+# ⚠️ 2026-09-20 スケジュール停止: プロジェクトが全国補助金情報サイト(v2)へ全面転換され、
+# npm run monitor / npm run pubcomment（v1専用スクリプト）は削除済み。このワークフローを
+# 自動実行すると毎回失敗する。v2用の監視体系を再設計するまで手動実行(workflow_dispatch)のみ
+# 残し、cron トリガーは外している。設計時はこのファイルを構造の参考にしてよい
+# （AGENTS.md「지금 해야 할 일」参照）。
 name: Daily Monitor
 
 on:
-  schedule:
-    - cron: "0 23 * * *" # 23:00 UTC = 08:00 JST
-    - cron: "0 11 * * *" # 11:00 UTC = 20:00 JST
   workflow_dispatch:
     inputs:
       dry_run:
