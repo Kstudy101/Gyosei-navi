@@ -195,6 +195,13 @@ export interface MunicipalityDef {
  *   初の市区町村登録。slugは県スラッグ「hiroshima」との混同を避けるため「hiroshima-shi」とした（さいたま市の
  *   saitama-shi と同じパターン）。一次情報: data/sources/hiroshima-shi-juudo-shinshin-shogaisha-iryohi/
  *   03_soumu-zenkoku-chihoukoukyoudantai-code.pdf, README.md 参照）。
+ * 2026-09-21: 青森市を追加登録（kaigo カテゴリのはり・きゅう・マッサージ施術料助成記事のため）。青森市は
+ *   政令指定都市ではないため区単位に分割せず市全体を1エントリとして登録。総務省「全国地方公共団体コード」
+ *   一覧PDF（000925834.pdf、https://www.soumu.go.jp/main_content/000925834.pdf）5ページ目・青森県セクションで
+ *   団体コード022012＝検査数字込み6桁を確認、このファイルの他エントリに合わせ検査数字を除いた5桁「02201」で
+ *   登録。青森県として初の市区町村登録。slugは県スラッグ「aomori」との混同を避けるため「aomori-shi」とした
+ *   （さいたま市・京都市・熊本市等と同じパターン）。一次情報: data/sources/aomori-shi-hari-kyu-massage-josei/README.md,
+ *   data/sources/aomori-shi-code/README.md 参照）。
  */
 export const MUNICIPALITIES: readonly MunicipalityDef[] = [
   { code: "13101", slug: "chiyoda", labelJa: "千代田区", prefCode: "13" },
@@ -243,6 +250,7 @@ export const MUNICIPALITIES: readonly MunicipalityDef[] = [
   { code: "34100", slug: "hiroshima-shi", labelJa: "広島市", prefCode: "34" },
   { code: "28100", slug: "kobe", labelJa: "神戸市", prefCode: "28" },
   { code: "28201", slug: "himeji", labelJa: "姫路市", prefCode: "28" },
+  { code: "02201", slug: "aomori-shi", labelJa: "青森市", prefCode: "02" },
 ];
 
 export const getPrefectureBySlug = (slug: string): PrefectureDef | undefined =>
