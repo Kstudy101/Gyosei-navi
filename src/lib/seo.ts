@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { siteConfig } from "@/config/site";
-import type { Article } from "@/lib/content";
+import type { Article, TranslatedArticle } from "@/lib/content";
+import type { Locale } from "@/i18n/locales";
 
 /**
  * 絶対URL。next.config の trailingSlash: true に合わせ、ファイル（.xml 等）以外は末尾スラッシュを付ける
@@ -13,19 +14,63 @@ export function absoluteUrl(pathname: string): string {
   return url.toString();
 }
 
-/** 記事ページの generateMetadata 用ヘルパ */
-export function articleMetadata(article: Article): Metadata {
+/**
+ * hreflang（alternates.languages）マップを組み立てる。
+ * 日本語原文 + 翻訳が存在する言語を全て相互参照させる（hreflang の原則）。
+ * x-default は日本語原文を指す。
+ */
+function buildLanguageAlternates(originalHref: string, availableLocales: readonly Locale[]) {
+  const languages: Record<string, string> = { ja: absoluteUrl(originalHref) };
+  for (const l of availableLocales) {
+    languages[l] = absoluteUrl(`/${l}${originalHref}`);
+  }
+  languages["x-default"] = absoluteUrl(originalHref);
+  return languages;
+}
+
+/** 記事ページの generateMetadata 用ヘルパ（日本語原文） */
+export function articleMetadata(article: Article, availableLocales: readonly Locale[] = []): Metadata {
   const { frontmatter: fm } = article;
   return {
     title: fm.title,
     description: fm.description,
-    alternates: { canonical: absoluteUrl(article.href) },
+    alternates: {
+      canonical: absoluteUrl(article.href),
+      languages: buildLanguageAlternates(article.href, availableLocales),
+    },
     openGraph: {
       title: fm.title,
       description: fm.description,
       url: absoluteUrl(article.href),
       siteName: siteConfig.name,
       locale: siteConfig.locale,
+      type: "article",
+      publishedTime: fm.publishedAt,
+      modifiedTime: fm.updatedAt,
+      ...(fm.ogImage ? { images: [{ url: absoluteUrl(fm.ogImage) }] } : {}),
+    },
+  };
+}
+
+/** 翻訳記事ページの generateMetadata 用ヘルパ */
+export function translatedArticleMetadata(
+  article: TranslatedArticle,
+  availableLocales: readonly Locale[]
+): Metadata {
+  const { frontmatter: fm } = article;
+  return {
+    title: fm.title,
+    description: fm.description,
+    alternates: {
+      canonical: absoluteUrl(article.href),
+      languages: buildLanguageAlternates(article.originalHref, availableLocales),
+    },
+    openGraph: {
+      title: fm.title,
+      description: fm.description,
+      url: absoluteUrl(article.href),
+      siteName: siteConfig.name,
+      locale: article.locale,
       type: "article",
       publishedTime: fm.publishedAt,
       modifiedTime: fm.updatedAt,

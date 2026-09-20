@@ -1,5 +1,6 @@
 import { z } from "zod";
 import { CATEGORY_CODES, TOKUSHU_CATEGORY_CODES } from "@/config/taxonomy";
+import { LOCALES } from "@/i18n/locales";
 
 /**
  * MDX frontmatter のバリデーションスキーマ v2。
@@ -54,9 +55,13 @@ export const rankingItemSchema = z.object({
   summary: z.string().min(1),
 });
 
-export const articleFrontmatterSchema = z
-  .object({
-    title: z.string().min(10).max(60),
+/**
+ * frontmatter の共通フィールド定義。title/description の文字数上限は
+ * 日本語 meta 最適長を基準にしているため、翻訳スキーマ（下記）では上限を緩和して再利用する。
+ */
+function baseArticleFields(titleMax: number, descriptionMax: number) {
+  return {
+    title: z.string().min(10).max(titleMax),
     slug: z
       .string()
       .regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, "slugは英小文字・数字・ハイフンのみ（日本語URL禁止）"),
@@ -66,7 +71,7 @@ export const articleFrontmatterSchema = z
       .or(z.string()),
     type: z.enum(["pillar", "cluster", "compare", "tokushu", "news", "checklist", "tool"]),
     tags: z.array(z.string()).default([]),
-    description: z.string().min(50).max(160), // meta description 最適長
+    description: z.string().min(50).max(descriptionMax),
     publishedAt: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
     updatedAt: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
     author: z.string().default("editorial"),
@@ -87,37 +92,63 @@ export const articleFrontmatterSchema = z
     compareTargets: z.array(z.string()).default([]),
     /** type: tokushu 専用。順位リスト（最低5件 — docs/03 §3-2, docs/01 §7.1） */
     rankings: z.array(rankingItemSchema).default([]),
-  })
-  .refine((d) => d.status !== "published" || d.sourceLinks.length > 0, {
-    message: "公開記事には一次情報（sourceLinks）が最低1件必要です",
-    path: ["sourceLinks"],
-  })
-  .refine((d) => d.updatedAt >= d.publishedAt, {
-    message: "updatedAt は publishedAt 以降である必要があります",
-    path: ["updatedAt"],
-  })
-  .refine((d) => d.type === "compare" || d.type === "tokushu" || d.subsidy !== undefined, {
-    message: "compare・tokushu以外の記事には subsidy フィールドが必須です",
-    path: ["subsidy"],
-  })
-  .refine((d) => d.type !== "compare" || d.compareTargets.length >= 5, {
-    message: "compare記事は比較対象（compareTargets）が最低5件必要です",
-    path: ["compareTargets"],
-  })
-  .refine((d) => d.type !== "tokushu" || d.rankings.length >= 5, {
-    message: "tokushu記事は順位（rankings）が最低5件必要です — DB不足時の推測ランキングを防ぐゲート（docs/01 §7.1）",
-    path: ["rankings"],
-  })
-  .refine(
-    (d) => {
-      if (d.type !== "tokushu") return true;
-      const ranks = d.rankings.map((r) => r.rank).sort((a, b) => a - b);
-      return ranks.every((r, i) => r === i + 1);
-    },
-    {
-      message: "tokushu記事の rankings.rank は 1 から連番でなければなりません（欠番・重複禁止）",
+  };
+}
+
+function withCommonRefinements<T extends z.ZodRawShape>(schema: z.ZodObject<T>) {
+  return schema
+    .refine((d) => d.status !== "published" || d.sourceLinks.length > 0, {
+      message: "公開記事には一次情報（sourceLinks）が最低1件必要です",
+      path: ["sourceLinks"],
+    })
+    .refine((d) => d.updatedAt >= d.publishedAt, {
+      message: "updatedAt は publishedAt 以降である必要があります",
+      path: ["updatedAt"],
+    })
+    .refine((d) => d.type === "compare" || d.type === "tokushu" || d.subsidy !== undefined, {
+      message: "compare・tokushu以外の記事には subsidy フィールドが必須です",
+      path: ["subsidy"],
+    })
+    .refine((d) => d.type !== "compare" || d.compareTargets.length >= 5, {
+      message: "compare記事は比較対象（compareTargets）が最低5件必要です",
+      path: ["compareTargets"],
+    })
+    .refine((d) => d.type !== "tokushu" || d.rankings.length >= 5, {
+      message: "tokushu記事は順位（rankings）が最低5件必要です — DB不足時の推測ランキングを防ぐゲート（docs/01 §7.1）",
       path: ["rankings"],
-    }
-  );
+    })
+    .refine(
+      (d) => {
+        if (d.type !== "tokushu") return true;
+        const ranks = d.rankings
+          .map((r: z.infer<typeof rankingItemSchema>) => r.rank)
+          .sort((a: number, b: number) => a - b);
+        return ranks.every((r: number, i: number) => r === i + 1);
+      },
+      {
+        message: "tokushu記事の rankings.rank は 1 から連番でなければなりません（欠番・重複禁止）",
+        path: ["rankings"],
+      }
+    );
+}
+
+export const articleFrontmatterSchema = withCommonRefinements(z.object(baseArticleFields(60, 160)));
 
 export type ArticleFrontmatter = z.infer<typeof articleFrontmatterSchema>;
+
+/**
+ * 翻訳記事（content-i18n/配下）専用スキーマ v1。
+ * 原文スキーマと同じ構造フィールド・refine を共有しつつ、locale を追加し、
+ * title/description の文字数上限を翻訳言語向けに緩和する
+ * （60/160字は日本語 meta 最適長の基準であり、英語等の翻訳では同じ内容でも文字数が伸びるため）。
+ * slug・category・publishedAt・updatedAt・sourceLinks・subsidy 等の構造的フィールドは
+ * 原文の値をそのままコピーする運用（翻訳対象は title/description/faq/body のみ）。
+ */
+export const translatedArticleFrontmatterSchema = withCommonRefinements(
+  z.object({
+    ...baseArticleFields(160, 400),
+    locale: z.enum(LOCALES as unknown as [string, ...string[]]),
+  })
+);
+
+export type TranslatedArticleFrontmatter = z.infer<typeof translatedArticleFrontmatterSchema>;

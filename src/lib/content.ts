@@ -2,7 +2,13 @@ import fs from "node:fs";
 import path from "node:path";
 import matter from "gray-matter";
 import { CATEGORY_CODES, TOKUSHU_CATEGORY_CODES } from "@/config/taxonomy";
-import { articleFrontmatterSchema, type ArticleFrontmatter } from "@/lib/content-schema";
+import {
+  articleFrontmatterSchema,
+  translatedArticleFrontmatterSchema,
+  type ArticleFrontmatter,
+  type TranslatedArticleFrontmatter,
+} from "@/lib/content-schema";
+import { LOCALES, type Locale } from "@/i18n/locales";
 
 /**
  * content/ 配下の MDX を読み込み、frontmatter を zod で検証して返す v2。
@@ -159,4 +165,124 @@ export const EXPORT_PLACEHOLDER = "_";
 
 export function orPlaceholder<T extends Record<string, string>>(params: T[], placeholder: T): T[] {
   return params.length > 0 ? params : [placeholder];
+}
+
+/* ------------------------------------------------------------------ */
+/* 翻訳記事（content-i18n/{locale}/...）ローダー                        */
+/* 原文の Article 型・getAllArticles() 等は一切変更しない。               */
+/* ------------------------------------------------------------------ */
+
+const CONTENT_I18N_DIR = path.join(process.cwd(), "content-i18n");
+/** 翻訳対象セクション。area/news/tokushu はこのスコープでは翻訳コンテンツを持たない */
+const TRANSLATED_SECTIONS: Section[] = ["subsidy", "compare"];
+
+export interface TranslatedArticle {
+  frontmatter: TranslatedArticleFrontmatter;
+  body: string;
+  section: Section;
+  category: string | null;
+  locale: Locale;
+  /** 翻訳ページの href（/{locale}/{section}/{category?}/{slug}） */
+  href: string;
+  /** 対応する原文（日本語）記事の href */
+  originalHref: string;
+  filePath: string;
+}
+
+function parseTranslatedArticle(filePath: string, locale: Locale): TranslatedArticle {
+  const localeDir = path.join(CONTENT_I18N_DIR, locale);
+  const rel = path.relative(localeDir, filePath).split(path.sep);
+  const section = rel[0] as Section;
+  if (!TRANSLATED_SECTIONS.includes(section)) {
+    throw new Error(`content-i18n/${locale}/${rel.join("/")}: 不明なセクション「${rel[0]}」`);
+  }
+  const hasCategory = section === "subsidy";
+  const category = hasCategory && rel.length >= 3 ? rel[1] : null;
+
+  const raw = fs.readFileSync(filePath, "utf-8");
+  const { data, content } = matter(raw);
+  const parsed = translatedArticleFrontmatterSchema.safeParse(data);
+  if (!parsed.success) {
+    const issues = parsed.error.issues
+      .map((i) => `  - ${i.path.join(".")}: ${i.message}`)
+      .join("\n");
+    throw new Error(`frontmatter 検証エラー: ${filePath}\n${issues}`);
+  }
+  const fm = parsed.data;
+
+  if (fm.locale !== locale) {
+    throw new Error(`${filePath}: locale「${fm.locale}」とディレクトリ「${locale}」が一致しません`);
+  }
+
+  const fileSlug = path.basename(filePath, ".mdx");
+  if (fm.slug !== fileSlug) {
+    throw new Error(`${filePath}: slug「${fm.slug}」とファイル名「${fileSlug}」が一致しません`);
+  }
+  if (hasCategory) {
+    const validCodes = CATEGORY_CODES_BY_SECTION[section] ?? [];
+    if (!category || !validCodes.includes(fm.category)) {
+      throw new Error(`${filePath}: category「${fm.category}」が taxonomy.ts の CATEGORY_CODES にありません`);
+    }
+    if (fm.category !== category) {
+      throw new Error(`${filePath}: category「${fm.category}」とディレクトリ「${category}」が一致しません`);
+    }
+  }
+
+  const tail = category !== null ? `${section}/${category}/${fm.slug}` : `${section}/${fm.slug}`;
+  const href = `/${locale}/${tail}`;
+  const originalHref = `/${tail}`;
+
+  return { frontmatter: fm, body: content, section, category, locale, href, originalHref, filePath };
+}
+
+let translatedCache: Map<Locale, TranslatedArticle[]> | null = null;
+
+function getAllTranslatedArticlesForLocale(locale: Locale): TranslatedArticle[] {
+  if (translatedCache?.has(locale) && process.env.NODE_ENV === "production") {
+    return translatedCache.get(locale)!;
+  }
+  const localeDir = path.join(CONTENT_I18N_DIR, locale);
+  const all = walkMdxFiles(localeDir)
+    .map((f) => parseTranslatedArticle(f, locale))
+    .filter((a) => {
+      if (a.frontmatter.status === "archived") return false;
+      if (a.frontmatter.status === "published") return true;
+      return showHidden();
+    })
+    .sort((a, b) => b.frontmatter.publishedAt.localeCompare(a.frontmatter.publishedAt));
+  if (!translatedCache) translatedCache = new Map();
+  translatedCache.set(locale, all);
+  return all;
+}
+
+export function getArticlesBySectionAndLocale(
+  locale: Locale,
+  section: Section,
+  category?: string
+): TranslatedArticle[] {
+  return getAllTranslatedArticlesForLocale(locale).filter(
+    (a) => a.section === section && (category === undefined || a.category === category)
+  );
+}
+
+export function getTranslatedArticle(
+  locale: Locale,
+  section: Section,
+  slug: string,
+  category?: string
+): TranslatedArticle | undefined {
+  return getAllTranslatedArticlesForLocale(locale).find(
+    (a) =>
+      a.section === section &&
+      a.frontmatter.slug === slug &&
+      (category === undefined || a.category === category)
+  );
+}
+
+/**
+ * 全ロケール横断で、指定 section/slug（/category）の翻訳が存在するロケール一覧。
+ * hreflang・LocaleSwitcher で使う。
+ */
+export function getAvailableLocalesFor(section: Section, slug: string, category?: string): Locale[] {
+  return LOCALES.filter((l) => getTranslatedArticle(l, section, slug, category) !== undefined);
 }
