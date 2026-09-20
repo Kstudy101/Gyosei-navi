@@ -49,15 +49,15 @@
   - `/area/tokyo/{chiyoda,minato,shinagawa,setagaya,shibuya}` 5개 지역페이지, `/compare/shussan-oiwaikin-tokyo23ku-hikaku` 정상 생성, `CompareTable` 컴포넌트가 5개 구 데이터를 정확히 렌더링함을 빌드 산출물에서 확인.
 - `npm run build` 정상 통과, published 기사 10건(카테고리별 1건 + shussan 지자체 5건 + compare 1건) 모두 정적 생성・검색 색인 확인.
 - **헤더에 드롭다운 「特集」 메뉴 신설** (2026-09-20). `/compare/`(객관적 비교표) 와 역할을 분리해 `/tokushu/`(편집부가 순위를 매기는 콘텐츠, 예: 「子育てに手厚い市 TOP5」)를 신설. 카테고리는 `TOKUSHU_CATEGORIES`(taxonomy.ts)로 subsidy 카테고리와 별도 체계 — 향후 계속 추가하는 것을 전제로 설계, 지금은 `kosodate`(子育て支援) 1건만 등록. `type: tokushu` + `rankings` 필드(순위 최소5건 미만이면 빌드 실패 — DB 부족 상태의 추측 랭킹을 zod refine으로 원천 차단, `docs/01` §7.1). **실제 특집 기사(순위 콘텐츠)는 아직 0건** — 비교 가능한 지자체 데이터가 카테고리당 5건 이상 쌓인 뒤 작성하는 방침(사용자 확인 사항). 라우트 3종(`/tokushu`, `/tokushu/[category]`, `/tokushu/[category]/[slug]`), 헤더 드롭다운(`TokushuNavDropdown`, 클릭식・외부클릭/ESC로 닫힘)을 Playwright로 실제 클릭 동작까지 검증 완료.
-- **(부수 발견) `src/lib/ads/` 계열이 별도 세션(라쿠텐 어필리에이트)에 의해 추가됨**(커밋 `bab33a9`). `ArticleView.tsx`・`mdx-components.tsx`에 `RakutenRelatedProducts`・`RakutenMotionWidget`이 자동 삽입되도록 연동돼 있다 — 이 프로젝트는 여러 세션이 동시에 작업할 수 있으므로, **작업 전 반드시 `git status`・`git log`로 최신 상태를 확인**하고 다른 세션이 만든 파일은 내용을 먼저 확인한 뒤 다루도록 주의할 것.
+- **(부수 발견) `src/lib/ads/` 계열이 별도 세션(라쿠텐 어필리에이트)에 의해 추가됨**(커밋 `bab33a9`). `ArticleView.tsx`・`mdx-components.tsx`에 `RakutenRelatedProducts`・`RakutenMotionWidget`이 자동 삽입되도록 연동돼 있다 — 이 프로젝트는 여러 세션이 동시에 작업할 수 있으므로, **작업 전 반드시 `git status`・`git log`로 최신 상태를 확인**하고 다른 세션이 만든 파일은 내용을 먼저 확인한 뒤 다루도록 주의할 것. **커밋 전에는 `git add`에 명시적으로 내 파일 경로만 나열할 것** — 다른 세션이 작업 디렉터리에 일시적으로 시크릿(SSH 키 등)을 둘 수 있으므로 `git add -A`/`git add .`는 피한다.
 - **`workspace/`는 세션별 작업 완료 기록 폴더**(2026-09-20부터 운용, `.gitignore` 대상 — git에는 없음). 작업을 마치면 그 세션에서 생성/수정한 파일들의 스냅샷과 README(요청 내용・한 일・검증 결과)를 `workspace/<날짜>-<주제>/`에 남기는 관례가 있다. 새로 작업할 때도 이 관례를 따를 것.
+- **`jutaku`(주택리폼) 카테고리에도 도쿄 5개 구 지자체 비교 완료** (2026-09-20). `shussan`에서 검증한 패턴을 그대로 적용했으나, 조사 결과 5개 구의 제도가 **단순 금액서열로 비교할 수 없는 4가지 성격**(省エネ改修型: 千代田・世田谷 / 窓特化型: 港 / 複合型: 品川 / 耐震型: 渋谷)으로 갈린다는 걸 발견 — 비교 기사(`content/compare/jutaku-hojokin-tokyo23ku-hikaku.mdx`)는 금액 순위가 아니라 「제도 유형 정리」로 설계했다. **千代田区는 予算到達で受付を一旦終了(`subsidy.status: closed`)**, **世田谷区는 前期受付終了・後期は2026-10-01開始予定**, **渋谷区は令和7年度版パンフレットのみ確認(最新額は要確認)** — 이런 시기적 디테일이 원문에만 있고 초기 조사 에이전트 보고에는 일부 누락돼 있었다(千代田区 접수종료 사실). **서브에이전트의 조사 보고를 그대로 신뢰하지 말고, `npm run source`/PDF 직접 다운로드로 반드시 원문을 재확인할 것** — 이번에 에이전트 보고와 원문을 대조해 이 누락을 발견했다.
 
 **다음 우선순위**
-1. **다른 카테고리(jutaku)에 지자체 단위 비교 확장** — `shussan`에서 검증한 「5개 구 원문조사→개별기사→compare기사」 패턴을 `jutaku`(주택리폼)에 적용. 지자체별 리폼 보조금은 실재하고 차액이 크므로 비교 페이지 효과가 큼. `sogyo`・`energy`・`kaigo`는 이미 국가 단위 제도를 다뤘으므로, 지자체 비교보다 jGrants 등에서 카테고리당 Cluster를 추가하는 쪽이 더 자연스러울 수 있음.
-2. **`src/config/regions.ts`에 도쿄 23구 잔여 18개 구 및 타 도도부현 시구정촌 추가** — 현재 도쿄도 5개 구만 등록. 새 지자체 기사를 쓸 때마다 먼저 여기 등록.
-3. jGrants 기반 기사를 또 쓸 때는 `fetchSubsidyDetail()` 원응답을 `data/sources/<slug>/`에 JSON 그대로 저장하는 절차(`sogyo` 기사가 선례)를 유지할 것.
-4. **`shussan` 카테고리 지자체 데이터가 10건 이상 쌓이면 첫 特集 기사 작성 검토** — `kosodate`(子育て支援) 카테고리는 현재 `/compare/shussan-oiwaikin-tokyo23ku-hikaku`의 5개 구 데이터가 있지만, 「TOP5」류 순위 콘텐츠를 만들려면 순위를 매길 만한 차별화 포인트(금액 외 정성적 요소 포함 여부 등)를 먼저 편집 기준으로 정해야 함.
-5. 실제 기사가 쌓이는 대로 `docs/05_CONTENT_CALENDAR.md`를 진행 상황에 맞춰 갱신.
+1. **`src/config/regions.ts`에 도쿄 23구 잔여 18개 구 및 타 도도부현 시구정촌 추가** — 현재 도쿄도 5개 구만 등록. 새 지자체 기사를 쓸 때마다 먼저 여기 등록.
+2. **`sogyo`・`energy`・`kaigo` 카테고리 확장** — 이미 국가 단위 제도를 1건씩 다뤘으므로, 지자체 비교보다 jGrants 등에서 카테고리당 Cluster를 추가하는 쪽이 더 자연스러울 수 있음. jGrants 기반 기사를 쓸 때는 `fetchSubsidyDetail()` 원응답을 `data/sources/<slug>/`에 JSON 그대로 저장하는 절차(`sogyo` 기사가 선례)를 유지할 것.
+3. **`shussan`・`jutaku` 카테고리 지자체 데이터가 더 쌓이면 첫 特集 기사 작성 검토** — 두 카테고리 모두 현재 5개 구 비교 데이터가 있지만, 「TOP5」류 순위 콘텐츠를 만들려면 순위를 매길 만한 차별화 포인트를 먼저 편집 기준으로 정해야 함. 특히 jutaku는 제도 성격이 갈리므로(위 참조), 카테고리를 나눠서(예: 省エネ改修 TOP・耐震改修 TOP) 특집을 설계하는 편이 자연스러울 수 있음.
+4. 실제 기사가 쌓이는 대로 `docs/05_CONTENT_CALENDAR.md`를 진행 상황에 맞춰 갱신.
 
 **주의**:
 - **draft 기사(Pillar 5건)에 적힌 금액・마감일・URL은 전부 플레이스홀더다.** 절대 그대로 published로 바꾸지 말 것 — 절대규칙 7(원문 확인 없이 쓰기 금지)・9(AI가 만든 수치 그대로 쓰기 금지) 위반이 된다.
