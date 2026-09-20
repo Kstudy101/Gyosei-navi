@@ -1,5 +1,7 @@
 # 배포 구축 — GitHub(private) → Xserver → gyosei-navi.jp
 
+> ⚠️ **v1 유산 문서지만 배포 인프라는 계속 유효 (2026-09-20).** 「전국 보조금 정보 사이트」로 주제는 전환됐으나, 도메인(gyosei-navi.jp)・GitHub→Xserver 배포 라인 자체는 리브랜딩만으로 계승 예정(`docs/00_MASTER_PLAN.md` v2 §0). 배포 절차는 그대로 유효하다.
+
 > 작성: 2026-08-17 / 상위: `docs/00_MASTER_PLAN.md` §6 (원안은 Vercel → **Xserver 정적 호스팅으로 변경**, 사용자 결정 2026-08-17)
 > 아키텍처: `main` push → GitHub Actions → `next build`(output: export) → **SSH + rsync 로 Xserver public_html 차분 동기화** (FTPS 방식에서 2026-08-17 전환)
 > 리포: https://github.com/Kstudy101/Gyosei-navi (private)

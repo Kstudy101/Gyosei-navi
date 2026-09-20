@@ -1,5 +1,7 @@
 # 감시 소스 레지스트리 해설 — 전 분야 망라판
 
+> ⚠️ **v1 유산 문서 (2026-09-20).** 「전국 보조금 정보 사이트」 전환에 따라 `prompts/monitor/sources.yaml`의 개별 등록 항목(입관・행정서사법 등)은 전부 무효. **감시 체계라는 구조 자체(변경 감지 방식・`npm run monitor` 로직)는 보조금 마감・조건 변경 추종에 재활용 가치가 있어** 코드 재작성 세션에서 재검토 대상으로 남긴다.
+
 > 정본 파일: **`prompts/monitor/sources.yaml` (v2.1)**
 > 조사일: 2026-08-17 / 전 URL 실지 검증 / 소스 83건
 > 상위 문서: `docs/00_MASTER_PLAN.md` §8, `docs/07_DATA_PIPELINE_WORKORDER.md`

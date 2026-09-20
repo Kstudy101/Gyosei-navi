@@ -1,5 +1,7 @@
 # 13. 在留資格 判定ナビ — 설계서 v2 (전 경우의 수 망라 + 망라성 검증)
 
+> ⚠️ **폐기 대상 (2026-09-20).** 「전국 보조금 정보 사이트」 전환에 따라 재류자격 진단 툴(`/tools/visa-navi`)은 주제와 무관해져 코드 재작성 세션에서 삭제 예정(`docs/02_REPO_STRUCTURE.md` v2 「v1 자산 처리 방침」 참조). 본 문서는 삭제 전까지의 기록으로만 보존.
+
 > 작성: 2026-08-19 (v1) → **v2 2026-08-19: 법령 전체 집합 대비 망라성 검증 후 누락 24건 보강** / 상태: **구현 완료 (2026-08-19)** — `/tools/visa-navi`
 > 구현: `src/lib/tools/visa-navi/{statuses,questions,rules}.ts` + `src/components/tools/VisaNavi.tsx` + `src/app/tools/visa-navi/page.tsx` / 검증: `npm run test:visa-navi` (리프 87 도달성·카탈로그 53 정합·§5-3 시나리오 15·질문트리 전경로 13,294 탐색 → 후보 0건 경로 0)
 > 마스터플랜 §IA `/tools/visa-navi/`. 선행 툴 `/tools/eiju-shindan` (`src/components/tools/EijuShindan.tsx`).
