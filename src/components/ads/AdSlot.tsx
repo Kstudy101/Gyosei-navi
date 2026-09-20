@@ -23,17 +23,17 @@ export function AdSlot({
 }) {
   return (
     <section
-      className="not-prose my-10 rounded-lg border border-gray-200 bg-gray-50 p-4"
+      className="not-prose my-10 rounded-lg border border-gray-200 bg-gray-50 p-4 dark:border-gray-800 dark:bg-gray-900"
       data-pagefind-ignore
       data-ad-provider={provider}
       data-ad-type={type}
       data-ad-placement={placement}
     >
       <div className="flex items-center gap-2">
-        <span className="rounded border border-gray-400 px-1.5 py-0.5 text-[10px] font-bold tracking-wide text-gray-600">
+        <span className="rounded border border-gray-400 px-1.5 py-0.5 text-[10px] font-bold tracking-wide text-gray-600 dark:border-gray-600 dark:text-gray-400">
           PR
         </span>
-        {heading && <h2 className="text-sm font-bold text-gray-700">{heading}</h2>}
+        {heading && <h2 className="text-sm font-bold text-gray-700 dark:text-gray-300">{heading}</h2>}
       </div>
       <div className="mt-3">{children}</div>
     </section>

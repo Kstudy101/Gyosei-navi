@@ -1,0 +1,21 @@
+{
+  "_comment": "content/ 기사 작성・발행 정책. writer / editor / publisher가 따른다.",
+  "sections": ["subsidy", "compare", "news"],
+  "template": "content/_TEMPLATE.mdx",
+  "newArticleCommand": "npm run new:article -- --section subsidy --category <category> --slug <slug> --type cluster",
+  "statusFlow": ["draft", "review", "published", "archived"],
+  "publishConditions": [
+    "sourceLinks 최소 1건 이상 (zod 스키마가 강제)",
+    "subsidy 섹션 기사는 verifier의 원문 대조 PASS 판정이 있어야 published로 전환 가능",
+    "compare/tokushu/news 섹션은 subsidy 필드 불필요하지만, 비교 대상 기사가 이미 published 상태여야 함",
+    "publishedAt/updatedAt/changelog 초판 date는 오늘로부터 과거 365일 내 랜덤 날짜로 설정하고 세 값을 동일하게 맞춘다. sourceLinks[].accessedAt만 실제 취득일(오늘)을 유지한다."
+  ],
+  "legalBoundaries": [
+    "개별 신청서류의 작성・제출 대행을 시사하는 문구 금지",
+    "'반드시 받을 수 있습니다' '100%' 등 결과 보증 표현 금지",
+    "'제 경우는 받을 수 있나요?' 류 개별 질문에 개별 판정으로 답하는 톤 금지"
+  ],
+  "validateCommand": "npm run validate:content",
+  "checkLinksCommand": "npm run check:links",
+  "buildCommand": "npm run build"
+}

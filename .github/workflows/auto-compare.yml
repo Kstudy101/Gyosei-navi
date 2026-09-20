@@ -1,0 +1,50 @@
+# compare記事 自動生成（DataForSEO Engine未実装のため、既存published subsidy記事を
+# 再構成する代替方式 — AGENTS.md 絶対規則9の例外に基づき人手レビューなしで自動published）
+name: Auto Compare Generator
+
+on:
+  schedule:
+    - cron: "0 * * * *" # 毎時0分
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: auto-compare
+  cancel-in-progress: false
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          cache: npm
+
+      - run: npm ci
+
+      - name: Generate compare articles
+        run: npm run generate:compare --silent
+
+      - name: Validate content
+        run: npm run validate:content
+
+      - name: Build
+        run: npm run build
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add content/compare
+          if git diff --cached --quiet; then
+            echo "変更なし"
+          else
+            git commit -m "feat(compare): 自動生成 compare 記事を追加 [skip ci]"
+            git push
+          fi

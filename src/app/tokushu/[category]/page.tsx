@@ -42,8 +42,8 @@ export default async function TokushuCategoryPage({
           { label: def.labelJa, href: `/tokushu/${category}` },
         ]}
       />
-      <h1 className="mt-4 text-2xl font-bold text-gray-900">{def.labelJa}</h1>
-      <p className="mt-2 text-sm text-gray-600">{def.description}</p>
+      <h1 className="mt-4 text-2xl font-bold text-gray-900 dark:text-gray-100">{def.labelJa}</h1>
+      <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">{def.description}</p>
       {articles.length > 0 ? (
         <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {articles.map((a) => (
@@ -51,7 +51,7 @@ export default async function TokushuCategoryPage({
           ))}
         </div>
       ) : (
-        <p className="mt-6 text-sm text-gray-500">
+        <p className="mt-6 text-sm text-gray-500 dark:text-gray-400">
           このテーマの特集はまだ準備中です。比較できる自治体データが十分に集まり次第、公開します。
         </p>
       )}

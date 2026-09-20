@@ -51,7 +51,7 @@ export default async function MunicipalityPage({
           { label: m.labelJa, href: `/area/${pref}/${city}` },
         ]}
       />
-      <h1 className="mt-4 text-2xl font-bold text-gray-900">{m.labelJa}の補助金・助成金</h1>
+      <h1 className="mt-4 text-2xl font-bold text-gray-900 dark:text-gray-100">{m.labelJa}の補助金・助成金</h1>
       {articles.length > 0 ? (
         <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {articles.map((a) => (
@@ -59,7 +59,7 @@ export default async function MunicipalityPage({
           ))}
         </div>
       ) : (
-        <p className="mt-6 text-sm text-gray-500">この地域の記事は現在準備中です。</p>
+        <p className="mt-6 text-sm text-gray-500 dark:text-gray-400">この地域の記事は現在準備中です。</p>
       )}
     </div>
   );

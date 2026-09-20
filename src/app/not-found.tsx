@@ -3,11 +3,11 @@ import Link from "next/link";
 export default function NotFound() {
   return (
     <div className="mx-auto max-w-3xl px-4 py-24 text-center">
-      <p className="text-5xl font-bold text-brand-800">404</p>
-      <h1 className="mt-4 text-xl font-bold text-gray-900">
+      <p className="text-5xl font-bold text-brand-800 dark:text-brand-100">404</p>
+      <h1 className="mt-4 text-xl font-bold text-gray-900 dark:text-gray-100">
         ページが見つかりません
       </h1>
-      <p className="mt-2 text-sm text-gray-600">
+      <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
         お探しのページは移動または削除された可能性があります。
       </p>
       <Link

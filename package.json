@@ -15,9 +15,12 @@
     "subsidies": "tsx scripts/watch-subsidies.ts",
     "source": "tsx scripts/fetch-source.ts",
     "validate:content": "tsx scripts/validate-content.ts",
+    "validate:ranking": "tsx scripts/validate-ranking-content.ts",
+    "ranking:generate": "tsx scripts/generate-ranking-article.ts",
     "check:links": "tsx scripts/check-links.ts",
     "stale": "tsx scripts/stale-report.ts",
     "new:article": "tsx scripts/new-article.ts",
+    "generate:compare": "tsx scripts/generate-compare.ts",
     "export:articles-for-seo": "tsx scripts/export-articles-for-seo.ts",
     "ads:rakuten": "tsx scripts/fetch-rakuten-products.ts",
     "test": "node --import tsx --test src/lib/ads/flags.test.ts src/lib/ads/rakuten/client.test.ts src/lib/ads/rakuten/mapping.test.ts"
@@ -33,6 +36,7 @@
     "rehype-autolink-headings": "^7.1.0",
     "rehype-slug": "^6.0.0",
     "remark-gfm": "^4.0.0",
+    "resend": "^6.28.1",
     "yaml": "^2.9.0",
     "zod": "^3.24.1"
   },

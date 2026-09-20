@@ -1,0 +1,13 @@
+{
+  "_comment": "SEO 리서치 및 메타데이터 정책. seo-researcher / editor가 따른다.",
+  "titleMaxLength": 32,
+  "titlePattern": "지역명 + 제도명 + 차별화 요소",
+  "descriptionLength": { "min": 50, "max": 160 },
+  "descriptionRule": "결론(금액 등)을 먼저 쓴다",
+  "targetKeywordsSource": "src/config/taxonomy.ts의 seedKeywords를 출발점으로 지역명을 조합해 확장",
+  "faqMin": 3,
+  "notes": [
+    "docs/04_EDITORIAL_GUIDELINE.md §3.4의 AI 번역투/상투구 카탈로그를 참고해 문체를 점검한다.",
+    "tokushu(특집) 기사의 rankings는 최소 5건 미만이면 빌드가 실패하므로, 비교 가능한 지자체 데이터가 부족한 카테고리는 tokushu 기사 작성을 시도하지 않는다."
+  ]
+}

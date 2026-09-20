@@ -42,20 +42,20 @@ const SECTIONS = [
 export default function DisclaimerPage() {
   return (
     <div className="mx-auto max-w-3xl px-4 py-10">
-      <h1 className="text-2xl font-bold text-gray-900">免責事項</h1>
+      <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100">免責事項</h1>
       {SECTIONS.map((s) => (
         <section key={s.heading} className="mt-8">
-          <h2 className="border-b border-gray-200 pb-2 text-lg font-bold text-gray-900">
+          <h2 className="border-b border-gray-200 pb-2 text-lg font-bold text-gray-900 dark:border-gray-800 dark:text-gray-100">
             {s.heading}
           </h2>
-          <div className="mt-3 space-y-2 text-sm leading-relaxed text-gray-700">
+          <div className="mt-3 space-y-2 text-sm leading-relaxed text-gray-700 dark:text-gray-300">
             {s.body.map((p) => (
               <p key={p}>{p}</p>
             ))}
           </div>
         </section>
       ))}
-      <p className="mt-10 text-xs text-gray-500">制定日: 2026年9月20日</p>
+      <p className="mt-10 text-xs text-gray-500 dark:text-gray-400">制定日: 2026年9月20日</p>
     </div>
   );
 }

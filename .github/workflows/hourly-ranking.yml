@@ -1,0 +1,66 @@
+# DataForSEO の検索トレンドから /ranking 記事を毎時自動生成し、main に直接コミットする。
+# 一次情報の裏取りをしない完全自動生成コンテンツ（ユーザー承認済み方針）。
+# push は deploy-xserver.yml の on.push トリガーを起動し、本番デプロイまで自動で流れる。
+#
+# GitHub Secrets:
+#   DATAFORSEO_TOKEN = .env.local の DataForSEO と同じ値（"login:password" の base64）
+name: Hourly Ranking Article
+
+on:
+  schedule:
+    - cron: "0 * * * *"
+  workflow_dispatch:
+
+concurrency:
+  group: hourly-ranking
+  cancel-in-progress: false
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          cache: npm
+
+      - run: npm ci
+
+      - name: Restore ranking-seen cache
+        uses: actions/cache/restore@v4
+        with:
+          path: .cache/ranking-seen.json
+          key: ranking-seen-${{ github.run_id }}
+          restore-keys: |
+            ranking-seen-
+
+      - name: Generate ranking article
+        env:
+          DataForSEO: ${{ secrets.DATAFORSEO_TOKEN }}
+        run: npm run ranking:generate
+
+      - name: Save ranking-seen cache
+        uses: actions/cache/save@v4
+        with:
+          path: .cache/ranking-seen.json
+          key: ranking-seen-${{ github.run_id }}
+
+      - name: Validate generated content
+        run: npm run validate:ranking
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add content/ranking/
+          if git diff --cached --quiet; then
+            echo "no new ranking article"
+            exit 0
+          fi
+          git commit -m "feat(ranking): DataForSEOトレンドからTOP5記事を自動生成"
+          git push

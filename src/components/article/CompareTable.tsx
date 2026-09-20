@@ -14,7 +14,7 @@ export function CompareTable({ targets }: { targets: readonly string[] }) {
 
   if (rows.length === 0) {
     return (
-      <p className="not-prose my-6 rounded-md border border-amber-300 bg-amber-50 p-4 text-sm text-amber-900">
+      <p className="not-prose my-6 rounded-md border border-amber-300 bg-amber-50 p-4 text-sm text-amber-900 dark:border-amber-600 dark:bg-amber-950/40 dark:text-amber-200">
         比較対象のデータがまだ揃っていません。
       </p>
     );
@@ -24,12 +24,12 @@ export function CompareTable({ targets }: { targets: readonly string[] }) {
     <div className="not-prose my-6 overflow-x-auto">
       <table className="w-full min-w-[640px] border-collapse text-sm">
         <thead>
-          <tr className="border-b-2 border-gray-300 text-left">
-            <th className="p-2 font-semibold text-gray-700">地域</th>
-            <th className="p-2 font-semibold text-gray-700">金額</th>
-            <th className="p-2 font-semibold text-gray-700">状況</th>
-            <th className="p-2 font-semibold text-gray-700">申請期限</th>
-            <th className="p-2 font-semibold text-gray-700">詳細</th>
+          <tr className="border-b-2 border-gray-300 text-left dark:border-gray-700">
+            <th className="p-2 font-semibold text-gray-700 dark:text-gray-300">地域</th>
+            <th className="p-2 font-semibold text-gray-700 dark:text-gray-300">金額</th>
+            <th className="p-2 font-semibold text-gray-700 dark:text-gray-300">状況</th>
+            <th className="p-2 font-semibold text-gray-700 dark:text-gray-300">申請期限</th>
+            <th className="p-2 font-semibold text-gray-700 dark:text-gray-300">詳細</th>
           </tr>
         </thead>
         <tbody>
@@ -37,13 +37,13 @@ export function CompareTable({ targets }: { targets: readonly string[] }) {
             const s = a.frontmatter.subsidy!;
             const status = SUBSIDY_STATUSES[s.status];
             return (
-              <tr key={a.href} className="border-b border-gray-100">
-                <td className="p-2 font-medium text-gray-900">{s.regionLabel}</td>
-                <td className="p-2 text-gray-800">{s.amount ?? "—"}</td>
-                <td className="p-2 text-gray-600">{status.label}</td>
-                <td className="p-2 text-gray-600">{s.periodEnd ?? "—"}</td>
+              <tr key={a.href} className="border-b border-gray-100 dark:border-gray-800">
+                <td className="p-2 font-medium text-gray-900 dark:text-gray-100">{s.regionLabel}</td>
+                <td className="p-2 text-gray-800 dark:text-gray-200">{s.amount ?? "—"}</td>
+                <td className="p-2 text-gray-600 dark:text-gray-400">{status.label}</td>
+                <td className="p-2 text-gray-600 dark:text-gray-400">{s.periodEnd ?? "—"}</td>
                 <td className="p-2">
-                  <Link href={a.href} className="text-brand-600 hover:underline">
+                  <Link href={a.href} className="text-brand-600 hover:underline dark:text-brand-100">
                     記事を見る →
                   </Link>
                 </td>

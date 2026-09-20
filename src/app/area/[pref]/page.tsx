@@ -46,7 +46,7 @@ export default async function PrefecturePage({ params }: { params: Promise<{ pre
           { label: def.labelJa, href: `/area/${pref}` },
         ]}
       />
-      <h1 className="mt-4 text-2xl font-bold text-gray-900">{def.labelJa}の補助金・助成金</h1>
+      <h1 className="mt-4 text-2xl font-bold text-gray-900 dark:text-gray-100">{def.labelJa}の補助金・助成金</h1>
 
       {cities.length > 0 && (
         <div className="mt-4 flex flex-wrap gap-2">
@@ -54,7 +54,7 @@ export default async function PrefecturePage({ params }: { params: Promise<{ pre
             <Link
               key={c.code}
               href={`/area/${pref}/${c.slug}`}
-              className="rounded-md border border-gray-200 px-3 py-1.5 text-sm hover:border-brand-300 hover:bg-brand-50"
+              className="rounded-md border border-gray-200 px-3 py-1.5 text-sm hover:border-brand-300 hover:bg-brand-50 dark:border-gray-800 dark:hover:border-brand-700 dark:hover:bg-brand-900/30"
             >
               {c.labelJa}
             </Link>
@@ -69,7 +69,7 @@ export default async function PrefecturePage({ params }: { params: Promise<{ pre
           ))}
         </div>
       ) : (
-        <p className="mt-6 text-sm text-gray-500">この地域の記事は現在準備中です。</p>
+        <p className="mt-6 text-sm text-gray-500 dark:text-gray-400">この地域の記事は現在準備中です。</p>
       )}
     </div>
   );

@@ -36,7 +36,7 @@ export function TokushuNavDropdown() {
         aria-haspopup="true"
         aria-expanded={open}
         onClick={() => setOpen((v) => !v)}
-        className="flex items-center gap-1 text-gray-700 transition-colors hover:text-brand-600"
+        className="flex items-center gap-1 text-gray-700 transition-colors hover:text-brand-600 dark:text-gray-300 dark:hover:text-brand-100"
       >
         {SECTIONS.tokushu.label}
         <svg
@@ -52,21 +52,21 @@ export function TokushuNavDropdown() {
       </button>
 
       {open && (
-        <div className="absolute left-0 top-full z-10 mt-2 w-56 rounded-md border border-gray-200 bg-white py-2 shadow-lg">
+        <div className="absolute left-0 top-full z-10 mt-2 w-56 rounded-md border border-gray-200 bg-white py-2 shadow-lg dark:border-gray-700 dark:bg-gray-900">
           <Link
             href={SECTIONS.tokushu.path}
             onClick={() => setOpen(false)}
-            className="block px-4 py-1.5 text-sm font-semibold text-gray-900 hover:bg-brand-50 hover:text-brand-600"
+            className="block px-4 py-1.5 text-sm font-semibold text-gray-900 hover:bg-brand-50 hover:text-brand-600 dark:text-gray-100 dark:hover:bg-gray-800 dark:hover:text-brand-100"
           >
             特集一覧
           </Link>
-          <div className="my-1 border-t border-gray-100" />
+          <div className="my-1 border-t border-gray-100 dark:border-gray-800" />
           {TOKUSHU_CATEGORIES.map((c) => (
             <Link
               key={c.code}
               href={`/tokushu/${c.code}`}
               onClick={() => setOpen(false)}
-              className="block px-4 py-1.5 text-sm text-gray-700 hover:bg-brand-50 hover:text-brand-600"
+              className="block px-4 py-1.5 text-sm text-gray-700 hover:bg-brand-50 hover:text-brand-600 dark:text-gray-300 dark:hover:bg-gray-800 dark:hover:text-brand-100"
             >
               {c.labelJa}
             </Link>

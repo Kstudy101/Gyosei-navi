@@ -5,8 +5,8 @@ import { AffiliateLink } from "@/components/ads/AffiliateLink";
 /** 楽天商品1件のカード。画像は正方形コンテナに固定してレイアウトシフトを防ぐ。 */
 export function ProductCard({ product, event }: { product: RakutenProduct; event: AffiliateEventPayload }) {
   return (
-    <div className="flex w-40 shrink-0 flex-col overflow-hidden rounded-md border border-gray-200 bg-white sm:w-auto">
-      <div className="flex aspect-square w-full items-center justify-center overflow-hidden bg-gray-100">
+    <div className="flex w-40 shrink-0 flex-col overflow-hidden rounded-md border border-gray-200 bg-white sm:w-auto dark:border-gray-800 dark:bg-gray-900">
+      <div className="flex aspect-square w-full items-center justify-center overflow-hidden bg-gray-100 dark:bg-gray-800">
         {product.imageUrl ? (
           // 静的 export + unoptimized 前提のサイトのため next/image は使わず素の img で統一
           // eslint-disable-next-line @next/next/no-img-element
@@ -19,13 +19,13 @@ export function ProductCard({ product, event }: { product: RakutenProduct; event
             className="h-full w-full object-contain"
           />
         ) : (
-          <span className="text-xs text-gray-400">画像なし</span>
+          <span className="text-xs text-gray-400 dark:text-gray-500">画像なし</span>
         )}
       </div>
       <div className="flex flex-1 flex-col gap-1 p-2">
-        <p className="line-clamp-2 text-xs leading-snug text-gray-800">{product.name}</p>
-        <p className="text-sm font-bold text-gray-900">¥{product.price.toLocaleString("ja-JP")}</p>
-        <p className="truncate text-[10px] text-gray-400">{product.shopName}</p>
+        <p className="line-clamp-2 text-xs leading-snug text-gray-800 dark:text-gray-200">{product.name}</p>
+        <p className="text-sm font-bold text-gray-900 dark:text-gray-100">¥{product.price.toLocaleString("ja-JP")}</p>
+        <p className="truncate text-[10px] text-gray-400 dark:text-gray-500">{product.shopName}</p>
         <AffiliateLink
           href={product.affiliateUrl}
           event={event}

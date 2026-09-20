@@ -1,9 +1,9 @@
 import type { ReactNode } from "react";
 
 const STYLES = {
-  info: "border-blue-300 bg-blue-50 text-blue-900",
-  warning: "border-amber-300 bg-amber-50 text-amber-900",
-  danger: "border-red-300 bg-red-50 text-red-900",
+  info: "border-blue-300 bg-blue-50 text-blue-900 dark:border-blue-600 dark:bg-blue-950/40 dark:text-blue-200",
+  warning: "border-amber-300 bg-amber-50 text-amber-900 dark:border-amber-600 dark:bg-amber-950/40 dark:text-amber-200",
+  danger: "border-red-300 bg-red-50 text-red-900 dark:border-red-600 dark:bg-red-950/40 dark:text-red-200",
 } as const;
 
 const LABELS = {

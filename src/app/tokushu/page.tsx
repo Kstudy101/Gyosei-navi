@@ -10,8 +10,8 @@ export const metadata: Metadata = {
 export default function TokushuIndexPage() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-10">
-      <h1 className="text-2xl font-bold text-gray-900">特集</h1>
-      <p className="mt-2 text-sm text-gray-600">
+      <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100">特集</h1>
+      <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
         蓄積したデータをもとに、編集部がテーマ別にランキング・解説する特集記事です。
       </p>
       <div className="mt-6 grid gap-4 sm:grid-cols-2">
@@ -19,10 +19,10 @@ export default function TokushuIndexPage() {
           <Link
             key={c.code}
             href={`/tokushu/${c.code}`}
-            className="rounded-lg border border-gray-200 p-5 transition-shadow hover:shadow-md"
+            className="rounded-lg border border-gray-200 p-5 transition-shadow hover:shadow-md dark:border-gray-800"
           >
-            <p className="text-lg font-bold text-gray-900">{c.labelJa}</p>
-            <p className="mt-2 text-sm leading-relaxed text-gray-600">{c.description}</p>
+            <p className="text-lg font-bold text-gray-900 dark:text-gray-100">{c.labelJa}</p>
+            <p className="mt-2 text-sm leading-relaxed text-gray-600 dark:text-gray-400">{c.description}</p>
           </Link>
         ))}
       </div>

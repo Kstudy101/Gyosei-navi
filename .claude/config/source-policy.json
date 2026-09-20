@@ -1,0 +1,13 @@
+{
+  "_comment": "AGENTS.md 절대 규칙에서 파생된 원문 취급 정책. government-researcher / municipality-researcher / verifier는 반드시 이 정책을 따른다.",
+  "archiveRoot": "data/sources/<slug>/",
+  "rules": [
+    "원문은 npm run source -- --url <URL> --out data/sources/<slug>/NN_<name>.txt 로 취득한다 (HTML). PDF는 직접 다운로드해서 읽는다. API 응답은 원 JSON 그대로 저장한다.",
+    "WebFetch 등 요약 도구의 출력은 요약이지 원문이 아니므로 data/sources/에 저장하지 않는다. 사실관계 확인에는 쓸 수 있지만 최종 아카이브는 반드시 npm run source 또는 직접 다운로드로 재취득한다.",
+    "관공서 서버에 초당 1회 이상 요청 금지. User-Agent를 명시한다 (fetch-source.ts가 이미 처리).",
+    "파싱 실패/미조사는 절대 '0건(보조금 없음)'으로 단정하지 않는다. subsidy.status: unresearched로 명시한다.",
+    "각 data/sources/<slug>/ 안에 README.md를 만들어 원문 근거표 + '확인되지 않은 것' 섹션을 정리한다.",
+    "금액·마감일·조건 수치는 AI가 만든 값을 그대로 쓰지 않는다. 원문과 100% 대조한다(compare/news 자동생성 기사 예외는 이미 published된 기사를 재료로 재구성하는 경우에 한함 — 신규 조사 기사에는 적용되지 않음).",
+    "articleType이 subsidy(개별 지자체/국가 제도 기사)인 경우 draft 전환 전 원문 최소 1건 이상 data/sources/에 확보되어야 한다. 확보 못했으면 topic을 skip하고 orchestrator에 보고한다."
+  ]
+}

@@ -7,12 +7,12 @@ export function FaqList({ items }: { items: readonly { q: string; a: string }[] 
   return (
     <dl className="not-prose my-6 space-y-4">
       {items.map((item) => (
-        <div key={item.q} className="rounded-md border border-gray-200 p-4">
-          <dt className="flex gap-2 font-semibold text-gray-900">
-            <span className="text-brand-600">Q.</span>
+        <div key={item.q} className="rounded-md border border-gray-200 p-4 dark:border-gray-800">
+          <dt className="flex gap-2 font-semibold text-gray-900 dark:text-gray-100">
+            <span className="text-brand-600 dark:text-brand-100">Q.</span>
             {item.q}
           </dt>
-          <dd className="mt-2 flex gap-2 text-sm leading-relaxed text-gray-700">
+          <dd className="mt-2 flex gap-2 text-sm leading-relaxed text-gray-700 dark:text-gray-300">
             <span className="font-semibold text-accent-600">A.</span>
             {item.a}
           </dd>

@@ -11,13 +11,13 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <div className="mx-auto max-w-3xl px-4 py-10">
-      <h1 className="text-2xl font-bold text-gray-900">運営者情報</h1>
+      <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100">運営者情報</h1>
 
       <section className="mt-8">
-        <h2 className="border-b border-gray-200 pb-2 text-lg font-bold text-gray-900">
+        <h2 className="border-b border-gray-200 pb-2 text-lg font-bold text-gray-900 dark:border-gray-800 dark:text-gray-100">
           運営者について
         </h2>
-        <div className="mt-4 space-y-3 text-sm leading-relaxed text-gray-700">
+        <div className="mt-4 space-y-3 text-sm leading-relaxed text-gray-700 dark:text-gray-300">
           <p>
             本サイトは、全国の補助金・助成金制度の情報を、地域ごとに比較しやすい形で
             整理・発信することを目的として運営しています。
@@ -28,10 +28,10 @@ export default function AboutPage() {
       </section>
 
       <section className="mt-8">
-        <h2 className="border-b border-gray-200 pb-2 text-lg font-bold text-gray-900">
+        <h2 className="border-b border-gray-200 pb-2 text-lg font-bold text-gray-900 dark:border-gray-800 dark:text-gray-100">
           編集方針
         </h2>
-        <ul className="mt-4 list-disc space-y-2 pl-5 text-sm leading-relaxed text-gray-700">
+        <ul className="mt-4 list-disc space-y-2 pl-5 text-sm leading-relaxed text-gray-700 dark:text-gray-300">
           <li>
             <strong>一次情報主義</strong> —
             国・都道府県・市区町村の公式発表を必ず原文で確認し、出典を明記します。
@@ -48,29 +48,29 @@ export default function AboutPage() {
       </section>
 
       <section className="mt-8">
-        <h2 className="border-b border-gray-200 pb-2 text-lg font-bold text-gray-900">
+        <h2 className="border-b border-gray-200 pb-2 text-lg font-bold text-gray-900 dark:border-gray-800 dark:text-gray-100">
           サイト概要
         </h2>
         <table className="mt-4 w-full text-sm">
           <tbody>
-            <tr className="border-b border-gray-100">
-              <th scope="row" className="w-32 py-2 text-left font-semibold text-gray-600">
+            <tr className="border-b border-gray-100 dark:border-gray-800">
+              <th scope="row" className="w-32 py-2 text-left font-semibold text-gray-600 dark:text-gray-400">
                 サイト名
               </th>
-              <td className="py-2 text-gray-800">{siteConfig.name}</td>
+              <td className="py-2 text-gray-800 dark:text-gray-200">{siteConfig.name}</td>
             </tr>
-            <tr className="border-b border-gray-100">
-              <th scope="row" className="py-2 text-left font-semibold text-gray-600">
+            <tr className="border-b border-gray-100 dark:border-gray-800">
+              <th scope="row" className="py-2 text-left font-semibold text-gray-600 dark:text-gray-400">
                 運営
               </th>
-              <td className="py-2 text-gray-800">{siteConfig.name} 編集部</td>
+              <td className="py-2 text-gray-800 dark:text-gray-200">{siteConfig.name} 編集部</td>
             </tr>
             <tr>
-              <th scope="row" className="py-2 text-left font-semibold text-gray-600">
+              <th scope="row" className="py-2 text-left font-semibold text-gray-600 dark:text-gray-400">
                 お問い合わせ
               </th>
               <td className="py-2">
-                <Link href="/contact" className="text-brand-600 hover:underline">
+                <Link href="/contact" className="text-brand-600 hover:underline dark:text-brand-100">
                   お問い合わせページへ
                 </Link>
               </td>

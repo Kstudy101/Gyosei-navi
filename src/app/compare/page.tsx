@@ -11,8 +11,8 @@ export default function CompareIndexPage() {
   const articles = getArticlesBySection("compare");
   return (
     <div className="mx-auto max-w-6xl px-4 py-10">
-      <h1 className="text-2xl font-bold text-gray-900">地域比較</h1>
-      <p className="mt-2 text-sm text-gray-600">同じ目的の補助金を、地域ごとに並べて比較します。</p>
+      <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100">地域比較</h1>
+      <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">同じ目的の補助金を、地域ごとに並べて比較します。</p>
       {articles.length > 0 ? (
         <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {articles.map((a) => (
@@ -20,7 +20,7 @@ export default function CompareIndexPage() {
           ))}
         </div>
       ) : (
-        <p className="mt-6 text-sm text-gray-500">比較記事は現在準備中です。</p>
+        <p className="mt-6 text-sm text-gray-500 dark:text-gray-400">比較記事は現在準備中です。</p>
       )}
     </div>
   );

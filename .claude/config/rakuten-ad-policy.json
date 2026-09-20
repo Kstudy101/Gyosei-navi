@@ -1,0 +1,19 @@
+{
+  "_comment": "楽天アフィリエイト 연동 정책. ad-mapper / writer / editor / publisher가 따른다. 정본 코드는 src/lib/ads/rakuten/*, src/components/ads/*.",
+  "mappingFile": "src/lib/ads/rakuten/mapping.ts",
+  "mappingExport": "subsidyCategoryAdMapping",
+  "mappingTestFile": "src/lib/ads/rakuten/mapping.test.ts",
+  "cacheDir": "data/ads/rakuten/<category>.json",
+  "fetchCommand": "npm run ads:rakuten -- --category <category>",
+  "fetchCommandAll": "npm run ads:rakuten",
+  "testCommand": "node --import tsx --test src/lib/ads/rakuten/mapping.test.ts",
+  "rules": [
+    "CATEGORY_CODES(src/config/taxonomy.ts)에 새 카테고리가 추가되면 subsidyCategoryAdMapping(mapping.ts)에도 반드시 같은 키로 상품 검색 키워드 3~4개를 추가한다. 누락되면 getAdKeywords()가 빈 배열을 반환해 해당 카테고리 기사에는 광고가 자동으로 사라진다(에러는 나지 않음 — 조용히 비표시됨).",
+    "mapping.ts를 수정했으면 반드시 `node --import tsx --test src/lib/ads/rakuten/mapping.test.ts`를 돌려 CATEGORY_CODES 전체 커버리지 테스트가 통과하는지 확인한다.",
+    "키워드는 그 카테고리 보조금 제도의 독자가 실제로 필요로 할 법한 실물 상품군으로 고른다(예: shussan→ベビーカー). 제도명이나 지자체명을 키워드로 넣지 않는다 — mapping.ts는 카테고리 단위이지 기사 단위가 아니다.",
+    "mapping.ts에 새 카테고리를 추가한 뒤에는 `npm run ads:rakuten -- --category <category>`로 실제 라쿠텐 API에서 상품을 가져와 data/ads/rakuten/<category>.json 캐시를 생성해야 실제로 상품이 뜬다. RAKUTEN_APP_ID/RAKUTEN_AFFILIATE_ID가 .env.local에 없으면 이 단계는 실행할 수 없으니, 실행 불가 시 그 사실을 명확히 보고한다(빈 매핑으로 방치하지 않되, API 키가 없어 캐시를 못 만들었다는 것과 매핑 자체가 없는 것은 구분해서 보고).",
+    "data/ads/rakuten/*.json은 .gitignore 대상이 아니라 정적 사이트 빌드를 위해 커밋되는 파일이다 — 다른 데이터 캐시(data/stats 등)와 다르니 삭제하거나 무시하지 않는다.",
+    "기사 MDX 본문에는 RakutenRelatedProducts/RakutenMotionWidget 컴포넌트를 직접 넣지 않는다 — ArticleView.tsx가 section: subsidy인 기사에 렌더링 시점에서 자동 삽입한다(AGENTS.md 절대규칙 10). writer/editor는 이 컴포넌트를 본문에 추가하거나 제거하는 작업을 하지 않는다.",
+    "RAKUTEN_AFFILIATE_ENABLED/RAKUTEN_API_AD_ENABLED/RAKUTEN_MOTION_WIDGET_ENABLED 플래그(.env.local)가 명시적으로 false가 아닌 한 항상 유효로 간주한다(src/lib/ads/flags.ts) — 별도 활성화 조치 불필요."
+  ]
+}

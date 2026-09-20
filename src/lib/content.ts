@@ -108,7 +108,7 @@ let cache: Article[] | null = null;
 /** 全記事（表示ルール適用済み・publishedAt 降順） */
 export function getAllArticles(): Article[] {
   if (cache && process.env.NODE_ENV === "production") return cache;
-  const all = walkMdxFiles(CONTENT_DIR)
+  const all = SECTIONS.flatMap((section) => walkMdxFiles(path.join(CONTENT_DIR, section)))
     .map(parseArticle)
     .filter((a) => {
       if (a.frontmatter.status === "archived") return false;
