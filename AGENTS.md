@@ -26,16 +26,18 @@
 
 > 갱신: 2026-09-20. v1 시절 진행 상황(`published 75기사` 등)은 전부 무효 — 새 콘텐츠는 0건부터 시작한다.
 
-**현황**: 문서 재설계(마스터플랜・IA・리포구조・콘텐츠템플릿・편집가이드・법적포지셔닝) 완료. **코드는 아직 v1 그대로다** — `src/config/taxonomy.ts`・`site.ts`・`src/lib/content-schema.ts`가 여전히 행정서사 도메인 기준이며, `content/`에 v1 기사 76건이 남아 있다.
+**현황**: 문서 재설계(마스터플랜・IA・리포구조・콘텐츠템플릿・편집가이드・법적포지셔닝) 완료. **v1 콘텐츠・코드 정리 및 v2 최소 스캐폴딩도 완료** — `content/`(v1 기사 76건)・`prompts/`・v1 전용 라우트(guide/practice/exam/tools/ads/search)・컴포넌트・lib・scripts를 전부 삭제하고, `src/config/{site,taxonomy}.ts`・`src/config/regions.ts`(신규)・`src/lib/content-schema.ts`를 v2 스키마로 재작성했다. `npm run build` 정상 통과 확인됨(정적 8페이지).
 
 **다음 우선순위**
-1. **v1 콘텐츠・코드 정리** — `content/` 전체 삭제, v1 전용 스크립트/진단툴/자동발행 파이프라인 삭제. 상세 대상 목록은 `docs/02_REPO_STRUCTURE.md` v2 「v1 자산 처리 방침」 표를 그대로 따를 것. `src/lib/sources/jgrants.ts`・`http.ts`는 삭제하지 말 것.
-2. **초기 카테고리 확정** — `docs/01_IA_TAXONOMY.md` §3의 카테고리 후보(`shussan` `jutaku` `sogyo` 등) 중 실제 착수할 3~4개를 확정.
-3. **`src/config/taxonomy.ts`・`src/config/site.ts`・`src/lib/content-schema.ts` v2 재작성** — 설계 기준은 각각 `docs/01`・`docs/00`§0・`docs/03`.
-4. **`src/config/regions.ts` 신설** — 전国地方公共団体코드 ↔ 로마자 슬러그 매핑 (`docs/01` §4.1).
+1. **초기 카테고리 확정** — `docs/01_IA_TAXONOMY.md` §3 / `src/config/taxonomy.ts`의 카테고리 후보(`shussan` `jutaku` `sogyo` `kaigo` `energy`) 중 실제 착수할 것을 최종 확정.
+2. **MDX 콘텐츠 파이프라인 재구축 여부 결정** — `src/lib/content.ts`・`seo.ts`는 현재 빌드만 통과시키는 임시 스텁(항상 빈 배열 반환)이다. 실제 기사를 넣으려면 MDX 로딩・렌더링 로직을 처음부터 다시 설계해야 한다(v1의 `gray-matter` 기반 파이프라인은 삭제됨, MDX 사용 여부 자체도 미확정 — `docs/03_CONTENT_TEMPLATE.md` §8).
+3. **`/subsidy/[category]`・`/area/[pref]/[city]`・`/compare/[slug]` 라우트 신설** — `docs/02_REPO_STRUCTURE.md` v2 목표 구조 참조. 현재 이 라우트들은 존재하지 않는다.
+4. **`src/config/regions.ts`에 시구정촌 데이터 추가** — 현재 47도도부현만 등록, `MUNICIPALITIES`는 빈 배열. 기사화할 지자체가 정해지는 대로 추가.
 5. 위가 끝나면 `docs/05_CONTENT_CALENDAR.md`를 실제 캘린더로 재수립하고 집필 착수.
 
-**주의**: v1 시절 「기사를 쓴 제도는 감시 등록」 원칙은 보조금 마감・조건 변경 추종에도 유효한 발상이다 — 감시 체계(`prompts/monitor/`) 재구축 시 이 교훈을 계승할 것(`docs/10_MONITORING_REGISTRY.md` 상단 배너 참조).
+**주의**:
+- v1 시절 「기사를 쓴 제도는 감시 등록」 원칙은 보조금 마감・조건 변경 추종에도 유효한 발상이다 — 감시 체계 재구축 시 이 교훈을 계승할 것(`docs/10_MONITORING_REGISTRY.md` 상단 배너 참조). `prompts/monitor/`는 삭제됐으므로 새로 설계해야 한다.
+- 일본어 문체 점검 시 `docs/04_EDITORIAL_GUIDELINE.md` §3.4(AI 특유 번역투・상투구 카탈로그, 2026-09-20 신설)를 참고할 것 — `github.com/coji/natural-japanese` 스킬의 검증된 패턴을 요약 반영했다.
 
 ## 문서 우선순위
 
@@ -56,11 +58,12 @@
 
 | 파일 | 역할 | 상태 | 변경 시 |
 |---|---|---|---|
-| `src/config/site.ts` | 사이트 설정・면책 문안 | **v1 상태 — 재작성 필요** | 승인 필요 |
-| `src/config/taxonomy.ts` | 분류체계 정본 | **v1 상태 — 재작성 필요** | 승인 필요 + `docs/01` 정합 확인 |
-| `src/config/regions.ts` | 지역 코드-슬러그 매핑 | **미생성 — 신규 작성 필요** | 승인 필요 |
-| `src/lib/content-schema.ts` | frontmatter zod 스키마 | **v1 상태 — 재작성 필요** | 승인 필요 |
-| `content/_TEMPLATE.mdx` | 기사 템플릿 | **v1 상태 — 재작성 필요** | 승인 필요 |
+| `src/config/site.ts` | 사이트 설정・면책 문안 | **v2 작성 완료** | 승인 필요 |
+| `src/config/taxonomy.ts` | 분류체계 정본 | **v2 작성 완료**(카테고리 5개 초안) | 승인 필요 + `docs/01` 정합 확인 |
+| `src/config/regions.ts` | 지역 코드-슬러그 매핑 | **v2 작성 완료**(도도부현만, 시구정촌 미등록) | 승인 필요 |
+| `src/lib/content-schema.ts` | frontmatter zod 스키마 | **v2 작성 완료**(subsidy 필드군 포함) | 승인 필요 |
+| `src/lib/content.ts`, `seo.ts` | MDX 로딩・SEO 헬퍼 | **임시 스텁** — 실제 로직 없음 | MDX 파이프라인 재구축 시 전면 교체 |
+| `content/_TEMPLATE.mdx` | 기사 템플릿 | **미생성** — `content/` 전체 삭제됨 | MDX 파이프라인 결정 후 작성 |
 | `src/lib/sources/jgrants.ts`, `http.ts` | 전국 보조금 API 연동 | **v1 그대로 유효 — 재활용** | 변경 시 통상 리뷰 |
 
 ## 기술 스택
@@ -99,19 +102,17 @@ v1의 행정서사법 제19조 제약은 더 이상 핵심 리스크가 아니�
 
 상세는 `docs/06_LEGAL_COMPLIANCE.md` v2. v1에 있던 「行政書士 자칭 금지」・「CTA를 자격 취득 후 교체 가능하게 격리」 조항은 v2에서 해당 없음으로 삭제됐다.
 
-## 커맨드 (v1 그대로 — 스크립트 자체는 재작성 전까지 v1 도메인 기준으로 동작)
+## 커맨드 (v2 정리 완료 — package.json scripts 재정비됨)
 
 ```bash
 npm run dev
 npm run build
-npm run validate:content   # 전 기사 frontmatter 검증 (스키마 재작성 전까지 v1 기준)
-npm run check:links        # 출처 URL 생존 확인
-npm run stale              # 6개월 미갱신 기사 리포트
-npm run new:article        # 템플릿에서 기사 생성 (카테고리 목록 재작성 필요)
+npm run subsidies   # jGrants 국가 보조금 신착 감시 (scripts/watch-subsidies.ts, v1에서 그대로 계승)
+npm run stats -- --search "<검색어>"   # e-Stat 통계 (ESTAT_APP_ID 필요)
 npm run source -- --url <URL> --out data/sources/<topic>/NN_<name>.txt   # 一次情報 페이지 원문 취득
 ```
 
-> `npm run law`(법령 조문 취득)・`npm run monitor`(v1 소스 레지스트리 기반)・`npm run pubcomment`・`npm run rotate:next`(자동발행 로테이션)는 v1 도메인에 결합돼 있어 **그대로 실행하면 의미가 없다.** 재구축 여부는 카테고리 확정 후 결정.
+> `validate:content`・`check:links`・`stale`・`new:article`・`law`・`monitor`・`pubcomment`・`rotate:next`는 v1 전용 스크립트와 함께 **삭제됐다.** 콘텐츠 파이프라인(MDX 여부 포함)이 정해지면 필요한 것만 다시 만들 것 — 전부 재생산할 필요는 없다.
 
 API 스펙은 `docs/api/*.md`에 조사 결과가 있다. **엔드포인트를 새로 쓸 때는 반드시 거기부터 읽고, 없으면 공식 문서를 열어 확인 후 추가한다.**
 

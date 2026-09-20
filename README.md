@@ -15,14 +15,17 @@
 
 ## 현재 진행 상태 (2026-09-20)
 
-**완료**: 마스터플랜・IA/택소노미・리포구조・콘텐츠템플릿・편집가이드・법적포지셔닝 문서를 v2로 전면 재작성. v1 운영 문서(07~16)에는 유산 표시 삽입.
+**완료**:
+- 마스터플랜・IA/택소노미・리포구조・콘텐츠템플릿・편집가이드・법적포지셔닝 문서를 v2로 전면 재작성. v1 운영 문서(07~16)에는 유산 표시 삽입.
+- v1 콘텐츠(기사 76건)・`prompts/`・v1 전용 라우트/컴포넌트/lib/scripts 삭제.
+- `src/config/{site,taxonomy,regions}.ts`, `src/lib/content-schema.ts`를 v2 스키마로 재작성. `npm run build` 정상 통과(정적 8페이지).
+- `src/lib/sources/jgrants.ts`, `http.ts` 등은 **보존・재활용** (전국 보조금 API 연동의 핵심 자산).
 
 **다음 단계 (미착수)**:
-- `src/config/taxonomy.ts` / `src/config/site.ts` / `src/lib/content-schema.ts` 를 v2 스키마로 재작성
-- `content/` 배하 v1 기사(76건) 삭제
-- v1 전용 스크립트・진단툴(`/tools/eiju-shindan`, `/tools/visa-navi`)・자동발행 파이프라인 삭제
-- `src/lib/sources/jgrants.ts`, `http.ts`는 **보존・재활용** (전국 보조금 API 연동의 핵심 자산)
-- 초기 카테고리 확정 후 `docs/05_CONTENT_CALENDAR.md` 재수립
+- MDX 콘텐츠 파이프라인 재구축 여부 결정 — 현재 `src/lib/content.ts`・`seo.ts`는 빈 배열만 반환하는 임시 스텁.
+- `/subsidy/[category]`・`/area/[pref]/[city]`・`/compare/[slug]` 라우트 신설.
+- `src/config/regions.ts`에 시구정촌 데이터 추가(현재 47도도부현만 등록).
+- 초기 카테고리 확정 후 `docs/05_CONTENT_CALENDAR.md` 재수립.
 
 ## 문서 지도 (v2)
 
@@ -37,14 +40,16 @@
 | `docs/06_LEGAL_COMPLIANCE.md` | 법적 포지셔닝 v2 (완화판) |
 | `docs/07`~`16` | v1 유산 문서(상단에 경고 배너 있음) — 참고만, 새 작업 근거로 쓰지 말 것 |
 
-## 코드 정본 (문서보다 우선, 재작성 예정)
+## 코드 정본 (문서보다 우선)
 
 | 파일 | 역할 | 상태 |
 |---|---|---|
-| `src/config/site.ts` | 사이트 기본 설정・면책 문안 | v1 상태 — 재작성 대기 |
-| `src/config/taxonomy.ts` | 분류체계 | v1 상태 — 재작성 대기 |
-| `src/lib/content-schema.ts` | frontmatter zod 스키마 | v1 상태 — 재작성 대기 |
-| `src/lib/sources/jgrants.ts`, `http.ts` | 전국 보조금 API 연동 | **계승・재활용 예정** |
+| `src/config/site.ts` | 사이트 기본 설정・면책 문안 | v2 작성 완료 |
+| `src/config/taxonomy.ts` | 분류체계 | v2 작성 완료(카테고리 5개 초안) |
+| `src/config/regions.ts` | 지역 코드-슬러그 매핑 | v2 작성 완료(도도부현만, 시구정촌 단계적 확대 예정) |
+| `src/lib/content-schema.ts` | frontmatter zod 스키마 | v2 작성 완료(subsidy 필드군 포함) |
+| `src/lib/content.ts`, `seo.ts` | MDX 로딩・SEO 헬퍼 | 임시 스텁 — MDX 파이프라인 결정 후 교체 |
+| `src/lib/sources/jgrants.ts`, `http.ts` | 전국 보조금 API 연동 | **계승・재활용** |
 
 ## 개발
 
@@ -54,7 +59,7 @@ npm run dev
 npm run build
 ```
 
-> 콘텐츠・스키마가 v2로 재작성되기 전까지 `validate:content` 등 기존 스크립트는 v1 도메인 기준으로 동작한다.
+> `npm run build`는 정적 export(out/)로 정상 생성된다. 실제 기사 콘텐츠는 아직 없다(`content.ts`가 스텁이므로 sitemap 등은 빈 목록을 반환).
 
 ## 3대 원칙 (v2)
 
