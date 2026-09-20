@@ -173,4 +173,15 @@ jobs:
       # デプロイまで確認できてから push（push 前にビルド・デプロイが失敗したらコミットも残さない）
       - name: Push
         if: steps.generate.outputs.changed == 'true'
-        run: git push
+        run: |
+          # 他セッションが同時に main へ push することがあるため、拒否されたら
+          # rebase して再試行する（記事のコミット自体はデプロイ後なので、生成物は既に配信済み）
+          for i in 1 2 3 4 5; do
+            if git push; then exit 0; fi
+            echo "push rejected, retry $i/5"
+            git fetch origin main
+            git rebase origin/main
+            sleep $((i * 3))
+          done
+          echo "::error::git push が5回失敗しました"
+          exit 1
