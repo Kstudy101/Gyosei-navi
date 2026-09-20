@@ -94,15 +94,74 @@ export interface MunicipalityDef {
  * 2026-09-20: 中央区を追加登録（東京23区を千代田・港・新宿・品川・世田谷・渋谷の6区から23区へ
  *   段階拡大する一環。総務省「都道府県コード及び市区町村コード」PDFで団体コード131024を確認、
  *   検査数字を除いた5桁「13102」で登録）。
+ * 2026-09-20: 仙台市を追加登録（shussan カテゴリの出産育児支援金・妊婦支援給付金記事のため。
+ *   総務省「全国地方公共団体コード一覧」PDF（000925834.pdf）6ページ目・宮城県セクションで
+ *   団体コード041009＝検査数字込み6桁を確認、このファイルの他エントリに合わせ検査数字を除いた5桁
+ *   「04100」で登録。宮城県として初の市区町村登録。一次情報: data/sources/sendai-shussan-ikuji-shienkin/
+ *   03_soumu_zenkoku_chihou_koukyoudantai_code.pdf 参照）。
+ * 2026-09-20: 札幌市を追加登録（kaigo カテゴリの福祉除雪事業記事のため。政令指定都市のため
+ *   横浜市・名古屋市と同様に区単位ではなく市全体を1エントリとして登録。総務省「全国地方公共団体
+ *   コード」一覧PDF（000925834.pdf）で団体コード011002＝検査数字込み6桁を確認、検査数字を除いた
+ *   5桁「01100」で登録。北海道として初の市区町村登録。一次情報: data/sources/sapporo-fukushi-josetsu/
+ *   03_soumu-zenkoku-chihoukoukyoudantai-code.pdf 参照）。
+ * 2026-09-20: さいたま市を追加登録（kyoiku カテゴリの低所得の子育て家庭児童進学支援金記事のため。
+ *   政令指定都市のため横浜市・名古屋市・仙台市・札幌市と同様に区単位ではなく市全体を1エントリとして
+ *   登録。総務省「全国地方公共団体コード」一覧PDF（000925834.pdf）9ページ目・埼玉県セクションで
+ *   団体コード111007＝検査数字込み6桁を確認、このファイルの他エントリに合わせ検査数字を除いた5桁
+ *   「11100」で登録。slugは県名スラッグ「saitama」との混同を避けるため「saitama-shi」とした。
+ *   一次情報: data/sources/saitama-shi-shingaku-shienkin/README.md 参照）。
+ * 2026-09-20: 東京23区のうち目黒・大田・中野・杉並・豊島・北・荒川・板橋・練馬・足立・葛飾・
+ *   江戸川の12区を追加登録（23区全域への段階拡大の一環。gyosei-navi-0dセッションが並行して
+ *   文京・台東・墨田・江東を担当するため範囲を分担）。総務省「都道府県コード及び市区町村コード」
+ *   PDFで団体コード131108〜131236（13110〜13123、検査数字込み6桁）を確認、このファイルの
+ *   他エントリに合わせ検査数字を除いた5桁で登録。東京都北区は大阪市北区（27127, slug: kita-osaka）
+ *   とのスラッグ衝突を避けるため slug "kita" を採用（lookupはprefSlug+citySlugの組で行うため
+ *   都道府県を跨いだ衝突はない）。
+ * 2026-09-20: 京都市を追加登録（pet カテゴリの犬・猫避妊去勢手術費助成制度記事のため。政令指定都市のため
+ *   横浜市・名古屋市・仙台市・札幌市・さいたま市と同様に区単位ではなく市全体を1エントリとして登録。
+ *   総務省「全国地方公共団体コード」一覧PDFの18-22ページ目を確認、19ページ目・京都府セクションで
+ *   団体コード261009＝検査数字込み6桁を確認、このファイルの他エントリに合わせ検査数字を除いた5桁
+ *   「26100」で登録。京都府として初の市区町村登録。一次情報: data/sources/kyoto-shi-pet-funinkyosei/
+ *   04_soumu-zenkoku-chihoukoukyoudantai-code.pdf, README.md 参照）。
+ * 2026-09-20: 福岡市を追加登録（sogyo カテゴリの新規創業促進補助金記事のため。政令指定都市のため
+ *   横浜市・名古屋市・仙台市・札幌市・さいたま市・京都市と同様に区単位ではなく市全体を1エントリとして
+ *   登録。総務省「全国地方公共団体コード」一覧PDF（000925834.pdf）26ページ目・福岡県セクションで
+ *   団体コード401307＝検査数字込み6桁を確認、このファイルの他エントリに合わせ検査数字を除いた5桁
+ *   「40130」で登録。福岡県として初の市区町村登録。一次情報: data/sources/fukuoka-sogyo-shinki-sokushin-hojokin/
+ *   05_soumu-zenkoku-chihoukoukyoudantai-code.pdf, README.md 参照）。
+ * 2026-09-20: 静岡市を追加登録（energy カテゴリの住宅向け太陽光パネル・蓄電池等の共同購入
+ *   （「みんなのおうちに太陽光」キャンペーン）記事のため。政令指定都市のため横浜市・名古屋市・
+ *   仙台市・札幌市・さいたま市・京都市・福岡市と同様に区単位ではなく市全体を1エントリとして登録。
+ *   総務省「全国地方公共団体コード」一覧PDF（000925834.pdf）17ページ目・静岡県セクションで
+ *   団体コード221007＝検査数字込み6桁を確認、このファイルの他エントリに合わせ検査数字を除いた
+ *   5桁「22100」で登録。静岡県として初の市区町村登録（中部地方として初の市区町村登録でもある）。
+ *   一次情報: data/sources/shizuoka-taiyoko-kyodokonyu/03_soumu-zenkoku-chihoukoukyoudantai-code.pdf,
+ *   README.md 参照）。
+ * 2026-09-20: 文京区を追加登録（gyosei-navi-0dセッション担当分、東京23区の残り4区
+ *   文京・台東・墨田・江東のうち最初の1件。総務省「都道府県コード及び市区町村コード」PDFで
+ *   団体コード131059を確認、検査数字を除いた5桁「13105」で登録）。
  */
 export const MUNICIPALITIES: readonly MunicipalityDef[] = [
   { code: "13101", slug: "chiyoda", labelJa: "千代田区", prefCode: "13" },
   { code: "13102", slug: "chuo", labelJa: "中央区", prefCode: "13" },
   { code: "13103", slug: "minato", labelJa: "港区", prefCode: "13" },
   { code: "13104", slug: "shinjuku", labelJa: "新宿区", prefCode: "13" },
+  { code: "13105", slug: "bunkyo", labelJa: "文京区", prefCode: "13" },
   { code: "13109", slug: "shinagawa", labelJa: "品川区", prefCode: "13" },
+  { code: "13110", slug: "meguro", labelJa: "目黒区", prefCode: "13" },
+  { code: "13111", slug: "ota", labelJa: "大田区", prefCode: "13" },
   { code: "13112", slug: "setagaya", labelJa: "世田谷区", prefCode: "13" },
   { code: "13113", slug: "shibuya", labelJa: "渋谷区", prefCode: "13" },
+  { code: "13114", slug: "nakano", labelJa: "中野区", prefCode: "13" },
+  { code: "13115", slug: "suginami", labelJa: "杉並区", prefCode: "13" },
+  { code: "13116", slug: "toshima", labelJa: "豊島区", prefCode: "13" },
+  { code: "13117", slug: "kita", labelJa: "北区", prefCode: "13" },
+  { code: "13118", slug: "arakawa", labelJa: "荒川区", prefCode: "13" },
+  { code: "13119", slug: "itabashi", labelJa: "板橋区", prefCode: "13" },
+  { code: "13120", slug: "nerima", labelJa: "練馬区", prefCode: "13" },
+  { code: "13121", slug: "adachi", labelJa: "足立区", prefCode: "13" },
+  { code: "13122", slug: "katsushika", labelJa: "葛飾区", prefCode: "13" },
+  { code: "13123", slug: "edogawa", labelJa: "江戸川区", prefCode: "13" },
   { code: "13202", slug: "tachikawa", labelJa: "立川市", prefCode: "13" },
   { code: "13205", slug: "ome", labelJa: "青梅市", prefCode: "13" },
   { code: "14100", slug: "yokohama", labelJa: "横浜市", prefCode: "14" },
@@ -114,6 +173,12 @@ export const MUNICIPALITIES: readonly MunicipalityDef[] = [
   { code: "27120", slug: "sumiyoshi", labelJa: "住吉区", prefCode: "27" },
   { code: "27127", slug: "kita-osaka", labelJa: "北区", prefCode: "27" },
   { code: "11203", slug: "kawaguchi", labelJa: "川口市", prefCode: "11" },
+  { code: "04100", slug: "sendai", labelJa: "仙台市", prefCode: "04" },
+  { code: "01100", slug: "sapporo", labelJa: "札幌市", prefCode: "01" },
+  { code: "11100", slug: "saitama-shi", labelJa: "さいたま市", prefCode: "11" },
+  { code: "26100", slug: "kyoto-shi", labelJa: "京都市", prefCode: "26" },
+  { code: "40130", slug: "fukuoka-shi", labelJa: "福岡市", prefCode: "40" },
+  { code: "22100", slug: "shizuoka-shi", labelJa: "静岡市", prefCode: "22" },
 ];
 
 export const getPrefectureBySlug = (slug: string): PrefectureDef | undefined =>
