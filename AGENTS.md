@@ -95,7 +95,7 @@
 | `src/components/article/*` | 기사 렌더링 컴포넌트 | **v2 작성 완료**(`SubsidyInfoCard`・`CompareTable`・`TokushuRanking` 신규) | 통상 리뷰 |
 | `src/components/layout/TokushuNavDropdown.tsx` | 헤더 「特集」 드롭다운(클라이언트 컴포넌트) | **v2 작성 완료** | 통상 리뷰 |
 | `src/lib/sources/jgrants.ts`, `http.ts` | 전국 보조금 API 연동 | **v1 그대로 유효 — 재활용** | 변경 시 통상 리뷰 |
-| `src/lib/ads/*`, `src/components/ads/*` | 楽天アフィリエイト 연동 | **다른 세션 작업(v2와 별개 계통)** | 이 파일들을 바꿀 때는 특히 `git log -- <path>`로 이력 확인 |
+| `src/lib/ads/*`, `src/components/ads/*` | 楽天アフィリエイト 연동 | **다른 세션 작업(v2와 별개 계통)**, `subsidy` 섹션 기사에 자동 삽입됨(절대 규칙 10) | 이 파일들을 바꿀 때는 특히 `git log -- <path>`로 이력 확인 |
 
 ## 기술 스택
 
@@ -126,6 +126,7 @@ TypeScript strict: true
    하며 임의로 지어내거나 원문의 취지를 벗어나게 바꾸지 않는다.
 8. **`sourceLinks`(구 `legalBasis`) 없는 기사는 published 불가** — zod 스키마가 빌드를 막는다. 우회하지 말 것.
 9. **금액・마감일・조건 수치는 AI가 만든 값을 그대로 쓰지 않는다.** 원문 대조 100%(`docs/04` §7).
+10. **`content/subsidy/` 기사는 楽天アフィリエイト가 자동 적용된다는 것을 전제로 쓴다.** `ArticleView.tsx`가 `section === "subsidy"`인 기사에 한해 `RakutenRelatedProducts`(카테고리 연관상품)와 `RakutenMotionWidget`(기사 하단 모션 위젯)을 렌더링 시점에 자동 삽입한다(코드 정본 표 참조) — MDX 본문에 직접 컴포넌트를 넣을 필요도, 넣어서도 안 된다(이중삽입 방지는 `bodyHas()`가 처리하므로 그대로 두면 됨). **`content/compare/`(비교 기사)에는 이 조건이 안 걸려 자동 적용되지 않는다** — 비교 기사에도 적용이 필요하다고 판단되면 `ArticleView.tsx`의 조건을 바꾸는 것으로 처리하고, MDX 쪽에서 우회하지 말 것. 새 기사를 published로 전환하기 전에는 `npm run dev`로 렌더링해 위젯이 실제로 뜨는지 눈으로 한 번 확인한다.
 
 ## 법적 포지셔닝 (v2, 완화판)
 
