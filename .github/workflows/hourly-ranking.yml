@@ -1,5 +1,6 @@
-# DataForSEO の検索トレンドから /ranking 記事を毎時自動生成し、main にコミット→本番デプロイまで同一ジョブで行う。
-# 一次情報の裏取りをしない完全自動生成コンテンツ（ユーザー承認済み方針）。
+# DataForSEO で拾った検索キーワードを起点に、Claude Code（headless, claude -p）が
+# Web調査して /ranking のTOP5記事を作成し、main にコミット→本番デプロイまで同一ジョブで行う。
+# 数値・順位はAIが調査せず創作することを禁止している（.claude/agents/ranking-writer.md 参照）。
 #
 # 注意: GITHUB_TOKEN で push しても deploy-xserver.yml の on.push は連鎖起動しない
 # （GitHub の仕様 — bot push によるワークフロー連鎖はデフォルトで無効）。
@@ -8,6 +9,7 @@
 #
 # GitHub Secrets:
 #   DATAFORSEO_TOKEN    = .env.local の DataForSEO と同じ値（"login:password" の base64）
+#   ANTHROPIC_API_KEY   = Claude Code headless 実行用の Anthropic API キー
 #   XSERVER_HOST / XSERVER_USER / XSERVER_SSH_KEY / XSERVER_PORT / XSERVER_PASSPHRASE / XSERVER_KNOWN_HOSTS
 #     = deploy-xserver.yml と共通
 name: Hourly Ranking Article
@@ -49,13 +51,38 @@ jobs:
           restore-keys: |
             ranking-seen-
 
-      - name: Generate ranking article
-        id: generate
+      - name: Pick ranking keyword
+        id: keyword
         env:
           DataForSEO: ${{ secrets.DATAFORSEO_TOKEN }}
         run: |
-          before=$(git rev-parse HEAD)
-          npm run ranking:generate
+          if npm run ranking:pick-keyword; then
+            echo "picked=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "picked=false" >> "$GITHUB_OUTPUT"
+            echo "候補キーワードなし。今回はスキップします。"
+          fi
+
+      - name: Install Claude Code
+        if: steps.keyword.outputs.picked == 'true'
+        run: npm install -g @anthropic-ai/claude-code
+
+      # ranking-writer エージェント(.claude/agents/ranking-writer.md)に headless で調査・執筆させる。
+      # WebSearch/WebFetch/Read/Write/Glob/Grep/Bash のみ許可し、質問なしで完結させる。
+      - name: Research and write ranking article
+        id: generate
+        if: steps.keyword.outputs.picked == 'true'
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          claude -p "ranking-writerエージェントの指示に従い、.cache/ranking-keyword.jsonのキーワードでTOP5ランキング記事を作成してください。" \
+            --agent ranking-writer \
+            --model claude-sonnet-5 \
+            --setting-sources project \
+            --allowedTools "Read,Write,Glob,Grep,WebSearch,WebFetch" \
+            --dangerously-skip-permissions \
+            --output-format text
+
           git add content/ranking/
           if git diff --cached --quiet; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
@@ -78,7 +105,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git commit -m "feat(ranking): DataForSEOトレンドからTOP5記事を自動生成"
+          git commit -m "feat(ranking): DataForSEOキーワードを調査してTOP5記事を作成"
 
       # 品質ゲート: frontmatter 検証（legalBasis 無し公開記事はここで落ちる）
       - name: Validate all content

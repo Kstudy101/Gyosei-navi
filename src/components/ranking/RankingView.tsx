@@ -30,8 +30,22 @@ export function RankingView({ article, crumbs }: { article: RankingArticle; crum
         {fm.items.map((item) => (
           <li key={item.rank} className="rounded-lg border border-gray-200 p-5 dark:border-gray-800">
             <p className="text-sm font-bold text-brand-700 dark:text-brand-100">第{item.rank}位</p>
-            <p className="mt-1 text-lg font-bold text-gray-900 dark:text-gray-100">{item.title}</p>
+            <p className="mt-1 text-lg font-bold text-gray-900 dark:text-gray-100">{item.label}</p>
             <p className="mt-2 text-sm leading-relaxed text-gray-700 dark:text-gray-300">{item.body}</p>
+            <ul className="mt-2 space-y-0.5">
+              {item.sourceUrls.map((url) => (
+                <li key={url}>
+                  <a
+                    href={url}
+                    target="_blank"
+                    rel="noopener noreferrer nofollow"
+                    className="text-xs text-brand-700 underline dark:text-brand-100"
+                  >
+                    {url}
+                  </a>
+                </li>
+              ))}
+            </ul>
           </li>
         ))}
       </ol>

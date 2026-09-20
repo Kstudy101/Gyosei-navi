@@ -16,7 +16,7 @@
     "source": "tsx scripts/fetch-source.ts",
     "validate:content": "tsx scripts/validate-content.ts",
     "validate:ranking": "tsx scripts/validate-ranking-content.ts",
-    "ranking:generate": "tsx scripts/generate-ranking-article.ts",
+    "ranking:pick-keyword": "tsx scripts/pick-ranking-keyword.ts",
     "check:links": "tsx scripts/check-links.ts",
     "stale": "tsx scripts/stale-report.ts",
     "new:article": "tsx scripts/new-article.ts",

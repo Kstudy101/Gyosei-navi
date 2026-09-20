@@ -2,15 +2,18 @@ import { z } from "zod";
 
 /**
  * ランキング（/ranking）記事 frontmatter スキーマ。
- * DataForSEO で拾った急上昇キーワードを起点に自動生成される記事専用 —
- * content/subsidy 等の一次情報記事とは完全に独立（articleFrontmatterSchema は使わない）。
- * 自動生成のため一次情報の裏取りをしない前提で、法的な断定表現を避ける disclaimer を必須化する。
+ * DataForSEO で拾った検索キーワードを起点に、Claude Code（headless）が Web 調査して
+ * 作成する記事専用 — content/subsidy 等の一次情報記事とは完全に独立
+ * （articleFrontmatterSchema は使わない・rank/compareTargets 等の重い共通 refine は持たない）。
  */
 
 export const rankingItemSchema = z.object({
   rank: z.number().int().min(1).max(5),
-  title: z.string().min(1),
+  /** 順位の対象（例: 「渋谷区」「移住支援金 最大100万円」など） */
+  label: z.string().min(1),
   body: z.string().min(1),
+  /** 調査で確認した出典URL（複数可） */
+  sourceUrls: z.array(z.string().url()).min(1),
 });
 
 export const rankingFrontmatterSchema = z
@@ -23,7 +26,7 @@ export const rankingFrontmatterSchema = z
     updatedAt: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
     status: z.enum(["draft", "published"]),
     items: z.array(rankingItemSchema).length(5),
-    source: z.literal("dataforseo-auto"),
+    source: z.literal("dataforseo-researched"),
   })
   .refine((d) => d.updatedAt >= d.publishedAt, {
     message: "updatedAt は publishedAt 以降である必要があります",
