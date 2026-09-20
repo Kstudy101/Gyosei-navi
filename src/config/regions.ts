@@ -217,6 +217,19 @@ export interface MunicipalityDef {
  *   24ページ目・山口県セクションで団体コード352012＝検査数字込み6桁を確認、このファイルの他エントリに合わせ
  *   検査数字を除いた5桁「35201」で登録。山口県として初の市区町村登録。一次情報:
  *   data/sources/shimonoseki-nancho-hochoki-josei/03_soumu-zenkoku-chihoukoukyoudantai-code.pdf, README.md 参照）。
+ * 2026-09-21: 長野市・鹿児島市を追加登録（欠落復旧）。共有作業ツリーでの並行編集競合により、それぞれ
+ *   kyoiku カテゴリのフリースクール等民間施設利用料助成事業補助金記事・sogyo カテゴリの新規開業支援利子補給制度
+ *   記事の公開時点でこのファイルへの登録が失われていたことが事後判明した。長野市（団体コード202011＝検査数字込み
+ *   6桁、総務省「全国地方公共団体コード」一覧PDF 15ページ目・長野県セクションで確認、検査数字除き5桁「20201」）は
+ *   長野県として、鹿児島市（団体コード462012＝検査数字込み6桁、同PDF 29〜30ページ目・鹿児島県セクションで確認、
+ *   検査数字除き5桁「46201」）は鹿児島県として、いずれも初の市区町村登録。コードは各記事の frontmatter
+ *   subsidy.regionCode（20201 / 46201）および data/sources/nagano-shi-code/, 該当記事内 README.md の記載と一致確認済み。
+ * 2026-09-21: 台東区・越谷市も同様の欠落復旧。台東区（団体コード131067＝検査数字込み6桁、総務省PDF 12ページ目・
+ *   東京都セクションで確認、検査数字除き5桁「13106」）は shussan カテゴリの出産費用助成制度記事のため。
+ *   越谷市（団体コード112224＝検査数字込み6桁、同PDF 10ページ目・埼玉県セクションで確認、検査数字除き5桁
+ *   「11222」）は sogyo カテゴリの越谷市創業者支援補助金記事のため。いずれも regionCode と
+ *   data/sources/taito-shussan-hiyou-josei/README.md・data/sources/koshigaya-sogyosha-shien-hojokin/README.md
+ *   の記載と一致確認済み。
  */
 export const MUNICIPALITIES: readonly MunicipalityDef[] = [
   { code: "13101", slug: "chiyoda", labelJa: "千代田区", prefCode: "13" },
@@ -224,6 +237,7 @@ export const MUNICIPALITIES: readonly MunicipalityDef[] = [
   { code: "13103", slug: "minato", labelJa: "港区", prefCode: "13" },
   { code: "13104", slug: "shinjuku", labelJa: "新宿区", prefCode: "13" },
   { code: "13105", slug: "bunkyo", labelJa: "文京区", prefCode: "13" },
+  { code: "13106", slug: "taito", labelJa: "台東区", prefCode: "13" },
   { code: "13109", slug: "shinagawa", labelJa: "品川区", prefCode: "13" },
   { code: "13110", slug: "meguro", labelJa: "目黒区", prefCode: "13" },
   { code: "13111", slug: "ota", labelJa: "大田区", prefCode: "13" },
@@ -269,6 +283,9 @@ export const MUNICIPALITIES: readonly MunicipalityDef[] = [
   { code: "02201", slug: "aomori-shi", labelJa: "青森市", prefCode: "02" },
   { code: "24201", slug: "tsu", labelJa: "津市", prefCode: "24" },
   { code: "35201", slug: "shimonoseki", labelJa: "下関市", prefCode: "35" },
+  { code: "20201", slug: "nagano-shi", labelJa: "長野市", prefCode: "20" },
+  { code: "46201", slug: "kagoshima-shi", labelJa: "鹿児島市", prefCode: "46" },
+  { code: "11222", slug: "koshigaya", labelJa: "越谷市", prefCode: "11" },
 ];
 
 export const getPrefectureBySlug = (slug: string): PrefectureDef | undefined =>
