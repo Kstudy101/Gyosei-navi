@@ -34,11 +34,15 @@
   - 각 원문은 `data/sources/<slug>/`에 가공 없이 보관(README에 근거표 포함).
 - **AGENTS.md 절대규칙 7 개정** — 원문 아카이브는 여전히 정본으로 가공 없이 보관하되, 기사 본문은 그 원문을 근거로 독자용으로 요약・재구성해도 된다는 점을 명문화.
 - **지역 비교 페이지(`/area/`・`/compare/`) 실제 동작 확인** — `src/config/regions.ts`에 도쿄도 5개 구(千代田・港・品川・世田谷・渋谷)를 등록하고, 각 구의 출산급여를 공식 사이트 원문 취득 후 기사화. 5개 구를 비교하는 첫 `type: compare` 기사(출산축하금・출산비용조성 비교)를 작성. 제도가 「실비연동형(港区・千代田区, 최대31만엔)」「정액형(渋谷区, 상한10만엔)」「국가+구독자 조합형(世田谷区・品川区)」의 3패턴으로 갈리는 것을 확인.
+- **헤더에 드롭다운 「特集」 메뉴 신설** — `/compare/`(객관적 비교표)와 별도로 `/tokushu/`(편집부가 순위를 매기는 콘텐츠, 예: 「子育てに手厚い市 TOP5」) 섹션을 만들었다. 카테고리는 향후 계속 추가하는 것을 전제로 별도 체계(`TOKUSHU_CATEGORIES`)로 설계. 순위는 최소 5건 이상이어야 빌드가 통과하도록 게이트를 걸어, 데이터 부족 상태의 추측성 랭킹을 원천 차단. **실제 순위 콘텐츠는 아직 0건** — 비교 가능한 지자체 데이터가 카테고리당 5건 이상 쌓인 뒤 작성하는 방침.
+- 웹서버(Xserver) 배포 직후 서버 캐시(10분)로 구버전이 일시적으로 보일 수 있음을 확인 — 재배포 전에 캐시 우회 요청으로 먼저 재확인할 것.
 - `npm run build` 정상 통과, published 기사 10건(카테고리별 1건 + shussan 지자체 5건 + compare 1건) 모두 정적 생성・검색 색인됨을 확인.
+- **(참考) 이 프로젝트는 여러 세션이 동시에 작업할 수 있다.** 楽天アフィリエイト 연동(`src/lib/ads/`, `src/components/ads/`)은 별도 세션이 병행 작업한 것으로, v2 전환 작업과는 별개 계통이다. 세션별 작업 완료 기록은 `workspace/<날짜>-<주제>/`(gitignore 대상)에 남기는 관례가 있다.
 
 **다음 단계**:
-- 다른 카테고리에도 지자체 단위 비교 확장 검토, 또는 카테고리당 Cluster 추가.
+- `jutaku`(주택리폼) 카테고리에 지자체 단위 비교 확장(shussan에서 검증한 패턴 적용).
 - `src/config/regions.ts`에 도쿄 23구 잔여 18개 구 및 타 도도부현 데이터 추가.
+- `shussan`의 지자체 데이터가 더 쌓이면 첫 特集(순위) 기사 작성 검토.
 - 콘텐츠가 쌓이는 대로 `docs/05_CONTENT_CALENDAR.md` 갱신.
 
 ## 문서 지도 (v2)
@@ -63,7 +67,8 @@
 | `src/config/regions.ts` | 지역 코드-슬러그 매핑 | v2 작성 완료(도도부현만, 시구정촌 단계적 확대 예정) |
 | `src/lib/content-schema.ts` | frontmatter zod 스키마 | v2 작성 완료(subsidy 필드군 포함) |
 | `src/lib/content.ts`, `seo.ts`, `mdx.tsx`, `related.ts` | MDX 로딩・렌더링・SEO 헬퍼 | v2 작성 완료 — 실제 동작 |
-| `src/components/article/*` | 기사 렌더링 컴포넌트 8종 | v2 작성 완료 |
+| `src/components/article/*` | 기사 렌더링 컴포넌트(`SubsidyInfoCard`・`CompareTable`・`TokushuRanking` 등) | v2 작성 완료 |
+| `src/components/layout/TokushuNavDropdown.tsx` | 헤더 「特集」 드롭다운 | v2 작성 완료 |
 | `src/lib/sources/jgrants.ts`, `http.ts` | 전국 보조금 API 연동 | **계승・재활용** |
 
 ## 개발
@@ -76,7 +81,7 @@ npm run validate:content   # 전 기사 frontmatter 검증
 npm run new:article -- --section subsidy --category shussan --slug <slug> --type cluster
 ```
 
-> `npm run build`는 정적 export(out/)로 정상 생성된다. 콘텐츠는 5개 카테고리에 draft 각 1건(구조 검증용 플레이스홀더)만 있고, 실지조사를 거친 published 기사는 아직 0건이다.
+> `npm run build`는 정적 export(out/)로 정상 생성된다. published 기사는 10건(5개 카테고리 각 1건 + shussan 지자체 5건 + 지역비교 1건). 카테고리 개요용 Pillar 5건은 여전히 draft(구조 검증용 플레이스홀더).
 
 ## 3대 원칙 (v2)
 

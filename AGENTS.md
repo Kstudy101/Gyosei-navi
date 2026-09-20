@@ -48,17 +48,22 @@
   - `content/compare/shussan-oiwaikin-tokyo23ku-hikaku.mdx` — 5개 구를 `compareTargets`로 참조하는 첫 `type: compare` 기사.
   - `/area/tokyo/{chiyoda,minato,shinagawa,setagaya,shibuya}` 5개 지역페이지, `/compare/shussan-oiwaikin-tokyo23ku-hikaku` 정상 생성, `CompareTable` 컴포넌트가 5개 구 데이터를 정확히 렌더링함을 빌드 산출물에서 확인.
 - `npm run build` 정상 통과, published 기사 10건(카테고리별 1건 + shussan 지자체 5건 + compare 1건) 모두 정적 생성・검색 색인 확인.
+- **헤더에 드롭다운 「特集」 메뉴 신설** (2026-09-20). `/compare/`(객관적 비교표) 와 역할을 분리해 `/tokushu/`(편집부가 순위를 매기는 콘텐츠, 예: 「子育てに手厚い市 TOP5」)를 신설. 카테고리는 `TOKUSHU_CATEGORIES`(taxonomy.ts)로 subsidy 카테고리와 별도 체계 — 향후 계속 추가하는 것을 전제로 설계, 지금은 `kosodate`(子育て支援) 1건만 등록. `type: tokushu` + `rankings` 필드(순위 최소5건 미만이면 빌드 실패 — DB 부족 상태의 추측 랭킹을 zod refine으로 원천 차단, `docs/01` §7.1). **실제 특집 기사(순위 콘텐츠)는 아직 0건** — 비교 가능한 지자체 데이터가 카테고리당 5건 이상 쌓인 뒤 작성하는 방침(사용자 확인 사항). 라우트 3종(`/tokushu`, `/tokushu/[category]`, `/tokushu/[category]/[slug]`), 헤더 드롭다운(`TokushuNavDropdown`, 클릭식・외부클릭/ESC로 닫힘)을 Playwright로 실제 클릭 동작까지 검증 완료.
+- **(부수 발견) `src/lib/ads/` 계열이 별도 세션(라쿠텐 어필리에이트)에 의해 추가됨**(커밋 `bab33a9`). `ArticleView.tsx`・`mdx-components.tsx`에 `RakutenRelatedProducts`・`RakutenMotionWidget`이 자동 삽입되도록 연동돼 있다 — 이 프로젝트는 여러 세션이 동시에 작업할 수 있으므로, **작업 전 반드시 `git status`・`git log`로 최신 상태를 확인**하고 다른 세션이 만든 파일은 내용을 먼저 확인한 뒤 다루도록 주의할 것.
+- **`workspace/`는 세션별 작업 완료 기록 폴더**(2026-09-20부터 운용, `.gitignore` 대상 — git에는 없음). 작업을 마치면 그 세션에서 생성/수정한 파일들의 스냅샷과 README(요청 내용・한 일・검증 결과)를 `workspace/<날짜>-<주제>/`에 남기는 관례가 있다. 새로 작업할 때도 이 관례를 따를 것.
 
 **다음 우선순위**
-1. **다른 카테고리(jutaku・kaigo・energy・sogyo)에도 지자체 단위 비교 확장** — `shussan`에서 검증한 「5개 구 원문조사→개별기사→compare기사」 패턴을 다른 카테고리에도 적용할 수 있는지 검토. 다만 국가 단위 제도가 이미 있는 `sogyo`・`energy`・`kaigo`는 지자체 비교보다 jGrants 등에서 카테고리당 Cluster를 추가하는 쪽이 더 자연스러울 수 있음.
+1. **다른 카테고리(jutaku)에 지자체 단위 비교 확장** — `shussan`에서 검증한 「5개 구 원문조사→개별기사→compare기사」 패턴을 `jutaku`(주택리폼)에 적용. 지자체별 리폼 보조금은 실재하고 차액이 크므로 비교 페이지 효과가 큼. `sogyo`・`energy`・`kaigo`는 이미 국가 단위 제도를 다뤘으므로, 지자체 비교보다 jGrants 등에서 카테고리당 Cluster를 추가하는 쪽이 더 자연스러울 수 있음.
 2. **`src/config/regions.ts`에 도쿄 23구 잔여 18개 구 및 타 도도부현 시구정촌 추가** — 현재 도쿄도 5개 구만 등록. 새 지자체 기사를 쓸 때마다 먼저 여기 등록.
 3. jGrants 기반 기사를 또 쓸 때는 `fetchSubsidyDetail()` 원응답을 `data/sources/<slug>/`에 JSON 그대로 저장하는 절차(`sogyo` 기사가 선례)를 유지할 것.
-4. 실제 기사가 쌓이는 대로 `docs/05_CONTENT_CALENDAR.md`를 진행 상황에 맞춰 갱신.
+4. **`shussan` 카테고리 지자체 데이터가 10건 이상 쌓이면 첫 特集 기사 작성 검토** — `kosodate`(子育て支援) 카테고리는 현재 `/compare/shussan-oiwaikin-tokyo23ku-hikaku`의 5개 구 데이터가 있지만, 「TOP5」류 순위 콘텐츠를 만들려면 순위를 매길 만한 차별화 포인트(금액 외 정성적 요소 포함 여부 등)를 먼저 편집 기준으로 정해야 함.
+5. 실제 기사가 쌓이는 대로 `docs/05_CONTENT_CALENDAR.md`를 진행 상황에 맞춰 갱신.
 
 **주의**:
 - **draft 기사(Pillar 5건)에 적힌 금액・마감일・URL은 전부 플레이스홀더다.** 절대 그대로 published로 바꾸지 말 것 — 절대규칙 7(원문 확인 없이 쓰기 금지)・9(AI가 만든 수치 그대로 쓰기 금지) 위반이 된다.
 - v1 시절 「기사를 쓴 제도는 감시 등록」 원칙은 보조금 마감・조건 변경 추종에도 유효한 발상이다 — 감시 체계 재구축 시 이 교훈을 계승할 것(`docs/10_MONITORING_REGISTRY.md` 상단 배너 참조). `prompts/monitor/`는 삭제됐으므로 새로 설계해야 한다.
 - 일본어 문체 점검 시 `docs/04_EDITORIAL_GUIDELINE.md` §3.4(AI 특유 번역투・상투구 카탈로그, 2026-09-20 신설)를 참고할 것 — `github.com/coji/natural-japanese` 스킬의 검증된 패턴을 요약 반영했다.
+- **배포 직후 라이브 사이트 확인 시 서버 캐시(`Cache-Control: max-age=600`, 10분)로 구버전이 잠깐 보일 수 있다.** 배포 워크플로가 success인데 반영이 안 된 것처럼 보이면, 먼저 캐시 우회 쿼리(`?_nocache=$(date +%s)`)로 재확인할 것 — 재배포를 시도하기 전에.
 
 ## 문서 우선순위
 
@@ -85,8 +90,10 @@
 | `src/lib/content-schema.ts` | frontmatter zod 스키마 | **v2 작성 완료**(subsidy 필드군 포함) | 승인 필요 |
 | `src/lib/content.ts`, `seo.ts`, `mdx.tsx`, `related.ts` | MDX 로딩・렌더링・SEO 헬퍼 | **v2 작성 완료** — 실제 동작 확인됨 | 승인 필요 |
 | `content/_TEMPLATE.mdx` | 기사 템플릿 | **v2 작성 완료** | 승인 필요 |
-| `src/components/article/*` | 기사 렌더링 컴포넌트 8종 | **v2 작성 완료**(`SubsidyInfoCard`・`CompareTable` 신규) | 통상 리뷰 |
+| `src/components/article/*` | 기사 렌더링 컴포넌트 | **v2 작성 완료**(`SubsidyInfoCard`・`CompareTable`・`TokushuRanking` 신규) | 통상 리뷰 |
+| `src/components/layout/TokushuNavDropdown.tsx` | 헤더 「特集」 드롭다운(클라이언트 컴포넌트) | **v2 작성 완료** | 통상 리뷰 |
 | `src/lib/sources/jgrants.ts`, `http.ts` | 전국 보조금 API 연동 | **v1 그대로 유효 — 재활용** | 변경 시 통상 리뷰 |
+| `src/lib/ads/*`, `src/components/ads/*` | 楽天アフィリエイト 연동 | **다른 세션 작업(v2와 별개 계통)** | 이 파일들을 바꿀 때는 특히 `git log -- <path>`로 이력 확인 |
 
 ## 기술 스택
 
