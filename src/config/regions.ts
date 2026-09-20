@@ -79,10 +79,12 @@ export interface MunicipalityDef {
  * 市区町村レジストリ（段階拡大）。
  * 記事化する自治体が決まり次第、ここに追加する。
  * 2026-09-20: 出産・子育て給付の地域比較記事のため東京23区のうち5区を追加登録。
+ * 2026-09-20: 新宿区を追加登録（総務省「都道府県コード及び市区町村コード」PDFで131041を確認）。
  */
 export const MUNICIPALITIES: readonly MunicipalityDef[] = [
   { code: "13101", slug: "chiyoda", labelJa: "千代田区", prefCode: "13" },
   { code: "13103", slug: "minato", labelJa: "港区", prefCode: "13" },
+  { code: "13104", slug: "shinjuku", labelJa: "新宿区", prefCode: "13" },
   { code: "13109", slug: "shinagawa", labelJa: "品川区", prefCode: "13" },
   { code: "13112", slug: "setagaya", labelJa: "世田谷区", prefCode: "13" },
   { code: "13113", slug: "shibuya", labelJa: "渋谷区", prefCode: "13" },
