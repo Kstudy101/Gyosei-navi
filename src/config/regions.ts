@@ -239,6 +239,15 @@ export interface MunicipalityDef {
  *   を除いた5桁「12100」で登録。千葉県として初の市区町村登録。slugは県スラッグ「chiba」との混同を避けるため
  *   「chiba-shi」とした（さいたま市・京都市・熊本市等と同じパターン）。一次情報: data/sources/chiba-shi-kekkon-shinseikatsu/
  *   06_soumu-zenkoku-chihoukoukyoudantai-code.pdf, README.md 参照）。
+ *
+ * 2026-09-21: 新潟市を追加登録（kyoiku カテゴリの企業参加型奨学金返済支援事業記事のため）。政令指定都市のため
+ *   横浜市・名古屋市・仙台市・札幌市・さいたま市・京都市・福岡市・静岡市・北九州市・熊本市・広島市・神戸市・
+ *   千葉市等と同様に区単位ではなく市全体を1エントリとして登録。総務省「全国地方公共団体コード」一覧PDF
+ *   （000925834.pdf、https://www.soumu.go.jp/main_content/000925834.pdf）13ページ目・新潟県セクションで
+ *   団体コード151009＝検査数字込み6桁を確認、このファイルの他エントリに合わせ検査数字を除いた5桁「15100」で
+ *   登録。新潟県として初の市区町村登録。slugは県スラッグ「niigata」との混同を避けるため「niigata-shi」とした
+ *   （さいたま市・京都市・熊本市等と同じパターン）。一次情報:
+ *   data/sources/niigata-shi-kigyou-sangata-shogakukin-hensai-shien/README.md 参照）。
  * 2026-09-21: 岐阜市を追加登録（jutaku カテゴリの空き家取得費・改修費補助金記事のため）。岐阜市は
  *   政令指定都市ではないため区単位に分割せず市全体を1エントリとして登録。総務省「全国地方公共団体コード」
  *   一覧PDF（000925834.pdf、https://www.soumu.go.jp/main_content/000925834.pdf）16ページ目・岐阜県セクションで
@@ -247,6 +256,31 @@ export interface MunicipalityDef {
  *   （さいたま市・京都市・熊本市等と同じパターン）。令和8年度は予算上限到達により受付停止中（原文で確認済み）。
  *   一次情報: data/sources/gifu-shi-code/01_soumu-zenkoku-chihoukoukyoudantai-code.pdf, README.md,
  *   data/sources/gifu-shi-akiya-shutoku-kaishu-hojokin/README.md 参照）。
+ * 2026-09-21: 奈良市を追加登録（pet カテゴリの奈良市飼い主のいない猫不妊去勢手術支援事業記事のため）。奈良市は
+ *   政令指定都市ではないため区単位に分割せず市全体を1エントリとして登録。総務省「全国地方公共団体コード」
+ *   一覧PDF（000925834.pdf、https://www.soumu.go.jp/main_content/000925834.pdf、神戸市登録時取得済みコピーを
+ *   data/sources/nara-shi-code/ に複製して確認）21ページ目・奈良県セクションで団体コード292010＝検査数字込み6桁を
+ *   確認、このファイルの他エントリに合わせ検査数字を除いた5桁「29201」で登録。奈良県として初の市区町村登録。
+ *   slugは県スラッグ「nara」との混同を避けるため「nara-shi」とした（さいたま市・京都市・熊本市等と同じパターン）。
+ *   一次情報: data/sources/nara-shi-code/01_soumu-zenkoku-chihoukoukyoudantai-code.pdf,
+ *   data/sources/nara-shi-neko-funinkyosei/README.md 参照）。
+
+ * 2026-09-21: 高松市を追加登録（shogaisha カテゴリの重度障害者日常生活用具給付事業記事のため）。高松市は
+ *   政令指定都市ではないため区単位に分割せず市全体を1エントリとして登録。総務省「全国地方公共団体コード」
+ *   一覧PDF（000925834.pdf、https://www.soumu.go.jp/main_content/000925834.pdf。神戸市登録時に取得済みの
+ *   コピー data/sources/kobe-shi-code/01_soumu-zenkoku-chihoukoukyoudantai-code.pdf 25ページ目・香川県
+ *   セクションで確認）で団体コード372013＝検査数字込み6桁を確認、このファイルの他エントリに合わせ検査数字を
+ *   除いた5桁「37201」で登録（topic-scout の事前推定37201と一致）。香川県として初の市区町村登録。四国地方
+ *   としても初の市区町村登録。一次情報: data/sources/takamatsu-shi-code/01_soumu-zenkoku-chihoukoukyoudantai-code.pdf,
+ *   data/sources/takamatsu-nichijo-seikatsu-yougu/README.md 参照）。
+ * 2026-09-21: 長崎市を追加登録（energy カテゴリの太陽光発電設備等導入補助金〔令和8年度長崎市ゼロカーボンシティ
+ *   推進事業費補助金〕記事のため）。長崎市は政令指定都市ではないため区単位に分割せず市全体を1エントリとして
+ *   登録（青森市・津市・下関市等と同じパターン）。総務省「全国地方公共団体コード」一覧PDF（000925834.pdf、
+ *   https://www.soumu.go.jp/main_content/000925834.pdf）27ページ目・長崎県セクションで団体コード422011＝検査数字
+ *   込み6桁を確認、このファイルの他エントリに合わせ検査数字を除いた5桁「42201」で登録。長崎県として初の市区町村
+ *   登録。slugは県スラッグ「nagasaki」との混同を避けるため「nagasaki-shi」とした（さいたま市・京都市・熊本市等と
+ *   同じパターン）。一次情報: data/sources/nagasaki-shi-code/01_soumu-zenkoku-chihoukoukyoudantai-code.pdf,
+ *   README.md, data/sources/nagasaki-shi-taiyoko-hatsuden-hojokin/README.md 参照）。
  */
 export const MUNICIPALITIES: readonly MunicipalityDef[] = [
   { code: "13101", slug: "chiyoda", labelJa: "千代田区", prefCode: "13" },
@@ -304,7 +338,11 @@ export const MUNICIPALITIES: readonly MunicipalityDef[] = [
   { code: "46201", slug: "kagoshima-shi", labelJa: "鹿児島市", prefCode: "46" },
   { code: "11222", slug: "koshigaya", labelJa: "越谷市", prefCode: "11" },
   { code: "12100", slug: "chiba-shi", labelJa: "千葉市", prefCode: "12" },
+  { code: "15100", slug: "niigata-shi", labelJa: "新潟市", prefCode: "15" },
   { code: "21201", slug: "gifu-shi", labelJa: "岐阜市", prefCode: "21" },
+  { code: "29201", slug: "nara-shi", labelJa: "奈良市", prefCode: "29" },
+  { code: "37201", slug: "takamatsu", labelJa: "高松市", prefCode: "37" },
+  { code: "42201", slug: "nagasaki-shi", labelJa: "長崎市", prefCode: "42" },
 ];
 
 export const getPrefectureBySlug = (slug: string): PrefectureDef | undefined =>
