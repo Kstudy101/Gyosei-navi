@@ -146,6 +146,33 @@ export interface MunicipalityDef {
  *   団体コード401005＝検査数字込み6桁を確認、このファイルの他エントリに合わせ検査数字を除いた5桁
  *   「40100」で登録。福岡県として福岡市に次ぐ2件目の市区町村登録。一次情報: data/sources/kitakyushu-ninpu-shien-kyufu/
  *   05_soumu-zenkoku-chihoukoukyoudantai-code.pdf, README.md および kaigo 側 kitakyushu-omutsu ソース参照）。
+ * 2026-09-21: 久留米市を追加登録（kekkon カテゴリの結婚新生活支援補助金記事のため。総務省「全国地方公共団体コード」
+ *   一覧PDF（000925834.pdf）26ページ目・福岡県セクションで団体コード402036＝検査数字込み6桁を確認、
+ *   このファイルの他エントリに合わせ検査数字を除いた5桁「40203」で登録。福岡県として3件目の市区町村登録。
+ *   一次情報: data/sources/kurume-kekkon-shinseikatsu-shien/04_soumu-zenkoku-chihoukoukyoudantai-code.pdf,
+ *   README.md 参照）。
+ *
+ * 2026-09-21: 岡山市を追加登録（energy カテゴリの令和8年度岡山市住宅用スマートエネルギー導入促進補助事業
+ *   記事のため）。岡山市は政令指定都市ではないため区単位に分割せず市全体を1エントリとして登録。
+ *   総務省「全国地方公共団体コード」一覧PDF（000925834.pdf、https://www.soumu.go.jp/main_content/000925834.pdf）
+ *   岡山県セクションで団体コード331007＝検査数字込み6桁を確認、このファイルの他エントリに合わせ検査数字を
+ *   除いた5桁「33100」で登録。岡山県として初の市区町村登録。slugは県スラッグ「okayama」との混同を避けるため
+ *   「okayama-shi」とした（さいたま市・京都市・熊本市と同じパターン）。一次情報: data/sources/okayama-smart-energy-hojo/
+ *   05_soumu-zenkoku-chihoukoukyoudantai-code.pdf, README.md 参照）。
+ *
+ * 2026-09-21: 那覇市を追加登録（shussan カテゴリの産後ケア事業記事のため）。総務省「全国地方公共団体コード」
+ *   一覧PDF（000925834.pdf）30ページ目・沖縄県セクションで団体コード472018＝検査数字込み6桁を確認、
+ *   このファイルの他エントリに合わせ検査数字を除いた5桁「47201」で登録。沖縄県として初の市区町村登録。
+ *   一次情報: data/sources/naha-sango-care/04_soumu-zenkoku-chihoukoukyoudantai-code.pdf, README.md 参照）。
+ * 2026-09-21: 熊本市を追加登録（kaigo カテゴリの難聴高齢者介護予防促進事業〔高齢者補聴器購入費助成〕記事のため。
+ *   政令指定都市のため横浜市・名古屋市・仙台市・札幌市・さいたま市・京都市・福岡市・静岡市・北九州市等と
+ *   同様に区単位ではなく市全体を1エントリとして登録。総務省「全国地方公共団体コード」一覧PDF
+ *   （000925834.pdf）を福岡市の新規創業促進補助金記事（fukuoka-sogyo-shinki-sokushin-hojokin）で
+ *   取得済みのコピーで確認、熊本県セクションで団体コード431001＝検査数字込み6桁を確認、このファイルの
+ *   他エントリに合わせ検査数字を除いた5桁「43100」で登録。熊本県として初の市区町村登録。slugは県スラッグ
+ *   「kumamoto」との混同を避けるため「kumamoto-shi」とした（さいたま市と同じパターン）。
+ *   一次情報: data/sources/kumamoto-shi-hochoki-kounyuhi-josei/04_soumu-zenkoku-chihoukoukyoudantai-code.pdf,
+ *   README.md 参照）。
  */
 export const MUNICIPALITIES: readonly MunicipalityDef[] = [
   { code: "13101", slug: "chiyoda", labelJa: "千代田区", prefCode: "13" },
@@ -185,7 +212,11 @@ export const MUNICIPALITIES: readonly MunicipalityDef[] = [
   { code: "26100", slug: "kyoto-shi", labelJa: "京都市", prefCode: "26" },
   { code: "40130", slug: "fukuoka-shi", labelJa: "福岡市", prefCode: "40" },
   { code: "40100", slug: "kitakyushu", labelJa: "北九州市", prefCode: "40" },
+  { code: "40203", slug: "kurume", labelJa: "久留米市", prefCode: "40" },
   { code: "22100", slug: "shizuoka-shi", labelJa: "静岡市", prefCode: "22" },
+  { code: "33100", slug: "okayama-shi", labelJa: "岡山市", prefCode: "33" },
+  { code: "47201", slug: "naha", labelJa: "那覇市", prefCode: "47" },
+  { code: "14130", slug: "kawasaki", labelJa: "川崎市", prefCode: "14" },  { code: "43100", slug: "kumamoto-shi", labelJa: "熊本市", prefCode: "43" },
 ];
 
 export const getPrefectureBySlug = (slug: string): PrefectureDef | undefined =>
