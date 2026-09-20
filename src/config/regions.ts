@@ -140,7 +140,8 @@ export interface MunicipalityDef {
  * 2026-09-20: 文京区を追加登録（gyosei-navi-0dセッション担当分、東京23区の残り4区
  *   文京・台東・墨田・江東のうち最初の1件。総務省「都道府県コード及び市区町村コード」PDFで
  *   団体コード131059を確認、検査数字を除いた5桁「13105」で登録）。
- */
+  * 2026-09-21: 北九州市を追加登録（kaigo カテゴリのおむつ給付サービス記事のため。政令指定都市のため市全体を1エントリとして登録。総務省コード401005＝検査数字込み6桁を確認、検査数字を除いた5桁「40100」で登録）。
+*/
 export const MUNICIPALITIES: readonly MunicipalityDef[] = [
   { code: "13101", slug: "chiyoda", labelJa: "千代田区", prefCode: "13" },
   { code: "13102", slug: "chuo", labelJa: "中央区", prefCode: "13" },
@@ -178,6 +179,7 @@ export const MUNICIPALITIES: readonly MunicipalityDef[] = [
   { code: "11100", slug: "saitama-shi", labelJa: "さいたま市", prefCode: "11" },
   { code: "26100", slug: "kyoto-shi", labelJa: "京都市", prefCode: "26" },
   { code: "40130", slug: "fukuoka-shi", labelJa: "福岡市", prefCode: "40" },
+  { code: "40100", slug: "kitakyushu", labelJa: "北九州市", prefCode: "40" },
   { code: "22100", slug: "shizuoka-shi", labelJa: "静岡市", prefCode: "22" },
 ];
 
