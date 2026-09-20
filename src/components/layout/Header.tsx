@@ -2,7 +2,7 @@ import Link from "next/link";
 import { siteConfig } from "@/config/site";
 import { SECTIONS } from "@/config/taxonomy";
 
-const NAV_ORDER = ["subsidy", "area", "compare", "news", "tools", "data"] as const;
+const NAV_ORDER = ["subsidy", "area", "compare", "news"] as const;
 
 export function Header() {
   return (

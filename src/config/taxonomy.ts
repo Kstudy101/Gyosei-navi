@@ -14,8 +14,6 @@ export const SECTIONS = {
   area: { label: "地域から探す", path: "/area", audience: "all" },
   compare: { label: "地域比較", path: "/compare", audience: "all" },
   news: { label: "新着・締切情報", path: "/news", audience: "all" },
-  tools: { label: "診断ツール", path: "/tools", audience: "all" },
-  data: { label: "資料室", path: "/data", audience: "all" },
 } as const;
 
 export type SectionCode = keyof typeof SECTIONS;
