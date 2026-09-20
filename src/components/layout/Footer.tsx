@@ -26,12 +26,12 @@ export function Footer() {
             </ul>
           </div>
           <div>
-            <p className="text-sm font-semibold text-gray-900">分野別ガイド</p>
+            <p className="text-sm font-semibold text-gray-900">目的別に探す</p>
             <ul className="mt-2 space-y-1 text-sm">
               {CATEGORIES.map((c) => (
                 <li key={c.code}>
                   <Link
-                    href={`/guide/${c.code}`}
+                    href={`/subsidy/${c.code}`}
                     className="text-gray-600 hover:text-brand-600"
                   >
                     {c.labelShort}
@@ -42,7 +42,7 @@ export function Footer() {
           </div>
         </div>
 
-        {/* 法19条対応: 全ページ固定の免責文（docs/06 §3.1） */}
+        {/* 全ページ固定の免責文（docs/06_LEGAL_COMPLIANCE.md v2 §3.1） */}
         <div className="mt-8 rounded-md border border-gray-200 bg-white p-4 text-xs leading-relaxed text-gray-500">
           <p>{siteConfig.disclaimer}</p>
         </div>
@@ -54,9 +54,6 @@ export function Footer() {
             </li>
             <li>
               <Link href="/contact" className="hover:text-brand-600">お問い合わせ</Link>
-            </li>
-            <li>
-              <Link href="/ads" className="hover:text-brand-600">広告掲載について</Link>
             </li>
             <li>
               <Link href="/policy/disclaimer" className="hover:text-brand-600">免責事項</Link>

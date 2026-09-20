@@ -4,10 +4,10 @@ import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
   title: "運営者情報",
-  description: `${siteConfig.name}の運営者情報・編集方針。官公庁の一次情報に基づき、行政書士業務の全分野を解説する情報メディアです。`,
+  description: `${siteConfig.name}の運営者情報・編集方針。全国の補助金・助成金制度を、地域ごとに比較しやすい形で整理・発信する情報サイトです。`,
 };
 
-/** E-E-A-T 必須ページ。資格状態は正直に記載する（docs/06 §3.4） */
+/** docs/06_LEGAL_COMPLIANCE.md v2 §3.4 の定形文をそのまま反映 */
 export default function AboutPage() {
   return (
     <div className="mx-auto max-w-3xl px-4 py-10">
@@ -19,17 +19,11 @@ export default function AboutPage() {
         </h2>
         <div className="mt-4 space-y-3 text-sm leading-relaxed text-gray-700">
           <p>
-            本サイト「{siteConfig.name}」は、行政書士試験の受験生であり、
-            日本在住の外国人当事者でもある編集者が運営しています。
+            本サイトは、全国の補助金・助成金制度の情報を、地域ごとに比較しやすい形で
+            整理・発信することを目的として運営しています。
           </p>
-          <p>
-            編集者は行政書士の有資格者ではないため、
-            個別の相談業務・書類作成業務は一切行っておりません。
-          </p>
-          <p>
-            本サイトの役割は、官公庁の一次情報（法令・ガイドライン・パブリックコメント等）を
-            正確に読み解き、わかりやすく整理してお伝えすることに限定されます。
-          </p>
+          <p>個別の申請書類の作成代行・提出代行は行っておりません。</p>
+          <p>制度の詳細・最新情報は各実施主体の公式サイトをご確認ください。</p>
         </div>
       </section>
 
@@ -40,11 +34,11 @@ export default function AboutPage() {
         <ul className="mt-4 list-disc space-y-2 pl-5 text-sm leading-relaxed text-gray-700">
           <li>
             <strong>一次情報主義</strong> —
-            官報・法令・官公庁の公表資料を必ず原文で確認し、出典を明記します。
+            国・都道府県・市区町村の公式発表を必ず原文で確認し、出典を明記します。
           </li>
           <li>
-            <strong>制度ステータスの明示</strong> —
-            「改定案」と「施行済み」を明確に区別し、記事上部にラベルで表示します。
+            <strong>募集状況の明示</strong> —
+            「募集中」「締切」「通年」を明確に区別し、記事に表示します。
           </li>
           <li>
             <strong>訂正の公開</strong> —
@@ -60,19 +54,21 @@ export default function AboutPage() {
         <table className="mt-4 w-full text-sm">
           <tbody>
             <tr className="border-b border-gray-100">
-              <th scope="row" className="w-32 py-2 text-left font-semibold text-gray-600">サイト名</th>
+              <th scope="row" className="w-32 py-2 text-left font-semibold text-gray-600">
+                サイト名
+              </th>
               <td className="py-2 text-gray-800">{siteConfig.name}</td>
             </tr>
             <tr className="border-b border-gray-100">
-              <th scope="row" className="py-2 text-left font-semibold text-gray-600">運営</th>
+              <th scope="row" className="py-2 text-left font-semibold text-gray-600">
+                運営
+              </th>
               <td className="py-2 text-gray-800">{siteConfig.name} 編集部</td>
             </tr>
-            <tr className="border-b border-gray-100">
-              <th scope="row" className="py-2 text-left font-semibold text-gray-600">資格状況</th>
-              <td className="py-2 text-gray-800">{siteConfig.publisher.qualificationNote}</td>
-            </tr>
             <tr>
-              <th scope="row" className="py-2 text-left font-semibold text-gray-600">お問い合わせ</th>
+              <th scope="row" className="py-2 text-left font-semibold text-gray-600">
+                お問い合わせ
+              </th>
               <td className="py-2">
                 <Link href="/contact" className="text-brand-600 hover:underline">
                   お問い合わせページへ

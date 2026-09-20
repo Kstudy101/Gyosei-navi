@@ -11,7 +11,7 @@ import { organizationJsonLd, websiteJsonLd } from "@/lib/seo";
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: `${siteConfig.name}｜行政書士業務の総合情報メディア`,
+    default: `${siteConfig.name}｜全国の補助金・助成金を地域で比較`,
     template: `%s｜${siteConfig.name}`,
   },
   description: siteConfig.description,
@@ -20,10 +20,6 @@ export const metadata: Metadata = {
     siteName: siteConfig.name,
     locale: siteConfig.locale,
     type: "website",
-    images: [{ url: "/og/default.png" }], // scripts/generate-og.ts 生成（記事ページは articleMetadata が上書き）
-  },
-  verification: {
-    google: "qtLMFQLhUFKVaMdo8UxKErTB_gVUDYP2ymnhGE6paM0",
   },
 };
 

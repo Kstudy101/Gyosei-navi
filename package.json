@@ -1,8 +1,8 @@
 {
-  "name": "gyosei-portal",
-  "version": "0.1.0",
+  "name": "gyosei-navi",
+  "version": "0.2.0",
   "private": true,
-  "description": "行政書士ナビ・ジャーナル — 行政書士業務の全分野を一次情報から解説する総合情報メディア",
+  "description": "全国補助金ナビ — 国・都道府県・市区町村の補助金・助成金を地域ごとに比較できる情報サイト",
   "engines": {
     "node": ">=20"
   },
@@ -11,21 +11,9 @@
     "build": "next build",
     "postbuild": "pagefind --site out",
     "start": "next start",
-    "validate:content": "tsx scripts/validate-content.ts",
-    "check:links": "tsx scripts/check-links.ts",
-    "stale": "tsx scripts/stale-report.ts",
-    "new:article": "tsx scripts/new-article.ts",
-    "law": "tsx scripts/fetch-law.ts",
-    "monitor": "tsx scripts/monitor.ts",
-    "pubcomment": "tsx scripts/watch-pubcomment.ts",
     "stats": "tsx scripts/fetch-stats.ts",
-    "keywords:seed": "tsx scripts/seed-keywords.ts",
     "subsidies": "tsx scripts/watch-subsidies.ts",
-    "kanpo": "tsx scripts/archive-kanpo.ts",
-    "og": "tsx scripts/generate-og.ts",
-    "source": "tsx scripts/fetch-source.ts",
-    "test:visa-navi": "tsx scripts/test-visa-navi.ts",
-    "rotate:next": "tsx scripts/rotate-category.ts"
+    "source": "tsx scripts/fetch-source.ts"
   },
   "dependencies": {
     "@mdx-js/mdx": "^3.1.0",

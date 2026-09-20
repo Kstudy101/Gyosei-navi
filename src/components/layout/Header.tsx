@@ -2,7 +2,7 @@ import Link from "next/link";
 import { siteConfig } from "@/config/site";
 import { SECTIONS } from "@/config/taxonomy";
 
-const NAV_ORDER = ["news", "guide", "practice", "exam", "tools", "data"] as const;
+const NAV_ORDER = ["subsidy", "area", "compare", "news", "tools", "data"] as const;
 
 export function Header() {
   return (
@@ -13,7 +13,7 @@ export function Header() {
             {siteConfig.name}
           </span>
           <span className="hidden text-xs text-gray-500 sm:inline">
-            行政書士業務の総合情報メディア
+            全国の補助金・助成金を地域で比較
           </span>
         </Link>
         <nav aria-label="メインナビゲーション">
@@ -31,26 +31,6 @@ export function Header() {
             <li>
               <Link href="/about" className="text-gray-700 transition-colors hover:text-brand-600">
                 運営者情報
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/search"
-                className="inline-flex items-center gap-1 font-semibold text-brand-600 transition-colors hover:text-brand-800"
-                aria-label="記事検索"
-              >
-                <svg
-                  aria-hidden="true"
-                  viewBox="0 0 20 20"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  className="h-3.5 w-3.5"
-                >
-                  <circle cx="8.5" cy="8.5" r="5.5" />
-                  <path d="m17 17-4.2-4.2" strokeLinecap="round" />
-                </svg>
-                検索
               </Link>
             </li>
           </ul>
