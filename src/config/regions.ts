@@ -80,6 +80,13 @@ export interface MunicipalityDef {
  * 記事化する自治体が決まり次第、ここに追加する。
  * 2026-09-20: 出産・子育て給付の地域比較記事のため東京23区のうち5区を追加登録。
  * 2026-09-20: 新宿区を追加登録（総務省「都道府県コード及び市区町村コード」PDFで131041を確認）。
+ * 2026-09-20: 横浜市を追加登録（総務省「全国地方公共団体コード」PDF 13ページ目で団体コード141003＝検査数字込み6桁を確認、
+ *   このファイルの他エントリに合わせ検査数字を除いた5桁「14100」で登録。東京都以外で初の市区町村登録）。
+ * 2026-09-20: 名古屋市を追加登録（総務省「全国地方公共団体コード」PDF 18ページ目で団体コード231002を確認、
+ *   検査数字を除いた5桁「23100」で登録。愛知県として初の市区町村登録）。
+ * 2026-09-20: 大阪市の人口上位6区を追加登録（総務省統計局・国勢調査統計表のe-Stat API「getMetaInfo」
+ *   area軸メタデータでコードを確認、大阪市公式「推計人口年報（令和６年）」表4-1で人口順位を確認。
+ *   一次情報: data/sources/osaka-wards-codes/README.md 参照）。
  */
 export const MUNICIPALITIES: readonly MunicipalityDef[] = [
   { code: "13101", slug: "chiyoda", labelJa: "千代田区", prefCode: "13" },
@@ -88,6 +95,14 @@ export const MUNICIPALITIES: readonly MunicipalityDef[] = [
   { code: "13109", slug: "shinagawa", labelJa: "品川区", prefCode: "13" },
   { code: "13112", slug: "setagaya", labelJa: "世田谷区", prefCode: "13" },
   { code: "13113", slug: "shibuya", labelJa: "渋谷区", prefCode: "13" },
+  { code: "14100", slug: "yokohama", labelJa: "横浜市", prefCode: "14" },
+  { code: "23100", slug: "nagoya", labelJa: "名古屋市", prefCode: "23" },
+  { code: "27123", slug: "yodogawa", labelJa: "淀川区", prefCode: "27" },
+  { code: "27126", slug: "hirano", labelJa: "平野区", prefCode: "27" },
+  { code: "27114", slug: "higashiyodogawa", labelJa: "東淀川区", prefCode: "27" },
+  { code: "27118", slug: "joto", labelJa: "城東区", prefCode: "27" },
+  { code: "27120", slug: "sumiyoshi", labelJa: "住吉区", prefCode: "27" },
+  { code: "27127", slug: "kita-osaka", labelJa: "北区", prefCode: "27" },
 ];
 
 export const getPrefectureBySlug = (slug: string): PrefectureDef | undefined =>
