@@ -6,7 +6,7 @@ const NAV_ORDER = ["subsidy", "area", "compare", "news"] as const;
 
 export function Header() {
   return (
-    <header className="border-b border-gray-200 bg-white">
+    <header className="sticky top-0 z-50 border-b border-gray-200 bg-white shadow-sm">
       <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-x-6 gap-y-2 px-4 py-3">
         <Link href="/" className="flex items-baseline gap-2">
           <span className="text-xl font-bold tracking-tight text-brand-800">
