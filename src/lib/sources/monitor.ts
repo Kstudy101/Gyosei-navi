@@ -15,19 +15,21 @@ import { fetchText, CACHE_ROOT } from "@/lib/sources/http";
  */
 
 const CONTENT_DIR = path.join(process.cwd(), "content");
+const DATA_DIR = path.join(process.cwd(), "data");
 
 export interface WatchTarget {
-  /** state のキー。articleFile を安定的に短縮したもの */
+  /** state のキー。監視URLを安定的に短縮したもの */
   id: string;
-  /** 記事の frontmatter title */
-  articleTitle: string;
-  /** content/ からの相対パス */
-  articleFile: string;
-  /** 記事の公開URL（例: /subsidy/energy/kobe-fcv-fukyu-sokushin） */
-  articleHref: string;
-  /** 監視対象の一次情報URL（sourceLinks[0]） */
-  url: string;
+  /** 表示名（記事タイトル、または自治体名） */
   label: string;
+  /** 記事に由来する場合のみ。content/ からの相対パス */
+  articleFile?: string;
+  /** 記事に由来する場合のみ。記事の公開URL（例: /subsidy/energy/kobe-fcv-fukyu-sokushin） */
+  articleHref?: string;
+  /** 監視対象の一次情報URL */
+  url: string;
+  /** urlの出典説明（記事なら sourceLinks[].label、自治体トップページなら "○○県 △△市 公式サイト"） */
+  sourceLabel: string;
 }
 
 function walkMdxFiles(dir: string): string[] {
@@ -41,6 +43,10 @@ function walkMdxFiles(dir: string): string[] {
   return out;
 }
 
+function targetId(url: string): string {
+  return crypto.createHash("sha256").update(url).digest("hex").slice(0, 16);
+}
+
 /**
  * published な subsidy 記事から監視対象を自動収集する。
  * sourceLinks[0] を代表の一次情報とみなす（170件全件で HTML、PDF は0件 — 2026-09-21実測）。
@@ -49,7 +55,7 @@ function walkMdxFiles(dir: string): string[] {
  * 本文を描画する）ため静的fetchでは本文が0字になる（2026-09-21実測、docs/10 §2① と同じ問題）。
  * jGrants の新着は watch-subsidies.ts（API監視）が別途カバーしているため、ここではスキップする。
  */
-export function collectWatchTargets(): WatchTarget[] {
+export function collectArticleWatchTargets(): WatchTarget[] {
   const dir = path.join(CONTENT_DIR, "subsidy");
   const targets: WatchTarget[] = [];
   for (const file of walkMdxFiles(dir)) {
@@ -63,18 +69,53 @@ export function collectWatchTargets(): WatchTarget[] {
     const rel = path.relative(CONTENT_DIR, file).split(path.sep);
     const category = rel[1];
     const slug = path.basename(file, ".mdx");
-    const id = crypto.createHash("sha256").update(first.url).digest("hex").slice(0, 16);
 
     targets.push({
-      id,
-      articleTitle: data.title ?? slug,
+      id: targetId(first.url),
+      label: data.title ?? slug,
       articleFile: path.relative(CONTENT_DIR, file),
       articleHref: `/subsidy/${category}/${slug}`,
       url: first.url,
-      label: first.label,
+      sourceLabel: first.label,
     });
   }
   return targets;
+}
+
+interface MunicipalityHomepage {
+  pref: string;
+  name: string;
+  url: string;
+}
+
+/**
+ * 全国市区町村の公式ホームページ トップページ（data/watch/municipality-homepages.json、
+ * 1,718件 — data/watch/README.md 参照）を監視対象にする。記事の有無を問わず全件を対象にする
+ * （2026-09-21 ユーザー確認）。トップページ全体の diff のため、補助金と無関係な変更も
+ * 検知されうる点は運用課題として残る（同README参照）。
+ */
+export function collectMunicipalityWatchTargets(): WatchTarget[] {
+  const file = path.join(DATA_DIR, "watch", "municipality-homepages.json");
+  if (!fs.existsSync(file)) return [];
+  const list = JSON.parse(fs.readFileSync(file, "utf-8")) as MunicipalityHomepage[];
+  return list.map((m) => ({
+    id: targetId(m.url),
+    label: `${m.pref}${m.name}`,
+    url: m.url,
+    sourceLabel: `${m.pref}${m.name} 公式サイト`,
+  }));
+}
+
+/**
+ * 1,718件の市区町村トップページを毎日全件監視すると1件1秒間隔でも30分近くかかり、
+ * GitHub Actions の実行時間を圧迫する（2026-09-21 ユーザー確認のうえ、曜日分割で対応）。
+ * 対象を7分割し、その日の曜日（0=日〜6=土）に対応する分だけを返す。
+ */
+export function partitionByWeekday(targets: WatchTarget[], weekday: number): WatchTarget[] {
+  return targets.filter((t) => {
+    const bucket = parseInt(t.id.slice(0, 8), 16) % 7;
+    return bucket === weekday;
+  });
 }
 
 /* ---------------- 状態ファイル ---------------- */
@@ -250,9 +291,9 @@ export async function checkTarget(
 /** レポート本文（コンソール / GitHub Issue 共用） */
 export function formatChangeReport(r: CheckResult): string {
   const lines: string[] = [];
-  lines.push(`## ${r.target.articleTitle}`);
-  lines.push(`- 記事: ${r.target.articleHref}`);
-  lines.push(`- 一次情報: ${r.target.label}`);
+  lines.push(`## ${r.target.label}`);
+  if (r.target.articleHref) lines.push(`- 記事: ${r.target.articleHref}`);
+  lines.push(`- 一次情報: ${r.target.sourceLabel}`);
   lines.push(`  ${r.target.url}`);
   if (r.diff) {
     if (r.diff.added.length > 0) {

@@ -1,6 +1,12 @@
-# 新着キャッチ — published subsidy 記事の一次情報（sourceLinks[0]）を毎日 diff 監視し、
+# 新着キャッチ — published subsidy 記事の一次情報（sourceLinks[0]、毎日全件）と
+# 全国市区町村トップページ（1,718件、data/watch/README.md 参照）を diff 監視し、
 # 変更があれば GitHub Issue で通知する。記事の自動生成・自動publishedは行わない
 # （AGENTS.md 絶対規則7・9 — 数値の書き換えは人が原文を確認してから）。
+#
+# 市区町村トップページは1,718件を毎日全件回すと30分近くかかるため、曜日で7分割し
+# その日の分だけをチェックする（scripts/watch-municipalities.ts --weekday）。
+# GitHub Actions のランナーはUTCのため、cron発火時刻(22:00 UTC=07:00 JST翌日)の
+# UTC曜日をそのまま使うとJSTの曜日と1日ずれる。JSTの曜日をワークフロー側で計算して渡す。
 name: Watch Municipalities (新着キャッチ)
 
 on:
@@ -24,7 +30,7 @@ concurrency:
 jobs:
   watch:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 40
     env:
       GH_TOKEN: ${{ github.token }}
     steps:
@@ -46,10 +52,14 @@ jobs:
           restore-keys: |
             municipalities-monitor-state-
 
+      - name: Compute JST weekday
+        id: jst
+        run: echo "weekday=$(TZ=Asia/Tokyo date +%w)" >> "$GITHUB_OUTPUT"
+
       - name: Run watcher
         id: watch
         run: |
-          npm run watch:municipalities --silent -- ${{ inputs.dry_run && '--dry-run' || '' }} --github-issue --report watch-report.md
+          npm run watch:municipalities --silent -- ${{ inputs.dry_run && '--dry-run' || '' }} --weekday ${{ steps.jst.outputs.weekday }} --github-issue --report watch-report.md
 
       - name: Save monitor state
         if: ${{ !inputs.dry_run }}

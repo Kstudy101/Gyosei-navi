@@ -143,6 +143,30 @@ export function getLatestArticles(n: number): Article[] {
   return getAllArticles().slice(0, n);
 }
 
+/** 新着タブ用。subsidy記事のみを publishedAt 降順で返す（比較・特集記事は含めない） */
+export function getNewestSubsidyArticles(n: number): Article[] {
+  return getArticlesBySection("subsidy").slice(0, n);
+}
+
+/**
+ * 締切間近タブ用。subsidy.status が "open" かつ periodEnd が今日から
+ * withinDays 日以内（経過済みは除く）の記事を、締切が近い順に返す。
+ */
+export function getUpcomingDeadlineArticles(withinDays: number): Article[] {
+  const today = new Date().toISOString().slice(0, 10);
+  const limit = new Date();
+  limit.setDate(limit.getDate() + withinDays);
+  const limitStr = limit.toISOString().slice(0, 10);
+
+  return getArticlesBySection("subsidy")
+    .filter((a) => {
+      const s = a.frontmatter.subsidy;
+      if (!s || s.status !== "open" || !s.periodEnd) return false;
+      return s.periodEnd >= today && s.periodEnd <= limitStr;
+    })
+    .sort((a, b) => a.frontmatter.subsidy!.periodEnd!.localeCompare(b.frontmatter.subsidy!.periodEnd!));
+}
+
 /**
  * 指定した都道府県コード配下の記事（国レベル共通制度は除く）。
  * regionCode の先頭2桁が都道府県コードと一致するものを拾う

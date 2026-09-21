@@ -1,18 +1,26 @@
 /**
  * 地自治体 一次情報 変更検知（新着キャッチ）CLI
- *   npm run watch:municipalities                  # 全件チェック
- *   npm run watch:municipalities -- --dry-run      # 状態ファイルを更新せず確認のみ
- *   npm run watch:municipalities -- --github-issue # 変更があれば Issue 起票（一括1件）
+ *   npm run watch:municipalities                     # 記事由来の対象(全件) + 市区町村トップページ(今日の曜日分)
+ *   npm run watch:municipalities -- --dry-run         # 状態ファイルを更新せず確認のみ
+ *   npm run watch:municipalities -- --github-issue    # 変更があれば Issue 起票（一括1件）
  *   npm run watch:municipalities -- --report out.md
+ *   npm run watch:municipalities -- --skip-municipalities  # 記事由来の対象のみ（市区町村トップページを含めない）
+ *
+ * 市区町村トップページ（1,718件、data/watch/README.md 参照）は全件を毎日回すと
+ * 30分近くかかるため、曜日で7分割してその日の分だけをチェックする
+ * （src/lib/sources/monitor.ts の partitionByWeekday）。
  */
 import fs from "node:fs";
 import {
-  collectWatchTargets,
+  collectArticleWatchTargets,
+  collectMunicipalityWatchTargets,
+  partitionByWeekday,
   loadState,
   saveState,
   checkTarget,
   formatChangeReport,
   type CheckResult,
+  type WatchTarget,
 } from "../src/lib/sources/monitor";
 import { createGithubIssue } from "../src/lib/sources/github-issue";
 
@@ -26,8 +34,16 @@ async function main(): Promise<void> {
   const dryRun = flag("dry-run");
   const wantIssue = flag("github-issue");
   const reportFile = arg("report");
+  const skipMunicipalities = flag("skip-municipalities");
+  const weekdayOverride = arg("weekday");
+  const weekday = weekdayOverride !== undefined ? Number(weekdayOverride) : new Date().getDay();
 
-  const targets = collectWatchTargets();
+  const articleTargets = collectArticleWatchTargets();
+  const municipalityTargets = skipMunicipalities
+    ? []
+    : partitionByWeekday(collectMunicipalityWatchTargets(), weekday);
+  const targets: WatchTarget[] = [...articleTargets, ...municipalityTargets];
+
   if (targets.length === 0) {
     console.error("監視対象が0件です（published な subsidy 記事の sourceLinks を確認）");
     process.exitCode = 1;
@@ -35,11 +51,13 @@ async function main(): Promise<void> {
   }
 
   const state = loadState();
-  console.log(`監視 ${targets.length}件（published subsidy 記事の一次情報）${dryRun ? " (dry-run)" : ""}\n`);
+  console.log(
+    `監視 ${targets.length}件（記事由来 ${articleTargets.length} / 市区町村トップページ ${municipalityTargets.length}、曜日区分${weekday}）${dryRun ? " (dry-run)" : ""}\n`
+  );
 
   const results: CheckResult[] = [];
   for (const t of targets) {
-    process.stdout.write(`  ${t.articleHref} … `);
+    process.stdout.write(`  ${t.label} … `);
     const r = await checkTarget(t, state, { dryRun });
     results.push(r);
     const mark = { initialized: "初期化", unchanged: "変更なし", changed: "★変更", error: "✖ エラー" }[r.status];
@@ -63,7 +81,7 @@ async function main(): Promise<void> {
   if (initialized.length > 0) console.log(`初期化完了: ${initialized.length}件（ベースライン記録）`);
   if (errors.length > 0) {
     console.log(`\nエラー ${errors.length}件:`);
-    for (const r of errors) console.log(`  ✖ ${r.target.articleHref}: ${r.error}`);
+    for (const r of errors) console.log(`  ✖ ${r.target.label}: ${r.error}`);
   }
   console.log(`\n変更検知: ${changed.length}件`);
   if (report) console.log(`\n${report}`);
