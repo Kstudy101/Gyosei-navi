@@ -12,15 +12,15 @@
 #   ANTHROPIC_API_KEY   = Claude Code headless 実行用の Anthropic API キー
 #   XSERVER_HOST / XSERVER_USER / XSERVER_SSH_KEY / XSERVER_PORT / XSERVER_PASSPHRASE / XSERVER_KNOWN_HOSTS
 #     = deploy-xserver.yml と共通
-name: Hourly Ranking Article
+name: Ranking Article (every 6h)
 
 on:
   schedule:
-    - cron: "0 * * * *"
+    - cron: "0 */6 * * *"
   workflow_dispatch:
 
 concurrency:
-  group: hourly-ranking
+  group: ranking-article
   cancel-in-progress: false
 
 jobs:
