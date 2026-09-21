@@ -26,7 +26,7 @@ v1은 frontmatter가 **기사(해설 콘텐츠)** 단위였다. v2는 그 위에
 
 | 필드 | 필수 | 타입 | 설명 |
 |---|:---:|---|---|
-| `title` | ● | string(10-60) | 32자 이내 권장 |
+| `title` | ● | string(10-60) | 32자 이내 권장. 특정 자치단체 제도는 `【지역명】제도명｜차별화 요소` 형식(예: `【川崎市】アーリーステージ対応資金｜信用保証料0.000%の創業融資`). 국가 제도·정리·랭킹·비교 기사는 `【】` 없이 쓴다 |
 | `slug` | ● | kebab-case | 영소문자・숫자・하이픈만 |
 | `category` | ● | enum | `docs/01` §3 카테고리 코드(`type: tokushu`는 §3-2의 특집 전용 카테고리) |
 | `type` | ● | enum | `pillar` / `cluster` / `compare` / `tokushu` / `news` / `checklist` / `tool` — **`compare`・`tokushu` 신설, v1의 `interview`는 제외(용도 없음)** |

@@ -130,6 +130,9 @@ export const TOKUSHU_CATEGORIES: readonly CategoryDef[] = [
     description: "出産祝い金・保育料補助など、子育て世帯への支援が手厚い自治体のランキング特集。",
     seedKeywords: ["子育て 手厚い 市", "出産祝い金 ランキング", "子育て支援 自治体 比較"],
   },
+  // 以下、subsidy の CATEGORIES と同じコードを流用（tokushu-writer が既存published記事を
+  // 再構成して自動生成する特集用 — DataForSEO Engine 未実装時の代替方式、AGENTS.md規則9）。
+  ...CATEGORIES.map((c) => ({ ...c, description: `${c.description}自治体別ランキング特集。` })),
 ] as const;
 
 export const TOKUSHU_CATEGORY_CODES = TOKUSHU_CATEGORIES.map((c) => c.code);

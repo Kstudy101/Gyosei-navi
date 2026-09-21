@@ -1,0 +1,181 @@
+# DataForSEO で拾った参考キーワード＋既存published subsidy記事のデータをもとに、
+# AIを呼ばず純粋スクリプト（generate-tokushu.ts）で /tokushu の特集記事を自動生成し、
+# main にコミット→本番デプロイまで同一ジョブで行う。
+# 「2次加工」記事のため AGENTS.md 絶対規則9の例外（人手レビュー・数値対照なしで自動published）を適用する。
+#
+# hourly-ranking.yml と違い claude -p は呼ばない（新規Web調査ではなく既存データの再構成のため、
+# API費用ゼロで実行できる）。
+#
+# GitHub Secrets（hourly-ranking.yml と共通）:
+#   DATAFORSEO_TOKEN = .env.local の DataForSEO と同じ値（取得失敗時はseedKeywordsにフォールバックする）
+#   XSERVER_HOST / XSERVER_USER / XSERVER_SSH_KEY / XSERVER_PORT / XSERVER_PASSPHRASE / XSERVER_KNOWN_HOSTS
+#     = deploy-xserver.yml と共通
+name: Tokushu Article (every 3h)
+
+on:
+  schedule:
+    - cron: "0 */3 * * *"
+  workflow_dispatch:
+
+concurrency:
+  group: tokushu-article
+  cancel-in-progress: false
+
+jobs:
+  generate-and-deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    environment: production
+    permissions:
+      contents: write
+    env:
+      SSH_PORT: ${{ secrets.XSERVER_PORT || '10022' }}
+      DEPLOY_DIR: ${{ vars.XSERVER_DEPLOY_DIR || '~/gyosei-navi.jp/public_html' }}
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          cache: npm
+
+      - run: npm ci
+
+      - name: Restore tokushu-seen-category cache
+        uses: actions/cache/restore@v4
+        with:
+          path: .cache/tokushu-seen-category.json
+          key: tokushu-seen-${{ github.run_id }}
+          restore-keys: |
+            tokushu-seen-
+
+      - name: Pick tokushu keyword/category
+        env:
+          DataForSEO: ${{ secrets.DATAFORSEO_TOKEN }}
+        run: npm run tokushu:pick-keyword --silent
+
+      - name: Save tokushu-seen-category cache
+        uses: actions/cache/save@v4
+        with:
+          path: .cache/tokushu-seen-category.json
+          key: tokushu-seen-${{ github.run_id }}
+
+      - name: Generate tokushu article
+        id: generate
+        run: |
+          npm run generate:tokushu --silent
+          git add content/tokushu/
+          if git diff --cached --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Validate all content
+        if: steps.generate.outputs.changed == 'true'
+        run: npm run validate:content
+
+      - name: Commit
+        if: steps.generate.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git commit -m "feat(tokushu): 既存published記事を再構成した特集記事を自動生成"
+
+      - name: Build (static export)
+        if: steps.generate.outputs.changed == 'true'
+        run: npm run build
+        env:
+          NEXT_PUBLIC_GA4_ID: ${{ vars.NEXT_PUBLIC_GA4_ID }}
+          NEXT_PUBLIC_CLARITY_ID: ${{ vars.NEXT_PUBLIC_CLARITY_ID }}
+          NEXT_PUBLIC_ADSENSE_CLIENT: ${{ vars.NEXT_PUBLIC_ADSENSE_CLIENT }}
+          RAKUTEN_AFFILIATE_ENABLED: ${{ vars.RAKUTEN_AFFILIATE_ENABLED }}
+          RAKUTEN_API_AD_ENABLED: ${{ vars.RAKUTEN_API_AD_ENABLED }}
+          RAKUTEN_MOTION_WIDGET_ENABLED: ${{ vars.RAKUTEN_MOTION_WIDGET_ENABLED }}
+          RAKUTEN_AFFILIATE_ID: ${{ vars.RAKUTEN_AFFILIATE_ID }}
+          RAKUTEN_MOTION_WIDGET_ID: ${{ vars.RAKUTEN_MOTION_WIDGET_ID }}
+
+      - name: Sanity check out/
+        if: steps.generate.outputs.changed == 'true'
+        run: |
+          test -f out/index.html && test -f out/sitemap.xml && test -f out/.htaccess
+          echo "files: $(find out -type f | wc -l), size: $(du -sh out | cut -f1)"
+
+      - name: Check SSH secrets
+        if: steps.generate.outputs.changed == 'true'
+        id: secrets
+        run: |
+          if [ -n "${{ secrets.XSERVER_HOST }}" ] && [ -n "${{ secrets.XSERVER_USER }}" ] && [ -n "${{ secrets.XSERVER_SSH_KEY }}" ]; then
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::XSERVER_HOST / XSERVER_USER / XSERVER_SSH_KEY のいずれかが未登録のためデプロイをスキップ（記事のコミットまでは実施）"
+          fi
+
+      - name: Set up SSH
+        if: steps.generate.outputs.changed == 'true' && steps.secrets.outputs.ready == 'true'
+        env:
+          SSH_KEY: ${{ secrets.XSERVER_SSH_KEY }}
+          SSH_PASSPHRASE: ${{ secrets.XSERVER_PASSPHRASE }}
+          SSH_KNOWN_HOSTS: ${{ secrets.XSERVER_KNOWN_HOSTS }}
+          SSH_HOST: ${{ secrets.XSERVER_HOST }}
+          SSH_USER: ${{ secrets.XSERVER_USER }}
+        run: |
+          mkdir -p ~/.ssh && chmod 700 ~/.ssh
+          printf '%s\n' "$SSH_KEY" | sed 's/\\n/\n/g' | tr -d '\r' > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          if [ -n "$SSH_PASSPHRASE" ]; then
+            ssh-keygen -p -P "$SSH_PASSPHRASE" -N "" -f ~/.ssh/deploy_key >/dev/null
+          fi
+          ssh-keygen -y -f ~/.ssh/deploy_key > ~/.ssh/deploy_key.pub
+          echo "deploy key fingerprint: $(ssh-keygen -lf ~/.ssh/deploy_key.pub | cut -d' ' -f2)"
+          if [ -n "$SSH_KNOWN_HOSTS" ]; then
+            printf '%s\n' "$SSH_KNOWN_HOSTS" > ~/.ssh/known_hosts
+          else
+            for i in 1 2 3; do
+              ssh-keyscan -T 15 -p "$SSH_PORT" -H "$SSH_HOST" > ~/.ssh/known_hosts && break
+              echo "ssh-keyscan retry $i/3"; sleep 5
+            done
+            if [ ! -s ~/.ssh/known_hosts ]; then
+              echo "::error::ssh-keyscan が 3 回失敗（ホスト鍵を取得できず）。XSERVER_KNOWN_HOSTS Secret の登録で回避可能"
+              exit 1
+            fi
+          fi
+          chmod 644 ~/.ssh/known_hosts
+          cat > ~/.ssh/config <<EOF
+          Host xserver
+            HostName $SSH_HOST
+            User $SSH_USER
+            Port $SSH_PORT
+            IdentityFile ~/.ssh/deploy_key
+            IdentitiesOnly yes
+            StrictHostKeyChecking yes
+            ServerAliveInterval 30
+          EOF
+          chmod 600 ~/.ssh/config
+          ssh -o BatchMode=yes xserver 'echo "ssh ok: $(hostname) rsync=$(command -v rsync || echo MISSING)"'
+
+      - name: Deploy via rsync
+        if: steps.generate.outputs.changed == 'true' && steps.secrets.outputs.ready == 'true'
+        run: |
+          ssh xserver "mkdir -p $DEPLOY_DIR"
+          rsync -az --delete \
+            --itemize-changes --stats \
+            --exclude '.well-known/' \
+            --exclude '.user.ini' \
+            --exclude '.ftp-deploy-sync-state.json' \
+            -e ssh \
+            ./out/ "xserver:$DEPLOY_DIR/"
+
+      - name: Push
+        if: steps.generate.outputs.changed == 'true'
+        run: |
+          for i in 1 2 3 4 5; do
+            if git push; then exit 0; fi
+            echo "push rejected, retry $i/5"
+            git fetch origin main
+            git rebase origin/main
+            sleep $((i * 3))
+          done
+          echo "::error::git push が5回失敗しました"
+          exit 1

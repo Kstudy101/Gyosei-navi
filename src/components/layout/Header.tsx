@@ -57,14 +57,6 @@ export function Header() {
                 {RANKING_NAV.label}
               </Link>
             </li>
-            <li>
-              <Link
-                href="/about"
-                className="text-gray-700 transition-colors hover:text-brand-600 dark:text-gray-300 dark:hover:text-brand-100"
-              >
-                運営者情報
-              </Link>
-            </li>
             <LocaleSwitcher translationIndex={buildTranslationIndex()} />
             <li>
               <ThemeToggle />

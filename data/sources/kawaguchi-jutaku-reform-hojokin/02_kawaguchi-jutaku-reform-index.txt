@@ -1,5 +1,5 @@
 取得元: https://www.city.kawaguchi.lg.jp/soshiki/01130/040/2_2/index.html
-取得日: 2026-09-20
+取得日: 2026-09-21
 取得方法: npm run source（cheerio でタグ除去のみ。文字の置換なし＝原文）
 本文長: 505字
 
