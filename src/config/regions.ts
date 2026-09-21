@@ -305,6 +305,13 @@ export interface MunicipalityDef {
  *   コード022098＝検査数字込み6桁を確認、このファイルの他エントリに合わせ検査数字を除いた5桁「02209」で登録。
  *   青森県として青森市（02201）・弘前市（02202）に次ぐ3件目の市区町村登録。一次情報:
  *   data/sources/tsugaru-kekkon-seikatsu-startup/README.md 参照）。
+ * 2026-09-22: 盛岡市を追加登録（energy カテゴリの住宅用太陽光発電システム等設置費補助金〔令和8年度〕
+ *   記事のため）。盛岡市は政令指定都市ではないため区単位に分割せず市全体を1エントリとして登録。総務省
+ *   「全国地方公共団体コード」一覧PDF（`data/sources/morioka-taiyoko-setti-hojokin/05_soumu_code.pdf`、
+ *   https://www.soumu.go.jp/main_content/000925834.pdf）岩手県セクションで団体コード032018＝検査数字込み
+ *   6桁を確認（盛岡市公式サイトのFAQページ自己申告「032018」とも一致、data/sources/morioka-taiyoko-setti-hojokin/
+ *   04_shityousoncode.txt 参照）、このファイルの他エントリに合わせ検査数字を除いた5桁「03201」で登録。
+ *   岩手県として初の市区町村登録。一次情報: data/sources/morioka-taiyoko-setti-hojokin/README.md 参照）。
  */
 export const MUNICIPALITIES: readonly MunicipalityDef[] = [
   { code: "13101", slug: "chiyoda", labelJa: "千代田区", prefCode: "13" },
@@ -371,6 +378,7 @@ export const MUNICIPALITIES: readonly MunicipalityDef[] = [
   { code: "42201", slug: "nagasaki-shi", labelJa: "長崎市", prefCode: "42" },
   { code: "01235", slug: "ishikari", labelJa: "石狩市", prefCode: "01" },
   { code: "01202", slug: "hakodate", labelJa: "函館市", prefCode: "01" },
+  { code: "03201", slug: "morioka", labelJa: "盛岡市", prefCode: "03" },
 ];
 
 export const getPrefectureBySlug = (slug: string): PrefectureDef | undefined =>
