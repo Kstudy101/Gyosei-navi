@@ -1,0 +1,64 @@
+# 新着キャッチ — published subsidy 記事の一次情報（sourceLinks[0]）を毎日 diff 監視し、
+# 変更があれば GitHub Issue で通知する。記事の自動生成・自動publishedは行わない
+# （AGENTS.md 絶対規則7・9 — 数値の書き換えは人が原文を確認してから）。
+name: Watch Municipalities (新着キャッチ)
+
+on:
+  schedule:
+    - cron: "0 22 * * *" # 毎日 07:00 JST
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "状態ファイルを更新せず確認のみ"
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: watch-municipalities
+  cancel-in-progress: false
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          cache: npm
+
+      - run: npm ci
+
+      # .cache/monitor-state.json を実行間で維持（毎回「初期化」にならないように）
+      - name: Restore monitor state
+        uses: actions/cache/restore@v4
+        with:
+          path: .cache/monitor-state.json
+          key: municipalities-monitor-state-${{ github.run_id }}
+          restore-keys: |
+            municipalities-monitor-state-
+
+      - name: Run watcher
+        id: watch
+        run: |
+          npm run watch:municipalities --silent -- ${{ inputs.dry_run && '--dry-run' || '' }} --github-issue --report watch-report.md
+
+      - name: Save monitor state
+        if: ${{ !inputs.dry_run }}
+        uses: actions/cache/save@v4
+        with:
+          path: .cache/monitor-state.json
+          key: municipalities-monitor-state-${{ github.run_id }}
+
+      - name: Ensure labels
+        run: |
+          gh label create "content-opportunity" --color "0E8A16" --description "一次情報の変更/新着 → 記事機会" --force
+          gh label create "priority:P1" --color "FBCA04" --force
