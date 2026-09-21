@@ -281,6 +281,18 @@ export interface MunicipalityDef {
  *   登録。slugは県スラッグ「nagasaki」との混同を避けるため「nagasaki-shi」とした（さいたま市・京都市・熊本市等と
  *   同じパターン）。一次情報: data/sources/nagasaki-shi-code/01_soumu-zenkoku-chihoukoukyoudantai-code.pdf,
  *   README.md, data/sources/nagasaki-shi-taiyoko-hatsuden-hojokin/README.md 参照）。
+ * 2026-09-22: 石狩市を追加登録（kekkon カテゴリの結婚新生活支援事業〔令和8年度〕記事のため）。
+ *   石狩市は政令指定都市ではないため区単位に分割せず市全体を1エントリとして登録。総務省「全国地方公共団体
+ *   コード」一覧PDF（1ページ目・北海道セクション）で団体コード012351＝検査数字込み6桁を確認、このファイルの
+ *   他エントリに合わせ検査数字を除いた5桁「01235」で登録。北海道として2番目の市区町村登録（1番目は札幌市
+ *   01100）。一次情報: data/sources/ishikari-shi-code/01_soumu-zenkoku-chihoukoukyoudantai-code.pdf,
+ *   data/sources/ishikari-kekkon-shinseikatsu/README.md 参照）。
+ * 2026-09-22: 函館市を追加登録（pet カテゴリの函館市地域猫不妊去勢手術費補助金記事のため）。
+ *   函館市は政令指定都市ではないため区単位に分割せず市全体を1エントリとして登録。総務省「全国地方公共団体
+ *   コード」一覧PDF（`data/sources/ishikari-shi-code/01_soumu-zenkoku-chihoukoukyoudantai-code.pdf`
+ *   を再利用、1ページ目・北海道セクション）で団体コード012025＝検査数字込み6桁を確認、このファイルの
+ *   他エントリに合わせ検査数字を除いた5桁「01202」で登録。北海道として3番目の市区町村登録（1番目は札幌市
+ *   01100、2番目は石狩市01235）。一次情報: data/sources/hakodate-neko-funinkyosei/README.md 参照）。
  */
 export const MUNICIPALITIES: readonly MunicipalityDef[] = [
   { code: "13101", slug: "chiyoda", labelJa: "千代田区", prefCode: "13" },
@@ -343,6 +355,8 @@ export const MUNICIPALITIES: readonly MunicipalityDef[] = [
   { code: "29201", slug: "nara-shi", labelJa: "奈良市", prefCode: "29" },
   { code: "37201", slug: "takamatsu", labelJa: "高松市", prefCode: "37" },
   { code: "42201", slug: "nagasaki-shi", labelJa: "長崎市", prefCode: "42" },
+  { code: "01235", slug: "ishikari", labelJa: "石狩市", prefCode: "01" },
+  { code: "01202", slug: "hakodate", labelJa: "函館市", prefCode: "01" },
 ];
 
 export const getPrefectureBySlug = (slug: string): PrefectureDef | undefined =>
