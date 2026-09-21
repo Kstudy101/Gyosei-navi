@@ -2,7 +2,7 @@
  * 전 기사 frontmatter 검증 (품질 게이트 — CI에서 실행) v2
  *   - zod 스키마 검증 (draft 포함 전수)
  *   - slug ↔ 파일명 일치
- *   - category ↔ 디렉토리 일치 (subsidy만 해당)
+ *   - category ↔ 디렉토리 일치 (subsidy・tokushu 해당)
  *   - 경고: 타이틀 32자 초과 / FAQ 3건 미만 (docs/04 §4)
  *   - 경고: published 기사인데 subsidy.status가 unresearched
  *
@@ -14,7 +14,7 @@ import matter from "gray-matter";
 import { articleFrontmatterSchema } from "../src/lib/content-schema";
 
 const CONTENT_DIR = path.join(process.cwd(), "content");
-const SECTIONS = ["subsidy", "compare", "news"];
+const SECTIONS = ["subsidy", "compare", "tokushu", "news"];
 
 function walk(dir: string): string[] {
   if (!fs.existsSync(dir)) return [];
@@ -55,7 +55,11 @@ for (const file of files) {
     errors++;
     console.error(`✖ ${rel}: slug「${fm.slug}」≠ 파일명「${fileSlug}」`);
   }
-  if (relParts[0] === "subsidy" && relParts.length >= 3 && fm.category !== relParts[1]) {
+  if (
+    (relParts[0] === "subsidy" || relParts[0] === "tokushu") &&
+    relParts.length >= 3 &&
+    fm.category !== relParts[1]
+  ) {
     errors++;
     console.error(`✖ ${rel}: category「${fm.category}」≠ 디렉토리「${relParts[1]}」`);
   }

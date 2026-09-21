@@ -98,7 +98,8 @@ function main(): void {
 
   const today = new Date().toISOString().slice(0, 10);
   const slug = `${categoryCode}-tokushu-jido-${today.replace(/-/g, "")}`;
-  const target = path.join(TOKUSHU_DIR, `${slug}.mdx`);
+  const categoryDir = path.join(TOKUSHU_DIR, categoryCode);
+  const target = path.join(categoryDir, `${slug}.mdx`);
   if (fs.existsSync(target)) {
     console.log(`既に存在: ${target}`);
     return;
@@ -159,7 +160,7 @@ function main(): void {
   const body = `${category.description}\n\n既に公開済みの記事データをもとに、${category.labelJa}分野で補助上限額が高い自治体を順位付けしました。\n\n## ランキング\n\n<TokushuRanking />\n\n## よくある質問\n\n<FAQ />\n\n## まとめ\n\n| 順位 | 自治体 | 補助上限額 |\n|---|---|---|\n${summaryTable}\n\n<SourceLinkList />\n<Disclaimer />\n`;
 
   const mdxContent = matter.stringify(body, frontmatter);
-  fs.mkdirSync(TOKUSHU_DIR, { recursive: true });
+  fs.mkdirSync(categoryDir, { recursive: true });
   fs.writeFileSync(target, mdxContent, "utf-8");
   console.log(`生成: ${target} (順位${rankings.length}件)`);
 }
