@@ -293,6 +293,12 @@ export interface MunicipalityDef {
  *   を再利用、1ページ目・北海道セクション）で団体コード012025＝検査数字込み6桁を確認、このファイルの
  *   他エントリに合わせ検査数字を除いた5桁「01202」で登録。北海道として3番目の市区町村登録（1番目は札幌市
  *   01100、2番目は石狩市01235）。一次情報: data/sources/hakodate-neko-funinkyosei/README.md 参照）。
+ * 2026-09-22: 弘前市を追加登録（jutaku カテゴリの木造住宅耐震改修促進事業費補助金・耐震診断支援事業
+ *   記事のため）。弘前市は政令指定都市ではないため区単位に分割せず市全体を1エントリとして登録。総務省
+ *   「全国地方公共団体コード」一覧PDF（`data/sources/hirosaki-mokuzo-taishin-kaishu/05_soumu_000925834.pdf`、
+ *   https://www.soumu.go.jp/main_content/000925834.pdf）4ページ目・青森県セクションで団体コード022021＝
+ *   検査数字込み6桁を確認、このファイルの他エントリに合わせ検査数字を除いた5桁「02202」で登録。青森県として
+ *   青森市（02201）に次ぐ2件目の市区町村登録。一次情報: data/sources/hirosaki-mokuzo-taishin-kaishu/README.md 参照）。
  */
 export const MUNICIPALITIES: readonly MunicipalityDef[] = [
   { code: "13101", slug: "chiyoda", labelJa: "千代田区", prefCode: "13" },
@@ -344,6 +350,7 @@ export const MUNICIPALITIES: readonly MunicipalityDef[] = [
   { code: "28100", slug: "kobe", labelJa: "神戸市", prefCode: "28" },
   { code: "28201", slug: "himeji", labelJa: "姫路市", prefCode: "28" },
   { code: "02201", slug: "aomori-shi", labelJa: "青森市", prefCode: "02" },
+  { code: "02202", slug: "hirosaki-shi", labelJa: "弘前市", prefCode: "02" },
   { code: "24201", slug: "tsu", labelJa: "津市", prefCode: "24" },
   { code: "35201", slug: "shimonoseki", labelJa: "下関市", prefCode: "35" },
   { code: "20201", slug: "nagano-shi", labelJa: "長野市", prefCode: "20" },
