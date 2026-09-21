@@ -299,6 +299,12 @@ export interface MunicipalityDef {
  *   https://www.soumu.go.jp/main_content/000925834.pdf）4ページ目・青森県セクションで団体コード022021＝
  *   検査数字込み6桁を確認、このファイルの他エントリに合わせ検査数字を除いた5桁「02202」で登録。青森県として
  *   青森市（02201）に次ぐ2件目の市区町村登録。一次情報: data/sources/hirosaki-mokuzo-taishin-kaishu/README.md 参照）。
+ * 2026-09-22: つがる市を追加登録（kekkon カテゴリのつがる市結婚生活スタートアップ事業記事のため）。
+ *   つがる市は政令指定都市ではないため区単位に分割せず市全体を1エントリとして登録。総務省「全国地方公共団体
+ *   コード」一覧PDF（https://www.soumu.go.jp/main_content/000925834.pdf）4ページ目・青森県セクションで団体
+ *   コード022098＝検査数字込み6桁を確認、このファイルの他エントリに合わせ検査数字を除いた5桁「02209」で登録。
+ *   青森県として青森市（02201）・弘前市（02202）に次ぐ3件目の市区町村登録。一次情報:
+ *   data/sources/tsugaru-kekkon-seikatsu-startup/README.md 参照）。
  */
 export const MUNICIPALITIES: readonly MunicipalityDef[] = [
   { code: "13101", slug: "chiyoda", labelJa: "千代田区", prefCode: "13" },
@@ -351,6 +357,7 @@ export const MUNICIPALITIES: readonly MunicipalityDef[] = [
   { code: "28201", slug: "himeji", labelJa: "姫路市", prefCode: "28" },
   { code: "02201", slug: "aomori-shi", labelJa: "青森市", prefCode: "02" },
   { code: "02202", slug: "hirosaki-shi", labelJa: "弘前市", prefCode: "02" },
+  { code: "02209", slug: "tsugaru", labelJa: "つがる市", prefCode: "02" },
   { code: "24201", slug: "tsu", labelJa: "津市", prefCode: "24" },
   { code: "35201", slug: "shimonoseki", labelJa: "下関市", prefCode: "35" },
   { code: "20201", slug: "nagano-shi", labelJa: "長野市", prefCode: "20" },
