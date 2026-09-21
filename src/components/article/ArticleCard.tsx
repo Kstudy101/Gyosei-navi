@@ -14,7 +14,7 @@ export function ArticleCard({ article }: { article: Article }) {
   const category = getCategory(fm.category);
   const statusDef = fm.subsidy ? SUBSIDY_STATUSES[fm.subsidy.status] : null;
   return (
-    <article className="rounded-lg border border-gray-200 p-4 transition-shadow hover:shadow-md dark:border-gray-800">
+    <article className="group relative rounded-lg border border-gray-200 p-4 transition-shadow hover:shadow-md dark:border-gray-800">
       <div className="flex flex-wrap items-center gap-2 text-xs">
         <span className="rounded bg-brand-50 px-1.5 py-0.5 font-semibold text-brand-700 dark:bg-brand-900/30 dark:text-brand-100">
           {TYPE_TAGS[fm.type]}
@@ -31,8 +31,8 @@ export function ArticleCard({ article }: { article: Article }) {
           </span>
         )}
       </div>
-      <h3 className="mt-2 font-bold leading-snug text-gray-900 dark:text-gray-100">
-        <Link href={article.href} className="hover:text-brand-600 dark:hover:text-brand-100">
+      <h3 className="mt-2 font-bold leading-snug text-gray-900 group-hover:text-brand-600 dark:text-gray-100 dark:group-hover:text-brand-100">
+        <Link href={article.href} className="after:absolute after:inset-0 after:content-['']">
           {fm.title}
         </Link>
       </h3>
