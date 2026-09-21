@@ -5,6 +5,9 @@
 #
 # 市区町村トップページは1,718件を毎日全件回すと30分近くかかるため、曜日で7分割し
 # その日の分だけをチェックする（scripts/watch-municipalities.ts --weekday）。
+# トップページの diff はイベント告知・採用・防災など補助金と無関係な変更が大半のため、
+# TYPESAFE_API_KEY がある場合のみ --filter-relevance で Issue 対象を絞り込む
+# （src/lib/sources/relevance.ts。判定できなかった変更は取りこぼさないよう残す）。
 # GitHub Actions のランナーはUTCのため、cron発火時刻(22:00 UTC=07:00 JST翌日)の
 # UTC曜日をそのまま使うとJSTの曜日と1日ずれる。JSTの曜日をワークフロー側で計算して渡す。
 name: Watch Municipalities (新着キャッチ)
@@ -33,6 +36,7 @@ jobs:
     timeout-minutes: 40
     env:
       GH_TOKEN: ${{ github.token }}
+      TYPESAFE_API_KEY: ${{ secrets.TYPESAFE_API_KEY }}
     steps:
       - uses: actions/checkout@v5
 
@@ -56,10 +60,13 @@ jobs:
         id: jst
         run: echo "weekday=$(TZ=Asia/Tokyo date +%w)" >> "$GITHUB_OUTPUT"
 
+      # TYPESAFE_API_KEY 未設定のリポジトリでも動くよう、鍵がある時だけ絞り込みを有効にする
       - name: Run watcher
         id: watch
         run: |
-          npm run watch:municipalities --silent -- ${{ inputs.dry_run && '--dry-run' || '' }} --weekday ${{ steps.jst.outputs.weekday }} --github-issue --report watch-report.md
+          filter=""
+          if [ -n "$TYPESAFE_API_KEY" ]; then filter="--filter-relevance"; fi
+          npm run watch:municipalities --silent -- ${{ inputs.dry_run && '--dry-run' || '' }} --weekday ${{ steps.jst.outputs.weekday }} $filter --github-issue --report watch-report.md
 
       - name: Save monitor state
         if: ${{ !inputs.dry_run }}

@@ -5,12 +5,14 @@
  *   npm run watch:municipalities -- --github-issue    # 変更があれば Issue 起票（一括1件）
  *   npm run watch:municipalities -- --report out.md
  *   npm run watch:municipalities -- --skip-municipalities  # 記事由来の対象のみ（市区町村トップページを含めない）
+ *   npm run watch:municipalities -- --filter-relevance     # 市区町村トップページの変更を TypeSafe で絞り込む
  *
  * 市区町村トップページ（1,718件、data/watch/README.md 参照）は全件を毎日回すと
  * 30分近くかかるため、曜日で7分割してその日の分だけをチェックする
  * （src/lib/sources/monitor.ts の partitionByWeekday）。
  */
 import fs from "node:fs";
+import { TypeSafeClient } from "@typesafe-ai/sdk";
 import {
   collectArticleWatchTargets,
   collectMunicipalityWatchTargets,
@@ -23,6 +25,7 @@ import {
   type WatchTarget,
 } from "../src/lib/sources/monitor";
 import { createGithubIssue } from "../src/lib/sources/github-issue";
+import { judgeRelevance, RELEVANCE_THRESHOLD } from "../src/lib/sources/relevance";
 
 const flag = (name: string) => process.argv.includes(`--${name}`);
 function arg(name: string): string | undefined {
@@ -35,6 +38,7 @@ async function main(): Promise<void> {
   const wantIssue = flag("github-issue");
   const reportFile = arg("report");
   const skipMunicipalities = flag("skip-municipalities");
+  const filterRelevance = flag("filter-relevance");
   const weekdayOverride = arg("weekday");
   const weekday = weekdayOverride !== undefined ? Number(weekdayOverride) : new Date().getDay();
 
@@ -70,10 +74,32 @@ async function main(): Promise<void> {
   const errors = results.filter((r) => r.status === "error");
   const initialized = results.filter((r) => r.status === "initialized");
 
+  // 記事由来の対象は補助金ページと分かっているので判定しない。トップページのみ絞り込む。
+  let reportable = changed;
+  let filteredOut = 0;
+  if (filterRelevance && changed.length > 0) {
+    const client = new TypeSafeClient();
+    reportable = [];
+    console.log("\n補助金関連度の判定:");
+    for (const r of changed) {
+      if (r.target.articleHref) {
+        reportable.push(r);
+        continue;
+      }
+      const v = await judgeRelevance(client, r);
+      const keep = v.probability >= RELEVANCE_THRESHOLD;
+      console.log(
+        `  ${keep ? "○" : "×"} ${r.target.label}: ${v.probability.toFixed(2)}${v.error ? ` (判定不可: ${v.error})` : ""}`
+      );
+      if (keep) reportable.push(r);
+      else filteredOut++;
+    }
+  }
+
   const reportParts: string[] = [];
-  if (changed.length > 0) {
-    reportParts.push(`# 一次情報の変更検知 ${changed.length}件 (${new Date().toISOString().slice(0, 10)})`, "");
-    for (const r of changed) reportParts.push(formatChangeReport(r), "", "---", "");
+  if (reportable.length > 0) {
+    reportParts.push(`# 一次情報の変更検知 ${reportable.length}件 (${new Date().toISOString().slice(0, 10)})`, "");
+    for (const r of reportable) reportParts.push(formatChangeReport(r), "", "---", "");
   }
   const report = reportParts.join("\n");
 
@@ -83,13 +109,13 @@ async function main(): Promise<void> {
     console.log(`\nエラー ${errors.length}件:`);
     for (const r of errors) console.log(`  ✖ ${r.target.label}: ${r.error}`);
   }
-  console.log(`\n変更検知: ${changed.length}件`);
+  console.log(`\n変更検知: ${changed.length}件` + (filteredOut > 0 ? `（補助金と無関係 ${filteredOut}件を除外）` : ""));
   if (report) console.log(`\n${report}`);
   if (reportFile) fs.writeFileSync(reportFile, report, "utf-8");
 
-  if (wantIssue && changed.length > 0) {
+  if (wantIssue && reportable.length > 0) {
     const res = createGithubIssue({
-      title: `[新着キャッチ] 一次情報の変更 ${changed.length}件 (${new Date().toISOString().slice(0, 10)})`,
+      title: `[新着キャッチ] 一次情報の変更 ${reportable.length}件 (${new Date().toISOString().slice(0, 10)})`,
       body: report,
       labels: ["content-opportunity", "priority:P1"],
     });
