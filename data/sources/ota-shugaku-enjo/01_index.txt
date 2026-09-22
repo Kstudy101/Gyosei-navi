@@ -1,0 +1,17 @@
+SOURCE: https://www.city.ota.tokyo.jp/seikatsu/kodomo/kyouiku/gakko/syugaku_enjo/index.html
+FETCHED: 2026-09-22
+METHOD: curl + cheerio strip (npm run source too short/nav)
+
+ページ番号：779062277
+
+ 就学援助の対象者
+
+ 申請から結果通知までの流れ
+
+ 就学援助費支給額について
+
+ 就学援助費支給時期について
+
+ 申請結果が【保留】の方へ
+
+ 家計が急変した世帯の方へ
