@@ -318,6 +318,13 @@ export interface MunicipalityDef {
  *   https://www.soumu.go.jp/main_content/000925834.pdf）岩手県セクションで団体コード032069＝検査数字込み
  *   6桁を確認、このファイルの他エントリに合わせ検査数字を除いた5桁「03206」で登録。岩手県として盛岡市
  *   （03201）に次ぐ2件目の市区町村登録。一次情報: data/sources/kitakami-kekkon-shinseikatsu-shien/README.md 参照）。
+ * 2026-09-22: 大潟村を追加登録（energy カテゴリの令和8年度大潟村家庭用太陽光発電設備等導入費補助制度記事のため）。
+ *   大潟村は政令指定都市ではないため区単位に分割せず村全体を1エントリとして登録。総務省「全国地方公共団体コード」
+ *   一覧PDF（`data/sources/ogata-taiyoko-chikudenchi-hojo/06_soumu_000925834.pdf`、
+ *   https://www.soumu.go.jp/main_content/000925834.pdf）秋田県セクションで団体コード053686＝検査数字込み
+ *   6桁を確認（Wikipedia「大潟村」infobox記載の市町村コード「05368-6」とも一致）、このファイルの他エントリに
+ *   合わせ検査数字を除いた5桁「05368」で登録。秋田県として初の市区町村登録。一次情報:
+ *   data/sources/ogata-taiyoko-chikudenchi-hojo/README.md 参照）。
  */
 export const MUNICIPALITIES: readonly MunicipalityDef[] = [
   { code: "13101", slug: "chiyoda", labelJa: "千代田区", prefCode: "13" },
@@ -386,6 +393,7 @@ export const MUNICIPALITIES: readonly MunicipalityDef[] = [
   { code: "01202", slug: "hakodate", labelJa: "函館市", prefCode: "01" },
   { code: "03201", slug: "morioka", labelJa: "盛岡市", prefCode: "03" },
   { code: "03206", slug: "kitakami", labelJa: "北上市", prefCode: "03" },
+  { code: "05368", slug: "ogata", labelJa: "大潟村", prefCode: "05" },
 ];
 
 export const getPrefectureBySlug = (slug: string): PrefectureDef | undefined =>
