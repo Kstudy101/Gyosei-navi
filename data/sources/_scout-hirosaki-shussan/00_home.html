@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="ja">
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width" />
+<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<meta property="og:title" content="青森県弘前市">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://www.city.hirosaki.aomori.jp/renew/content_images/ogimage.png">
+<meta property="og:url" content="https://www.city.hirosaki.aomori.jp/">
+<meta property="og:description" content="日本一の桜とりんごのまち、弘前市のホームページです。くらしに役立つ情報など、弘前市の情報をどこよりも早く掲載！">
+<meta property="og:site_name" content="青森県弘前市">
+
+<title>青森県弘前市｜Hirosaki City</title>
+
+<link href="renew/css/vtop/style.css" rel="stylesheet" type="text/css">
+
+<!-- Googleアナリティクス-->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-56429215-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+<script>
+  (function() {
+    var cx = '007474199015486494631:np7hojk6u2o';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+        '//www.google.com/cse/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EHVR33NTFE"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EHVR33NTFE');
+</script>
+
+<script src="renew/js/jquery.js"></script>
+<script src="renew/js/common.js"></script>
+
+<!-- BGswitch -->
+<script src="renew/js/slide/jquery.bgswitcher.js"></script>
+<script>
+	jQuery(function($) {
+		$('.bg_wrap').bgSwitcher({
+			images: [
+				'renew/js/slide/apple_iwakisan.jpg',
+				'renew/js/slide/hirosaki_castle.jpg',
+				'renew/js/slide/neputa.jpg',
+				'renew/js/slide/omorikatsuyama.jpg',
+				'renew/js/slide/sakura.jpg',
+				'renew/js/slide/winter_sakura.jpg'
+			],
+			interval: 5000,
+			loop: true,
+			effect: "drop",
+			duration: 1000,
+			easing: "swing"
+		});
+	});
+
+
+	$(function(){
+		$.get('instagram.php', function(json){
+			$.each(json.media.data, function(index, v){
+				var data;
+				if (v['thumbnail_url']) {
+					data = {
+						'img': v.thumbnail_url, 
+						'caption': v.caption,
+						'link': v.permalink
+					};
+				} else {
+					data = {
+						'img': v.media_url,
+						'caption': v.caption,
+						'link': v.permalink
+					};
+				}
+				html = '<li><a href="' + data.link + '" target="_blank"><img src="' + data.img + '" alt=""></a></li>';
+				$(".instagram_list").append(html);
+			});
+		}, 'json');
+	});
+
+</script>
+
+<meta name="keywords" content=""/>
+<meta name="description" content=""/>
+</head>
+
+<body>
+	
+	<!-- ファーストビュー -->
+	<div id="visual_area">
+		
+		<section class="left_col">
+			<h1><img src="renew/content_images/logo.png" alt="弘前市"></h1>
+			
+			<div class="navi">
+				
+				<div class="search">
+					<h2>サイト内検索</h2>
+					<div class="search_box">
+						<div class="gcse-searchbox-only"></div>
+					</div>
+				</div>
+				
+				<div class="keyword">
+					<h2>注目キーワード</h2>
+					<ul id="lank">
+	<li><a href="https://www.city.hirosaki.aomori.jp/ishigaki/hikimodoshi-top.html">弘前城天守曳戻し</a></li>
+	<li><a href="https://www.city.hirosaki.aomori.jp/fukushi/sports/kokuspo2026/">青の煌めきあおもり国スポ・障スポ</a></li>
+	<li><a href="https://www.city.hirosaki.aomori.jp/oshirase/sangyo/hirosaki-okome_kurashi_3.html">第３弾！弘前お米とくらし応援券</a></li>
+	<li><a href="jouhou/koho/official_line.html">市公式LINE</a></li>
+	<li><a href="https://www.city.hirosaki.aomori.jp/sangyo/nogyo/2019-0704-1551-36.html">クマにご注意ください！</a></li>
+</ul>
+				</div>
+				
+			</div>
+			
+			<div class="lang_banner"><a href="language.html">language</a></div>
+			
+			<div class="banner">
+							</div>
+			
+			<div class="sns">
+				<ul>
+	<li class="icon_line"><a href="https://lin.ee/W37L3Na" target="_blank">LINE</a></li>
+	<li class="icon_tw"><a href="https://twitter.com/hirosaki_promo" target="_blank">X</a></li>
+	<li class="icon_fb"><a href="https://www.facebook.com/hirosaki.city.promo/" target="_blank">facebook</a></li>
+	<li class="icon_ig"><a href="https://www.instagram.com/e_comeonhirosaki/" target="_blank">instagram</a></li>
+	<li class="icon_rss"><a href="https://www.city.hirosaki.aomori.jp/rss/feed.rss" target="_blank">RSS</a></li>
+</ul>
+			</div>
+			
+		</section>
+		
+		<section class="right_col">
+			<div class="bg_wrap">
+				<div class="imp_box">
+								</div>
+				
+				<div class="potral_link">
+					<ul>
+	<li><a href="index.html">市政<br>
+	くらし</a></li>
+	<li><a href="https://www.hirosaki-kanko.or.jp/" target="_blank">観光</a></li>
+	<li><a href="jouhou/seido/hirosakiouenn-hurusato.html">ふるさと<br>
+	納税</a></li>
+	<li><a href="https://www.hirosakigurashi.jp/" target="_blank">移住</a></li>
+</ul>
+				</div>
+				
+			</div>
+		</section>
+		
+	</div>
+	
+	
+	
+	<section id="city_prom">
+		<div class="arrow"><a href="#insta_h2">弘前市公式Instagramを見る</a></div>
+		<h2 id="insta_h2">いいかも！！弘前</h2>
+		<h3>弘前市公式Instagram</h3>
+		<h4><span>#ecomeonhirosaki</span><span>#hirogourmet</span></h4>
+		<div class="instagram_wrap">		 
+			<ul class="instagram_list"></ul>
+		</div>
+	</section>
+	
+	<footer>
+		<div class="footer_nav">
+			<div class="footer_info">
+				<h3>弘前市役所</h3>
+				<p><span>〒036-8551　青森県弘前市上白銀町1-1</span></p>
+				<p><span>電話　0172-35-1111（代表）</span><span>ファクス　0172-35-7956</span></p>
+				<p>開庁時間　平日の午前8時30分から午後5時まで（年末年始を除く）</p>
+			</div>
+			<div class="footer_sub">
+				<ul>
+					<li class="access"><a href="gaiyou/access/">アクセス</a></li>
+					<li class="office"><a href="gaiyou/chosya/">庁舎案内</a></li>
+					<li class="contact"><a href="jouhou/toiawase.html">お問い合わせ</a></li>
+				</ul>
+			</div>
+			<div class="footer_linK">
+				<ul>
+					<li><a href="/copyright/index.html">著作権・リンク・免責事項</a></li>
+					<li><a href="/privacy/index.html">個人情報の取り扱い</a></li>
+					<li><a href="/jouhou/koho/accessibility.html">アクセシビリティ方針</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="copy">Copyright © Hirosaki City. All rights reserved</div>
+	</footer>
+	
+<div id="chatbot-anchor" style="position: fixed; bottom: 70pt; right: 10px;"></div>
+<script src="https://storage.govai.jp/bundle.js">
+</script>
+<script>
+    const cityId="3d5e3603-d062-46f6-bb36-dac9c42ae95b";
+    addChatbot(cityId);
+</script>
+
+	
+</body>
+</html>
