@@ -28,6 +28,14 @@ function buildLanguageAlternates(originalHref: string, availableLocales: readonl
   return languages;
 }
 
+/**
+ * OG画像パス。frontmatter.ogImage が空なら scripts/generate-og-images.ts が
+ * ビルド前に生成する自動画像（/og/auto/<section>/<slug>.png）へフォールバックする。
+ */
+export function ogImagePath(section: string, slug: string, ogImage: string | undefined): string {
+  return ogImage || `/og/auto/${section}/${slug}.png`;
+}
+
 /** 記事ページの generateMetadata 用ヘルパ（日本語原文） */
 export function articleMetadata(article: Article, availableLocales: readonly Locale[] = []): Metadata {
   const { frontmatter: fm } = article;
@@ -47,7 +55,7 @@ export function articleMetadata(article: Article, availableLocales: readonly Loc
       type: "article",
       publishedTime: fm.publishedAt,
       modifiedTime: fm.updatedAt,
-      ...(fm.ogImage ? { images: [{ url: absoluteUrl(fm.ogImage) }] } : {}),
+      images: [{ url: absoluteUrl(ogImagePath(article.section, fm.slug, fm.ogImage)) }],
     },
   };
 }
@@ -74,7 +82,8 @@ export function translatedArticleMetadata(
       type: "article",
       publishedTime: fm.publishedAt,
       modifiedTime: fm.updatedAt,
-      ...(fm.ogImage ? { images: [{ url: absoluteUrl(fm.ogImage) }] } : {}),
+      // 翻訳ページは日本語原文と同じ自動生成OG画像を使う
+      images: [{ url: absoluteUrl(ogImagePath(article.section, fm.slug, fm.ogImage)) }],
     },
   };
 }
@@ -122,7 +131,7 @@ export function articleJsonLd(article: Article) {
     mainEntityOfPage: absoluteUrl(article.href),
     author: { "@type": "Organization", name: `${siteConfig.name} 編集部` },
     publisher: { "@type": "Organization", name: siteConfig.name, url: siteConfig.url },
-    ...(fm.ogImage ? { image: [absoluteUrl(fm.ogImage)] } : {}),
+    image: [absoluteUrl(ogImagePath(article.section, fm.slug, fm.ogImage))],
   };
 }
 
@@ -163,5 +172,26 @@ export function subsidyJsonLd(article: Article) {
     areaServed: fm.subsidy.regionLabel,
     provider: { "@type": "GovernmentOrganization", name: fm.subsidy.regionLabel },
     url: fm.subsidy.applyUrl,
+  };
+}
+
+/**
+ * MonetaryGrant（助成金）構造化データ。GEO/LLMO 対応の補強。
+ * amount 文字列から「上限/最大 N万円」を抽出できた場合のみ金額を機械可読にする
+ * （「機器費÷4」のような計算式は無理にパースしない）。
+ */
+export function monetaryGrantJsonLd(article: Article) {
+  const { frontmatter: fm } = article;
+  if (!fm.subsidy) return null;
+  const m = fm.subsidy.amount?.match(/(?:上限|最大)([\d,]+(?:\.\d+)?)万円/);
+  const maxYen = m ? Math.round(parseFloat(m[1].replace(/,/g, "")) * 10000) : null;
+  return {
+    "@context": "https://schema.org",
+    "@type": "MonetaryGrant",
+    name: fm.title,
+    description: fm.description,
+    url: absoluteUrl(article.href),
+    funder: { "@type": "GovernmentOrganization", name: fm.subsidy.regionLabel },
+    ...(maxYen ? { amount: { "@type": "MonetaryAmount", currency: "JPY", maxValue: maxYen } } : {}),
   };
 }

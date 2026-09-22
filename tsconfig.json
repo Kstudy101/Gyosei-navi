@@ -19,5 +19,5 @@
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-  "exclude": ["node_modules", "workspace", "supabase/functions"]
+  "exclude": ["node_modules", "workspace", "supabase/functions", "tmp", ".tmp", "tmp_*.ts", "_tmp*"]
 }

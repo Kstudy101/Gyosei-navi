@@ -2,8 +2,9 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { getCategory } from "@/config/taxonomy";
 import { getArticle, getArticlesBySection, orPlaceholder, EXPORT_PLACEHOLDER } from "@/lib/content";
-import { articleMetadata } from "@/lib/seo";
+import { articleMetadata, subsidyJsonLd, monetaryGrantJsonLd } from "@/lib/seo";
 import { ArticleView } from "@/components/article/ArticleView";
+import { JsonLd } from "@/components/seo/JsonLd";
 
 export const dynamicParams = false;
 
@@ -33,16 +34,22 @@ export default async function SubsidyArticlePage({
   const article = getArticle("subsidy", slug, category);
   if (!article) notFound();
   const def = getCategory(category);
+  const govService = subsidyJsonLd(article);
+  const grant = monetaryGrantJsonLd(article);
 
   return (
-    <ArticleView
-      article={article}
-      crumbs={[
-        { label: "ホーム", href: "/" },
-        { label: "補助金を探す", href: "/subsidy" },
-        { label: def?.labelJa ?? category, href: `/subsidy/${category}` },
-        { label: article.frontmatter.title, href: article.href },
-      ]}
-    />
+    <>
+      {govService && <JsonLd data={govService} />}
+      {grant && <JsonLd data={grant} />}
+      <ArticleView
+        article={article}
+        crumbs={[
+          { label: "ホーム", href: "/" },
+          { label: "補助金を探す", href: "/subsidy" },
+          { label: def?.labelJa ?? category, href: `/subsidy/${category}` },
+          { label: article.frontmatter.title, href: article.href },
+        ]}
+      />
+    </>
   );
 }

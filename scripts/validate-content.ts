@@ -29,6 +29,7 @@ function walk(dir: string): string[] {
 
 let errors = 0;
 let warnings = 0;
+let emptyTagsPublished = 0;
 const files = walk(CONTENT_DIR).filter((f) => {
   const rel = path.relative(CONTENT_DIR, f).split(path.sep);
   return SECTIONS.includes(rel[0]);
@@ -75,6 +76,15 @@ for (const file of files) {
     errors++;
     console.error(`✖ ${rel}: published인데 subsidy.status가 unresearched — 미조사 상태로 발행 불가`);
   }
+  if (fm.status === "published" && fm.tags.length === 0) {
+    emptyTagsPublished++;
+  }
+}
+
+// 개별 경고로 소음을 내지 않고 요약 한 줄만 (신규 기사는 writer.md에 따라 tags 3~6개 필수)
+if (emptyTagsPublished > 0) {
+  warnings++;
+  console.warn(`⚠ published 기사 중 tags가 빈 기사 ${emptyTagsPublished}건 — 관련 기사 매칭(related.ts) 품질 저하. 신규 기사는 3~6개 필수`);
 }
 
 console.log(`\n검증 완료: ${files.length}건 / 오류 ${errors}건 / 경고 ${warnings}건`);

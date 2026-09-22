@@ -1,6 +1,8 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
+import Link from "next/link";
 import { MUNICIPALITIES, getPrefectureBySlug, getPrefectureByCode, getMunicipalityBySlug } from "@/config/regions";
+import { CATEGORIES } from "@/config/taxonomy";
 import { getArticlesByRegionCode, orPlaceholder, EXPORT_PLACEHOLDER } from "@/lib/content";
 import { ArticleCard } from "@/components/article/ArticleCard";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
@@ -40,6 +42,10 @@ export default async function MunicipalityPage({
   if (!prefDef || !m) notFound();
 
   const articles = getArticlesByRegionCode(m.code);
+  // 記事があるカテゴリのみ、市区町村×カテゴリのハブページへのリンクを出す
+  const categoriesWithArticles = CATEGORIES.filter((c) =>
+    articles.some((a) => a.section === "subsidy" && a.category === c.code)
+  );
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-10">
@@ -52,6 +58,19 @@ export default async function MunicipalityPage({
         ]}
       />
       <h1 className="mt-4 text-2xl font-bold text-gray-900 dark:text-gray-100">{m.labelJa}の補助金・助成金</h1>
+      {categoriesWithArticles.length > 0 && (
+        <div className="mt-4 flex flex-wrap gap-2">
+          {categoriesWithArticles.map((c) => (
+            <Link
+              key={c.code}
+              href={`/area/${pref}/${city}/${c.code}`}
+              className="rounded-md border border-gray-200 px-3 py-1.5 text-sm hover:border-brand-300 hover:bg-brand-50 dark:border-gray-800 dark:hover:border-brand-700 dark:hover:bg-brand-900/30"
+            >
+              {c.labelJa}
+            </Link>
+          ))}
+        </div>
+      )}
       {articles.length > 0 ? (
         <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {articles.map((a) => (

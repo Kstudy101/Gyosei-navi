@@ -20,6 +20,11 @@ export const metadata: Metadata = {
     siteName: siteConfig.name,
     locale: siteConfig.locale,
     type: "website",
+    // 記事ページは articleMetadata が自動生成OG画像で上書きする（src/lib/seo.ts）
+    images: ["/og/default.png"],
+  },
+  alternates: {
+    types: { "application/rss+xml": "/feed.xml" },
   },
   verification: {
     google: "qtLMFQLhUFKVaMdo8UxKErTB_gVUDYP2ymnhGE6paM0",

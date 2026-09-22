@@ -8,6 +8,8 @@ data/stats/
 # 커밋해도 「보호된 문서」 껍데기만 남는다. 정본은 .txt 추출본이고,
 # 재취득 URL은 각 폴더의 README.md에 있다 (2026-08-19)
 data/**/*.pdf
+# 자동 생성 OG 이미지 (npm run og:generate — CI가 빌드 전에 생성, Actions 캐시로 증분화)
+public/og/auto/
 next-env.d.ts
 tsconfig.tsbuildinfo
 gyosei-portal-scaffold.zip

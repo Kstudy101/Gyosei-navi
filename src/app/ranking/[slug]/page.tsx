@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { getAllRankingArticles, getRankingArticle } from "@/lib/ranking";
 import { orPlaceholder, EXPORT_PLACEHOLDER } from "@/lib/content";
+import { absoluteUrl, ogImagePath } from "@/lib/seo";
 import { RankingView } from "@/components/ranking/RankingView";
 
 export const dynamicParams = false;
@@ -21,7 +22,16 @@ export async function generateMetadata({
   const { slug } = await params;
   const article = getRankingArticle(slug);
   if (!article) return {};
-  return { title: article.frontmatter.title, description: article.frontmatter.description };
+  return {
+    title: article.frontmatter.title,
+    description: article.frontmatter.description,
+    openGraph: {
+      title: article.frontmatter.title,
+      description: article.frontmatter.description,
+      // scripts/generate-og-images.ts がビルド前に自動生成する画像
+      images: [{ url: absoluteUrl(ogImagePath("ranking", slug, undefined)) }],
+    },
+  };
 }
 
 export default async function RankingArticlePage({ params }: { params: Promise<{ slug: string }> }) {

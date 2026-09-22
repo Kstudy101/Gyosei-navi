@@ -58,6 +58,19 @@ jobs:
       # 品質ゲート: frontmatter 検証（legalBasis 無し公開記事はここで落ちる）
       - run: npm run validate:content
 
+      # OG画像の自動生成。manifest.json の入力ハッシュで変更記事のみ再生成するため、
+      # キャッシュ復元時はほぼスキップされる（scripts/generate-og-images.ts）
+      - name: Restore OG image cache
+        uses: actions/cache@v4
+        with:
+          path: public/og/auto
+          key: og-auto-${{ hashFiles('content/**/*.mdx', 'scripts/generate-og-images.ts') }}
+          restore-keys: |
+            og-auto-
+
+      - name: Generate OG images
+        run: npm run og:generate
+
       # 静的 export（out/）。計測IDは production ビルド時に埋め込まれる
       - name: Build (static export)
         run: npm run build
@@ -158,3 +171,19 @@ jobs:
           code=$(curl -s -o /dev/null -w "%{http_code}" https://gyosei-navi.jp/ || echo "000")
           echo "https://gyosei-navi.jp/ → $code"
           # DNS/SSL 未反映の初期は失敗しても止めない（本文ログで確認）
+
+      # IndexNow: 今回の push で変更された published 記事URLを検索エンジンへ通知（Bing 等の
+      # インデックシング加速）。失敗しても deploy は成功扱い（付加機能のため）
+      - name: Submit changed articles to IndexNow
+        if: steps.secrets.outputs.ready == 'true' && inputs.dry_run != true && github.event_name == 'push'
+        continue-on-error: true
+        run: |
+          BEFORE="${{ github.event.before }}"
+          if [ -z "$BEFORE" ] || echo "$BEFORE" | grep -qE '^0+$'; then
+            echo "基準コミットなし（新規ブランチ等）— スキップ"; exit 0
+          fi
+          # checkout は depth=1 のため比較対象コミットだけ追加取得する
+          git fetch --no-tags --depth=1 origin "$BEFORE" || { echo "基準コミット取得失敗 — スキップ"; exit 0; }
+          CHANGED=$(git diff --name-only --diff-filter=d "$BEFORE" HEAD -- content content-i18n | grep '\.mdx$' || true)
+          if [ -z "$CHANGED" ]; then echo "変更記事なし — スキップ"; exit 0; fi
+          node scripts/indexnow-submit.mjs $CHANGED

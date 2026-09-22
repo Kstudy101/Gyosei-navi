@@ -180,6 +180,13 @@ export function getArticlesByRegionCode(regionCode: string): Article[] {
   return getAllArticles().filter((a) => a.frontmatter.subsidy?.regionCode === regionCode);
 }
 
+/** 市区町村×カテゴリのハブページ（/area/{pref}/{city}/{category}）用 */
+export function getArticlesByRegionAndCategory(regionCode: string, category: string): Article[] {
+  return getArticlesByRegionCode(regionCode).filter(
+    (a) => a.section === "subsidy" && a.category === category
+  );
+}
+
 /**
  * output: "export" では generateStaticParams が空配列だと
  * 「missing generateStaticParams」扱いでビルドが落ちる（記事0件のセクションで発生）。
