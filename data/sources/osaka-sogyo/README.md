@@ -3,7 +3,7 @@
 > 취득일: 2026-09-20 / 용도: 大阪市内 각 구(区) 창업지원 기사 공용 자료
 > 담당카테고리: sogyo（創業・事業） / prefSlug: osaka
 > **주의**: 이 폴더는 大阪市 전역(24개구)에서 공통으로 적용되는 大阪府 제도융자 원문을 다룬다. 구별 고유 자료(예: 平野区 제조업 통계)는 각 구 전용 slug 폴더(`data/sources/hirano-kaigyo-startup-shikin/` 등)에 별도 보관한다.
-> 이 자료를 인용한 기사: `content/subsidy/sogyo/yodogawa-kaigyo-startup-shikin.mdx`（淀川区）, `content/subsidy/sogyo/hirano-kaigyo-startup-shikin.mdx`（平野区）. 住吉区（27120）도 `data/sources/sumiyoshi-kaigyo-startup-shikin/`에서 이 大阪府 제도융자 원문을 그대로 재사용한다（住吉区 고유 자료는 経済センサス만 별도 취득, 2026-09-20/21).
+> 이 자료를 인용한 기사: `content/subsidy/sogyo/yodogawa-kaigyo-startup-shikin.mdx`（淀川区）, `content/subsidy/sogyo/hirano-kaigyo-startup-shikin.mdx`（平野区）, `content/subsidy/sogyo/higashiyodogawa-kaigyo-startup-shikin.mdx`（東淀川区）, `content/subsidy/sogyo/joto-kaigyo-startup-shikin.mdx`（城東区）. 住吉区（27120）도 `data/sources/sumiyoshi-kaigyo-startup-shikin/`에서 이 大阪府 제도융자 원문을 그대로 재사용한다（住吉区 고유 자료는 経済センサス만 별도 취득, 2026-09-20/21).
 
 | 파일 | 원본 | 취득 방법 |
 |---|---|---|
@@ -11,8 +11,8 @@
 | `02_pref-kaigyo-shikin.txt` | 新たに事業を始める方、事業開始後まもない方を支援しています（大阪府制度融資「開業・スタートアップ応援資金」）／大阪府公式サイト | `npm run source`（HTML, cheerioでタグ除去のみ） |
 
 원본URL:
-- https://www.city.osaka.lg.jp/keizaisenryaku/page/0000295589.html （01, 取得日2026-09-20, ページ更新日2024年9月26日）
-- https://www.pref.osaka.lg.jp/o110080/kinyushien/kaigyo-sien/index.html （02, 取得日2026-09-20, ページ更新日2026年3月27日）
+- https://www.city.osaka.lg.jp/keizaisenryaku/page/0000295589.html （01, 取得日2026-09-22再取得, ページ更新日2024年9月26日）
+- https://www.pref.osaka.lg.jp/o110080/kinyushien/kaigyo-sien/index.html （02, 取得日2026-09-22再取得, ページ更新日2026年3月27日）
 
 ## 원문 근거표（원문에서 확정한 사실）
 
@@ -45,3 +45,4 @@
 - 大阪市が「大阪市を除く」市町村窓口とは別ルートで、地域支援ネットワーク型以外の開業資金メニューについても大阪市独自の案内・上乗せ優遇を行っているかは、01番原文だけでは判然としない（01番は地域支援ネットワーク型のみリンクを明示し、通常の開業資金は大阪府ページへの誘導のみ）。
 - 大阪市24区のうち、区独自の創業補助金（現金直接型）が存在するかどうかは本フォルダの原文調査範囲外。区ごとに`data/sources/<区slug>/`で個別確認が必要。
 - 令和8年4月1日からの金利・保証料が「今後変更される予定があるか」（次回改定時期）は原文に記載なし。
+

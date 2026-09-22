@@ -1,5 +1,5 @@
 取得元: https://www.city.osaka.lg.jp/keizaisenryaku/page/0000295589.html
-取得日: 2026-09-20
+取得日: 2026-09-22
 取得方法: npm run source（cheerio でタグ除去のみ。文字の置換なし＝原文）
 本文長: 2616字
 
