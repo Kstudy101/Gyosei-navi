@@ -3,9 +3,11 @@ import { absoluteUrl } from "@/lib/seo";
 import {
   getAllArticles,
   getArticlesByPrefecture,
+  getArticlesByPrefectureAndCategory,
   getArticlesByRegionCode,
   getArticlesBySectionAndLocale,
   getAvailableLocalesFor,
+  getTagsWithArchivePage,
 } from "@/lib/content";
 import { getAllRankingArticles } from "@/lib/ranking";
 import { CATEGORY_CODES } from "@/config/taxonomy";
@@ -29,6 +31,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     (p) => `/area/${p.slug}`
   );
 
+  // 都道府県×カテゴリのハブページ（記事1件以上の組み合わせのみ生成される）
+  const prefCategoryPaths = PREFECTURES.flatMap((p) =>
+    CATEGORY_CODES.filter((c) => getArticlesByPrefectureAndCategory(p.code, c).length > 0).map(
+      (c) => `/area/${p.slug}/${c}`
+    )
+  );
+
+  // タグアーカイブ（記事2件以上のタグのみ生成される）
+  const tagPaths = getTagsWithArchivePage().map((t) => `/tag/${t}`);
+
   // 記事がある市区町村ページと、市区町村×カテゴリのハブページ
   const cityPaths: string[] = [];
   for (const m of MUNICIPALITIES) {
@@ -50,9 +62,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...CATEGORY_CODES.map((c) => `/subsidy/${c}`),
     "/area",
     ...prefPaths,
+    ...prefCategoryPaths,
     ...cityPaths,
+    ...tagPaths,
     "/compare",
     "/news",
+    "/calendar",
     "/ranking",
     "/about",
     "/contact",

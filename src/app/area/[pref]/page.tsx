@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { PREFECTURES, MUNICIPALITIES, getPrefectureBySlug } from "@/config/regions";
+import { CATEGORIES } from "@/config/taxonomy";
 import { getArticlesByPrefecture, orPlaceholder, EXPORT_PLACEHOLDER } from "@/lib/content";
 import { ArticleCard } from "@/components/article/ArticleCard";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
@@ -36,6 +37,10 @@ export default async function PrefecturePage({ params }: { params: Promise<{ pre
 
   const articles = getArticlesByPrefecture(def.code);
   const cities = MUNICIPALITIES.filter((m) => m.prefCode === def.code);
+  // 記事があるカテゴリのみ、都道府県×カテゴリのハブページへのリンクを出す
+  const categoriesWithArticles = CATEGORIES.filter((c) =>
+    articles.some((a) => a.section === "subsidy" && a.category === c.code)
+  );
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-10">
@@ -47,6 +52,20 @@ export default async function PrefecturePage({ params }: { params: Promise<{ pre
         ]}
       />
       <h1 className="mt-4 text-2xl font-bold text-gray-900 dark:text-gray-100">{def.labelJa}の補助金・助成金</h1>
+
+      {categoriesWithArticles.length > 0 && (
+        <div className="mt-4 flex flex-wrap gap-2">
+          {categoriesWithArticles.map((c) => (
+            <Link
+              key={c.code}
+              href={`/area/${pref}/${c.code}`}
+              className="rounded-md bg-brand-50 px-3 py-1.5 text-sm font-semibold text-brand-700 hover:bg-brand-100 dark:bg-brand-900/30 dark:text-brand-100 dark:hover:bg-brand-900/50"
+            >
+              {c.labelShort}の補助金
+            </Link>
+          ))}
+        </div>
+      )}
 
       {cities.length > 0 && (
         <div className="mt-4 flex flex-wrap gap-2">

@@ -1,5 +1,6 @@
 # 매주 링크 생존·노후 기사 점검 (docs/02)
-# TODO(Phase 1): 결과를 GitHub Issue로 자동 기립 (prompts/monitor/sources.yaml onChange 참조)
+# 요주의 항목(죽은 링크 / 6개월 미갱신 / 마감 경과 open 기사)이 있으면 GitHub Issue로 자동 기립.
+# Issue는 /publish-batch·수동 갱신의 입력 큐로 쓴다 — 콘텐츠 신선도 루프의 닫는 고리.
 name: Weekly Audit
 
 on:
@@ -7,9 +8,15 @@ on:
     - cron: "0 21 * * 0" # 매주 월요일 06:00 JST
   workflow_dispatch:
 
+permissions:
+  contents: read
+  issues: write
+
 jobs:
   audit:
     runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
     steps:
       - uses: actions/checkout@v5
       - uses: actions/setup-node@v5
@@ -17,5 +24,39 @@ jobs:
           node-version: 24
           cache: npm
       - run: npm ci
-      - run: npm run check:links
-      - run: npm run stale
+
+      - name: Run audits
+        id: audits
+        run: |
+          set +e
+          npm run check:links > links-report.txt 2>&1
+          echo "links_exit=$?" >> "$GITHUB_OUTPUT"
+          npm run stale > stale-report.txt 2>&1
+          # stale-report.ts는 문제가 있으면 「리뷰 큐」 또는 「❗」를 출력한다
+          if grep -qE '리뷰 큐|❗' stale-report.txt; then
+            echo "stale_flag=1" >> "$GITHUB_OUTPUT"
+          else
+            echo "stale_flag=0" >> "$GITHUB_OUTPUT"
+          fi
+          cat links-report.txt
+          cat stale-report.txt
+
+      - name: File issue
+        if: steps.audits.outputs.links_exit != '0' || steps.audits.outputs.stale_flag == '1'
+        run: |
+          {
+            echo "Weekly Audit에서 요주의 항목이 발견됐습니다. 갱신 대상 큐로 사용하세요."
+            echo ""
+            echo "## check:links (exit ${{ steps.audits.outputs.links_exit }})"
+            echo '```'
+            tail -c 30000 links-report.txt
+            echo '```'
+            echo ""
+            echo "## stale-report"
+            echo '```'
+            tail -c 30000 stale-report.txt
+            echo '```'
+          } > issue-body.md
+          gh issue create \
+            --title "Weekly Audit $(date -u -d '+9 hours' +%F): 링크/노후 기사 요주의" \
+            --body-file issue-body.md

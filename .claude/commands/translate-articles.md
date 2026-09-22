@@ -1,0 +1,26 @@
+---
+description: published 기사를 9개 언어로 일괄 번역한다 (content-i18n/ — 외국인 대상 롱테일)
+---
+
+사용자 입력(대상: slug 목록 / 카테고리 / "최신 N건" 등. locale 제한도 가능, 기본은 9개 언어 전부):
+
+$ARGUMENTS
+
+---
+
+published 일본어 기사를 `content-i18n/`의 9개 언어(en, zh-CN, zh-TW, vi, ko, fil, ne, id, th)로 번역하는 배치다. hreflang・locale 라우팅・sitemap은 이미 완비되어 있어 파일만 놓이면 자동으로 서빙・색인된다.
+
+## 절차
+
+1. 대상 기사를 확정한다:
+   - 사용자가 지정하지 않았으면: **번역이 아직 없는 published 기사** 중 pillar(`type: "pillar"`)와 카테고리별 조회 가치가 높은 것(제목에 국가 제도・광역 제도가 오는 것) 우선으로 10건을 제안하고 진행한다.
+   - 이미 번역이 있는 조합(`content-i18n/<locale>/...` 존재)은 skip한다.
+2. **기사 1건 = Task 1개**로 `translator` 서브에이전트를 병렬 fan-out한다(하나의 메시지에 여러 Task). 각 Task에 기사 경로와 대상 locale 목록을 전달한다 — 원문을 한 번 읽고 9개 언어를 모두 산출하는 편이 효율적이다.
+3. 전체 완료 후 `npm run build`를 1회 실행해 번역 frontmatter가 모두 스키마를 통과하는지 확인한다.
+
+## 보고
+
+- 기사×locale 매트릭스(생성/기존/실패)
+- build 결과
+- 번역 후 커버리지(전체 published 대비 번역 존재 비율)
+- git commit/push는 하지 않는다 — 커밋 문안만 제안한다.

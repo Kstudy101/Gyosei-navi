@@ -187,6 +187,34 @@ export function getArticlesByRegionAndCategory(regionCode: string, category: str
   );
 }
 
+/** 都道府県×カテゴリのハブページ（/area/{pref}/{category}）用。市区町村の記事も含む */
+export function getArticlesByPrefectureAndCategory(prefCode: string, category: string): Article[] {
+  return getArticlesByPrefecture(prefCode).filter(
+    (a) => a.section === "subsidy" && a.category === category
+  );
+}
+
+/**
+ * タグ→記事の索引（published のみ、記事数降順）。
+ * タグアーカイブページは記事2件以上のタグのみ生成する（薄いページを作らない）。
+ */
+export function getTagIndex(): Map<string, Article[]> {
+  const index = new Map<string, Article[]>();
+  for (const a of getAllArticles()) {
+    if (a.frontmatter.status !== "published") continue;
+    for (const tag of a.frontmatter.tags) {
+      const list = index.get(tag) ?? [];
+      list.push(a);
+      index.set(tag, list);
+    }
+  }
+  return new Map([...index.entries()].sort((x, y) => y[1].length - x[1].length));
+}
+
+export function getTagsWithArchivePage(): string[] {
+  return [...getTagIndex().entries()].filter(([, arts]) => arts.length >= 2).map(([t]) => t);
+}
+
 /**
  * output: "export" では generateStaticParams が空配列だと
  * 「missing generateStaticParams」扱いでビルドが落ちる（記事0件のセクションで発生）。

@@ -15,6 +15,12 @@ AddDefaultCharset UTF-8
   RewriteRule ^(.*)$ https://gyosei-navi.jp/$1 [R=301,L]
 </IfModule>
 
+# ---- v1（行政書士メディア時代）URL の 301 ----
+# 旧セクション guide/practice/exam は v2 全面転換で廃止（docs/00 v2）。404 のまま放置すると
+# 旧被リンク・色引が失われるため恒久転送する。補助金カテゴリだけ関連ハブへ、他はトップへ。
+RedirectMatch 301 ^/guide/hojokin(/.*)?$ https://gyosei-navi.jp/subsidy/
+RedirectMatch 301 ^/(guide|practice|exam)(/.*)?$ https://gyosei-navi.jp/
+
 # ---- 圧縮 ----
 <IfModule mod_deflate.c>
   AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml application/javascript application/json image/svg+xml
