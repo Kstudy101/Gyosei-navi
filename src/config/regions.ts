@@ -312,6 +312,12 @@ export interface MunicipalityDef {
  *   6桁を確認（盛岡市公式サイトのFAQページ自己申告「032018」とも一致、data/sources/morioka-taiyoko-setti-hojokin/
  *   04_shityousoncode.txt 参照）、このファイルの他エントリに合わせ検査数字を除いた5桁「03201」で登録。
  *   岩手県として初の市区町村登録。一次情報: data/sources/morioka-taiyoko-setti-hojokin/README.md 参照）。
+ * 2026-09-22: 北上市を追加登録（kekkon カテゴリの北上市結婚新生活支援補助金〔令和8年度〕記事のため）。
+ *   北上市は政令指定都市ではないため区単位に分割せず市全体を1エントリとして登録。総務省「全国地方公共団体
+ *   コード」一覧PDF（`data/sources/kitakami-kekkon-shinseikatsu-shien/04_soumu_code.pdf`、
+ *   https://www.soumu.go.jp/main_content/000925834.pdf）岩手県セクションで団体コード032069＝検査数字込み
+ *   6桁を確認、このファイルの他エントリに合わせ検査数字を除いた5桁「03206」で登録。岩手県として盛岡市
+ *   （03201）に次ぐ2件目の市区町村登録。一次情報: data/sources/kitakami-kekkon-shinseikatsu-shien/README.md 参照）。
  */
 export const MUNICIPALITIES: readonly MunicipalityDef[] = [
   { code: "13101", slug: "chiyoda", labelJa: "千代田区", prefCode: "13" },
@@ -379,6 +385,7 @@ export const MUNICIPALITIES: readonly MunicipalityDef[] = [
   { code: "01235", slug: "ishikari", labelJa: "石狩市", prefCode: "01" },
   { code: "01202", slug: "hakodate", labelJa: "函館市", prefCode: "01" },
   { code: "03201", slug: "morioka", labelJa: "盛岡市", prefCode: "03" },
+  { code: "03206", slug: "kitakami", labelJa: "北上市", prefCode: "03" },
 ];
 
 export const getPrefectureBySlug = (slug: string): PrefectureDef | undefined =>
