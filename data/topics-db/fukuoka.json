@@ -1,0 +1,115 @@
+{
+  "region": "fukuoka",
+  "regionLabel": "福岡県",
+  "updatedAt": "2026-09-22",
+  "topics": [
+    {
+      "category": "shussan",
+      "title": "福岡県子育て応援金",
+      "officialUrl": "https://fukuokaken-kosodate-ouenkin.jp/index.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "国の物価高対応子育て応援手当に連動した県実施の一時金（児童1人10,000円、対象: 0〜18歳、平成19年4月2日〜令和8年3月31日生まれ）。国内在住者はプッシュ型支給、県外転入者は申請型。県として初のshussan記事候補（福岡市の出産・子育て応援給付金とは別制度）。国連動施策のため他県の類似制度との差別化に留意が必要。"
+    },
+    {
+      "category": "jutaku",
+      "title": "福岡県移住支援金（東京圏からの移住者向け）",
+      "officialUrl": "https://www.pref.fukuoka.lg.jp/life/2/50/339/",
+      "authority": "prefecture",
+      "confidence": "unconfirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "東京圏在住者・就職者向けの移住支援金の案内ページを確認したが、支給額・詳細要件・国の地方創生移住支援金との関係は未確認。government-researcher による原文調査が必要。既存記事（fukuoka-chiiki-koken-akiya-katsuyo等は福岡市の空き家活用）とは別制度・県レベルで差別化可能。"
+    },
+    {
+      "category": "sogyo",
+      "title": "（該当なし）",
+      "officialUrl": "",
+      "authority": "prefecture",
+      "confidence": "unconfirmed",
+      "status": "rejected",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "県中小企業支援ページ（/life/4/32/, /life/4/32/131/）を確認したが、taxonomy seedKeywords（創業補助金・事業再構築補助金・小規模事業者持続化補助金）に合致する県独自の個人事業主・中小企業向け給付型補助金は見当たらず。トライアル優良商品等認定制度・M&A事業承継支援補助金・省エネ新製品開発支援補助金は対象や性質が異なる。福岡市（fukuoka-sogyo-shinki-sokushin-hojokin）・北九州市・久留米市・八女市は既に記事化済み。"
+    },
+    {
+      "category": "kaigo",
+      "title": "（該当なし）",
+      "officialUrl": "",
+      "authority": "prefecture",
+      "confidence": "unconfirmed",
+      "status": "rejected",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "介護・高齢者福祉ページ（/life/3/25/）を確認したが、介護リフォーム補助・高齢者向け給付の具体的な県単独制度ページ（/life/3/25/108/）は404で確認不能。福岡市・北九州市・久留米市・八女市の介護関連制度は既に記事化済み。県レベルの制度は現時点で確認できず。"
+    },
+    {
+      "category": "energy",
+      "title": "福岡県中小企業脱炭素化緊急支援事業補助金（参考、非該当）",
+      "officialUrl": "https://www.ecofukuoka.jp/center/8188.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "rejected",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "屋根置き型太陽光発電設備等の導入支援補助金の実在は確認したが、対象が県内中小企業限定で個人（住宅所有者）は対象外。taxonomy seedKeywords（太陽光/EV/断熱リフォーム 補助金＝個人向け）とミスマッチのため却下。個人向け県単独エネルギー補助金は確認できず。福岡市のEV購入補助金等は既に記事化済み。"
+    },
+    {
+      "category": "pet",
+      "title": "（該当なし）",
+      "officialUrl": "",
+      "authority": "prefecture",
+      "confidence": "unconfirmed",
+      "status": "rejected",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "ペット関連ページ（/life/1/6/, /life/1/6/361/）を確認したが、不妊去勢手術費助成・マイクロチップ装着助成に該当する県独自の給付制度ページは見当たらず（動物愛護一般情報のみ）。福岡市・北九州市・久留米市・八女市は既に記事化済み。県レベルは制度なしと判断。"
+    },
+    {
+      "category": "shogaisha",
+      "title": "福岡県腎臓疾患患者福祉給付金",
+      "officialUrl": "https://www.pref.fukuoka.lg.jp/contents/jinzou.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "福岡県（指定都市を除く）在住で夜間人工透析を受ける身体障害者手帳保持者向けに月額2,000円の交通費助成。実施主体は県の保健福祉環境事務所（市町村経由ではなく県直接）。福岡市・北九州市・久留米市・八女市の障害者関連記事（福祉タクシー・医療費助成等）とは対象・制度が異なり、県として初のshogaisha記事候補。"
+    },
+    {
+      "category": "kyoiku",
+      "title": "福岡県高校生等奨学給付金制度",
+      "officialUrl": "https://www.pref.fukuoka.lg.jp/site/kyouiku/syougakukyuuhukin.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "published",
+      "articleSlug": "fukuoka-ken-koukosei-shogaku-kyufukin",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-24",
+      "note": "国公立高等学校等に通う低所得世帯生徒向けの返還不要給付金（令和8年度、世帯区分別に年32,300円〜143,700円等）。県教育委員会実施。私立高校生向け奨学給付金・学校納付金軽減補助金も別途確認済み（同カテゴリ内で類似制度のため今回は国公立向けを主候補とする）。福岡市の就学援助（fukuoka-shi-shugaku-enjo、市町村民税ベースの学用品費等）とは対象・原資が異なり、県として初のkyoiku記事候補。"
+    },
+    {
+      "category": "kekkon",
+      "title": "（該当なし）",
+      "officialUrl": "",
+      "authority": "prefecture",
+      "confidence": "unconfirmed",
+      "status": "rejected",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "少子化対策ページ（/life/3/78/, /life/3/78/367/）を確認したが、結婚新生活支援事業は国の補助制度を各市町村が個別に実施する仕組みであり、県単独の結婚新生活支援補助金は確認できず。既に久留米市・八女市の同事業を記事化済み。県レベルでの新規記事化は不可と判断。"
+    }
+  ]
+}
