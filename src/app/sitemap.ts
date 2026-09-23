@@ -10,7 +10,7 @@ import {
   getTagsWithArchivePage,
 } from "@/lib/content";
 import { getAllRankingArticles } from "@/lib/ranking";
-import { CATEGORY_CODES } from "@/config/taxonomy";
+import { CATEGORY_CODES, TOKUSHU_CATEGORY_CODES } from "@/config/taxonomy";
 import { PREFECTURES, MUNICIPALITIES, getPrefectureByCode } from "@/config/regions";
 import { LOCALES } from "@/i18n/locales";
 
@@ -65,6 +65,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...prefCategoryPaths,
     ...cityPaths,
     ...tagPaths,
+    "/tokushu",
+    ...TOKUSHU_CATEGORY_CODES.map((c) => `/tokushu/${c}`),
     "/compare",
     "/news",
     "/calendar",

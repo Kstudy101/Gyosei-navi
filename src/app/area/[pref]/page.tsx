@@ -24,6 +24,10 @@ export async function generateMetadata({
   const { pref } = await params;
   const def = getPrefectureBySlug(pref);
   if (!def) return {};
+  const articles = getArticlesByPrefecture(def.code);
+  if (articles.length === 0) {
+    return { robots: { index: false, follow: false } };
+  }
   return {
     title: `${def.labelJa}の補助金・助成金`,
     description: `${def.labelJa}で使える国・都道府県・市区町村の補助金・助成金をまとめて確認できます。`,
