@@ -1,0 +1,115 @@
+{
+  "region": "miyazaki",
+  "regionLabel": "宮崎県",
+  "updatedAt": "2026-09-24",
+  "topics": [
+    {
+      "category": "shussan",
+      "title": "宮崎市 出産・子育て応援給付金（出産応援給付金・子育て応援給付金）",
+      "officialUrl": "https://www.city.miyazaki.miyazaki.jp/education/allowance/336450.html",
+      "authority": "municipality",
+      "confidence": "confirmed",
+      "status": "published",
+      "articleSlug": "miyazaki-shi-ninpu-shien-kyufu",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "宮崎市は regions.ts 未登録（記事化決定時に MUNICIPALITIES へ追加が必要）。国の出産・子育て応援給付金に市独自の第3子20万円等を上乗せ。他地域の類似記事（例: naha-sango-care, sendai-shussan-ikuji-shienkin）とは別制度で新規地域最初の出産カテゴリ記事となる。"
+    },
+    {
+      "category": "jutaku",
+      "title": "宮崎市 木造建築物等地震対策促進事業（木造住宅耐震診断・耐震改修補助）",
+      "officialUrl": "https://www.pref.miyazaki.lg.jp/kenchikujutaku/kurashi/shakaikiban/page00280.html",
+      "authority": "municipality",
+      "confidence": "unconfirmed",
+      "status": "rejected",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "県HPのURL（https://www.pref.miyazaki.lg.jp/kenchikujutaku/...）は県内市町村住宅関連補助制度の一覧PDFへのリンクページのみ。宮崎市固有の耐震改修補助の金額・申請条件を原文から直接確認できないためskip。一次情報確認が必要。"
+    },
+    {
+      "category": "sogyo",
+      "title": "宮崎県 女性・若者応援！起業チャレンジ支援事業費補助金（令和8年度）",
+      "officialUrl": "https://www.pref.miyazaki.lg.jp/shokoseisaku/shigoto/chushokigyo/20250422114116.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "published",
+      "articleSlug": "miyazaki-kigyo-challenge-hojokin",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "県公式サイトで令和8年度公募ページを確認済み（起業チャレンジ支援事業、最大300万円規模と二次情報あり）。宮崎県として初のsogyoカテゴリ記事候補、かつ県レベル（既存sogyo記事は久留米市・福岡市など市町村レベルが中心）で差別化できる。"
+    },
+    {
+      "category": "kaigo",
+      "title": "宮崎市 高齢者等居宅介護住宅改修補助事業",
+      "officialUrl": "https://www.city.miyazaki.miyazaki.jp/health/long_term_care_insurance/procedure/12333.html",
+      "authority": "municipality",
+      "confidence": "confirmed",
+      "status": "published",
+      "articleSlug": "miyazaki-shi-kaigo-jutaku-kaishuu",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "介護保険の住宅改修費20万円に対する市独自の上乗せ補助。対象・補助率を公式ページで確認済み。既存kaigo記事群（nagoya-jutaku-kaishuu, fukuoka-shi-jutaku-kaizo-josei等）と同系統だが宮崎県では新規。宮崎市は regions.ts 未登録。"
+    },
+    {
+      "category": "energy",
+      "title": "宮崎県 ひなたゼロカーボン加速化事業補助金（令和8年度）",
+      "officialUrl": "https://www.pref.miyazaki.lg.jp/kankyoshinrin/kurashi/shizen/20260611164947.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "published",
+      "articleSlug": "miyazaki-hinata-zero-carbon-hojokin",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "県公式サイトで太陽光21万円・蓄電池50万円・断熱改修120万円（個人）等の上限額、申請期間（令和8年6月18日〜12月4日）を確認済み。所管: 環境森林部環境森林課。県レベルの制度で宮崎県として初のenergy記事候補。"
+    },
+    {
+      "category": "pet",
+      "title": "宮崎市 地域猫活動に関する不妊去勢手術支援",
+      "officialUrl": "https://www.city.miyazaki.miyazaki.jp/life/pet/service/317301.html",
+      "authority": "municipality",
+      "confidence": "unconfirmed",
+      "status": "rejected",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "宮崎市動物との共生に関する条例（URL）のページには「市は不妊去勢手術に関する支援を行います」という条文の記述があるのみで、補助金の金額・申請方法・受付期間等の具体的な制度内容が確認できないためskip。条例上の努力規定であり現行の具体的補助金制度の存在を確認できない。"
+    },
+    {
+      "category": "shogaisha",
+      "title": "宮崎市 重度障がい者タクシー料金等助成",
+      "officialUrl": "https://www.city.miyazaki.miyazaki.jp/health/disabilities_welfare/exemption/212.html",
+      "authority": "municipality",
+      "confidence": "confirmed",
+      "status": "published",
+      "articleSlug": "miyazaki-shi-taxi-ryokin-josei",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "対象要件（手帳等級・所得要件）、助成額（タクシー券12,000円分またはガソリン券6,000円分/年）を公式ページで確認済み。既存shogaisha記事のnagoya-taxi-ryokin-joseiと同系統だが宮崎県では新規。宮崎市は regions.ts 未登録。"
+    },
+    {
+      "category": "kyoiku",
+      "title": "宮崎県 私立高等学校等奨学給付金",
+      "officialUrl": "https://www.pref.miyazaki.lg.jp/miyazaki-bunkashinko/kyoikukosodate/kyoiku/page00459.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "published",
+      "articleSlug": "miyazaki-shiritsu-koko-shogakukyufu",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "県公式サイトで対象区分（生活保護/住民税非課税等）・給付額（非課税世帯152,000円等）・所管課を確認済み。県レベルの返還不要給付型制度で宮崎県として初のkyoiku記事候補。"
+    },
+    {
+      "category": "kekkon",
+      "title": "宮崎県 結婚支援サービス利用促進事業補助金",
+      "officialUrl": "https://www.pref.miyazaki.lg.jp/kodomo-seisaku/press/2025/06/20250611104231.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "published",
+      "articleSlug": "miyazaki-kekkon-shien-service-hojokin",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "18〜39歳の独身者向け、マッチングアプリ・結婚相談所の利用料等を年度上限1万円補助。対象・補助額・所管課（こども政策課）を公式ページで確認済み。既存kekkon記事群は全て「結婚新生活支援事業」（新生活費補助）だが、これは婚活サービス利用料補助という別タイプの制度で差別化ポイントになる。なお宮崎市内では結婚新生活支援事業自体は実施していない旨を宮崎市コールセンターFAQで確認（小林市・日南市等は実施）。"
+    }
+  ]
+}

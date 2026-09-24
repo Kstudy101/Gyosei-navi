@@ -349,6 +349,19 @@ export interface MunicipalityDef {
  *   コードは data/sources/aomori-shi-code/01_soumu-zenkoku-chihoukoukyoudantai-code.pdf
  *   の滋賀県セクション（250007行）で確認。slugは大津市は「otsu」、栗東市は「ritto」とした。
  *   滋賀県として初の市区町村登録。
+ * 2026-09-24: 大分市・日田市を追加登録（大分県 oita バッチ処理のため）。
+ *   大分市（団体コード442011＝検査数字込み6桁、検査数字を除いた5桁「44201」）は
+ *   kaigo カテゴリの介護用品購入費支給申請記事および pet カテゴリの地域猫不妊去勢手術
+ *   助成金記事のため。政令指定都市ではないため市全体を1エントリとして登録。
+ *   日田市（団体コード442053＝検査数字込み6桁、検査数字を除いた5桁「44205」）は
+ *   kekkon カテゴリの結婚新生活支援補助金記事のため。いずれも大分県として初の市区町村登録。
+ *   コードは総務省「全国地方公共団体コード」一覧PDF 27ページ目・大分県セクションで確認。
+ *   大分市のslugは県スラッグ「oita」との混同を避けるため「oita-shi」とした。
+ *   日田市のslugは「hita」とした。
+ * 2026-09-24: 鹿屋市・霧島市・南大隅町・曽於市を追加登録（鹿児島県バッチ処理のため）。
+ *   各コードは data/sources/_shared-codes/zenkoku-chihokokyodantai-code.pdf 30ページ目・
+ *   鹿児島県セクションで確認（鹿屋市462039・霧島市462187・南大隅町464911・曽於市462179、
+ *   いずれもチェックデジットを除いた5桁で登録）。鹿児島県として鹿児島市（46201）に次ぐ2〜5件目の登録。
  */
 export const MUNICIPALITIES: readonly MunicipalityDef[] = [
   { code: "13101", slug: "chiyoda", labelJa: "千代田区", prefCode: "13" },
@@ -429,6 +442,14 @@ export const MUNICIPALITIES: readonly MunicipalityDef[] = [
   { code: "17212", slug: "nonoichi", labelJa: "野々市市", prefCode: "17" },
   { code: "25201", slug: "otsu", labelJa: "大津市", prefCode: "25" },
   { code: "25208", slug: "ritto", labelJa: "栗東市", prefCode: "25" },
+  { code: "45201", slug: "miyazaki-shi", labelJa: "宮崎市", prefCode: "45" },
+  { code: "09201", slug: "utsunomiya", labelJa: "宇都宮市", prefCode: "09" },
+  { code: "44201", slug: "oita-shi", labelJa: "大分市", prefCode: "44" },
+  { code: "44205", slug: "hita", labelJa: "日田市", prefCode: "44" },
+  { code: "46203", slug: "kanoya", labelJa: "鹿屋市", prefCode: "46" },
+  { code: "46218", slug: "kirishima", labelJa: "霧島市", prefCode: "46" },
+  { code: "46491", slug: "minamiosumi", labelJa: "南大隅町", prefCode: "46" },
+  { code: "46217", slug: "soo", labelJa: "曽於市", prefCode: "46" },
 ];
 
 export const getPrefectureBySlug = (slug: string): PrefectureDef | undefined =>
