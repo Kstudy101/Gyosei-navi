@@ -1,0 +1,151 @@
+{
+  "region": "kagoshima",
+  "regionLabel": "鹿児島県",
+  "updatedAt": "2026-09-22",
+  "topics": [
+    {
+      "category": "jutaku",
+      "title": "鹿児島県 空き家活用・移住型住宅リフォーム補助（市町村実施、県が交付要綱等関与）",
+      "officialUrl": "https://hojokin-agent.jp/subsidy/75766",
+      "authority": "municipality",
+      "confidence": "unconfirmed",
+      "status": "published",
+      "articleSlug": "soo-akiya-reform-hojo",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-24",
+      "note": "曽於市の住宅リフォーム促進事業補助金（市公式サイト確認）として記事化。市外移住者の空き家リフォーム上限50万円・市内空き家30万円・一般15万円（工事費10%）の3段階。2026-09-24に記事作成。"
+    },
+    {
+      "category": "sogyo",
+      "title": "かごしま地域課題解決型起業支援事業（鹿児島県）",
+      "officialUrl": "https://www.pref.kagoshima.jp/af23/jinzai/kigyoshien5.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "published",
+      "articleSlug": "kagoshima-chiiki-kadai-kigyo",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-24",
+      "note": "令和8年度起業支援金として記事化。令和8年度は15件応募・9件採択（5月25日〜7月3日募集、終了済み）。補助金額は募集要領で毎年度更新。2026-09-24に記事作成。"
+    },
+    {
+      "category": "sogyo",
+      "title": "かごしまスタートアップ実証支援事業（鹿児島県）",
+      "officialUrl": "https://kagoshima-kigyouricchi-guide.jp/kagoshima-prefecture-support/startup/",
+      "authority": "prefecture",
+      "confidence": "unconfirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "検索結果のみで確認、鹿児島県企業立地ガイド（民間/県関連サイト）経由。pref.kagoshima.jp上の一次情報URL未到達。原文調査時に実在・所管を要確認。"
+    },
+    {
+      "category": "kaigo",
+      "title": "鹿児島県内市町村の高齢者等住宅改造費助成事業（鹿児島市以外、例: 個別市町村制度）",
+      "officialUrl": "",
+      "authority": "municipality",
+      "confidence": "unconfirmed",
+      "status": "rejected",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "鹿児島市の高齢者等住宅改造費助成は既published。検索では鹿児島市以外の個別市町村制度や県レベル統一制度を具体的に特定できず。県レベルの個人向け介護給付制度は未確認のためrejectedとするが、市町村単位（鹿児島市以外）は将来再調査の余地あり。"
+    },
+    {
+      "category": "energy",
+      "title": "自家消費型太陽光発電設備・蓄電池の導入支援事業（鹿児島県）",
+      "officialUrl": "https://www.pref.kagoshima.jp/ac10/gx/jiritsubunsan_r6.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "pref.kagoshima.jp公式ページ(R8年度)で確認。国・他自治体補助との併用不可の条件あり。鹿児島市のゼロカーボン促進事業補助金（既published、市レベル）とは別の県レベル制度。対象が個人か事業者かは原文調査で要確認（自家消費型なので事業者中心の可能性あり、要精査）。"
+    },
+    {
+      "category": "energy",
+      "title": "鹿屋市 太陽光発電設備・蓄電池の設置費用補助",
+      "officialUrl": "https://www.city.kanoya.lg.jp/kankyou/taiyoukouhojo.html",
+      "authority": "municipality",
+      "confidence": "confirmed",
+      "status": "published",
+      "articleSlug": "kanoya-taiyoko-chikudenchi-hojo",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-24",
+      "note": "太陽光70,000円/kW・蓄電池設置費1/3として記事化。申請締切令和8年11月16日。regions.tsに鹿屋市（46203）を登録済み。2026-09-24に記事作成。"
+    },
+    {
+      "category": "pet",
+      "title": "霧島市 飼い主のいない猫の不妊去勢手術費補助金",
+      "officialUrl": "https://www.city-kirishima.jp/kankyo/hozen/chiikineko/huninnkyosei.html",
+      "authority": "municipality",
+      "confidence": "confirmed",
+      "status": "published",
+      "articleSlug": "kirishima-neko-funinkyosei",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-24",
+      "note": "オス上限5,000円・メス上限10,000円（団体のみ、個人不可）として記事化。令和8年度受付期間4月〜2月。regions.tsに霧島市（46218）を登録済み。2026-09-24に記事作成。"
+    },
+    {
+      "category": "pet",
+      "title": "南大隅町 猫の不妊・去勢手術助成事業",
+      "officialUrl": "https://www.town.minamiosumi.lg.jp/chominhoken/kurashi/nekosyujutu.html",
+      "authority": "municipality",
+      "confidence": "confirmed",
+      "status": "published",
+      "articleSlug": "minamiosumi-neko-funinkyosei",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-24",
+      "note": "対象経費の90%（オス上限8,000円・メス上限16,000円）として記事化。個人可・飼い猫可。頭数制限あり要事前連絡。regions.tsに南大隅町（46491）を登録済み。2026-09-24に記事作成。"
+    },
+    {
+      "category": "shussan",
+      "title": "鹿児島県レベルの出産・子育て応援給付金（県独自上乗せ）",
+      "officialUrl": "",
+      "authority": "prefecture",
+      "confidence": "unconfirmed",
+      "status": "rejected",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "検索結果は鹿児島市（既published: 妊婦支援給付）や国制度（出産育児一時金）中心。県独自の上乗せ給付制度を公式サイトで確認できず。他市町村での独自制度は別途再調査余地あり。"
+    },
+    {
+      "category": "shogaisha",
+      "title": "鹿児島県 障害者向け補装具費支給・日常生活用具給付等事業",
+      "officialUrl": "",
+      "authority": "prefecture",
+      "confidence": "unconfirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "WebSearchセッション予算超過およびGoogle/Bing検索がWebFetch経由で機能せず、公式URLを特定できなかった。補装具費支給・日常生活用具給付は障害者総合支援法に基づく全国共通の必須制度（市町村実施・県が補助）であり実在は高確率だが、鹿児島県または鹿児島市の具体的な公式ページは次回セッションで要再検索。"
+    },
+    {
+      "category": "kyoiku",
+      "title": "鹿児島県高校生等奨学給付金制度",
+      "officialUrl": "https://www.pref.kagoshima.jp/ba05/shougakukyuhukin.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "published",
+      "articleSlug": "kagoshima-kokosei-shogaku-kyufukin",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-24",
+      "note": "pref.kagoshima.jp教育委員会サイトで確認。返還不要・非課税世帯に年額143,700円（通学制）。令和8年度通常申請は終了・家計急変は令和9年2月まで随時受付。2026-09-24に記事作成。"
+    },
+    {
+      "category": "kekkon",
+      "title": "鹿児島県内市町村の結婚新生活支援事業（国事業活用）",
+      "officialUrl": "https://www.city.kanoya.lg.jp/jinkou/kekkon_r8.html",
+      "authority": "municipality",
+      "confidence": "confirmed",
+      "status": "published",
+      "articleSlug": "kanoya-kekkon-shinseikatsu",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-24",
+      "note": "鹿屋市の結婚新生活支援補助金として記事化。29歳以下上限60万円・30〜39歳上限30万円。世帯所得500万円未満。regions.tsに鹿屋市（46203）を登録済み。2026-09-24に記事作成。"
+    }
+  ]
+}
