@@ -1,7 +1,7 @@
 {
   "region": "kagoshima",
   "regionLabel": "鹿児島県",
-  "updatedAt": "2026-09-22",
+  "updatedAt": "2026-09-24",
   "topics": [
     {
       "category": "jutaku",
@@ -33,11 +33,11 @@
       "officialUrl": "https://kagoshima-kigyouricchi-guide.jp/kagoshima-prefecture-support/startup/",
       "authority": "prefecture",
       "confidence": "unconfirmed",
-      "status": "pending",
+      "status": "rejected",
       "articleSlug": "",
       "foundAt": "2026-09-22",
-      "checkedAt": "2026-09-22",
-      "note": "検索結果のみで確認、鹿児島県企業立地ガイド（民間/県関連サイト）経由。pref.kagoshima.jp上の一次情報URL未到達。原文調査時に実在・所管を要確認。"
+      "checkedAt": "2026-09-24",
+      "note": "pref.kagoshima.jpの案内ページ(404)および特設サイトがJSレンダリング必須でnpm run sourceで取得不能（75字未満）。原文アーカイブ不可のためスキップ。次年度再確認推奨。"
     },
     {
       "category": "kaigo",
@@ -57,11 +57,11 @@
       "officialUrl": "https://www.pref.kagoshima.jp/ac10/gx/jiritsubunsan_r6.html",
       "authority": "prefecture",
       "confidence": "confirmed",
-      "status": "pending",
+      "status": "rejected",
       "articleSlug": "",
       "foundAt": "2026-09-22",
-      "checkedAt": "2026-09-22",
-      "note": "pref.kagoshima.jp公式ページ(R8年度)で確認。国・他自治体補助との併用不可の条件あり。鹿児島市のゼロカーボン促進事業補助金（既published、市レベル）とは別の県レベル制度。対象が個人か事業者かは原文調査で要確認（自家消費型なので事業者中心の可能性あり、要精査）。"
+      "checkedAt": "2026-09-24",
+      "note": "対象が中小事業者等（法人・個人事業主）のみで一般居住者向けではないためスキップ。当サイトのポリシー（一般住民向け制度のみ掲載）に合致しない。原文アーカイブ: data/sources/kagoshima-jiritsubunsan-taiyoko/"
     },
     {
       "category": "energy",
@@ -117,11 +117,11 @@
       "officialUrl": "",
       "authority": "prefecture",
       "confidence": "unconfirmed",
-      "status": "pending",
+      "status": "rejected",
       "articleSlug": "",
       "foundAt": "2026-09-22",
-      "checkedAt": "2026-09-22",
-      "note": "WebSearchセッション予算超過およびGoogle/Bing検索がWebFetch経由で機能せず、公式URLを特定できなかった。補装具費支給・日常生活用具給付は障害者総合支援法に基づく全国共通の必須制度（市町村実施・県が補助）であり実在は高確率だが、鹿児島県または鹿児島市の具体的な公式ページは次回セッションで要再検索。"
+      "checkedAt": "2026-09-24",
+      "note": "障害者総合支援法に基づく全国共通の必須制度（補装具費支給・日常生活用具給付）であり鹿児島県独自の補助金ではない。国レベル・全自治体実施の汎用制度のため当バッチではスキップ。別途 shogaisha カテゴリの汎用記事として扱うべき制度。"
     },
     {
       "category": "kyoiku",
