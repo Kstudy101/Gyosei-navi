@@ -39,7 +39,7 @@ function isArticlePage(p: string): boolean {
   return false;
 }
 
-function resolveAvailableLocales(restPath: string, index: TranslationIndex): Locale[] {
+export function resolveAvailableLocales(restPath: string, index: TranslationIndex): Locale[] {
   if (isStructuralLocalePage(restPath)) return [...LOCALES];
   if (isArticlePage(restPath)) return index[restPath] ?? [];
   return [];
