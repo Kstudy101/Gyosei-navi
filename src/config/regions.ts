@@ -331,6 +331,12 @@ export interface MunicipalityDef {
  *   団体コード052159＝検査数字込み6桁を確認、このファイルの他エントリに合わせ検査数字を除いた5桁「05215」で
  *   登録。秋田県として大潟村（05368）に次ぐ2件目の市区町村登録。一次情報: data/sources/semboku-kekkon-shinseikatsu-shien/
  *   02_soumu-zenkoku-chihoukoukyoudantai-code.pdf, README.md 参照）。
+ * 2026-09-24: 佐渡市を追加登録（pet カテゴリの「さくらねこ無料不妊手術事業」を活用した地域猫活動推進記事のため）。
+ *   佐渡市は政令指定都市ではないため区単位に分割せず市全体を1エントリとして登録。総務省の地方公共団体コード
+ *   付番ルール（法人番号＝「9000020」+ 地方公共団体コード6桁）に基づき、佐渡市公式サイトのフッター記載の
+ *   法人番号「9000020152242」から団体コード152242＝検査数字込み6桁を導出、このファイルの他エントリに合わせ
+ *   検査数字を除いた5桁「15224」で登録。新潟県として新潟市（15100）に次ぐ2件目の市区町村登録。一次情報:
+ *   data/sources/sado-neko-sakuraneko-funinkyosei/README.md 参照）。
  */
 export const MUNICIPALITIES: readonly MunicipalityDef[] = [
   { code: "13101", slug: "chiyoda", labelJa: "千代田区", prefCode: "13" },
@@ -401,6 +407,7 @@ export const MUNICIPALITIES: readonly MunicipalityDef[] = [
   { code: "03206", slug: "kitakami", labelJa: "北上市", prefCode: "03" },
   { code: "05368", slug: "ogata", labelJa: "大潟村", prefCode: "05" },
   { code: "05215", slug: "semboku", labelJa: "仙北市", prefCode: "05" },
+  { code: "15224", slug: "sado", labelJa: "佐渡市", prefCode: "15" },
 ];
 
 export const getPrefectureBySlug = (slug: string): PrefectureDef | undefined =>
