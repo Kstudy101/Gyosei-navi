@@ -1,0 +1,50 @@
+取得元: https://www.pref.shiga.lg.jp/edu/menu/19970.html
+取得日: 2026-09-24
+取得方法: npm run source（cheerio でタグ除去のみ。文字の置換なし＝原文）
+本文長: 639字
+
+====================================================================
+奨学資金に関すること｜滋賀県教育委員会
+
+本文へスキップします。
+
+現在の位置
+滋賀県教育委員会 > 学校教育 > 授業料・奨学金に関すること > 奨学資金に関すること
+
+ページID：19970
+
+ここから本文です。
+
+奨学資金に関すること
+
+滋賀県奨学資金の予約募集
+
+奨学のための給付金の募集について（国公立）
+
+2.年額支給、7月～翌年3月分支給のご案内
+
+1.早期給付のご案内（令和8年度新入生限定）
+
+3.家計急変世帯への支援のご案内
+
+滋賀県奨学資金-制度案内-
+
+滋賀県奨学資金
+
+滋賀県奨学資金の募集について
+
+返還猶予制度について
+
+所得連動型返還猶予制度について
+
+滋賀県奨学資金貸与条例第9条の規定に基づく返還債務の履行の猶予に関する実施要綱
+
+国の教育ローン（日本政策金融公庫）
+
+Pagpapahiram ng Pondo sa Pag-aaral ng Prepektura ng Shiga - Gabay sa Sistema -
+
+Empréstimo estudantil da Província de Shiga: Resumo do sistema de auxílio financeiro
+
+Financial Aid Available from Shiga Prefecture:Outline of the Financial Aid System Offered by Shiga Prefecture
+
+特出し-教育委員会

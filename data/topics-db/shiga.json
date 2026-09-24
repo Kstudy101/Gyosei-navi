@@ -1,0 +1,151 @@
+{
+  "region": "shiga",
+  "regionLabel": "滋賀県",
+  "updatedAt": "2026-09-24",
+  "topics": [
+    {
+      "category": "shussan",
+      "title": "東近江市出産応援ギフト・子育て応援ギフト",
+      "officialUrl": "https://www.city.higashiomi.shiga.jp/",
+      "authority": "municipality",
+      "confidence": "unconfirmed",
+      "status": "skipped",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-24",
+      "note": "unconfirmed・公式ページURL未特定のため一次確認不可。東近江市のトップページのみ確認でき、具体的な出産応援ギフトページは発見できず。再調査が必要。"
+    },
+    {
+      "category": "shussan",
+      "title": "滋賀県独自の出産祝い金制度",
+      "officialUrl": "",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "rejected",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "滋賀県レベルでの独自出産祝い金制度は存在しないことを検索結果で確認（国の出産育児一時金・出産子育て応援交付金のみ、市町ごとに独自制度）。県単位の出産祝い金記事は不可、市町単位で個別調査が必要。"
+    },
+    {
+      "category": "jutaku",
+      "title": "木造住宅の耐震診断（無料）および耐震改修の補助制度",
+      "officialUrl": "https://www.pref.shiga.lg.jp/re00/725.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "published",
+      "articleSlug": "shiga-mokuzo-taishin-kaishuu",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-24",
+      "note": "滋賀県が県内市町と連携して実施する木造住宅耐震診断・耐震改修補助（総合メニュー上限115万円）。一次情報取得・記事作成・published転換済み（2026-09-24）。"
+    },
+    {
+      "category": "sogyo",
+      "title": "大津市創業促進事業費補助金",
+      "officialUrl": "https://www.city.otsu.lg.jp/soshiki/025/1601/g/hojo/48891.html",
+      "authority": "municipality",
+      "confidence": "confirmed",
+      "status": "published",
+      "articleSlug": "otsu-sogyo-sokushin-hojokin",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-24",
+      "note": "大津市が創業後3年未満/創業予定者向けに実施。令和8年度2次募集（2026-08-31締切済み）。一次情報取得・記事作成・published転換済み（2026-09-24）。"
+    },
+    {
+      "category": "sogyo",
+      "title": "滋賀県起業支援金",
+      "officialUrl": "https://www.pref.shiga.lg.jp/ippan/shigotosangyou/kigyou/304495.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "rejected",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "検索結果・公式ページタイトルともに「募集は終了しました」と明記。継続性不明のため現時点では記事化不可、次回募集開始時に再調査。"
+    },
+    {
+      "category": "kaigo",
+      "title": "大津市高齢者住宅改修費助成（高齢者・障害者住宅改修支援事業）",
+      "officialUrl": "https://www.city.otsu.lg.jp/soshiki/020/1498/g/kf/1388118365647.html",
+      "authority": "municipality",
+      "confidence": "unconfirmed",
+      "status": "skipped",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-24",
+      "note": "当該URL（https://www.city.otsu.lg.jp/soshiki/020/1498/g/kf/1388118365647.html）が404。一次確認不可のため記事化をスキップ。URLが変更された可能性があり、再調査が必要。"
+    },
+    {
+      "category": "energy",
+      "title": "栗東市住宅用太陽光発電システム等の設置補助",
+      "officialUrl": "https://www.city.ritto.lg.jp/soshiki/kankyokeizai/kankyo/oshirase/13678.html",
+      "authority": "municipality",
+      "confidence": "confirmed",
+      "status": "published",
+      "articleSlug": "ritto-taiyoko-chikudenchi-hojo",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-24",
+      "note": "栗東市が淡海環境保全財団スマート・ライフスタイル事業への上乗せとして実施。太陽光1kWあたり1.5万円（上限4万円）・蓄電池5万円。一次情報取得・記事作成・published転換済み（2026-09-24）。"
+    },
+    {
+      "category": "energy",
+      "title": "滋賀県スマート・ライフスタイル普及促進事業補助金",
+      "officialUrl": "https://www.pref.shiga.lg.jp/ippan/kankyoshizen/ondanka/337288.html",
+      "authority": "prefecture",
+      "confidence": "unconfirmed",
+      "status": "skipped",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-24",
+      "note": "当該URL（337288.html）が404。県公式サイトを検索したが現行ページを特定できず。制度名が変更または終了した可能性あり。栗東市記事内で補助要件として言及済み。"
+    },
+    {
+      "category": "pet",
+      "title": "滋賀県動物保護管理協会 犬・猫の不妊去勢手術助成金交付（わんにゃん倶楽部）",
+      "officialUrl": "https://www.sapca.jp/topics/11264.html",
+      "authority": "prefecture",
+      "confidence": "unconfirmed",
+      "status": "published",
+      "articleSlug": "shiga-wannyan-funinkyosei",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-24",
+      "note": "一般財団法人滋賀県動物保護管理協会（sapca.jp）の制度。一次情報取得・記事作成・published転換済み（2026-09-24）。外郭団体運営で直接県事業ではない点を記事内に明記済み。"
+    },
+    {
+      "category": "shogaisha",
+      "title": "大津市福祉タクシーチケット・タクシー料金割引",
+      "officialUrl": "https://www.city.otsu.lg.jp/soshiki/020/1408/g/w/1390460763884.html",
+      "authority": "municipality",
+      "confidence": "unconfirmed",
+      "status": "published",
+      "articleSlug": "otsu-fukushi-taxi",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-24",
+      "note": "身体障害者手帳1-2級等・市民税非課税世帯対象、500円券を四半期ごとに交付（年間最大28枚、腎臓機能障害1級は56枚）。一次情報取得・記事作成・published転換済み（2026-09-24）。"
+    },
+    {
+      "category": "kyoiku",
+      "title": "滋賀県奨学のための給付金",
+      "officialUrl": "https://www.pref.shiga.lg.jp/edu/ma00/16929.html",
+      "authority": "prefecture",
+      "confidence": "unconfirmed",
+      "status": "published",
+      "articleSlug": "shiga-shogaku-kyufukin",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-24",
+      "note": "元のURL（105625.html）は404。edu/ma00/16929.htmlから令和8年度情報を取得。高校生等奨学給付金の滋賀県実施分。一次情報取得・記事作成・published転換済み（2026-09-24）。"
+    },
+    {
+      "category": "kekkon",
+      "title": "滋賀県内19市町 結婚新生活支援事業補助金（草津市・守山市等）",
+      "officialUrl": "https://www.pref.shiga.lg.jp/ippan/kosodatekyouiku/kosodate/316994.html",
+      "authority": "municipality",
+      "confidence": "confirmed",
+      "status": "skipped",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-24",
+      "note": "当該URL（316994.html）が404。県公式サイト内を検索したが代替ページ特定できず。記事化は市町単位（草津市・守山市等）が必要だが、今回は一次情報取得不可のためスキップ。次回調査時に市町単位でURL再確認が必要。"
+    }
+  ]
+}
