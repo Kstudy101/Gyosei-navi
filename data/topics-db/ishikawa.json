@@ -1,0 +1,127 @@
+{
+  "region": "ishikawa",
+  "regionLabel": "石川県",
+  "updatedAt": "2026-09-24",
+  "topics": [
+    {
+      "category": "shussan",
+      "title": "珠洲市出産・子育て支援制度（出産支援金・子育て支援金）",
+      "officialUrl": "https://www.city.suzu.lg.jp/soshiki/6/6478.html",
+      "authority": "municipality",
+      "confidence": "confirmed",
+      "status": "published",
+      "articleSlug": "suzu-shussan-kosodate-shienkin",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-24",
+      "note": "珠洲市公式サイトを原文取得済み。出産支援金（前期21週以内5万円＋後期22週以降5万円）＋子育て支援金（単胎5万円・多胎2人目から10万円/人）。こども家庭センター(0768-82-7799)。"
+    },
+    {
+      "category": "shussan",
+      "title": "妊婦のための支援給付（石川県内市町共通・国制度の県内実施）",
+      "officialUrl": "https://www4.city.kanazawa.lg.jp/kosodate_kyoiku/ninshin_shussan/25820.html",
+      "authority": "municipality",
+      "confidence": "confirmed",
+      "status": "published",
+      "articleSlug": "kanazawa-ninpu-shien-kyufu",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-24",
+      "note": "金沢市の伴走型妊産婦支援事業として記事化。令和7年4月1日以降の妊娠が対象。妊娠時5万円（1回目）・出産後胎児1人につき5万円（2回目）。流産・死産でも両回とも給付対象。金沢市公式サイトを原文取得済み。"
+    },
+    {
+      "category": "jutaku",
+      "title": "石川県住宅耐震化促進事業（木造住宅耐震改修費補助）",
+      "officialUrl": "https://www.pref.ishikawa.lg.jp/kenju/taishinportal/taishin_hojo.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "published",
+      "articleSlug": "ishikawa-mokuzo-taishin-kaishu",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-24",
+      "note": "石川県公式サイトを原文取得済み。昭和56年5月31日以前着工の木造住宅が対象。令和7年7月から定額210万円（耐震改修）。県内19市町が窓口。令和6年能登半島地震被災住宅も令和6年6月から対象。"
+    },
+    {
+      "category": "sogyo",
+      "title": "石川県移住・起業支援金制度",
+      "officialUrl": "https://www.pref.ishikawa.lg.jp/kinyuu/keieishien/kigyoushienkin.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "published",
+      "articleSlug": "ishikawa-iju-kigyou-shienkin",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-24",
+      "note": "石川県公式サイトを原文取得済み。東京23区在住→石川県移住＋起業で最大200万円（補助率1/2）。令和8年度募集は2026年6月15日で終了済み（subsidy.status: closed）。"
+    },
+    {
+      "category": "kaigo",
+      "title": "金沢市介護手当金の支給",
+      "officialUrl": "https://www4.city.kanazawa.lg.jp/soshikikarasagasu/fukushiseisakuka/gyomuannai/3/2/1/4465.html",
+      "authority": "municipality",
+      "confidence": "confirmed",
+      "status": "published",
+      "articleSlug": "kanazawa-kaigo-teatekin",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-24",
+      "note": "金沢市公式サイトを原文取得済み。65歳以上ねたきり（要介護4・5）または重度認知症（要介護3以上）を在宅3か月超常時介護している配偶者・3親等内親族に月額5,000円・年3回（4月・8月・12月）支給。"
+    },
+    {
+      "category": "energy",
+      "title": "石川県住宅用太陽光発電・蓄電池・V2H導入補助金",
+      "officialUrl": "https://www.pref.ishikawa.lg.jp/ontai/pv/pv.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "published",
+      "articleSlug": "ishikawa-taiyoko-chikudenchi-v2h",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-24",
+      "note": "石川県公式サイトを原文取得済み。太陽光7万円/kW（上限35万円・瓦屋根+10万円）、蓄電池15万円または1/3、V2H15万円。交付申請2026年6月22日開始・12月28日締切。"
+    },
+    {
+      "category": "pet",
+      "title": "かほく市飼い主のいない猫避妊手術費助成",
+      "officialUrl": "https://www.city.kahoku.lg.jp/001/105/d010551.html",
+      "authority": "municipality",
+      "confidence": "unconfirmed",
+      "status": "rejected",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-24",
+      "note": "公式詳細ページ https://www.city.kahoku.lg.jp/001/105/d010551.html が HTTP 404 を返すため記事化不可。親ページ（index.html）でタイトルは確認できたが詳細内容・補助金額等を原文で確認できなかった。原文未取得のため記事化スキップ。"
+    },
+    {
+      "category": "shogaisha",
+      "title": "金沢市福祉タクシー乗車券交付制度",
+      "officialUrl": "https://www4.city.kanazawa.lg.jp/soshikikarasagasu/shogaifukushika/gyomuannai/3/6/2/9294.html",
+      "authority": "municipality",
+      "confidence": "confirmed",
+      "status": "published",
+      "articleSlug": "kanazawa-fukushi-taxi-joshaken",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-24",
+      "note": "金沢市公式サイトを原文取得済み。身体・知的障害年36枚・精神障害年24枚。1乗車700円まで補助。障害福祉課（076-220-2289）。"
+    },
+    {
+      "category": "kyoiku",
+      "title": "石川県育英資金（奨学金）の貸与・返還支援",
+      "officialUrl": "https://www.pref.ishikawa.lg.jp/kyoiku/seisaku/ikuei/taiyo_kyufu.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "published",
+      "articleSlug": "ishikawa-ikuei-shikingakin-henkan",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-24",
+      "note": "石川県公式サイトを原文取得済み（貸与・給付ページと返還ページの2ファイル）。高校生国公立自宅18,000円〜私立自宅外35,000円/月（貸与型）、大学生44,000円/月。給付型（畠山育英資金等）8,000円/月。在学採用4月10日〜5月15日。記事スラグは ikuei-shikingakin-henkan とした（元の officialUrl が返還ページだったため）。"
+    },
+    {
+      "category": "kekkon",
+      "title": "結婚新生活支援事業費補助金（石川県内15市町実施）",
+      "officialUrl": "https://www.pref.ishikawa.lg.jp/kodomoseisaku/kekkonhozyokin.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "published",
+      "articleSlug": "nonoichi-kekkon-shinseikatsu",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-24",
+      "note": "野々市市の個別記事として記事化。野々市市公式サイトおよび石川県の県内参加市町リストを原文取得済み。自己名義住宅の建物費用のみ対象（賃料・引越し・リフォーム不可）。最大30万円（29歳以下は60万円）。ライフデザイン講座受講必須。"
+    }
+  ]
+}
