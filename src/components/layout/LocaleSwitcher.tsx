@@ -15,13 +15,34 @@ interface Props {
  * 例: /en/subsidy/shussan/foo → { locale: "en", restPath: "subsidy/shussan/foo" }
  *     /subsidy/shussan/foo    → { locale: "ja", restPath: "subsidy/shussan/foo" }
  */
-function parsePathname(pathname: string): { locale: Locale | "ja"; restPath: string } {
+export function parsePathname(pathname: string): { locale: Locale | "ja"; restPath: string } {
   const segments = pathname.split("/").filter(Boolean);
   const [first, ...rest] = segments;
   if (first && isLocale(first)) {
     return { locale: first, restPath: rest.join("/") };
   }
   return { locale: "ja", restPath: segments.join("/") };
+}
+
+/** Structural pages that always have locale versions: /, /subsidy, /subsidy/{cat}, /compare */
+function isStructuralLocalePage(p: string): boolean {
+  if (p === "" || p === "subsidy" || p === "compare") return true;
+  const parts = p.split("/").filter(Boolean);
+  return parts.length === 2 && parts[0] === "subsidy";
+}
+
+/** Per-article pages: subsidy/{cat}/{slug} or compare/{slug} */
+function isArticlePage(p: string): boolean {
+  const parts = p.split("/").filter(Boolean);
+  if (parts.length === 3 && parts[0] === "subsidy") return true;
+  if (parts.length === 2 && parts[0] === "compare") return true;
+  return false;
+}
+
+function resolveAvailableLocales(restPath: string, index: TranslationIndex): Locale[] {
+  if (isStructuralLocalePage(restPath)) return [...LOCALES];
+  if (isArticlePage(restPath)) return index[restPath] ?? [];
+  return [];
 }
 
 /**
@@ -51,7 +72,7 @@ export function LocaleSwitcher({ translationIndex }: Props) {
   }, [open]);
 
   const { locale: currentLocale, restPath } = parsePathname(pathname ?? "/");
-  const available = translationIndex[restPath] ?? [];
+  const available = resolveAvailableLocales(restPath, translationIndex);
 
   return (
     <li ref={ref} className="relative">

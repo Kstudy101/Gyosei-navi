@@ -1,0 +1,163 @@
+{
+  "region": "yamagata",
+  "regionLabel": "山形県",
+  "updatedAt": "2026-09-24",
+  "topics": [
+    {
+      "category": "shussan",
+      "title": "山形県出産支援給付金",
+      "officialUrl": "https://hojokin-agent.jp/subsidy/68074",
+      "authority": "prefecture",
+      "confidence": "unconfirmed",
+      "status": "rejected",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-24",
+      "note": "県独自の出産支援給付金58,000円。第三者サイトの記載のみ確認、県公式ページのURLは未特定。原文調査時に pref.yamagata.jp 上で公式URLを確定させる必要あり。公式URL(pref.yamagata.jp)が404で原文確保不可のためskip。"
+    },
+    {
+      "category": "shussan",
+      "title": "山形市 出産・子育て応援給付金",
+      "officialUrl": "https://www.city.yamagata-yamagata.lg.jp/kosodatekyoiku/kosodate/1006606/1007233/1010690.html",
+      "authority": "municipality",
+      "confidence": "unconfirmed",
+      "status": "researched",
+      "articleSlug": "yamagata-shi-ninpu-shien-kyufu",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "国の出産・子育て応援給付金(計10万円)の山形市版。市独自の第3子祝い金(10万円)も別途あり。県内新規地域の最初の記事候補。"
+    },
+    {
+      "category": "jutaku",
+      "title": "山形市住宅リフォーム総合支援事業",
+      "officialUrl": "https://www.city.yamagata-yamagata.lg.jp/kurashi/tochi/1007258/1003551.html",
+      "authority": "municipality",
+      "confidence": "confirmed",
+      "status": "researched",
+      "articleSlug": "yamagata-shi-jutaku-reform-shien",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "市補助タイプ(工事費50%・上限20万円)と県市補助タイプ(一般20%上限24万円/移住・新婚・子育て世帯33%上限30万円)の二本立て。公式ページでWebFetch確認済み。"
+    },
+    {
+      "category": "sogyo",
+      "title": "山形県ものづくりスタートアップ支援事業費補助金",
+      "officialUrl": "https://www.pref.yamagata.jp/110002/sangyo/shokogyo/shien/startup_hojo_r8press.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "researched",
+      "articleSlug": "yamagata-monozukuri-startup-hojokin",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-24",
+      "note": "令和8年度に開始した新規制度。大規模事業型上限200万円、5年以内雇用5人以上等の成果目標あり。所管: 産業労働部産業技術イノベーション課。公式ページWebFetch確認済み(詳細はPDFにあり原文調査で確認要)。"
+    },
+    {
+      "category": "sogyo",
+      "title": "やまがたチャレンジ創業応援事業",
+      "officialUrl": "https://www.yamagata-cci.or.jp/sogyo-ouen/",
+      "authority": "prefecture",
+      "confidence": "unconfirmed",
+      "status": "rejected",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-24",
+      "note": "県内7地域の商工会議所・商工会連携の創業支援事業。商工会議所サイト経由の情報のみで県公式ページ未確認。令和8年度申請期限6/19。公式URLが商工会議所サイト経由のみ・県公式ページ未確認のためskip。令和8年度申請期限6/19は既に経過。"
+    },
+    {
+      "category": "kaigo",
+      "title": "山形市在宅介護支援住宅改修補助事業",
+      "officialUrl": "https://www.city.yamagata-yamagata.lg.jp/kenkofukushi/koureisha/1007266/1005067.html",
+      "authority": "municipality",
+      "confidence": "confirmed",
+      "status": "researched",
+      "articleSlug": "yamagata-shi-kaigo-jutaku-kaishu",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-24",
+      "note": "山形市住宅リフォーム総合支援事業との併用可の記載から存在を把握。バリアフリー工事の高齢者向け助成。令和8年度申請受付6月1日〜19日で終了。記事作成済み（draft）。"
+    },
+    {
+      "category": "energy",
+      "title": "やまがた未来くるエネルギー補助金（山形県再生可能エネルギー等設備導入促進事業）",
+      "officialUrl": "https://www.pref.yamagata.jp/050016/kurashi/kankyo/energy/saiseikanou/hojo.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "researched",
+      "articleSlug": "yamagata-mirai-kuru-energy-hojokin",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-24",
+      "note": "個人向け:蓄電池・ペレットストーブ・薪ストーブ等の導入を補助。県公式の再エネ補助金一覧ページでWebFetch確認済み。令和8年度継続確認済み(4月16日〜11月30日受付中)。"
+    },
+    {
+      "category": "energy",
+      "title": "山形市非FIT型太陽光発電設備導入事業費補助金",
+      "officialUrl": "https://www.city.yamagata-yamagata.lg.jp/kurashi/kankyohozen/1006528/1013800/1014661.html",
+      "authority": "municipality",
+      "confidence": "confirmed",
+      "status": "researched",
+      "articleSlug": "yamagata-shi-taiyoko-hojokin",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-24",
+      "note": "住宅用7万円/kW・上限63万円。令和8年度は予算総額25,099千円到達により令和8年9月14日時点で受付終了。記事作成済み（draft）。"
+    },
+    {
+      "category": "pet",
+      "title": "山形市猫の不妊・去勢手術費補助金交付事業",
+      "officialUrl": "https://www.city.yamagata-yamagata.lg.jp/kurashi/pet/1006549/1005152.html",
+      "authority": "municipality",
+      "confidence": "confirmed",
+      "status": "researched",
+      "articleSlug": "yamagata-shi-neko-funinkyosei",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "不妊手術(メス)上限1万円、去勢手術(オス)上限5千円。多頭飼育問題猫・野良猫が対象。公式ページWebFetch確認済み。犬は対象外の模様(原文調査で要確認)。"
+    },
+    {
+      "category": "shogaisha",
+      "title": "山形市補装具の給付",
+      "officialUrl": "https://www.city.yamagata-yamagata.lg.jp/kenkofukushi/syougaisha/1006656/1004590.html",
+      "authority": "municipality",
+      "confidence": "confirmed",
+      "status": "researched",
+      "articleSlug": "yamagata-shi-hosoki-kyufu",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "身体障害者手帳所持者向け。18歳未満は所得制限撤廃(2024年4月～)、18歳以上は原則1割負担(上限37,200円)。公式ページWebFetch確認済み。"
+    },
+    {
+      "category": "shogaisha",
+      "title": "山形市福祉タクシー（普通タクシー・リフト付タクシー）利用券・福祉給油券の交付",
+      "officialUrl": "https://www.city.yamagata-yamagata.lg.jp/kenkofukushi/syougaisha/1006656/1004641.html",
+      "authority": "municipality",
+      "confidence": "confirmed",
+      "status": "researched",
+      "articleSlug": "yamagata-shi-fukushi-taxi",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-24",
+      "note": "普通タクシー年24枚（視覚障がい1級は36枚）・リフト付年24枚・給油券年12枚のいずれか1種類。令和4年7月からシルバー定期券との併用可。記事作成済み（draft）。"
+    },
+    {
+      "category": "kyoiku",
+      "title": "山形県奨学のための給付金（国公立高等学校等）",
+      "officialUrl": "https://www.pref.yamagata.jp/700013/koko/220825syougakukyuufukin.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "researched",
+      "articleSlug": "yamagata-shogaku-kyufukin-kokoritsu",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-24",
+      "note": "住民税所得割非課税世帯等が対象。国公立は年額最大143,700円。所管: 教育局高等学校教育課。公式ページWebFetch確認済み。私立版(奨学のための給付金・私立高等学校等)も別途あり、原文調査で範囲を確定。"
+    },
+    {
+      "category": "kekkon",
+      "title": "山形県「結婚・妊娠・共育ての相談機会提供・支援プログラム」（結婚新生活支援事業）",
+      "officialUrl": "https://www.pref.yamagata.jp/010003/kenfuku/kosodate/kekkon/shinseikatu/renkei.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "researched",
+      "articleSlug": "yamagata-kekkon-shinseikatsu-shien",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-24",
+      "note": "既published記事(chiba-shi/kawaguchi/kurume/tachikawa/yame/yodogawa の結婚新生活支援)とは地域が異なり県内初。夫婦とも29歳以下は上限60万円、39歳以下は上限30万円。県内35市町村が実施。公式ページWebFetch確認済み。"
+    }
+  ]
+}

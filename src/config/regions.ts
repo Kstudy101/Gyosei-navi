@@ -325,6 +325,20 @@ export interface MunicipalityDef {
  *   6桁を確認（Wikipedia「大潟村」infobox記載の市町村コード「05368-6」とも一致）、このファイルの他エントリに
  *   合わせ検査数字を除いた5桁「05368」で登録。秋田県として初の市区町村登録。一次情報:
  *   data/sources/ogata-taiyoko-chikudenchi-hojo/README.md 参照）。
+ * 2026-09-24: 山形市を追加登録（jutaku・pet・shogaisha・shussan・kaigo・energy カテゴリの山形市補助金記事のため）。
+ *   山形市は政令指定都市ではないため区単位に分割せず市全体を1エントリとして登録。総務省「全国地方公共団体コード」
+ *   一覧PDF（data/sources/aomori-shi-code/01_soumu-zenkoku-chihoukoukyoudantai-code.pdf、6ページ目・山形県セクション）で
+ *   団体コード062014＝検査数字込み6桁を確認、このファイルの他エントリに合わせ検査数字を除いた5桁「06201」で登録。
+ *   山形県として初の市区町村登録。slugは県スラッグ「yamagata」との混同を避けるため「yamagata-shi」とした
+ *   （さいたま市・京都市・熊本市等と同じパターン）。
+ * 2026-09-24: 松山市・今治市を追加登録（愛媛県ehime カテゴリの各記事のため）。
+ *   松山市（団体コード382011＝検査数字込み6桁、検査数字を除いた5桁「38201」）は
+ *   shussan・pet・shogaisha・kekkon・kyoiku カテゴリの愛媛県記事のため。県庁所在地として
+ *   prefecture レベル記事（kyoiku, energy）の regionCode にも流用。
+ *   今治市（団体コード382021＝検査数字込み6桁、検査数字を除いた5桁「38202」）は
+ *   jutaku カテゴリの今治市移住者住宅改修支援事業費補助金記事のため。愛媛県として初の市区町村登録。
+ *   一次情報: data/sources/matsuyama-shussan-setai-oen-jigyo/README.md,
+ *   data/sources/imabari-ijusha-jutaku-kaishuu-shien/README.md 参照。
  */
 export const MUNICIPALITIES: readonly MunicipalityDef[] = [
   { code: "13101", slug: "chiyoda", labelJa: "千代田区", prefCode: "13" },
@@ -394,6 +408,12 @@ export const MUNICIPALITIES: readonly MunicipalityDef[] = [
   { code: "03201", slug: "morioka", labelJa: "盛岡市", prefCode: "03" },
   { code: "03206", slug: "kitakami", labelJa: "北上市", prefCode: "03" },
   { code: "05368", slug: "ogata", labelJa: "大潟村", prefCode: "05" },
+  { code: "06201", slug: "yamagata-shi", labelJa: "山形市", prefCode: "06" },
+  { code: "38201", slug: "matsuyama", labelJa: "松山市", prefCode: "38" },
+  { code: "38202", slug: "imabari", labelJa: "今治市", prefCode: "38" },
+  { code: "31201", slug: "tottori-shi", labelJa: "鳥取市", prefCode: "31" },
+  { code: "31202", slug: "yonago", labelJa: "米子市", prefCode: "31" },
+  { code: "31204", slug: "sakaiminato", labelJa: "境港市", prefCode: "31" },
 ];
 
 export const getPrefectureBySlug = (slug: string): PrefectureDef | undefined =>

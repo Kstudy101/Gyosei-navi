@@ -1,0 +1,127 @@
+{
+  "region": "tottori",
+  "regionLabel": "鳥取県",
+  "updatedAt": "2026-09-22",
+  "topics": [
+    {
+      "category": "shussan",
+      "title": "米子市出産・子育て応援給付金",
+      "officialUrl": "https://www.city.yonago.lg.jp/",
+      "authority": "municipality",
+      "confidence": "unconfirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "米子市が現金またはJ-Coin Payで5万円給付（条件により加算あり）と検索結果にあり。公式ページURLは未特定のため government-researcher による原文確認が必要。"
+    },
+    {
+      "category": "jutaku",
+      "title": "とっとり健康省エネ住宅改修支援事業補助金（Re NE-ST）",
+      "officialUrl": "https://www.pref.tottori.lg.jp/308459.htm",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "researched",
+      "articleSlug": "tottori-renest-jutaku-kaishu",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-24",
+      "note": "既存戸建て住宅の断熱改修に対する県の補助金。県公式サイトのカテゴリページで実在確認済み。詳細ページは別途要特定。国の住宅省エネ2025キャンペーンとの併用可との情報あり。"
+    },
+    {
+      "category": "sogyo",
+      "title": "とっとり起業化促進事業",
+      "officialUrl": "https://www.toriton.or.jp/commercialization/",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "researched",
+      "articleSlug": "tottori-kigyoka-sokushin",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "鳥取県産業振興機構（公益財団法人）実施。県内で起業予定・起業後10年以内の個人事業者等が対象。年3回程度の公募。"
+    },
+    {
+      "category": "sogyo",
+      "title": "鳥取県地域課題解決型起業支援補助金",
+      "officialUrl": "https://www.pref.tottori.lg.jp/269488.htm",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "researched",
+      "articleSlug": "tottori-chiiki-kadai-sogyo-hojo",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "県公式サイトで実在確認。地域資源活用・中山間地域活性化事業が対象、個人の新規起業者向け、最大200万円・補助率1/2との情報。とっとり起業化促進事業とは別制度なので混同しないよう記事化時に留意。"
+    },
+    {
+      "category": "kaigo",
+      "title": "米子市住宅改良費助成事業（バリアフリー改修）",
+      "officialUrl": "https://www.city.yonago.lg.jp/11638.htm",
+      "authority": "municipality",
+      "confidence": "confirmed",
+      "status": "researched",
+      "articleSlug": "yonago-kaigo-jutaku-kaishuu",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-24",
+      "note": "原文確認済み。対象は65歳未満の障がい者のみ（高齢者は対象外）。補助率は改良経費の2/3、上限66万6千円（他補助併用時53万3千円）。掲載日2025年3月12日、令和8年度の継続確認は未実施。"
+    },
+    {
+      "category": "energy",
+      "title": "境港市定置用蓄電池設置補助金",
+      "officialUrl": "https://www.city.sakaiminato.lg.jp/index.php?view=119950",
+      "authority": "municipality",
+      "confidence": "confirmed",
+      "status": "researched",
+      "articleSlug": "sakaiminato-chikudenchi-hojo",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-24",
+      "note": "原文確認済み。1kWhあたり7万円・上限40万円。令和8年度当初受付40件。受注者・施工業者共に県内事業者が条件。10kW未満太陽光との連係必須。2026-09-24時点で残枠情報は原文に未記載。"
+    },
+    {
+      "category": "pet",
+      "title": "鳥取県獣医師会 飼い猫不妊去勢手術費助成（伯耆町等との連携）",
+      "officialUrl": "https://www.pref.tottori.lg.jp/247303.htm",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "researched",
+      "articleSlug": "tottori-neko-funinkyosei",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "県公式サイトで実在確認。飼い猫向けは伯耆町＋県獣医師会（メス4千円/オス2千円）、飼い主のいない猫向けは市町村ごとに1万〜2万円上限。記事化時は飼い猫向け・野良猫向けを整理して書き分ける必要あり。"
+    },
+    {
+      "category": "shogaisha",
+      "title": "鳥取市福祉タクシー利用券・自動車燃料費助成",
+      "officialUrl": "https://www.city.tottori.lg.jp/page/4558.html",
+      "authority": "municipality",
+      "confidence": "confirmed",
+      "status": "researched",
+      "articleSlug": "tottori-shi-fukushi-taxi",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-24",
+      "note": "鳥取市公式サイトで実在確認。身体障害者手帳1・2級等かつ市町村民税非課税世帯が対象、タクシー運賃1割引・重度者は初乗り運賃券交付。自動車燃料費助成は原文に記載なし（未確認）。記事化済み（draft）。"
+    },
+    {
+      "category": "kyoiku",
+      "title": "鳥取県高校生等奨学給付金",
+      "officialUrl": "https://www.pref.tottori.lg.jp/255113.htm",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "researched",
+      "articleSlug": "tottori-koukou-shogaku-kyufukin",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "県公式サイト（各種修学支援制度の御案内ページ）で実在確認、交付要綱PDFも確認済み（https://www.pref.tottori.lg.jp/secure/1220985/konkyo_2_2.pdf）。非課税世帯対象の給付型（返還不要）授業料以外の教育費支援。旧詳細ページ（item/872943.htm）はリンク切れのため上記案内ページを起点に一次資料を探す必要あり。"
+    },
+    {
+      "category": "kekkon",
+      "title": "結婚・妊娠・共育ての相談機会提供・支援プログラム（旧：結婚新生活支援事業）",
+      "officialUrl": "https://www.pref.tottori.lg.jp/262195.htm",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "県公式サイトで実在確認、所管は鳥取県子ども家庭部子育て王国課。事業名が旧「結婚新生活支援事業」から改称されている点に注意。具体的な補助額・対象要件はページに直接記載がなく、倉吉市・岩美町・若桜町・八頭町・北栄町・伯耆町など各市町村の実施計画ページを個別に確認する必要あり。新婚世帯の住居費等補助という当初制度の実態が残っているか要一次確認。"
+    }
+  ]
+}

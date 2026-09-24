@@ -1,0 +1,127 @@
+{
+  "region": "ehime",
+  "regionLabel": "愛媛県",
+  "updatedAt": "2026-09-24",
+  "topics": [
+    {
+      "category": "shussan",
+      "title": "松山市出産世帯応援事業（県市連携事業）",
+      "officialUrl": "https://www.city.matsuyama.ehime.jp/kurashi/fukushi/jido/syussannouen.html",
+      "authority": "municipality",
+      "confidence": "confirmed",
+      "status": "researched",
+      "articleSlug": "matsuyama-shussan-setai-oen-jigyo",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-24",
+      "note": "松山市が育児用品・時短/省エネ家電購入費の一部を助成。愛媛県との連携事業。両親35歳以下最大30万円、一方以上36歳以上最大20万円。"
+    },
+    {
+      "category": "shussan",
+      "title": "松山市出産世帯奨学金返還支援事業",
+      "officialUrl": "https://www.city.matsuyama.ehime.jp/kurashi/fukushi/jido/syougakukinn.html",
+      "authority": "municipality",
+      "confidence": "confirmed",
+      "status": "researched",
+      "articleSlug": "matsuyama-shussan-shogakukin-henkan-shien",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-24",
+      "note": "公式ページ確認済み。補助上限20万円。出産世帯の奨学金借り受け経験のある父母が対象。"
+    },
+    {
+      "category": "jutaku",
+      "title": "今治市移住者住宅改修支援事業費補助金",
+      "officialUrl": "https://www.city.imabari.ehime.jp/chiiki/ijyu/hojokin_reform/",
+      "authority": "municipality",
+      "confidence": "confirmed",
+      "status": "researched",
+      "articleSlug": "imabari-ijusha-jutaku-kaishuu-shien",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-24",
+      "note": "愛媛県外からの移住者向け住宅改修・家財道具搬出費補助。補助率2/3。通常地域100〜400万円、指定地域150〜500万円。"
+    },
+    {
+      "category": "sogyo",
+      "title": "小規模事業者持続化補助金（愛媛県内商工会・商工会議所経由）",
+      "officialUrl": "https://ehime-sci.jp/pickup/822/",
+      "authority": "national",
+      "confidence": "unconfirmed",
+      "status": "rejected",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-24",
+      "note": "愛媛県独自の創業補助金制度を確認できず。国の小規模事業者持続化補助金（国家制度）の商工会経由申請案内のみ。独立した愛媛県固有記事は書けないため記事化不適当と判定。"
+    },
+    {
+      "category": "kaigo",
+      "title": "介護保険住宅改修費支給制度（愛媛県内市町村運用、上乗せ助成の可能性）",
+      "officialUrl": "",
+      "authority": "municipality",
+      "confidence": "unconfirmed",
+      "status": "rejected",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-24",
+      "note": "松山市・愛媛県独自の上乗せ助成制度を確認できず。松山市公式ページには国の介護保険住宅改修制度の手引きのみ存在。独自加算制度なし（unresearched）として記事化不適当と判定。"
+    },
+    {
+      "category": "energy",
+      "title": "えひめ太陽光発電設備等共同購入事業",
+      "officialUrl": "https://zero-carbon.pref.ehime.jp/supports/",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "rejected",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-24",
+      "note": "現金給付型補助金ではなく共同購入スキーム（県と協定締結した事業者が一括発注→市場価格より安く購入）。補助金額を明示できないため記事化不適当と判定。"
+    },
+    {
+      "category": "pet",
+      "title": "松山市猫不妊・去勢手術補助事業",
+      "officialUrl": "https://www.city.matsuyama.ehime.jp/kurashi/kurashi/aigo/sien/funinkiyosei.html",
+      "authority": "municipality",
+      "confidence": "confirmed",
+      "status": "researched",
+      "articleSlug": "matsuyama-neko-funinkyosei-hojo",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-24",
+      "note": "令和8年度実施。飼い猫オス1,000円〜野良猫メス7,000円。URL変更（令和8年4月1日より/aigo/sien/に移動）。"
+    },
+    {
+      "category": "shogaisha",
+      "title": "松山市重度障害者タクシー利用助成事業",
+      "officialUrl": "https://www.city.matsuyama.ehime.jp/kurashi/fukushi/shogai/shakaisanka/syougaitaxi.html",
+      "authority": "municipality",
+      "confidence": "confirmed",
+      "status": "researched",
+      "articleSlug": "matsuyama-judoshogaisha-taxi-josei",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-24",
+      "note": "一般タクシー600円×24回、福祉タクシー500円〜1,000円×24回の助成券交付。"
+    },
+    {
+      "category": "kyoiku",
+      "title": "愛媛県公立高等学校等奨学のための給付金",
+      "officialUrl": "https://www.pref.ehime.jp/page/3913.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "researched",
+      "articleSlug": "ehime-kokosei-shogaku-kyufukin",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-24",
+      "note": "非課税世帯全日制143,700円、生活保護世帯32,300円。返済不要。"
+    },
+    {
+      "category": "kekkon",
+      "title": "松山市結婚新生活支援事業（県市連携事業）",
+      "officialUrl": "https://www.city.matsuyama.ehime.jp/kurashi/kurashi/hojokin/kekkonnshinnseikatsu.html",
+      "authority": "municipality",
+      "confidence": "confirmed",
+      "status": "researched",
+      "articleSlug": "matsuyama-kekkon-shinseikatsu-shien",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-24",
+      "note": "最大60万円。29歳以下一般枠（所得500万円未満）と39歳以下非課税枠の2段階。申請期限2027年3月5日。"
+    }
+  ]
+}
