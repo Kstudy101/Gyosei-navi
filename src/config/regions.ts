@@ -325,6 +325,12 @@ export interface MunicipalityDef {
  *   6桁を確認（Wikipedia「大潟村」infobox記載の市町村コード「05368-6」とも一致）、このファイルの他エントリに
  *   合わせ検査数字を除いた5桁「05368」で登録。秋田県として初の市区町村登録。一次情報:
  *   data/sources/ogata-taiyoko-chikudenchi-hojo/README.md 参照）。
+ * 2026-09-24: 仙北市を追加登録（kekkon カテゴリの仙北市結婚新生活支援事業補助金記事のため）。仙北市は
+ *   政令指定都市ではないため区単位に分割せず市全体を1エントリとして登録。総務省「全国地方公共団体コード」
+ *   一覧PDF（000925834.pdf、https://www.soumu.go.jp/main_content/000925834.pdf）6ページ目・秋田県セクションで
+ *   団体コード052159＝検査数字込み6桁を確認、このファイルの他エントリに合わせ検査数字を除いた5桁「05215」で
+ *   登録。秋田県として大潟村（05368）に次ぐ2件目の市区町村登録。一次情報: data/sources/semboku-kekkon-shinseikatsu-shien/
+ *   02_soumu-zenkoku-chihoukoukyoudantai-code.pdf, README.md 参照）。
  */
 export const MUNICIPALITIES: readonly MunicipalityDef[] = [
   { code: "13101", slug: "chiyoda", labelJa: "千代田区", prefCode: "13" },
@@ -394,6 +400,7 @@ export const MUNICIPALITIES: readonly MunicipalityDef[] = [
   { code: "03201", slug: "morioka", labelJa: "盛岡市", prefCode: "03" },
   { code: "03206", slug: "kitakami", labelJa: "北上市", prefCode: "03" },
   { code: "05368", slug: "ogata", labelJa: "大潟村", prefCode: "05" },
+  { code: "05215", slug: "semboku", labelJa: "仙北市", prefCode: "05" },
 ];
 
 export const getPrefectureBySlug = (slug: string): PrefectureDef | undefined =>
