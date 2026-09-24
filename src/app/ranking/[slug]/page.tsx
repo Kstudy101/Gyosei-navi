@@ -25,6 +25,7 @@ export async function generateMetadata({
   return {
     title: article.frontmatter.title,
     description: article.frontmatter.description,
+    alternates: { canonical: absoluteUrl(article.href) },
     openGraph: {
       title: article.frontmatter.title,
       description: article.frontmatter.description,

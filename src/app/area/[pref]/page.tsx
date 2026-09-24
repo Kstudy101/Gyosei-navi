@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { PREFECTURES, MUNICIPALITIES, getPrefectureBySlug } from "@/config/regions";
 import { CATEGORIES } from "@/config/taxonomy";
-import { getArticlesByPrefecture, orPlaceholder, EXPORT_PLACEHOLDER } from "@/lib/content";
+import { getArticlesByPrefecture, getArticlesByRegionCode, orPlaceholder, EXPORT_PLACEHOLDER } from "@/lib/content";
 import { ArticleCard } from "@/components/article/ArticleCard";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import Link from "next/link";
@@ -40,7 +40,10 @@ export default async function PrefecturePage({ params }: { params: Promise<{ pre
   if (!def) notFound();
 
   const articles = getArticlesByPrefecture(def.code);
-  const cities = MUNICIPALITIES.filter((m) => m.prefCode === def.code);
+  // 記事がある市区町村のみリンクを出す（空の市区町村ページへの誘導を避ける）
+  const cities = MUNICIPALITIES.filter(
+    (m) => m.prefCode === def.code && getArticlesByRegionCode(m.code).length > 0
+  );
   // 記事があるカテゴリのみ、都道府県×カテゴリのハブページへのリンクを出す
   const categoriesWithArticles = CATEGORIES.filter((c) =>
     articles.some((a) => a.section === "subsidy" && a.category === c.code)

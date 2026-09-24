@@ -62,6 +62,13 @@ export async function generateMetadata({
   }
   const m = getMunicipalityBySlug(pref, city);
   if (!m) return {};
+  const cityArticles = getArticlesByRegionCode(m.code);
+  if (cityArticles.length === 0) {
+    return {
+      title: `${m.labelJa}の補助金・助成金`,
+      robots: { index: false, follow: false },
+    };
+  }
   return {
     title: `${m.labelJa}の補助金・助成金`,
     description: `${m.labelJa}で使える国・都道府県・市区町村の補助金・助成金をまとめて確認できます。`,
