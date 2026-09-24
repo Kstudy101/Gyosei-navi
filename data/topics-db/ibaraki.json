@@ -1,0 +1,115 @@
+{
+  "region": "ibaraki",
+  "regionLabel": "茨城県",
+  "updatedAt": "2026-09-24",
+  "topics": [
+    {
+      "category": "shussan",
+      "title": "茨城県地域少子化対策重点推進事業（結婚・妊娠・共育て支援プログラム）",
+      "officialUrl": "https://www.kids.pref.ibaraki.jp/kids/marriage02_03/",
+      "authority": "prefecture",
+      "confidence": "unconfirmed",
+      "status": "skipped",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-24",
+      "note": "2026-09-24 原文取得試みたが文字化け（Shift-JIS エンコードエラー）でページ内容が読めず。明確な個人向け給付制度の実在を確認できなかったためスキップ。"
+    },
+    {
+      "category": "jutaku",
+      "title": "住宅関連助成制度（市町村・茨城県住宅課とりまとめ）",
+      "officialUrl": "https://www.pref.ibaraki.jp/doboku/jutaku/minkan/06kodate/joseiseido/h26joseiseido.html",
+      "authority": "prefecture",
+      "confidence": "unconfirmed",
+      "status": "skipped",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-24",
+      "note": "2026-09-24 原文取得済み。県ページは市町村別PDFリストのみで、茨城県独自の個人向け直接補助制度は確認できず。市町村レベルの個別調査が必要だが今回スコープ外でスキップ。"
+    },
+    {
+      "category": "sogyo",
+      "title": "茨城県地域課題解決型起業支援事業（起業支援金）",
+      "officialUrl": "https://www.pref.ibaraki.jp/shokorodo/sangi/chiikikadai.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "published",
+      "articleSlug": "ibaraki-chiikikadai-kigyo-shienkin",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-24",
+      "note": "記事公開済み。最大200万円（補助対象経費の1/2以内）。R8年度公募は終了。毎年実施される事業として紹介。"
+    },
+    {
+      "category": "kaigo",
+      "title": "茨城県介護テクノロジー（介護ロボット・ICT）導入支援事業",
+      "officialUrl": "https://www.pref.ibaraki.jp/hokenfukushi/chofuku/shisetsu/kaigorobottodounyuusiennzigyou.html",
+      "authority": "prefecture",
+      "confidence": "unconfirmed",
+      "status": "skipped",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-24",
+      "note": "2026-09-24 原文取得済み。介護事業所向け（介護事業所等生産性向上推進事業・茨城県介護テクノロジー定着支援事業）であり個人向け直接給付は確認できずスキップ。"
+    },
+    {
+      "category": "energy",
+      "title": "自立・分散型エネルギー設備（家庭用蓄電池）導入促進事業費補助金",
+      "officialUrl": "https://www.pref.ibaraki.jp/seikatsukankyo/kansei/chikyu/jiritsubunsan.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "published",
+      "articleSlug": "ibaraki-chikudenchi-hojo",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-24",
+      "note": "記事公開済み。市町村経由の補助制度。44市町村以上が実施。"
+    },
+    {
+      "category": "pet",
+      "title": "公益社団法人茨城県獣医師会 犬・猫不妊助成事業",
+      "officialUrl": "https://www.ibajyuu.com/pet/funin.php",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "published",
+      "articleSlug": "ibaraki-inu-neko-funinkyosei",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-24",
+      "note": "記事公開済み。茨城県獣医師会実施。1頭2,000円、先着1,000頭、R8年9月1日〜。"
+    },
+    {
+      "category": "shogaisha",
+      "title": "茨城県 補装具費支給制度",
+      "officialUrl": "https://www.pref.ibaraki.jp/bugai/koho/kenmin/life/hoken/shofuku/shofuku-011.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "published",
+      "articleSlug": "ibaraki-hosogu-shikyu",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-24",
+      "note": "記事公開済み。自己負担原則1割、市町村申請、対象補装具一覧を記載。"
+    },
+    {
+      "category": "kyoiku",
+      "title": "茨城県奨学のための給付金制度",
+      "officialUrl": "https://kyoiku.pref.ibaraki.jp/gakko/highschool/scholarship/kyufukin/",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "published",
+      "articleSlug": "ibaraki-shogaku-kyufukin",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-24",
+      "note": "記事公開済み。返還不要。最大143,700円（非課税世帯・全日制）。申請期限R8年9月25日。"
+    },
+    {
+      "category": "kekkon",
+      "title": "茨城県結婚新生活支援事業",
+      "officialUrl": "https://www.pref.ibaraki.jp/hokenfukushi/shotaisaku/kekonsien/kekkonshinseikatsu.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "published",
+      "articleSlug": "ibaraki-kekkon-shinseikatsu-shien",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-24",
+      "note": "記事公開済み。21実施市町村確認・掲載。29歳以下60万円、その他30万円。"
+    }
+  ]
+}
