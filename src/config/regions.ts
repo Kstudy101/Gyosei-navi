@@ -339,6 +339,16 @@ export interface MunicipalityDef {
  *   jutaku カテゴリの今治市移住者住宅改修支援事業費補助金記事のため。愛媛県として初の市区町村登録。
  *   一次情報: data/sources/matsuyama-shussan-setai-oen-jigyo/README.md,
  *   data/sources/imabari-ijusha-jutaku-kaishuu-shien/README.md 参照。
+ * 2026-09-24: 大津市・栗東市を追加登録（滋賀県 shiga バッチ処理のため）。
+ *   大津市（団体コード252018＝検査数字込み6桁、検査数字を除いた5桁「25201」）は
+ *   sogyo・shogaisha カテゴリの大津市補助金記事および jutaku・pet・kyoiku カテゴリの
+ *   滋賀県レベル記事の regionCode（県庁所在地として使用）のため。
+ *   栗東市（団体コード252085＝検査数字込み6桁、検査数字を除いた5桁「25208」）は
+ *   energy カテゴリの栗東市住宅用太陽光発電システム等設置補助記事のため。
+ *   いずれも政令指定都市ではないため市全体を1エントリとして登録。
+ *   コードは data/sources/aomori-shi-code/01_soumu-zenkoku-chihoukoukyoudantai-code.pdf
+ *   の滋賀県セクション（250007行）で確認。slugは大津市は「otsu」、栗東市は「ritto」とした。
+ *   滋賀県として初の市区町村登録。
  */
 export const MUNICIPALITIES: readonly MunicipalityDef[] = [
   { code: "13101", slug: "chiyoda", labelJa: "千代田区", prefCode: "13" },
@@ -414,6 +424,11 @@ export const MUNICIPALITIES: readonly MunicipalityDef[] = [
   { code: "31201", slug: "tottori-shi", labelJa: "鳥取市", prefCode: "31" },
   { code: "31202", slug: "yonago", labelJa: "米子市", prefCode: "31" },
   { code: "31204", slug: "sakaiminato", labelJa: "境港市", prefCode: "31" },
+  { code: "17201", slug: "kanazawa", labelJa: "金沢市", prefCode: "17" },
+  { code: "17205", slug: "suzu", labelJa: "珠洲市", prefCode: "17" },
+  { code: "17212", slug: "nonoichi", labelJa: "野々市市", prefCode: "17" },
+  { code: "25201", slug: "otsu", labelJa: "大津市", prefCode: "25" },
+  { code: "25208", slug: "ritto", labelJa: "栗東市", prefCode: "25" },
 ];
 
 export const getPrefectureBySlug = (slug: string): PrefectureDef | undefined =>
