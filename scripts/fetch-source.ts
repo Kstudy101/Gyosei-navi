@@ -37,6 +37,20 @@ const ALWAYS_IGNORE = [
   "[role=navigation]", "[role=banner]", "[role=contentinfo]",
 ];
 
+/**
+ * レスポンスの実際の文字コードを判定する（Content-Type ヘッダ → HTML の meta charset の順）。
+ * Node の fetch().text() は常に UTF-8 として復号するため、Shift_JIS 等の古い官公庁ページで
+ * 文字化けが起きる（例: 厚労省の一部レガシーページ）。原文をそのまま保存するには必須の処理。
+ */
+function detectCharset(contentType: string, buf: Buffer): string {
+  const headerMatch = /charset=([\w-]+)/i.exec(contentType);
+  if (headerMatch) return headerMatch[1];
+  const head = buf.subarray(0, 2048).toString("latin1");
+  const metaMatch = /charset=["']?([\w-]+)/i.exec(head);
+  if (metaMatch) return metaMatch[1].toLowerCase();
+  return "utf-8";
+}
+
 function arg(name: string): string | undefined {
   const i = process.argv.indexOf(`--${name}`);
   return i >= 0 && !process.argv[i + 1]?.startsWith("--") ? process.argv[i + 1] : undefined;
@@ -102,7 +116,9 @@ async function main(): Promise<void> {
     );
   }
 
-  const html = await res.text();
+  const buf = Buffer.from(await res.arrayBuffer());
+  const charset = detectCharset(ct, buf);
+  const html = new TextDecoder(charset).decode(buf);
   const text = extractVerbatim(html, selector, new URL(res.url).hostname);
 
   // パース失敗を「0件」で通さない（AGENTS.md 絶対規則 6）
