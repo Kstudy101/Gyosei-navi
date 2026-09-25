@@ -14,6 +14,7 @@ import { ArticleCard } from "@/components/article/ArticleCard";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { RakutenRelatedProducts } from "@/components/ads/RakutenRelatedProducts";
 import { RakutenMotionWidget } from "@/components/ads/RakutenMotionWidget";
+import { ValueCommerceAdvertisers } from "@/components/ads/ValueCommerceAdvertisers";
 
 /** 本文に該当コンポーネントが手書きされているか（重複自動挿入の防止） */
 function bodyHas(body: string, name: string): boolean {
@@ -107,6 +108,8 @@ export async function ArticleView({ article, crumbs }: { article: Article; crumb
           </div>
         </section>
       )}
+
+      {fm.status === "published" && <ValueCommerceAdvertisers article={article} />}
 
       {article.section === "subsidy" && !bodyHas(article.body, "RakutenMotionWidget") && (
         <RakutenMotionWidget placement="article-bottom" />

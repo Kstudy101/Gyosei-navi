@@ -21,3 +21,8 @@ export function isRakutenApiAdEnabled(): boolean {
 export function isRakutenMotionWidgetEnabled(): boolean {
   return isRakutenAffiliateEnabled() && envFlag("RAKUTEN_MOTION_WIDGET_ENABLED");
 }
+
+/** ValueCommerce（vcdal.js 読込 + 記事下の広告主カード）。未設定=有効 */
+export function isValueCommerceEnabled(): boolean {
+  return envFlag("VALUECOMMERCE_ENABLED");
+}

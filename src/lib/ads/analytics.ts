@@ -9,11 +9,12 @@ export type AffiliateAdType = "contextual" | "motion";
 export type AffiliatePlacement = "article_middle" | "article_bottom" | "sidebar" | "homepage";
 
 export interface AffiliateEventPayload {
-  provider: "rakuten";
+  provider: "rakuten" | "valuecommerce";
   ad_type: AffiliateAdType;
   placement: AffiliatePlacement;
   article_id?: string;
   article_category?: string;
+  advertiser_id?: string;
 }
 
 declare global {

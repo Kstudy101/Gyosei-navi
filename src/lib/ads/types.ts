@@ -4,6 +4,6 @@
  * 今回実装するのは provider: "rakuten" の2種のみ（type: contextual / personalized）。
  */
 
-export type AdProvider = "rakuten" | "amazon" | "asp" | "direct";
+export type AdProvider = "rakuten" | "valuecommerce" | "amazon" | "asp" | "direct";
 export type AdType = "contextual" | "personalized" | "banner";
 export type AdPlacement = "article-middle" | "article-bottom" | "sidebar" | "homepage";
