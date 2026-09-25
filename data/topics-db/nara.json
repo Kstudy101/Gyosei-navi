@@ -1,0 +1,115 @@
+{
+  "region": "nara",
+  "regionLabel": "奈良県",
+  "updatedAt": "2026-09-22",
+  "topics": [
+    {
+      "category": "jutaku",
+      "title": "奈良県産材を使用した住宅助成事業",
+      "officialUrl": "https://www.pref.nara.lg.jp/n096/27797.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "県産材を構造材・内装材に一定量以上使用した住宅工事が対象。県産JAS材・地域認証材・県産材でグレード別に金額が異なる（構造材:10万〜30万円、内装材:5万〜20万円）。詳細な最新年度の要件・上限は原文調査で要確認。"
+    },
+    {
+      "category": "sogyo",
+      "title": "奈良県起業家支援事業（ふるさと納税活用型）",
+      "officialUrl": "https://www.pref.nara.lg.jp/kigyokashien/index.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "ふるさと納税制度を活用した地域外資金調達型の起業家支援。上限400万円。令和8年度は7/1〜8/3募集の情報あり、最新年度の公募要項を原文調査で要確認。県公式ページ https://www.pref.nara.jp/68792.htm も参照。"
+    },
+    {
+      "category": "energy",
+      "title": "奈良県スマートハウス普及促進事業",
+      "officialUrl": "https://www.pref.nara.lg.jp/n092/p075020.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "太陽光発電設備（10kW未満）等を対象とした個人住宅向け補助。うちエコ診断（Web版）の受診が条件の一つ。県税滞納がないことも要件。最新年度の補助額・募集期間は原文調査で要確認。"
+    },
+    {
+      "category": "pet",
+      "title": "奈良県地域猫対策支援事業",
+      "officialUrl": "https://www.pref.nara.lg.jp/n009/56791.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "飼い主のいない猫による生活環境被害を受けている地域住民で構成される地域猫対策グループに、不妊去勢手術の無料手術券を交付。対象は奈良市を除く県内協働市町村。既存published記事はnara-shi-neko-funinkyosei（奈良市単独事業）で本制度は県事業として別物・差別化可能。"
+    },
+    {
+      "category": "shogaisha",
+      "title": "奈良県心身障害者医療費助成事業",
+      "officialUrl": "https://www.pref.nara.lg.jp/n065/1978.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "身体障害者手帳1・2級または療育手帳A1・A2所持者向け医療費助成。令和6年8月から現物給付方式の対象年齢が未就学児から高校生世代まで拡大。既存published記事nara-shi-shinshin-shogaisha-iryohiは奈良市の実施主体側記事のため、本項目は県制度そのものとして差別化可能（要原文で重複確認）。"
+    },
+    {
+      "category": "kyoiku",
+      "title": "奈良県高校生等奨学給付金（国公立・私立）",
+      "officialUrl": "https://www.pref.nara.lg.jp/n164/47191.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "低中所得世帯の高校生等向け返還不要の給付金。国公立版(pref.nara.lg.jp/n164/47191.html)と私立版(pref.nara.jp/40219.htm)が別建て。既存published記事なし、県レベル初の教育カテゴリ記事候補。"
+    },
+    {
+      "category": "shussan",
+      "title": "奈良県不妊治療費助成事業",
+      "officialUrl": "https://www.pref.nara.jp/secure/240276/R1hunintiryouzyosei.pdf",
+      "authority": "prefecture",
+      "confidence": "unconfirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "検索でヒットしたPDF資料が令和元年度版のため現行制度として継続しているか未確認。不妊治療の保険適用拡大（2022年度〜）後の県独自上乗せ助成の有無を原文調査で要確認。奈良市は市独自で不妊治療費助成を拡充済み（別記事扱い）。"
+    },
+    {
+      "category": "kaigo",
+      "title": "（該当なし・要再調査）",
+      "officialUrl": "",
+      "authority": "prefecture",
+      "confidence": "unconfirmed",
+      "status": "rejected",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "検索で見つかったのは奈良県介護人材確保対策総合支援補助金（介護テクノロジー導入支援）で、対象が介護事業者であり住民個人向け給付制度ではないためtaxonomy定義（高齢者向け給付制度）に非該当と判断。住民個人向けの県単独住宅改修助成等は発見できず。将来別キーワードで再調査の余地あり。"
+    },
+    {
+      "category": "kekkon",
+      "title": "（該当なし・要再調査）",
+      "officialUrl": "",
+      "authority": "prefecture",
+      "confidence": "unconfirmed",
+      "status": "rejected",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "県事業「なら結婚応援団」はマッチングイベント・婚活支援であり金銭給付を伴う補助金制度ではないため対象外。結婚新生活支援事業は県内では市町村単位（桜井市・五條市・橿原市・平群町等）での実施のみ確認、県単独の新婚世帯向け給付金は発見できず。"
+    }
+  ]
+}

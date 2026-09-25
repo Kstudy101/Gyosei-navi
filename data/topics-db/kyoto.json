@@ -1,0 +1,139 @@
+{
+  "region": "kyoto",
+  "regionLabel": "京都府",
+  "updatedAt": "2026-09-22",
+  "topics": [
+    {
+      "category": "jutaku",
+      "title": "京都府木造住宅耐震改修等事業費補助",
+      "officialUrl": "https://www.pref.kyoto.jp/taishin/wkaisyu.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "昭和56年5月31日以前着工の木造住宅対象。本格改修最高172.5万円/210万円など。実際の補助窓口は市町村（京都府が制度枠組みを定め市町村が実施）。京都府として新規（既存published記事なし）。"
+    },
+    {
+      "category": "sogyo",
+      "title": "京都府起業支援事業費補助金（令和8年度）",
+      "officialUrl": "https://www.pref.kyoto.jp/sangyo-sinko/startup/kigyoshienhojokin/index.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "社会的事業を行う新規起業・第二創業・事業承継者が対象。補助率1/2、上限200万円。京都府商工労働観光部産業振興課所管。京都府として新規。"
+    },
+    {
+      "category": "kyoiku",
+      "title": "京都府奨学のための給付金（私立学校分）",
+      "officialUrl": "https://www.pref.kyoto.jp/bunkyo/syogakukyufukin.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "低中所得世帯対象、返還不要。京都府文化生活部文教課所管。既存published記事はkyoiku-hojokin-kanzen-guide（全国pillar）とjasso-kyufugata-shogakukin（国制度）のみで京都府固有制度は未着手。"
+    },
+    {
+      "category": "energy",
+      "title": "京都府家庭向け太陽光発電・蓄電設備補助金（令和8年度）",
+      "officialUrl": "https://www.pref.kyoto.jp/energy/kateimukehojo.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "総合政策環境部脱炭素社会推進課所管。FIT売電可否で太陽光・蓄電池補助額が異なる（例: FIT売電不可で太陽光最大16万円・蓄電池最大24万円）。申請窓口は市町村。京都府として新規。"
+    },
+    {
+      "category": "shogaisha",
+      "title": "京都市重度障害者タクシー料金助成事業（タクシー利用券交付）",
+      "officialUrl": "https://www.city.kyoto.lg.jp/hokenfukushi/page/0000201816.html",
+      "authority": "municipality",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "身体障害者手帳1・2級／療育手帳A判定等が対象。1枚500円券を月4枚・年間最大48枚交付。既存published記事（nagoya-taxi-ryokin-josei, kurume-juudo-shogaisha-iryo）と同カテゴリだが京都市として新規。京都市は既にregions.tsに登録済み（26100, kyoto-shi）。"
+    },
+    {
+      "category": "kekkon",
+      "title": "南丹市結婚新生活支援事業（新婚世帯対象）",
+      "officialUrl": "https://www.city.nantan.kyoto.jp/www/emig/119/000/000/index_1005260.html",
+      "authority": "municipality",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "夫婦とも40歳未満、所得500万円未満が対象。29歳以下上限60万円、それ以外上限30万円。南丹市はregions.ts未登録（京都府内市町村として新規登録が必要）。国の結婚新生活支援事業の京都府内実施例として、既存published記事（chiba-shi/kawaguchi/kurume/tachikawa/yame/yodogawa）と同種だが京都府として新規。"
+    },
+    {
+      "category": "kaigo",
+      "title": "京都市介護保険住宅改修費の支給",
+      "officialUrl": "https://www.city.kyoto.lg.jp/hokenfukushi/page/0000145854.html",
+      "authority": "municipality",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "要介護・要支援認定者が対象、上限20万円（自己負担1〜3割除く）。介護保険法に基づく全国共通制度だが自治体ごとの運用（償還払い/受領委任払い選択等）で記事化実績あり（fukuoka-shi-jutaku-kaizo-josei, nagoya-jutaku-kaishuu等）。京都市として新規。京都市は既にregions.ts登録済み。"
+    },
+    {
+      "category": "pet",
+      "title": "京都市犬・猫の避妊去勢手術費助成",
+      "officialUrl": "https://www.city.kyoto.lg.jp/hokenfukushi/page/0000321302.html",
+      "authority": "municipality",
+      "confidence": "confirmed",
+      "status": "published",
+      "articleSlug": "kyoto-shi-inu-neko-funinkyosei",
+      "foundAt": "2026-09-20",
+      "checkedAt": "2026-09-22",
+      "note": "既にpublished（content/subsidy/pet/kyoto-shi-inu-neko-funinkyosei.mdx）。犬猫とも1頭5,000円、野良猫も対象。"
+    },
+    {
+      "category": "pet",
+      "title": "京都市マイクロチップ装着の助成制度（無料装着）",
+      "officialUrl": "https://www.city.kyoto.lg.jp/hokenfukushi/page/0000311220.html",
+      "authority": "municipality",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "京都市獣医師会加盟病院でマイクロチップを無料装着。既存published記事（避妊去勢助成）とは別制度のため差別化して記事化可能。"
+    },
+    {
+      "category": "shussan",
+      "title": "京都市妊婦等支援事業（妊婦支援給付金）",
+      "officialUrl": "https://www.city.kyoto.lg.jp/hagukumi/page/0000307381.html",
+      "authority": "municipality",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "令和7年4月開始、妊娠届出時5万円＋出産後胎児1人当たり5万円（合計10万円）。国の出産・子育て応援交付金の京都市版後継制度。既存published記事（shussan-ikuji-ichijikin等）と同種だが京都市として新規。"
+    },
+    {
+      "category": "kyoiku",
+      "title": "京都市高校進学・修学支援金支給事業",
+      "officialUrl": "https://www.city.kyoto.lg.jp/hagukumi/page/0000336083.html",
+      "authority": "municipality",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "市民税非課税世帯対象。学用品購入等助成金最大144,000円、入学準備金63,000〜178,000円等。京都府の奨学のための給付金（府制度）と別に市独自制度として存在。京都市として新規。"
+    }
+  ]
+}

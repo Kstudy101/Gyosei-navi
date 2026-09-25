@@ -8,8 +8,8 @@ export default function HomePage() {
   const latest = getLatestArticles(6);
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-10">
-      <section className="rounded-xl bg-brand-800 px-6 py-10 text-white sm:px-10">
+    <div className="mx-auto max-w-6xl px-4 py-6 sm:py-10">
+      <section className="rounded-xl bg-brand-800 px-5 py-8 text-white sm:px-10 sm:py-10">
         <h1 className="text-2xl font-bold leading-snug sm:text-3xl">{siteConfig.name}</h1>
         <p className="mt-3 max-w-2xl text-sm leading-relaxed text-brand-100 sm:text-base">
           {siteConfig.description}
@@ -19,7 +19,7 @@ export default function HomePage() {
       <section className="mt-12">
         <div className="flex items-baseline justify-between">
           <h2 className="text-xl font-bold text-gray-900 dark:text-gray-100">新着記事</h2>
-          <Link href="/news" className="text-sm text-brand-600 hover:underline dark:text-brand-100">
+          <Link href="/news" className="-my-2 py-2 text-sm text-brand-600 hover:underline dark:text-brand-100">
             新着・締切情報一覧 →
           </Link>
         </div>
@@ -36,15 +36,16 @@ export default function HomePage() {
 
       <section className="mt-12">
         <h2 className="text-xl font-bold text-gray-900 dark:text-gray-100">目的から探す</h2>
-        <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {/* モバイルは名前だけの2列タイルで一覧性を優先し、説明文は sm 以上で表示 */}
+        <div className="mt-4 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-3">
           {CATEGORIES.map((c) => (
             <Link
               key={c.code}
               href={`/subsidy/${c.code}`}
-              className="rounded-lg border border-gray-200 p-4 transition-shadow hover:shadow-md dark:border-gray-800"
+              className="flex min-h-14 items-center rounded-lg border border-gray-200 px-3 py-3 transition-shadow hover:shadow-md sm:block sm:p-4 dark:border-gray-800"
             >
-              <p className="font-bold text-gray-900 dark:text-gray-100">{c.labelJa}</p>
-              <p className="mt-1 line-clamp-3 text-xs leading-relaxed text-gray-600 dark:text-gray-400">{c.description}</p>
+              <p className="text-sm font-bold text-gray-900 sm:text-base dark:text-gray-100">{c.labelJa}</p>
+              <p className="mt-1 hidden text-xs leading-relaxed text-gray-600 sm:line-clamp-3 dark:text-gray-400">{c.description}</p>
             </Link>
           ))}
         </div>
@@ -57,7 +58,7 @@ export default function HomePage() {
         </p>
         <Link
           href="/area"
-          className="mt-4 inline-block rounded-md bg-brand-600 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-brand-700"
+          className="mt-4 block rounded-md bg-brand-600 px-4 py-3 text-center text-sm font-semibold text-white transition-colors hover:bg-brand-700 sm:inline-block sm:py-2"
         >
           地域から探す →
         </Link>

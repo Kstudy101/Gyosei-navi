@@ -79,11 +79,9 @@ export async function ArticleView({ article, crumbs }: { article: Article; crumb
 
       <div className="article-body mt-8">{body}</div>
 
-      {article.section === "subsidy" &&
-        fm.category &&
-        !bodyHas(article.body, "RakutenRelatedProducts") && (
-          <RakutenRelatedProducts category={fm.category} articleId={fm.slug} />
-        )}
+      {fm.category && !bodyHas(article.body, "RakutenRelatedProducts") && (
+        <RakutenRelatedProducts category={fm.category} articleId={fm.slug} />
+      )}
 
       {/* 本文に無い場合の自動挿入（docs/03 §5 の固定構造を保証） */}
       {fm.faq.length > 0 && !bodyHas(article.body, "FAQ") && (
@@ -111,7 +109,7 @@ export async function ArticleView({ article, crumbs }: { article: Article; crumb
 
       {fm.status === "published" && <ValueCommerceAdvertisers article={article} />}
 
-      {article.section === "subsidy" && !bodyHas(article.body, "RakutenMotionWidget") && (
+      {!bodyHas(article.body, "RakutenMotionWidget") && (
         <RakutenMotionWidget placement="article-bottom" />
       )}
     </div>

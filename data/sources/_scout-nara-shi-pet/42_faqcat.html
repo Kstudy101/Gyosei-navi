@@ -1,0 +1,1529 @@
+<!doctype html>
+<html lang="ja">
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>生活環境 - 奈良市役所コールセンター</title>
+<meta name="description">
+<meta property="og:type" content="article">
+<meta property="og:title" content="生活環境 - 奈良市役所コールセンター">
+<meta property="og:description">
+<meta property="og:image" content="https://naracitycc.fastcloud.jp/fa/faq/web/images/logo-fa2-image.png">
+<meta property="og:site_name" content="奈良市役所コールセンター">
+<link rel="shortcut icon" href="./images/favicon.ico?hash=5efffb20284e94b336c2465de3f646b8">
+<link rel="icon" href="./images/favicon.ico?hash=5efffb20284e94b336c2465de3f646b8">
+<link rel="stylesheet" href="./css/common.css?hash=29149b969a0d6eee78441c566c66b7c3">
+<link rel="stylesheet" href="./css/theme.css?hash=2fd8c0c06110f1e421576511f3f158ff">
+<link rel="alternate stylesheet" href="./css/font-small.css?hash=fc760beb94d2972323870e32adf4811a" title="フォントサイズ小" id="stylesheet-font-small">
+<link rel="stylesheet" href="./css/font-normal.css?hash=45757fdd157b83deabbc902cd4affbf6" title="フォントサイズ中" id="stylesheet-font-normal">
+<link rel="alternate stylesheet" href="./css/font-large.css?hash=57b1cb38cc25427c1e92078fd88ac1a9" title="フォントサイズ大" id="stylesheet-font-large">
+
+<link rel="next" href="https://naracitycc.fastcloud.jp/fa/faq/web/knowledgeList.html?offset=20">
+
+
+</head>
+<script type="application/ld+json">{
+	"itemListElement": [
+		{
+			"item": {
+				"name": "よくあるご質問",
+				"@id": "https://naracitycc.fastcloud.jp/fa/faq/web/index.html"
+			},
+			"@type": "ListItem",
+			"position": 1
+		}
+	],
+	"@type": "BreadcrumbList",
+	"@context": "http://schema.org"
+}</script>
+<body class="color-blue" data-locale="ja">
+	
+	<script src="./js/lib/polyfill.min.js?hash=43055663714ef9e4108cf42d8fd283cd"></script>
+	<script src="./js/lib/vue.min.js?hash=0c5113a13b11605c4cee5106f5c916cb"></script>
+	<script src="./js/lib/vueJsModal.js?hash=da4e097f63cf7b13d12f0832790486e0"></script>
+	<script src="./js/messageResources.js?hash=187a69fba5f3dcebd92c01f41c109374" data-fa-message-url="nls/message.properties?hash=7e0856696090a7244f470f9c9dcd1d09"></script>
+	<script src="./js/common.js?hash=53d80e84d205312c90d3ad6ecfedfbd2"></script>
+	
+	
+	<!-- ============================= ▼ Header ▼ ============================= -->
+	<header id="str-header">
+		<div class="str-header-inner">
+			<p class="site-logo">
+				<a href="index.html">
+					<img src="images/logo-fa2.png?hash=4c7888bfe23796a4aa2ca155e87e66ed" alt="FastAnswer">
+				</a>
+			</p>
+			<div class="area-header">
+				
+				
+				<p class="txt-header-contact">
+					<a href="https://9c6d4b3b.form.kintoneapp.com/public/naracity-contactcenter">お問い合わせ</a>
+				</p>
+
+				<div class="font-size-change" id="font-size-change"  v-font-size-change>
+					<p class="txt-size">文字サイズ</p>
+					<button type="button" class="font-small" data-font-size="small">小</button>
+					<button type="button" class="font-normal" data-font-size="normal">中</button>
+					<button type="button" class="font-large" data-font-size="large">大</button>
+					<!--/.font-size-change-->
+				</div>
+				<!--/.area-header-->
+			</div>
+			<!--/.str-header-inner-->
+		</div>
+		<script type="text/x-template" id="evaluate-modal-template">
+			<div>
+				<form ref="siteEvaluateForm">
+					<div class="modal-content modal-evaluate-site-content">
+						<div class="modal-heading">
+							<h2 class="hdg-lv2-modal">サイトのフィードバック</h2>
+						</div>
+						<div class="area-questionnaire">
+							<p class="hdg-questionnaire">
+								<b>目的のナレッジは見つかりましたか？</b>
+							</p>
+							<ul class="list-questionnaire evaluate-site col-3">
+								<li>
+									<a href="#" @click.prevent="evaluate(0)" class="btn-questionnaire btn-helpful js-modal-link">
+										<span class="txt-questionnaire">見つかった</span>
+									</a>
+								</li>
+								<li>
+									<a href="#" @click.prevent="evaluate(1)" class="btn-questionnaire btn-neither js-modal-link">
+										<span class="txt-questionnaire">見つけたが見つけにくい</span>
+									</a>
+								</li>
+								<li>
+									<a href="#" @click.prevent="evaluate(2)" class="btn-questionnaire btn-useless js-modal-link">
+										<span class="txt-questionnaire">見つからなかった</span>
+									</a>
+								</li>
+							</ul>
+							<div class="answer-success" style="display: none">ご評価ありがとうございました</div>
+						</div>
+						<div class="comment-text-input-area" style="display: none">
+							<div class="modal-desc">
+								<div class="str-modal-inner">
+									<p class="txt-modal-opinion">ご評価いただき、ありがとうございます。<br>今後のサービスの改善のため、ご意見・ご感想をお聞かせください。</p>
+									<p class="txt-note-normal">
+										<b class="mrk-ast">※</b>
+										<small class="txt-note">こちらの入力フォームからのお問い合わせ等は受付できません。個人情報の入力はご遠慮ください。</small>
+									</p>
+									<textarea @keyup="onKeyupSiteCommentText" class="area-free-opinion" name="siteCommentTextArea" rows="5" cols="40" title="ご意見・ご感想を入力"></textarea>
+								</div>
+							</div>
+							<div class="lyt-btn-wrap">
+								<div class="area-btn-send">
+									<button type="button" name="btnSend" class="btn-send" @click="sendCommentText" disabled>
+										<span class="btn-inner">送信</span>
+									</button>
+								</div>
+							</div>
+						</div>
+						<div class="answer-success input-comment-success" style="display: none">コメントありがとうございました</div>
+						<p class="modal-btn-close">
+							<button type="button" class="modal-btn-close-label" aria-expanded="true" @click="$emit('close')">
+								<span class="modal-status">閉じる</span>
+							</button>
+						</p>
+					</div>
+				</form>
+			</div>
+		</script>
+	</header>
+	<!-- ============================= ▲ Header ▲ ============================= -->
+
+	<!-- ============================= ▼ Main Contents ▼ ============================= -->
+	<main id="str-main">
+
+	<div class="area-topicpath">
+		<div class="str-inner">
+			<p class="txt-topicpath">
+				<a href="index.html">よくあるご質問</a>
+				
+				
+					
+						
+						<span><span class="symbol-separator" aria-hidden="true">&gt;</span><span>生活環境</span></span>
+					
+				
+			</p>
+			<!--/.str-inner-->
+		</div>
+		<!--/.area-topicpath-->
+	</div>
+
+	<div class="str-inner">
+		<h1 class="hdg-lv1-01">
+			<span>「生活環境」の検索結果</span>
+			<span class="autoCorrectTitle" style="display: none;"></span>
+			<span class="hdg-result-num">400件</span>
+			<span class="subAutoCorrectTitle" style="display: none;">
+				<span></span>
+				<span class=oldKeyword></span>
+			</span>
+		</h1>
+		<p class="txt-no-result-description" style="display:none;">見つかりませんでした。</p>
+		<!--/.str-inner-->
+	</div>
+
+	<div class="area-reference" style="display:none;">
+		<div class="str-inner">
+			<dl class="list-definition-reference">
+				<dt>参考</dt>
+				<dd>
+					<ul class="list-nomal-01">
+						<li>同じ内容を意味する別の語句を使用してください。</li>
+						<li>単語のスペルに誤りがないか確認してください。</li>
+					</ul>
+				</dd>
+			</dl>
+
+			<!--/.str-inner-->
+		</div>
+		<!--/.area-reference-->
+	</div>
+
+	<div class="area-search-narrowing str-inner" id="knowledgeSearch">
+	<div class="area-search-narrowing-inner">
+			<div class="area-search-inner" id="suggest">
+				<form class="area-search-form" action="" method="get" @submit.prevent="search">
+					<div class="area-search-input" v-suggest>
+						<input class="search-keywords" ref="keyword" type="text" name="keyword" placeholder="キーワードから探す" title="検索" autocomplete="off" maxlength="200" v-model="form.keyword" id="keyword" value="">
+
+						<div class="area-search-suggest">
+							<div class="area-search-suggest-inner">
+								<ul class="list-search-key list-in-keyword"></ul>
+								<ul class="list-search-key list-in-label"></ul>
+								<!--/.area-search-suggest-inner-->
+							</div>
+							<!--/.area-search-suggest-->
+						</div>
+
+						<!--/.area-search-input-->
+					</div>
+					<div class="area-search-category">
+						<select id="search-category" name="searchCategory" v-model="form.searchCategory" title="カテゴリを選択">
+							<option value="0">すべて</option>
+							<option value="1" selected="selected">このカテゴリ内から　　</option>
+						</select>
+						<!--/.select-search-display-->
+					</div>
+					
+					
+					
+					<div class="area-search-submit">
+						<button type="submit">検索</button>
+					</div>
+					<div class="fhButton js-modal-link advanced" @click="openDialog">
+						<p><a href="javascript:void(0)">詳細検索</a></p>
+					</div>
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+				</form>
+				<!--/.area-search-inner-->
+				<div class="modal-wrap-01" ref="modalContainer" v-show="opened" @keydown="checkKeyEvent" :aria-expanded="opened ? 'true' : 'false'" :aria-hidden="!opened ? 'true' : 'false'" tabindex="0" style="display:none;">
+					<form @submit.prevent="search">
+						<div class="modal-content">
+		
+							<div class="modal-heading">
+								<h2 class="hdg-lv2-modal">検索条件を設定してください</h2>
+								<!-- /.modal-heading -->
+							</div>
+			
+							<div class="modal-desc">
+								<div class="str-modal-inner">
+									<h3 class="hdg-lv2-02">キーワード</h3>
+									<ul>
+										<div class="area-search-general">
+											<input type="text" id="keywordSw" name="keyword" title="キーワード" data-vv-as="キーワード" v-model="form.keyword" v-validate="'max:200'" :class="{'is-error': errors.has('keyword')}" autocomplete="off" maxlength="200">
+										</div>
+									</ul>
+									<p class="txt-is-error"　v-if="errors.has('keyword')"><strong>{{ errors.first('keyword') }}</strong></p>
+									
+									<h3 class="hdg-lv2-02">検索方法</h3>
+									<ul class="lyt-select-search">
+										<li>
+											<div class="area-search-display">
+												<div class="select-search-display">
+													<fa-select name="searchMethod" v-model="form.searchMethod" title="検索方法" :default-options="[{label:&#39;キーワード検索&#39;,value:&#39;0&#39;},{label:&#39;自然文検索&#39;,value:&#39;1&#39;},{label:&#39;自動&#39;,value:&#39;2&#39;}]" :default-selected="2" ref="searchMethod"></fa-select>
+												</div>
+												<div class="select-search-display">
+													<fa-select name="searchCondition" v-model="form.searchCondition" title="検索方法" :default-options="[{label:&#39;すべてのキーワードを含む&#39;,value:&#39;0&#39;},{label:&#39;いずれかのキーワードを含む&#39;,value:&#39;1&#39;}]" :default-selected="0" ref="searchCondition"></fa-select>
+													<!--/.select-search-display-->
+												</div>
+												<!--/.area-search-display-->
+											</div>
+										</li>
+									</ul>
+									
+									<span v-show="agentAssistantSettingLength > 0">
+										<h3 class="hdg-lv2-02">AI検索検索結果=検索結果</h3>
+										<div class="area-contents use-ai-search">
+											<label for="useSearchAssist" class="txt-check-item-label use-ai-search-label"><input type="checkbox" id="useSearchAssist" name="form.useSearchAssist" v-model="form.useSearchAssist" true-value="1" false-value="0" @change="updateAgentAssistantSelect(form.useSearchAssist)" class="input-check" data-use-search-assist-by-default-flg="1"/><span class="txt-check-item">利用する</span></label>
+											<ul class="lyt-select-search">
+												<li>
+													<div class="area-search-display" v-show="form.useSearchAssist == '1' && agentAssistantSettingLength > 1">
+														<div class="select-search-display">
+															<fa-select class="agentAssistantSettingSelect" name="agentAssistantSetting" title="エージェントアシスタント設定" v-model="form.agentAssistantSettingId" service-name="./service/agentAssistantSetting" label-prop="displayName" value-prop="agentAssistantSettingId" @option-load-complete="updateAgentAssistantSettingLength"></fa-select>
+														</div>
+													</div>
+												</li>
+											</ul>
+										</div>
+									</span>
+
+									<h3 class="hdg-lv2-02">除外キーワード</h3>
+									<div class="area-search-general">
+										<input type="text" id="ignoreKeyword" name="ignoreKeyword" title="除外キーワード" data-vv-as="除外キーワード" v-model="form.ignoreKeyword" v-validate="'max:200'" :class="{'is-error': errors.has('ignoreKeyword')}" autocomplete="off" maxlength="200" :disabled="form.useSearchAssist === '1'">
+									</div>
+									<p class="txt-is-error"　v-if="errors.has('ignoreKeyword')"><strong>{{ errors.first('ignoreKeyword') }}</strong></p>
+									
+									<h3 class="hdg-lv2-02">検索対象項目</h3>
+									<ul class="lyt-select-search">
+										<li>
+											<div class="area-search-display">
+												<div class="select-search-display">
+													<fa-select name="searchTargetKnowledgeKindList" title="検索対象項目" v-model="form.searchTargetKnowledgeKindList" service-name="./service/knowledgeKind" label-prop="name" value-prop="knowledgeKindId" :disabled="form.useSearchAssist === '1'"></fa-select>
+													<!--/.select-search-display-->
+												</div>
+												<div class="select-search-display">
+													<fa-select name="searchTargetKnowledgeOptionList" title="検索対象項目" v-model="form.searchTargetKnowledgeOptionList" service-name="./service/knowledgeOptionType" label-prop="name" value-prop="knowledgeOptionTypeId" parent-value-prop="knowledgeKindId" :parent-value="form.searchTargetKnowledgeKindList" :disabled="form.useSearchAssist === '1'"></fa-select>
+													<!--/.select-search-display-->
+												</div>
+												<!--/.area-search-display-->
+											</div>
+										</li>
+										<li>
+											<div class="area-search-display">
+												<label for="targetNameFlg" class="txt-check-item-label"><input type="checkbox" id="targetNameFlg" name="form.targetNameFlg" v-model="form.targetNameFlg" true-value="1" false-value="0" class="input-check" :disabled="form.useSearchAssist === '1'"><span class="txt-check-item">ナレッジ名を検索対象にする</span></label>
+												<label for="targetSearchTagFlg" class="txt-check-item-label"><input type="checkbox" id="targetSearchTagFlg" name="form.targetSearchTagFlg" v-model="form.targetSearchTagFlg" true-value="1" false-value="0" class="input-check" :disabled="form.useSearchAssist === '1'"><span class="txt-check-item">検索タグ名を検索対象にする</span></label>
+												<label for="targetItemFlg" class="txt-check-item-label"><input type="checkbox" id="targetItemFlg" name="form.targetItemFlg" v-model="form.targetItemFlg" true-value="1" false-value="0" class="input-check" :disabled="form.useSearchAssist === '1'"><span class="txt-check-item">製品名を検索対象にする</span></label>
+												<label for="targetCategoryFlg" class="txt-check-item-label"><input type="checkbox" id="targetCategoryFlg" name="form.targetCategoryFlg" v-model="form.targetCategoryFlg" true-value="1" false-value="0" class="input-check" :disabled="form.useSearchAssist === '1'"><span class="txt-check-item">カテゴリ名を検索対象にする</span></label>
+												<label for="targetFileAttachFlg" class="txt-check-item-label"><input type="checkbox" id="targetFileAttachFlg" name="form.targetFileAttachFlg" v-model="form.targetFileAttachFlg" true-value="1" false-value="0" class="input-check"><span class="txt-check-item">添付ファイルを検索対象にする</span></label>
+												<!--/.area-search-display-->
+											</div>
+										</li>
+									</ul>
+									
+									<h3 class="hdg-lv2-02">ナレッジ番号</h3>
+									<div class="area-search-general">
+										<input id="knowledgeId" name="knowledgeId" title="ナレッジ番号" data-vv-as="ナレッジ番号" type="text" v-model="form.knowledgeId" v-validate="'numeric|max:15'" :class="{'is-error': errors.has('knowledgeId')}" maxlength="15" autocomplete="off" class="fh-number-input">
+									</div>
+									<p class="txt-is-error"　v-if="errors.has('knowledgeId')"><strong>{{ errors.first('knowledgeId') }}</strong></p>
+									
+									<h3 class="hdg-lv2-02">ナレッジ分類</h3>
+									<ul class="lyt-select-search">
+										<li>
+											<div class="area-search-display">
+												<div class="select-search-display">
+													<fa-select name="knowledgeKindIdList" title="ナレッジ分類" v-model="form.knowledgeKindIdList" service-name="./service/knowledgeKind" label-prop="name" value-prop="knowledgeKindId"></fa-select>
+												</div>
+												<div class="select-search-display">
+													<fa-select name="knowledgeKindTypeIdList" title="ナレッジ分類種別" v-model="form.knowledgeKindTypeIdList" service-name="./service/knowledgeKindType" label-prop="name" value-prop="knowledgeKindTypeId" parent-value-prop="knowledgeKindId" :parent-value="form.knowledgeKindIdList"></fa-select>
+													<!--/.select-search-display-->
+												</div>
+												<!--/.area-search-display-->
+											</div>
+										</li>
+									</ul>
+									
+									<h3 class="hdg-lv2-02">製品</h3>
+									<ul class="lyt-select-search">
+										<li>
+											<div class="area-search-display">
+												<div class="select-search-display">
+													<fa-select name="itemIdList" title="製品" v-model="form.itemIdList" service-name="./service/item" label-prop="name" value-prop="itemId"></fa-select>
+												</div>
+												<div class="select-search-display">
+													<fa-select name="itemChildIdList" title="子製品" v-model="form.itemChildIdList" service-name="./service/itemChild" label-prop="name" value-prop="itemChildId" parent-value-prop="itemId" :parent-value="form.itemIdList"></fa-select>
+													<!--/.select-search-display-->
+												</div>
+												<!--/.area-search-display-->
+											</div>
+										</li>
+									</ul>
+									
+									
+										<h3 class="hdg-lv2-02">カテゴリ</h3>
+										
+										
+										<h3 class="hdg-lv3-01">カテゴリから探す</h3>
+										
+										<ul class="lyt-select-search" data-categoryKindId="1">
+											<li>
+												<div class="area-search-display">
+													<div class="select-search-display">
+														<fa-select ref="category11" name="category[1][1]" title="カテゴリ1" v-model="form.category[1][1]" service-name="./service/category" label-prop="name" value-prop="categoryId" :extend-service-param="{categorykindId:1,categoryLevel:1}" disabled="disabled"></fa-select>
+													</div>
+													<div class="select-search-display" v-show="$refs.category12 != null &amp;&amp; $refs.category12.options.length &gt; 1">
+														<fa-select ref="category12" name="category[1][2]" title="カテゴリ2" v-model="form.category[1][2]" service-name="./service/category" label-prop="name" value-prop="categoryId" :extend-service-param="{categorykindId:1,categoryLevel:2}" parent-value-prop="pcategoryId" :parent-value="form.category[1][1]" disabled="disabled"></fa-select>
+													</div>
+													<div class="select-search-display" v-show="$refs.category13 != null &amp;&amp; $refs.category13.options.length &gt; 1">
+														<fa-select ref="category13" name="category[1][3]" title="カテゴリ3" v-model="form.category[1][3]" service-name="./service/category" label-prop="name" value-prop="categoryId" :extend-service-param="{categorykindId:1,categoryLevel:3}" parent-value-prop="pcategoryId" :parent-value="form.category[1][2]" disabled="disabled"></fa-select>
+													</div>
+													<div class="select-search-display" v-show="$refs.category14 != null &amp;&amp; $refs.category14.options.length &gt; 1">
+														<fa-select ref="category14" name="category[1][4]" title="カテゴリ4" v-model="form.category[1][4]" service-name="./service/category" label-prop="name" value-prop="categoryId" :extend-service-param="{categorykindId:1,categoryLevel:4}" parent-value-prop="pcategoryId" :parent-value="form.category[1][3]" disabled="disabled"></fa-select>
+													</div>
+													<div class="select-search-display" v-show="$refs.category15 != null &amp;&amp; $refs.category15.options.length &gt; 1">
+														<fa-select ref="category15" name="category[1][5]" title="カテゴリ5" v-model="form.category[1][5]" service-name="./service/category" label-prop="name" value-prop="categoryId" :extend-service-param="{categorykindId:1,categoryLevel:5}" parent-value-prop="pcategoryId" :parent-value="form.category[1][4]" disabled="disabled"></fa-select>
+													</div>
+													<!--/.area-search-display-->
+												</div>
+												
+											</li>
+										</ul>
+										
+										
+										
+										<h3 class="hdg-lv3-01">ライフイベントで探す</h3>
+										
+										<ul class="lyt-select-search" data-categoryKindId="101">
+											<li>
+												<div class="area-search-display">
+													<div class="select-search-display">
+														<fa-select ref="category1011" name="category[101][1]" title="カテゴリ1" v-model="form.category[101][1]" service-name="./service/category" label-prop="name" value-prop="categoryId" :extend-service-param="{categorykindId:101,categoryLevel:1}" disabled="disabled"></fa-select>
+													</div>
+													<div class="select-search-display" v-show="$refs.category1012 != null &amp;&amp; $refs.category1012.options.length &gt; 1">
+														<fa-select ref="category1012" name="category[101][2]" title="カテゴリ2" v-model="form.category[101][2]" service-name="./service/category" label-prop="name" value-prop="categoryId" :extend-service-param="{categorykindId:101,categoryLevel:2}" parent-value-prop="pcategoryId" :parent-value="form.category[101][1]" disabled="disabled"></fa-select>
+													</div>
+													<div class="select-search-display" v-show="$refs.category1013 != null &amp;&amp; $refs.category1013.options.length &gt; 1">
+														<fa-select ref="category1013" name="category[101][3]" title="カテゴリ3" v-model="form.category[101][3]" service-name="./service/category" label-prop="name" value-prop="categoryId" :extend-service-param="{categorykindId:101,categoryLevel:3}" parent-value-prop="pcategoryId" :parent-value="form.category[101][2]" disabled="disabled"></fa-select>
+													</div>
+													<div class="select-search-display" v-show="$refs.category1014 != null &amp;&amp; $refs.category1014.options.length &gt; 1">
+														<fa-select ref="category1014" name="category[101][4]" title="カテゴリ4" v-model="form.category[101][4]" service-name="./service/category" label-prop="name" value-prop="categoryId" :extend-service-param="{categorykindId:101,categoryLevel:4}" parent-value-prop="pcategoryId" :parent-value="form.category[101][3]" disabled="disabled"></fa-select>
+													</div>
+													<div class="select-search-display" v-show="$refs.category1015 != null &amp;&amp; $refs.category1015.options.length &gt; 1">
+														<fa-select ref="category1015" name="category[101][5]" title="カテゴリ5" v-model="form.category[101][5]" service-name="./service/category" label-prop="name" value-prop="categoryId" :extend-service-param="{categorykindId:101,categoryLevel:5}" parent-value-prop="pcategoryId" :parent-value="form.category[101][4]" disabled="disabled"></fa-select>
+													</div>
+													<!--/.area-search-display-->
+												</div>
+												
+											</li>
+										</ul>
+										
+										
+									
+									<h3 class="hdg-lv2-02">検索タグ</h3>
+									<ul class="lyt-select-search">
+										<li>
+											<div class="area-search-display">
+												<div class="select-search-display">
+													<fa-select name="searchTagIdList" title="検索タグ" v-model="form.searchTagIdList" service-name="./service/searchTag" label-prop="name" value-prop="searchTagId"></fa-select>
+													<!--/.select-search-display-->
+												</div>
+												<!--/.area-search-display-->
+											</div>
+										</li>
+									</ul>
+									<!--/.str-modal-inner-->
+								</div>
+								<!-- /.modal-desc -->
+							</div>
+			
+							<div class="lyt-btn-wrap">
+								<ul class="btn-form">
+									<li><button type="button" v-on:click="clear">クリア</button></li>
+									<li><button type="submit" class="btn-search" :disabled="errors.any()"><span class="btn-inner">検索</span></button></li>
+								</ul>
+								<!-- /.lyt-btn-wrap -->
+							</div>
+							<p class="modal-btn-close">
+								<button type="button" class="modal-btn-close-label" @click="closeDialog">
+									<span class="modal-status">閉じる</span>
+								</button>
+							</p>
+						</div>
+						
+					</form>
+				</div>
+				<div id="modal-overlay" :aria-hidden="!opened ? 'true' : 'false'" @click.self="closeDialog" tabindex="-1"></div>
+			</div>
+			<div class="str-inner">
+				
+				<!--/.area-search-narrowing-inner-->
+			</div>
+			<!--/.str-inner-->
+		</div>
+		<!--/.area-search-narrowing-->
+	</div>
+
+	
+
+	<div class="str-inner">
+		<div class="area-search-results">
+			<div class="area-search-results-inner">
+				<p class="txt-search-results">
+					<span>検索結果</span>
+					<span class="txt-message searchResult">
+						<span class=txt-all-matter>400</span>件のうち1-<span>20</span>件を表示
+						
+					</span>
+				</p>
+				<!--/.area-search-results-inner-->
+			</div>
+			<div class="area-search-display">
+				<label for="search-display"><span>表示順</span>：</label>
+				<div class="select-search-display">
+					<select id="search-display" name="sortType">
+						<option value="0"></option>
+						<option value="1">閲覧が多い順</option>
+						<option value="2">閲覧が少ない順</option>
+						<option value="3">新しい順</option>
+						<option value="4">古い順</option>
+						<option value="5">重要順</option>
+					</select>
+					<!--/.select-search-display-->
+				</div>
+				<!--/.area-search-display-->
+			</div>
+			<!--/.area-search-results-->
+		</div>
+
+		<ul id="searchResultList"  class="list-search-results js-list-search-results">
+			<li>
+				<fa-accordion break-point="">
+				<div slot="title" class="js-search-results-hdg">
+					<p class="label-knowledgeKind knowledgeKindLabel101" style="background-color:#A7B716;font-weight:normal;">Q</p>
+					<div class="list-results-txt">
+						<p class="txt-contents">
+							<a href="/fa/faq/web/knowledge5095.html?suid=d0172e04-17fe-4cfb-982d-6f0a6fd9ce2e">もったいない陶器市は、いつ・どこでやっていますか。</a>
+							
+						</p>
+						<!--/.list-results-txt-->
+					</div>
+					
+					<!-- /.js-search-results-hdg -->
+				</div>
+
+				<div slot="body" class="js-search-results-content">
+					
+					<p class="txt-content">新型コロナウイルス感染症拡大防止のため、ただいま開催を見合わせております。詳しいことにつきましては廃棄物対策課のホームページをご覧ください。</p>
+					
+					<p class="link-single">
+						<a href="/fa/faq/web/knowledge5095.html?suid=d0172e04-17fe-4cfb-982d-6f0a6fd9ce2e">続きを読む</a>
+						
+					</p>
+					<!-- /.js-search-results-content -->
+				</div>
+				
+				</fa-accordion>
+			</li>
+			<li>
+				<fa-accordion break-point="">
+				<div slot="title" class="js-search-results-hdg">
+					<p class="label-knowledgeKind knowledgeKindLabel101" style="background-color:#A7B716;font-weight:normal;">Q</p>
+					<div class="list-results-txt">
+						<p class="txt-contents">
+							<a href="/fa/faq/web/knowledge5102.html?suid=d0172e04-17fe-4cfb-982d-6f0a6fd9ce2e">古くなった蛍光灯はどうすればいいですか。</a>
+							
+						</p>
+						<!--/.list-results-txt-->
+					</div>
+					
+					<!-- /.js-search-results-hdg -->
+				</div>
+
+				<div slot="body" class="js-search-results-content">
+					
+					<p class="txt-content">奈良市では、大型ごみで申込みがあった際に有害ごみとして収集します。また、環境清美センターに持込むこともできます。
+※大型ごみで有害ごみのみの申込みも可能です。ただし、有害ごみのみの申込みでも次回の大...</p>
+					
+					<p class="link-single">
+						<a href="/fa/faq/web/knowledge5102.html?suid=d0172e04-17fe-4cfb-982d-6f0a6fd9ce2e">続きを読む</a>
+						
+					</p>
+					<!-- /.js-search-results-content -->
+				</div>
+				
+				</fa-accordion>
+			</li>
+			<li>
+				<fa-accordion break-point="">
+				<div slot="title" class="js-search-results-hdg">
+					<p class="label-knowledgeKind knowledgeKindLabel101" style="background-color:#A7B716;font-weight:normal;">Q</p>
+					<div class="list-results-txt">
+						<p class="txt-contents">
+							<a href="/fa/faq/web/knowledge5107.html?suid=d0172e04-17fe-4cfb-982d-6f0a6fd9ce2e">道路の陥没・穴の補修などについてはどこへ連絡したらいいですか。</a>
+							
+						</p>
+						<!--/.list-results-txt-->
+					</div>
+					
+					<!-- /.js-search-results-hdg -->
+				</div>
+
+				<div slot="body" class="js-search-results-content">
+					
+					<p class="txt-content">市道、里道については、道路管理コールセンターへご連絡下さい。
+国・県道については、奈良国道事務所［電話：０７４２－３３－１３９１］・奈良土木事務所［電話：０７４２－２３－８０１１］へ連絡してください...</p>
+					
+					<p class="link-single">
+						<a href="/fa/faq/web/knowledge5107.html?suid=d0172e04-17fe-4cfb-982d-6f0a6fd9ce2e">続きを読む</a>
+						
+					</p>
+					<!-- /.js-search-results-content -->
+				</div>
+				
+				</fa-accordion>
+			</li>
+			<li>
+				<fa-accordion break-point="">
+				<div slot="title" class="js-search-results-hdg">
+					<p class="label-knowledgeKind knowledgeKindLabel101" style="background-color:#A7B716;font-weight:normal;">Q</p>
+					<div class="list-results-txt">
+						<p class="txt-contents">
+							<a href="/fa/faq/web/knowledge5108.html?suid=d0172e04-17fe-4cfb-982d-6f0a6fd9ce2e">道路の溝の蓋が壊れているとき、どこに連絡すればいいのですか。</a>
+							
+						</p>
+						<!--/.list-results-txt-->
+					</div>
+					
+					<!-- /.js-search-results-hdg -->
+				</div>
+
+				<div slot="body" class="js-search-results-content">
+					
+					<p class="txt-content">◆溝ぶた
+　市道の溝ぶたが壊れているときは、道路管理コールセンターへご連絡ください。
+　　国道については、奈良国道事務所へ連絡してください。　［電話］　０７４２－３３－１３９１
+　　県道について...</p>
+					
+					<p class="link-single">
+						<a href="/fa/faq/web/knowledge5108.html?suid=d0172e04-17fe-4cfb-982d-6f0a6fd9ce2e">続きを読む</a>
+						
+					</p>
+					<!-- /.js-search-results-content -->
+				</div>
+				
+				</fa-accordion>
+			</li>
+			<li>
+				<fa-accordion break-point="">
+				<div slot="title" class="js-search-results-hdg">
+					<p class="label-knowledgeKind knowledgeKindLabel101" style="background-color:#A7B716;font-weight:normal;">Q</p>
+					<div class="list-results-txt">
+						<p class="txt-contents">
+							<a href="/fa/faq/web/knowledge5109.html?suid=d0172e04-17fe-4cfb-982d-6f0a6fd9ce2e">道路の溝に土などが溜まって雨が降ると水が溢れるのですが、どうすればいいのですか。</a>
+							
+						</p>
+						<!--/.list-results-txt-->
+					</div>
+					
+					<!-- /.js-search-results-hdg -->
+				</div>
+
+				<div slot="body" class="js-search-results-content">
+					
+					<p class="txt-content">日常の軽微な管理については、地元でお願いしておりますが、地元で管理不可能な深い側溝、重い蓋、特殊な道具が必要な場合は、道路管理コールセンターに連絡お願いします。調査のうえ清掃の手配をします。
+ただし...</p>
+					
+					<p class="link-single">
+						<a href="/fa/faq/web/knowledge5109.html?suid=d0172e04-17fe-4cfb-982d-6f0a6fd9ce2e">続きを読む</a>
+						
+					</p>
+					<!-- /.js-search-results-content -->
+				</div>
+				
+				</fa-accordion>
+			</li>
+			<li>
+				<fa-accordion break-point="">
+				<div slot="title" class="js-search-results-hdg">
+					<p class="label-knowledgeKind knowledgeKindLabel101" style="background-color:#A7B716;font-weight:normal;">Q</p>
+					<div class="list-results-txt">
+						<p class="txt-contents">
+							<a href="/fa/faq/web/knowledge5110.html?suid=d0172e04-17fe-4cfb-982d-6f0a6fd9ce2e">カーブミラーの角度の修正や修理をしてほしいとき、どこに相談すればいいですか。</a>
+							
+						</p>
+						<!--/.list-results-txt-->
+					</div>
+					
+					<!-- /.js-search-results-hdg -->
+				</div>
+
+				<div slot="body" class="js-search-results-content">
+					
+					<p class="txt-content">奈良市が管理しているカーブミラーであれば、現場を確認してから、方向修正や器具交換など必要な措置を行います。
+直接、道路管理コールセンターへご連絡ください。
+
+&lt;お問い合わせ先&gt;
+　【道路管理コ...</p>
+					
+					<p class="link-single">
+						<a href="/fa/faq/web/knowledge5110.html?suid=d0172e04-17fe-4cfb-982d-6f0a6fd9ce2e">続きを読む</a>
+						
+					</p>
+					<!-- /.js-search-results-content -->
+				</div>
+				
+				</fa-accordion>
+			</li>
+			<li>
+				<fa-accordion break-point="">
+				<div slot="title" class="js-search-results-hdg">
+					<p class="label-knowledgeKind knowledgeKindLabel101" style="background-color:#A7B716;font-weight:normal;">Q</p>
+					<div class="list-results-txt">
+						<p class="txt-contents">
+							<a href="/fa/faq/web/knowledge5111.html?suid=d0172e04-17fe-4cfb-982d-6f0a6fd9ce2e">排水路の管理は、どこがしているのか知りたい。</a>
+							
+						</p>
+						<!--/.list-results-txt-->
+					</div>
+					
+					<!-- /.js-search-results-hdg -->
+				</div>
+
+				<div slot="body" class="js-search-results-content">
+					
+					<p class="txt-content">◆排水路の改修・維持
+原則として、公共下水道の排水路は給排水課が、道路側溝・雨水管等は土木管理課が管理し、維持補修は道路維持課となっております。
+準用河川や国有水路の改修及び維持管理については、河...</p>
+					
+					<p class="link-single">
+						<a href="/fa/faq/web/knowledge5111.html?suid=d0172e04-17fe-4cfb-982d-6f0a6fd9ce2e">続きを読む</a>
+						
+					</p>
+					<!-- /.js-search-results-content -->
+				</div>
+				
+				</fa-accordion>
+			</li>
+			<li>
+				<fa-accordion break-point="">
+				<div slot="title" class="js-search-results-hdg">
+					<p class="label-knowledgeKind knowledgeKindLabel101" style="background-color:#A7B716;font-weight:normal;">Q</p>
+					<div class="list-results-txt">
+						<p class="txt-contents">
+							<a href="/fa/faq/web/knowledge5112.html?suid=d0172e04-17fe-4cfb-982d-6f0a6fd9ce2e">道路のマンホール（下水以外）の蓋が鳴ってやかましいので、どうにかしてほしい。どこに連絡すればいいですか。</a>
+							
+						</p>
+						<!--/.list-results-txt-->
+					</div>
+					
+					<!-- /.js-search-results-hdg -->
+				</div>
+
+				<div slot="body" class="js-search-results-content">
+					
+					<p class="txt-content">現地調査を行い、必要であれば補修などを行いますので、道路管理コールセンターへご連絡ください。私道、個人地にあるマンホールは土地所有者等にご相談ください。
+国・県道については、奈良国道事務所［電話：０...</p>
+					
+					<p class="link-single">
+						<a href="/fa/faq/web/knowledge5112.html?suid=d0172e04-17fe-4cfb-982d-6f0a6fd9ce2e">続きを読む</a>
+						
+					</p>
+					<!-- /.js-search-results-content -->
+				</div>
+				
+				</fa-accordion>
+			</li>
+			<li>
+				<fa-accordion break-point="">
+				<div slot="title" class="js-search-results-hdg">
+					<p class="label-knowledgeKind knowledgeKindLabel101" style="background-color:#A7B716;font-weight:normal;">Q</p>
+					<div class="list-results-txt">
+						<p class="txt-contents">
+							<a href="/fa/faq/web/knowledge5113.html?suid=d0172e04-17fe-4cfb-982d-6f0a6fd9ce2e">道路に散乱してる土砂やガラス等の清掃はしてくれるのか。どこに連絡すればいいのですか。</a>
+							
+						</p>
+						<!--/.list-results-txt-->
+					</div>
+					
+					<!-- /.js-search-results-hdg -->
+				</div>
+
+				<div slot="body" class="js-search-results-content">
+					
+					<p class="txt-content">■道路上に散乱する土砂、ガラス破片等の清掃については、道路管理コールセンターへご連絡ください。
+　国・県道については、奈良国道事務所［電話：０７４２－３３－１３９１］・奈良土木事務所［電話：０７４２...</p>
+					
+					<p class="link-single">
+						<a href="/fa/faq/web/knowledge5113.html?suid=d0172e04-17fe-4cfb-982d-6f0a6fd9ce2e">続きを読む</a>
+						
+					</p>
+					<!-- /.js-search-results-content -->
+				</div>
+				
+				</fa-accordion>
+			</li>
+			<li>
+				<fa-accordion break-point="">
+				<div slot="title" class="js-search-results-hdg">
+					<p class="label-knowledgeKind knowledgeKindLabel101" style="background-color:#A7B716;font-weight:normal;">Q</p>
+					<div class="list-results-txt">
+						<p class="txt-contents">
+							<a href="/fa/faq/web/knowledge5114.html?suid=d0172e04-17fe-4cfb-982d-6f0a6fd9ce2e">雨水ますが詰まっているようで、雨が降ると水が溢れるが、どうすればいいのか教えてください。</a>
+							
+						</p>
+						<!--/.list-results-txt-->
+					</div>
+					
+					<!-- /.js-search-results-hdg -->
+				</div>
+
+				<div slot="body" class="js-search-results-content">
+					
+					<p class="txt-content">日常の軽微な管理については、地元でお願いしておりますが、地元で管理不可能な深い側溝、重い蓋、特殊な道具が必要な場合は、道路管理コールセンターに連絡お願いします。調査のうえ清掃の手配をします。
+ただし...</p>
+					
+					<p class="link-single">
+						<a href="/fa/faq/web/knowledge5114.html?suid=d0172e04-17fe-4cfb-982d-6f0a6fd9ce2e">続きを読む</a>
+						
+					</p>
+					<!-- /.js-search-results-content -->
+				</div>
+				
+				</fa-accordion>
+			</li>
+			<li>
+				<fa-accordion break-point="">
+				<div slot="title" class="js-search-results-hdg">
+					<p class="label-knowledgeKind knowledgeKindLabel101" style="background-color:#A7B716;font-weight:normal;">Q</p>
+					<div class="list-results-txt">
+						<p class="txt-contents">
+							<a href="/fa/faq/web/knowledge5115.html?suid=d0172e04-17fe-4cfb-982d-6f0a6fd9ce2e">歩道の段差が大きくて車いすで通るのが大変なのですが、どこに相談すればいいですか。</a>
+							
+						</p>
+						<!--/.list-results-txt-->
+					</div>
+					
+					<!-- /.js-search-results-hdg -->
+				</div>
+
+				<div slot="body" class="js-search-results-content">
+					
+					<p class="txt-content">市道における切り下げ部等の段差における改良・変更については道路建設課へ相談してください。　
+［電話］　０７４２－３４－５１６４
+
+市道における路面のガタツキ等、不具合による補修の相談については、...</p>
+					
+					<p class="link-single">
+						<a href="/fa/faq/web/knowledge5115.html?suid=d0172e04-17fe-4cfb-982d-6f0a6fd9ce2e">続きを読む</a>
+						
+					</p>
+					<!-- /.js-search-results-content -->
+				</div>
+				
+				</fa-accordion>
+			</li>
+			<li>
+				<fa-accordion break-point="">
+				<div slot="title" class="js-search-results-hdg">
+					<p class="label-knowledgeKind knowledgeKindLabel101" style="background-color:#A7B716;font-weight:normal;">Q</p>
+					<div class="list-results-txt">
+						<p class="txt-contents">
+							<a href="/fa/faq/web/knowledge5119.html?suid=d0172e04-17fe-4cfb-982d-6f0a6fd9ce2e">交通事故で道路のガードレール等を損傷したとき、どこに連絡すればいいですか。</a>
+							
+						</p>
+						<!--/.list-results-txt-->
+					</div>
+					
+					<!-- /.js-search-results-hdg -->
+				</div>
+
+				<div slot="body" class="js-search-results-content">
+					
+					<p class="txt-content">市道のガードレール等を損傷した時は、警察への届け出と奈良市道路管理コールセンターに連絡下さい。
+
+&lt;お問い合わせ先&gt;
+　【奈良市道路管理コールセンター】
+　　　［電話］　０７４２ー８１ー３１２...</p>
+					
+					<p class="link-single">
+						<a href="/fa/faq/web/knowledge5119.html?suid=d0172e04-17fe-4cfb-982d-6f0a6fd9ce2e">続きを読む</a>
+						
+					</p>
+					<!-- /.js-search-results-content -->
+				</div>
+				
+				</fa-accordion>
+			</li>
+			<li>
+				<fa-accordion break-point="">
+				<div slot="title" class="js-search-results-hdg">
+					<p class="label-knowledgeKind knowledgeKindLabel101" style="background-color:#A7B716;font-weight:normal;">Q</p>
+					<div class="list-results-txt">
+						<p class="txt-contents">
+							<a href="/fa/faq/web/knowledge5132.html?suid=d0172e04-17fe-4cfb-982d-6f0a6fd9ce2e">浄化槽の補助金はありますか。どのようなものがあるか教えてください。</a>
+							
+						</p>
+						<!--/.list-results-txt-->
+					</div>
+					
+					<!-- /.js-search-results-hdg -->
+				</div>
+
+				<div slot="body" class="js-search-results-content">
+					
+					<p class="txt-content">浄化槽の補助金については、公共下水道計画区域外及び農業集落排水事業計画区域外において、浄化槽を設置する場合は予算の範囲内で補助しています。
+補助金は、５人槽６８８、０００円　７人槽８２６ 、０００円...</p>
+					
+					<p class="link-single">
+						<a href="/fa/faq/web/knowledge5132.html?suid=d0172e04-17fe-4cfb-982d-6f0a6fd9ce2e">続きを読む</a>
+						
+					</p>
+					<!-- /.js-search-results-content -->
+				</div>
+				
+				</fa-accordion>
+			</li>
+			<li>
+				<fa-accordion break-point="">
+				<div slot="title" class="js-search-results-hdg">
+					<p class="label-knowledgeKind knowledgeKindLabel101" style="background-color:#A7B716;font-weight:normal;">Q</p>
+					<div class="list-results-txt">
+						<p class="txt-contents">
+							<a href="/fa/faq/web/knowledge5133.html?suid=d0172e04-17fe-4cfb-982d-6f0a6fd9ce2e">浄化槽の補助金の申し込みはどうすればいいのか教えてください。</a>
+							
+						</p>
+						<!--/.list-results-txt-->
+					</div>
+					
+					<!-- /.js-search-results-hdg -->
+				</div>
+
+				<div slot="body" class="js-search-results-content">
+					
+					<p class="txt-content">下水道事業課で対応します。
+
+詳しくは担当課に直接お問い合わせください。
+
+&lt;お問い合わせ先&gt;
+　【下水道事業課】
+　　［電話］　０７４２－３４－５２００（代表）</p>
+					
+					<p class="link-single">
+						<a href="/fa/faq/web/knowledge5133.html?suid=d0172e04-17fe-4cfb-982d-6f0a6fd9ce2e">続きを読む</a>
+						
+					</p>
+					<!-- /.js-search-results-content -->
+				</div>
+				
+				</fa-accordion>
+			</li>
+			<li>
+				<fa-accordion break-point="">
+				<div slot="title" class="js-search-results-hdg">
+					<p class="label-knowledgeKind knowledgeKindLabel101" style="background-color:#A7B716;font-weight:normal;">Q</p>
+					<div class="list-results-txt">
+						<p class="txt-contents">
+							<a href="/fa/faq/web/knowledge5134.html?suid=d0172e04-17fe-4cfb-982d-6f0a6fd9ce2e">私道に下水道を設置する際に助成等はありますか。教えてください。</a>
+							
+						</p>
+						<!--/.list-results-txt-->
+					</div>
+					
+					<!-- /.js-search-results-hdg -->
+				</div>
+
+				<div slot="body" class="js-search-results-content">
+					
+					<p class="txt-content">助成等はありませんが、一定の条件を満たしている私道においては、所有者又は住民に代わって、市が公共下水道を布設します。布設基準は、道路の形態を有しており、
+・２戸以上が共同で交通の用に供し、その利用に...</p>
+					
+					<p class="link-single">
+						<a href="/fa/faq/web/knowledge5134.html?suid=d0172e04-17fe-4cfb-982d-6f0a6fd9ce2e">続きを読む</a>
+						
+					</p>
+					<!-- /.js-search-results-content -->
+				</div>
+				
+				</fa-accordion>
+			</li>
+			<li>
+				<fa-accordion break-point="">
+				<div slot="title" class="js-search-results-hdg">
+					<p class="label-knowledgeKind knowledgeKindLabel101" style="background-color:#A7B716;font-weight:normal;">Q</p>
+					<div class="list-results-txt">
+						<p class="txt-contents">
+							<a href="/fa/faq/web/knowledge5135.html?suid=d0172e04-17fe-4cfb-982d-6f0a6fd9ce2e">下水道の計画について教えてください。</a>
+							
+						</p>
+						<!--/.list-results-txt-->
+					</div>
+					
+					<!-- /.js-search-results-hdg -->
+				</div>
+
+				<div slot="body" class="js-search-results-content">
+					
+					<p class="txt-content">下水道事業課に直接お問い合わせください。
+
+&lt;お問い合わせ先&gt;
+　【下水道事業課】
+　　［電話］　０７４２－３４－５２００（代表）</p>
+					
+					<p class="link-single">
+						<a href="/fa/faq/web/knowledge5135.html?suid=d0172e04-17fe-4cfb-982d-6f0a6fd9ce2e">続きを読む</a>
+						
+					</p>
+					<!-- /.js-search-results-content -->
+				</div>
+				
+				</fa-accordion>
+			</li>
+			<li>
+				<fa-accordion break-point="">
+				<div slot="title" class="js-search-results-hdg">
+					<p class="label-knowledgeKind knowledgeKindLabel101" style="background-color:#A7B716;font-weight:normal;">Q</p>
+					<div class="list-results-txt">
+						<p class="txt-contents">
+							<a href="/fa/faq/web/knowledge5136.html?suid=d0172e04-17fe-4cfb-982d-6f0a6fd9ce2e">下水道法第１６条承認申請とは何ですか。教えてください。</a>
+							
+						</p>
+						<!--/.list-results-txt-->
+					</div>
+					
+					<!-- /.js-search-results-hdg -->
+				</div>
+
+				<div slot="body" class="js-search-results-content">
+					
+					<p class="txt-content">下水道法１６条に基づき公共下水道管理者以外の者が公共下水道管理者の承認を受けて工事を行う為の申請です。
+
+&lt;お問い合わせ先&gt;
+　【下水道事業課】
+　　［電話］　０７４２－３４－５２００（代表）...</p>
+					
+					<p class="link-single">
+						<a href="/fa/faq/web/knowledge5136.html?suid=d0172e04-17fe-4cfb-982d-6f0a6fd9ce2e">続きを読む</a>
+						
+					</p>
+					<!-- /.js-search-results-content -->
+				</div>
+				
+				</fa-accordion>
+			</li>
+			<li>
+				<fa-accordion break-point="">
+				<div slot="title" class="js-search-results-hdg">
+					<p class="label-knowledgeKind knowledgeKindLabel101" style="background-color:#A7B716;font-weight:normal;">Q</p>
+					<div class="list-results-txt">
+						<p class="txt-contents">
+							<a href="/fa/faq/web/knowledge5137.html?suid=d0172e04-17fe-4cfb-982d-6f0a6fd9ce2e">公共ますの位置の変更などはどこに相談すればいいのですか。</a>
+							
+						</p>
+						<!--/.list-results-txt-->
+					</div>
+					
+					<!-- /.js-search-results-hdg -->
+				</div>
+
+				<div slot="body" class="js-search-results-content">
+					
+					<p class="txt-content">公共ますの位置の変更などについては下水道事業課にご相談ください。
+
+&lt;お問い合わせ先&gt;
+　【下水道事業課】
+　　［電話］　０７４２－３４－５２００（代表）</p>
+					
+					<p class="link-single">
+						<a href="/fa/faq/web/knowledge5137.html?suid=d0172e04-17fe-4cfb-982d-6f0a6fd9ce2e">続きを読む</a>
+						
+					</p>
+					<!-- /.js-search-results-content -->
+				</div>
+				
+				</fa-accordion>
+			</li>
+			<li>
+				<fa-accordion break-point="">
+				<div slot="title" class="js-search-results-hdg">
+					<p class="label-knowledgeKind knowledgeKindLabel101" style="background-color:#A7B716;font-weight:normal;">Q</p>
+					<div class="list-results-txt">
+						<p class="txt-contents">
+							<a href="/fa/faq/web/knowledge5138.html?suid=d0172e04-17fe-4cfb-982d-6f0a6fd9ce2e">自宅周辺の道路には下水道が入っていないが、いつ整備してもらえるのか教えてください。</a>
+							
+						</p>
+						<!--/.list-results-txt-->
+					</div>
+					
+					<!-- /.js-search-results-hdg -->
+				</div>
+
+				<div slot="body" class="js-search-results-content">
+					
+					<p class="txt-content">市道等に布設する下水道は自治会等からの要望を元に順次整備を進めております。
+私道については申込をしていただきまして順次整備を行っております。
+詳しくは、担当課へお問い合わせください。
+
+&lt;お問...</p>
+					
+					<p class="link-single">
+						<a href="/fa/faq/web/knowledge5138.html?suid=d0172e04-17fe-4cfb-982d-6f0a6fd9ce2e">続きを読む</a>
+						
+					</p>
+					<!-- /.js-search-results-content -->
+				</div>
+				
+				</fa-accordion>
+			</li>
+			<li>
+				<fa-accordion break-point="">
+				<div slot="title" class="js-search-results-hdg">
+					<p class="label-knowledgeKind knowledgeKindLabel101" style="background-color:#A7B716;font-weight:normal;">Q</p>
+					<div class="list-results-txt">
+						<p class="txt-contents">
+							<a href="/fa/faq/web/knowledge5139.html?suid=d0172e04-17fe-4cfb-982d-6f0a6fd9ce2e">公共下水道の埋設状況の確認をしたいのですが。</a>
+							
+						</p>
+						<!--/.list-results-txt-->
+					</div>
+					
+					<!-- /.js-search-results-hdg -->
+				</div>
+
+				<div slot="body" class="js-search-results-content">
+					
+					<p class="txt-content">下水道事業課の窓口に来ていただき、担当職員が下水道台帳で確認を行います。
+また、私設の下水道につきましては、情報が無くご自身で調査・確認をお願いする場合があります。
+
+&lt;お問い合わせ先&gt;
+　【...</p>
+					
+					<p class="link-single">
+						<a href="/fa/faq/web/knowledge5139.html?suid=d0172e04-17fe-4cfb-982d-6f0a6fd9ce2e">続きを読む</a>
+						
+					</p>
+					<!-- /.js-search-results-content -->
+				</div>
+				
+				</fa-accordion>
+			</li>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+		</ul>
+
+		<ul class="lyt-pagination">
+			
+			
+			<li class="current"><span>1</span>/<span>20</span></li>
+			<li class="label-next"><a href="?&amp;offset=20">次へ</a></li>
+			<li class="label-last"><a href="?&amp;offset=380">最後</a></li>
+		</ul>
+		
+		
+
+		
+		
+		
+		
+			
+			<h2 class="hdg-lv2-02">「生活環境」内のカテゴリから探す</h2>
+			
+			<ul id="category1List" class="list-category col-4 js-sp-toggle">
+				<li>
+					<fa-accordion :use-toggle="true">
+					<p slot="title" class="hdg-category">
+						<a href="/fa/faq/web/category127.html">
+							<span class="hdg-category-content">
+								<b>環境保全</b>
+							</span>
+						</a>
+					</p>
+					<ul slot="body" class="list-link-row">
+						<li>
+							<a href="/fa/faq/web/category128.html">環境保全</a>
+						</li>
+						<li>
+							<a href="/fa/faq/web/category162.html">浄化槽</a>
+						</li>
+						<li>
+							<a href="/fa/faq/web/category221.html">地球温暖化対策</a>
+						</li>
+						<li>
+							<a href="/fa/faq/web/category251.html">公害</a>
+						</li>
+						<li>
+							<a href="/fa/faq/web/category320.html">騒音等</a>
+						</li>
+						<li>
+							<a href="/fa/faq/web/category379.html">ごみのポイ捨て・路上喫煙</a>
+						</li>
+						<li>
+							<a href="/fa/faq/web/category380.html">アイドリング・ストップの推進</a>
+						</li>
+						
+						
+						
+					</ul>
+					</fa-accordion>
+				</li>
+				<li>
+					<fa-accordion :use-toggle="true">
+					<p slot="title" class="hdg-category">
+						<a href="/fa/faq/web/category135.html">
+							<span class="hdg-category-content">
+								<b>ごみ処理</b>
+							</span>
+						</a>
+					</p>
+					<ul slot="body" class="list-link-row">
+						<li>
+							<a href="/fa/faq/web/category136.html">ごみ処理</a>
+						</li>
+						<li>
+							<a href="/fa/faq/web/category378.html">事業系ごみ・産業廃棄物</a>
+						</li>
+						
+						
+						
+					</ul>
+					</fa-accordion>
+				</li>
+				<li>
+					<fa-accordion :use-toggle="true">
+					<p slot="title" class="hdg-category">
+						<a href="/fa/faq/web/category140.html">
+							<span class="hdg-category-content">
+								<b>道路</b>
+							</span>
+						</a>
+					</p>
+					<ul slot="body" class="list-link-row">
+						<li>
+							<a href="/fa/faq/web/category141.html">道路の管理</a>
+						</li>
+						<li>
+							<a href="/fa/faq/web/category194.html">道路の新設</a>
+						</li>
+						
+						
+						
+					</ul>
+					</fa-accordion>
+				</li>
+				<li>
+					<fa-accordion :use-toggle="true">
+					<p slot="title" class="hdg-category">
+						<a href="/fa/faq/web/category163.html">
+							<span class="hdg-category-content">
+								<b>下水道</b>
+							</span>
+						</a>
+					</p>
+					<ul slot="body" class="list-link-row">
+						<li>
+							<a href="/fa/faq/web/category164.html">下水道</a>
+						</li>
+						
+						
+						
+					</ul>
+					</fa-accordion>
+				</li>
+				<li>
+					<fa-accordion :use-toggle="true">
+					<p slot="title" class="hdg-category">
+						<a href="/fa/faq/web/category215.html">
+							<span class="hdg-category-content">
+								<b>その他</b>
+							</span>
+						</a>
+					</p>
+					<ul slot="body" class="list-link-row">
+						<li>
+							<a href="/fa/faq/web/category216.html">その他</a>
+						</li>
+						
+						
+						
+					</ul>
+					</fa-accordion>
+				</li>
+				<li>
+					<fa-accordion :use-toggle="true">
+					<p slot="title" class="hdg-category">
+						<a href="/fa/faq/web/category222.html">
+							<span class="hdg-category-content">
+								<b>放置自転車</b>
+							</span>
+						</a>
+					</p>
+					<ul slot="body" class="list-link-row">
+						<li>
+							<a href="/fa/faq/web/category223.html">放置自転車</a>
+						</li>
+						
+						
+						
+					</ul>
+					</fa-accordion>
+				</li>
+				<li>
+					<fa-accordion :use-toggle="true">
+					<p slot="title" class="hdg-category">
+						<a href="/fa/faq/web/category226.html">
+							<span class="hdg-category-content">
+								<b>住民組織</b>
+							</span>
+						</a>
+					</p>
+					<ul slot="body" class="list-link-row">
+						<li>
+							<a href="/fa/faq/web/category227.html">住民組織</a>
+						</li>
+						
+						
+						
+					</ul>
+					</fa-accordion>
+				</li>
+				<li>
+					<fa-accordion :use-toggle="true">
+					<p slot="title" class="hdg-category">
+						<a href="/fa/faq/web/category304.html">
+							<span class="hdg-category-content">
+								<b>上水道</b>
+							</span>
+						</a>
+					</p>
+					<ul slot="body" class="list-link-row">
+						<li>
+							<a href="/fa/faq/web/category305.html">水道料金</a>
+						</li>
+						<li>
+							<a href="/fa/faq/web/category306.html">上水道</a>
+						</li>
+						<li>
+							<a href="/fa/faq/web/category307.html">届け出・問い合わせ（上水道）</a>
+						</li>
+						<li>
+							<a href="/fa/faq/web/category325.html">水質</a>
+						</li>
+						<li>
+							<a href="/fa/faq/web/category361.html">浄水場</a>
+						</li>
+						<li>
+							<a href="/fa/faq/web/category370.html">水源</a>
+						</li>
+						
+						
+						
+					</ul>
+					</fa-accordion>
+				</li>
+				<li>
+					<fa-accordion :use-toggle="true">
+					<p slot="title" class="hdg-category">
+						<a href="/fa/faq/web/category321.html">
+							<span class="hdg-category-content">
+								<b>河川</b>
+							</span>
+						</a>
+					</p>
+					<ul slot="body" class="list-link-row">
+						<li>
+							<a href="/fa/faq/web/category322.html">河川</a>
+						</li>
+						
+						
+						
+					</ul>
+					</fa-accordion>
+				</li>
+				<li>
+					<fa-accordion :use-toggle="true">
+					<p slot="title" class="hdg-category">
+						<a href="/fa/faq/web/category341.html">
+							<span class="hdg-category-content">
+								<b>し尿処理</b>
+							</span>
+						</a>
+					</p>
+					<ul slot="body" class="list-link-row">
+						<li>
+							<a href="/fa/faq/web/category342.html">し尿くみ取り</a>
+						</li>
+						
+						
+						
+					</ul>
+					</fa-accordion>
+				</li>
+				<li>
+					<fa-accordion :use-toggle="true">
+					<p slot="title" class="hdg-category">
+						<a href="/fa/faq/web/category363.html">
+							<span class="hdg-category-content">
+								<b>公園</b>
+							</span>
+						</a>
+					</p>
+					<ul slot="body" class="list-link-row">
+						<li>
+							<a href="/fa/faq/web/category364.html">公園</a>
+						</li>
+						
+						
+						
+					</ul>
+					</fa-accordion>
+				</li>
+				<li>
+					<fa-accordion :use-toggle="true">
+					<p slot="title" class="hdg-category">
+						<a href="/fa/faq/web/category368.html">
+							<span class="hdg-category-content">
+								<b>飼い犬の登録、動物取扱業、犬・ねこの引取り</b>
+							</span>
+						</a>
+					</p>
+					<ul slot="body" class="list-link-row">
+						<li>
+							<a href="/fa/faq/web/category369.html">飼い犬の登録、動物取扱業、犬・ねこの引取り</a>
+						</li>
+						
+						
+						
+					</ul>
+					</fa-accordion>
+				</li>
+				
+			</ul>
+			
+		
+		
+		
+
+		
+
+		<!--/.str-inner-->
+	</div>
+
+	</main>
+	<!-- ============================= ▲ Main Contents ▲ ============================= -->
+
+	<!-- ============================= ▼ Footer ▼ ============================= -->
+	<footer id="str-footer">
+
+		<div class="str-inner">
+			<p class="page-top" v-smooth-scroll>
+				<a href="#top">ページトップ</a>
+				<!--/.page-top-->
+			</p>
+			<!--/.str-inner-->
+		</div>
+
+		<div class="area-inquiry">
+			<div class="str-inner" style="margin-bottom: 30px;">
+				<h1 class="str-inquiry" style="text-align: center;background-color: #FFFFFF;margin: 0;color: #d75c78;">
+					<span>お問い合わせ方法</span>
+				</h1>
+				<h2 style="text-align: center; background-color: rgb(255, 255, 255); margin: 0px; color: rgb(215, 92, 120);">TEL 0742-34-1111</h2>
+				<p style="text-align: center;background-color: #FFFFFF;margin: 0;color: black;">※おかけ間違いにご注意ください。</p>
+				<p style="text-align: center;background-color: #FFFFFF;margin: 0;color: #d75c78;font-size: 20px;">受付時間 9時から17時 土曜・日曜・祝日及び年末年始除く</p>
+				<div class="wr-btn-y" style="text-align: center;background-color: #FFFFFF; padding-top: 10px; padding-bottom: 10px;color: #d75c78;">
+					<a style="text-decoration: none;pading: 5px" href="https://9c6d4b3b.form.kintoneapp.com/public/naracity-contactcenter">
+						<span class="wr-box" style="border-radius: 4px;border: solid 1px #d75c78;color: #d75c78;padding: 2px;margin: 10px;font-size: 24px;">お問い合わせフォーム　→</span>
+					</a>
+				</div>
+			</div>
+		</div>
+
+		<div class="area-banner">
+			<div class="str-inner">
+				<div class="col-3">
+					<div class="part">
+						<div class="img-border">
+							<a href="https://www.city.nara.lg.jp/site/gomi-syusyu/" target="_blank"><img src="./images/garbage.png" alt="ごみ"></a>
+							<!--/.img-border-->
+						</div>
+						<!--/.part-->
+					</div>
+					<div class="part">
+						<div class="img-border">
+							<a href="https://www.city.nara.lg.jp/site/mynamber/" target="_blank"><img src="./images/mynumber.png" alt="マイナンバー"></a>
+							<!--/.img-border-->
+						</div>
+						<!--/.part-->
+					</div>
+					<div class="part">
+						<div class="img-border">
+							<a href="https://h2o.nara.nara.jp" target="_blank"><img src="./images/watersupply.png" alt="企業局（上下水道）"></a>
+							<!--/.img-border-->
+						</div>
+						<!--/.part-->
+					</div>
+					<!--/.col-4-->
+				</div>
+				<!--/.str-inner-->
+			</div>
+			<!--/.area-banner-->
+		</div>
+		
+		<div class="area-footer">
+			<div class="str-inner">
+				<p class="copyrightTxt">
+					Copyright © Nara City. All Rights Reserved.
+				</p>
+				<p class="powerdByTxt">
+					<a class="txt-footer-name" href="https://fastseries.jp/" target="_blank" rel="noopener noreferrer">powered by FastAnswer</a>
+				</p>
+				<!--/.str-inner-->
+			</div>
+			<!--/.area-footer-->
+		</div>
+
+	</footer>
+	<!-- ============================= ▲ Footer ▲ ============================= -->
+	<script src="./js/lib/vee-validate.min.js?hash=a154051262b9205053baf9112e04be86"></script>
+	<script src="./js/lib/vee-validate.min.ja.js?hash=d8cf74bbd693aaf77277b6e83f110b9e"></script>
+	<script src="./js/lib/axios.min.js?hash=d1b64beea1a06f6b2db21ab63c9e1411"></script>
+	<script src="./js/knowledgeList.js?hash=f7d1852fb470e6002e60932a968b137c"></script>
+	<script>
+		knowledgeSearch.init({"offset":0,"limit":-1,"count":0,"noCount":true,"maxCount":-1,"sortKeys":null,"sortDirection":null,"pageKeyIdList":null,"keyword":null,"ignoreKeyword":null,"searchCondition":null,"searchMethod":null,"targetNameFlg":null,"targetFileAttachFlg":null,"targetSearchTagFlg":null,"targetItemFlg":null,"targetCategoryFlg":null,"knowledgeId":null,"knowledgeKindIdList":null,"knowledgeKindTypeIdList":null,"searchTargetKnowledgeKindList":null,"searchTargetKnowledgeOptionList":null,"itemIdList":null,"itemChildIdList":null,"category":null,"sortType":null,"itemIdFromUrl":null,"itemChildIdFromUrl":null,"categoryIdFromUrl":126,"pageListSettingIdFromUrl":null,"searchTagIdFromUrl":null,"knowledgeKindIdFromUrl":null,"knowledgeKindTypeIdFromUrl":null,"searchTagIdList":null,"searchTag":null,"searchCategory":null,"searchItem":null,"searchKnowledgeKind":null,"useAutoCorrect":"1","useSearchAssist":null,"agentAssistantSettingId":null,"sortKey1":null,"sortKey2":null,"sortKey3":null});
+		
+			knowledgeSearch.searchUrl = "category126.html";
+		
+		
+		
+		
+		
+		
+		
+	</script>
+	
+</body>
+</html>

@@ -1,8 +1,12 @@
 import { Breadcrumb, type Crumb } from "@/components/layout/Breadcrumb";
 import type { RankingArticle } from "@/lib/ranking";
+import { inferCategoryFromText } from "@/lib/ads/rakuten/mapping";
+import { RakutenRelatedProducts } from "@/components/ads/RakutenRelatedProducts";
+import { RakutenMotionWidget } from "@/components/ads/RakutenMotionWidget";
 
 export function RankingView({ article, crumbs }: { article: RankingArticle; crumbs: Crumb[] }) {
   const fm = article.frontmatter;
+  const inferredCategory = inferCategoryFromText(`${fm.title} ${fm.description}`);
 
   return (
     <div className="mx-auto max-w-3xl px-4 py-8" data-pagefind-body>
@@ -39,7 +43,7 @@ export function RankingView({ article, crumbs }: { article: RankingArticle; crum
                     href={url}
                     target="_blank"
                     rel="noopener noreferrer nofollow"
-                    className="text-xs text-brand-700 underline dark:text-brand-100"
+                    className="break-all text-xs text-brand-700 underline dark:text-brand-100"
                   >
                     {url}
                   </a>
@@ -49,6 +53,12 @@ export function RankingView({ article, crumbs }: { article: RankingArticle; crum
           </li>
         ))}
       </ol>
+
+      {inferredCategory && (
+        <RakutenRelatedProducts category={inferredCategory} articleId={fm.slug} />
+      )}
+
+      <RakutenMotionWidget placement="article-bottom" />
     </div>
   );
 }

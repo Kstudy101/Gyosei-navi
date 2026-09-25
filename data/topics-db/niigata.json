@@ -1,0 +1,103 @@
+{
+  "region": "niigata",
+  "regionLabel": "新潟県",
+  "updatedAt": "2026-09-22",
+  "topics": [
+    {
+      "category": "shussan",
+      "title": "上越市物価高対応子育て応援手当",
+      "officialUrl": "https://www.city.joetsu.niigata.jp/life/7/76/83/",
+      "authority": "municipality",
+      "confidence": "unconfirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "新潟市の出産・子育て応援事業は既存記事あり(niigata-shi-ninpu-shien-kyufu.mdx)。上越市は差別化のための候補だが、search snippetのみで公式ページ本文は未確認。government-researcherによる原文確認必須。"
+    },
+    {
+      "category": "jutaku",
+      "title": "柏崎市住まい快適リフォーム事業補助金",
+      "officialUrl": "https://www.city.kashiwazaki.lg.jp/kurashi_tetsuzuki/hojo/sumai_seikatsu/41668.html",
+      "authority": "municipality",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "令和8年度実施中(2026年8月時点で第3期受付中)。世帯区分別に補助率20-25%・上限15万〜40万円。新潟県内jutakuカテゴリは未着手のため県内最初の記事になる。"
+    },
+    {
+      "category": "sogyo",
+      "title": "新潟県U・Iターン創業応援事業",
+      "officialUrl": "https://www.nico.or.jp/sien/hojokin/86447/",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "県レベルの創業補助（実施機関: にいがた産業創造機構NICO）。上限200万円、経費の1/2以内。新潟市中小企業開業資金(既存記事)とは主体・対象が異なる(県 vs 市、Uターン限定)ので差別化可能。令和8年度一次募集の公式ページで実在確認済み。"
+    },
+    {
+      "category": "energy",
+      "title": "新潟県再生可能エネルギー設備導入促進事業補助金",
+      "officialUrl": "https://www.pref.niigata.lg.jp/sec/sogyosuishin/1356915935143.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "所管: 新潟県産業労働部創業・イノベーション推進課新エネルギー資源開発室。太陽光等発電設備は補助率1/3以内・上限500万円、風力は1/4以内・上限800万円。令和8年度分は募集終了と表示されているが制度自体は継続実施中の県事業のため次年度募集を前提に記事化可能性あり(government-researcherが最新募集状況を要確認)。県内energyカテゴリは未着手のため最初の記事になる。"
+    },
+    {
+      "category": "pet",
+      "title": "新潟県不妊去勢手術費用補助制度(所有者のいない猫対象)",
+      "officialUrl": "https://www.pref.niigata.lg.jp/sec/seikatueisei/1356808219142.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "既存記事は新潟市の猫不妊去勢手術費助成(niigata-shi-neko-funinkyosei.mdx、市動物愛護協会経由)。本候補は新潟県(県動物愛護センター等)が団体を通じて交付する県レベルの制度で主体が異なる。団体ごとに補助額が異なる(県愛護協会: 雄5,000円/雌10,000円等)点に注意、原文で詳細確認必要。"
+    },
+    {
+      "category": "shogaisha",
+      "title": "長岡市障害者タクシー利用券交付制度",
+      "officialUrl": "https://www.city.nagaoka.niigata.jp/fukushi/cate03/ryouiku/taxi.html",
+      "authority": "municipality",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "既存記事は新潟市福祉タクシー(niigata-shi-fukushi-taxi.mdx)。長岡市は対象(療育手帳A、身体障害者手帳1-2級等)・支給内容(1冊30枚・500円相当、最大3冊)が異なる別制度で差別化可能。長岡市福祉課障害活動係が所管、公式ページで実在確認済み。"
+    },
+    {
+      "category": "kyoiku",
+      "title": "三条市学校給食費無償化(就学援助制度と合わせて要精査)",
+      "officialUrl": "https://www.city.sanjo.niigata.jp/soshiki/sanjoukyouiku/kyoikuiinkaijimukyoku/kyoikusomuka/gakkoukyuusyoku/10605.html",
+      "authority": "municipality",
+      "confidence": "unconfirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "既存記事は新潟市の就学援助・給食費関連(niigata-shi-shugaku-enjo.mdx)と創業型奨学金返済支援(niigata-shi-kigyou-sangata-shogakukin-hensai-shien.mdx)。三条市の給食費無償化は「補助金・助成金」というより一律無償化に近く、gyosei-naviの給付制度スキームに合うか要検討。government-researcherが公式要綱で対象範囲・財源(国庫補助/緊急交付金活用)を確認すること。"
+    },
+    {
+      "category": "kekkon",
+      "title": "胎内市結婚新生活支援事業補助金",
+      "officialUrl": "https://www.city.tainai.niigata.jp/kurashi/sekatsu/kotsu/kekkonshinseikatushienjigyo.html",
+      "authority": "municipality",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "新潟県内kekkonカテゴリは未着手。県は市町村への補助(連携推進補助金)のみで直接給付主体ではないため、実施主体である市町村の胎内市を記事対象に選定。夫婦ともに29歳以下は上限60万円、それ以外は上限30万円。県内対象自治体は25市町村(新潟市・長岡市・三条市・柏崎市など計15市+聖籠町等10町村)あり、胎内市が新潟県内最初のkekkon記事候補。他自治体(新潟市等)も追加候補になりうるが本バッチでは胎内市のみ確認。"
+    }
+  ]
+}

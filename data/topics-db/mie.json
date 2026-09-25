@@ -1,0 +1,151 @@
+{
+  "region": "mie",
+  "regionLabel": "三重県",
+  "updatedAt": "2026-09-22",
+  "topics": [
+    {
+      "category": "shussan",
+      "title": "三重県特定不妊治療費助成事業（不育症助成含む、県単独助成）",
+      "officialUrl": "https://www.pref.mie.lg.jp/D1KODOMO/000117788.htm",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "国の不妊治療保険適用（令和4年4月）を受け、県が独自に上乗せする助成事業。実施主体は市町、県が市町へ補助。津市のshussan記事（tsu-ninpu-shien-kyufu）とは別制度（県レベル）で重複しない。"
+    },
+    {
+      "category": "jutaku",
+      "title": "三重県木造住宅耐震補強工事補助（耐震診断支援・耐震補強設計補助を含む一連の制度）",
+      "officialUrl": "https://www.pref.mie.lg.jp/JUTAKU/HP/35936031381.htm",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "県土整備部住宅政策課が所管。実施主体は各市町だが県が制度枠組みと補助を提供。津市のjutaku記事（tsu-mokuzo-taishin-shien、木造耐震支援）とテーマは近いが、こちらは県レベル制度としての切り口。記事化時は津市記事との差別化（県全体の制度設計・各市町窓口一覧）を明確にする必要あり。"
+    },
+    {
+      "category": "sogyo",
+      "title": "三重県起業支援金（令和7年度）",
+      "officialUrl": "https://www.pref.mie.lg.jp/SOUGYO/HP/m0367900050.htm",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "東京圏等から三重県への移住者による起業・事業承継を対象に最大200万円を補助（補助率1/2以内）。津市のsogyo記事（tsu-sogyo-shikin-yushi-hokyu、融資利子補給）とは別制度で重複しない。"
+    },
+    {
+      "category": "kaigo",
+      "title": "三重県介護従事者確保事業費補助金（ICT・介護テクノロジー導入支援事業）",
+      "officialUrl": "https://www.pref.mie.lg.jp/CHOJUS/HP/22836022806-01_00001.htm",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "地域医療介護総合確保基金を活用し、介護事業者のICT導入等を支援する県の補助金。津市のkaigo記事（tsu-kazoku-kaigo-irokin、家族介護慰労金＝個人向け現金給付）とは対象・性質が異なる（本制度は事業者向け）。記事化する場合は対象読者（事業者）を明確化する必要あり。個人向け家族介護慰労金の県レベル制度は確認できなかった。"
+    },
+    {
+      "category": "energy",
+      "title": "三重県太陽光発電設備等設置費（個人向け）補助金（令和8年度）",
+      "officialUrl": "https://www.pref.mie.lg.jp/EARTH/HP/m0056200187.htm",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "個人（家庭）向け太陽光発電・蓄電池設置費補助。津市のenergy記事（tsu-jikashohi-taiyoko-hojokin）とは別制度（県レベル、個人向け）で重複しない。事業者向け補助金は別途あり（m0012300381.htm）だが今回は個人向けを候補とした。"
+    },
+    {
+      "category": "kyoiku",
+      "title": "三重県高校生等奨学給付金（奨学のための給付金）",
+      "officialUrl": "https://www.pref.mie.lg.jp/KYOZAIMU/HP/singakusien/84767018109.htm",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "低所得世帯の高校生等を対象とした返還不要の給付金（授業料以外の教育費を支援）。国の制度枠組みを県教育委員会が運用。津市のkyoiku記事（tsu-shugaku-enjo、就学援助＝義務教育段階）とは対象学齢が異なり重複しない。"
+    },
+    {
+      "category": "kekkon",
+      "title": "みえの出逢い機会創出・イクボス普及啓発補助金",
+      "officialUrl": "https://www.pref.mie.lg.jp/D1KODOMO/000117500.htm",
+      "authority": "prefecture",
+      "confidence": "unconfirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "県公式サイトの「若者／結婚：出逢いの支援」ページ（ci500004948.htm）からリンクされる補助金。ページタイトル・URLは確認できたが、対象者（企業／団体か個人か）や補助内容の詳細本文は未確認。government-researcher側での実在・詳細の一次確認が必要。三重県の「結婚新生活支援事業」自体は内閣府事業を活用したいなべ市・熊野市・紀北町・紀宝町等の市町単独事業であり、県レベルの個人向け直接給付ではない点に注意（該当制度はrejectedとして別途記録）。津市にkekkon記事は未発行のため、県レベル記事は新規領域。"
+    },
+    {
+      "category": "kekkon",
+      "title": "三重県結婚新生活支援事業（県レベルの直接個人給付としては存在せず、内閣府事業を活用した市町単独事業）",
+      "officialUrl": "https://www.pref.mie.lg.jp/SHOSHIKA/HP/m0074300040.htm",
+      "authority": "municipality",
+      "confidence": "confirmed",
+      "status": "rejected",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "結婚新生活支援事業費補助金（内閣府）を活用し、いなべ市・熊野市・紀北町・紀宝町等、県内一部市町が個別に実施。三重県が県として直接個人に給付する制度ではないため、authority=prefecture の候補としては却下。津市を含む津市以外の実施市町（例：いなべ市）を対象に記事化する場合は改めてそのmunicipality-slug配下のtopics-dbで扱うべきで、mie.json（県レベル）の候補としては不適切と判断しrejected。"
+    },
+    {
+      "category": "pet",
+      "title": "三重県による犬猫の不妊去勢に関する県レベル個人向け補助金",
+      "officialUrl": "https://www.pref.mie.lg.jp/SHOKUSEI/HP/m0067100055_00001.htm",
+      "authority": "prefecture",
+      "confidence": "unconfirmed",
+      "status": "rejected",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "三重県動物愛護推進センター「あすまいる」が実施するのは、飼い主のいない猫（地域猫）への不妊去勢手術サポート（クラウドファンディング活用等）であり、個人の飼い犬・飼い猫の不妊去勢手術費用を県が直接補助する制度ではない。個人向け補助は伊勢市等の市町レベルのみ確認された。県レベルの個人向け助成制度は見つからずrejected。"
+    },
+    {
+      "category": "shogaisha",
+      "title": "四日市市重度障害者タクシー料金助成事業",
+      "officialUrl": "https://www.city.yokkaichi.mie.jp/reiki/reiki_honbun/i603RG00000432.html",
+      "authority": "municipality",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "四日市市（津市ではない）が実施する重度障害者向けタクシー料金助成。1枚500円券を年72枚まで交付。津市のshogaisha記事（tsu-kotsu-service-shien）とは別自治体の制度で重複しない。三重県レベルの個人向け障害福祉タクシー補助・日常生活用具補助は県サイトから確認できず、県レベル候補としては見送った（障害児福祉手当等は国制度の県事務代行のみ）。"
+    },
+    {
+      "category": "shogaisha",
+      "title": "松阪市重度心身障がい者タクシー乗車券の交付",
+      "officialUrl": "https://www.city.matsusaka.mie.jp/site/syougai-wel/takushii.html",
+      "authority": "municipality",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "松阪市（津市ではない）が実施する重度心身障がい者向けタクシー乗車券交付事業。四日市市の同種制度と並ぶ候補。どちらか一方を選んで記事化する想定（両方は過剰）。"
+    },
+    {
+      "category": "pet",
+      "title": "四日市市犬猫の避妊等の手術費補助金",
+      "officialUrl": "https://www.city.yokkaichi.lg.jp/www/contents/1001000000917/index.html",
+      "authority": "municipality",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "四日市市（津市ではない）が実施する飼い犬・飼い猫（個人所有）向け避妊・去勢手術費補助金。補助額は犬猫ともメス3,000円・オス2,500円、年度内3頭まで。津市にpet記事（tsu-neko-funinkyosei）はあるが対象自治体が異なるため重複しない。県レベルの個人向け同種制度は既にrejected済み（本ファイル内）。松阪市にも同種制度（飼い犬・飼い猫の去勢・避妊手術費補助金、1匹3,000円）が確認されたが、松阪市は既にshogaisha候補で採用済みのため地域分散のため四日市市を採用。"
+    }
+  ]
+}

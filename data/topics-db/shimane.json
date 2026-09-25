@@ -1,0 +1,127 @@
+{
+  "region": "shimane",
+  "regionLabel": "島根県",
+  "updatedAt": "2026-09-24",
+  "topics": [
+    {
+      "category": "shussan",
+      "title": "島根県出産・子育て応援給付金（出産応援給付金・子育て応援給付金）",
+      "officialUrl": "https://www1.pref.shimane.lg.jp/kodomo_kosodate/tegoshite_shimane//birth/ninshin/iwaikin.html",
+      "authority": "prefecture",
+      "confidence": "unconfirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "検索結果から妊娠時5万円+出産後5万円（多胎10万円）の給付を確認。国の制度を県内市町村が実施する形の可能性あり。公式ページのWebFetch未実施のためunconfirmed。government-researcherが一次情報で実施主体（県 or 市町村個別）を要確認。"
+    },
+    {
+      "category": "jutaku",
+      "title": "しまね長寿・子育て安心住宅リフォーム助成事業",
+      "officialUrl": "https://www.pref.shimane.lg.jp/infra/build/jutaku/shien/shimane_tyojunosumai_reform_jyosei.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "researched",
+      "articleSlug": "shimane-chojyu-kosodate-reform",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-24",
+      "note": "バリアフリー改修に工事費1/4以内・上限25万円が基本。子育て世帯同居加算10万円、耐震改修加算30万円、空き家バンク登録住宅購入加算10万円で最大75万円。県公式ページ存在確認済み（WebSearchのスニペットで公式URL直接ヒット）。新規地域最初の記事。"
+    },
+    {
+      "category": "jutaku",
+      "title": "出雲市移住促進住まいづくり助成金",
+      "officialUrl": "",
+      "authority": "municipality",
+      "confidence": "unconfirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "UIターン世帯（市外5年以上在住→出雲市転入3年以内）に固定資産税相当額を上限10万円×5年助成、との情報だが出雲市公式URL未確認。government-researcherが出雲市サイトで一次情報確認必須。"
+    },
+    {
+      "category": "sogyo",
+      "title": "地域課題解決型しまね起業支援事業費補助金",
+      "officialUrl": "https://www.pref.shimane.lg.jp/industry/syoko/sangyo/kigyo/kigyo_sien/wakuwaushimane.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "県内で個人事業開業/法人設立し地域課題解決型の社会的事業を行う者向け。対象経費は店舗賃借費・リース費・機械装置費・店舗改修費・広報費・外注委託費。公式URL直接ヒットで実在確認。新規地域最初の記事。"
+    },
+    {
+      "category": "kaigo",
+      "title": "しまね長寿・子育て安心住宅リフォーム助成事業（高齢者向けバリアフリー改修）",
+      "officialUrl": "https://www.pref.shimane.lg.jp/infra/build/jutaku/shien/shimane_tyojunosumai_reform_jyosei.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "rejected",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "jutakuカテゴリで既に同一制度を候補化済みのため、kaigoでの重複起票は見送り。介護保険住宅改修費支給（国の制度・全国共通の1人生涯20万円上限）は島根県固有の上乗せ制度ではないため本カテゴリの新規トピックとしては不採用。安来市など市町村独自の高齢者リフォーム助成の存在は検索で示唆されたが公式URL未確認につき次回調査対象。"
+    },
+    {
+      "category": "energy",
+      "title": "しまね省エネ住宅・再エネ設備パッケージ補助金",
+      "officialUrl": "https://www.pref.shimane.lg.jp/infra/energy/energy/saisei/hojo/hojo.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "令和8年度に制度拡充、太陽光発電・蓄電池ともkW/kWh単位の計算方式に変更との情報。窓改修と同時施工の蓄電システム・EV充電設備・熱交換型換気設備等も対象。県公式URL直接ヒットで実在確認。新規地域最初の記事。"
+    },
+    {
+      "category": "pet",
+      "title": "島根県猫の不妊去勢手術費用の一部助成",
+      "officialUrl": "https://www1.pref.shimane.lg.jp/infra/nature/animal/animal_protection/neko_josei.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "WebFetchで公式ページ実在確認済み。去勢(オス)5,000円/匹・不妊(メス)10,000円/匹、助成予定数オス50匹メス150匹。所管は県健康福祉部薬事衛生課（獣医衛生管理室）、事業委託先は公益社団法人島根県獣医師会。重要: 対象は「飼い主のいない野良猫」のみで、飼い猫（飼い主あり）は助成対象外。記事化する場合はタイトル・本文で対象を正確に区別する必要あり。"
+    },
+    {
+      "category": "shogaisha",
+      "title": "島根県タクシー運賃割引（障がい者福祉）",
+      "officialUrl": "https://www.pref.shimane.lg.jp/medical/fukushi/syougai/ippan/fukushiaramashi/takushi.html",
+      "authority": "prefecture",
+      "confidence": "unconfirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "身体障害者手帳・精神障害者保健福祉手帳所持者向けタクシー運賃割引と見られるが、割引率・金額給付か運賃割引のみかが検索結果だけでは未確認。補装具費支給（島根県公式ページ確認）は国基準に準じる制度で県独自性が薄いため今回は候補から除外。government-researcherが一次情報で割引制度の詳細（事業者運用か県の助成金かを含む）を要確認。"
+    },
+    {
+      "category": "kyoiku",
+      "title": "島根県公立高等学校等奨学のための給付金制度",
+      "officialUrl": "https://www.pref.shimane.lg.jp/gakkokikaku/syougaku.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "生活保護受給世帯や住民税所得割額合計18万2,500円未満世帯の生徒が対象の給付型支援。県公式URL直接ヒットで実在確認。国の高等学校等就学支援金（授業料無償化）とは別建ての給付金であり県教育委員会所管。新規地域最初の記事。"
+    },
+    {
+      "category": "kekkon",
+      "title": "島根県結婚新生活支援事業（浜田市・江津市ほか2市6町で実施）",
+      "officialUrl": "https://www.pref.shimane.lg.jp/education/syoushika/syoushika/genjo/koufukin/kekkonshinseikatsu.html",
+      "authority": "municipality",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "WebFetchで実施状況確認済み。令和8年度は浜田市・江津市・奥出雲町・川本町・美郷町・邑南町・津和野町・吉賀町の2市6町で実施。夫婦ともに39歳以下・世帯所得500万円未満が対象。29歳以下は上限60万円、30～39歳は上限30万円、指定講座受講が要件。実施主体は各市町村だが県が枠組みを取りまとめ。government-researcherは代表事例として浜田市（人口最大）の一次情報を確認するのが望ましい。"
+    }
+  ]
+}

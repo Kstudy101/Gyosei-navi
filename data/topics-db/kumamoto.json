@@ -1,0 +1,115 @@
+{
+  "region": "kumamoto",
+  "regionLabel": "熊本県",
+  "updatedAt": "2026-09-22",
+  "topics": [
+    {
+      "category": "pet",
+      "title": "熊本県 飼い主のいない猫の避妊去勢手術支援事業",
+      "officialUrl": "https://www.pref.kumamoto.jp/soshiki/217/204196.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "熊本市はkumamoto-shiでpet(猫の不妊去勢)を既に公開済みのため差別化ポイントとして、これは熊本県（動物愛護センター所管、県内熊本市を除くエリア対象の可能性）独自事業。対象エリアと熊本市事業との重複有無をgovernment-researcherが要確認。受付は令和8年9月30日で停止との記載あり、募集終了時期に注意。"
+    },
+    {
+      "category": "kekkon",
+      "title": "荒尾市結婚新生活支援事業補助金",
+      "officialUrl": "https://www.city.arao.lg.jp/oshirase/boshu/page17822.html",
+      "authority": "municipality",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "熊本県内22市町村（令和5年度時点）が結婚新生活支援事業を実施。荒尾市は公式URLを確認済み。他に美里町・多良木町・宇城市も実施確認（URL: town.kumamoto-misato.lg.jp, town.taragi.lg.jp, city.uki.kumamoto.jp）。荒尾市は現状regions.tsに未登録 — 記事化する場合は市区町村登録が先に必要。熊本市自体は政令市のため対象外の可能性が高い（要確認）。"
+    },
+    {
+      "category": "jutaku",
+      "title": "熊本県 既存住宅における断熱リフォーム支援事業",
+      "officialUrl": "https://www.pref.kumamoto.jp/soshiki/117/243712.html",
+      "authority": "prefecture",
+      "confidence": "unconfirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "熊本県ページは市町村事業と国交省「みらいエコ住宅2026事業」への案内・検索サイトが中心で、県独自の断熱リフォーム補助の実施主体・金額が明確に確認できなかった。熊本市はjutakuで木造耐震改修を既に公開済みのため、県レベルの断熱リフォームなら差別化可能だが、government-researcherによる一次情報での実在確認が必須。"
+    },
+    {
+      "category": "kyoiku",
+      "title": "熊本県 高校生等奨学給付金",
+      "officialUrl": "",
+      "authority": "prefecture",
+      "confidence": "unconfirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "高校生等奨学給付金は全国の都道府県が実施主体となる国の制度で、熊本県教育委員会も実施している可能性が非常に高いが、今回のWebFetchでは熊本県教育政策課ページ・公式URLの直接確認に至らなかった。government-researcherが熊本県教育委員会サイトで一次情報を確認する必要あり。"
+    },
+    {
+      "category": "sogyo",
+      "title": "熊本県 創業支援関連制度（要確認）",
+      "officialUrl": "https://www.pref.kumamoto.jp/soshiki/61/",
+      "authority": "prefecture",
+      "confidence": "unconfirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "商工振興金融課ページ確認では、既存企業向け融資・事業承継・商店街活性化・災害復旧支援は明示されているが、創業に特化した補助金制度の記載は見当たらなかった。熊本市はsogyoで商店街出店支援・創業サポート資金を既に公開済み。県レベルで融資（利子補給等）制度がある可能性はあるが、補助金（給付）としての実在は未確認。次回は「熊本県 創業関連保証融資」等で改めて確認要。"
+    },
+    {
+      "category": "kaigo",
+      "title": "熊本県 高齢者向け住宅改修支援（要確認）",
+      "officialUrl": "",
+      "authority": "prefecture",
+      "confidence": "unconfirmed",
+      "status": "rejected",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "熊本県高齢者支援課ページを確認したが、介護リフォーム（住宅改修）補助金の県独自制度は記載なし。介護保険の住宅改修費（20万円上限）は全国共通の市町村事業であり、県独自の上乗せ制度は今回確認できず。県レベルでの新規性のある制度は見つからなかったためrejected。ただし追加調査で発見される可能性はゼロではない。"
+    },
+    {
+      "category": "shogaisha",
+      "title": "熊本県 障害者日常生活用具給付・補装具費支給（要確認）",
+      "officialUrl": "",
+      "authority": "prefecture",
+      "confidence": "unconfirmed",
+      "status": "rejected",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "障害者総合支援法上、補装具費・日常生活用具給付は市町村事業が原則。熊本県障がい者支援課ページでも特別児童扶養手当等の手当類のみ確認でき、給付事業の県独自実施は見当たらなかったためrejected（県レベル）。市町村単位（例: 熊本市以外の市町村）での新規調査は別途topic-scoutが担当すること。"
+    },
+    {
+      "category": "shussan",
+      "title": "熊本県 出産祝い金（県独自制度なし）",
+      "officialUrl": "",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "rejected",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "検索結果で「熊本県として県独自の出産祝い金制度はなく、各市区町村が独自の祝い金を設けている」ことを確認。県レベルでの新規記事化は不可。熊本市はshussanで妊婦支援給付金を既に公開済み。他市町村単位での出産祝い金は別途調査対象になりうる。"
+    },
+    {
+      "category": "energy",
+      "title": "熊本県 太陽光発電・EV導入補助金（要確認）",
+      "officialUrl": "",
+      "authority": "prefecture",
+      "confidence": "unconfirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "検索予算切れのため未確認。熊本市はenergyで太陽光省エネ補助を既に公開済みのため、県レベルの太陽光・EV補助制度があれば差別化可能。次回topic-scoutが「熊本県 太陽光 補助金」「熊本県 EV 補助金」で公式サイト確認要。"
+    }
+  ]
+}

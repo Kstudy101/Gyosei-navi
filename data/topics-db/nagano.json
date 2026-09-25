@@ -1,0 +1,127 @@
+{
+  "region": "nagano",
+  "regionLabel": "長野県",
+  "updatedAt": "2026-09-22",
+  "topics": [
+    {
+      "category": "jutaku",
+      "title": "信州健康ゼロエネ住宅助成金",
+      "officialUrl": "https://www.pref.nagano.lg.jp/kenchiku/kenkozeroene/joseikin.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "県産木材活用・高断熱住宅の新築/断熱改修を対象。所管は建設部建築住宅課、長野県住宅供給公社に事業委託。長野市の既発行記事とは無関係の県レベル制度。"
+    },
+    {
+      "category": "sogyo",
+      "title": "ソーシャル・ビジネス創業支援金（長野県地域課題解決型創業支援事業）",
+      "officialUrl": "https://www.pref.nagano.lg.jp/keieishien/sangyo/shokogyo/sogyo/sogyouhojokin.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "上限200万円・補助率1/2以内。長野県産業振興機構が実施主体。長野市の既発行記事（nagano-shi-startup-shien-hojokin）とは実施主体が異なる県レベル制度で差別化可能。"
+    },
+    {
+      "category": "energy",
+      "title": "クルマとつなぐ屋根ソーラー補助金（住宅用太陽光・蓄電池・V2H・EV導入支援）",
+      "officialUrl": "https://www.pref.nagano.lg.jp/zerocarbon/jiritsu.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "令和8年度からEV等への補助を新設。太陽光5万円・蓄電池15万円・V2H20万円・EV等25万円が上限。環境部ゼロカーボン推進課所管。長野市のGHG見える化補助（energy）とは別制度。"
+    },
+    {
+      "category": "kyoiku",
+      "title": "高校生等奨学給付金制度（長野県）",
+      "officialUrl": "https://www.pref.nagano.lg.jp/kyoiku/koko/gakko/gakko/hi-kyuhukin.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "国公立高校生の低中所得世帯対象、年額12,630円〜143,700円（世帯区分により変動）。長野県教育委員会高校教育課所管。長野市の就学援助・フリースクール利用料助成とは対象・所管が異なる県レベル制度。"
+    },
+    {
+      "category": "kyoiku",
+      "title": "長野県大学生等奨学金（夢に挑戦！信州の学生応援奨学金）",
+      "officialUrl": "https://www.pref.nagano.lg.jp/jisedai/scholarship2.html",
+      "authority": "prefecture",
+      "confidence": "unconfirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "検索結果のみで確認、公式ページ未フェッチ。国公立大月額3万円・私立大月額5万円の給付型と説明されているが、給付/貸与の別や返還免除条件は原文調査で要確認。"
+    },
+    {
+      "category": "kekkon",
+      "title": "松本市結婚新生活支援事業補助金",
+      "officialUrl": "https://www.city.matsumoto.nagano.jp/site/benricho/55355.html",
+      "authority": "municipality",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "夫婦とも39歳以下・所得500万円未満が対象。上限60万円+リフォーム/住宅取得時上乗せ10万円で最大70万円。長野市は既発行済みのため県内2例目の市レベル記事として差別化可能。"
+    },
+    {
+      "category": "shogaisha",
+      "title": "松本市重度心身障害者（児）タクシー料金助成事業",
+      "officialUrl": "https://www.city.matsumoto.nagano.jp/koho/208804.html",
+      "authority": "municipality",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "身体障害者手帳1・2級/療育手帳A1・A2対象、700円券を月2枚（透析者は月4枚）交付。長野市の福祉タクシー記事（nagano-shi-fukushi-taxi）と同カテゴリだが実施主体が異なる市として差別化可能。"
+    },
+    {
+      "category": "kaigo",
+      "title": "松本市高齢者住宅等整備事業",
+      "officialUrl": "https://www.city.matsumoto.nagano.jp/site/kourei/1782.html",
+      "authority": "municipality",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "65歳以上の自立促進・介護者負担軽減目的の住宅改修助成、1世帯63万円限度。着工前申請が条件。長野市の在宅福祉介護料（nagano-shi-zaitaku-fukushi-kaigoryo）とは別制度・別自治体で差別化可能。"
+    },
+    {
+      "category": "pet",
+      "title": "松本市地域猫の不妊去勢手術費補助金",
+      "officialUrl": "https://www.city.matsumoto.nagano.jp/soshiki/231/127789.html",
+      "authority": "municipality",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "地域猫（飼い主のいない猫）が対象。県レベルの独自不妊去勢助成制度は未確認（各市町村単位で実施）。長野県内のpet記事は未発行のため県内初のpet記事候補。"
+    },
+    {
+      "category": "shussan",
+      "title": "（該当制度なし・現段階rejected）",
+      "officialUrl": "",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "rejected",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "長野県独自の出産祝い金・上乗せ給付制度は確認できず。国の出産・子育て応援交付金（子ども・子育て支援法）を市町村が実施する構造のみで、長野市・松本市とも国制度の地域実施版に留まり長野市既発行記事との差別化が困難。県レベル/他市町村の独自制度は次回別角度で再探索の余地あり。"
+    }
+  ]
+}

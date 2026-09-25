@@ -1,0 +1,115 @@
+{
+  "region": "miyagi",
+  "regionLabel": "宮城県",
+  "updatedAt": "2026-09-22",
+  "topics": [
+    {
+      "category": "shussan",
+      "title": "（該当なし）宮城県独自の出産・育児給付金は未確認",
+      "officialUrl": "",
+      "authority": "prefecture",
+      "confidence": "unconfirmed",
+      "status": "rejected",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "県公式「子どもが生まれたとき」ページ(pref.miyagi.jp/soshiki/hukuri/kodomogaumaretatoki.html)を確認したが、掲載は児童手当・教職員互助会の出産祝金・共済組合給付など一般制度/職域福利のみで、県が全県民向けに独自実施する出産祝い金・育児支援金は見当たらない。出産・育児給付は市町村(仙台市等)単位が中心。県単独事業が別途見つかれば再調査。"
+    },
+    {
+      "category": "jutaku",
+      "title": "「みやぎ方式」木造住宅耐震助成事業（県産材利用リフォーム支援も候補）",
+      "officialUrl": "https://www.pref.miyagi.jp/soshiki/kentaku/taishinjigyou.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "県公式ページで実在確認。県から住宅所有者への直接補助ではなく、県が市町村への助成(国1/2・県1/4・市町村1/4等)を通じて実施する仕組み。耐震診断個人負担8,400円(仙台市以外)、改修工事は県から市町村への助成が工事費の25/115以内(上限17.25万~27.25万円)。制度設計・補助スキームを解説する記事として成立しうる。別候補: 県産材利用サステナブル住宅普及促進事業(最大20万円、要一次情報確認)。仙台市の木造耐震(sendai-mokuzo-taishin-kaishu)とは制度主体が異なり差別化可能。"
+    },
+    {
+      "category": "sogyo",
+      "title": "宮城県ものづくり産業振興起業家等育成支援事業費補助金（ベンチャー企業支援型）",
+      "officialUrl": "https://www.pref.miyagi.jp/soshiki/shinsan/venture-hojor.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "published",
+      "articleSlug": "miyagi-monodukuri-venture-hojokin",
+      "foundAt": "2026-06-10",
+      "checkedAt": "2026-09-22",
+      "note": "既存published記事あり(content/subsidy/sogyo/miyagi-monodukuri-venture-hojokin.mdx)。再探索不要。"
+    },
+    {
+      "category": "kaigo",
+      "title": "（該当なし）宮城県単独の介護・高齢者住宅改修助成は未確認",
+      "officialUrl": "",
+      "authority": "prefecture",
+      "confidence": "unconfirmed",
+      "status": "rejected",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "県公式ページ(pref.miyagi.jp/soshiki/juutaku/dokuzishien.html)では「介護保険を利用した住宅改修は市町村福祉担当課へ」と案内するのみで、県独自の上乗せ助成・県単独給付は確認できなかった。高齢者福祉制度ページ(life/5/73/65/index.html)も施設整備補助等が中心で個人向け給付は未確認。市町村(仙台市等)単位の記事は既に存在。県単独制度が別途見つかれば再調査。"
+    },
+    {
+      "category": "energy",
+      "title": "宮城県スマートエネルギー住宅普及促進事業費補助金",
+      "officialUrl": "https://www.pref.miyagi.jp/soshiki/kankyo-s/shichoson-taiyokou.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "県実施が第三者サイト(宮城県建築住宅センター mkj.or.jp/archives/17863)経由で確認できたが、県公式ドメイン(pref.miyagi.jp)一次情報のURLは未特定—government-researcher側で要確認。太陽光(蓄エネ併設)・地中熱・EV/PHV・蓄電池・V2H・省エネ改修・ゼロエネ住宅が対象、「みやぎスマエネ倶楽部」入会が条件。仙台市のV2H/太陽光記事(sendai-v2h-judensetsubi, sendai-taiyoko-to-donyu-kizonkodate)とは制度主体が異なり差別化可能。"
+    },
+    {
+      "category": "pet",
+      "title": "（公社）宮城県獣医師会 飼い主のいない猫の不妊手術費助成事業",
+      "officialUrl": "https://miyaju.jp/information/30-6-1-3-3/",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "公益社団法人宮城県獣医師会の公式ページで実在確認。対象は仙台市を除く宮城県内。オス6,000円・メス12,000円。令和7年度は申請期間2025/4/1〜2026/2/11。仙台市の同種記事(sendai-neko-funinkyosei)とは対象地域が異なり(仙台市除く県内)明確に差別化可能。実施主体が獣医師会のため、県の予算補助スキームまで一次情報で確認要。"
+    },
+    {
+      "category": "shogaisha",
+      "title": "宮城県 障害者福祉（補装具費支給・タクシー割引等）",
+      "officialUrl": "https://www.pref.miyagi.jp/",
+      "authority": "prefecture",
+      "confidence": "unconfirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "検索では仙台市の福祉タクシー利用券・重心障害者医療費(既存記事あり)が中心にヒットし、県独自の補装具費支給や県単独給付の具体的制度名・URLはまだ特定できていない。宮城県タクシー協会経由の「1割引」制度への言及はあるが県の補助スキームとしての一次情報は未確認。government-researcher側で県障害福祉課(pref.miyagi.jp)を直接確認する必要あり。confidence unconfirmedのまま次工程へ引き継ぐ。"
+    },
+    {
+      "category": "kyoiku",
+      "title": "宮城県国公立高校生等奨学給付金／宮城県私立高校生等奨学給付金",
+      "officialUrl": "https://www.pref.miyagi.jp/site/sub-jigyou/2022syougakukyufu.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "県公式サイトで実在確認。返済不要の給付型で、国公立高校生向け(pref.miyagi.jp/site/sub-jigyou/2022syougakukyufu.html)と私立高校生向け(pref.miyagi.jp/site/shigaku/kyufu.html)の2制度が並立。授業料以外の教育費(教科書代・教材費・学用品費・修学旅行費等)を給付。仙台市の就学援助(sendai-shugaku-enjo、市立小中対象)とは対象校種・実施主体が異なり明確に差別化可能。"
+    },
+    {
+      "category": "kekkon",
+      "title": "宮城県 結婚新生活支援事業（市町村実施・県周知/補助スキーム）",
+      "officialUrl": "https://www.pref.miyagi.jp/soshiki/kosodate/kekkon-shinseikatsu.html",
+      "authority": "prefecture",
+      "confidence": "unconfirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "県公式ページの実在は確認したが、内容は「事業周知業務の企画提案募集」であり、県が個人へ直接給付する制度ではなく、国の地域少子化対策重点推進交付金を財源に市町村(角田市・東松島市・丸森町等)が個別実施する枠組みの模様。仙台市は既にpublished(sendai-kekkon-shinseikatsu-shien)。県レベルでの独自記事化は「県内市町村実施状況まとめ」的な角度になる可能性が高く、通常の単一制度記事とは性質が異なる点に注意。government-researcher側で県の財源・関与範囲を精査要。"
+    }
+  ]
+}

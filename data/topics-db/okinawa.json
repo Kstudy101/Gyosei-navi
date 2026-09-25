@@ -1,0 +1,115 @@
+{
+  "region": "okinawa",
+  "regionLabel": "沖縄県",
+  "updatedAt": "2026-09-22",
+  "topics": [
+    {
+      "category": "kyoiku",
+      "title": "沖縄県高校生等奨学給付金",
+      "officialUrl": "https://www.pref.okinawa.lg.jp/kyoiku/edu/1008819/1008843/1008848.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "低所得世帯対象（年収目安490万円未満）の授業料以外の教育費給付。令和8年度公立高校支給額: 生活保護世帯32,300円、非課税世帯143,700円等。所管: 沖縄県教育庁教育支援課(098-866-2711)。全国共通制度（高校生等奨学給付金）の県実施版のため、既存published記事との重複がないか要確認（全国共通制度の類似記事の有無をgovernment-researcher段階で再チェック）。"
+    },
+    {
+      "category": "sogyo",
+      "title": "沖縄県中小企業等経営革新強化支援事業費補助金",
+      "officialUrl": "https://www.pref.okinawa.lg.jp/shigoto/shien/1010056/1022723/1010107.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "rejected",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "経営革新計画の承認を受けた既存中小企業者向けで創業者は対象外と明記。taxonomy sogyoのseedKeywords（創業補助金等）の想定と合わないため却下。県の創業者向け制度は「創業者・事業承継支援資金」だが融資（返済必要）で補助金ではないため別途却下。市区町村単位（那覇市は既published、沖縄市・うるま市・浦添市等）で給付型の創業補助金がないか別途再調査の余地あり。"
+    },
+    {
+      "category": "jutaku",
+      "title": "（未確認）沖縄県レベルの住宅リフォーム・耐震改修補助金",
+      "officialUrl": "",
+      "authority": "prefecture",
+      "confidence": "unconfirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "県公式サイトの「住宅」「建築・開発」セクションを確認したが、個人向けリフォーム・耐震改修補助金の具体的な制度ページには到達できず（サイト構造上、下層ページURLの推定に失敗しHTTP 404多発）。木造住宅密集地域が多い沖縄の特性上、市町村単位（那覇市含む）での耐震改修補助制度が存在する可能性が高い。次回はサイト内検索または那覇市以外の市（沖縄市・浦添市・宜野湾市等）を個別に当たる必要あり。"
+    },
+    {
+      "category": "shogaisha",
+      "title": "（未確認）沖縄県レベルの障害者向け給付制度（補装具費支給等）",
+      "officialUrl": "https://www.pref.okinawa.lg.jp/kyoiku/shogaifukushi/1007842/index.html",
+      "authority": "prefecture",
+      "confidence": "unconfirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "「障害者福祉の支援」インデックスページは実在確認済みだが、補装具費支給・日常生活用具給付・タクシー利用助成など個別制度の詳細ページURLには到達できず。補装具費支給・日常生活用具給付は市町村事務が原則のため、那覇市以外の市（沖縄市・うるま市等）での個別調査が本命。"
+    },
+    {
+      "category": "kaigo",
+      "title": "（未確認）沖縄県レベルの高齢者向け個人給付制度",
+      "officialUrl": "https://www.pref.okinawa.lg.jp/kyoiku/koreifukushi/index.html",
+      "authority": "prefecture",
+      "confidence": "unconfirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "「高齢者福祉」インデックスページは実在確認済みだが、家族介護慰労金・紙おむつ支給等の個人給付制度詳細ページには到達できず。那覇市は家族介護慰労事業・介護用品支給事業が既published。他市町村（沖縄市・うるま市・浦添市等）で同種制度の有無を個別調査する余地あり。"
+    },
+    {
+      "category": "energy",
+      "title": "（未確認）沖縄県レベルの太陽光・蓄電池・EV補助金",
+      "officialUrl": "https://www.pref.okinawa.lg.jp/machizukuri/energy/1013596/index.html",
+      "authority": "prefecture",
+      "confidence": "unconfirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "「公募・補助金等（エネルギー）」ページは実在確認済みだが、確認できたのは離島の海洋温度差発電調査事業の公募のみで、個人向け太陽光・蓄電池・EV充電設備の常設補助金は未確認。クリーンエネルギー導入ワンストップ相談窓口の案内あり。那覇市は省エネ診断補助金（中小企業向け）が既published。個人向け制度は市町村単位で別途調査が必要。"
+    },
+    {
+      "category": "pet",
+      "title": "（該当なし）沖縄県レベルの犬猫不妊去勢手術費助成",
+      "officialUrl": "https://www.pref.okinawa.lg.jp/kurashikankyo/petgaiju/1018720/1005061.html",
+      "authority": "prefecture",
+      "confidence": "unconfirmed",
+      "status": "rejected",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "「ペットの飼い方」ページで不妊・去勢手術の推奨記載はあるが、助成金・補助金制度への言及なし。那覇市は不妊去勢手術助成が既published。県レベルでは制度なしと判断。他市町村（沖縄市・うるま市等）は個別調査の余地あり。"
+    },
+    {
+      "category": "kekkon",
+      "title": "（未確認）沖縄県内市町村の結婚新生活支援事業",
+      "officialUrl": "",
+      "authority": "municipality",
+      "confidence": "unconfirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "結婚新生活支援事業は全国的に市町村単位で実施される国庫補助メニューのため、県公式サイトには専用セクションが見当たらなかった（検索エンジン経由の確認もWebSearch予算切れ・Google/Bing経由のWebFetchでも詳細取得できず）。沖縄市・うるま市・宜野湾市等の個別サイトを次回直接あたる必要あり。"
+    },
+    {
+      "category": "shussan",
+      "title": "（未確認）沖縄県レベルの出産・育児給付金（那覇市以外）",
+      "officialUrl": "",
+      "authority": "prefecture",
+      "confidence": "unconfirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "那覇市は妊婦支援給付金・産後ケア事業が既published。「妊娠・出産・育児」ページの下層URL推定に失敗し県独自の上乗せ給付の有無は未確認。国の妊婦支援給付金・出産子育て応援交付金と別に県独自制度があるかは市町村単位（那覇市以外）で再調査が必要。"
+    }
+  ]
+}

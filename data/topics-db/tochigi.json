@@ -1,0 +1,115 @@
+{
+  "region": "tochigi",
+  "regionLabel": "栃木県",
+  "updatedAt": "2026-09-24",
+  "topics": [
+    {
+      "category": "shussan",
+      "title": "栃木県不妊に悩む方への特定治療支援事業（および妊産婦医療費助成制度）",
+      "officialUrl": "https://www.pref.tochigi.lg.jp/e06/welfare/kodomo/kosodatesoudan/tokuteihunintiryouhijosei.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "rejected",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "妊産婦医療費助成は全国でも実施県が少ない栃木県独自色の強い制度（実施は市町、県が枠組み）。出産育児一時金は全国一律のため差別化には妊産婦医療費助成や特定不妊治療支援を軸にするのが妥当。"
+    },
+    {
+      "category": "jutaku",
+      "title": "栃木県既存住宅の断熱リフォーム支援事業（子育て世帯等住宅断熱化支援事業）",
+      "officialUrl": "https://www.pref.tochigi.lg.jp/d02/kouhou/r7kosodatesienn.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "published",
+      "articleSlug": "tochigi-kosodate-dannetsu-reform",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "国の子育てグリーン住宅支援事業に県が上乗せする形。1戸あたり国補助額の1/2または10万円の低い方。令和8(2026)年2月27日まで受付の情報あり、最新年度要確認。"
+    },
+    {
+      "category": "sogyo",
+      "title": "栃木県地域課題解決型創業支援補助金",
+      "officialUrl": "https://www.pref.tochigi.lg.jp/f03/chiikikadai_hojo.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "published",
+      "articleSlug": "tochigi-chiiki-kadai-sogyo-hojo",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "補助率1/2以内・上限200万円。令和6年度実績あり、令和7-8年度の最新募集要項を要確認。とちぎ未来チャレンジファンド（最大100万円・助成率2/3以内）も併記候補。"
+    },
+    {
+      "category": "kaigo",
+      "title": "宇都宮市高齢者にやさしい住環境整備事業",
+      "officialUrl": "https://www.city.utsunomiya.lg.jp/kenko/koureisha/service/1004278.html",
+      "authority": "municipality",
+      "confidence": "confirmed",
+      "status": "published",
+      "articleSlug": "utsunomiya-koreisha-jutaku-seibi",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "県単位では介護リフォーム直接補助が確認できず、県サイト検索では介護テクノロジー定着支援事業など事業者向けのみヒット。県庁所在地の宇都宮市の住宅改修助成（要介護者向け、工事費3/4・上限90万円）を候補とした。介護保険の居宅介護住宅改修費支給とは別建ての市独自上乗せ事業。"
+    },
+    {
+      "category": "energy",
+      "title": "栃木県個人住宅用太陽光発電設備等導入支援事業",
+      "officialUrl": "https://www.pref.tochigi.lg.jp/d02/kouhou/kozinzyutakutaiyoukouhozyo.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "published",
+      "articleSlug": "tochigi-taiyoko-chikudenchi-hojo",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "個人の自己所有住宅への太陽光発電＋蓄電池同時導入が対象。ゼロエネルギー住宅導入支援事業（同d02/kouhou配下）も関連候補としてメモ。"
+    },
+    {
+      "category": "pet",
+      "title": "宇都宮市飼い犬・飼い猫の不妊手術費補助",
+      "officialUrl": "https://www.city.utsunomiya.lg.jp/kurashi/pet/pet/1005587.html",
+      "authority": "municipality",
+      "confidence": "confirmed",
+      "status": "published",
+      "articleSlug": "utsunomiya-inu-neko-funinkyosei",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "県単位（pref.tochigi.lg.jp）では犬猫の不妊去勢手術助成制度が確認できず、県動物愛護指導センターも助成情報は掲載していない模様。栃木県内は市町ごとの実施（宇都宮市・小山市・矢板市など）。県単位記事化は不可、市町単位での記事化を推奨。"
+    },
+    {
+      "category": "shogaisha",
+      "title": "栃木県軽度・中等度難聴児補聴器購入費等の助成",
+      "officialUrl": "https://www.pref.tochigi.lg.jp/e05/keidotyuutoudo.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "published",
+      "articleSlug": "tochigi-nancho-hochoki-josei",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "身体障害者手帳の対象とならない軽度・中等度難聴児（18歳未満）向けの補聴器購入・修理費助成。補装具費・日常生活用具給付は制度上市町村事務のため県単位の記事化にはこちらが適する。"
+    },
+    {
+      "category": "kyoiku",
+      "title": "栃木県奨学のための給付金（公立・私立）",
+      "officialUrl": "https://www.pref.tochigi.lg.jp/m01/education/gakkoukyouiku/koutou/kyuufukin_k.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "published",
+      "articleSlug": "tochigi-shogaku-kyufukin",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "高校生等の授業料以外の教育費負担軽減、返還不要の給付型。公立向け・私立向けで別ページ（b05配下が私立）。令和8(2026)年度版ページ確認済み。"
+    },
+    {
+      "category": "kekkon",
+      "title": "宇都宮市結婚新生活支援事業",
+      "officialUrl": "https://www.city.utsunomiya.lg.jp/kurashi/machi/jutaku/1027597.html",
+      "authority": "municipality",
+      "confidence": "confirmed",
+      "status": "published",
+      "articleSlug": "utsunomiya-kekkon-shinseikatsu-shien",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "国の結婚新生活支援事業を活用した市独自制度。最大30万円（夫婦とも29歳以下なら最大60万円）。県単位では『とちぎハッピーマリッジ応援事業』が存在するが、これは婚姻届出時の祝品進呈でありkekkonカテゴリの『新生活支援（住居費等補助）』の趣旨とは異なるため候補から除外。県サイトによれば結婚新生活支援事業は県内18市町が実施、宇都宮市を代表例として選定。"
+    }
+  ]
+}

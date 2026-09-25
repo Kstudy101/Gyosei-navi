@@ -1,0 +1,115 @@
+{
+  "region": "shizuoka",
+  "regionLabel": "静岡県",
+  "updatedAt": "2026-09-22",
+  "topics": [
+    {
+      "category": "shussan",
+      "title": "静岡県独自の出産祝い金・育児支援金制度",
+      "officialUrl": "",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "rejected",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "静岡県独自の出産祝い金制度は確認できず。県レベルでは国制度（出産育児一時金・出産子育て応援給付金）の案内のみで、給付は市町村単位。静岡市は既にshizuoka-shi-ninpu-shien-kyufuで公開済み。他市町（浜松市等）の妊婦支援給付金は国制度の横展開でありshizuoka-shi記事との差別化が薄いため今回は見送り。"
+    },
+    {
+      "category": "jutaku",
+      "title": "浜松市木造住宅耐震補強助成事業",
+      "officialUrl": "https://www.city.hamamatsu.shizuoka.jp/kensido/home_tochi/home/kensido/taisin/jigyou_03.html",
+      "authority": "municipality",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "浜松市（静岡市ではない）の木造住宅耐震改修補助。上限額・補助率は原文確認が必要（検索要約では上限100万円/130万円等の記述が錯綜、government-researcherが原文で確定要）。shizuoka-shi-jutaku-taishin-kaishuとは実施主体が異なるため重複しない。"
+    },
+    {
+      "category": "sogyo",
+      "title": "静岡県地域創生起業支援事業（地域創生起業支援金）",
+      "officialUrl": "https://www.pref.shizuoka.jp/sangyoshigoto/shokogyoservice/1040895/1028150.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "静岡県（公益財団法人静岡県産業振興財団が実施）の起業支援金。補助率1/2、上限200万円。静岡市のshizuoka-shi-sogyo-shien-shikin（市の創業支援資金＝融資系）とは制度種別が異なり、県の直接補助金として差別化可能。"
+    },
+    {
+      "category": "kaigo",
+      "title": "浜松市高齢者住宅改造費補助金",
+      "officialUrl": "https://www.city.hamamatsu.shizuoka.jp/kourei/welfare/elderly/zaitaku/kaizou.html",
+      "authority": "municipality",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "浜松市（静岡市ではない）の高齢者住宅改造補助。対象: 60歳以上・要支援/要介護認定・市県民税非課税世帯。補助率1/2、上限75万円（特定地域100万円）。静岡市のshizuoka-shi-omutsu-shikyu（おむつ支給）とは全く別制度で重複なし。"
+    },
+    {
+      "category": "energy",
+      "title": "浜松市の住宅省エネ・太陽光関連補助制度",
+      "officialUrl": "",
+      "authority": "municipality",
+      "confidence": "unconfirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "検索結果に「浜松市・住宅省エネ2026キャンペーン」等の言及はあるが第三者サイト経由のみで公式URL未確認。government-researcherが浜松市公式サイトで実在確認・原文取得要。static-taiyoko-kyodokonyu（静岡県×iChoosr、静岡市案内）とは別に浜松市独自制度がないか要確認。"
+    },
+    {
+      "category": "pet",
+      "title": "浜松市野良猫不妊手術費負担金（地域猫活動支援）",
+      "officialUrl": "https://www.city.hamamatsu.shizuoka.jp/zaisek/budget/budget06/detail/d_089.html",
+      "authority": "municipality",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "浜松市（静岡市ではない）の野良猫（地域猫）不妊手術費負担事業。令和6年度実績: 雌猫手術費21,000円中市負担10,000円、雄猫12,600円中4,400円。静岡市のshizuoka-shi-neko-funinkyoseiとは実施主体・制度設計が異なる（浜松市動物愛護教育センター所管）。原文は浜松市動物愛護教育センターページ（https://www.hama-aikyou.jp/information/chiikineko/）等で要確認。"
+    },
+    {
+      "category": "shogaisha",
+      "title": "浜松市補装具費支給制度・日常生活用具費助成事業",
+      "officialUrl": "https://www.city.hamamatsu.shizuoka.jp/syoghuku/welfare/obstacle/shintai/yougu/index.html",
+      "authority": "municipality",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "浜松市（静岡市ではない）の補装具費支給・日常生活用具費助成。静岡市のshizuoka-shi-fukushi-taxi（福祉タクシー）とは対象制度が異なり重複なし。国の制度（障害者総合支援法）に基づく市の運用のため制度の独自性はやや薄いが、浜松市の給付要件・対象用具リストを具体的に調べれば記事化可能。"
+    },
+    {
+      "category": "kyoiku",
+      "title": "静岡県奨学のための給付金（高等学校等奨学給付金）",
+      "officialUrl": "https://www.pref.shizuoka.jp/kodomokyoiku/school/kyoiku/1003777/1003792/1003892/1031865.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "静岡県教育委員会所管の給付型奨学金（授業料以外の教育費対象、返済不要）。住民税非課税世帯で全日制143,700円等。静岡市のshizuoka-shi-shugaku-enjo（就学援助＝小中学生向け）とは対象校種（高校）・所管（県）が異なり明確に差別化できる。私立高校向け別制度（https://www.pref.shizuoka.jp/kodomokyoiku/school/1002738/1054891.html）も関連。"
+    },
+    {
+      "category": "kekkon",
+      "title": "浜松市結婚新生活支援事業補助金",
+      "officialUrl": "https://www.city.hamamatsu.shizuoka.jp/katei/kekkonnshinseikatsu/kekkonshinseikatsushienzigyou2.html",
+      "authority": "municipality",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "浜松市（静岡市ではない）の結婚新生活支援事業。夫婦とも29歳以下は60万円、39歳以下は30万円。静岡市のshizuoka-shi-kekkon-shinseikatsu-shienとは実施主体が異なり重複なし。焼津市も同種事業ありと検索で言及あったが今回は浜松市を優先。"
+    }
+  ]
+}

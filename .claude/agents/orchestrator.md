@@ -20,7 +20,7 @@ model: sonnet
 
 전달받은 프롬프트(자유 텍스트: 대상 지역, 카테고리, 목적 등)를 해석해 아래 단계를 순서대로, 필요한 지역/카테고리 단위로 **병렬** 위임한다.
 
-1. **topic-scout** — 대상 지역×카테고리 조합에서 다룰 만한 구체적 제도(토픽)를 찾는다. 이미 `content/subsidy/<category>/`에 있는 기사와 중복되지 않게 `Glob`으로 기존 기사를 먼저 확인시킨다.
+1. **topic-scout** — 대상 지역×카테고리 조합에서 다룰 만한 구체적 제도(토픽)를 찾는다. 이미 `content/subsidy/<category>/`에 있는 기사와 중복되지 않게 `Glob`으로 기존 기사를 먼저 확인시킨다. `data/topics-db/<region-slug>.json`에 이미 `pending` 상태로 쌓인 후보가 있으면 재탐색 없이 그것부터 쓰도록 지시한다(`data/topics-db/README.md` 참고).
 2. **government-researcher**(도도부현 단위) — 국가/도도부현 레벨 제도 조사. 시정촌 단위 조사가 필요하면 이 에이전트가 **municipality-researcher**를 서브에이전트로 호출한다(Task 도구로).
 3. **verifier** — 조사 결과가 `data/sources/<slug>/`에 원문으로 제대로 아카이브됐는지, 수치가 원문과 일치하는지 대조한다. PASS/FAIL 판정을 명확히 내린다.
 4. **writer** — verifier PASS를 받은 토픽만 `npm run new:article`로 기사를 생성하고 MDX 본문을 작성한다(status: draft 유지).
@@ -41,6 +41,7 @@ model: sonnet
 - 처리한 지역×카테고리 조합과 각각의 도달 단계(topic 발굴만/원문 확보/draft 생성/published)
 - 원문을 확보하지 못해 skip된 토픽과 이유
 - `data/sources/`에 새로 추가된 디렉토리 목록
+- `data/topics-db/`에 새로 추가/갱신된 지역 파일과 각각의 status 분포(pending/researched/published/rejected 건수)
 - `content/`에 새로 생성/수정된 MDX 파일 목록과 최종 status
 - ad-mapper가 처리한 카테고리별 라쿠텐 매핑/캐시 상태(신규 매핑 추가 여부, 상품 캐시 생성 성공/스킵)
 - 사용자가 다음에 결정해야 할 사항(published 전환 승인, RAKUTEN_APP_ID 미설정으로 인한 상품 캐시 보류 등)

@@ -1,0 +1,115 @@
+{
+  "region": "kagawa",
+  "regionLabel": "香川県",
+  "updatedAt": "2026-09-22",
+  "topics": [
+    {
+      "category": "jutaku",
+      "title": "香川県東京圏移住支援事業補助金",
+      "officialUrl": "https://www.kagawalife.jp/support/",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "東京圏からのUIJターン最大300万円。高松市の既存記事(耐震対策)とは別制度で差別化可。県レベル初のjutaku記事候補。"
+    },
+    {
+      "category": "sogyo",
+      "title": "香川県起業等スタートアップ支援事業（起業等スタートアップ支援補助金）",
+      "officialUrl": "https://www.pref.kagawa.lg.jp/sangyo/shinki/02.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "香川発スタートアップの製品等導入利用支援補助金も同分野で併記候補(https://www.pref.kagawa.lg.jp/sangyo/shinki/startuphanro.html)。高松市の中央商店街創業記事とは別制度(県全域対象)。"
+    },
+    {
+      "category": "energy",
+      "title": "香川県住宅用太陽光発電設備等導入促進事業補助金（太陽光+蓄電池セット）",
+      "officialUrl": "https://www.pref.kagawa.lg.jp/",
+      "authority": "prefecture",
+      "confidence": "unconfirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "太陽光8万円/kW上限45万円、蓄電池は対象経費1/3上限20万円(同時設置が条件)という情報を複数の民間まとめサイトで確認したが県公式ページURLは未特定。government-researcher側で県庁環境政策課ページの確認が必要。高松市の既存2記事(スマートハウス補助金・自家消費太陽光)とは別事業。"
+    },
+    {
+      "category": "kyoiku",
+      "title": "香川県奨学のための給付金",
+      "officialUrl": "https://www.pref.kagawa.lg.jp/somugakuji/sigaku/keigen/shogakukyuhukin.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "高校生等奨学のための給付金(国制度の都道府県実施分)。住民税非課税世帯等が対象、私立全日制非課税世帯で年額最大152,000円。高松市の高校入学準備助成金記事とは別制度、県レベル初のkyoiku記事候補。"
+    },
+    {
+      "category": "kekkon",
+      "title": "丸亀市結婚新生活支援事業補助金",
+      "officialUrl": "https://www.city.marugame.lg.jp/site/iju/1619.html",
+      "authority": "municipality",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "29歳以下は上限60万円、30〜39歳は上限30万円。香川県内・四国で初のkekkon記事候補。他にも坂出市・善通寺市・さぬき市・東かがわ市・三豊市・土庄町・宇多津町・綾川町・琴平町・多度津町・まんのう町が同事業を実施(県公式まとめ: https://www.pref.kagawa.lg.jp/kosodate/shoshika/en-musu/shimachishiensaku.html)。高松市は同事業を実施していない(県まとめページの12市町リストに高松市は含まれない)。"
+    },
+    {
+      "category": "pet",
+      "title": "さぬき市飼い犬・飼い猫の不妊・去勢手術費補助",
+      "officialUrl": "https://www.city.sanuki.kagawa.jp/life/living/dogsubsidy",
+      "authority": "municipality",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "犬・猫1頭につき3,000円、一世帯年度内2頭まで。高松市の既存記事(不妊去勢手術・マイクロチップ)とは別自治体。三木町・三豊市・多度津町にも類似制度あり(unconfirmed、URLは検索結果内に個別リンクあり)。"
+    },
+    {
+      "category": "shussan",
+      "title": "観音寺市出産育児支援金",
+      "officialUrl": "",
+      "authority": "municipality",
+      "confidence": "unconfirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "対象者一人につき10万円という情報を検索結果(house.goo.ne.jp等)で確認したが観音寺市公式サイトURL未特定。高松市は独自の出産祝い金制度を持たず国の出産子育て応援給付金のみのため、観音寺市は差別化ポイントとなる。government-researcher側で公式URL確認要。"
+    },
+    {
+      "category": "kaigo",
+      "title": "（香川県レベルの介護リフォーム・高齢者給付の独自制度は未確認）",
+      "officialUrl": "",
+      "authority": "prefecture",
+      "confidence": "unconfirmed",
+      "status": "rejected",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "香川県公式の高齢者向け助成金ページ(pref.kagawa.lg.jp/rosei/koyo/taisaku/koureisya/koureisya-jyoseikin.html)は事業主向け高齢者雇用助成金であり本カテゴリ対象外と判明。住宅改修は介護保険法定サービス(全国共通、県独自色なし)。市町単位では多度津町の重度身体障害者住宅改修費給付事業(上限20万円)があるが対象は障害者向けでkaigoよりshogaisha寄り。県レベルの独自kaigo制度は今回未発見のためrejectedとして記録。今後は高松市以外の市町(丸亀市・坂出市等)単位で再探索の余地あり。"
+    },
+    {
+      "category": "shogaisha",
+      "title": "（香川県レベルの補装具費・日常生活用具給付は法定事業の案内のみ、高松市に既存記事あり）",
+      "officialUrl": "https://www.pref.kagawa.lg.jp/shogaifukushi/sodan_shien/fukushi_seido/kyufu/kfvn.html",
+      "authority": "prefecture",
+      "confidence": "unconfirmed",
+      "status": "rejected",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "補装具費・日常生活用具給付は障害者総合支援法に基づく全国共通の法定事業で実施主体は市町村。県ページは制度案内のみで独自の上乗せ給付は確認できず。高松市には既に2本(日常生活用具給付・難聴補聴器助成)公開済み。他市町(多度津町の重度身体障害者住宅改修費給付等)は次回別カテゴリ(kaigo)との重複に注意しつつ再検討の余地あり。今回はrejectedとして記録。"
+    }
+  ]
+}

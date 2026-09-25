@@ -1,0 +1,115 @@
+{
+  "region": "gifu",
+  "regionLabel": "岐阜県",
+  "updatedAt": "2026-09-22",
+  "topics": [
+    {
+      "category": "jutaku",
+      "title": "岐阜県住宅リフォーム支援事業費補助金",
+      "officialUrl": "https://www.pref.gifu.lg.jp/page/483635.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "県レベル。工事費20%・上限60万円（対象経費50万円以上）。令和8年度分は予算上限到達で受付終了済みだが例年実施の県事業。既存記事は岐阜市の空き家取得改修（市レベル）のみで重複なし。問合せ: 岐阜県住宅課058-272-8693"
+    },
+    {
+      "category": "sogyo",
+      "title": "岐阜県スタートアップ支援補助金（スタートアップ等創業支援補助金／事業加速化補助金）",
+      "officialUrl": "https://www.pref.gifu.lg.jp/page/61575.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "県レベル。新規創業者向け上限200万円・補助率1/2（女性/障がい者2/3）、創業5年未満向け上限300万円・補助率1/2（女性2/3）。既存記事は岐阜市の創業スタートアップ認定融資（市レベル）のみで重複なし。産業イノベーション推進課058-272-8388。年度ごとに公募要領が更新されるため最新の募集ページを要確認。"
+    },
+    {
+      "category": "energy",
+      "title": "大垣市太陽光発電設備等設置費補助金（ゼロカーボンシティ推進設備設置事業補助金）",
+      "officialUrl": "https://www.city.ogaki.lg.jp/0000057462.html",
+      "authority": "municipality",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "大垣市（岐阜市以外の市町村）。太陽光: 7万円/kW・上限35万円。蓄電池: 価格の1/3・上限23.5万円（太陽光と同時設置限定）。令和8年5月1日～令和9年2月12日受付、予算消化次第終了。既存記事は岐阜市の家庭用蓄電池・省エネ家電補助（市レベル）のみで自治体重複なし。岐阜県は県独自の家庭用太陽光補助制度は実施していないことを確認済み。所管: 大垣市生活環境部環境政策課"
+    },
+    {
+      "category": "kaigo",
+      "title": "各務原市高齢者住宅改善の助成",
+      "officialUrl": "https://www.city.kakamigahara.lg.jp/kenkofukushi/koureisha/1002489/1002490.html",
+      "authority": "municipality",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "各務原市（岐阜市以外）。在宅要援護高齢者（65歳以上、寝たきり度ランクA/B/C相当、または要介護認知症）向け住宅バリアフリー化改修助成。生計中心者の前年度市民税課税年額93,000円以下が対象。助成限度額30万円、該当住宅につき原則1回限り。事前申請必須（見積書・写真添付）。WebFetchで公式ページ内容を直接確認済み。既存記事は岐阜市の緊急通報システム（市レベル）のみで重複なし。"
+    },
+    {
+      "category": "pet",
+      "title": "中津川市猫の不妊去勢手術支援事業補助金",
+      "officialUrl": "https://www.city.nakatsugawa.lg.jp/soshikikarasagasu/tiikidukurikyodoka/8/14838.html",
+      "authority": "municipality",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "中津川市（岐阜市以外）。市内在住者・自治会・動物愛護団体が対象。雌1匹上限6,000円・雄1匹上限4,000円。既存記事は岐阜市の猫不妊去勢（市レベル）のみで自治体重複なし。所管: 市民部地域づくり協働課0573-66-1111"
+    },
+    {
+      "category": "shogaisha",
+      "title": "大垣市障害者社会参加助成（タクシー券の交付・ガソリン代助成、リフトタクシー料金助成）",
+      "officialUrl": "https://www.city.ogaki.lg.jp/0000050980.html",
+      "authority": "municipality",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "大垣市（岐阜市以外）。在宅重度障がい者向けタクシー券／ガソリン代助成、身体・療育手帳提示でメーター1割引、リフトタクシー利用時は中型タクシーとの差額を1回上限5,000円で助成。既存記事は岐阜市のタクシー料金助成（市レベル）のみで自治体重複なし。県レベルでは「岐阜県障がい者福祉の手引」（pref.gifu.lg.jp/page/1415.html）が総合案内としてあるが、これは制度カタログであり単体の給付制度ではないため記事化対象は市町村実施の個別制度とする。"
+    },
+    {
+      "category": "kekkon",
+      "title": "池田町結婚新生活支援事業",
+      "officialUrl": "https://www.town.gifu-ikeda.lg.jp/0000002652.html",
+      "authority": "municipality",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "池田町（岐阜市以外、揖斐郡）。令和8年1月1日～令和9年3月31日婚姻届出夫婦対象、夫婦合算所得500万円未満。29歳以下上限60万円、30～39歳上限30万円。既存記事は岐阜市結婚新生活支援事業（市レベル）のみで自治体重複なし。所管: 池田町役場民生部子育て支援課0585-45-3111。県は内閣府交付金を活用し市町村事業に補助する立場（詳細: pref.gifu.lg.jp/page/221752.html）。"
+    },
+    {
+      "category": "shussan",
+      "title": "岐阜県第2子以降出産祝金事業",
+      "officialUrl": "https://www.pref.gifu.lg.jp/page/303230.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "rejected",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "令和7年度をもって事業終了が決定済み（各市町村サイトで終了告知を確認、例: 中津川市 city.nakatsugawa.lg.jp/soshikikarasagasu/kodomokateika/2/23888.html）。継続性なく記事化不可のためrejected。県全体の出産・子育て応援ギフト「ぎふっこギフト」も受付終了済み（令和7年11月30日）かつ国の地域少子化対策重点推進交付金ベースの時限事業であり同様の理由でrejected対象。"
+    },
+    {
+      "category": "kyoiku",
+      "title": "岐阜県高校生等奨学給付金（奨学のための給付金）",
+      "officialUrl": "https://www.pref.gifu.lg.jp/kyoiku/kennai-gakko/koto-gakko/17773/koukousei-syougakukyuuhu.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "県レベル。低所得世帯（道府県民税・市町村民税所得割非課税）の高校生等保護者向け給付金、返還不要。既存記事は岐阜市の就学援助（市レベル、義務教育段階）のみで対象学齢・制度が異なり重複なし。令和8年度実施継続を公式サイトで確認。"
+    }
+  ]
+}

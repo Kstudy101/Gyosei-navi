@@ -1,0 +1,115 @@
+{
+  "region": "nagasaki",
+  "regionLabel": "長崎県",
+  "updatedAt": "2026-09-22",
+  "topics": [
+    {
+      "category": "shussan",
+      "title": "東彼杵町 出産祝い金・育児報奨金",
+      "officialUrl": "https://www.town.higashisonogi.lg.jp/soshiki/kodomokenkouka/kosodateshien/5/732.html",
+      "authority": "municipality",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "長崎市は既にイーカオ出産・子育て応援ギフトで公開済みのため、県内他市町村として東彼杵町を提案。第1子10万円〜第5子以降40万円の出産祝金＋第3子以降の育児報奨金(1歳到達時10万円)という多子加算型が長崎市記事との差別化ポイント。"
+    },
+    {
+      "category": "jutaku",
+      "title": "長崎県 住宅リフォーム助成制度（県の助成制度／たまてばこ助成制度）",
+      "officialUrl": "https://www.pref.nagasaki.jp/bunrui/machidukuri/kenchiku-jutaku/houritu-kuninozyosei/tamatebako-zyoseiseido/",
+      "authority": "prefecture",
+      "confidence": "unconfirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "WebSearchでページ存在は確認したがWebFetchでの中身確認は未実施。県レベルの住宅リフォーム助成一覧ページとみられる。government-researcherによる原文確認が必要。長崎市jutakuは未公開のため、県レベル記事として提案。"
+    },
+    {
+      "category": "sogyo",
+      "title": "長崎県 事業承継促進・後継者事業展開支援補助金",
+      "officialUrl": "https://www.pref.nagasaki.jp/object/tetsuduki-shinsei/tetsuduki-shinseikankei/651166.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "長崎市は既に創業者成長支援補助金（sogyo）で公開済み。本件は県レベルの事業承継支援制度で対象・テーマが異なる（創業ではなく事業承継・後継者支援）ため差別化可能。令和8年度申請受付開始が確認できるプレスリリースあり。"
+    },
+    {
+      "category": "kaigo",
+      "title": "長崎県内市町村 高齢者住宅改造費助成（65歳以上・要介護非該当者向け、上限3万円等）",
+      "officialUrl": "",
+      "authority": "municipality",
+      "confidence": "unconfirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "長崎市は既に介護者慰労金（kaigo）で公開済み。検索では『65歳以上で要介護・要支援認定を受けていない高齢者の住宅改造費助成、上限3万円』という制度片鱗が見えたが、具体的な実施市町村・正式名称・公式URLを特定できず。次回リサーチで市町村を絞り込む必要あり。"
+    },
+    {
+      "category": "energy",
+      "title": "長崎県 自家消費型太陽光発電等導入補助金（再エネ交付金）",
+      "officialUrl": "https://www.pref.nagasaki.jp/doc/page-670825.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "長崎市は太陽光発電設備等導入補助金（市レベル）で公開済みだが、本件は県レベルの別制度（環境省の地域脱炭素移行・再エネ推進交付金を原資、自家消費型限定、5万円/kWまたは7万円/kW、蓄電池は費用1/3・上限100万円）。対象が事業者中心とみられ、市制度との差別化が明確。"
+    },
+    {
+      "category": "pet",
+      "title": "長崎県 いぬねこ不妊去勢手術推進キャンペーン",
+      "officialUrl": "https://www.pref.nagasaki.jp/bunrui/kurashi-kankyo/doubutsuaigo-pet/dobutsuaigo-goto/625752.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "長崎市は猫の不妊・去勢手術補助金（まちねこ不妊化推進事業）で公開済み。本件は県レベル制度で、公益社団法人日本動物福祉協会と連携した抽選制助成（1頭5,000円）という運営方式。行政の直接補助金と性質が異なる可能性があり、government-researcherによる原文確認で『補助金』としての要件充足性を要検証。"
+    },
+    {
+      "category": "shogaisha",
+      "title": "長崎県 障害者福祉関連補助制度（長崎県愛の福祉事業振興補助金 等）",
+      "officialUrl": "",
+      "authority": "prefecture",
+      "confidence": "unconfirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "WebSearch要約に『長崎県愛の福祉事業振興補助金』という名称が一度出現したが、公式URLをWebFetchで特定できず（404）。長崎市の重度身体障害者住宅改修助成事業や補装具費支給制度は市レベル制度で確認できたのみ。県レベル制度の実在・正式名称の再確認が必要。"
+    },
+    {
+      "category": "kyoiku",
+      "title": "長崎県公立高等学校等奨学給付金",
+      "officialUrl": "https://www.pref.nagasaki.jp/bunrui/kanko-kyoiku-bunka/gakkokyoiku/kyoikukankyo/koutougakkoutoushougakukyuufukin/shougakukyuufukin/",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "長崎市は既に就学援助（市レベル、kyoiku）で公開済み。本件は県レベルの高校生向け奨学給付金制度で対象学齢・所管が異なり差別化可能。令和8年度ページ・要綱PDFも確認できており原文調査の着手ポイントが明確。"
+    },
+    {
+      "category": "kekkon",
+      "title": "長崎県 結婚支援関連制度（婚活サポートセンター等、要再確認）",
+      "officialUrl": "",
+      "authority": "prefecture",
+      "confidence": "unconfirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "検索で『長崎県婚活サポートセンター』のページは見つかったが、これはマッチング支援であり金銭補助（結婚新生活支援事業等）ではない可能性が高い。WebFetchでもページ確認できず（404）。県または市町村レベルの結婚新生活支援事業（国庫補助活用型）の実在は次回WebSearchで要再確認。今回のWebSearch予算切れのため未確定のまま残す。"
+    }
+  ]
+}

@@ -1,0 +1,127 @@
+{
+  "region": "akita",
+  "regionLabel": "秋田県",
+  "updatedAt": "2026-09-24",
+  "topics": [
+    {
+      "category": "jutaku",
+      "title": "秋田県あきた安全安心住まい推進事業",
+      "officialUrl": "https://www.pref.akita.lg.jp/",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "published",
+      "articleSlug": "akita-anshin-sumai-suishin",
+      "foundAt": "2026-08-01",
+      "checkedAt": "2026-08-01",
+      "note": ""
+    },
+    {
+      "category": "sogyo",
+      "title": "秋田県起業支援事業費補助金（若者起業家応援枠・地域課題解決枠）",
+      "officialUrl": "https://www.pref.akita.lg.jp/pages/genre/14158",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "researched",
+      "articleSlug": "akita-kigyou-shien-hojokin",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-24",
+      "note": "地域課題解決枠は上限150万円・補助率1/2。問い合わせ先: 産業労働部新産業創造課 018-860-2225。令和8年度は4/1〜6/12募集の情報あり、最新年度の募集要項を要確認。"
+    },
+    {
+      "category": "kyoiku",
+      "title": "秋田県奨学金返還助成制度（あきた企業連携型含む）",
+      "officialUrl": "https://www.pref.akita.lg.jp/pages/archive/34797",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "基本枠は最大3年間60万円、あきた企業連携型（大学卒相当以上）は最大6年間120万円。県内就職者向け。問い合わせ: 人口戦略部移住・定住促進課 018-860-1248。"
+    },
+    {
+      "category": "kyoiku",
+      "title": "秋田県高校生等奨学給付金制度",
+      "officialUrl": "https://www.pref.akita.lg.jp/pages/archive/11051",
+      "authority": "prefecture",
+      "confidence": "unconfirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "低所得世帯の高校生向け返還不要の給付金（授業料以外の教育費対象）。令和8年度私立高校向けページを検索で確認したが金額詳細は原文調査で要確認。"
+    },
+    {
+      "category": "shussan",
+      "title": "（該当なし）秋田県独自の出産・子育て応援給付金は未確認",
+      "officialUrl": "",
+      "authority": "prefecture",
+      "confidence": "unconfirmed",
+      "status": "rejected",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "「妊婦のための支援給付」「出産・子育て応援交付金」は国制度で市町村窓口が実施主体。県独自の上乗せ給付は確認できず。市町村レベル（大潟村ogata-shussan-sapoto-hi-hojoは既published）以外の県レベル固有制度は要再調査。"
+    },
+    {
+      "category": "kaigo",
+      "title": "（該当なし）秋田県レベルの個人向け介護助成は未確認",
+      "officialUrl": "",
+      "authority": "prefecture",
+      "confidence": "unconfirmed",
+      "status": "rejected",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "秋田県介護テクノロジー活用支援事業費補助金は介護サービス事業所（法人）向けで個人給付ではないため対象外。個人向け介護リフォーム等の県独自助成は確認できず。"
+    },
+    {
+      "category": "energy",
+      "title": "（該当なし）秋田県統一の太陽光・蓄電池補助金は未確認",
+      "officialUrl": "",
+      "authority": "prefecture",
+      "confidence": "unconfirmed",
+      "status": "rejected",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "県レベルで統一実施している個人向け太陽光・蓄電池補助は確認できず。鹿角市・秋田市など市町村単位で個別実施（大潟村ogata-taiyoko-chikudenchi-hojoは既published）。他市町村は個別に再調査余地あり。"
+    },
+    {
+      "category": "pet",
+      "title": "（該当なし）秋田県レベルの不妊・去勢手術助成は未確認",
+      "officialUrl": "",
+      "authority": "prefecture",
+      "confidence": "unconfirmed",
+      "status": "rejected",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "環境省の古い統計（2013年時点）以外に現行の県レベル制度を公式サイトで確認できず。動物愛護センター（ワンニャピアあきた）のページにも助成金の記載なし。市町村レベルで別途調査要。"
+    },
+    {
+      "category": "shogaisha",
+      "title": "（要再調査）秋田市身体障害者タクシー利用券は市レベル",
+      "officialUrl": "https://www.pref.akita.lg.jp/pages/archive/8442",
+      "authority": "municipality",
+      "confidence": "unconfirmed",
+      "status": "rejected",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "確認できたのは秋田市（市レベル）のタクシー利用券のみで、県レベル統一制度ではない。県として扱うカテゴリでは対象外。秋田市を独立地域として扱う場合に再調査候補。"
+    },
+    {
+      "category": "kekkon",
+      "title": "（該当なし）秋田県統一の結婚新生活支援補助金は未確認",
+      "officialUrl": "",
+      "authority": "prefecture",
+      "confidence": "unconfirmed",
+      "status": "rejected",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "結婚新生活支援事業費補助金は市町村ごとに実施（秋田市・三種町など）で県統一制度ではない。「すこやかあきた出会い応援隊補助金」は地域団体向けで個人給付ではないため対象外。"
+    }
+  ]
+}

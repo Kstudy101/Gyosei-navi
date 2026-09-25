@@ -1,0 +1,151 @@
+{
+  "region": "hyogo",
+  "regionLabel": "兵庫県",
+  "updatedAt": "2026-09-22",
+  "topics": [
+    {
+      "category": "jutaku",
+      "title": "ひょうご住まいの耐震化促進事業",
+      "officialUrl": "https://web.pref.hyogo.lg.jp/ks29/wd30_000000017.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "昭和56年5月以前の旧耐震基準木造住宅が対象。耐震改修工事費補助・簡易耐震改修補助・耐震シェルター/防災ベッド補助など複数メニュー。令和8年度は豪雪地域向け加算あり。申請窓口は各市町（補助内容は市町ごとに上乗せ差あり）。既published記事は神戸市すみかえーる（jutaku, 別制度）のみで、県レベルの耐震化促進事業は未着手。"
+    },
+    {
+      "category": "jutaku",
+      "title": "人生いきいき住宅助成事業",
+      "officialUrl": "https://web.pref.hyogo.lg.jp/ks18/wd20_000000115.html",
+      "authority": "prefecture",
+      "confidence": "unconfirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "検索結果のタイトルから高齢者・障害者向け住宅改修助成と推測されるが、対象・補助額は原文未調査。government-researcherでの一次確認が必要。"
+    },
+    {
+      "category": "sogyo",
+      "title": "起業家支援事業（一般事業枠・ふるさと枠・若者枠・社会的事業枠）",
+      "officialUrl": "https://web.pref.hyogo.lg.jp/sr10/kigyouippann.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "令和8年度募集ページ（https://web.pref.hyogo.lg.jp/sr10/press/20260417.html）で複数枠の同時募集を確認。ふるさと枠はUJIターン起業家向け（https://web.pref.hyogo.lg.jp/sr10/furusatokigyou.html）。既published記事は神戸市・姫路市の市レベル創業支援のみで、県の起業家支援事業は未着手。枠ごとに記事を分けるか一本化するかは執筆時に判断。"
+    },
+    {
+      "category": "kaigo",
+      "title": "介護分野・障害福祉分野 就職支援金（兵庫県社会福祉協議会）",
+      "officialUrl": "https://www.hyogo-wel.or.jp/work/care-shushokushien.php",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "他業種から介護・障害福祉分野へ転職する個人向けの返還免除型貸付金。県内事業所で2年以上（730日以上・360日以上稼働）勤務で全額返還免除。運営は兵庫県社会福祉協議会（県補助事業）。類似制度に「介護職員等 再就職準備金」（https://hyogo-wel.or.jp/work/care-saishushoku.php）もあり、あわせて要検討。"
+    },
+    {
+      "category": "energy",
+      "title": "令和8年度自家消費型住宅用太陽光発電設備等導入補助事業",
+      "officialUrl": "https://web.pref.hyogo.lg.jp/nk19/juutakuyouhojo.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "個人住宅向け太陽光発電（自家消費型）の導入補助。環境省の地域脱炭素移行・再エネ推進交付金を活用。既published記事は神戸市FCV普及促進のみで、太陽光関連の県制度は未着手。県内市町での上乗せ有無は原文調査で確認要。"
+    },
+    {
+      "category": "energy",
+      "title": "家庭における省エネ支援事業（蓄電システム等導入補助）",
+      "officialUrl": "https://web.pref.hyogo.lg.jp/nk24/battery.html",
+      "authority": "prefecture",
+      "confidence": "unconfirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "ひょうご環境創造協会が窓口の家庭用蓄電システム補助と推測。実施主体（県直営か公益財団法人委託か）・補助額は原文未調査。太陽光発電設備等導入補助事業との重複整理が必要。"
+    },
+    {
+      "category": "kyoiku",
+      "title": "兵庫型奨学金返済支援事業",
+      "officialUrl": "https://web.pref.hyogo.lg.jp/sr04/shogakukin.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "中小企業に勤務する若手従業員の奨学金返済を、企業と県が連携して支援。年間返済額の1/3・上限6万円/人年を県が企業へ補助（従業員本人への直接給付ではなく企業経由）。既published記事は神戸市・姫路市の就学援助のみで、県レベルの奨学金返済支援は未着手。制度の受給主体（個人か企業か）を執筆前に要確認。"
+    },
+    {
+      "category": "kyoiku",
+      "title": "兵庫県私立高等学校等奨学給付金",
+      "officialUrl": "https://web.pref.hyogo.lg.jp/kk35/shougakukyuuhukinn.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "私立高校等在学生の授業料以外の教育費を支援する返還不要の給付金。生活保護世帯15.2万円、非課税世帯5.26万円（全日制の場合）。国の高校生等奨学給付金制度の県実施分。"
+    },
+    {
+      "category": "kekkon",
+      "title": "結婚に伴う新生活支援事業費補助金",
+      "officialUrl": "https://web.pref.hyogo.lg.jp/kf11/kekkonnshien.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "こども家庭庁の地域少子化対策重点推進交付金を活用し、県が実施市町へ補助。世帯所得500万円未満・夫婦とも39歳以下が対象、上限は29歳以下夫婦60万円/それ以外30万円。令和7年度は県内26市町が実施。既published記事は姫路市の結婚新生活支援（市単独記事）のみ。県全体の制度解説記事として差別化可能（対象26市町の一覧的価値）。"
+    },
+    {
+      "category": "shogaisha",
+      "title": "重度障害者医療費助成事業",
+      "officialUrl": "https://web.pref.hyogo.lg.jp/kf07/hw06_000000006.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "重度障害者の医療費自己負担額の一部を助成する県制度（県・市町の共同事業が一般的）。既published記事は神戸市の福祉タクシーのみで、医療費助成は未着手。対象等級・所得制限は原文未調査。"
+    },
+    {
+      "category": "shussan",
+      "title": "（未確認）兵庫県独自の出産費用上乗せ給付",
+      "officialUrl": "",
+      "authority": "prefecture",
+      "confidence": "unconfirmed",
+      "status": "rejected",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "検索した限り、出産育児一時金・妊婦のための支援給付金はいずれも国制度を市町（神戸市・姫路市など）が窓口実施しているもので、県独自の上乗せ給付は確認できず。県レベル固有の出産費用助成制度は見当たらないためrejectedとする。"
+    },
+    {
+      "category": "pet",
+      "title": "（未確認）兵庫県レベル統一の犬猫不妊去勢助成",
+      "officialUrl": "",
+      "authority": "prefecture",
+      "confidence": "unconfirmed",
+      "status": "rejected",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "不妊去勢手術費助成は稲美町など市町単位で個別実施されており、県が統一実施する制度は確認できず。兵庫県動物愛護センターのページにも助成金の記載なし。市町村単位（神戸市・姫路市は既published）で個別調査する方針が妥当。"
+    }
+  ]
+}

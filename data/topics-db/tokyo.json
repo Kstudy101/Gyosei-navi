@@ -1,0 +1,115 @@
+{
+  "region": "tokyo",
+  "regionLabel": "東京都",
+  "updatedAt": "2026-09-22",
+  "topics": [
+    {
+      "category": "shussan",
+      "title": "三鷹市 妊婦のための支援給付事業",
+      "officialUrl": "https://www.city.mitaka.lg.jp/c_service/100/100271.html",
+      "authority": "municipality",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "三鷹市(13204)は regions.ts 未登録。既存記事は妊婦支援給付を23区中心に多数カバー済み(足立・板橋・葛飾・荒川・北・立川・青梅・江戸川・豊島・中野・杉並・大田)だが多摩地域は未着手。国基準+市独自上乗せの有無は原文調査で要確認。"
+    },
+    {
+      "category": "jutaku",
+      "title": "三鷹市 木造住宅耐震改修工事等助成制度",
+      "officialUrl": "https://www.city.mitaka.lg.jp/c_service/001/001355.html",
+      "authority": "municipality",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "三鷹市(13204)は regions.ts 未登録。耐震改修は上限64万1千円、障がい者・高齢者世帯は補助率1/2、その他世帯1/3(上限50万円)との検索結果あり。武蔵野市『安心パック』『納得コース』(上限100万円)、町田市の耐震化助成制度も候補になりうる(東京都耐震ポータルサイトで一覧確認可)。"
+    },
+    {
+      "category": "sogyo",
+      "title": "武蔵野市 創業・起業支援事業(利子補給・信用保証料補助)",
+      "officialUrl": "https://www.city.musashino.lg.jp/kurashi_tetsuzuki/shigoto_sangyo/shoko/1033988.html",
+      "authority": "municipality",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "武蔵野市(13203)は regions.ts 未登録。創業前・創業後1年以内の中小規模事業者向け融資あっせん+利子補給+信用保証料一部補助。商店会活性出店支援金(空き店舗出店、20万/30万円)も同市の併記候補。既存記事は23区+立川・青梅中心のため多摩地域では新規。"
+    },
+    {
+      "category": "kaigo",
+      "title": "町田市在宅高齢者紙おむつ支給事業",
+      "officialUrl": "https://www.city.machida.tokyo.jp/iryo/old/shiminnokatae/seikatsukurashi/zaitaku/kamiomutushikyu.html",
+      "authority": "municipality",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "町田市(13209)は regions.ts 未登録。65歳以上・市内在住・市民税非課税世帯が対象、年4回配送。既存記事は23区+立川・青梅の紙おむつ支給を多数カバー済みだが町田市は未着手。"
+    },
+    {
+      "category": "energy",
+      "title": "府中市 エコハウス設備設置費助成金交付事業",
+      "officialUrl": "https://www.city.fuchu.tokyo.jp/kurashi/sekatu/datsutanso_ondanka/ekohausu.html",
+      "authority": "municipality",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "府中市(13206)は regions.ts 未登録。太陽光(1kWあたり2万円・上限10万円)、蓄電池、エネファーム、雨水浸透施設等を対象、令和8年4月6日受付開始・工事完了後申請。既存energy記事は23区+一部政令市中心のため多摩地域は未着手。"
+    },
+    {
+      "category": "pet",
+      "title": "調布市 飼い主のいない猫の不妊・去勢手術費補助金",
+      "officialUrl": "https://www.city.chofu.lg.jp/070010/p039228.html",
+      "authority": "municipality",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "調布市(13208)は regions.ts 未登録。地域猫活動(TNR)連携、どうぶつ基金『さくらねこ無料不妊手術事業』とも連携。令和8年度の具体的金額は原文で要確認(令和7年度実績はサイト確認済み)。既存pet記事は23区+京都市・名古屋市等政令市中心のため多摩地域は未着手。"
+    },
+    {
+      "category": "shogaisha",
+      "title": "八王子市 心身障害者タクシー・自動車ガソリン費助成事業",
+      "officialUrl": "https://www.city.hachioji.tokyo.jp/kurashi/welfare/005/007/001/p004204.html",
+      "authority": "municipality",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "八王子市(13201)は regions.ts 未登録。身体障害者手帳1・2級等が対象、月8枚(視覚障害者は月12枚、1枚300円券)、令和6年度から所得制限あり。既存shogaisha記事は23区+名古屋市・神戸市等のタクシー券助成を複数カバー済みだが八王子市は未着手、差別化として所得制限導入という制度改定点がある。"
+    },
+    {
+      "category": "kyoiku",
+      "title": "小金井市 奨学資金制度(給付型)",
+      "officialUrl": "https://www.city.koganei.lg.jp/kosodatekyoiku/gakkou-kyouiku/syuugakuenjoseido/8shogaku.html",
+      "authority": "municipality",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "小金井市(13210)は regions.ts 未登録。高校・大学等在学中で成績優秀かつ経済的に修学困難な生徒対象、返還不要の給付型。既存kyoiku記事は23区中心の就学援助(就学困難家庭向け学用品費等)が主で、小金井市の給付型奨学金は対象・性格が異なり差別化ポイントになる。"
+    },
+    {
+      "category": "kekkon",
+      "title": "多摩市 結婚新生活支援事業",
+      "officialUrl": "https://www.city.tama.lg.jp/0000002308.html",
+      "authority": "municipality",
+      "confidence": "unconfirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "多摩市(13224)は regions.ts 未登録。検索結果で上限60万円(または一部情報源で30万円)との記載があり金額に揺れがあるため要原文確認。既存kekkon記事は東京都内で千代田区・立川市・青梅市の3件のみと手薄なカテゴリ。稲城市も同事業対象自治体として言及あり、こちらも代替候補。"
+    }
+  ]
+}

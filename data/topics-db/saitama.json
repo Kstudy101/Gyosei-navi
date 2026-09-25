@@ -1,0 +1,115 @@
+{
+  "region": "saitama",
+  "regionLabel": "埼玉県",
+  "updatedAt": "2026-09-22",
+  "topics": [
+    {
+      "category": "shussan",
+      "title": "埼玉県早期不妊検査費・不育症検査費助成事業（新ウェルカムベイビープロジェクト関連事業）",
+      "officialUrl": "https://www.pref.saitama.lg.jp/a0704/boshi/welcome_baby.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "埼玉県が制度設計・財源を持つが、申請窓口は各市町村。助成額は検査開始時35歳未満3万円/それ以外2万円、不育症検査は上限2万円。要件は実施市町村により異なる場合がある旨に注意。さいたま市/川口市/越谷市の既存記事とは別軸（県主体の制度概要記事として差別化可能）。"
+    },
+    {
+      "category": "jutaku",
+      "title": "埼玉県窓断熱リフォーム支援事業",
+      "officialUrl": "https://madoeco-saitama.jp/",
+      "authority": "prefecture",
+      "confidence": "unconfirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "国の先進的窓リノベ2026事業/みらいエコ住宅2026事業に県が上乗せ補助（国交付額の1/2、国+県で工事費9割上限）。2026年度は予算1.5億円が2026年7月末に先着順で予算枠終了（募集終了）と報道多数。令和9年度以降の再開有無は要一次情報確認。記事化する場合は「終了」明記必須、または次年度予算化を待つ判断が必要。"
+    },
+    {
+      "category": "sogyo",
+      "title": "埼玉県中小企業DX導入支援補助金",
+      "officialUrl": "https://dxdounyushienhozyo.pref.saitama.lg.jp/",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "創業specificではなく県内中小企業のDXツール導入費補助（7.5万円〜300万円、対象経費10万円〜400万円）。令和8年度は第1〜3期公募制、第3期は2026年9月1日〜30日。sogyoカテゴリの『事業者向け制度』に該当するが創業補助金そのものではない点に留意。さいたま市/川口市/越谷市の創業支援金記事とは対象が異なる（県内中小企業全般 vs 市の創業者向け）。"
+    },
+    {
+      "category": "kaigo",
+      "title": "（該当制度未確認：県が個人・道民向けに直接給付する介護リフォーム/高齢者向け助成金）",
+      "officialUrl": "",
+      "authority": "prefecture",
+      "confidence": "unconfirmed",
+      "status": "rejected",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "pref.saitama.lg.jpで確認できた介護関連補助金は介護施設整備費補助・介護人材確保補助など事業所向けのみ。個人（高齢者・家族）向けの住宅改修助成や紙おむつ給付は市町村（さいたま市・川口市・越谷市等）が主体で県直接実施は未確認。県レベルでの個人向け給付制度は見つからず。"
+    },
+    {
+      "category": "energy",
+      "title": "埼玉県家庭における省エネ・再エネ活用設備導入補助金（太陽光発電・蓄電池・エネファーム等）",
+      "officialUrl": "https://www.pref.saitama.lg.jp/a0503/hojyokin2.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "太陽光発電7万円/kW(上限35万円、蓄電池同時設置必須)、太陽熱利用システム補助対象経費2/3(上限20万円)、蓄電池10万円/件、エネファーム5万円/件。令和8年度は2026年5月18日〜2027年1月29日先着順受付中（2026年9月22日時点で受付継続中の可能性が高いが要最新確認）。さいたま市のEV普及促進補助とは対象設備が異なり重複しない。"
+    },
+    {
+      "category": "pet",
+      "title": "（該当制度未確認：埼玉県が一般飼い主向けに直接給付する犬猫不妊去勢助成金）",
+      "officialUrl": "https://www.pref.saitama.lg.jp/a0706/suisinninn-hojo.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "rejected",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "「彩の国動物愛護推進員活動補助事業」は埼玉県知事委嘱のボランティア（動物愛護推進員）のみが申請可能で、一般飼い主は対象外（公式ページで明記）。さいたま市の飼い猫向け不妊去勢助成（saitama-shi-neko-funinkyosei）のような個人向け給付とは性質が異なるため、県レベルの一般道民向け制度としては該当なしと判定。"
+    },
+    {
+      "category": "shogaisha",
+      "title": "（該当制度未確認：埼玉県が直接実施主体となる個人向け給付制度）",
+      "officialUrl": "https://www.pref.saitama.lg.jp/a0604/hosougu.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "rejected",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "補装具費支給制度・日常生活用具給付は障害者総合支援法上、実施主体は市町村（さいたま市・川口市・越谷市等）。埼玉県は案内・広域調整のみで直接給付は行っていない。県総合リハビリテーションセンターも判定業務が中心で給付主体ではない。県レベルでの新規候補は見つからず。"
+    },
+    {
+      "category": "kyoiku",
+      "title": "埼玉県私立高等学校等奨学のための給付金事業",
+      "officialUrl": "https://www.pref.saitama.lg.jp/a0204/kyuhukin.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "返済不要の給付型。所得区分に応じ月額5,000円〜35,500円（専門学科は別基準）。埼玉県総務部学事課所管。令和7年度一般申請は2026年11月6日締切。さいたま市の進学支援金(saitama-shi-shingaku-shienkin)・夢支援(saitama-shi-yume-shien)とは対象（私立高校生の保護者）・所管が異なり重複しない。"
+    },
+    {
+      "category": "kekkon",
+      "title": "（該当制度未確認：埼玉県が直接実施する結婚新生活支援事業）",
+      "officialUrl": "https://www.pref.saitama.lg.jp/kenko/fukushi/kekkon/index.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "rejected",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "結婚新生活支援事業（国の地域少子化対策重点推進交付金活用）は埼玉県内では各市町村が個別に実施主体（川口市など）。埼玉県自体が道民に直接補助金を給付する制度は確認できず、県公式サイトも『各市町にお問合せください』と案内するのみ。県レベルの新規候補なし。"
+    }
+  ]
+}

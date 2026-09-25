@@ -1,0 +1,151 @@
+{
+  "region": "aomori",
+  "regionLabel": "青森県",
+  "updatedAt": "2026-09-22",
+  "topics": [
+    {
+      "category": "shussan",
+      "title": "青森県子ども・子育て世帯応援金",
+      "officialUrl": "https://www.pref.aomori.lg.jp/soshiki/kenko/kodomo/kosodateoenkin.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "児童1人につき30,000円給付。既存記事は青森市の妊婦支援給付のみなので県レベルは差別化になる。"
+    },
+    {
+      "category": "shussan",
+      "title": "あおもり米子育て応援事業",
+      "officialUrl": "https://www.pref.aomori.lg.jp/release/2025/79537.html",
+      "authority": "prefecture",
+      "confidence": "unconfirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "対象児童1人につき電子クーポン1万円分等。プレスリリースのみ確認、事業詳細ページ未確認。"
+    },
+    {
+      "category": "jutaku",
+      "title": "青森県医療・福祉職子育て世帯移住支援金",
+      "officialUrl": "https://www.pref.aomori.lg.jp/soshiki/kenko/kkenkofu/aomori_iryohukusi_sienkin.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "医療・福祉職資格を持つ子育て世帯の県内移住を支援。既存記事は青森市の木造耐震改修のみで県の移住支援金は未着手。"
+    },
+    {
+      "category": "jutaku",
+      "title": "あおもり移住支援事業（東京圏からの移住・就業支援金）",
+      "officialUrl": "https://www.pref.aomori.lg.jp/soshiki/kodomo/wakamono/ijyuusiennkinn.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "東京圏から青森への移住・就業で最大100万円。地方創生交付金活用の全国共通型だが県ページで実在確認済み。"
+    },
+    {
+      "category": "sogyo",
+      "title": "青森県スタートアップ補助金（創業促進事業費補助金等）",
+      "officialUrl": "https://www.pref.aomori.lg.jp/soshiki/sangyo/richi/support_for_entrepreneurs.html",
+      "authority": "prefecture",
+      "confidence": "unconfirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "県内創業・起業支援制度一覧PDF（R8年度版）に複数の補助金が掲載されている。個別制度名・要件はresearcher段階で一覧PDFから確定が必要。既存記事は青森市の創業連携融資のみ。"
+    },
+    {
+      "category": "kekkon",
+      "title": "青森県内市町村の結婚新生活支援事業（地域少子化対策重点推進交付金活用）",
+      "officialUrl": "https://www.pref.aomori.lg.jp/soshiki/kenko/kodomo/chiikisyoushika_taisaku.html",
+      "authority": "municipality",
+      "confidence": "unconfirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "県が直接個人に給付する事業ではなく、県内市町村が国交付金を活用して各自実施する枠組みの可能性が高い（個別ページkekkonshinseikatu.htmlは404で確認不可）。researcherは実施市町村を特定した上で県ページではなく市町村ページを一次資料とすること。"
+    },
+    {
+      "category": "energy",
+      "title": "青森県住宅用太陽光発電設備等共同購入事業『みんなのおうちに太陽光』",
+      "officialUrl": "https://www.pref.aomori.lg.jp/soshiki/kankyo/energy/group_purchase.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "所管：環境エネルギー部エネルギー・脱炭素政策課。既存記事は青森市の太陽光蓄電池補助のみ、県の共同購入事業は差別化になる。ただし「補助金」ではなく共同購入価格スキームなので給付制度記事として成立するか要検討。"
+    },
+    {
+      "category": "energy",
+      "title": "青森県事業用自家消費型太陽光発電設備等導入支援事業費補助金",
+      "officialUrl": "https://www.pref.aomori.lg.jp/soshiki/sangyo/chikikigyo/jigyouyoutaiyoukouhojyo.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "中小企業50,000円/kW（上限500万円）等。事業者向けのためsogyoカテゴリとの重複整理が必要だが、taxonomy上はenergyのseedKeywordに合致。"
+    },
+    {
+      "category": "pet",
+      "title": "青森県動物愛護センター 地域猫活動支援（不妊去勢手術費無料）",
+      "officialUrl": "https://www.aomori-animal.jp/soudan_chiikineko.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "青森市・八戸市（中核市）は対象外、それ以外の県内地域が対象。既存記事は青森市の猫不妊去勢手術費補助のみなので県センターの地域猫支援は差別化になる。"
+    },
+    {
+      "category": "kyoiku",
+      "title": "青森県国公立高校生等奨学のための給付金",
+      "officialUrl": "https://www.pref.aomori.lg.jp/soshiki/kyoiku/e-shisetsu/shougakukyuufukin.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "国公立高校生対象、年額32,300〜143,700円（世帯所得・課程により変動）。既存記事は青森市の就学援助のみで県の給付型奨学金は差別化になる。"
+    },
+    {
+      "category": "kaigo",
+      "title": "（該当制度なし）",
+      "officialUrl": "",
+      "authority": "prefecture",
+      "confidence": "unconfirmed",
+      "status": "rejected",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "県レベルで個人（高齢者本人）向けの住宅改修助成・用具給付は見つからず。介護保険の住宅改修費は市町村が保険者として実施する国の制度であり県独自制度ではない。県が実施するのは介護事業者向け補助金（サービス継続支援・介護ロボット導入支援等）で対象が事業者のため個人向け給付制度記事のカテゴリ趣旨と不一致。次回は市町村単位で再探索を検討。"
+    },
+    {
+      "category": "shogaisha",
+      "title": "（該当制度なし）",
+      "officialUrl": "",
+      "authority": "prefecture",
+      "confidence": "unconfirmed",
+      "status": "rejected",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "補装具費支給・日常生活用具給付は障害者総合支援法に基づき市町村が実施主体（青森市の記事は既に公開済み）。県が個人に直接給付する制度は確認できず（特別障害者手当・障害児福祉手当は国の法定制度で県は事務のみ）。県独自の個人向け給付制度は未確認のため今回はrejectedとし、次回は他市町村単位での探索を検討。"
+    }
+  ]
+}

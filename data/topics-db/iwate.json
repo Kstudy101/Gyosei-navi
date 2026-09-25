@@ -1,0 +1,127 @@
+{
+  "region": "iwate",
+  "regionLabel": "岩手県",
+  "updatedAt": "2026-09-22",
+  "topics": [
+    {
+      "category": "shussan",
+      "title": "盛岡市多子世帯支援給付金（第3子以降10万円）",
+      "officialUrl": "https://www.city.morioka.iwate.jp/",
+      "authority": "municipality",
+      "confidence": "unconfirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "盛岡市が第3子以降に独自10万円給付との検索結果あり。県レベルの独自出産祝い金は確認できず、全国共通の妊婦のための支援給付のみ。government-researcherが盛岡市公式ページで詳細金額・要件を要確認。"
+    },
+    {
+      "category": "jutaku",
+      "title": "いわて木づかい住宅普及促進事業",
+      "officialUrl": "https://www.pref.iwate.jp/sangyoukoyou/ringyou/mokuzai/1042069/index.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "県産木材を使用した新築・リフォームへの補助（基本10万〜15万円＋子育て世帯等加算5万〜10万円）。岩手県農林水産部林業振興課所管、県内公式ページで実在確認済み。新規地域（岩手県）最初の記事候補。"
+    },
+    {
+      "category": "jutaku",
+      "title": "山田町移住定住促進リフォーム補助金交付事業",
+      "officialUrl": "https://www.town.yamada.iwate.jp/docs/2192.html",
+      "authority": "municipality",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "移住者向けリフォーム補助（補助率50%、上限100万円）。山田町公式ページで実在確認済み。県レベル記事とは別に市町村クラスター候補。"
+    },
+    {
+      "category": "sogyo",
+      "title": "岩手県地方創生起業支援金",
+      "officialUrl": "https://www.startup-iwate.pref.iwate.jp/support_list/1670/",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "地域課題解決型デジタル起業等に最大200万円（1/2以内）。岩手県商工観光部経営支援課所管、公式ページで実在確認済み。"
+    },
+    {
+      "category": "kaigo",
+      "title": "岩手県高齢者住宅バリアフリー改修費補助（住宅建設及びリフォーム関連支援制度内）",
+      "officialUrl": "https://www.pref.iwate.jp/kurashikankyou/kenchiku/kojin/hojo/1010288.html",
+      "authority": "prefecture",
+      "confidence": "unconfirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "要介護者・下肢体幹障害3級以上向けバリアフリー改修に工事費2/3（上限110万円から介護保険支給額控除）との検索結果あり。制度の正式名称・要件はgovernment-researcherが県公式ページ原文で要確認（検索結果はまとめサイト経由のため未確認扱い）。"
+    },
+    {
+      "category": "energy",
+      "title": "令和8年度事業者向けEV等導入事業費補助金",
+      "officialUrl": "https://www.pref.iwate.jp/kurashikankyou/gx/ontai/1067112.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "県内中小事業者向け、太陽光発電設備・EV・充放電設備セット導入への補助。岩手県公式ページで実在確認済み。事業者向けのため個人向け太陽光補助（市町村独自）とは別枠、記事化時は対象読者に注意。"
+    },
+    {
+      "category": "pet",
+      "title": "岩手県獣医師会 犬猫不妊・去勢手術助成事業",
+      "officialUrl": "https://www.aiinanpo.org/info/20260725_56110/",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "岩手県内飼育の犬猫・地域ねこ対象、不妊5,000円／去勢2,000円。実施主体は一般社団法人岩手県獣医師会（県獣医師会サイトで実在確認）。行政直営ではないため、記事化時に実施主体の表記に注意。"
+    },
+    {
+      "category": "shogaisha",
+      "title": "岩手県重度心身障がい者医療費助成制度",
+      "officialUrl": "https://www.pref.iwate.jp/kurashikankyou/iryou/seido/iryohoken/1002960.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "身体障害者手帳1・2級等対象、医療費自己負担相当額助成（入院月5,000円・外来月1,500円上限、3歳未満は負担なし）。岩手県保健福祉部健康国保課所管、公式ページで実在確認済み。"
+    },
+    {
+      "category": "kyoiku",
+      "title": "岩手県公立高等学校生徒等奨学給付金",
+      "officialUrl": "https://i-land.pref.iwate.jp/archives/284",
+      "authority": "prefecture",
+      "confidence": "unconfirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "道府県民税・市町村民税所得割非課税世帯対象の返済不要給付金。検索結果（i-land.pref.iwate.jp掲載）はまとめ記事の可能性があり、government-researcherが岩手県教育委員会公式ページで原文確認要。"
+    },
+    {
+      "category": "kekkon",
+      "title": "岩手県結婚新生活支援事業（市町村連携型）",
+      "officialUrl": "https://i-land.pref.iwate.jp/archives/162",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "夫婦ともに39歳以下世帯に上限30万円、29歳以下世帯に上限70万円（住宅費・引越費用等）。県内30市町村が実施。国の結婚新生活支援事業を活用した県内広域制度、岩手県公式ページ（i-land）で実在確認済み。新規地域最初の記事候補。"
+    }
+  ]
+}

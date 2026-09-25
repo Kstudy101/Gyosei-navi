@@ -1,0 +1,163 @@
+{
+  "region": "fukui",
+  "regionLabel": "福井県",
+  "updatedAt": "2026-09-22",
+  "topics": [
+    {
+      "category": "shussan",
+      "title": "福井県 妊婦のための支援給付（妊婦支援給付金：出産応援給付金・子育て応援給付金）",
+      "officialUrl": "https://www.pref.fukui.lg.jp/doc/kodomo/syussankosodateouengihuto.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "researched",
+      "articleSlug": "fukui-ninpu-shien-kyufu",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "県内市町共通制度。出産応援5万円分＋子育て応援5万円分。市町ごとの申請窓口URLは福井市等で個別に確認要。"
+    },
+    {
+      "category": "jutaku",
+      "title": "福井市 一戸建て木造住宅の耐震改修等工事・除却工事に対する補助制度",
+      "officialUrl": "https://www.city.fukui.lg.jp/kurasi/jutaku/kentikubutu/taisinkaisyu.html",
+      "authority": "municipality",
+      "confidence": "confirmed",
+      "status": "researched",
+      "articleSlug": "fukui-jutaku-taishin-kaishuu",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "耐震診断で補強要と判定された木造住宅の耐震改修工事に対する補助。原文確認済み：耐震改修上限140万円（高齢者世帯等175万円）。120万円は誤情報のため不使用。"
+    },
+    {
+      "category": "jutaku",
+      "title": "福井県 木造住宅の耐震化に関する補助制度",
+      "officialUrl": "https://www.pref.fukui.lg.jp/doc/kenchikujyuutakuka/mokuzoutaishinkaisyuu.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "県主導の耐震化補助枠組み。市町の窓口経由。福井市個別記事と差別化するなら県全体制度として整理。"
+    },
+    {
+      "category": "jutaku",
+      "title": "福井県 県産材を活用したふくいの住まい支援事業（リフォーム補助）",
+      "officialUrl": "https://www.pref.fukui.lg.jp/doc/kensanzai/reform.html",
+      "authority": "prefecture",
+      "confidence": "unconfirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "令和8年度事業。県産材活用の住宅新築・リフォーム支援。詳細要件は原文未確認。"
+    },
+    {
+      "category": "sogyo",
+      "title": "福井県 福井型スタートアップ創出支援事業補助金",
+      "officialUrl": "https://www.pref.fukui.lg.jp/doc/sinsan/sougyou.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "県内起業・UIターン者向け補助率2/3以内・上限100万円。学生は10/10・上限100万円の別枠あり。"
+    },
+    {
+      "category": "sogyo",
+      "title": "福井県商工会連合会 新規創業支援事業補助金",
+      "officialUrl": "https://www.shokokai-fukui.or.jp/sogyoshienhojokinjigyo",
+      "authority": "prefecture",
+      "confidence": "unconfirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "商工会連合会運営。補助率2/3以内・上限20万円との情報あり。原文で実施主体（県か商工会連合会単独か）要確認。"
+    },
+    {
+      "category": "kaigo",
+      "title": "福井市 すこやか介護用品支給事業（紙おむつ等支給）",
+      "officialUrl": "https://www.city.fukui.lg.jp/fukusi/kaigo/service/p012644.html",
+      "authority": "municipality",
+      "confidence": "confirmed",
+      "status": "researched",
+      "articleSlug": "fukui-sukoyaka-kaigoyohin",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "要介護高齢者向け介護用品（紙おむつ等）を月1回配達、自己負担分あり。坂井市にも同種事業（すこやか介護用品支給申請）あり。"
+    },
+    {
+      "category": "energy",
+      "title": "福井県 住宅の太陽光・蓄電池設備導入促進事業補助金",
+      "officialUrl": "https://www.pref.fukui.lg.jp/doc/dengen/shin-energy/fukui-zyutakutaiyokou.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "researched",
+      "articleSlug": "fukui-jutaku-taiyoko-chikuden",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "住宅向け太陽光発電・蓄電池導入補助。企業向けの別枠（fukui-taiyokou.html）も存在。"
+    },
+    {
+      "category": "pet",
+      "title": "福井市 飼い主のいない猫の不妊去勢手術費助成",
+      "officialUrl": "https://www.city.fukui.lg.jp/kurasi/kaiinu/dog/012921.html",
+      "authority": "municipality",
+      "confidence": "confirmed",
+      "status": "researched",
+      "articleSlug": "fukui-noraneko-hunin-kyosei",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "令和8年度原文で確認: オス8,000円・メス10,000円（令和6年度と同額）。事前申請型、飼い猫は対象外。"
+    },
+    {
+      "category": "shogaisha",
+      "title": "坂井市 障害福祉タクシー料金助成",
+      "officialUrl": "http://www.city.fukui-sakai.lg.jp/shakai-fukushi/kenko/fukushi/shogaisha/josei/kotsu/taxi.html",
+      "authority": "municipality",
+      "confidence": "confirmed",
+      "status": "researched",
+      "articleSlug": "sakai-shi-shogaisha-taxi",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "在宅の自動車運転不可な重度障がい者向けタクシー券。年間18,000円相当（月1,500円想定）。他都市published記事と同カテゴリだが坂井市固有制度。"
+    },
+    {
+      "category": "kyoiku",
+      "title": "福井県 高校生等奨学給付金",
+      "officialUrl": "https://www.pref.fukui.lg.jp/doc/gakushin/kyuuhukin.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "researched",
+      "articleSlug": "fukui-koukousei-kyufukin",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "年収目安約490万円以下世帯対象の給付型（返還不要）。既published記事群（就学援助系）と別制度で差別化可能。"
+    },
+    {
+      "category": "kyoiku",
+      "title": "福井県 きぼう応援奨学金",
+      "officialUrl": "https://www.pref.fukui.lg.jp/doc/koukou/kibou.html",
+      "authority": "prefecture",
+      "confidence": "unconfirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "給付型奨学金と説明されるが対象・金額は原文未確認。"
+    },
+    {
+      "category": "kekkon",
+      "title": "福井県 結婚新生活支援事業（新規に婚姻した世帯への支援金）",
+      "officialUrl": "https://www.pref.fukui.lg.jp/doc/012480/marriage/kekkonsinseikatu.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "researched",
+      "articleSlug": "fukui-kekkon-shinseikatsu-shien",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "実際は結婚新生活支援事業（住宅費等、上限60万円または30万円）と早婚夫婦支援事業（用途自由、一律30万円・最大40万円）の2制度。県内16市町共通の枠組みで市町ごとに要件差あり。福井市は結婚生活スタートアップ応援事業に独自再編（最大100万円）。福井市以外の15市町は個別要件未調査。"
+    }
+  ]
+}

@@ -1,0 +1,115 @@
+{
+  "region": "toyama",
+  "regionLabel": "富山県",
+  "updatedAt": "2026-09-22",
+  "topics": [
+    {
+      "category": "shussan",
+      "title": "富山県産前産後ヘルパー派遣事業",
+      "officialUrl": "https://www.pref.toyama.jp/120101/kurashi/kenkou/kenkou/sangohelper.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "published",
+      "articleSlug": "toyama-sangohelper",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "出産直後の家庭にヘルパーを派遣し家事・育児を支援。富山県は content/subsidy 配下に未収録の新規都道府県。第4子以上向け「とやまっ子お祝いパスポート」（https://www.pref.toyama.jp/120101/kurashi/kyouiku/kosodate/shoushika/kj00022368.html）も代替候補。"
+    },
+    {
+      "category": "jutaku",
+      "title": "富山県木造住宅耐震改修支援事業",
+      "officialUrl": "https://www.pref.toyama.jp/1507/bousaianzen/bousai/jishin/kj00002134/kj00002134-001-01.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "published",
+      "articleSlug": "toyama-mokuzo-taishin-kaishu",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "昭和56年5月31日以前着工の木造一戸建てが対象。改修設計最大20万円(2/3)、改修工事最大120万円(4/5、特定地区150万円)。富山市の同名個別事業(市窓口)もあるため将来的に区別要。"
+    },
+    {
+      "category": "sogyo",
+      "title": "富山県 起業に関する補助制度のご案内(令和8年度)",
+      "officialUrl": "https://www.pref.toyama.jp/100222/sougyo/kigyohojokin.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "published",
+      "articleSlug": "toyama-kigyo-hojokin",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "令和8年4月～令和9年2月末に県内で創業(事業承継・第二創業含む)予定の者が対象。富山市「はじめの一歩創業者サポート事業補助金」「とやまチャレンジ創業応援補助金」は市単独事業の代替候補（未登録市町村）。"
+    },
+    {
+      "category": "kaigo",
+      "title": "富山市 おむつの支給(高齢者紙おむつ給付事業)",
+      "officialUrl": "https://www.city.toyama.lg.jp/health/kaigo/1010525/1003662.html",
+      "authority": "municipality",
+      "confidence": "confirmed",
+      "status": "published",
+      "articleSlug": "toyama-shi-omutsu-kyufu",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "富山市(政令指定外・県庁所在地)は regions.ts に未登録。掲載判断時に市町村登録が必要。県レベルの同種制度は未確認。verifier判定PARTIAL — 支給額・支給枚数が原文（公式ページ本文）に記載なし。記事は確認できた事実のみ掲載し、数値は窓口確認を案内。published転換不可、追加でPDF（おむつ支給申請書・記入例）取得による数値確認が必要。"
+    },
+    {
+      "category": "energy",
+      "title": "富山県EV導入支援事業費補助金",
+      "officialUrl": "https://www.pref.toyama.jp/1705/kurashi/kankyoushizen/kankyou/saienehojo.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "県内在住者の新車EV購入費用の一部を補助(上限15万円、先着順、購入後90日以内申請、国補助金併用可)。同ページ内の「再生可能エネルギー導入促進補助金」(太陽光・蓄電池)も代替候補。"
+    },
+    {
+      "category": "pet",
+      "title": "富山県 飼い主のいないねこの不妊去勢手術推進事業",
+      "officialUrl": "https://www.pref.toyama.jp/1207/kurashi/seikatsu/seikatsu/doubutsuaigo/form/hunin.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "published",
+      "articleSlug": "toyama-neko-funinkyosei",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "対象は富山市を除く県内に生息する飼い主のいない猫。申請者は町内会等の長。予算の範囲内で先着終了の可能性あり。"
+    },
+    {
+      "category": "shogaisha",
+      "title": "朝日町 福祉タクシー等・ガソリン共通利用券",
+      "officialUrl": "https://www.town.asahi.toyama.jp/soshiki/kenko/tiikifukusi/1449206403097.html",
+      "authority": "municipality",
+      "confidence": "confirmed",
+      "status": "published",
+      "articleSlug": "asahi-machi-fukushi-taxi",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "身体障害者手帳(肢体不自由・視覚1/2級等)、療育手帳A、精神障害者保健福祉手帳1級が対象。1枚200円、年間最大60枚。朝日町(下新川郡)は regions.ts に未登録。県レベルの補装具・日常生活用具給付は制度存在自体は一般的だが富山県固有ページは今回未確認(市町村ごとに実施)。"
+    },
+    {
+      "category": "kyoiku",
+      "title": "富山県 高等学校等奨学のための給付金(国公立)・私立高等学校等奨学給付金",
+      "officialUrl": "https://www.pref.toyama.jp/3003/kurashi/kyouiku/gakkou/shuugakushien/kj00014616.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "published",
+      "articleSlug": "toyama-koto-gakko-shugaku-kyufukin",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "住民税非課税世帯等を対象とした給付型の奨学のための給付金。2026年4月から対象世帯拡大の動きあり。私立向け別ページ(https://www.pref.toyama.jp/1119/kurashi/kyouiku/gakkou/shuugakushien/kj00014545.html)も存在、記事化時に対象を国公立/私立どちらかに絞る想定。"
+    },
+    {
+      "category": "kekkon",
+      "title": "高岡市結婚新生活支援事業",
+      "officialUrl": "https://hojokin-agent.jp/subsidy/68046",
+      "authority": "municipality",
+      "confidence": "unconfirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "国の結婚新生活支援事業費補助金を活用する県内12市町(高岡市・魚津市・滑川市・黒部市・砺波市・小矢部市・南砺市・射水市・上市町・立山町・入善町・朝日町)の一つ。高岡市は新婚世帯の引越費用等を上限30万円補助と紹介されるが、一次情報は市公式サイトではなく補助金まとめサイト経由のため unconfirmed。government-researcher が高岡市公式サイトで一次確認要。高岡市は regions.ts に未登録。"
+    }
+  ]
+}

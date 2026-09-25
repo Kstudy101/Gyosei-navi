@@ -1,0 +1,772 @@
+<!doctype html>
+<html lang="ja">
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>飼い犬の登録、動物取扱業、犬・ねこの引取り - 奈良市役所コールセンター</title>
+<meta name="description">
+<meta property="og:type" content="article">
+<meta property="og:title" content="飼い犬の登録、動物取扱業、犬・ねこの引取り - 奈良市役所コールセンター">
+<meta property="og:description">
+<meta property="og:image" content="https://naracitycc.fastcloud.jp/fa/faq/web/images/logo-fa2-image.png">
+<meta property="og:site_name" content="奈良市役所コールセンター">
+<link rel="shortcut icon" href="./images/favicon.ico?hash=5efffb20284e94b336c2465de3f646b8">
+<link rel="icon" href="./images/favicon.ico?hash=5efffb20284e94b336c2465de3f646b8">
+<link rel="stylesheet" href="./css/common.css?hash=29149b969a0d6eee78441c566c66b7c3">
+<link rel="stylesheet" href="./css/theme.css?hash=2fd8c0c06110f1e421576511f3f158ff">
+<link rel="alternate stylesheet" href="./css/font-small.css?hash=fc760beb94d2972323870e32adf4811a" title="フォントサイズ小" id="stylesheet-font-small">
+<link rel="stylesheet" href="./css/font-normal.css?hash=45757fdd157b83deabbc902cd4affbf6" title="フォントサイズ中" id="stylesheet-font-normal">
+<link rel="alternate stylesheet" href="./css/font-large.css?hash=57b1cb38cc25427c1e92078fd88ac1a9" title="フォントサイズ大" id="stylesheet-font-large">
+
+
+
+
+</head>
+<script type="application/ld+json">{
+	"itemListElement": [
+		{
+			"item": {
+				"name": "よくあるご質問",
+				"@id": "https://naracitycc.fastcloud.jp/fa/faq/web/index.html"
+			},
+			"@type": "ListItem",
+			"position": 1
+		},
+		{
+			"item": {
+				"name": "生活環境",
+				"@id": "https://naracitycc.fastcloud.jp/fa/faq/web/category126.html"
+			},
+			"@type": "ListItem",
+			"position": 2
+		}
+	],
+	"@type": "BreadcrumbList",
+	"@context": "http://schema.org"
+}</script>
+<body class="color-blue" data-locale="ja">
+	
+	<script src="./js/lib/polyfill.min.js?hash=43055663714ef9e4108cf42d8fd283cd"></script>
+	<script src="./js/lib/vue.min.js?hash=0c5113a13b11605c4cee5106f5c916cb"></script>
+	<script src="./js/lib/vueJsModal.js?hash=da4e097f63cf7b13d12f0832790486e0"></script>
+	<script src="./js/messageResources.js?hash=187a69fba5f3dcebd92c01f41c109374" data-fa-message-url="nls/message.properties?hash=7e0856696090a7244f470f9c9dcd1d09"></script>
+	<script src="./js/common.js?hash=53d80e84d205312c90d3ad6ecfedfbd2"></script>
+	
+	
+	<!-- ============================= ▼ Header ▼ ============================= -->
+	<header id="str-header">
+		<div class="str-header-inner">
+			<p class="site-logo">
+				<a href="index.html">
+					<img src="images/logo-fa2.png?hash=4c7888bfe23796a4aa2ca155e87e66ed" alt="FastAnswer">
+				</a>
+			</p>
+			<div class="area-header">
+				
+				
+				<p class="txt-header-contact">
+					<a href="https://9c6d4b3b.form.kintoneapp.com/public/naracity-contactcenter">お問い合わせ</a>
+				</p>
+
+				<div class="font-size-change" id="font-size-change"  v-font-size-change>
+					<p class="txt-size">文字サイズ</p>
+					<button type="button" class="font-small" data-font-size="small">小</button>
+					<button type="button" class="font-normal" data-font-size="normal">中</button>
+					<button type="button" class="font-large" data-font-size="large">大</button>
+					<!--/.font-size-change-->
+				</div>
+				<!--/.area-header-->
+			</div>
+			<!--/.str-header-inner-->
+		</div>
+		<script type="text/x-template" id="evaluate-modal-template">
+			<div>
+				<form ref="siteEvaluateForm">
+					<div class="modal-content modal-evaluate-site-content">
+						<div class="modal-heading">
+							<h2 class="hdg-lv2-modal">サイトのフィードバック</h2>
+						</div>
+						<div class="area-questionnaire">
+							<p class="hdg-questionnaire">
+								<b>目的のナレッジは見つかりましたか？</b>
+							</p>
+							<ul class="list-questionnaire evaluate-site col-3">
+								<li>
+									<a href="#" @click.prevent="evaluate(0)" class="btn-questionnaire btn-helpful js-modal-link">
+										<span class="txt-questionnaire">見つかった</span>
+									</a>
+								</li>
+								<li>
+									<a href="#" @click.prevent="evaluate(1)" class="btn-questionnaire btn-neither js-modal-link">
+										<span class="txt-questionnaire">見つけたが見つけにくい</span>
+									</a>
+								</li>
+								<li>
+									<a href="#" @click.prevent="evaluate(2)" class="btn-questionnaire btn-useless js-modal-link">
+										<span class="txt-questionnaire">見つからなかった</span>
+									</a>
+								</li>
+							</ul>
+							<div class="answer-success" style="display: none">ご評価ありがとうございました</div>
+						</div>
+						<div class="comment-text-input-area" style="display: none">
+							<div class="modal-desc">
+								<div class="str-modal-inner">
+									<p class="txt-modal-opinion">ご評価いただき、ありがとうございます。<br>今後のサービスの改善のため、ご意見・ご感想をお聞かせください。</p>
+									<p class="txt-note-normal">
+										<b class="mrk-ast">※</b>
+										<small class="txt-note">こちらの入力フォームからのお問い合わせ等は受付できません。個人情報の入力はご遠慮ください。</small>
+									</p>
+									<textarea @keyup="onKeyupSiteCommentText" class="area-free-opinion" name="siteCommentTextArea" rows="5" cols="40" title="ご意見・ご感想を入力"></textarea>
+								</div>
+							</div>
+							<div class="lyt-btn-wrap">
+								<div class="area-btn-send">
+									<button type="button" name="btnSend" class="btn-send" @click="sendCommentText" disabled>
+										<span class="btn-inner">送信</span>
+									</button>
+								</div>
+							</div>
+						</div>
+						<div class="answer-success input-comment-success" style="display: none">コメントありがとうございました</div>
+						<p class="modal-btn-close">
+							<button type="button" class="modal-btn-close-label" aria-expanded="true" @click="$emit('close')">
+								<span class="modal-status">閉じる</span>
+							</button>
+						</p>
+					</div>
+				</form>
+			</div>
+		</script>
+	</header>
+	<!-- ============================= ▲ Header ▲ ============================= -->
+
+	<!-- ============================= ▼ Main Contents ▼ ============================= -->
+	<main id="str-main">
+
+	<div class="area-topicpath">
+		<div class="str-inner">
+			<p class="txt-topicpath">
+				<a href="index.html">よくあるご質問</a>
+				
+				
+					
+						<a href="/fa/faq/web/category126.html"><span class="symbol-separator" aria-hidden="true">&gt;</span><span>生活環境</span></a>
+						
+					
+				
+					
+						
+						<span><span class="symbol-separator" aria-hidden="true">&gt;</span><span>飼い犬の登録、動物取扱業、犬・ねこの引取り</span></span>
+					
+				
+			</p>
+			<!--/.str-inner-->
+		</div>
+		<!--/.area-topicpath-->
+	</div>
+
+	<div class="str-inner">
+		<h1 class="hdg-lv1-01">
+			<span>「飼い犬の登録、動物取扱業、犬・ねこの引取り」の検索結果</span>
+			<span class="autoCorrectTitle" style="display: none;"></span>
+			<span class="hdg-result-num">3件</span>
+			<span class="subAutoCorrectTitle" style="display: none;">
+				<span></span>
+				<span class=oldKeyword></span>
+			</span>
+		</h1>
+		<p class="txt-no-result-description" style="display:none;">見つかりませんでした。</p>
+		<!--/.str-inner-->
+	</div>
+
+	<div class="area-reference" style="display:none;">
+		<div class="str-inner">
+			<dl class="list-definition-reference">
+				<dt>参考</dt>
+				<dd>
+					<ul class="list-nomal-01">
+						<li>同じ内容を意味する別の語句を使用してください。</li>
+						<li>単語のスペルに誤りがないか確認してください。</li>
+					</ul>
+				</dd>
+			</dl>
+
+			<!--/.str-inner-->
+		</div>
+		<!--/.area-reference-->
+	</div>
+
+	<div class="area-search-narrowing str-inner" id="knowledgeSearch">
+	<div class="area-search-narrowing-inner">
+			<div class="area-search-inner" id="suggest">
+				<form class="area-search-form" action="" method="get" @submit.prevent="search">
+					<div class="area-search-input" v-suggest>
+						<input class="search-keywords" ref="keyword" type="text" name="keyword" placeholder="キーワードから探す" title="検索" autocomplete="off" maxlength="200" v-model="form.keyword" id="keyword" value="">
+
+						<div class="area-search-suggest">
+							<div class="area-search-suggest-inner">
+								<ul class="list-search-key list-in-keyword"></ul>
+								<ul class="list-search-key list-in-label"></ul>
+								<!--/.area-search-suggest-inner-->
+							</div>
+							<!--/.area-search-suggest-->
+						</div>
+
+						<!--/.area-search-input-->
+					</div>
+					<div class="area-search-category">
+						<select id="search-category" name="searchCategory" v-model="form.searchCategory" title="カテゴリを選択">
+							<option value="0">すべて</option>
+							<option value="1" selected="selected">このカテゴリ内から　　</option>
+						</select>
+						<!--/.select-search-display-->
+					</div>
+					
+					
+					
+					<div class="area-search-submit">
+						<button type="submit">検索</button>
+					</div>
+					<div class="fhButton js-modal-link advanced" @click="openDialog">
+						<p><a href="javascript:void(0)">詳細検索</a></p>
+					</div>
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+				</form>
+				<!--/.area-search-inner-->
+				<div class="modal-wrap-01" ref="modalContainer" v-show="opened" @keydown="checkKeyEvent" :aria-expanded="opened ? 'true' : 'false'" :aria-hidden="!opened ? 'true' : 'false'" tabindex="0" style="display:none;">
+					<form @submit.prevent="search">
+						<div class="modal-content">
+		
+							<div class="modal-heading">
+								<h2 class="hdg-lv2-modal">検索条件を設定してください</h2>
+								<!-- /.modal-heading -->
+							</div>
+			
+							<div class="modal-desc">
+								<div class="str-modal-inner">
+									<h3 class="hdg-lv2-02">キーワード</h3>
+									<ul>
+										<div class="area-search-general">
+											<input type="text" id="keywordSw" name="keyword" title="キーワード" data-vv-as="キーワード" v-model="form.keyword" v-validate="'max:200'" :class="{'is-error': errors.has('keyword')}" autocomplete="off" maxlength="200">
+										</div>
+									</ul>
+									<p class="txt-is-error"　v-if="errors.has('keyword')"><strong>{{ errors.first('keyword') }}</strong></p>
+									
+									<h3 class="hdg-lv2-02">検索方法</h3>
+									<ul class="lyt-select-search">
+										<li>
+											<div class="area-search-display">
+												<div class="select-search-display">
+													<fa-select name="searchMethod" v-model="form.searchMethod" title="検索方法" :default-options="[{label:&#39;キーワード検索&#39;,value:&#39;0&#39;},{label:&#39;自然文検索&#39;,value:&#39;1&#39;},{label:&#39;自動&#39;,value:&#39;2&#39;}]" :default-selected="2" ref="searchMethod"></fa-select>
+												</div>
+												<div class="select-search-display">
+													<fa-select name="searchCondition" v-model="form.searchCondition" title="検索方法" :default-options="[{label:&#39;すべてのキーワードを含む&#39;,value:&#39;0&#39;},{label:&#39;いずれかのキーワードを含む&#39;,value:&#39;1&#39;}]" :default-selected="0" ref="searchCondition"></fa-select>
+													<!--/.select-search-display-->
+												</div>
+												<!--/.area-search-display-->
+											</div>
+										</li>
+									</ul>
+									
+									<span v-show="agentAssistantSettingLength > 0">
+										<h3 class="hdg-lv2-02">AI検索検索結果=検索結果</h3>
+										<div class="area-contents use-ai-search">
+											<label for="useSearchAssist" class="txt-check-item-label use-ai-search-label"><input type="checkbox" id="useSearchAssist" name="form.useSearchAssist" v-model="form.useSearchAssist" true-value="1" false-value="0" @change="updateAgentAssistantSelect(form.useSearchAssist)" class="input-check" data-use-search-assist-by-default-flg="1"/><span class="txt-check-item">利用する</span></label>
+											<ul class="lyt-select-search">
+												<li>
+													<div class="area-search-display" v-show="form.useSearchAssist == '1' && agentAssistantSettingLength > 1">
+														<div class="select-search-display">
+															<fa-select class="agentAssistantSettingSelect" name="agentAssistantSetting" title="エージェントアシスタント設定" v-model="form.agentAssistantSettingId" service-name="./service/agentAssistantSetting" label-prop="displayName" value-prop="agentAssistantSettingId" @option-load-complete="updateAgentAssistantSettingLength"></fa-select>
+														</div>
+													</div>
+												</li>
+											</ul>
+										</div>
+									</span>
+
+									<h3 class="hdg-lv2-02">除外キーワード</h3>
+									<div class="area-search-general">
+										<input type="text" id="ignoreKeyword" name="ignoreKeyword" title="除外キーワード" data-vv-as="除外キーワード" v-model="form.ignoreKeyword" v-validate="'max:200'" :class="{'is-error': errors.has('ignoreKeyword')}" autocomplete="off" maxlength="200" :disabled="form.useSearchAssist === '1'">
+									</div>
+									<p class="txt-is-error"　v-if="errors.has('ignoreKeyword')"><strong>{{ errors.first('ignoreKeyword') }}</strong></p>
+									
+									<h3 class="hdg-lv2-02">検索対象項目</h3>
+									<ul class="lyt-select-search">
+										<li>
+											<div class="area-search-display">
+												<div class="select-search-display">
+													<fa-select name="searchTargetKnowledgeKindList" title="検索対象項目" v-model="form.searchTargetKnowledgeKindList" service-name="./service/knowledgeKind" label-prop="name" value-prop="knowledgeKindId" :disabled="form.useSearchAssist === '1'"></fa-select>
+													<!--/.select-search-display-->
+												</div>
+												<div class="select-search-display">
+													<fa-select name="searchTargetKnowledgeOptionList" title="検索対象項目" v-model="form.searchTargetKnowledgeOptionList" service-name="./service/knowledgeOptionType" label-prop="name" value-prop="knowledgeOptionTypeId" parent-value-prop="knowledgeKindId" :parent-value="form.searchTargetKnowledgeKindList" :disabled="form.useSearchAssist === '1'"></fa-select>
+													<!--/.select-search-display-->
+												</div>
+												<!--/.area-search-display-->
+											</div>
+										</li>
+										<li>
+											<div class="area-search-display">
+												<label for="targetNameFlg" class="txt-check-item-label"><input type="checkbox" id="targetNameFlg" name="form.targetNameFlg" v-model="form.targetNameFlg" true-value="1" false-value="0" class="input-check" :disabled="form.useSearchAssist === '1'"><span class="txt-check-item">ナレッジ名を検索対象にする</span></label>
+												<label for="targetSearchTagFlg" class="txt-check-item-label"><input type="checkbox" id="targetSearchTagFlg" name="form.targetSearchTagFlg" v-model="form.targetSearchTagFlg" true-value="1" false-value="0" class="input-check" :disabled="form.useSearchAssist === '1'"><span class="txt-check-item">検索タグ名を検索対象にする</span></label>
+												<label for="targetItemFlg" class="txt-check-item-label"><input type="checkbox" id="targetItemFlg" name="form.targetItemFlg" v-model="form.targetItemFlg" true-value="1" false-value="0" class="input-check" :disabled="form.useSearchAssist === '1'"><span class="txt-check-item">製品名を検索対象にする</span></label>
+												<label for="targetCategoryFlg" class="txt-check-item-label"><input type="checkbox" id="targetCategoryFlg" name="form.targetCategoryFlg" v-model="form.targetCategoryFlg" true-value="1" false-value="0" class="input-check" :disabled="form.useSearchAssist === '1'"><span class="txt-check-item">カテゴリ名を検索対象にする</span></label>
+												<label for="targetFileAttachFlg" class="txt-check-item-label"><input type="checkbox" id="targetFileAttachFlg" name="form.targetFileAttachFlg" v-model="form.targetFileAttachFlg" true-value="1" false-value="0" class="input-check"><span class="txt-check-item">添付ファイルを検索対象にする</span></label>
+												<!--/.area-search-display-->
+											</div>
+										</li>
+									</ul>
+									
+									<h3 class="hdg-lv2-02">ナレッジ番号</h3>
+									<div class="area-search-general">
+										<input id="knowledgeId" name="knowledgeId" title="ナレッジ番号" data-vv-as="ナレッジ番号" type="text" v-model="form.knowledgeId" v-validate="'numeric|max:15'" :class="{'is-error': errors.has('knowledgeId')}" maxlength="15" autocomplete="off" class="fh-number-input">
+									</div>
+									<p class="txt-is-error"　v-if="errors.has('knowledgeId')"><strong>{{ errors.first('knowledgeId') }}</strong></p>
+									
+									<h3 class="hdg-lv2-02">ナレッジ分類</h3>
+									<ul class="lyt-select-search">
+										<li>
+											<div class="area-search-display">
+												<div class="select-search-display">
+													<fa-select name="knowledgeKindIdList" title="ナレッジ分類" v-model="form.knowledgeKindIdList" service-name="./service/knowledgeKind" label-prop="name" value-prop="knowledgeKindId"></fa-select>
+												</div>
+												<div class="select-search-display">
+													<fa-select name="knowledgeKindTypeIdList" title="ナレッジ分類種別" v-model="form.knowledgeKindTypeIdList" service-name="./service/knowledgeKindType" label-prop="name" value-prop="knowledgeKindTypeId" parent-value-prop="knowledgeKindId" :parent-value="form.knowledgeKindIdList"></fa-select>
+													<!--/.select-search-display-->
+												</div>
+												<!--/.area-search-display-->
+											</div>
+										</li>
+									</ul>
+									
+									<h3 class="hdg-lv2-02">製品</h3>
+									<ul class="lyt-select-search">
+										<li>
+											<div class="area-search-display">
+												<div class="select-search-display">
+													<fa-select name="itemIdList" title="製品" v-model="form.itemIdList" service-name="./service/item" label-prop="name" value-prop="itemId"></fa-select>
+												</div>
+												<div class="select-search-display">
+													<fa-select name="itemChildIdList" title="子製品" v-model="form.itemChildIdList" service-name="./service/itemChild" label-prop="name" value-prop="itemChildId" parent-value-prop="itemId" :parent-value="form.itemIdList"></fa-select>
+													<!--/.select-search-display-->
+												</div>
+												<!--/.area-search-display-->
+											</div>
+										</li>
+									</ul>
+									
+									
+										<h3 class="hdg-lv2-02">カテゴリ</h3>
+										
+										
+										<h3 class="hdg-lv3-01">カテゴリから探す</h3>
+										
+										<ul class="lyt-select-search" data-categoryKindId="1">
+											<li>
+												<div class="area-search-display">
+													<div class="select-search-display">
+														<fa-select ref="category11" name="category[1][1]" title="カテゴリ1" v-model="form.category[1][1]" service-name="./service/category" label-prop="name" value-prop="categoryId" :extend-service-param="{categorykindId:1,categoryLevel:1}" disabled="disabled"></fa-select>
+													</div>
+													<div class="select-search-display" v-show="$refs.category12 != null &amp;&amp; $refs.category12.options.length &gt; 1">
+														<fa-select ref="category12" name="category[1][2]" title="カテゴリ2" v-model="form.category[1][2]" service-name="./service/category" label-prop="name" value-prop="categoryId" :extend-service-param="{categorykindId:1,categoryLevel:2}" parent-value-prop="pcategoryId" :parent-value="form.category[1][1]" disabled="disabled"></fa-select>
+													</div>
+													<div class="select-search-display" v-show="$refs.category13 != null &amp;&amp; $refs.category13.options.length &gt; 1">
+														<fa-select ref="category13" name="category[1][3]" title="カテゴリ3" v-model="form.category[1][3]" service-name="./service/category" label-prop="name" value-prop="categoryId" :extend-service-param="{categorykindId:1,categoryLevel:3}" parent-value-prop="pcategoryId" :parent-value="form.category[1][2]" disabled="disabled"></fa-select>
+													</div>
+													<div class="select-search-display" v-show="$refs.category14 != null &amp;&amp; $refs.category14.options.length &gt; 1">
+														<fa-select ref="category14" name="category[1][4]" title="カテゴリ4" v-model="form.category[1][4]" service-name="./service/category" label-prop="name" value-prop="categoryId" :extend-service-param="{categorykindId:1,categoryLevel:4}" parent-value-prop="pcategoryId" :parent-value="form.category[1][3]" disabled="disabled"></fa-select>
+													</div>
+													<div class="select-search-display" v-show="$refs.category15 != null &amp;&amp; $refs.category15.options.length &gt; 1">
+														<fa-select ref="category15" name="category[1][5]" title="カテゴリ5" v-model="form.category[1][5]" service-name="./service/category" label-prop="name" value-prop="categoryId" :extend-service-param="{categorykindId:1,categoryLevel:5}" parent-value-prop="pcategoryId" :parent-value="form.category[1][4]" disabled="disabled"></fa-select>
+													</div>
+													<!--/.area-search-display-->
+												</div>
+												
+											</li>
+										</ul>
+										
+										
+										
+										<h3 class="hdg-lv3-01">ライフイベントで探す</h3>
+										
+										<ul class="lyt-select-search" data-categoryKindId="101">
+											<li>
+												<div class="area-search-display">
+													<div class="select-search-display">
+														<fa-select ref="category1011" name="category[101][1]" title="カテゴリ1" v-model="form.category[101][1]" service-name="./service/category" label-prop="name" value-prop="categoryId" :extend-service-param="{categorykindId:101,categoryLevel:1}" disabled="disabled"></fa-select>
+													</div>
+													<div class="select-search-display" v-show="$refs.category1012 != null &amp;&amp; $refs.category1012.options.length &gt; 1">
+														<fa-select ref="category1012" name="category[101][2]" title="カテゴリ2" v-model="form.category[101][2]" service-name="./service/category" label-prop="name" value-prop="categoryId" :extend-service-param="{categorykindId:101,categoryLevel:2}" parent-value-prop="pcategoryId" :parent-value="form.category[101][1]" disabled="disabled"></fa-select>
+													</div>
+													<div class="select-search-display" v-show="$refs.category1013 != null &amp;&amp; $refs.category1013.options.length &gt; 1">
+														<fa-select ref="category1013" name="category[101][3]" title="カテゴリ3" v-model="form.category[101][3]" service-name="./service/category" label-prop="name" value-prop="categoryId" :extend-service-param="{categorykindId:101,categoryLevel:3}" parent-value-prop="pcategoryId" :parent-value="form.category[101][2]" disabled="disabled"></fa-select>
+													</div>
+													<div class="select-search-display" v-show="$refs.category1014 != null &amp;&amp; $refs.category1014.options.length &gt; 1">
+														<fa-select ref="category1014" name="category[101][4]" title="カテゴリ4" v-model="form.category[101][4]" service-name="./service/category" label-prop="name" value-prop="categoryId" :extend-service-param="{categorykindId:101,categoryLevel:4}" parent-value-prop="pcategoryId" :parent-value="form.category[101][3]" disabled="disabled"></fa-select>
+													</div>
+													<div class="select-search-display" v-show="$refs.category1015 != null &amp;&amp; $refs.category1015.options.length &gt; 1">
+														<fa-select ref="category1015" name="category[101][5]" title="カテゴリ5" v-model="form.category[101][5]" service-name="./service/category" label-prop="name" value-prop="categoryId" :extend-service-param="{categorykindId:101,categoryLevel:5}" parent-value-prop="pcategoryId" :parent-value="form.category[101][4]" disabled="disabled"></fa-select>
+													</div>
+													<!--/.area-search-display-->
+												</div>
+												
+											</li>
+										</ul>
+										
+										
+									
+									<h3 class="hdg-lv2-02">検索タグ</h3>
+									<ul class="lyt-select-search">
+										<li>
+											<div class="area-search-display">
+												<div class="select-search-display">
+													<fa-select name="searchTagIdList" title="検索タグ" v-model="form.searchTagIdList" service-name="./service/searchTag" label-prop="name" value-prop="searchTagId"></fa-select>
+													<!--/.select-search-display-->
+												</div>
+												<!--/.area-search-display-->
+											</div>
+										</li>
+									</ul>
+									<!--/.str-modal-inner-->
+								</div>
+								<!-- /.modal-desc -->
+							</div>
+			
+							<div class="lyt-btn-wrap">
+								<ul class="btn-form">
+									<li><button type="button" v-on:click="clear">クリア</button></li>
+									<li><button type="submit" class="btn-search" :disabled="errors.any()"><span class="btn-inner">検索</span></button></li>
+								</ul>
+								<!-- /.lyt-btn-wrap -->
+							</div>
+							<p class="modal-btn-close">
+								<button type="button" class="modal-btn-close-label" @click="closeDialog">
+									<span class="modal-status">閉じる</span>
+								</button>
+							</p>
+						</div>
+						
+					</form>
+				</div>
+				<div id="modal-overlay" :aria-hidden="!opened ? 'true' : 'false'" @click.self="closeDialog" tabindex="-1"></div>
+			</div>
+			<div class="str-inner">
+				
+				<!--/.area-search-narrowing-inner-->
+			</div>
+			<!--/.str-inner-->
+		</div>
+		<!--/.area-search-narrowing-->
+	</div>
+
+	
+
+	<div class="str-inner">
+		<div class="area-search-results">
+			<div class="area-search-results-inner">
+				<p class="txt-search-results">
+					<span>検索結果</span>
+					<span class="txt-message searchResult">
+						<span class=txt-all-matter>3</span>件のうち1-<span>3</span>件を表示
+						
+					</span>
+				</p>
+				<!--/.area-search-results-inner-->
+			</div>
+			<div class="area-search-display">
+				<label for="search-display"><span>表示順</span>：</label>
+				<div class="select-search-display">
+					<select id="search-display" name="sortType">
+						<option value="0"></option>
+						<option value="1">閲覧が多い順</option>
+						<option value="2">閲覧が少ない順</option>
+						<option value="3">新しい順</option>
+						<option value="4">古い順</option>
+						<option value="5">重要順</option>
+					</select>
+					<!--/.select-search-display-->
+				</div>
+				<!--/.area-search-display-->
+			</div>
+			<!--/.area-search-results-->
+		</div>
+
+		<ul id="searchResultList"  class="list-search-results js-list-search-results">
+			<li>
+				<fa-accordion break-point="">
+				<div slot="title" class="js-search-results-hdg">
+					<p class="label-knowledgeKind knowledgeKindLabel101" style="background-color:#A7B716;font-weight:normal;">Q</p>
+					<div class="list-results-txt">
+						<p class="txt-contents">
+							<a href="/fa/faq/web/knowledge6972.html?suid=efc8af2d-73e7-4224-b631-4e68c0be9f88">都祁行政センター（総務住民課）で狂犬病予防注射済証を発行できますか。</a>
+							
+						</p>
+						<!--/.list-results-txt-->
+					</div>
+					
+					<!-- /.js-search-results-hdg -->
+				</div>
+
+				<div slot="body" class="js-search-results-content">
+					
+					<p class="txt-content">できます。
+医師からの「狂犬病予防注射済証」が必要です。
+手数料は５５０円です。再交付手数料は３４０円です。</p>
+					
+					<p class="link-single">
+						<a href="/fa/faq/web/knowledge6972.html?suid=efc8af2d-73e7-4224-b631-4e68c0be9f88">続きを読む</a>
+						
+					</p>
+					<!-- /.js-search-results-content -->
+				</div>
+				
+				</fa-accordion>
+			</li>
+			<li>
+				<fa-accordion break-point="">
+				<div slot="title" class="js-search-results-hdg">
+					<p class="label-knowledgeKind knowledgeKindLabel101" style="background-color:#A7B716;font-weight:normal;">Q</p>
+					<div class="list-results-txt">
+						<p class="txt-contents">
+							<a href="/fa/faq/web/knowledge6973.html?suid=efc8af2d-73e7-4224-b631-4e68c0be9f88">都祁行政センター（総務住民課）で犬・猫の引取はできますか。</a>
+							
+						</p>
+						<!--/.list-results-txt-->
+					</div>
+					
+					<!-- /.js-search-results-hdg -->
+				</div>
+
+				<div slot="body" class="js-search-results-content">
+					
+					<p class="txt-content">受付のみ行ないます。
+奈良市保健所保健衛生課より引取車が参りますので、事前に連絡頂きますようお願いします。　　　　　　　　　　　　　　　　　　　　　　　
+
+飼い犬・飼い猫の引取については、直接保...</p>
+					
+					<p class="link-single">
+						<a href="/fa/faq/web/knowledge6973.html?suid=efc8af2d-73e7-4224-b631-4e68c0be9f88">続きを読む</a>
+						
+					</p>
+					<!-- /.js-search-results-content -->
+				</div>
+				
+				</fa-accordion>
+			</li>
+			<li>
+				<fa-accordion break-point="">
+				<div slot="title" class="js-search-results-hdg">
+					<p class="label-knowledgeKind knowledgeKindLabel101" style="background-color:#A7B716;font-weight:normal;">Q</p>
+					<div class="list-results-txt">
+						<p class="txt-contents">
+							<a href="/fa/faq/web/knowledge6977.html?suid=efc8af2d-73e7-4224-b631-4e68c0be9f88">都祁行政センター（総務住民課）で飼い犬の登録はできますか。</a>
+							
+						</p>
+						<!--/.list-results-txt-->
+					</div>
+					
+					<!-- /.js-search-results-hdg -->
+				</div>
+
+				<div slot="body" class="js-search-results-content">
+					
+					<p class="txt-content">できます。生後９０日を経過した犬を登録できます。
+登録手数料は１頭につき３０００円です。再発行手数料は１６００円です。</p>
+					
+					<p class="link-single">
+						<a href="/fa/faq/web/knowledge6977.html?suid=efc8af2d-73e7-4224-b631-4e68c0be9f88">続きを読む</a>
+						
+					</p>
+					<!-- /.js-search-results-content -->
+				</div>
+				
+				</fa-accordion>
+			</li>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+		</ul>
+
+		<ul class="lyt-pagination">
+			
+			
+			<li class="current"><span>1</span>/<span>1</span></li>
+			
+			
+		</ul>
+		
+		
+
+		
+		
+		
+		
+			
+			<h2 class="hdg-lv2-02">「飼い犬の登録、動物取扱業、犬・ねこの引取り」内のカテゴリから探す</h2>
+			
+			<ul id="category1List" class="list-category col-4 js-sp-toggle">
+				<li>
+					<fa-accordion :use-toggle="false">
+					<p slot="title" class="hdg-category">
+						<a href="/fa/faq/web/category369.html">
+							<span class="hdg-category-content">
+								<b>飼い犬の登録、動物取扱業、犬・ねこの引取り</b>
+							</span>
+						</a>
+					</p>
+					<ul slot="body" class="list-link-row empty-list">
+						
+						
+						
+						
+					</ul>
+					</fa-accordion>
+				</li>
+				
+			</ul>
+			
+		
+		
+		
+
+		
+
+		<!--/.str-inner-->
+	</div>
+
+	</main>
+	<!-- ============================= ▲ Main Contents ▲ ============================= -->
+
+	<!-- ============================= ▼ Footer ▼ ============================= -->
+	<footer id="str-footer">
+
+		<div class="str-inner">
+			<p class="page-top" v-smooth-scroll>
+				<a href="#top">ページトップ</a>
+				<!--/.page-top-->
+			</p>
+			<!--/.str-inner-->
+		</div>
+
+		<div class="area-inquiry">
+			<div class="str-inner" style="margin-bottom: 30px;">
+				<h1 class="str-inquiry" style="text-align: center;background-color: #FFFFFF;margin: 0;color: #d75c78;">
+					<span>お問い合わせ方法</span>
+				</h1>
+				<h2 style="text-align: center; background-color: rgb(255, 255, 255); margin: 0px; color: rgb(215, 92, 120);">TEL 0742-34-1111</h2>
+				<p style="text-align: center;background-color: #FFFFFF;margin: 0;color: black;">※おかけ間違いにご注意ください。</p>
+				<p style="text-align: center;background-color: #FFFFFF;margin: 0;color: #d75c78;font-size: 20px;">受付時間 9時から17時 土曜・日曜・祝日及び年末年始除く</p>
+				<div class="wr-btn-y" style="text-align: center;background-color: #FFFFFF; padding-top: 10px; padding-bottom: 10px;color: #d75c78;">
+					<a style="text-decoration: none;pading: 5px" href="https://9c6d4b3b.form.kintoneapp.com/public/naracity-contactcenter">
+						<span class="wr-box" style="border-radius: 4px;border: solid 1px #d75c78;color: #d75c78;padding: 2px;margin: 10px;font-size: 24px;">お問い合わせフォーム　→</span>
+					</a>
+				</div>
+			</div>
+		</div>
+
+		<div class="area-banner">
+			<div class="str-inner">
+				<div class="col-3">
+					<div class="part">
+						<div class="img-border">
+							<a href="https://www.city.nara.lg.jp/site/gomi-syusyu/" target="_blank"><img src="./images/garbage.png" alt="ごみ"></a>
+							<!--/.img-border-->
+						</div>
+						<!--/.part-->
+					</div>
+					<div class="part">
+						<div class="img-border">
+							<a href="https://www.city.nara.lg.jp/site/mynamber/" target="_blank"><img src="./images/mynumber.png" alt="マイナンバー"></a>
+							<!--/.img-border-->
+						</div>
+						<!--/.part-->
+					</div>
+					<div class="part">
+						<div class="img-border">
+							<a href="https://h2o.nara.nara.jp" target="_blank"><img src="./images/watersupply.png" alt="企業局（上下水道）"></a>
+							<!--/.img-border-->
+						</div>
+						<!--/.part-->
+					</div>
+					<!--/.col-4-->
+				</div>
+				<!--/.str-inner-->
+			</div>
+			<!--/.area-banner-->
+		</div>
+		
+		<div class="area-footer">
+			<div class="str-inner">
+				<p class="copyrightTxt">
+					Copyright © Nara City. All Rights Reserved.
+				</p>
+				<p class="powerdByTxt">
+					<a class="txt-footer-name" href="https://fastseries.jp/" target="_blank" rel="noopener noreferrer">powered by FastAnswer</a>
+				</p>
+				<!--/.str-inner-->
+			</div>
+			<!--/.area-footer-->
+		</div>
+
+	</footer>
+	<!-- ============================= ▲ Footer ▲ ============================= -->
+	<script src="./js/lib/vee-validate.min.js?hash=a154051262b9205053baf9112e04be86"></script>
+	<script src="./js/lib/vee-validate.min.ja.js?hash=d8cf74bbd693aaf77277b6e83f110b9e"></script>
+	<script src="./js/lib/axios.min.js?hash=d1b64beea1a06f6b2db21ab63c9e1411"></script>
+	<script src="./js/knowledgeList.js?hash=f7d1852fb470e6002e60932a968b137c"></script>
+	<script>
+		knowledgeSearch.init({"offset":0,"limit":-1,"count":0,"noCount":true,"maxCount":-1,"sortKeys":null,"sortDirection":null,"pageKeyIdList":null,"keyword":null,"ignoreKeyword":null,"searchCondition":null,"searchMethod":null,"targetNameFlg":null,"targetFileAttachFlg":null,"targetSearchTagFlg":null,"targetItemFlg":null,"targetCategoryFlg":null,"knowledgeId":null,"knowledgeKindIdList":null,"knowledgeKindTypeIdList":null,"searchTargetKnowledgeKindList":null,"searchTargetKnowledgeOptionList":null,"itemIdList":null,"itemChildIdList":null,"category":null,"sortType":null,"itemIdFromUrl":null,"itemChildIdFromUrl":null,"categoryIdFromUrl":368,"pageListSettingIdFromUrl":null,"searchTagIdFromUrl":null,"knowledgeKindIdFromUrl":null,"knowledgeKindTypeIdFromUrl":null,"searchTagIdList":null,"searchTag":null,"searchCategory":null,"searchItem":null,"searchKnowledgeKind":null,"useAutoCorrect":"1","useSearchAssist":null,"agentAssistantSettingId":null,"sortKey1":null,"sortKey2":null,"sortKey3":null});
+		
+			knowledgeSearch.searchUrl = "category368.html";
+		
+		
+		
+		
+		
+		
+		
+	</script>
+	
+</body>
+</html>

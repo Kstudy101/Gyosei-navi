@@ -1,0 +1,115 @@
+{
+  "region": "osaka",
+  "regionLabel": "大阪府",
+  "updatedAt": "2026-09-22",
+  "topics": [
+    {
+      "category": "shussan",
+      "title": "妊婦のための支援給付（堺市出産・子育て応援事業）",
+      "officialUrl": "https://www.city.sakai.lg.jp/kosodate/hughug/ninshin_shusan/ninshin/ninpukyuuhu.html",
+      "authority": "municipality",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "既存published記事は淀川・城東・東淀川・平野・住吉・北区の妊婦支援給付金（大阪市内24区共通制度）で全区カバー済み。堺市は政令指定都市で未登録の市区町村（src/config/regions.ts）。同種の国基準妊婦支援給付だが実施主体が堺市単独のため差別化可能、堺市初のsrc/config/regions.ts登録が必要。"
+    },
+    {
+      "category": "jutaku",
+      "title": "民間戸建住宅等の耐震診断・改修等補助制度（大阪市）",
+      "officialUrl": "https://www.city.osaka.lg.jp/toshiseibi/page/0000370839.html",
+      "authority": "municipality",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "大阪市24区共通制度で対象は市内全域（東淀川区含む）とWebFetchで確認済み。既存published記事は淀川・城東・平野・住吉・北区分のみで東淀川区分が未発行。差別化ポイント: 東淀川区在住者向けクラスター記事（申請窓口・アクセス情報の地域最適化）。src/config/regions.tsに東淀川区(27114, higashiyodogawa)は既登録済み。"
+    },
+    {
+      "category": "sogyo",
+      "title": "特定創業支援等事業（大阪市）",
+      "officialUrl": "https://www.city.osaka.lg.jp/keizaisenryaku/page/0000650806.html",
+      "authority": "municipality",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "大阪市24区共通の創業支援証明制度（登録免許税軽減等）で住吉区を含む市域全体が対象とWebFetchで確認済み。既存published記事は淀川・城東・東淀川・平野区分の「開業・スタートアップ応援資金」（別制度）のみで、住吉区分・北区(kita-osaka)分が未発行。差別化ポイント: 住吉区または北区在住創業者向けクラスター記事。両区ともsrc/config/regions.ts既登録済み。"
+    },
+    {
+      "category": "kaigo",
+      "title": "堺市高齢者紙おむつ給付事業",
+      "officialUrl": "https://www.city.sakai.lg.jp/kenko/fukushikaigo/koreishafukushi/life_support/kamiomutsu.html",
+      "authority": "municipality",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "既存published記事は淀川・城東・平野・住吉・東淀川・北区の介護用品給付/緊急通報システム（大阪市内制度）で全区カバー済み。堺市は政令指定都市で未登録の市区町村。要介護4-5・非課税世帯対象の紙おむつ給付券（月額上限6,500円）を公式サイトで確認済み。堺市初のsrc/config/regions.ts登録が必要（shussanと合わせて堺市2カテゴリ目）。"
+    },
+    {
+      "category": "energy",
+      "title": "新たな手法による太陽光発電設備導入補助金（大阪市、令和8年度）",
+      "officialUrl": "https://www.city.osaka.lg.jp/kankyo/page/0000678400.html",
+      "authority": "municipality",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "大阪市24区共通制度で城東区を含む市域全体が対象、令和8年7月8日～10月30日公募中とWebFetchで確認済み。既存published記事は淀川・平野・東淀川区分の太陽光発電/EV充電器補助（一部別制度）のみで、城東・住吉・北区(kita-osaka)分が未発行。差別化ポイント: 城東区在住者向けクラスター記事。城東区はsrc/config/regions.ts既登録済み。"
+    },
+    {
+      "category": "pet",
+      "title": "多頭飼育崩壊防止を目的とした飼い猫の不妊・去勢手術助成事業（大阪市）",
+      "officialUrl": "https://www.city.osaka.lg.jp/kenko/page/0000615139.html",
+      "authority": "municipality",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "大阪市24区共通制度（市民税非課税世帯・多頭飼育3匹以上が対象）で平野区を含む市域全体が対象とWebFetchで確認済み。既存published記事は淀川区分（yodogawa-neko-funinkyosei）のみで、平野・東淀川・城東・住吉・北区(kita-osaka)分は未発行。差別化ポイント: 平野区在住者向けクラスター記事（平野郷動物診療所など地域の実施協力医療機関情報を含められる）。平野区はsrc/config/regions.ts既登録済み。"
+    },
+    {
+      "category": "shogaisha",
+      "title": "重度障がい者日常生活用具の給付（大阪市）",
+      "officialUrl": "https://www.city.osaka.lg.jp/fukushi/page/0000626534.html",
+      "authority": "municipality",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "大阪市24区共通制度で平野区を含む市域全体（各区保健福祉センター窓口）が対象とWebFetchで確認済み。既存published記事は淀川区分（yodogawa-hosogu-shikyu、補装具費支給・別制度）のみで、日常生活用具給付は大阪市全体で未発行。差別化ポイント: 平野区在住者向け「日常生活用具給付」クラスター記事（補装具費支給とは異なる制度のため既存記事と重複しない）。平野区はsrc/config/regions.ts既登録済み。"
+    },
+    {
+      "category": "kyoiku",
+      "title": "小・中・義務教育学校の就学援助（大阪市）",
+      "officialUrl": "https://www.city.osaka.lg.jp/kyoiku/page/0000495254.html",
+      "authority": "municipality",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "大阪市24区共通制度で平野区を含む市立小中学校全域が対象とWebFetchで確認済み。既存published記事は淀川区分（yodogawa-shugaku-enjo）と大阪市塾代助成（osaka-shi-jukudai-joseikin、別制度）のみで、就学援助の平野・東淀川・城東・住吉・北区(kita-osaka)分は未発行。差別化ポイント: 平野区在住者向けクラスター記事。平野区はsrc/config/regions.ts既登録済み。"
+    },
+    {
+      "category": "kekkon",
+      "title": "大阪市新婚・子育て世帯向け分譲住宅購入融資利子補給制度",
+      "officialUrl": "https://www.city.osaka.lg.jp/toshiseibi/page/0000110240.html",
+      "authority": "municipality",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "既存published記事yodogawa-shinkon-riship.mdxのFAQで「大阪市が要綱に基づき24区共通で実施」と明記されており、住吉区を含む市域全体が対象。住吉区公式ページ(city.osaka.lg.jp/sumiyoshi/page/0000232571.html)には結婚新生活支援事業の記載はなくこの利子補給制度のみ確認（WebFetchで確認、国の結婚新生活支援事業は大阪市では未実施の可能性が高い）。既存記事は淀川区分のみで、住吉・平野・東淀川・城東・北区(kita-osaka)分は未発行。差別化ポイント: 住吉区在住者向けクラスター記事。住吉区はsrc/config/regions.ts既登録済み。"
+    }
+  ]
+}

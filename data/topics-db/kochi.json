@@ -1,0 +1,115 @@
+{
+  "region": "kochi",
+  "regionLabel": "高知県",
+  "updatedAt": "2026-09-22",
+  "topics": [
+    {
+      "category": "shussan",
+      "title": "高知市妊婦支援給付金（伴走型相談支援）",
+      "officialUrl": "https://www.city.kochi.kochi.jp/soshiki/148/shussan-kosodateouen.html",
+      "authority": "municipality",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "妊娠届出時10万円相当+妊娠8か月時5万円相当+出生後10万円相当=計25万円相当。高知市こども政策課。国の出産育児一時金(48.8万円)とは別枠。高知県として初の記事化候補。"
+    },
+    {
+      "category": "jutaku",
+      "title": "高知県住宅耐震化促進事業費補助金（耐震診断・耐震改修設計・耐震改修費補助）",
+      "officialUrl": "https://www.pref.kochi.lg.jp/doc/naiyou/",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "耐震診断は自己負担3千円以内、耐震改修設計上限44.2万円、耐震改修費上限165万円（市町村により異なる、県と市町村の協調補助）。昭和56年5月31日以前着工住宅が対象。県登録耐震診断士・工務店の利用が条件。高知市住宅耐震改修費等補助金など市町村版と重複しないよう県レベル制度として記事化。"
+    },
+    {
+      "category": "sogyo",
+      "title": "高知県事業承継等推進事業費補助金",
+      "officialUrl": "https://www.pref.kochi.lg.jp/doc/2024030100132/",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "一般枠(中小企業等向け、事業承継計画策定委託・M&A仲介委託で上限100万円)と小規模枠(M&A企業評価作成委託で上限30万円)。既存published記事は福岡・久留米等の創業補助金/持続化補助金系で事業承継系は未着手 — カテゴリ内差別化ポイントあり。地域課題解決起業支援事業費補助金も同カテゴリの別候補として存在（要確認）。"
+    },
+    {
+      "category": "kaigo",
+      "title": "（高知市固有の住宅改造助成事業は終了。介護保険住宅改修費支給のみで全国共通制度）",
+      "officialUrl": "https://www.city.kochi.kochi.jp/soshiki/130/jyutakukai.html",
+      "authority": "municipality",
+      "confidence": "confirmed",
+      "status": "rejected",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "高知市住宅改造助成事業は終了済み、現在は国の介護保険住宅改修費支給（9割・上限20万円）のみで高知県・高知市固有の上乗せ制度が見当たらない。既存published記事(全国の介護保険住宅改修系)と差別化不可のためreject。ただし香美市など他市町村に独自のおむつ支給・介護用品支給等が別途あるか要別途確認（未探索）。"
+    },
+    {
+      "category": "energy",
+      "title": "高知県住宅用太陽光発電設備等導入推進事業費補助金（市町村を介した間接補助）",
+      "officialUrl": "https://www.pref.kochi.lg.jp/doc/2024011200264/",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "太陽光4万円/kW(上限20万円)、蓄電池4万円/kWh(上限40万円)が多くの市町村共通パターン。県から市町村への間接補助のため、実際の申請窓口・金額は市町村ごとに確認要。住宅断熱改修費補助金(https://www.pref.kochi.lg.jp/doc/2023082700024/)も同カテゴリの別候補として存在。"
+    },
+    {
+      "category": "pet",
+      "title": "高知県地域猫活動等不妊去勢手術推進事業費補助金",
+      "officialUrl": "https://www.pref.kochi.lg.jp/doc/2025101200010/",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "地域猫活動・TNR活動を行う者向け。補助対象経費1/2以内、メス猫上限6,000円/頭、オス猫上限4,000円/頭。既存published記事は千代田区・久留米市等の個人飼い主向け不妊去勢助成が中心 — 高知県は地域猫活動限定という制度設計の違いが差別化ポイント。大豊町など市町村の個人飼い主向け助成は別枠。"
+    },
+    {
+      "category": "shogaisha",
+      "title": "香美市福祉タクシー料金助成事業",
+      "officialUrl": "https://www.city.kami.lg.jp/soshiki/20/kh-taxi28.html",
+      "authority": "municipality",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "高知県レベル・高知市レベルでの福祉タクシー助成制度は検索では未確認（高知市は補装具費支給等の全国共通制度のみ確認）。香美市が県内で確認できた具体的なタクシー料金助成の実例。既存published記事(名古屋・久留米の福祉タクシー系)との差別化として高知県内自治体という新規性。"
+    },
+    {
+      "category": "kyoiku",
+      "title": "高知県高校生等奨学給付金（奨学のための給付金）",
+      "officialUrl": "https://www.pref.kochi.lg.jp/doc/2021080300178/",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "生活保護世帯・年収270万円未満・270万〜380万円未満・380万〜490万円未満の区分ごとに年額52,600円〜152,000円を支給、返還不要。既存published記事の北九州市・久留米市・福岡市の就学援助とは異なり、高校生向け給付型制度（都道府県レベル）という点で差別化。"
+    },
+    {
+      "category": "kekkon",
+      "title": "高知市結婚新生活支援事業補助金",
+      "officialUrl": "https://www.city.kochi.kochi.jp/soshiki/150/shinseikatsu.html",
+      "authority": "municipality",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "夫婦ともに婚姻日39歳以下、前年所得合計500万円未満等が要件。家賃・引越費用等の住居費用を補助。国の結婚新生活支援事業を高知市が実施する形。既存published記事は千葉市・川口市・久留米市・立川市・八女市・淀川区等 — 四国・高知県は未着手のため新規地域として差別化。"
+    }
+  ]
+}

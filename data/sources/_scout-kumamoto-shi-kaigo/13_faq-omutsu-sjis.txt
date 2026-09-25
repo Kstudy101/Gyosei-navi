@@ -1,0 +1,354 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="shift_jis">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+	<title>熊本市コールセンター</title>
+<link rel="stylesheet" href="../themes/stylesheet.css" type="text/css">
+</head>
+
+<body>
+<div style="margin-left:auto; margin-right:auto; width:100%;">
+<!-- ヘッダ -->
+<div class="outdiv" style="height:118px;">
+	<a id="top">
+		<img style="width:6px; height:118px; border:none; float:left;" alt="" src="../images/ti_l.gif">
+		<img style="width:798px; height:118px; border:none; float:left;" alt="熊本市コールセンター「ひごまるコール」" src="../images/topimage.gif">
+		<img style="width:8px; height:118px; border:none; float:left;" alt="" src="../images/ti_r.gif">
+	</a>
+</div>
+<!-- ヘッダ　スマホ用 -->
+<div class="outdiv3 no_print" style="height:auto;">
+	<a id="top2">
+		<img style="width:100%; height:auto; border:none;" alt="熊本市コールセンター「ひごまるコール」" src="../images/topimage.gif">
+	</a>
+</div>
+
+<!-- タブ -->
+
+<div class="outdiv" style="height:38px;">
+	<div style="width:6px; height:38px; background-image:url(../images/mnbtn_l.gif); background-repeat:repeat-y; float:left;">
+		<img style="border:none; width:6px; height:38px; float:left;" alt="" src="../images/spacer.gif">
+	</div>
+<a href="../index.htm"><img style="border:none; width:217px; height:38px; float:left;" alt="ホーム" src="../images/off_home.gif"></a><!-- -->
+<a href="../faq/CCFaqIndex.asp"><img style="border:none; width:185px; height:38px; float:left;" alt="よくある質問" src="../images/on_faq.gif"></a><!-- -->
+<a href="../event/default.asp"><img style="border:none; width:185px; height:38px; float:left;" alt="各種イベント・講座" src="../images/off_event.gif"></a><!-- -->
+<a href="../data/CCDataList.asp"><img style="border:none; width:212px; height:38px; float:left;" alt="コールセンターデータ集" src="../images/off_data.gif"></a><!-- -->
+
+	<div style="width:7px; height:38px; background-image:url(../images/mnbtn_r.gif); background-repeat:repeat-y; float:left;">
+		<img style="border:none; width:7px; height:38px; float:left;" alt="" src="../images/spacer.gif">
+	</div>
+</div>
+<!-- タブ　スマホ用 -->
+<div class="outdiv3 no_print" style="margin:auto;">
+	<ul class="cctopul2">
+		<li style="border:#3A8D1D 1px solid; background:#FFFFFF;">
+			<div>
+				<img src="../images/smftab_off.gif" alt="" style="margin-top:4px; width:10px; height:10px; border:none; float:left;">
+				<a href="../index.htm" style="color:#3A8D1D;">&nbsp;ホーム</a>
+			</div>
+		</li>
+		<li style="border:#3A8D1D 1px solid; background:#3A8D1D;">
+			<div>
+				<img src="../images/smftab_on.gif" alt="" style="margin-top:4px; width:10px; height:10px; border:none; float:left;">
+				<a href="../faq/CCFaqIndex.asp" style="color:#FFFFFF;">&nbsp;よくある質問</a>
+			</div>
+		</li>
+		<li style="border:#3A8D1D 1px solid; background:#FFFFFF;">
+			<div>
+				<img src="../images/smftab_off.gif" alt="" style="margin-top:4px; width:10px; height:10px; border:none; float:left;">
+				<a href="../event/default.asp" style="color:#3A8D1D;">&nbsp;各種イベント・講座</a>
+			</div>
+		</li>
+		<li style="border:#3A8D1D 1px solid; background:#FFFFFF;">
+			<div>
+				<img src="../images/smftab_off.gif" alt="" style="margin-top:4px; width:10px; height:10px; border:none; float:left;">
+				<a href="../data/CCDataList.asp" style="color:#3A8D1D;">&nbsp;コールセンターデータ集</a>
+			</div>
+		</li>
+	</ul>
+</div>
+
+<!-- コンテンツ start -->
+<table class="outtbl">
+	<tr style="width:100%;">
+		<td class="smfnodisp" style="width:6px; height:100px; background-image:url(../images/main_l.gif); background-repeat:repeat-y;">
+			<img style="width:6px; height:100px;" alt="" src="../images/spacer.gif">
+		</td>
+		<td style="width:100%; margin-left:auto; margin-right:auto;">
+
+<div class="smfwidth3" style="width:700px; text-align:right; font-size:90%; margin:10px auto;">
+	<img alt="" src="../images/list_gr.gif">&nbsp;<a href="CCFaqIndex.asp?txtS=&chkM=0&chkS=&sc=&stype=0&gmnkbn=0&refflg=0">戻る</a>
+</div>
+
+<table class="smfwidth3" style="width:750px; border:none; border-collapse:collapse; border-spacing:0px; margin:auto;">
+	<tr>
+		<td style="font-family: 'ＭＳ ゴシック';"><small>FAQ-ID：5055</small></td>
+	</tr>
+	<tr>
+		<td style="font-family: 'ＭＳ ゴシック';"><small>2016年8月31日作成（2025年9月2日更新）</small></td>
+	</tr>
+</table>
+<table class="dtl smfwidth3">
+	<tr>
+		<th style="font-family: 'ＭＳ ゴシック';">
+			<img style="vertical-align:middle;" alt="" src="../images/faq/q.gif">&nbsp;おむつの現物支給（非課税世帯対象）があると聞いたのですが？
+			<br>
+			<div style="text-align:right; margin-left:auto; margin-right:0px;">
+
+					<span style="font-size:small; font-weight:normal;">登録されている分類 [ 老後、介護保険 ]</span>
+
+			</div>
+		</th>
+	</tr>
+	<tr>
+		<td style="font-family: 'ＭＳ ゴシック';">おむつの現物支給（非課税世帯対象）があると聞いたのですが？<BR>
+どうやって申し込みすればいいですか？&nbsp;&nbsp;</td>
+	</tr>
+</table>
+
+<table class="dtl smfwidth3">
+	<tr>
+		<th style="font-family: 'ＭＳ ゴシック';"><img style="vertical-align:middle;" alt="" src="../images/faq/a.gif">&nbsp;回答いたします</th>
+	</tr>
+	<tr>
+		<td style="font-family: 'ＭＳ ゴシック';">熊本市では、熊本市内に居住（住民登録）して実際に介護をしているご家族に対しておむつの現物支給を<BR>
+しています。<BR>
+　なお、介護を受けている方は熊本市内に居住（住民登録）しており、在宅の高齢者（４０才以上<BR>
+６５才未満の者であって特定疾病に該当する者を含む）で、要介護４又は５の認定を受けている方が<BR>
+条件になります。<BR>
+<BR>
+　※配達先は熊本市内となっています。<BR>
+　※熊本市ではおむつの現物支給です。（現金での支給・補助は行っていません。）<BR>
+<BR>
+<BR>
+■<b>対象：下記の条件を全て満たす方</b><BR>
+　　　（※制度を受けるには非課税である申告を済ませておくことが必要です<BR>
+　　　　　　↓<BR>
+　　　　　熊本市市民税課ＨＰ<BR>
+　　　　　<a href="https://www.city.kumamoto.jp/kiji0032207/index.html" target="_blank">https://www.city.kumamoto.jp/kiji0032207/index.html</a>　<BR>
+<BR>
+　　　　　申請窓口は各区役所・税務室です<BR>
+　　　　　必ず【非課税世帯対象の制度を利用する旨申請窓口へお伝えください。】）<BR>
+<BR>
+　家族<BR>
+　　○実際に介護をしている方。<BR>
+　　○介護する家族が熊本市に居住（住民登録）している方。<BR>
+　　○介護する家族が非課税の方。<BR>
+　本人<BR>
+　　○本人が在宅の方。<BR>
+　　○本人が要介護４又は５の認定を受けている方。<BR>
+　　○本人が熊本市に居住（住民登録）している方。<BR>
+　　○本人が非課税の方。<BR>
+<BR>
+■<b>注意事項</b><BR>
+　　〇支給単位は「１か月単位」です。（配送は原則２か月分を一括支給します）<BR>
+　　〇本制度の目的は「在宅生活支援」ですので、入院や施設に入所する（した）時には支給対象外となる可能　<BR>
+　　　性があります。<BR>
+　　〇入院や施設に入所する（した）時には、高齢福祉課への連絡が必要です。<BR>
+　　　※ケアマネージャーさんを通しての連絡でも構いません<BR>
+　　〇入院が３か月継続した場合または施設に入所した場合には、廃止届の提出が必要です。<BR>
+<BR>
+■<b>お申込み方法：下記のとおり</b><BR>
+<BR>
+　○お近くの「ささえりあ」（熊本市高齢者支援センター）か<BR>
+　　担当のケアマネジャーさんに相談して下さい。<BR>
+　　<a href="https://www.city.kumamoto.jp/kiji0031758/index.html" target="_blank">https://www.city.kumamoto.jp/kiji0031758/index.html</a><BR>
+<BR>
+■<b>申請書提出先：各区役所・福祉課（高齢福祉班）</b><BR>
+<BR>
+<BR>
+<BR>
+＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊<BR>
+<BR>
+■<b>医療費控除について（源泉済又は源泉予定の方等）</b><BR>
+　↓<BR>
+&nbsp;<a href="http://higomaru-call.jp/faq/detail.html?id=1796" target="_blank">http://higomaru-call.jp/faq/detail.html?id=1796</a><BR>
+<BR>
+●支給分におむつの医療費控除はありません。<BR>
+●自分で購入されたおむつ「医療費控除の申請窓口は税務署」です<BR>
+■<b>詳細は税務署へお尋ねください。</b><BR>
+　①　１年目の方：「おむつ使用証明書」（ご自分のかかりつけのお医者さまから発行）<BR>
+　　　と「おむつ代の領収書」・有料<BR>
+　②　２年目の方：「確認書」と「おむつ代の領収書」・無料（区役所・福祉課発行）<BR>
+　　　※発行条件あり。発行出来ない方は①になります。<BR>
+&nbsp;&nbsp;</td>
+	</tr>
+</table>
+
+<table class="dtl smfwidth3">
+	<tr>
+		<th style="font-family: 'ＭＳ ゴシック';"><img style="vertical-align:middle;" alt="" src="../images/list_pk.gif">&nbsp;関連するホームページ（関連リンク）</th>
+	</tr>
+	<tr>
+		<td style="font-family: 'ＭＳ ゴシック';">
+			<ul class="rank">
+			<li><a href="https://www.city.kumamoto.jp/kiji0031758/index.html" target="_blank">ささえりあ一覧表（熊本市ＨＰ）</a></li>
+			<li><a href="https://www.city.kumamoto.jp/kiji0032207/index.html" target="_blank">熊本市市民税課ＨＰ</a></li>
+			</ul>
+		</td>
+	</tr>
+</table>
+
+<table class="dtl smfwidth3">
+	<tr>
+		<th style="font-family: 'ＭＳ ゴシック';"><img style="vertical-align:middle;" alt="" src="../images/list_pk.gif">&nbsp;関連する質問</th>
+	</tr>
+	<tr>
+		<td style="font-family: 'ＭＳ ゴシック';">
+			<ul class="rank">
+			<li><a href="CCFaqDetail.asp?id=1796" target="_blank">成人おむつ代（介護認定）に係る税申請窓口、医療費控除の確認書の交付条件などについて教えてほしい。</a></li>
+			</ul>
+		</td>
+	</tr>
+</table>
+
+<table class="dtl smfwidth3">
+	<tr>
+		<th style="font-family: 'ＭＳ ゴシック';"><img style="vertical-align:middle;" alt="" src="../images/list_pk.gif">&nbsp;担当課</th>
+	</tr>
+	<tr>
+		<td style="font-family: 'ＭＳ ゴシック';"><span class="sizeA">■健康福祉局　高齢者支援部　高齢福祉課<BR>　TEL：096-328-2963<BR>　E-MAIL：<a href="mailto:koreifukushi@city.kumamoto.lg.jp">koreifukushi@city.kumamoto.lg.jp</a><BR></span></td>
+	</tr>
+</table>
+
+<table class="dtl smfwidth3">
+	<tr>
+		<th style="font-family: 'ＭＳ ゴシック';"><img style="vertical-align:middle;" alt="" src="../images/list_pk.gif">&nbsp;このＦＡＱの評価</th>
+	</tr>
+<script type="text/javascript" src="../commJS/faqact.js"></script>
+	<input type="hidden" name="refflg" value="">
+	<input type="hidden" name="txtS"   value="">
+	<input type="hidden" name="chkM"   value="0">
+	<input type="hidden" name="chkS"   value="">
+	<input type="hidden" name="pg"     value="0">
+	<input type="hidden" name="bk"     value="">
+	<input type="hidden" name="sc"     value="">
+	<input type="hidden" name="id"     value="5055">
+	<input type="hidden" name="piled"  value="">
+	<tr>
+		<td class="dtl_smfTD">
+			<table style="width:100%; height:290px; border:none; border-collapse:separate; border-spacing:5px;">
+				<tr style="padding:1px;">
+					<td style="width:100%; padding:1px; text-align:left; background-color:#ffffff;">
+						<table style="width:100%; border:1px solid #666666; background-color:#ffffff;">
+							<tr style="padding:5px;">
+								<td class="tbl-line3" style="padding:5px; font-family: 'ＭＳ ゴシック'; background-color:#FFF5EE;">
+									<img style="vertical-align:middle;" alt="Q" src="../images/faq/q.gif">
+									<span class="sizeA" style="font-size:120%;">&nbsp;この説明は分かりやすかったですか？</span>
+								</td>
+							</tr>
+							<tr style="padding:5px;">
+								<td class="nowrap" style="padding:5px; font-family: 'ＭＳ ゴシック';">
+									<span class="sizeAs" style="font-size:100%;">
+										<input type="radio" id="q5" name="enq" value="5"><label for="q5">とてもよく分かった</label>&nbsp;
+										<input type="radio" id="q4" name="enq" value="4"><label for="q4">よく分かった</label>&nbsp;
+										<input type="radio" id="q3" name="enq" value="3"><label for="q3">普通</label>&nbsp;
+										<input type="radio" id="q2" name="enq" value="2"><label for="q2">あまりよく分からなかった</label>&nbsp;
+										<input type="radio" id="q1" name="enq" value="1"><label for="q1">まったく分からなかった</label>
+									</span>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr style="padding:1px;">
+					<td style="width:100%; padding:1px; margin:auto; background-color:#ffffff;">
+						<table style="width:100%; border-collapse:separate; border-spacing:2px; border:1px solid #666666; background-color:#ffffff;">
+							<tr style="padding:5px;">
+								<td class="tbl-line3" style="padding:5px; font-family:'ＭＳ ゴシック'; background-color:#FFF5EE;">
+									<span class="sizeA" style="font-size:120%;">&nbsp;&nbsp;上記の評価にされた理由をお聞かせください。<br>
+										<span style="font-size:85%; color:red;">&nbsp;<b>&nbsp;&nbsp;&nbsp;※ここからのお問合せには、回答できませんので<span class="nodisp no_print"><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>ご注意ください。</b></span><br>
+										<span style="font-size:85%;">&nbsp;&nbsp;&nbsp;&nbsp;※ひごまるコールや熊本市へのお問合せは、<span class="nodisp no_print"><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><a href="../../faq/CCQuesEnt.asp">こちらのお問合せページ</a>からお願いします。</span>
+									</span>
+								</td>
+							</tr>
+							<tr style="padding:5px;">
+								<td style="padding:5px; text-align:center;">
+									<textArea class="smfwidth" id="Res" name="texEnq" rows="5" cols="80"></textArea>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr style="padding:1px;">
+					<td style="text-align:center;">
+						<input type="submit" value="投稿" name="toukou" style="font-weight:700;font-size:13pt;width:100px;">
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</form>
+</table>
+
+<!-- 20191213 add start -->
+<script>
+<!--
+
+//	var url = location.href;
+//	var idx = url.indexOf("CCFaqList.asp");
+//	url = url.substring(0, idx);
+	var url = "https://higomaru-call.jp/faq/index.html";		// urlはAIのFAQトップのURL
+	var url_dtl = url.replace("index.html", "detail.html");		// AIのFAQトップのURL→詳細のURLに変換
+	window.onload = function(){
+
+	}
+
+//-->
+</script>
+<!-- 20191213 add end -->
+
+
+<!-- スマホ以外用 -->
+<div class="smfnodisp" style="width:700px; text-align:right; font-size:90%; margin:10px auto;">
+	<img alt="" src="../images/up_gr.gif">&nbsp;<a href="#top">ページの先頭へ</a>
+</div>
+<!-- スマホ用 -->
+<div class="nodisp smfwidth3 no_print" style="text-align:right; font-size:90%; margin:10px auto;">
+	<img alt="" src="../images/up_gr.gif">&nbsp;<a href="#top2">ページの先頭へ</a>
+</div>
+
+		</td>
+		<td class="smfnodisp" style="width:7px; height:100px; background-image:url(../images/main_r.gif); background-repeat:repeat-y;">
+			<img style="width:7px; height:100px;" alt="" src="../images/spacer.gif">
+		</td>
+	</tr>
+</table>
+<!-- コンテンツ end -->
+
+<!-- フッタ -->
+<table class="outtbl">
+	<tr>
+		<td style="height:3px; background-color:#66B233;" colspan="3">
+		</td>
+	</tr>
+	<tr>
+		<td class="smfnodisp" style="width:6px; background-image:url(../images/main_l.gif); background-repeat:repeat-y;">
+			<img style="width:6px; height:6px;" alt="" src="../images/spacer.gif">
+		</td>
+		<td style="text-align:center; padding:15px;">
+			<img class="smfwidth" style="height:auto;" alt="Copyrights 2008 Kumamoto City Allrights Reserved." src="../images/copyrights.gif">
+		</td>
+		<td class="smfnodisp" style="width:7px; background-image:url(../images/main_r.gif); background-repeat:repeat-y;">
+			<img style="width:7px; height:6px;" alt="" src="../images/spacer.gif">
+		</td>
+	</tr>
+	<tr>
+		<td class="smfnodisp" style="width:6px; background-image:url(../images/main_l.gif); background-repeat:repeat-y;">
+		</td>
+		<td style="height:2px; background-color:#DDDDDD;">
+		</td>
+		<td class="smfnodisp" style="width:7px; background-image:url(../images/main_r.gif); background-repeat:repeat-y;">
+		</td>
+	</tr>
+	<tr>
+		<td style="height:1px; background-color:#EEEEEE;" colspan="3">
+		</td>
+	</tr>
+</table>
+</div>
+</body>
+</html>

@@ -1,0 +1,288 @@
+取得元: https://www.hapimon.jp/kiji0033925/index.html
+取得日: 2026-09-21
+取得方法: npm run source（cheerio でタグ除去のみ。文字の置換なし＝原文）
+本文長: 3960字
+
+====================================================================
+結婚新生活支援事業 / 熊本県結婚・子育て応援サイト　hapiモン
+
+ヘッダーをスキップ
+本文へジャンプ
+
+文字サイズ
+
+背景色
+
+Foreign Language
+
+English
+
+中文(简化字)
+
+中文(繁體字)
+
+한국어
+
+Français
+
+グローバルナビゲーションをスキップ
+
+出会い・結婚
+
+妊娠・出産
+
+子育て
+
+よかボス
+
+ライフデザイン
+
+ライフデザイン手帳
+
+ライフデザイン動画
+
+結婚相手を見つけたい
+
+結婚イベント情報
+
+結婚イベント投稿フォーム
+
+「まちのよかボス」結婚相談所
+
+まりっくまパスポート（くまもと結婚応援パスポート）
+
+結婚応援の店を検索
+
+結婚応援の店【登録フォーム】
+
+「結婚応援の店」一覧
+
+まりっくまパスポート登録フォーム
+
+Q＆A
+
+市町村が実施する事業
+
+結婚新生活支援事業
+
+あかい糸めーる
+
+あかい糸めーるとは
+
+子どもが欲しい
+
+不妊治療
+
+妊娠したら
+
+妊娠したら
+
+県内の施設
+
+妊娠時の経済的支援
+
+出産したら
+
+出産したら
+
+出産時の経済的支援
+
+妊娠とこころの相談
+
+子育て応援の店
+
+子育て応援の店　応募・変更・ステッカーのリニューアル
+
+種別から探す
+
+サービス種別
+
+エリアからさがす
+
+子育て応援の店について
+
+子育て支援パスポートについて
+
+子育て応援団応募フォーム
+
+目的からさがす
+
+聞きなっせAI くまもと
+
+「聞きなっせAI くまもと」について
+
+「聞きなっせAI　くまもと」の使い方
+
+出かけたい
+
+子育てイベント情報
+
+子育てイベント投稿フォーム
+
+バス運行・観光情報など（くまもとデータ連携基盤共通ダッシュボードサービス）
+
+地域子育て支援拠点事業
+
+子育て応援タクシー
+
+子どもと子育てにやさしいまなざし　エピソード集
+
+パパの子育てを応援
+
+楽する家事と楽しい育児のススメ
+
+すきすきパパ手帳
+
+子どもを預けたい
+
+保育園、幼稚園、認定こども園
+
+放課後児童クラブ
+
+病児・病後児保育
+
+子育てに関する支援制度や情報
+
+支援制度
+
+子育て相談窓口
+
+子どもの健康
+
+研修
+
+冊子・リーフレット
+
+よかボス　イベント・セミナー
+
+くまもとスタイル推進セミナー
+
+まちのよかボス養成講座
+
+KUMAMOTO よかボス AWARDS
+
+よかボス企業について
+
+よかボス企業とは
+
+よかボス企業一覧
+
+よかボス企業の登録
+
+登録内容の変更
+
+よかボス企業の活動
+
+結婚支援
+
+働きやすい環境づくり
+
+具体的な取組み
+
+「よかボス企業」の学生インタビュー
+
+よかボス倶楽部
+
+よかボス倶楽部とは
+
+「よかボス倶楽部」推進センター（企業間交流支援センター）
+
+「よかボス企業」若手社員向け交流会
+
+よかボス企業の皆さんへ
+
+ワークライフバランスの推進
+
+このサイトについて
+
+関連リンク
+
+出会い・結婚
+
+妊娠・出産
+
+子育て
+
+よかボス
+
+結婚新生活支援事業
+
+最終更新日：2025年7月17日
+
+結婚新生活支援事業
+
+結婚新生活支援事業とは、新たに婚姻した世帯に対する住宅取得費用、住宅リフォーム費用及び住宅賃借費用並びに引越費用に関する支援を行うものです。
+（標準的な事業概要）
+対象世帯：世帯所得500万円未満で夫婦ともに婚姻日における年齢が39歳以下の新婚世帯
+対象経費：新婚世帯の新生活にかかる経費（住宅取得費用、住宅リフォーム費用、住宅賃借費用、引越費用）
+1世帯あたりの上限額
+(1)夫婦ともに婚姻日における年齢が29歳以下の世帯・・・60万円
+(2)(1)以外の世帯・・・30万円
+※補助対象期間、補助上限額などは市町村によって異なる場合がありますので、詳しくは、市町村HPの公表URLをご確認ください。
+
+令和7年度に本事業を実施する県内市町村は、以下のとおりです。（ピンクで着色した26市町村）
+
+事業実施市町村一覧
+荒尾市 | https://www.city.arao.lg.jp/oshirase/boshu/page17822.html（外部リンク） |
+水俣市 | https://www.city.minamata.lg.jp/kiji0033267/index.html（外部リンク） |
+山鹿市 | https://www.city.yamaga.kumamoto.jp/kiji0031899/index.html（外部リンク） |
+宇土市 | https://www.city.uto.lg.jp/article/view/1609/8791.html（外部リンク） |
+宇城市 | https://www.city.uki.kumamoto.jp/kurashi/sonota_kurashi/2486536（外部リンク） |
+美里町 | https://www.town.kumamoto-misato.lg.jp/soshiki/utsukushisatosose/1/17/1/104.html（外部リンク） |
+玉東町 | https://www.town.gyokuto.kumamoto.jp/kiji003162/index.html（外部リンク） |
+南関町 | https://www.town.nankan.lg.jp/sangyo/sundeyokatta/shugyoshien/4104.html（外部リンク） |
+長洲町 | https://www.town.nagasu.lg.jp/soshiki/machizukuri/teiju/kiji0036958/（外部リンク） |
+和水町 | https://www.town.nagomi.lg.jp/iju/hojyokin/sinkonhojyokin/174376497730777/（外部リンク） |
+小国町 | https://www.town.kumamoto-oguni.lg.jp/kurashinojyoho/kurashi_sumai/sumai_sonota/345958（外部リンク） |
+産山村 | https://www.ubuyama-v.jp/kosodate_kyoiku/kosodate/shien_josei/1433.html（外部リンク） |
+高森町 | https://www.town.kumamoto-takamori.lg.jp/page/8413.html（外部リンク） |
+南阿蘇村 | https://www.vill.minamiaso.lg.jp/kiji0032404/index.html（外部リンク） |
+西原村 | https://www.vill.nishihara.kumamoto.jp/kiji003872/index.html（外部リンク） |
+甲佐町 | https://www.town.kosa.lg.jp/q/aview/164/12184.html（外部リンク） |
+山都町 | https://www.town.kumamoto-yamato.lg.jp/kiji0039784/index.html（外部リンク） |
+氷川町 | https://www.town.hikawa.kumamoto.jp/kiji0035997/index.html（外部リンク） |
+錦町 | https://www.town.kumamoto-nishiki.lg.jp/kiji003461/index.html（外部リンク） |
+多良木町 | https://www.town.taragi.lg.jp/gyousei/soshiki/fukushi/2953.html（外部リンク） |
+湯前町 | https://www.town.yunomae.lg.jp/kiji0032343/index.html（外部リンク） |
+水上村 | https://www.vill.mizukami.lg.jp/kiji0031091/index.html（外部リンク） |
+五木村 | https://www.vill.itsuki.lg.jp/kiji0031827/index.html（外部リンク） |
+あさぎり町 | https://www.town.asagiri.lg.jp/kiji003563/index.html（外部リンク） |
+球磨村 | https://www.kumamura.com/kiji0031404/index.html（外部リンク） |
+苓北町 | https://reihoku-kumamoto.jp/kiji0032247/index.html（外部リンク） |
+
+※上記以外の市町村でも、結婚新生活支援事業以外の結婚支援の取組みを行っている場合があります。詳細は各市町村にお問合せください。
+
+新婚世帯や子育て世帯にうれしいサービスも展開中です！
+（下の画像をクリックすると案内ページが開きます。）
+
+|
+
+このページに関する
+お問い合わせは
+
+（ID:3925）
+
+ページの先頭へ
+
+お問い合わせ
+
+│
+
+このサイトについて
+
+│
+
+サイトマップ
+
+│
+
+個人情報の取扱いについて
+
+熊本県 健康福祉部 子ども未来課
+
+〒862-8570
+熊本市中央区水前寺6丁目18番1号
+Tel:096-333-2225
+Fax:096-383-1427
+
+Copyright(C)2018 Kumamoto Prefectural Government. All rights reserved.

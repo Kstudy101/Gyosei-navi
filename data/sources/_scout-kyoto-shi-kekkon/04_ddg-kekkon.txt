@@ -1,0 +1,24 @@
+取得元: https://html.duckduckgo.com/html/?q=site%3Acity.kyoto.lg.jp+%E7%B5%90%E5%A9%9A%E6%96%B0%E7%94%9F%E6%B4%BB%E6%94%AF%E6%8F%B4
+取得日: 2026-09-21
+取得方法: npm run source（cheerio でタグ除去のみ。文字の置換なし＝原文）
+本文長: 296字
+
+====================================================================
+DuckDuckGo
+
+DuckDuckGo
+
+Unfortunately, bots use DuckDuckGo too.
+
+Please complete the following challenge to confirm this search was made by a human.
+
+Select all squares containing a duck:
+
+Submit
+
+Images not loading?
+
+Please email the following code to:
+error-lite+410b@duckduckgo.com
+
+Code: 410b

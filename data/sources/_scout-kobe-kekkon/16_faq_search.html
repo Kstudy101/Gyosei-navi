@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" id="okbiz-system-alert">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="Pragma" content="no-cache" />
+        <meta name="robots" content="none" />
+        <title>ページが存在しません</title>
+        <style type="text/css">
+            /* 背景 */
+            #error_bg {
+                background-color: #e6f5ff; /* 背景色 */
+            }
+            /* 表示領域 */
+            #error_wrapper {
+                margin: 80px auto; /* 周囲余白 */
+                width: 550px; /* 幅 */
+                padding: 22px 0 0; /* 余白 */
+                background: #fff url("/images/front/errortop.gif") no-repeat scroll left top; /* 背景 */
+            }
+            /* タイトル */
+            #error_wrapper h2 {
+                font-size: 24px; /* 文字サイズ */
+                font-weight: bold; /* 文字太さ */
+                border-bottom: 1px dotted #a2d9ff; /* 罫線 */
+                margin: 0 30px 5px; /* 周囲余白 */
+            }
+            /* テキスト */
+            #error_wrapper p {
+                margin: 0 30px 4px; /* 周囲余白 */
+                font-size: 15px; /* 文字サイズ */
+            }
+            /* エラーコード */
+            .error_code {
+                text-align: right; /* テキスト配置 */
+                color: #999; /* テキスト色 */
+            }
+            /* ボタン */
+            .error_btm {
+                background: #fff url("/images/front/errorbtm.gif") no-repeat scroll left bottom ; /* 背景 */
+                width: 550px; /* 幅 */
+                height: 22px; /* 高さ */
+            }
+        </style>
+        
+        
+    </head>
+    <body id="error_bg">
+        <div id="error_wrapper" class="clearfix">
+            <h2>ページが存在しません</h2>
+            <p>入力したURLに誤りがないかご確認ください。<br/>検索してこのページにたどり着いた場合、あるいは、お気に入り/ブックマークから開いた場合であれば該当のページが削除されてるかもしれません。</p>
+            
+            <p class="error_code">コード：404 Not Found</p>
+            
+            <div class="error_btm"></div>
+        </div>
+        <!--/#error_wrapper end-->
+    </body>
+</html>

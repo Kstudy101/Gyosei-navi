@@ -1,0 +1,115 @@
+{
+  "region": "yamaguchi",
+  "regionLabel": "山口県",
+  "updatedAt": "2026-09-22",
+  "topics": [
+    {
+      "category": "shussan",
+      "title": "山口県不妊治療（人工授精）費助成事業",
+      "officialUrl": "https://www.pref.yamaguchi.lg.jp/soshiki/51/18274.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "県内在住の法律婚夫婦対象、人工授精費を年度9,000円まで通算5年助成。所管: こども・子育て応援局こども政策課。申請は住所地の市町または県健康福祉センター経由。"
+    },
+    {
+      "category": "jutaku",
+      "title": "住宅環境改善支援事業補助金",
+      "officialUrl": "https://www.pref.yamaguchi.lg.jp/soshiki/16/12755.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "防衛省再編関連特別地域整備事業を活用した山口県独自事業。対象区域は岩国市の一部・周防大島町全域・和木町全域に限定。エアコン新設・断熱サッシ設置等を補助、上限30万円。所管: 山口県岩国基地対策室。対象区域が限定的な点に留意。"
+    },
+    {
+      "category": "sogyo",
+      "title": "やまぐち創業補助金",
+      "officialUrl": "https://www.pref.yamaguchi.lg.jp/soshiki/85/208170.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "県内で創業する個人向け、上限200万円・補助率1/2。所管: 産業労働部経営金融課、公募運営は公益財団法人やまぐち産業振興財団。下関市の創業関連記事（akiya-business-shien）とは対象・制度が別。"
+    },
+    {
+      "category": "energy",
+      "title": "山口県ゼロ・エネルギー・ハウス啓発・導入支援補助金（ZEH補助金）",
+      "officialUrl": "https://www.pref.yamaguchi.lg.jp/site/zeh/",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "県内に自ら居住予定でZEHを新築・新築建売購入する個人向け、定額20万円。所管: 環境政策課地球温暖化対策班。下関市のスマートハウス蓄電池記事とは制度・対象が別。"
+    },
+    {
+      "category": "kyoiku",
+      "title": "奨学のための給付金制度（国公立高等学校向け／私立高等学校等向け）",
+      "officialUrl": "https://www.pref.yamaguchi.lg.jp/soshiki/177/26257.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "住民税非課税世帯の高校生保護者対象、授業料以外の教育費を給付（返済不要）。国公立向けと私立向けでページが別（私立: https://www.pref.yamaguchi.lg.jp/soshiki/3/12053.html）。全国共通制度だが県教育委員会が実施主体。"
+    },
+    {
+      "category": "kaigo",
+      "title": "（該当制度未確認）",
+      "officialUrl": "",
+      "authority": "prefecture",
+      "confidence": "unconfirmed",
+      "status": "rejected",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "個人（住民）が直接申請できる山口県独自の介護・高齢者向け給付制度を確認できず。介護保険住宅改修は全国共通制度、介護テクノロジー定着支援事業補助金は介護事業所向けで対象外。市町村レベル（見守り事業等）のみ存在。"
+    },
+    {
+      "category": "pet",
+      "title": "（該当制度未確認）",
+      "officialUrl": "",
+      "authority": "prefecture",
+      "confidence": "unconfirmed",
+      "status": "rejected",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "犬猫の不妊去勢手術費助成は山口市・下松市・美祢市・山陽小野田市など市町村単位のみ確認。山口県独自の助成制度は見つからず。"
+    },
+    {
+      "category": "shogaisha",
+      "title": "（該当制度未確認）",
+      "officialUrl": "",
+      "authority": "prefecture",
+      "confidence": "unconfirmed",
+      "status": "rejected",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "補装具費の支給・日常生活用具の給付は全国共通制度で県独自の上乗せ助成を確認できず。タクシー利用券助成も市町村単位（山口市・岩国市等）のみ。"
+    },
+    {
+      "category": "kekkon",
+      "title": "（該当制度未確認）",
+      "officialUrl": "",
+      "authority": "prefecture",
+      "confidence": "unconfirmed",
+      "status": "rejected",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "結婚新生活支援事業は県が市町（柳井市・美祢市・田布施町・平生町・阿武町）を財政支援する枠組みで、個人が県に直接申請する制度ではない。やまぐち結婚応援パスポートは金銭給付ではなく優待サービスのため対象外。"
+    }
+  ]
+}

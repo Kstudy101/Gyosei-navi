@@ -1,0 +1,115 @@
+{
+  "region": "kanagawa",
+  "regionLabel": "神奈川県",
+  "updatedAt": "2026-09-22",
+  "topics": [
+    {
+      "category": "kekkon",
+      "title": "清川村結婚新生活支援事業補助金",
+      "officialUrl": "https://www.pref.kanagawa.jp/osirase/0214/koikana/support/kiyokawa_01.html",
+      "authority": "municipality",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "清川村は未登録市町村。県恋カナ！プロジェクトサイトに掲載。既存の川崎市・横浜市published記事に無いカテゴリ(kekkon)の神奈川県内初事例。夫婦とも29歳以下で上限60万円、通常上限30万円。所管は村子育て健康福祉課。原文は村公式サイトでの追加確認が必要。"
+    },
+    {
+      "category": "jutaku",
+      "title": "神奈川県既存住宅省エネ改修事業費補助金",
+      "officialUrl": "https://www.pref.kanagawa.jp/docs/ap4/cnt/f300183/shouenekaishu.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "県単位の制度で川崎市・横浜市のjutaku記事(耐震・空き家系)とは異なる省エネ改修テーマ。補助額は対象経費の1/3または15万円の低い方。令和8年度は9/7〜9/30受付中(先着25件程度)。電子申請のみ。"
+    },
+    {
+      "category": "sogyo",
+      "title": "令和8年度神奈川県小規模事業者デジタル化支援推進事業費補助金",
+      "officialUrl": "https://www.pref.kanagawa.jp/docs/m2w/shokibo_digital/r8.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "県単位の制度で川崎市・横浜市の創業融資系記事とは異なるデジタル化支援テーマ。従業員5人以下(サービス業等は20人以下)が対象、補助上限50万円・補助率2/3。公募は令和8年4/15〜9/30、事前相談必須。"
+    },
+    {
+      "category": "kaigo",
+      "title": "横須賀市高齢者住宅リフォーム補助金",
+      "officialUrl": "https://www.city.yokosuka.kanagawa.jp/4821/sumai/koureisya_reform.html",
+      "authority": "municipality",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "横須賀市は未登録市。県内初の高齢者住宅リフォーム補助記事候補(既存published記事は横浜市おむつ給付・見守り安否確認、川崎市介護用品給付でカテゴリ重複せず)。税抜20万円以上の工事に一律10万円補助。令和8年度分は申込締切済みのため、原文調査時に令和9年度の実施有無・募集時期を要確認。"
+    },
+    {
+      "category": "energy",
+      "title": "令和8年度神奈川県住宅用太陽光発電・蓄電池導入費補助金",
+      "officialUrl": "https://www.pref.kanagawa.jp/docs/ap4/solar_home/taiyoukouchikudenchi.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "県単位の制度で、既存published記事(川崎市太陽光省エネ補助・横浜市グリーンエネルギーパートナーシップ)とは異なる県レベルの太陽光+蓄電池同時導入補助。太陽光1kWあたり7万円(上限70万円)、蓄電池1台15万円上限。令和8年度は第1期・第2期とも短期間で予算上限到達し締切済み、次期募集有無を原文調査時に要確認。"
+    },
+    {
+      "category": "pet",
+      "title": "藤沢市猫不妊・去勢手術補助金",
+      "officialUrl": "https://www.city.fujisawa.kanagawa.jp/seiei/kurashi/dobutsu/hojokin.html",
+      "authority": "municipality",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "藤沢市は未登録市。既存published記事は川崎市・横浜市の猫不妊去勢(横浜はマイクロチップ併設)のみのため、神奈川県内3件目・湘南エリア初のpet記事候補。飼い猫・飼い主のいない猫とも各4,000円補助（金額は複数の二次情報源からの推定値のため原文で要再確認）。"
+    },
+    {
+      "category": "shogaisha",
+      "title": "相模原市福祉タクシー利用助成・自動車燃料費助成",
+      "officialUrl": "https://www.city.sagamihara.kanagawa.jp/kosodate/fukushi/1026641/shogai/jidosha/1006479.html",
+      "authority": "municipality",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "相模原市は未登録市。既存published記事は川崎市・横浜市の福祉タクシー/自動車燃料券記事のみのため、相模原市は神奈川県内3件目の同カテゴリ記事候補（政令指定都市・県内人口3位、差別化ポイントは要件・券種構成の違い）。福祉タクシー券と燃料費助成は併用不可・選択制。"
+    },
+    {
+      "category": "kyoiku",
+      "title": "神奈川県高校生等奨学給付金（通常給付）",
+      "officialUrl": "https://www.pref.kanagawa.jp/docs/v3e/jyosei/gakuhisien/syougakukyufukin-tujyo.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "県単位の給付型奨学金で、既存published記事(川崎市・横浜市の就学援助)とは異なる高校生向け県制度。非課税世帯等が対象、返済不要。令和8年度申請受付中(締切11/13)。具体的な給付額は原文PDFでの確認が必要。"
+    },
+    {
+      "category": "shussan",
+      "title": "相模原市妊娠・出産応援ギフト（妊婦のための支援給付事業）",
+      "officialUrl": "https://www.city.sagamihara.kanagawa.jp/kosodate/1026602/kosodate/1026604/1018607/1026960.html",
+      "authority": "municipality",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "相模原市は未登録市。既存published記事は川崎市妊婦支援給付・横浜市産前産後サポート/出産費用助成のみのため、相模原市(政令指定都市)は神奈川県内3件目のshussan記事候補。妊娠届出時・出産後にそれぞれ5万円給付。国の妊婦のための支援給付事業を市が実施する形のため、他市との差別化(面談要件・申請フロー等)を原文で確認する必要あり。"
+    }
+  ]
+}

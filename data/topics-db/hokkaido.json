@@ -1,0 +1,139 @@
+{
+  "region": "hokkaido",
+  "regionLabel": "北海道",
+  "updatedAt": "2026-09-22",
+  "topics": [
+    {
+      "category": "shussan",
+      "title": "妊婦のための支援給付金（北海道内実施分）",
+      "officialUrl": "https://www.pref.hokkaido.lg.jp/hf/kms/178410.html",
+      "authority": "national",
+      "confidence": "unconfirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "国制度(子ども・子育て支援法)だが道内市町村での実施状況を道が集約。道独自給付かは要原文確認。既存記事(hakodate/ishikari 妊婦支援給付)との重複可能性あり、要精査。"
+    },
+    {
+      "category": "jutaku",
+      "title": "住宅の耐震化の支援(道)",
+      "officialUrl": "https://www.pref.hokkaido.lg.jp/kn/ksd/anzensuisin/juutakunotaisinnkasien.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "rejected",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "道は無料耐震診断(振興局実施)と市町村向け助成の枠組み紹介のみで、道民が直接申請できる補助金制度ではない。既に札幌市(木造住宅耐震改修)記事あり。道レベルでの具体的な直接補助制度は確認できず。"
+    },
+    {
+      "category": "sogyo",
+      "title": "北海道庁 起業支援金",
+      "officialUrl": "https://www.pref.hokkaido.lg.jp/kz/csk/a0006/b0003/",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "道内で1年以内に新規事業を始める予定/前年度創業者向け道庁直接実施の起業支援金。既存の札幌市創業支援資金(sapporo-sogyo-shien-shikin)とは実施主体(道 vs 市)が異なり差別化可能。"
+    },
+    {
+      "category": "sogyo",
+      "title": "地域課題解決型起業支援事業(北海道)",
+      "officialUrl": "https://hojyokin-portal.jp/subsidies/40142",
+      "authority": "prefecture",
+      "confidence": "unconfirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "地域課題解決型の起業に対し補助率1/2以内・上限200万円。第三者サイト経由の情報のため道公式ページでの原文確認が必要。"
+    },
+    {
+      "category": "kaigo",
+      "title": "介護サービス提供基盤整備事業補助金(北海道)",
+      "officialUrl": "https://www.pref.hokkaido.lg.jp/hf/khf/145527.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "介護サービス提供基盤等の整備を行う施設設置者向け道の補助金。事業者向け制度のため住民向け記事にする場合は対象読者の再検討が必要(既存記事は住民向け紙おむつ給付等が中心)。"
+    },
+    {
+      "category": "kaigo",
+      "title": "介護従事者確保総合推進事業費補助金(北海道)",
+      "officialUrl": "https://www.pref.hokkaido.lg.jp/hf/khf/221268.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "介護人材確保のための道の補助事業。事業者・従事者向け制度。"
+    },
+    {
+      "category": "energy",
+      "title": "省エネルギー設備導入支援事業費補助金(北海道)",
+      "officialUrl": "https://www.pref.hokkaido.lg.jp/kz/gxs/107905.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "ゼロカーボン北海道関連、道庁GX推進課が実施。令和8年度分は公募2026/4/22-6/12。既存記事(札幌市エネルギー転換・太陽光蓄電池)は市レベルのため道レベルで差別化可能。"
+    },
+    {
+      "category": "pet",
+      "title": "行政機関譲渡犬猫不妊手術助成金事業",
+      "officialUrl": "https://shippo.or.jp/hunin_jigyou/",
+      "authority": "prefecture",
+      "confidence": "unconfirmed",
+      "status": "rejected",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "運営主体はNPO法人HOKKAIDOしっぽの会であり道が道民に直接支給する補助金ではない可能性が高い。道公式ページ(飼い主探し・譲渡会)では道直接の金銭助成制度は確認できず。既存記事(函館市猫不妊去勢)と混同しないよう保留。"
+    },
+    {
+      "category": "shogaisha",
+      "title": "北海道重度心身障がい者医療給付事業",
+      "officialUrl": "https://www.pref.hokkaido.lg.jp/hf/shf/jyuudoiryou.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "身体障害者手帳1〜3級等の入院・通院医療費給付。道が実施する医療費助成制度で、既存記事(札幌市通所交通費・福祉タクシー)とは対象(医療費)が異なり差別化可能。"
+    },
+    {
+      "category": "kyoiku",
+      "title": "北海道公立高校生等奨学給付金",
+      "officialUrl": "https://www.dokyoi.pref.hokkaido.lg.jp/hk/kki/syougakukyuufukin.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "道教育委員会が非課税世帯等の公立高校生に給付する給付型奨学金。既存記事(札幌市就学援助)とは実施主体(道教委 vs 市)・対象(高校生 vs 義務教育)が異なり差別化可能。"
+    },
+    {
+      "category": "kekkon",
+      "title": "結婚・妊娠・共育ての相談機会提供・支援プログラム（旧結婚新生活支援事業、北海道）",
+      "officialUrl": "https://www.pref.hokkaido.lg.jp/hf/kms/2/marriage/",
+      "authority": "prefecture",
+      "confidence": "unconfirmed",
+      "status": "rejected",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "道公式ページでは結婚サポートセンター運営・婚活イベント等の相談/マッチング支援が中心で、道民が直接申請できる金銭的補助金の記載は確認できず。旧結婚新生活支援事業は市町村実施(国費活用)が主体で、既に石狩市版(ishikari-kekkon-shinseikatsu-shien)を記事化済み。道レベルでの独自の金銭給付制度は未確認のため却下。"
+    }
+  ]
+}

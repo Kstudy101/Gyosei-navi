@@ -1,0 +1,115 @@
+{
+  "region": "aichi",
+  "regionLabel": "愛知県",
+  "updatedAt": "2026-09-22",
+  "topics": [
+    {
+      "category": "shussan",
+      "title": "愛知県子育て応援給付金",
+      "officialUrl": "https://www.pref.aichi.jp/soshiki/kosodate/ouenkyuufukin.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "国の妊婦のための支援給付を県独自に低所得世帯向けに拡充。1歳6か月児健診または3歳児健診受診児童に1人5万円。既存published記事(名古屋市 ninpu-kosodate-ouenkin等)とは別の県独自上乗せ制度。原文調査で対象要件・申請方法の詳細確認要。"
+    },
+    {
+      "category": "jutaku",
+      "title": "愛知県 住宅・建築物の耐震診断・耐震改修 補助制度",
+      "officialUrl": "https://www.pref.aichi.jp/soshiki/jutakukeikaku/0000025466.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "県の耐震改修助成制度（市町村と協調実施）。名古屋市の木造住宅耐震改修助成(nagoya-mokuzo-taishin-kaishuu)とは別枠の県全域向け制度。診断は愛知県建築住宅センター実施。原文調査で市町村ごとの上乗せ額・補助率の詳細確認要。"
+    },
+    {
+      "category": "sogyo",
+      "title": "あいちスタートアップ創業支援事業費補助金",
+      "officialUrl": "https://aichihojokin.com/",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "県内で新技術活用による地域課題解決・新市場開拓を目指す起業者向け補助金。名古屋市の新事業創出資金・スタートアップ補助(nagoya-shin-jigyo-soshutsu-shikin, nagoya-startup-hojo)とは別の県レベル制度。原文調査で補助上限額・補助率・公募時期の確認要。"
+    },
+    {
+      "category": "energy",
+      "title": "愛知県住宅用地球温暖化対策設備導入促進費補助金（市町村との協調補助）",
+      "officialUrl": "https://www.pref.aichi.jp/soshiki/ondanka/0000004471.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "太陽光発電・蓄電池・V2H・HEMS等を対象に市町村と協調して補助する県制度。名古屋市エネファーム補助(nagoya-enefarm-hojo)とは別の県全域協調補助。原文調査で対象市町村一覧・補助額の詳細確認要。"
+    },
+    {
+      "category": "kyoiku",
+      "title": "愛知県高等学校等奨学給付金（公立・私立）",
+      "officialUrl": "https://www.pref.aichi.jp/soshiki/kotogakko/0000082860.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "返還不要の給付型奨学給付金（授業料以外の教育費対象）。県立高校向けと私立高校向け(shigaku-syougakukyuhukin.html)の2系統あり。名古屋市奨学金(nagoya-mirai-manabi-ouenkin, nagoya-freeschool-riyouryo-joseikin)とは別制度で対象は県内全域。原文調査で所得要件・給付額の学年別詳細確認要。"
+    },
+    {
+      "category": "shogaisha",
+      "title": "愛知県在宅重度障害者手当",
+      "officialUrl": "https://www.pref.aichi.jp/soshiki/shogai/0000060038.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "県独自規則（愛知県在宅重度障害者手当支給規則）に基づく手当。国の特別障害者手当の対象外となった在宅重度障害者向け。1種:月額15,500円、2種:月額6,750円（年3回支給）。名古屋市のタクシー料金助成・福祉特別乗車券(nagoya-fukushi-tokubetsu-joshaiken, nagoya-taxi-ryokin-josei)とは別制度で県内全域が対象。令和8年4月に制度改定あり、原文調査で最新の支給要件・金額確認要。申請窓口は市町村だが制度は県独自。"
+    },
+    {
+      "category": "pet",
+      "title": "（該当なし）愛知県レベルの犬猫不妊去勢手術費補助は未確認",
+      "officialUrl": "",
+      "authority": "prefecture",
+      "confidence": "unconfirmed",
+      "status": "rejected",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "愛知県動物愛護センターのページでは不妊・去勢の推奨のみで、県独自の補助金プログラムは確認できず。名古屋市・一宮市・小牧市・日進市など市町村単位で個別実施（名古屋市は既published: nagoya-inu-neko-funinkyosei）。県内他市町村（一宮市等）は個別地域として再調査余地あり。"
+    },
+    {
+      "category": "kaigo",
+      "title": "（該当なし）愛知県レベルの個人向け介護リフォーム助成は未確認",
+      "officialUrl": "",
+      "authority": "prefecture",
+      "confidence": "unconfirmed",
+      "status": "rejected",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "高齢福祉課ページでは介護サービス事業所向け補助（食材費高騰対策・ICT導入支援等）のみで、個人（高齢者本人）向け住宅改修助成の県独自制度は確認できず。安城市の人にやさしい住宅リフォーム費交付金など市町村単位で実施（名古屋市は既published: nagoya-jutaku-kaishuu, nagoya-kazoku-kaigo-irokin）。市町村単位で再調査余地あり。"
+    },
+    {
+      "category": "kekkon",
+      "title": "（該当なし）愛知県レベルの結婚新生活支援給付金は未確認",
+      "officialUrl": "",
+      "authority": "prefecture",
+      "confidence": "unconfirmed",
+      "status": "rejected",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "結婚新生活支援事業費補助金は市町村単位で実施主体（安城市・武豊町・豊田市など）で県統一の給付制度ではない。県は「あいち結婚サポートセンター（あいマリ）」というマッチング支援サービスを運営するが金銭給付ではないため対象外（名古屋市は既published: nagoya-kekkon-shinseikatsu-hojokin）。市町村単位で再調査余地あり。"
+    }
+  ]
+}

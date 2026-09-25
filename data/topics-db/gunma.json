@@ -1,0 +1,127 @@
+{
+  "region": "gunma",
+  "regionLabel": "群馬県",
+  "updatedAt": "2026-09-22",
+  "topics": [
+    {
+      "category": "jutaku",
+      "title": "群馬県木造住宅耐震改修促進支援事業",
+      "officialUrl": "https://www.pref.gunma.jp/site/kenchikugyousei/11692.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "市町村の耐震改修補助に協調して県が上乗せ補助する仕組み。木造住宅耐震改修/簡易耐震改修/部分耐震改修/耐震シェルター設置/ブロック塀等安全確保の5メニュー。県内26市町で実施、令和7年度までの時限事業（延長の可能性は要確認）。既存published記事の耐震改修系（さいたま市・横浜市・名古屋市等）とは別地域のため重複なし。"
+    },
+    {
+      "category": "sogyo",
+      "title": "ぐんまクロススタート補助金（群馬県起業支援金）",
+      "officialUrl": "https://www.pref.gunma.jp/page/638116.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "researched",
+      "articleSlug": "gunma-cross-start-hojokin",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "地域課題解決を目的に県内で新たに起業する者や第二創業者向けの起業支援金。運営は公益財団法人群馬県産業支援機構。都道府県レベルの創業補助金は既存published記事に群馬県分なし。"
+    },
+    {
+      "category": "energy",
+      "title": "群馬県住宅用太陽光発電設備等導入資金融資制度",
+      "officialUrl": "https://www.pref.gunma.jp/page/5739.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "補助金ではなく県と金融機関連携の低金利融資制度（太陽光・EV・家庭用蓄電池・V2H対象、最大1000万円・年1.2%固定）。別途「個人住宅・事業者向け再エネ導入支援補助制度」という直接補助メニューも県サイトに存在する可能性があるため、government-researcher段階で補助金本体（無利子融資ではない直接交付分）の有無を要再確認。"
+    },
+    {
+      "category": "kyoiku",
+      "title": "群馬県国公立高等学校等奨学のための給付金制度",
+      "officialUrl": "https://www.pref.gunma.jp/site/kyouiku/4650.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "researched",
+      "articleSlug": "gunma-kokoritsu-kyufukin",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "低中所得世帯向け返済不要給付金。2026年度から対象世帯を拡充（年収目安490万円程度まで）というニュース性あり。国の高校生等奨学給付金制度の群馬県運用版。既存published記事の高校奨学金系（就学援助等）とは対象・地域が異なる。私立版（群馬県私立高等学校等奨学のための給付金制度）も別途存在するため、writer段階でどちらか/両方を扱うか判断要。"
+    },
+    {
+      "category": "kekkon",
+      "title": "結婚新生活支援事業（沼田市ほか群馬県内15市町村実施）",
+      "officialUrl": "https://www.city.numata.gunma.jp/life/kosodate/1004142/1006965.html",
+      "authority": "municipality",
+      "confidence": "confirmed",
+      "status": "researched",
+      "articleSlug": "numata-kekkon-shinseikatsu",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "国の地域少子化対策重点推進交付金を活用した市町村事業。群馬県内では沼田市・館林市・富岡市・安中市・みどり市など15市町村が実施（2025年4月時点、県のポータルhttps://smilelife.pref.gunma.jp/encounter/konpass/business/に一覧あり）。沼田市を代表例として候補に挙げるが、他市町村と条件が異なるため government-researcher が個別確認要。既存published記事（千葉市・川口市・久留米市等）とは地域重複なし。"
+    },
+    {
+      "category": "shogaisha",
+      "title": "福祉タクシー利用券等の交付（高崎市）",
+      "officialUrl": "https://www.city.takasaki.gunma.jp/page/6011.html",
+      "authority": "municipality",
+      "confidence": "confirmed",
+      "status": "researched",
+      "articleSlug": "takasaki-fukushi-taxi",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "在宅障害者向け福祉タクシー利用券（初乗運賃24回分）またはGunMaaS障害者ポイント（15,000円）等を選択交付。群馬県独自のGunMaaS連携という特色あり。既存published記事の福祉タクシー系（名古屋市・久留米市・台東区）とは地域重複なし。群馬県レベルの障害者向け直接給付制度は検索で確認できず、市町村レベルの候補のみ。"
+    },
+    {
+      "category": "pet",
+      "title": "猫の不妊または去勢手術費用の一部補助（高崎市）",
+      "officialUrl": "https://www.city.takasaki.gunma.jp/page/5807.html",
+      "authority": "municipality",
+      "confidence": "confirmed",
+      "status": "researched",
+      "articleSlug": "gunma-takasaki-neko-fujin-kyosei",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "高崎市在住者が所有・管理する猫の不妊(5,000円)・去勢(3,000円)手術費補助、1世帯最大3匹まで。既存published記事のpetカテゴリ（千代田区・福岡市・久留米市・京都市・港区・名古屋市）とは地域重複なし。群馬県レベルの犬猫不妊去勢補助金は公式サイトで確認できず（動物愛護センターのページは地域猫活動の啓発のみで補助金交付の記載なし）— 都道府県レベルは rejected。高崎市はsrc/config/regions.tsに未登録のため、記事のsubsidy.regionCodeは高崎市の実コード10202・regionLabelは「群馬県高崎市」を使用（同様の処理をtakasaki-fukushi-taxiでも採用）。年度途中の予算切れ受付終了の有無は原文からunresearchedのため、本文にCalloutで明記した。"
+    },
+    {
+      "category": "pet",
+      "title": "群馬県（都道府県レベル）犬猫不妊去勢手術補助金",
+      "officialUrl": "https://www.pref.gunma.jp/site/hojokin/list140-791.html",
+      "authority": "prefecture",
+      "confidence": "unconfirmed",
+      "status": "rejected",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "検索エンジン経由の一部サイトで「ぐんま犬猫パートナーシップ制度」への言及があったが、群馬県動物愛護センター公式ページ（地域猫活動のすすめ／ネコの不妊・去勢のすすめ）を直接確認した結果、都道府県主体の補助金交付制度は見当たらず、市町村（高崎市等）の個別補助のみが実在することを確認。都道府県レベルの制度としては存在未確認のためrejectedとする。"
+    },
+    {
+      "category": "shussan",
+      "title": "群馬県（都道府県レベル）出産・育児独自給付金",
+      "officialUrl": "https://www.pref.gunma.jp/page/4161.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "rejected",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "群馬県公式ページ（児童福祉課）を確認したところ、掲載されているのは出産育児一時金（国保・健保、国の制度）、医療費控除、生活保護の出産扶助、市町村社協の生活福祉資金のみで、群馬県独自の出産祝い金・育児支援金制度は確認できなかった。市町村レベル（前橋市・渋川市の出産・子育て応援給付金＝国の妊婦のための支援給付の市町村運用等）は全国共通制度の地方実施にとどまるため、既存published記事（shussan-hojokin-kanzen-guide等）と差別化できる群馬県固有の候補が見つからず、都道府県レベルはrejectedとする。市町村独自の出産祝い金（国制度と別枠のもの）が今後見つかれば再調査対象。"
+    },
+    {
+      "category": "kaigo",
+      "title": "群馬県（都道府県レベル）介護独自給付（紙おむつ支給等）",
+      "officialUrl": "https://www.pref.gunma.jp/page/1743.html",
+      "authority": "prefecture",
+      "confidence": "unconfirmed",
+      "status": "rejected",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "検索結果は介護保険法に基づく福祉用具貸与・購入費支給・住宅改修費支給（全国共通の介護保険制度）のみがヒットし、群馬県独自の紙おむつ支給・家族介護慰労金等の候補は確認できなかった。市町村レベル（高崎市等）で個別に紙おむつ支給等が存在する可能性はあるが、今回の検索では群馬県内の具体的な市町村事業ページを特定できず、確信を持てる候補が見つからないためrejectedとする。次回、市町村単位で個別検索すれば見つかる可能性あり。"
+    }
+  ]
+}

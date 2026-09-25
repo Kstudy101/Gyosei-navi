@@ -1,0 +1,115 @@
+{
+  "region": "okayama",
+  "regionLabel": "岡山県",
+  "updatedAt": "2026-09-22",
+  "topics": [
+    {
+      "category": "kekkon",
+      "title": "岡山県結婚新生活支援事業（パワーアップ事業含む）",
+      "officialUrl": "https://www.pref.okayama.jp/page/detail/0855667.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "国の結婚新生活支援事業を財源に18市町村が実施主体として運用。夫婦とも婚姻日39歳以下・世帯所得500万円未満が対象。両者29歳以下は上限60万円、30〜39歳は上限30万円。県は対象外の独自加算を行う市町村向けにパワーアップ事業（29歳以下+20万円、30〜39歳+10万円）を実施。岡山市には同カテゴリのpublished記事がないため新規カテゴリ。記事化する場合は「実施主体は市町村、県はパワーアップ事業で上乗せ支援」という構造を明確にする必要あり。"
+    },
+    {
+      "category": "kyoiku",
+      "title": "岡山県高校生等教育給付金（県立高校・中等教育学校対象）",
+      "officialUrl": "https://www.pref.okayama.jp/site/16/564414.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "国の高等学校等修学支援事業費補助金を活用した返還不要給付金。県立高校・中等教育学校の生徒で保護者県内在住・所得割182,500円未満等が対象。全日制・定時制（国公立）非課税世帯で年額143,700円、通信制は50,500円。実施主体は岡山県教育委員会財務課。岡山市published記事（岡山市高校生等給付型奨学金＝市独自制度）とは対象範囲（県立高校生全般 vs 市の独自給付型）が異なり差別化可能。私立高校生等への県独自補助（私立高等学校納付金減免補助金）も別途あり、こちらも県教育委員会所管で追加候補になりうる（今回は精査せず）。"
+    },
+    {
+      "category": "sogyo",
+      "title": "岡山県地域課題解決型起業支援金",
+      "officialUrl": "https://www.pref.okayama.jp/page/969485.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "地域課題（子育て支援・まちづくり・社会福祉・環境等9分野）の解決を目的に起業・事業承継・第二創業する者向け。補助率1/2以内、上限200万円。事務局は公益財団法人岡山県産業振興財団。令和8年度募集は4/17〜6/30。岡山市published記事（岡山市創業促進助成金＝市の一般創業支援）とは、対象を地域課題解決型に限定する点で差別化される県独自制度。"
+    },
+    {
+      "category": "shogaisha",
+      "title": "岡山県心身障害者医療費公費負担制度",
+      "officialUrl": "https://www.pref.okayama.jp/page/637315.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "身体障害者手帳所持者等の医療費自己負担を軽減する県の医療費公費負担制度。実施は市町村窓口だが制度設計・財源は県（障害福祉課所管、086-226-7343）。岡山市published記事（岡山市福祉タクシー助成＝移動支援）とは給付内容（医療費 vs タクシー券）が異なり重複しない。ただし実施主体が実質市町村であるため、記事化時は「県制度／市町村窓口実施」の位置づけを原文で要確認。"
+    },
+    {
+      "category": "pet",
+      "title": "（公財）岡山県動物愛護財団 犬・猫の不妊去勢手術費助成金",
+      "officialUrl": "http://ww9.tiki.ne.jp/~okadouaizai/html/zaidan_zyoseizigyou.html",
+      "authority": "prefecture",
+      "confidence": "unconfirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "県所管の公益財団法人が実施する飼い犬・飼い猫向け不妊去勢手術費助成。対象は県内在住かつ「ふれあい動物友の会」入会者、犬は狂犬病予防注射済票交付が条件。助成金額等の詳細ページが文字化けで取得できず、公式サイト（https://ww9.tiki.ne.jp/~okadouaizai/）を原文調査で再確認が必要。岡山市published記事（岡山市＝地域猫不妊去勢手術助成、市の地域猫活動向け）とは対象（個人の飼い猫・飼い犬全般 vs 地域猫活動）が異なり差別化可能。confidenceはunconfirmed（制度の存在自体は財団サイトで確認したが、助成額など詳細未確認のため）。"
+    },
+    {
+      "category": "jutaku",
+      "title": "（該当なし）岡山県統一の移住支援金・住宅改修補助は未確認",
+      "officialUrl": "",
+      "authority": "prefecture",
+      "confidence": "unconfirmed",
+      "status": "rejected",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "移住支援金（単身60万円・世帯100万円）は新見市・岡山市など市町村ごとに個別実施しており、県統一の直接給付制度は確認できず（県は「市町村別移住・定住支援制度一覧」で情報集約のみ）。空き家改修費補助も赤磐市・真庭市・矢掛町・新見市など市町村単位。岡山市published記事（空き家改修）と重複しない県独自制度は今回未発見。市町村単位（岡山市以外）での再調査余地あり。"
+    },
+    {
+      "category": "kaigo",
+      "title": "（該当なし）岡山県統一の個人向け介護リフォーム・福祉用具助成は未確認",
+      "officialUrl": "",
+      "authority": "prefecture",
+      "confidence": "unconfirmed",
+      "status": "rejected",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "介護保険住宅改修費の上乗せ（岡山市すこやか住宅リフォーム助成事業）や難聴高齢者補聴器購入費助成事業はいずれも岡山市の市単独事業として確認され、県レベルで統一実施している個人向け給付は見つからなかった。岡山市published記事（介護用品給付）と別軸の県独自制度は今回未発見。他市町村（美作市・矢掛町・吉備中央町の補聴器助成等）は個別に再調査余地あり。"
+    },
+    {
+      "category": "energy",
+      "title": "（該当なし）岡山県統一の個人住宅向け太陽光・蓄電池補助は未確認",
+      "officialUrl": "",
+      "authority": "prefecture",
+      "confidence": "unconfirmed",
+      "status": "rejected",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "岡山県は個人住宅向けの太陽光発電・蓄電池・V2H補助金を実施しておらず、県公式で確認できるのは事業者向け自家消費型太陽光発電導入支援（法人対象）のみ。個人向けは瀬戸内市・和気町など市町村ごとに実施。岡山市published記事（自動車スマートエネルギー補助）と同様、個人向け制度は市町村単位に留まる。"
+    },
+    {
+      "category": "shussan",
+      "title": "（該当なし）岡山県独自の出産・育児給付上乗せは未確認",
+      "officialUrl": "",
+      "authority": "prefecture",
+      "confidence": "unconfirmed",
+      "status": "rejected",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "出産育児一時金・妊婦のための支援給付・出産子育て応援給付金はいずれも国制度で市町村（岡山市等）が実施主体。県独自の上乗せ給付金は「おかやまはぐくま～れ」サイト上でも確認できず。岡山市published記事（妊婦支援給付・産後ケア）と別軸の県独自制度は今回未発見。"
+    }
+  ]
+}

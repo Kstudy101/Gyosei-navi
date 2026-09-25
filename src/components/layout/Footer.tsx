@@ -6,8 +6,8 @@ export function Footer() {
   return (
     <footer className="mt-16 border-t border-gray-200 bg-gray-50 dark:border-gray-800 dark:bg-gray-900">
       <div className="mx-auto max-w-6xl px-4 py-10">
-        <div className="grid gap-8 sm:grid-cols-3">
-          <div>
+        <div className="grid grid-cols-2 gap-8 sm:grid-cols-3">
+          <div className="col-span-2 sm:col-span-1">
             <p className="text-lg font-bold text-brand-800 dark:text-brand-100">{siteConfig.name}</p>
             <p className="mt-2 text-sm leading-relaxed text-gray-600 dark:text-gray-400">
               {siteConfig.description}
@@ -15,10 +15,10 @@ export function Footer() {
           </div>
           <div>
             <p className="text-sm font-semibold text-gray-900 dark:text-gray-100">コンテンツ</p>
-            <ul className="mt-2 space-y-1 text-sm">
+            <ul className="mt-2 text-sm">
               {Object.entries(SECTIONS).map(([key, s]) => (
                 <li key={key}>
-                  <Link href={s.path} className="text-gray-600 hover:text-brand-600 dark:text-gray-400 dark:hover:text-brand-100">
+                  <Link href={s.path} className="block py-1.5 text-gray-600 hover:text-brand-600 sm:py-0.5 dark:text-gray-400 dark:hover:text-brand-100">
                     {s.label}
                   </Link>
                 </li>
@@ -27,12 +27,12 @@ export function Footer() {
           </div>
           <div>
             <p className="text-sm font-semibold text-gray-900 dark:text-gray-100">目的別に探す</p>
-            <ul className="mt-2 space-y-1 text-sm">
+            <ul className="mt-2 text-sm">
               {CATEGORIES.map((c) => (
                 <li key={c.code}>
                   <Link
                     href={`/subsidy/${c.code}`}
-                    className="text-gray-600 hover:text-brand-600 dark:text-gray-400 dark:hover:text-brand-100"
+                    className="block py-1.5 text-gray-600 hover:text-brand-600 sm:py-0.5 dark:text-gray-400 dark:hover:text-brand-100"
                   >
                     {c.labelShort}
                   </Link>
@@ -48,18 +48,18 @@ export function Footer() {
         </div>
 
         <div className="mt-6 flex flex-wrap items-center justify-between gap-2 text-xs text-gray-500 dark:text-gray-400">
-          <ul className="flex flex-wrap gap-x-4 gap-y-1">
+          <ul className="flex flex-wrap gap-x-4">
             <li>
-              <Link href="/about" className="hover:text-brand-600 dark:hover:text-brand-100">運営者情報</Link>
+              <Link href="/about" className="inline-block py-1.5 hover:text-brand-600 dark:hover:text-brand-100">運営者情報</Link>
             </li>
             <li>
-              <Link href="/contact" className="hover:text-brand-600 dark:hover:text-brand-100">お問い合わせ</Link>
+              <Link href="/contact" className="inline-block py-1.5 hover:text-brand-600 dark:hover:text-brand-100">お問い合わせ</Link>
             </li>
             <li>
-              <Link href="/policy/disclaimer" className="hover:text-brand-600 dark:hover:text-brand-100">免責事項</Link>
+              <Link href="/policy/disclaimer" className="inline-block py-1.5 hover:text-brand-600 dark:hover:text-brand-100">免責事項</Link>
             </li>
             <li>
-              <Link href="/policy/privacy" className="hover:text-brand-600 dark:hover:text-brand-100">プライバシーポリシー</Link>
+              <Link href="/policy/privacy" className="inline-block py-1.5 hover:text-brand-600 dark:hover:text-brand-100">プライバシーポリシー</Link>
             </li>
           </ul>
           <p>© {new Date().getFullYear()} {siteConfig.name}</p>

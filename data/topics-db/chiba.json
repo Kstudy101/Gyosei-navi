@@ -1,0 +1,115 @@
+{
+  "region": "chiba",
+  "regionLabel": "千葉県",
+  "updatedAt": "2026-09-22",
+  "topics": [
+    {
+      "category": "jutaku",
+      "title": "千葉市木造住宅耐震改修補助制度",
+      "officialUrl": "https://www.city.chiba.jp/toshi/kenchiku/shido/03_kaisyu.html",
+      "authority": "municipality",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "工事費5分の4補助・上限115万円（税別）。対象は2000年5月31日以前建築確認の木造住宅。千葉市耐震シェルター設置費補助（上限20万円）も関連制度としてあり。千葉市は他カテゴリ（kekkon/shussan/kaigo/sogyo/energy/kyoiku/shogaisha/pet）は既にpublished/chiba-shi-*で存在するが、jutakuは未着手。問い合わせ: 千葉市都市局建築部建築指導課。"
+    },
+    {
+      "category": "sogyo",
+      "title": "ちば創業応援助成金（千葉県）",
+      "officialUrl": "https://www.pref.chiba.lg.jp/keishi/sougyou/shikin2.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "対象: 市町村の特定創業支援等事業修了者または県内公的インキュベーション施設入居者で県内創業予定者・創業5年未満の中小企業者。補助率1/2、上限100万円。令和8年度募集は4/2〜4/30。所管: 商工労働部経営支援課 043-223-2712。姉妹制度に千葉県地域課題解決型起業支援事業補助金（条件不利地域23市町村対象、上限200万円）もあり、こちらは県レベル初の記事となる（既存chiba-shi-challenge-shikinは市レベル）。"
+    },
+    {
+      "category": "kekkon",
+      "title": "船橋市結婚新生活支援事業",
+      "officialUrl": "https://www.city.funabashi.lg.jp/machi/juutaku/005/p129063.html",
+      "authority": "municipality",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "新婚世帯の住居費・引越費用補助。上限30万円、婚姻時双方29歳以下は上限60万円（国の地域少子化対策重点推進交付金活用、千葉県内では千葉市・佐倉市・成田市など多数の市町村が同種事業を実施）。千葉市kekkonは既published（chiba-shi-kekkon-shinseikatsu）のため、船橋市を新規地域として提案。船橋市はsrc/config/regions.ts未登録（要登録）。"
+    },
+    {
+      "category": "kaigo",
+      "title": "柏市介護用品（紙おむつ）給付",
+      "officialUrl": "https://www.city.kashiwa.lg.jp/kourei/kaigo/kaigoshien/nichijoshien/kaigoyohin.html",
+      "authority": "municipality",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "65歳以上・要介護2以上または身体障害者手帳2級以上等の失禁症状がある方が対象。月1回3千円相当（要介護4-5かつ世帯非課税は6千円相当）の紙おむつを現物給付。問い合わせ: 高齢者支援課 04-7167-1135。千葉市kaigo（chiba-shi-omutsu-kyufu）は既published。同種の船橋市・松戸市の制度も存在確認したが柏市を代表候補とする。柏市はsrc/config/regions.ts未登録（要登録）。"
+    },
+    {
+      "category": "energy",
+      "title": "千葉県住宅用太陽光発電設備等に係るリース等導入促進事業補助金",
+      "officialUrl": "https://www.pref.chiba.lg.jp/ontai/hojo/solarpowerhojo.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "県民が居住用家屋に太陽光発電設備・蓄電池をリース/PPAで導入する際の費用を軽減する補助（令和6年度開始）。太陽光5万円/kW、蓄電池1台12万円。リース契約限定（購入は対象外）。県レベル初のenergy記事候補（千葉市energyは既published2件だが市レベル）。"
+    },
+    {
+      "category": "pet",
+      "title": "松戸市飼い主のいない猫の不妊・去勢手術費補助金",
+      "officialUrl": "https://www.city.matsudo.chiba.jp/kurashi/pet/nekohojokin.html",
+      "authority": "municipality",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "不妊(雌)上限16,000円、去勢(雄)上限10,000円、1人年10件まで。松戸市民・市税完納・指定動物病院での施術が条件。令和8年度予算278万円。千葉市pet（chiba-shi-neko-funinkyosei）は既published。松戸市は別途「犬猫の不妊去勢手術補助金（飼い犬猫向け、各5,000円）」もあり将来の差別化候補。松戸市はsrc/config/regions.ts未登録（要登録）。"
+    },
+    {
+      "category": "shogaisha",
+      "title": "船橋市福祉タクシー利用料金助成",
+      "officialUrl": "https://www.city.funabashi.lg.jp/kenkou/shougaisha/005/02/p009707.html",
+      "authority": "municipality",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "身体障害者手帳1・2級、療育手帳A、精神障害者保健福祉手帳1級等が対象。タクシー運賃の1/2、1枚上限1,200円、年間120枚（人工透析患者は312枚）交付。千葉市shogaisha（chiba-shi-fukushi-taxi）は既published。船橋市はsrc/config/regions.ts未登録（要登録）。"
+    },
+    {
+      "category": "kyoiku",
+      "title": "千葉県高等学校等奨学のための給付金（公立・私立）",
+      "officialUrl": "https://www.pref.chiba.lg.jp/gakuji/shiritsutou/gakuhi-josei/josei-kyuufukin.html",
+      "authority": "prefecture",
+      "confidence": "confirmed",
+      "status": "pending",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "低所得世帯（非課税世帯等）向けの授業料以外の教育費を支援する返還不要給付金。公立・私立で別ページ・別制度（私立は令和8年度から電子申請対応）。金額詳細は原文調査で要確認。県レベル初のkyoiku記事候補（千葉市kyoiku=chiba-shi-shugaku-enjoは市レベル就学援助で別制度）。"
+    },
+    {
+      "category": "shussan",
+      "title": "（該当なし）千葉県独自の出産・子育て応援上乗せ給付金は未確認",
+      "officialUrl": "",
+      "authority": "prefecture",
+      "confidence": "unconfirmed",
+      "status": "rejected",
+      "articleSlug": "",
+      "foundAt": "2026-09-22",
+      "checkedAt": "2026-09-22",
+      "note": "妊婦支援給付金・出産応援給付金は国制度で市町村（千葉市・船橋市等）が実施主体。県独自の上乗せ給付は検索で確認できず。千葉市shussan（chiba-shi-ninpu-shien-kyufu）は既published。市町村単位（船橋市等）での再調査余地あり。"
+    }
+  ]
+}
