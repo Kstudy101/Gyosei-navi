@@ -25,6 +25,16 @@ test("出産カテゴリは大丸松坂屋（カテゴリ一致）", () => {
   assert.equal(r[0]?.id, "daimaru-matsuzakaya");
 });
 
+test("看護師関連の記事はスーパーナース", () => {
+  const r = matchAdvertisers({ ...base, title: "看護師の修学資金貸付制度", description: "看護師を目指す人向けの貸付" });
+  assert.equal(r[0]?.id, "supernurse");
+});
+
+test("介護カテゴリはスーパーナース（カテゴリ一致）", () => {
+  const r = matchAdvertisers({ ...base, title: "介護保険サービス利用料の助成", category: "kaigo" });
+  assert.equal(r[0]?.id, "supernurse");
+});
+
 test("最大2件まで", () => {
   const r = matchAdvertisers({
     ...base,

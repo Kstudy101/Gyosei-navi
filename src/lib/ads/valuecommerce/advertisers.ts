@@ -43,4 +43,14 @@ export const advertisers: VcAdvertiser[] = [
     keywords: ["出産祝い", "内祝い", "結婚祝い", "引き出物", "ギフト", "お祝い", "敬老", "ブライダル"],
     categories: ["shussan", "kekkon"],
   },
+  {
+    id: "supernurse",
+    name: "スーパーナース",
+    url: "https://www.supernurse.co.jp/",
+    headline: "看護師の求人・転職はスーパーナースで",
+    description: "看護師向けの求人検索・派遣・転職支援サービス。専任コーディネーターがサポートします。",
+    cta: "スーパーナースで求人を探す",
+    keywords: ["看護師", "准看護師", "訪問看護", "看護職", "潜在看護師", "復職", "看護師転職", "看護師求人", "医療従事者"],
+    categories: ["kaigo"],
+  },
 ];
