@@ -29,7 +29,7 @@ export async function ArticleView({ article, crumbs }: { article: Article; crumb
   const statusDef = fm.subsidy ? SUBSIDY_STATUSES[fm.subsidy.status] : null;
 
   return (
-    <div className="mx-auto max-w-3xl px-4 py-8" data-pagefind-body>
+    <div className="relative mx-auto max-w-3xl px-4 py-8" data-pagefind-body>
       <JsonLd data={articleJsonLd(article)} />
       <JsonLd data={breadcrumbJsonLd(crumbs)} />
       {fm.faq.length > 0 && <JsonLd data={faqJsonLd(fm.faq)} />}
