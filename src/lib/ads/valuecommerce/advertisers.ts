@@ -62,4 +62,14 @@ export const advertisers: VcAdvertiser[] = [
     keywords: ["看護師", "准看護師", "訪問看護", "看護職", "潜在看護師", "復職", "看護師転職", "看護師求人", "医療従事者"],
     categories: ["kaigo"],
   },
+  {
+    id: "yahoo-shopping",
+    name: "Yahoo!ショッピング",
+    url: "https://shopping.yahoo.co.jp/",
+    image: { src: "/ads/valuecommerce/yahoo-shopping.png", alt: "Yahoo!ショッピング", width: 1200, height: 630 },
+    headline: "暮らしの必需品はYahoo!ショッピングで",
+    description: "ベビー用品・家電・日用品など幅広い商品をオンラインで探せます。",
+    cta: "Yahoo!ショッピングで探す",
+    keywords: ["ベビー用品", "ベビーカー", "チャイルドシート", "新生活", "家電", "介護用品", "ペット用品", "ペットフード", "学用品"],
+  },
 ];

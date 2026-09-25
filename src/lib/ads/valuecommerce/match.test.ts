@@ -35,6 +35,11 @@ test("介護カテゴリはスーパーナース（カテゴリ一致）", () =>
   assert.equal(r[0]?.id, "supernurse");
 });
 
+test("ベビー用品がタイトルにあればYahoo!ショッピング", () => {
+  const r = matchAdvertisers({ ...base, title: "ベビー用品の購入費を助成する制度" });
+  assert.equal(r[0]?.id, "yahoo-shopping");
+});
+
 test("最大2件まで", () => {
   const r = matchAdvertisers({
     ...base,
