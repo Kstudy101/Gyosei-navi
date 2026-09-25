@@ -1,35 +1,23 @@
 /**
- * ValueCommerce 広告主 × published 記事のマッチ状況を出力する。
- * 使い方: npm run ads:vc:report [-- --advertiser <id>]
+ * ValueCommerce 広告主の一覧と、published 記事への配分（ランダム選定）を出力する。
+ * 使い方: npm run ads:vc:report
  */
 import { getAllArticles } from "@/lib/content";
 import { advertisers } from "@/lib/ads/valuecommerce/advertisers";
-import { matchAdvertisers } from "@/lib/ads/valuecommerce/match";
-
-const idx = process.argv.indexOf("--advertiser");
-const only = idx >= 0 ? process.argv[idx + 1] : undefined;
+import { pickAdvertisers } from "@/lib/ads/valuecommerce/pick";
 
 const published = getAllArticles().filter((a) => a.frontmatter.status === "published");
-const hits = new Map<string, string[]>(advertisers.map((a) => [a.id, []]));
+const counts = new Map<string, number>(advertisers.map((a) => [a.id, 0]));
+const date = new Date().toISOString().slice(0, 10);
 
 for (const a of published) {
-  const fm = a.frontmatter;
-  const matched = matchAdvertisers({
-    title: fm.title,
-    description: fm.description,
-    tags: fm.tags,
-    targetKeywords: fm.targetKeywords,
-    category: fm.category,
-    body: a.body,
-  });
-  for (const m of matched) hits.get(m.id)?.push(`${a.section}/${fm.slug}`);
+  for (const adv of pickAdvertisers(`${a.frontmatter.slug}:${date}`)) {
+    counts.set(adv.id, (counts.get(adv.id) ?? 0) + 1);
+  }
 }
 
-console.log(`published 記事: ${published.length}件`);
+console.log(`広告主: ${advertisers.length}件 / published 記事: ${published.length}件`);
 for (const adv of advertisers) {
-  if (only && adv.id !== only) continue;
-  const list = hits.get(adv.id) ?? [];
-  console.log(`\n[${adv.id}] ${adv.name} — ${list.length}件`);
-  for (const s of list.slice(0, 20)) console.log(`  - ${s}`);
-  if (list.length > 20) console.log(`  ... 他 ${list.length - 20}件`);
+  const image = adv.image ? "画像あり" : "画像なし";
+  console.log(`[${adv.id}] ${adv.name} — ${counts.get(adv.id)}記事 (${image}) ${adv.url}`);
 }

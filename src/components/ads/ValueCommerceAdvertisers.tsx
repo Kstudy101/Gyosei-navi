@@ -2,7 +2,7 @@ import type { Article } from "@/lib/content";
 import type { VcAdvertiser } from "@/lib/ads/valuecommerce/advertisers";
 import type { AffiliateEventPayload } from "@/lib/ads/analytics";
 import { isValueCommerceEnabled } from "@/lib/ads/flags";
-import { matchAdvertisers } from "@/lib/ads/valuecommerce/match";
+import { pickAdvertisers } from "@/lib/ads/valuecommerce/pick";
 import { AdSlot } from "@/components/ads/AdSlot";
 import { AdImpressionTracker } from "@/components/ads/AdImpressionTracker";
 import { AffiliateLink } from "@/components/ads/AffiliateLink";
@@ -44,24 +44,18 @@ function AdvertiserCard({ adv, event }: { adv: VcAdvertiser; event: AffiliateEve
 
 /**
  * ValueCommerce 提携広告主の広告（記事の左右サイドバナー）。
- * 記事の title/description/tags/本文/カテゴリから関連する広告主だけを自動選定し、
- * 該当なしなら何も出さない。リンクは素の広告主URLで、vcdal.js が変換する。
+ * 記事内容とは無関係に、登録済み広告主からランダムで選ぶ（pick.ts）。
+ * リンクは素の広告主URLで、vcdal.js が変換する。
  *
  * 親（ArticleView のルート）が `relative` であること。xl 以上では記事カラムの左右の余白に
- * スクロール追従（sticky）で表示し、左が1位・右が2位（1件のみなら右）。
+ * スクロール追従（sticky）で表示し、左が1件目・右が2件目（1件のみなら右）。
  * サイドの余白がない xl 未満だけ、記事末尾にカード表示へフォールバックする。
  */
 export function ValueCommerceAdvertisers({ article }: { article: Article }) {
   if (!isValueCommerceEnabled()) return null;
   const fm = article.frontmatter;
-  const matched = matchAdvertisers({
-    title: fm.title,
-    description: fm.description,
-    tags: fm.tags,
-    targetKeywords: fm.targetKeywords,
-    category: fm.category,
-    body: article.body,
-  });
+  // 記事と無関係にランダム。slug + 日付をシードにするので、ビルドごと（日ごと）に入れ替わる
+  const matched = pickAdvertisers(`${fm.slug}:${new Date().toISOString().slice(0, 10)}`);
   if (matched.length === 0) return null;
 
   const event: AffiliateEventPayload = {
