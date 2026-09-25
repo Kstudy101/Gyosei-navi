@@ -40,6 +40,20 @@ export function ValueCommerceAdvertisers({ article }: { article: Article }) {
             key={adv.id}
             className="flex flex-col gap-2 rounded-md border border-gray-200 bg-white p-3 dark:border-gray-800 dark:bg-gray-900"
           >
+            {adv.image && (
+              <div className="flex items-center justify-center overflow-hidden rounded bg-gray-50 dark:bg-gray-800">
+                {/* 静的 export + unoptimized 前提のサイトのため next/image は使わない（ProductCard と同じ） */}
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={adv.image.src}
+                  alt={adv.image.alt}
+                  width={adv.image.width}
+                  height={adv.image.height}
+                  loading="lazy"
+                  className="h-auto max-w-full object-contain"
+                />
+              </div>
+            )}
             <p className="text-sm font-bold text-gray-900 dark:text-gray-100">{adv.headline}</p>
             <p className="text-xs leading-relaxed text-gray-600 dark:text-gray-400">{adv.description}</p>
             <AffiliateLink

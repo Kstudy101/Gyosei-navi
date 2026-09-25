@@ -47,5 +47,8 @@ test("最大2件まで", () => {
 
 test("レジストリの id は一意・URLは https", () => {
   assert.equal(new Set(advertisers.map((a) => a.id)).size, advertisers.length);
-  for (const a of advertisers) assert.ok(a.url.startsWith("https://"), a.id);
+  for (const a of advertisers) {
+    assert.ok(a.url.startsWith("https://"), a.id);
+    if (a.image) assert.ok(a.image.src.startsWith("/") || a.image.src.startsWith("https://"), `${a.id} image`);
+  }
 });

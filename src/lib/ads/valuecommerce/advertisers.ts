@@ -17,6 +17,12 @@ export interface VcAdvertiser {
   headline: string;
   description: string;
   cta: string;
+  /**
+   * バナー/ロゴ画像（任意）。ValueCommerce 管理画面で提供された素材か、
+   * 広告主の利用規約上使ってよい画像を public/ads/valuecommerce/ に置いて "/ads/valuecommerce/xxx.png" を指定する。
+   * 未指定ならテキストのみのカードになる。
+   */
+  image?: { src: string; alt: string; width: number; height: number };
   /** 記事タイトル・説明・タグ・本文に含まれていたら関連ありと判定する語 */
   keywords: string[];
   /** taxonomy.ts の CATEGORY_CODES。記事カテゴリが一致したら加点 */
@@ -26,6 +32,7 @@ export interface VcAdvertiser {
 export const advertisers: VcAdvertiser[] = [
   {
     id: "jalan",
+    image: { src: "/ads/valuecommerce/jalan.png", alt: "じゃらん", width: 1200, height: 630 },
     name: "じゃらん",
     url: "https://www.jalan.net/",
     headline: "宿泊・旅行の予約はじゃらんで",
@@ -35,6 +42,7 @@ export const advertisers: VcAdvertiser[] = [
   },
   {
     id: "daimaru-matsuzakaya",
+    image: { src: "/ads/valuecommerce/daimaru-matsuzakaya.png", alt: "大丸松坂屋オンラインショッピング", width: 144, height: 144 },
     name: "大丸松坂屋オンラインショッピング",
     url: "https://www.daimaru-matsuzakaya.jp/",
     headline: "ギフト選びは大丸松坂屋オンラインで",
@@ -45,6 +53,7 @@ export const advertisers: VcAdvertiser[] = [
   },
   {
     id: "supernurse",
+    image: { src: "/ads/valuecommerce/supernurse.jpg", alt: "スーパーナース 看護師求人支援サービス", width: 1200, height: 630 },
     name: "スーパーナース",
     url: "https://www.supernurse.co.jp/",
     headline: "看護師の求人・転職はスーパーナースで",
