@@ -9,10 +9,11 @@ import { FaqList } from "@/components/article/FaqList";
 import { SourceLinkList } from "@/components/article/SourceLinkList";
 import { SubsidyInfoCard } from "@/components/article/SubsidyInfoCard";
 import { JsonLd } from "@/components/seo/JsonLd";
+import { ValueCommerceAdvertisers } from "@/components/ads/ValueCommerceAdvertisers";
 
 /**
  * 翻訳記事（content-i18n/）専用ビュー。ArticleView（日本語原文用）とほぼ同じ構造だが、
- * getAllArticles()（原文専用インデックス）に依存する関連記事セクション・楽天広告挿入は行わない
+ * getAllArticles()（原文専用インデックス）に依存する関連記事セクション・楽天広告挿入は行わない（ValueCommerce のサイドバナーのみ表示する）
  * — このスコープでは翻訳ページへの広告連動は対象外（AGENTS.md 絶対規則10は subsidy 原文が対象）。
  */
 function bodyHas(body: string, name: string): boolean {
@@ -33,7 +34,7 @@ export async function TranslatedArticleView({
   const body = await renderMdx(article.body, buildMdxComponents(fm));
 
   return (
-    <div className="mx-auto max-w-3xl px-4 py-8">
+    <div className="relative mx-auto max-w-3xl px-4 py-8">
       <JsonLd data={breadcrumbJsonLd(crumbs)} />
       {fm.faq.length > 0 && <JsonLd data={faqJsonLd(fm.faq)} />}
 
@@ -72,6 +73,8 @@ export async function TranslatedArticleView({
       )}
       {!bodyHas(article.body, "SourceLinkList") && <SourceLinkList items={fm.sourceLinks} />}
       {!bodyHas(article.body, "Disclaimer") && <Disclaimer />}
+
+      <ValueCommerceAdvertisers slug={fm.slug} category={fm.category} />
     </div>
   );
 }

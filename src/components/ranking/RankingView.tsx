@@ -3,13 +3,14 @@ import type { RankingArticle } from "@/lib/ranking";
 import { inferCategoryFromText } from "@/lib/ads/rakuten/mapping";
 import { RakutenRelatedProducts } from "@/components/ads/RakutenRelatedProducts";
 import { RakutenMotionWidget } from "@/components/ads/RakutenMotionWidget";
+import { ValueCommerceAdvertisers } from "@/components/ads/ValueCommerceAdvertisers";
 
 export function RankingView({ article, crumbs }: { article: RankingArticle; crumbs: Crumb[] }) {
   const fm = article.frontmatter;
   const inferredCategory = inferCategoryFromText(`${fm.title} ${fm.description}`);
 
   return (
-    <div className="mx-auto max-w-3xl px-4 py-8" data-pagefind-body>
+    <div className="relative mx-auto max-w-3xl px-4 py-8" data-pagefind-body>
       <Breadcrumb items={crumbs} />
 
       {fm.status !== "published" && (
@@ -57,6 +58,8 @@ export function RankingView({ article, crumbs }: { article: RankingArticle; crum
       {inferredCategory && (
         <RakutenRelatedProducts category={inferredCategory} articleId={fm.slug} />
       )}
+
+      {fm.status === "published" && <ValueCommerceAdvertisers slug={fm.slug} />}
 
       <RakutenMotionWidget placement="article-bottom" />
     </div>

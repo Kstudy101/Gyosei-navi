@@ -1,4 +1,3 @@
-import type { Article } from "@/lib/content";
 import type { VcAdvertiser } from "@/lib/ads/valuecommerce/advertisers";
 import type { AffiliateEventPayload } from "@/lib/ads/analytics";
 import { isValueCommerceEnabled } from "@/lib/ads/flags";
@@ -47,23 +46,22 @@ function AdvertiserCard({ adv, event }: { adv: VcAdvertiser; event: AffiliateEve
  * 記事内容とは無関係に、登録済み広告主からランダムで選ぶ（pick.ts）。
  * リンクは素の広告主URLで、vcdal.js が変換する。
  *
- * 親（ArticleView のルート）が `relative` であること。xl 以上では記事カラムの左右の余白に
+ * 親（ArticleView / RankingView / TranslatedArticleView のルート）が `relative` であること。xl 以上では記事カラムの左右の余白に
  * スクロール追従（sticky）で表示し、左が1件目・右が2件目（1件のみなら右）。
  * サイドの余白がない xl 未満だけ、記事末尾にカード表示へフォールバックする。
  */
-export function ValueCommerceAdvertisers({ article }: { article: Article }) {
+export function ValueCommerceAdvertisers({ slug, category }: { slug: string; category?: string }) {
   if (!isValueCommerceEnabled()) return null;
-  const fm = article.frontmatter;
   // 記事と無関係にランダム。slug + 日付をシードにするので、ビルドごと（日ごと）に入れ替わる
-  const matched = pickAdvertisers(`${fm.slug}:${new Date().toISOString().slice(0, 10)}`);
+  const matched = pickAdvertisers(`${slug}:${new Date().toISOString().slice(0, 10)}`);
   if (matched.length === 0) return null;
 
   const event: AffiliateEventPayload = {
     provider: "valuecommerce",
     ad_type: "contextual",
     placement: "sidebar",
-    article_id: fm.slug,
-    article_category: fm.category,
+    article_id: slug,
+    article_category: category,
   };
   const [first, second] = matched;
   const left = second ? first : undefined;
@@ -92,7 +90,7 @@ export function ValueCommerceAdvertisers({ article }: { article: Article }) {
       {left && side(left, "left")}
       {side(right, "right")}
       <div className="xl:hidden">
-        <AdSlot provider="valuecommerce" type="contextual" placement="article-bottom" heading="この記事に関連するサービス">
+        <AdSlot provider="valuecommerce" type="contextual" placement="article-bottom" heading="おすすめサービス">
           <AdImpressionTracker event={{ ...event, placement: "article_bottom" }} />
           <div className="grid gap-3 sm:grid-cols-2">
             {matched.map((adv) => (

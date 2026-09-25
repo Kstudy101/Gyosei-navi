@@ -107,7 +107,7 @@ export async function ArticleView({ article, crumbs }: { article: Article; crumb
         </section>
       )}
 
-      {fm.status === "published" && <ValueCommerceAdvertisers article={article} />}
+      {fm.status === "published" && <ValueCommerceAdvertisers slug={fm.slug} category={fm.category} />}
 
       {!bodyHas(article.body, "RakutenMotionWidget") && (
         <RakutenMotionWidget placement="article-bottom" />
