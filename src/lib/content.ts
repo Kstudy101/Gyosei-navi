@@ -211,8 +211,18 @@ export function getTagIndex(): Map<string, Article[]> {
   return new Map([...index.entries()].sort((x, y) => y[1].length - x[1].length));
 }
 
+/**
+ * 薄いページの基準（2026-09-26 GSC 対策、docs/17）。
+ * 記事1件の地域ハブは記事本体とほぼ同じ内容なので noindex,follow にし、sitemap にも載せない。
+ * タグアーカイブは3件未満なら生成しない。sitemap.ts・各 page.tsx の robots はこの値を共有する。
+ */
+export const MIN_HUB_ARTICLES = 2;
+export const MIN_TAG_ARCHIVE_ARTICLES = 3;
+
 export function getTagsWithArchivePage(): string[] {
-  return [...getTagIndex().entries()].filter(([, arts]) => arts.length >= 2).map(([t]) => t);
+  return [...getTagIndex().entries()]
+    .filter(([, arts]) => arts.length >= MIN_TAG_ARCHIVE_ARTICLES)
+    .map(([t]) => t);
 }
 
 /**

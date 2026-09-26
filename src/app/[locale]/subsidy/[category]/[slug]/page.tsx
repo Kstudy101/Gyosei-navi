@@ -1,11 +1,7 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { getCategory } from "@/config/taxonomy";
-import {
-  getArticlesBySectionAndLocale,
-  getTranslatedArticle,
-  getAvailableLocalesFor,
-} from "@/lib/content";
+import { getArticlesBySectionAndLocale, getTranslatedArticle } from "@/lib/content";
 import { translatedArticleMetadata } from "@/lib/seo";
 import { LOCALES, isLocale, type Locale } from "@/i18n/locales";
 import { dictionaries } from "@/i18n/dictionaries";
@@ -32,8 +28,7 @@ export async function generateMetadata({
   if (!isLocale(locale)) return {};
   const article = getTranslatedArticle(locale, "subsidy", slug, category);
   if (!article) return {};
-  const availableLocales = getAvailableLocalesFor("subsidy", slug, category);
-  return translatedArticleMetadata(article, availableLocales);
+  return translatedArticleMetadata(article);
 }
 
 export default async function LocaleSubsidyArticlePage({

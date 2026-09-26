@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { MUNICIPALITIES, getPrefectureByCode, getPrefectureBySlug, getMunicipalityBySlug } from "@/config/regions";
 import { CATEGORY_CODES, getCategory } from "@/config/taxonomy";
-import { getArticlesByRegionAndCategory, orPlaceholder, EXPORT_PLACEHOLDER } from "@/lib/content";
+import { MIN_HUB_ARTICLES, getArticlesByRegionAndCategory, orPlaceholder, EXPORT_PLACEHOLDER } from "@/lib/content";
 import { ArticleCard } from "@/components/article/ArticleCard";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
 
@@ -44,6 +44,10 @@ export async function generateMetadata({
   return {
     title: `${m.labelJa}の${def.labelJa}の補助金・助成金`,
     description: `${m.labelJa}で使える${def.labelJa}分野の補助金・助成金を一覧で確認できます。金額・締切・申請条件を一次情報に基づいて解説します。`,
+    // 記事1件のハブは記事本体と重複するので index させない（リンクは辿らせる）
+    ...(getArticlesByRegionAndCategory(m.code, category).length < MIN_HUB_ARTICLES
+      ? { robots: { index: false, follow: true } }
+      : {}),
   };
 }
 

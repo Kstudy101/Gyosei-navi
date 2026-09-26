@@ -1,10 +1,6 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import {
-  getArticlesBySectionAndLocale,
-  getTranslatedArticle,
-  getAvailableLocalesFor,
-} from "@/lib/content";
+import { getArticlesBySectionAndLocale, getTranslatedArticle } from "@/lib/content";
 import { translatedArticleMetadata } from "@/lib/seo";
 import { LOCALES, isLocale, type Locale } from "@/i18n/locales";
 import { dictionaries } from "@/i18n/dictionaries";
@@ -30,8 +26,7 @@ export async function generateMetadata({
   if (!isLocale(locale)) return {};
   const article = getTranslatedArticle(locale, "compare", slug);
   if (!article) return {};
-  const availableLocales = getAvailableLocalesFor("compare", slug);
-  return translatedArticleMetadata(article, availableLocales);
+  return translatedArticleMetadata(article);
 }
 
 export default async function LocaleCompareArticlePage({

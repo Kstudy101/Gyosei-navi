@@ -4,6 +4,7 @@ import Link from "next/link";
 import { MUNICIPALITIES, PREFECTURES, getPrefectureBySlug, getPrefectureByCode, getMunicipalityBySlug } from "@/config/regions";
 import { CATEGORIES, CATEGORY_CODES, getCategory } from "@/config/taxonomy";
 import {
+  MIN_HUB_ARTICLES,
   getArticlesByRegionCode,
   getArticlesByPrefectureAndCategory,
   orPlaceholder,
@@ -54,24 +55,21 @@ export async function generateMetadata({
   const { pref, city } = await params;
   const prefDef = getPrefectureBySlug(pref);
   const categoryDef = getCategory(city);
+  // 記事1件以下のハブは記事本体と重複するので index させない（リンクは辿らせる）
+  const thinHub = (count: number) => (count < MIN_HUB_ARTICLES ? { robots: { index: false, follow: true } } : {});
   if (prefDef && categoryDef) {
     return {
       title: `${prefDef.labelJa}の${categoryDef.labelJa}の補助金・助成金`,
       description: `${prefDef.labelJa}（市区町村を含む）で使える${categoryDef.labelJa}分野の補助金・助成金を一覧で確認できます。金額・締切・申請条件を一次情報に基づいて解説します。`,
+      ...thinHub(getArticlesByPrefectureAndCategory(prefDef.code, city).length),
     };
   }
   const m = getMunicipalityBySlug(pref, city);
   if (!m) return {};
-  const cityArticles = getArticlesByRegionCode(m.code);
-  if (cityArticles.length === 0) {
-    return {
-      title: `${m.labelJa}の補助金・助成金`,
-      robots: { index: false, follow: false },
-    };
-  }
   return {
     title: `${m.labelJa}の補助金・助成金`,
     description: `${m.labelJa}で使える国・都道府県・市区町村の補助金・助成金をまとめて確認できます。`,
+    ...thinHub(getArticlesByRegionCode(m.code).length),
   };
 }
 

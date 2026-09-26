@@ -65,18 +65,14 @@ export function articleMetadata(article: Article, availableLocales: readonly Loc
   };
 }
 
-/** 翻訳記事ページの generateMetadata 用ヘルパ */
-export function translatedArticleMetadata(
-  article: TranslatedArticle,
-  availableLocales: readonly Locale[]
-): Metadata {
+/** 翻訳記事ページの generateMetadata 用ヘルパ（翻訳ページは noindex のため hreflang は出さない — app/[locale]/layout.tsx） */
+export function translatedArticleMetadata(article: TranslatedArticle): Metadata {
   const { frontmatter: fm } = article;
   return {
     title: fm.title,
     description: fm.description,
     alternates: {
       canonical: absoluteUrl(article.href),
-      languages: buildLanguageAlternates(article.originalHref, availableLocales),
     },
     openGraph: {
       title: fm.title,

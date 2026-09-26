@@ -1,12 +1,18 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { getTagIndex, getTagsWithArchivePage, orPlaceholder, EXPORT_PLACEHOLDER } from "@/lib/content";
+import {
+  MIN_TAG_ARCHIVE_ARTICLES,
+  getTagIndex,
+  getTagsWithArchivePage,
+  orPlaceholder,
+  EXPORT_PLACEHOLDER,
+} from "@/lib/content";
 import { ArticleCard } from "@/components/article/ArticleCard";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
 
 /**
  * タグアーカイブ。「エネファーム 補助金」のような制度名クエリの受け皿。
- * 記事2件以上のタグのみ生成する（薄いページを作らない）。
+ * 記事 MIN_TAG_ARCHIVE_ARTICLES 件以上のタグのみ生成する（薄いページを作らない）。
  * writer が tags を必須化した（.claude/agents/writer.md）ため、記事が増えるほど自動拡張する。
  */
 export const dynamicParams = false;
@@ -36,7 +42,7 @@ export default async function TagPage({ params }: { params: Promise<{ tag: strin
   const { tag } = await params;
   const decoded = decodeURIComponent(tag);
   const articles = getTagIndex().get(decoded) ?? [];
-  if (articles.length < 2) notFound();
+  if (articles.length < MIN_TAG_ARCHIVE_ARTICLES) notFound();
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-10">
