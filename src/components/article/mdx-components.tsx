@@ -27,7 +27,9 @@ export function buildMdxComponents(fm: ArticleFrontmatter): MDXComponents {
   return {
     Callout,
     Checklist,
-    CompareTable: () => <CompareTable targets={fm.compareTargets} />,
+    CompareTable: () => (
+      <CompareTable targets={fm.compareTargets} infoImage={fm.ogImage ? undefined : { slug: fm.slug, title: fm.title }} />
+    ),
     TokushuRanking: () => <TokushuRanking items={fm.rankings} />,
     Disclaimer,
     FAQ: () => <FaqList items={fm.faq} />,

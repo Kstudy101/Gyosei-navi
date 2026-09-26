@@ -36,6 +36,11 @@ export function ogImagePath(section: string, slug: string, ogImage: string | und
   return ogImage || `/og/auto/${section}/${slug}.png`;
 }
 
+/** compare 記事の情報画像（generate-og-images.ts が 16:9 / 4:3 / 1:1 で出力）。Article 構造化データ推奨の3比率 */
+export function compareInfoImagePaths(slug: string): string[] {
+  return ["-16x9", "-4x3", "-1x1"].map((s) => `/og/auto/compare/${slug}${s}.png`);
+}
+
 /** 記事ページの generateMetadata 用ヘルパ（日本語原文） */
 export function articleMetadata(article: Article, availableLocales: readonly Locale[] = []): Metadata {
   const { frontmatter: fm } = article;
@@ -131,7 +136,10 @@ export function articleJsonLd(article: Article) {
     mainEntityOfPage: absoluteUrl(article.href),
     author: { "@type": "Organization", name: `${siteConfig.name} 編集部` },
     publisher: { "@type": "Organization", name: siteConfig.name, url: siteConfig.url },
-    image: [absoluteUrl(ogImagePath(article.section, fm.slug, fm.ogImage))],
+    image:
+      article.section === "compare" && !fm.ogImage && fm.compareTargets?.length
+        ? compareInfoImagePaths(fm.slug).map(absoluteUrl)
+        : [absoluteUrl(ogImagePath(article.section, fm.slug, fm.ogImage))],
   };
 }
 

@@ -27,6 +27,8 @@ export const metadata: Metadata = {
   alternates: {
     types: { "application/rss+xml": "/feed.xml" },
   },
+  // Discover の大きい画像カード表示条件（noindex ページは各 page の robots で上書きされる）
+  robots: { "max-image-preview": "large" },
   verification: {
     google: "qtLMFQLhUFKVaMdo8UxKErTB_gVUDYP2ymnhGE6paM0",
   },
