@@ -45,6 +45,10 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     environment: production
+    # actions: read は IndexNow ステップが「直前に成功したデプロイの headSha」を gh run list で引くために必要
+    permissions:
+      contents: read
+      actions: read
     env:
       SSH_PORT: ${{ secrets.XSERVER_PORT || '10022' }}
       DEPLOY_DIR: ${{ vars.XSERVER_DEPLOY_DIR || '~/gyosei-navi.jp/public_html' }}
@@ -178,18 +182,22 @@ jobs:
           echo "https://gyosei-navi.jp/ → $code"
           # DNS/SSL 未反映の初期は失敗しても止めない（本文ログで確認）
 
-      # IndexNow: 今回の push で変更された published 記事URLを検索エンジンへ通知（Bing 等の
-      # インデックシング加速）。失敗しても deploy は成功扱い（付加機能のため）
+      # IndexNow: 前回の成功デプロイ以降に変更された published 記事URLを検索エンジンへ通知（Bing 等の
+      # インデックシング加速）。基準は github.event.before ではなく「直前に成功した本ワークフローの headSha」——
+      # schedule 実行（bot 記事の配信）でも動き、途中でキャンセルされた push があっても取りこぼさない。
+      # 翻訳ページは noindex のため対象外。失敗しても deploy は成功扱い（付加機能のため）
       - name: Submit changed articles to IndexNow
-        if: steps.secrets.outputs.ready == 'true' && inputs.dry_run != true && github.event_name == 'push'
+        if: steps.secrets.outputs.ready == 'true' && inputs.dry_run != true
         continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
-          BEFORE="${{ github.event.before }}"
-          if [ -z "$BEFORE" ] || echo "$BEFORE" | grep -qE '^0+$'; then
-            echo "基準コミットなし（新規ブランチ等）— スキップ"; exit 0
-          fi
+          BEFORE=$(gh run list --workflow "Deploy to Xserver" --status success --limit 1 --json headSha --jq '.[0].headSha // empty')
+          if [ -z "$BEFORE" ]; then echo "前回の成功デプロイなし — スキップ"; exit 0; fi
+          if [ "$BEFORE" = "$(git rev-parse HEAD)" ]; then echo "前回デプロイと同じコミット — スキップ"; exit 0; fi
+          echo "基準: $BEFORE"
           # checkout は depth=1 のため比較対象コミットだけ追加取得する
           git fetch --no-tags --depth=1 origin "$BEFORE" || { echo "基準コミット取得失敗 — スキップ"; exit 0; }
-          CHANGED=$(git diff --name-only --diff-filter=d "$BEFORE" HEAD -- content content-i18n | grep '\.mdx$' || true)
+          CHANGED=$(git diff --name-only --diff-filter=d "$BEFORE" HEAD -- content | grep '\.mdx$' || true)
           if [ -z "$CHANGED" ]; then echo "変更記事なし — スキップ"; exit 0; fi
           node scripts/indexnow-submit.mjs $CHANGED
