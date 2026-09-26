@@ -1,0 +1,119 @@
+# 速報 draft 自動作成 — watch-municipalities（毎日 07:00 JST）が立てた「[新着キャッチ]」Issue を
+# Claude Code（headless, claude -p）に渡し、.claude/commands/publish-news.md の手順で
+# news-writer → verifier → editor まで回して content/news/ に **draft** を作る。
+#
+# published 転換は行わない（publisher を呼ばない）。原文確認のうえ発行するのは人の役割
+# （2026-09-27 ユーザー決定: 「Issue のみ」→「Issue → 自動 draft → 人が発行」に方針変更。AGENTS.md 参照）。
+# draft は本番ビルドに含まれないため、このワークフローは配信を起こさない。
+#
+# 上限: 1 日 1 Issue・記事化は上位 3 件まで。7 日を過ぎた Issue は publish-news の手順どおりクローズされる。
+#
+# GitHub Secrets: ANTHROPIC_API_KEY（hourly-ranking.yml と共通）
+name: News Draft (daily)
+
+on:
+  schedule:
+    - cron: "40 22 * * *" # 毎日 07:40 JST（watch-municipalities の 07:00 JST の後）
+  workflow_dispatch:
+    inputs:
+      issue:
+        description: "処理する Issue 番号（空なら当日〜前日の最新 [新着キャッチ] Issue）"
+        type: string
+        default: ""
+      max_articles:
+        description: "記事化する上限件数"
+        type: string
+        default: "3"
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: news-draft
+  cancel-in-progress: false
+
+jobs:
+  draft:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      GH_TOKEN: ${{ github.token }}
+      MAX_ARTICLES: ${{ inputs.max_articles || '3' }}
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          cache: npm
+
+      - run: npm ci
+
+      # 対象 Issue: 入力があればそれ、なければ 48 時間以内に開かれた最新の [新着キャッチ] Issue
+      - name: Pick issue
+        id: pick
+        run: |
+          if [ -n "${{ inputs.issue }}" ]; then
+            echo "number=${{ inputs.issue }}" >> "$GITHUB_OUTPUT"; exit 0
+          fi
+          SINCE=$(date -u -d '48 hours ago' +%Y-%m-%dT%H:%M:%SZ)
+          NUM=$(gh issue list --state open --label content-opportunity --search "[新着キャッチ] in:title" \
+            --json number,createdAt --limit 10 \
+            --jq "[.[] | select(.createdAt >= \"$SINCE\")] | sort_by(.createdAt) | reverse | .[0].number // empty")
+          if [ -z "$NUM" ]; then
+            echo "対象 Issue なし（48時間以内の [新着キャッチ] Issue がない）— スキップ"
+          fi
+          echo "number=$NUM" >> "$GITHUB_OUTPUT"
+
+      - name: Install Claude Code
+        if: steps.pick.outputs.number != ''
+        run: npm install -g @anthropic-ai/claude-code
+
+      # publish-news の手順を draft まで実行する。Task で news-writer / verifier / editor を呼ぶため
+      # Task と Bash（npm run new:article, gh issue comment）を許可する。publisher は呼ばせない。
+      - name: Draft news articles
+        id: draft
+        if: steps.pick.outputs.number != ''
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          claude -p ".claude/commands/publish-news.md の手順に従い、GitHub Issue #${{ steps.pick.outputs.number }} を処理してください。制約: (1) draft までで、published への転換は行わず publisher エージェントは呼ばない。(2) 記事化は点数上位 ${MAX_ARTICLES} 件まで。(3) 手順 6 の Issue 対応はコメントのみ行い、Issue はクローズしない。(4) git commit / push は行わない（ワークフローが行う）。(5) 質問はせず、判断できない項目は skip として報告する。" \
+            --model claude-sonnet-5 \
+            --setting-sources project \
+            --allowedTools "Read,Write,Edit,Glob,Grep,Bash,WebSearch,WebFetch,Task" \
+            --dangerously-skip-permissions \
+            --output-format text
+
+          git add content/news data/sources
+          if git diff --cached --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      # 品質ゲート: frontmatter 検証（draft も検証対象）。落ちたらコミットしない
+      - name: Validate content
+        if: steps.draft.outputs.changed == 'true'
+        run: npm run validate:content
+
+      - name: Commit and push
+        if: steps.draft.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git commit -m "feat(news): 速報 draft を自動作成（#${{ steps.pick.outputs.number }}）[skip ci]"
+          for i in 1 2 3 4 5; do
+            if git push; then exit 0; fi
+            echo "push rejected, retry $i/5"
+            git fetch origin main
+            git rebase origin/main
+            sleep $((i * 3))
+          done
+          echo "::error::git push が5回失敗しました"
+          exit 1
+
+      - name: Report failure on issue
+        if: failure() && steps.pick.outputs.number != ''
+        run: |
+          gh issue comment "${{ steps.pick.outputs.number }}" --body "news-draft ワークフローが失敗しました（run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}）。draft は作成されていません。"

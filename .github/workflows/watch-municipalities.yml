@@ -1,7 +1,7 @@
 # 新着キャッチ — published subsidy 記事の一次情報（sourceLinks[0]、毎日全件）と
 # 全国市区町村トップページ（1,718件、data/watch/README.md 参照）を diff 監視し、
-# 変更があれば GitHub Issue で通知する。記事の自動生成・自動publishedは行わない
-# （AGENTS.md 絶対規則7・9 — 数値の書き換えは人が原文を確認してから）。
+# 変更があれば GitHub Issue で通知する。その Issue は news-draft.yml（07:40 JST）が受け取り、速報の draft までを
+# 自動作成する（2026-09-27 方針変更）。自動 published は行わない（AGENTS.md 絶対規則7・9 — 発行は人が原文を確認してから）。
 #
 # 市区町村トップページは1,718件を毎日全件回すと30分近くかかるため、曜日で7分割し
 # その日の分だけをチェックする（scripts/watch-municipalities.ts --weekday）。

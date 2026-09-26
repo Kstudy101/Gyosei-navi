@@ -172,7 +172,7 @@ npm run source -- --url <URL> --out data/sources/<topic>/NN_<name>.txt   # 一�
 **「新着캐치」(지자체 一次情報 변경 감시, 2026-09-21 신설)** — v1의 `monitor.ts`(HTML diff 엔진, `docs/10_MONITORING_REGISTRY.md`)를 `src/lib/sources/monitor.ts`로 복원하되, v1처럼 `sources.yaml`을 수동 등록하지 않고 **published subsidy 기사의 `sourceLinks[0]`에서 감시 대상을 자동 수집**하도록 재설계했다(기사가 늘 때마다 자동으로 감시 대상도 늘어남 — 별도 등록 불필요).
 - `scripts/watch-municipalities.ts` — CLI. 매일 각 원문 페이지를 fetch해 노이즈 제거・정규화 후 SHA-256 해시를 `.cache/monitor-state.json`과 비교, 변경 시 diff(추가/삭제 줄)를 추출.
 - jGrants(`www.jgrants-portal.go.jp`)는 신UI가 SPA라 정적 fetch로 본문을 못 읽어(실측 0字) 자동으로 스킵 — jGrants 신착은 `npm run subsidies`(API 감시)가 별도로 담당.
-- `.github/workflows/watch-municipalities.yml`이 매일 07:00 JST 실행, 변경 감지 시 **GitHub Issue만 생성**한다(자동 기사 생성・자동 published는 하지 않음 — 절대규칙 7・9에 따라 원문 확인 후 사람이 기사를 갱신하는 것을 전제로 설계, 2026-09-21 사용자 명시 확인).
+- `.github/workflows/watch-municipalities.yml`이 매일 07:00 JST 실행, 변경 감지 시 GitHub Issue를 생성한다. **2026-09-27 방침 변경(사용자 결정)**: 그 Issue를 `.github/workflows/news-draft.yml`(매일 07:40 JST)이 headless로 받아 `/publish-news` 절차를 **draft까지만** 실행한다(하루 1 Issue・상위 3건, publisher 미호출). published 전환은 여전히 사람이 원문을 확인한 뒤 수행한다(절대규칙 7・9). 2026-09-21의 「Issue만 생성」 방침은 이로써 「Issue → 자동 draft → 사람이 발행」으로 대체됐다.
 - 2026-09-21 첫 실행 결과: 대상 169건 중 168건 정상 초기화, jGrants 1건은 위 사유로 사전 제외. `.cache/monitor-state.json`은 gitignore 대상이라 CI 캐시(`actions/cache`)로 run 간 유지한다.
 - **아직 하지 않은 것(다음 우선순위)**: 사이트 상단 「新着・締切情報」탭을 新着/締切間近 2탭 UI로 개편하는 작업(1줄 카드 + 詳しくはこちら 링크, 사용자가 이미 문구까지 확정 — 새로 논의할 필요 없음). 이건 기존 published 기사의 `publishedAt`/`subsidy.periodEnd`에서 파생 가능해 새 콘텐츠 타입이 필요 없다.
 

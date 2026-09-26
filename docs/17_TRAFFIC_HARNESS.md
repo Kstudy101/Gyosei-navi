@@ -20,6 +20,7 @@
 | 본번 배포 | `deploy-xserver.yml` | 사람 push 시 즉시 + 매일 06:00 JST schedule. 2026-09-26부터 compare(04:50)・tokushu(04:55)・ranking(05:00 JST, 하루 1회) 봇은 커밋만 하고 배포하지 않음 — 배포마다 전 페이지 Last-Modified가 갱신돼 크롤 예산을 소모했기 때문 |
 | 구 v1 URL 301 회수 | `public/.htaccess` (`/guide|practice|exam`) | 상시 |
 | 변화 감지 → Issue | `watch-municipalities.yml` | 매일 07:00 JST |
+| Issue → 速報 draft 자동 작성 | `news-draft.yml` | 매일 07:40 JST. `/publish-news` 절차를 headless(claude -p)로 draft까지 실행(하루 1 Issue・상위 3건). published 전환은 사람이 원문 확인 후(2026-09-27 방침 변경) |
 | 링크 생존・노후 기사 → Issue | `weekly-audit.yml` | 매주 월 06:00 JST |
 | compare 자동기사 (카테고리당 1건, `/compare/{cat}-hikaku/`) | `scripts/generate-compare.ts` + `scripts/lib/auto-articles.ts` | `auto-compare.yml`. 대상・금액・마감이 바뀐 카테고리만 갱신(publishedAt 유지, updatedAt・changelog 추가). 2026-09-26까지의 날짜 슬러그 45건은 `.htaccess`로 301 |
 | tokushu 자동기사 (카테고리당 1건, `/tokushu/{cat}/{cat}-tokushu/`) | `scripts/generate-tokushu.ts` + 〃 | `tokushu-article.yml`. 금액 상위 10건이 바뀐 카테고리만 갱신. 날짜 슬러그 21건은 301. 금액 추출 5건 미만 카테고리(현재 shogaisha)는 생성 안 함 |
