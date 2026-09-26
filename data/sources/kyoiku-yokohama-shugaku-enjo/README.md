@@ -55,3 +55,21 @@
 ## 총무성 전국지방공공단체코드
 
 横浜市는 이미 `regions.ts`에 등록되어 있다고 명시됨(code 14100) — 별도 확인 불요.
+
+## 서류 해설 섹션용 추가 취득 (2026-09-26, docs/06 §5.1 파일럿)
+
+| 파일 | 원본 | 방법 |
+|---|---|---|
+| `02_shugakuenjo-oshirase.pdf` / `.txt` | https://www.city.yokohama.lg.jp/kosodate-kyoiku/kyoiku/soudan/shugakuenjo/shugakuenjo.files/0119_20260403.pdf (6p, PDF갱신 2026-03-09) | curl + PyMuPDF get_text (PDF는 gitignore) |
+| `04_nenrei-hayamihyo-kinyurei.pdf` / `.txt` | https://www.city.yokohama.lg.jp/kosodate-kyoiku/kyoiku/soudan/shugakuenjo/shugakuenjo.files/20260119.pdf 「就学援助年齢早見表及び記入例」(2p: 生年月日表 + 申請書記入例) | 同上 |
+| `05_sitepolicy.txt` | https://www.city.yokohama.lg.jp/aboutweb/sitepolicy.html | npm run source |
+
+- 톱페이지 재취득 결과 01과 차이 없음(最終更新日 2026年4月27日).
+- お知らせ 구성(1〜12): 援助の対象となる方 / 援助の費目と支給予定額（年額）/ 申請方法 / 「④その他経済的にお困りの方」の所得基準 / 所得等の確認の同意 / 提出書類(6-1・6-2) / 結果のお知らせと支給予定時期 / 中学校給食費について / その他・留意事項 / 申請書の記入例及び記入上の注意 / よくある質問 / お問合せ先 (페이지 렌더링으로 확인. txt 추출은 세로쓰기・표 때문에 순서가 섞임).
+- 申請書 명칭: 「令和８年度就学援助申請書」(お知らせ 3). 신청서 본체의 様式番号는 공개자료에서 **확인 불가**. 受領申出書 = 「第17号様式の１」(記入例 ＊4).
+
+### 이용규약 판정 (docs/06 §5.1)
+
+- 원문(`05_sitepolicy.txt` 「３ 著作権について」): 「私的使用のための複製や引用など著作権法上認められた場合を除き、無断で複製・転用をすることはできません。」「各ページでクリエイティブ・コモンズ・ライセンスが表記され、二次利用可能であることが明記されているデータがあります。」
+- 就学援助 페이지(01)・PDF에 CC 라이선스 표기 **없음**(페이지 HTML에 creativecommons/クリエイティブ 문자열 0건).
+- **판정: CC 표기 없음 → 이미지 게재 불가. 텍스트 해설 + 공식 PDF 링크만.**
