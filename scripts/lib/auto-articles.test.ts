@@ -26,7 +26,6 @@ function row(
     subsidy: {
       regionCode,
       regionLabel: `自治体${regionCode}`,
-      targetArea: `自治体${regionCode}`,
       provider,
       amount,
       status: "open",

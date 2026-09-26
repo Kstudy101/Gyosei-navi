@@ -1,4 +1,5 @@
-# 本番デプロイ: main への push → 静的 export → SSH + rsync で Xserver public_html へ差分同期
+# 本番デプロイ: main への push、または毎日 06:00 JST の schedule → 静的 export → SSH + rsync で Xserver public_html へ差分同期
+# （bot が生成した compare/tokushu/ranking 記事は push では連鎖起動しないため、schedule 実行で 1 日 1 回まとめて配信する — docs/17）
 #
 # GitHub Secrets（リポジトリ Settings → Secrets and variables → Actions）:
 #   XSERVER_HOST        = sv####.xserver.jp   （サーバーパネル「サーバー情報」ホスト名）
@@ -26,6 +27,8 @@ on:
       - "scripts/monitor.ts"
       - "scripts/watch-pubcomment.ts"
       - "**/*.md"
+  schedule:
+    - cron: "0 21 * * *" # 毎日 06:00 JST
   workflow_dispatch:
     inputs:
       dry_run:
@@ -156,7 +159,10 @@ jobs:
           DRY=""
           if [ "${{ inputs.dry_run }}" = "true" ]; then DRY="--dry-run"; fi
           ssh xserver "mkdir -p $DEPLOY_DIR"
-          rsync -az --delete $DRY \
+          # --checksum --no-times: ビルドは毎回ファイルを書き直すので mtime では差分が取れない。内容が同じ
+          # ファイルはサーバー側の mtime（= Last-Modified）を保ち、変わったページだけ転送する
+          # （next.config.ts の generateBuildId 固定とセット — docs/17）。
+          rsync -az --no-times --checksum --delete $DRY \
             --itemize-changes --stats \
             --exclude '.well-known/' \
             --exclude '.user.ini' \

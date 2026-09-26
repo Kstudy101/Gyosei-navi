@@ -12,11 +12,12 @@
 | 지역 허브 (도도부현×카테고리) | `src/app/area/[pref]/[city]/`의 카테고리 분기 | 〃 (`/area/{pref}/{category}`) |
 | 태그 아카이브 | `src/app/tag/[tag]/` | 기사 2건 이상 태그 자동 생성 |
 | 締切カレンダー | `src/app/calendar/` | 매 배포 재생성 (`subsidy.periodEnd`) |
-| sitemap (씬페이지 제외・허브/태그 포함) | `src/app/sitemap.ts` | 매 빌드 |
+| sitemap (index 대상만) | `src/app/sitemap.ts` | 매 빌드. 2026-09-26부터 기사 2건 미만 지역 허브(`MIN_HUB_ARTICLES`)와 3건 미만 태그(`MIN_TAG_ARCHIVE_ARTICLES`)는 제외・noindex,follow. 번역 페이지(`/{locale}/`)는 noindex로 검색에서 퇴장(sitemap・hreflang에서도 제거, 파일은 유지) |
 | RSS / llms.txt | `src/app/feed.xml/`, `src/app/llms.txt/` | 매 빌드 |
 | 사이트 내 검색 | postbuild Pagefind + `/search` | 매 빌드 |
 | 구조화 데이터 (MonetaryGrant 등) | `src/lib/seo.ts` | 매 빌드 |
 | IndexNow 제출 | `scripts/indexnow-submit.mjs` | deploy 후 (변경 published 기사만) |
+| 본번 배포 | `deploy-xserver.yml` | 사람 push 시 즉시 + 매일 06:00 JST schedule. 2026-09-26부터 compare(04:50)・tokushu(04:55)・ranking(05:00 JST, 하루 1회) 봇은 커밋만 하고 배포하지 않음 — 배포마다 전 페이지 Last-Modified가 갱신돼 크롤 예산을 소모했기 때문 |
 | 구 v1 URL 301 회수 | `public/.htaccess` (`/guide|practice|exam`) | 상시 |
 | 변화 감지 → Issue | `watch-municipalities.yml` | 매일 07:00 JST |
 | 링크 생존・노후 기사 → Issue | `weekly-audit.yml` | 매주 월 06:00 JST |

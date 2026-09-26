@@ -4,7 +4,7 @@ name: Auto Compare Generator
 
 on:
   schedule:
-    - cron: "0 * * * *" # 毎時0分
+    - cron: "50 19 * * *" # 毎日 04:50 JST（deploy-xserver.yml の 06:00 JST 定期配信の前。tokushu/ranking と分散）
   workflow_dispatch:
 
 permissions:
@@ -45,6 +45,6 @@ jobs:
           if git diff --cached --quiet; then
             echo "変更なし"
           else
-            git commit -m "feat(compare): 自動生成 compare 記事を追加 [skip ci]"
+            git commit -m "feat(compare): 自動生成 compare 記事を更新 [skip ci]"
             git push
           fi

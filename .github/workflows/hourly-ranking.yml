@@ -1,22 +1,19 @@
 # DataForSEO で拾った検索キーワードを起点に、Claude Code（headless, claude -p）が
-# Web調査して /ranking のTOP5記事を作成し、main にコミット→本番デプロイまで同一ジョブで行う。
+# Web調査して /ranking のTOP5記事を作成し、main にコミットする。
 # 数値・順位はAIが調査せず創作することを禁止している（.claude/agents/ranking-writer.md 参照）。
 #
-# 注意: GITHUB_TOKEN で push しても deploy-xserver.yml の on.push は連鎖起動しない
-# （GitHub の仕様 — bot push によるワークフロー連鎖はデフォルトで無効）。
-# そのため生成 → コミット → ビルド → デプロイまでこのワークフロー内で完結させる
-# （SSH/rsync 手順は deploy-xserver.yml と同一 — 手順書: docs/11_DEPLOY_XSERVER.md）。
+# 本番反映はこのジョブでは行わない（2026-09-26）。bot の push は deploy-xserver.yml の on.push を連鎖起動しないため、
+# 以前はここでビルド→rsync までしていたが、配信を deploy-xserver.yml の毎日 06:00 JST の schedule 実行に集約した
+# （デプロイのたびに全ページの Last-Modified が更新されクロール予算を消費していたため — docs/17）。
 #
 # GitHub Secrets:
 #   DATAFORSEO_TOKEN    = .env.local の DataForSEO と同じ値（"login:password" の base64）
 #   ANTHROPIC_API_KEY   = Claude Code headless 実行用の Anthropic API キー
-#   XSERVER_HOST / XSERVER_USER / XSERVER_SSH_KEY / XSERVER_PORT / XSERVER_PASSPHRASE / XSERVER_KNOWN_HOSTS
-#     = deploy-xserver.yml と共通
-name: Ranking Article (every 6h)
+name: Ranking Article (daily)
 
 on:
   schedule:
-    - cron: "0 */6 * * *"
+    - cron: "0 20 * * *" # 毎日 05:00 JST（deploy-xserver.yml の 06:00 JST 定期配信の前）
   workflow_dispatch:
 
 concurrency:
@@ -24,15 +21,11 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  generate-and-deploy:
+  generate:
     runs-on: ubuntu-latest
     timeout-minutes: 20
-    environment: production
     permissions:
       contents: write
-    env:
-      SSH_PORT: ${{ secrets.XSERVER_PORT || '10022' }}
-      DEPLOY_DIR: ${{ vars.XSERVER_DEPLOY_DIR || '~/gyosei-navi.jp/public_html' }}
     steps:
       - uses: actions/checkout@v5
 
@@ -112,97 +105,10 @@ jobs:
         if: steps.generate.outputs.changed == 'true'
         run: npm run validate:content
 
-      - name: Build (static export)
-        if: steps.generate.outputs.changed == 'true'
-        run: npm run build
-        env:
-          NEXT_PUBLIC_GA4_ID: ${{ vars.NEXT_PUBLIC_GA4_ID }}
-          NEXT_PUBLIC_CLARITY_ID: ${{ vars.NEXT_PUBLIC_CLARITY_ID }}
-          NEXT_PUBLIC_ADSENSE_CLIENT: ${{ vars.NEXT_PUBLIC_ADSENSE_CLIENT }}
-          RAKUTEN_AFFILIATE_ENABLED: ${{ vars.RAKUTEN_AFFILIATE_ENABLED }}
-          RAKUTEN_API_AD_ENABLED: ${{ vars.RAKUTEN_API_AD_ENABLED }}
-          RAKUTEN_MOTION_WIDGET_ENABLED: ${{ vars.RAKUTEN_MOTION_WIDGET_ENABLED }}
-          RAKUTEN_AFFILIATE_ID: ${{ vars.RAKUTEN_AFFILIATE_ID }}
-          RAKUTEN_MOTION_WIDGET_ID: ${{ vars.RAKUTEN_MOTION_WIDGET_ID }}
-
-      - name: Sanity check out/
-        if: steps.generate.outputs.changed == 'true'
-        run: |
-          test -f out/index.html && test -f out/sitemap.xml && test -f out/.htaccess
-          echo "files: $(find out -type f | wc -l), size: $(du -sh out | cut -f1)"
-
-      - name: Check SSH secrets
-        if: steps.generate.outputs.changed == 'true'
-        id: secrets
-        run: |
-          if [ -n "${{ secrets.XSERVER_HOST }}" ] && [ -n "${{ secrets.XSERVER_USER }}" ] && [ -n "${{ secrets.XSERVER_SSH_KEY }}" ]; then
-            echo "ready=true" >> "$GITHUB_OUTPUT"
-          else
-            echo "ready=false" >> "$GITHUB_OUTPUT"
-            echo "::notice::XSERVER_HOST / XSERVER_USER / XSERVER_SSH_KEY のいずれかが未登録のためデプロイをスキップ（記事のコミットまでは実施）"
-          fi
-
-      - name: Set up SSH
-        if: steps.generate.outputs.changed == 'true' && steps.secrets.outputs.ready == 'true'
-        env:
-          SSH_KEY: ${{ secrets.XSERVER_SSH_KEY }}
-          SSH_PASSPHRASE: ${{ secrets.XSERVER_PASSPHRASE }}
-          SSH_KNOWN_HOSTS: ${{ secrets.XSERVER_KNOWN_HOSTS }}
-          SSH_HOST: ${{ secrets.XSERVER_HOST }}
-          SSH_USER: ${{ secrets.XSERVER_USER }}
-        run: |
-          mkdir -p ~/.ssh && chmod 700 ~/.ssh
-          printf '%s\n' "$SSH_KEY" | sed 's/\\n/\n/g' | tr -d '\r' > ~/.ssh/deploy_key
-          chmod 600 ~/.ssh/deploy_key
-          if [ -n "$SSH_PASSPHRASE" ]; then
-            ssh-keygen -p -P "$SSH_PASSPHRASE" -N "" -f ~/.ssh/deploy_key >/dev/null
-          fi
-          ssh-keygen -y -f ~/.ssh/deploy_key > ~/.ssh/deploy_key.pub
-          echo "deploy key fingerprint: $(ssh-keygen -lf ~/.ssh/deploy_key.pub | cut -d' ' -f2)"
-          if [ -n "$SSH_KNOWN_HOSTS" ]; then
-            printf '%s\n' "$SSH_KNOWN_HOSTS" > ~/.ssh/known_hosts
-          else
-            for i in 1 2 3; do
-              ssh-keyscan -T 15 -p "$SSH_PORT" -H "$SSH_HOST" > ~/.ssh/known_hosts && break
-              echo "ssh-keyscan retry $i/3"; sleep 5
-            done
-            if [ ! -s ~/.ssh/known_hosts ]; then
-              echo "::error::ssh-keyscan が 3 回失敗（ホスト鍵を取得できず）。XSERVER_KNOWN_HOSTS Secret の登録で回避可能"
-              exit 1
-            fi
-          fi
-          chmod 644 ~/.ssh/known_hosts
-          cat > ~/.ssh/config <<EOF
-          Host xserver
-            HostName $SSH_HOST
-            User $SSH_USER
-            Port $SSH_PORT
-            IdentityFile ~/.ssh/deploy_key
-            IdentitiesOnly yes
-            StrictHostKeyChecking yes
-            ServerAliveInterval 30
-          EOF
-          chmod 600 ~/.ssh/config
-          ssh -o BatchMode=yes xserver 'echo "ssh ok: $(hostname) rsync=$(command -v rsync || echo MISSING)"'
-
-      - name: Deploy via rsync
-        if: steps.generate.outputs.changed == 'true' && steps.secrets.outputs.ready == 'true'
-        run: |
-          ssh xserver "mkdir -p $DEPLOY_DIR"
-          rsync -az --delete \
-            --itemize-changes --stats \
-            --exclude '.well-known/' \
-            --exclude '.user.ini' \
-            --exclude '.ftp-deploy-sync-state.json' \
-            -e ssh \
-            ./out/ "xserver:$DEPLOY_DIR/"
-
-      # デプロイまで確認できてから push（push 前にビルド・デプロイが失敗したらコミットも残さない）
       - name: Push
         if: steps.generate.outputs.changed == 'true'
         run: |
-          # 他セッションが同時に main へ push することがあるため、拒否されたら
-          # rebase して再試行する（記事のコミット自体はデプロイ後なので、生成物は既に配信済み）
+          # 他セッションが同時に main へ push することがあるため、拒否されたら rebase して再試行する
           for i in 1 2 3 4 5; do
             if git push; then exit 0; fi
             echo "push rejected, retry $i/5"

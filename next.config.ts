@@ -14,6 +14,11 @@ const nextConfig: NextConfig = {
   trailingSlash: true,
   images: { unoptimized: true },
   reactStrictMode: true,
+  // ビルド ID を固定し、内容が同じページの HTML をビルド間で byte 一致させる（2026-09-26）。
+  // 既定のランダム ID は全 HTML の先頭コメントに埋め込まれ、デプロイのたびに全ページが「更新」扱いになり
+  // Last-Modified/ETag が変わってクロール予算を浪費していた。deploy-xserver.yml の rsync は --checksum で
+  // 内容比較するため、これで変更のないページはサーバー側 mtime が保たれる（docs/17）。
+  generateBuildId: () => "gyosei-navi",
   // ユーザーホーム直下に無関係な package-lock.json があり、Next.js がそれを
   // workspace root と誤認してビルドが失敗することがある（2026-09-20 発覚）。
   // 明示的にこのプロジェクトのディレクトリを指定して誤認を防ぐ。
