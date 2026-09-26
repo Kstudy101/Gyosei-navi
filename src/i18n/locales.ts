@@ -7,20 +7,6 @@ export const LOCALES = ["en", "zh-CN", "zh-TW", "vi", "ko", "fil", "ne", "id", "
 
 export type Locale = (typeof LOCALES)[number];
 
-export const LOCALE_LABELS: Record<Locale, string> = {
-  en: "English",
-  "zh-CN": "中文（简体）",
-  "zh-TW": "中文（繁體）",
-  vi: "Tiếng Việt",
-  ko: "한국어",
-  fil: "Filipino",
-  ne: "नेपाली",
-  id: "Bahasa Indonesia",
-  th: "ไทย",
-};
-
-export const JA_LABEL = "日本語";
-
 export function isLocale(value: string): value is Locale {
   return (LOCALES as readonly string[]).includes(value);
 }

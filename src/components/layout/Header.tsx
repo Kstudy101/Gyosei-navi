@@ -2,10 +2,8 @@ import Link from "next/link";
 import { siteConfig } from "@/config/site";
 import { SECTIONS } from "@/config/taxonomy";
 import { TokushuNavDropdown } from "@/components/layout/TokushuNavDropdown";
-import { LocaleSwitcher } from "@/components/layout/LocaleSwitcher";
 import { ThemeToggle } from "@/components/layout/ThemeToggle";
 import { MobileNav, type NavItem } from "@/components/layout/MobileNav";
-import { buildTranslationIndex } from "@/i18n/translation-index";
 
 /**
  * "tokushu" はドロップダウン（TokushuNavDropdown）として別枠で描画するため除外。
@@ -36,8 +34,6 @@ function DesktopNavLink({ item }: { item: NavItem }) {
 }
 
 export function Header() {
-  const translationIndex = buildTranslationIndex();
-
   return (
     <header className="sticky top-0 z-50 border-b border-gray-200 bg-white shadow-sm dark:border-gray-800 dark:bg-gray-950">
       {/* h-14 固定: モバイルメニューのパネルがこの高さの直下（top-14）から始まる */}
@@ -60,14 +56,13 @@ export function Header() {
             {NAV_AFTER_TOKUSHU.map((item) => (
               <DesktopNavLink key={item.href} item={item} />
             ))}
-            <LocaleSwitcher translationIndex={translationIndex} />
             <li>
               <ThemeToggle />
             </li>
           </ul>
         </nav>
         <div className="-mr-2 flex items-center lg:hidden">
-          <MobileNav before={NAV_BEFORE_TOKUSHU} after={NAV_AFTER_TOKUSHU} translationIndex={translationIndex} />
+          <MobileNav before={NAV_BEFORE_TOKUSHU} after={NAV_AFTER_TOKUSHU} />
         </div>
       </div>
     </header>

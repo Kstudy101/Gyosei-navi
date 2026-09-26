@@ -7,6 +7,7 @@
 | 요소 | 구현 | 트리거 |
 |---|---|---|
 | OG 이미지 자동 생성 | `scripts/generate-og-images.ts` + `src/lib/seo.ts` 폴백 | deploy 시 (Actions 캐시로 증분) |
+| compare 정보 이미지 (지도+마감 목록, OG・16:9・4:3・1:1) + Discover `max-image-preview:large` | `scripts/generate-og-images.ts`, `CompareTable.tsx`, `layout.tsx` | deploy 시 (구조화 필드만 사용 — amount 자유문은 그리지 않음) |
 | 지역 허브 (시구정촌×카테고리) | `src/app/area/[pref]/[city]/[category]/` | 기사 1건 이상 조합 자동 생성 |
 | 지역 허브 (도도부현×카테고리) | `src/app/area/[pref]/[city]/`의 카테고리 분기 | 〃 (`/area/{pref}/{category}`) |
 | 태그 아카이브 | `src/app/tag/[tag]/` | 기사 2건 이상 태그 자동 생성 |
@@ -27,7 +28,7 @@
 | `/publish-batch` | 기사 일괄 발행 | 저커버리지 도도부현 우선(2-2), 국가 pillar 제안(2-3) 규칙 반영 |
 | `/publish-news` | 감지 Issue → 뉴스 기사화 | watch-municipalities Issue를 소화. Discover・시사성 쿼리용 |
 | `/backfill-tags` | 기존 기사 tags 백필 | 1회성 부채 해소(published 347건). 완료 후 태그 아카이브가 확장됨 |
-| `/translate-articles` | 9개 언어 일괄 번역 | 번역 커버리지 확대(현재 40/519). 토큰 비용이 커서 사람이 범위 결정 |
+| ~~`/translate-articles`~~ | **정지(2026-09-26)** | 신규 번역 중단. 방문자는 브라우저 번역에 맡기고 헤더 언어 탭도 삭제. 기존 `content-i18n/`은 hreflang과 함께 유지하고, GSC 언어별 유입을 보고 존폐를 판단 |
 
 신규 기사 품질 게이트: writer가 tags 3~6개 필수(`writer.md`), seo-researcher가 표기 통일 검수, `validate:content`가 빈 tags를 요약 경고.
 

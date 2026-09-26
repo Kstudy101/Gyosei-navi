@@ -4,9 +4,6 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { SECTIONS, TOKUSHU_CATEGORIES } from "@/config/taxonomy";
-import { LOCALES, LOCALE_LABELS, JA_LABEL } from "@/i18n/locales";
-import type { TranslationIndex } from "@/i18n/translation-index";
-import { parsePathname, resolveAvailableLocales } from "@/components/layout/LocaleSwitcher";
 import { ThemeToggle } from "@/components/layout/ThemeToggle";
 
 export interface NavItem {
@@ -19,7 +16,6 @@ interface Props {
   before: readonly NavItem[];
   /** 「特集」より後に並ぶ項目 */
   after: readonly NavItem[];
-  translationIndex: TranslationIndex;
 }
 
 const ROW = "flex min-h-12 items-center justify-between text-base text-gray-800 dark:text-gray-200";
@@ -36,7 +32,7 @@ function Chevron({ className = "" }: { className?: string }) {
  * lg 未満のヘッダー右側 — 検索ボタンとハンバーガーメニュー。
  * メニューはヘッダー直下の全画面パネルで、項目の並びはデスクトップのナビと同じ（Header.tsx で共有）。
  */
-export function MobileNav({ before, after, translationIndex }: Props) {
+export function MobileNav({ before, after }: Props) {
   const [open, setOpen] = useState(false);
   const buttonRef = useRef<HTMLButtonElement>(null);
   const pathname = usePathname();
@@ -70,19 +66,6 @@ export function MobileNav({ before, after, translationIndex }: Props) {
       desktop.removeEventListener("change", onChange);
     };
   }, [open]);
-
-  // デスクトップのドロップダウンと違い、未翻訳の言語は並べない（ほとんどのページで全言語が非活性になり場所を取るため）。
-  // 切り替え先が1つも無ければ言語欄ごと出さない。
-  const { locale: currentLocale, restPath } = parsePathname(pathname ?? "/");
-  const available = resolveAvailableLocales(restPath, translationIndex);
-  const languages = [
-    { code: "ja", label: JA_LABEL, href: `/${restPath}` },
-    ...LOCALES.filter((l) => l === currentLocale || available.includes(l)).map((l) => ({
-      code: l,
-      label: LOCALE_LABELS[l],
-      href: `/${l}/${restPath}`,
-    })),
-  ];
 
   const renderItem = (item: NavItem) => (
     <li key={item.href} className="border-b border-gray-100 dark:border-gray-800">
@@ -162,32 +145,6 @@ export function MobileNav({ before, after, translationIndex }: Props) {
         </nav>
 
         <div className="px-4 pb-10 pt-6">
-          {languages.length > 1 && (
-            <div className="mb-6">
-              <p className="text-xs font-semibold text-gray-500 dark:text-gray-400">言語 / Language</p>
-              <ul className="mt-2 grid grid-cols-2 gap-2 text-sm">
-                {languages.map((l) => {
-                  const isCurrent = currentLocale === l.code;
-                  return (
-                    <li key={l.code}>
-                      <Link
-                        href={l.href}
-                        aria-current={isCurrent ? "true" : undefined}
-                        className={`flex min-h-11 items-center rounded-md border px-3 ${
-                          isCurrent
-                            ? "border-brand-600 font-semibold text-brand-700 dark:border-brand-100 dark:text-brand-100"
-                            : "border-gray-200 text-gray-700 dark:border-gray-800 dark:text-gray-300"
-                        }`}
-                      >
-                        {l.label}
-                      </Link>
-                    </li>
-                  );
-                })}
-              </ul>
-            </div>
-          )}
-
           <div className="flex items-center justify-between">
             <span className="text-sm text-gray-700 dark:text-gray-300">表示モード</span>
             <ThemeToggle />

@@ -340,7 +340,7 @@ export function getTranslatedArticle(
 
 /**
  * 全ロケール横断で、指定 section/slug（/category）の翻訳が存在するロケール一覧。
- * hreflang・LocaleSwitcher で使う。
+ * hreflang で使う。
  */
 export function getAvailableLocalesFor(section: Section, slug: string, category?: string): Locale[] {
   return LOCALES.filter((l) => getTranslatedArticle(l, section, slug, category) !== undefined);
