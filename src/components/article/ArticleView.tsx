@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { getAllArticles, type Article } from "@/lib/content";
 import { getRelatedArticles } from "@/lib/related";
 import { renderMdx } from "@/lib/mdx";
@@ -24,7 +25,13 @@ function bodyHas(body: string, name: string): boolean {
 export async function ArticleView({ article, crumbs }: { article: Article; crumbs: Crumb[] }) {
   const fm = article.frontmatter;
   const category = fm.category ? getCategory(fm.category) : undefined;
-  const related = getRelatedArticles(article, getAllArticles());
+  const all = getAllArticles();
+  const related = getRelatedArticles(article, all);
+  // この制度を relatedSlugs で参照するニュース（締切・予算到達などの変化を本文より先に見せる）。all は publishedAt 降順
+  const latestNews =
+    article.section === "subsidy"
+      ? all.filter((a) => a.section === "news" && a.frontmatter.relatedSlugs.includes(fm.slug)).slice(0, 3)
+      : [];
   const body = await renderMdx(article.body, buildMdxComponents(fm));
   const statusDef = fm.subsidy ? SUBSIDY_STATUSES[fm.subsidy.status] : null;
 
@@ -75,6 +82,24 @@ export async function ArticleView({ article, crumbs }: { article: Article; crumb
 
       {fm.subsidy && !bodyHas(article.body, "SubsidyInfoCard") && (
         <SubsidyInfoCard subsidy={fm.subsidy} />
+      )}
+
+      {latestNews.length > 0 && (
+        <aside className="mt-6 rounded-md border border-amber-300 bg-amber-50 p-4 dark:border-amber-600 dark:bg-amber-950/40">
+          <h2 className="text-sm font-bold text-amber-900 dark:text-amber-200">この制度の最新ニュース</h2>
+          <ul className="mt-2 space-y-1 text-sm">
+            {latestNews.map((n) => (
+              <li key={n.href}>
+                <time dateTime={n.frontmatter.publishedAt} className="mr-2 text-xs text-gray-500 dark:text-gray-400">
+                  {n.frontmatter.publishedAt}
+                </time>
+                <Link href={n.href} className="text-brand-600 hover:underline dark:text-brand-100">
+                  {n.frontmatter.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </aside>
       )}
 
       <div className="article-body mt-8">{body}</div>

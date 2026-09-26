@@ -20,6 +20,7 @@ model: sonnet
    - orchestrator(즉 원래 커맨드 호출자)가 published 전환을 명시적으로 요청함 — 예: `/publish-article` 계열 커맨드에서 사용자가 "발행까지" 또는 이에 준하는 지시를 했을 때. 단순 조사/초안 요청이면 draft로 둔다.
 6. 조건을 만족하면 해당 MDX의 `status: "draft"`를 `status: "published"`로 `Edit`한다. 이 토픽이 `data/topics-db/<region-slug>.json`에 있으면 해당 항목의 `status`를 `"published"`로, `articleSlug`를 발행된 슬러그로 갱신한다.
 7. 조건을 만족하지 못하면 status는 그대로 두고, 무엇이 부족한지(verifier FAIL/PARTIAL, validate 에러, 사용자 승인 미획득 등) 명확히 보고한다.
+7-2. `npm run og:generate`를 실행해 OG・compare 정보 이미지 생성이 에러 없이 끝나는지 확인한다(배포 워크플로도 빌드 전에 같은 스크립트를 돈다 — 여기서 실패하면 배포가 멈춘다).
 8. 마지막으로 `npm run build`를 실행해 정적 생성이 정상 통과하는지 확인한다. 실패하면 원인을 보고하고 published 전환을 롤백(Edit으로 다시 draft로 되돌림)한다.
 9. build까지 통과해 published 전환이 확정된 기사가 **1건이라도 있으면** `npm run sync:supabase`를 실행해 기사 메타데이터(제목・description・targetKeywords 등)를 Supabase `gyosei_articles` 테이블에 동기화한다.
    - 이 단계는 **published 전환이 실제로 일어났을 때만** 실행한다. 전부 draft로 남았으면 건너뛴다.
