@@ -35,17 +35,12 @@ function DesktopNavLink({ item }: { item: NavItem }) {
 
 export function Header() {
   return (
-    <header className="sticky top-0 z-50 border-b border-gray-200 bg-white shadow-sm dark:border-gray-800 dark:bg-gray-950">
+    <header className="sticky top-0 z-50 border-b border-gray-300 bg-white dark:border-gray-700 dark:bg-gray-950">
       {/* h-14 固定: モバイルメニューのパネルがこの高さの直下（top-14）から始まる */}
       <div className="mx-auto flex h-14 max-w-6xl items-center justify-between gap-x-6 px-4">
-        <Link href="/" className="flex items-baseline gap-2">
-          <span className="text-xl font-bold tracking-tight text-brand-800 dark:text-brand-100">
-            {siteConfig.name}
-          </span>
-          {/* lg〜xl はナビを1行に収めるためキャッチコピーを隠す */}
-          <span className="hidden text-xs text-gray-500 sm:inline lg:hidden xl:inline dark:text-gray-400">
-            全国の補助金・助成金を地域で比較
-          </span>
+        {/* キャッチコピーは出さない — ホームの題字・各ページの title と重複するため（2026-09-26） */}
+        <Link href="/" className="text-xl font-bold tracking-tight text-brand-800 dark:text-brand-100">
+          {siteConfig.name}
         </Link>
         <nav aria-label="メインナビゲーション" className="hidden lg:block">
           <ul className="flex items-center gap-x-4 text-sm">

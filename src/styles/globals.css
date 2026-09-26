@@ -13,6 +13,9 @@
   --color-brand-800: #123a63;
   --color-brand-900: #0d2b4a;
   --color-accent-600: #b45309;
+  /* 朱: 締切間近・速報・受付終了だけに使う（くらしの便利帳の注意色） */
+  --color-shu-600: #c0392b;
+  --color-shu-300: #f2a59c;
 }
 
 :root {
@@ -24,16 +27,24 @@
 }
 
 body {
+  /* BIZ UDPGothic（自治体広報誌が使う UD ゴシック）を next/font で自己ホスト（layout.tsx）。未読込時は OS の日本語ゴシック */
   font-family:
-    "Helvetica Neue",
-    Arial,
+    var(--font-biz),
+    "BIZ UDPGothic",
     "Hiragino Kaku Gothic ProN",
     "Hiragino Sans",
-    "BIZ UDPGothic",
     "Yu Gothic UI",
     Meiryo,
     sans-serif;
   @apply bg-white text-gray-900 antialiased dark:bg-gray-950 dark:text-gray-100;
+}
+
+/* ブラウザ既定のままになりがちな部分も紺で揃える（選択範囲・フォーカスリング） */
+::selection {
+  @apply bg-brand-100 text-brand-900;
+}
+:focus-visible {
+  @apply outline-2 outline-offset-2 outline-brand-600 dark:outline-brand-100;
 }
 
 /* 記事本文（prose）の日本語向け調整 */

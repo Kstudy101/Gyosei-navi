@@ -4,7 +4,7 @@ import { SECTIONS, CATEGORIES } from "@/config/taxonomy";
 
 export function Footer() {
   return (
-    <footer className="mt-16 border-t border-gray-200 bg-gray-50 dark:border-gray-800 dark:bg-gray-900">
+    <footer className="mt-16 border-t-2 border-brand-800 bg-white dark:border-brand-100 dark:bg-gray-950">
       <div className="mx-auto max-w-6xl px-4 py-10">
         <div className="grid grid-cols-2 gap-8 sm:grid-cols-3">
           <div className="col-span-2 sm:col-span-1">
@@ -14,7 +14,7 @@ export function Footer() {
             </p>
           </div>
           <div>
-            <p className="text-sm font-semibold text-gray-900 dark:text-gray-100">コンテンツ</p>
+            <p className="text-sm font-bold text-gray-900 dark:text-gray-100">コンテンツ</p>
             <ul className="mt-2 text-sm">
               {Object.entries(SECTIONS).map(([key, s]) => (
                 <li key={key}>
@@ -26,7 +26,7 @@ export function Footer() {
             </ul>
           </div>
           <div>
-            <p className="text-sm font-semibold text-gray-900 dark:text-gray-100">目的別に探す</p>
+            <p className="text-sm font-bold text-gray-900 dark:text-gray-100">目的別に探す</p>
             <ul className="mt-2 text-sm">
               {CATEGORIES.map((c) => (
                 <li key={c.code}>
@@ -34,7 +34,7 @@ export function Footer() {
                     href={`/subsidy/${c.code}`}
                     className="block py-1.5 text-gray-600 hover:text-brand-600 sm:py-0.5 dark:text-gray-400 dark:hover:text-brand-100"
                   >
-                    {c.labelShort}
+                    {c.labelJa}
                   </Link>
                 </li>
               ))}
@@ -43,7 +43,7 @@ export function Footer() {
         </div>
 
         {/* 全ページ固定の免責文（docs/06_LEGAL_COMPLIANCE.md v2 §3.1） */}
-        <div className="mt-8 rounded-md border border-gray-200 bg-white p-4 text-xs leading-relaxed text-gray-500 dark:border-gray-700 dark:bg-gray-950 dark:text-gray-400">
+        <div className="mt-8 border-t border-gray-300 pt-4 text-xs leading-relaxed text-gray-600 dark:border-gray-700 dark:text-gray-400">
           <p>{siteConfig.disclaimer}</p>
         </div>
 

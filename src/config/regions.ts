@@ -476,3 +476,23 @@ export const getMunicipalityBySlug = (
 
 /** 国レベル（都道府県・市区町村を問わない全国共通制度）を表す特殊コード */
 export const NATIONAL_REGION_CODE = "00000";
+
+/**
+ * 地域索引（ホーム）用の8地方区分。総務省コード順の都道府県コードを地方ごとに束ねる。
+ * 北海道は東北と分けて8ブロックにする（くらしの便利帳・広報誌の索引と同じ区分）。
+ */
+export interface RegionBlockDef {
+  label: string;
+  prefCodes: readonly string[];
+}
+
+export const REGION_BLOCKS: readonly RegionBlockDef[] = [
+  { label: "北海道", prefCodes: ["01"] },
+  { label: "東北", prefCodes: ["02", "03", "04", "05", "06", "07"] },
+  { label: "関東", prefCodes: ["08", "09", "10", "11", "12", "13", "14"] },
+  { label: "中部", prefCodes: ["15", "16", "17", "18", "19", "20", "21", "22", "23"] },
+  { label: "近畿", prefCodes: ["24", "25", "26", "27", "28", "29", "30"] },
+  { label: "中国", prefCodes: ["31", "32", "33", "34", "35"] },
+  { label: "四国", prefCodes: ["36", "37", "38", "39"] },
+  { label: "九州・沖縄", prefCodes: ["40", "41", "42", "43", "44", "45", "46", "47"] },
+];

@@ -28,7 +28,7 @@
     "sync:supabase": "tsx scripts/sync-articles-to-supabase.ts",
     "ads:rakuten": "tsx scripts/fetch-rakuten-products.ts",
     "ads:vc:report": "tsx scripts/ad-valuecommerce-report.ts",
-    "test": "node --import tsx --test src/lib/ads/flags.test.ts src/lib/ads/rakuten/client.test.ts src/lib/ads/rakuten/mapping.test.ts src/lib/ads/valuecommerce/pick.test.ts scripts/lib/auto-articles.test.ts src/lib/index-diet.test.ts"
+    "test": "node --import tsx --test src/lib/ads/flags.test.ts src/lib/ads/rakuten/client.test.ts src/lib/ads/rakuten/mapping.test.ts src/lib/ads/valuecommerce/pick.test.ts scripts/lib/auto-articles.test.ts src/lib/index-diet.test.ts src/lib/home.test.ts"
   },
   "dependencies": {
     "@mdx-js/mdx": "^3.1.0",

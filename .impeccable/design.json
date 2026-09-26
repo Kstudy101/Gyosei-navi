@@ -1,0 +1,262 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-26T00:00:00Z",
+  "title": "Design System: 全国補助金ナビ",
+  "extensions": {
+    "colorMeta": {
+      "navy-heading": {
+        "role": "primary",
+        "displayName": "Navy Heading (brand-800)",
+        "canonical": "#123a63",
+        "tonalRamp": ["#0d2b4a", "#123a63", "#174a7d", "#1e5a96", "#5a86b5", "#9ab3d0", "#d8e5f5", "#eef4fb"]
+      },
+      "navy-link": {
+        "role": "primary",
+        "displayName": "Navy Link (brand-600)",
+        "canonical": "#1e5a96",
+        "tonalRamp": ["#0d2b4a", "#123a63", "#174a7d", "#1e5a96", "#5a86b5", "#9ab3d0", "#d8e5f5", "#eef4fb"]
+      },
+      "navy-deep": {
+        "role": "primary",
+        "displayName": "Navy Deep (brand-700, incumbent; unused on home)",
+        "canonical": "#174a7d",
+        "tonalRamp": ["#0d2b4a", "#123a63", "#174a7d", "#1e5a96", "#5a86b5", "#9ab3d0", "#d8e5f5", "#eef4fb"]
+      },
+      "navy-darkest": {
+        "role": "primary",
+        "displayName": "Navy Darkest (brand-900, selection text)",
+        "canonical": "#0d2b4a",
+        "tonalRamp": ["#0d2b4a", "#123a63", "#174a7d", "#1e5a96", "#5a86b5", "#9ab3d0", "#d8e5f5", "#eef4fb"]
+      },
+      "navy-tint": {
+        "role": "primary",
+        "displayName": "Navy Tint (brand-100; dark-mode rule and hover)",
+        "canonical": "#d8e5f5",
+        "tonalRamp": ["#0d2b4a", "#123a63", "#174a7d", "#1e5a96", "#5a86b5", "#9ab3d0", "#d8e5f5", "#eef4fb"]
+      },
+      "navy-wash": {
+        "role": "primary",
+        "displayName": "Navy Wash (brand-50, incumbent; unused on home)",
+        "canonical": "#eef4fb",
+        "tonalRamp": ["#0d2b4a", "#123a63", "#174a7d", "#1e5a96", "#5a86b5", "#9ab3d0", "#d8e5f5", "#eef4fb"]
+      },
+      "shu": {
+        "role": "tertiary",
+        "displayName": "Shu (朱, shu-600)",
+        "canonical": "#c0392b",
+        "tonalRamp": ["oklch(25% 0.11 27)", "oklch(35% 0.15 27)", "oklch(45% 0.18 27)", "oklch(54% 0.19 27)", "oklch(65% 0.15 27)", "oklch(76% 0.10 27)", "oklch(86% 0.06 27)", "oklch(95% 0.02 27)"]
+      },
+      "shu-dark-mode": {
+        "role": "tertiary",
+        "displayName": "Shu on night paper (shu-300)",
+        "canonical": "#f2a59c",
+        "tonalRamp": ["oklch(25% 0.11 27)", "oklch(35% 0.15 27)", "oklch(45% 0.18 27)", "oklch(54% 0.19 27)", "oklch(65% 0.15 27)", "oklch(76% 0.10 27)", "oklch(86% 0.06 27)", "oklch(95% 0.02 27)"]
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "Paper (white)",
+        "canonical": "#fff",
+        "tonalRamp": ["oklch(13% 0.028 261.692)", "oklch(21% 0.034 264.665)", "oklch(27.8% 0.033 256.848)", "oklch(37.3% 0.034 259.733)", "oklch(44.6% 0.03 256.802)", "oklch(70.7% 0.022 261.325)", "oklch(87.2% 0.01 258.338)", "#fff"]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink (gray-900)",
+        "canonical": "oklch(21% 0.034 264.665)",
+        "tonalRamp": ["oklch(13% 0.028 261.692)", "oklch(21% 0.034 264.665)", "oklch(27.8% 0.033 256.848)", "oklch(37.3% 0.034 259.733)", "oklch(44.6% 0.03 256.802)", "oklch(70.7% 0.022 261.325)", "oklch(87.2% 0.01 258.338)", "oklch(96.7% 0.003 264.542)"]
+      },
+      "ink-secondary": {
+        "role": "neutral",
+        "displayName": "Ink Secondary (gray-600)",
+        "canonical": "oklch(44.6% 0.03 256.802)",
+        "tonalRamp": ["oklch(13% 0.028 261.692)", "oklch(21% 0.034 264.665)", "oklch(27.8% 0.033 256.848)", "oklch(37.3% 0.034 259.733)", "oklch(44.6% 0.03 256.802)", "oklch(70.7% 0.022 261.325)", "oklch(87.2% 0.01 258.338)", "oklch(96.7% 0.003 264.542)"]
+      },
+      "ink-tertiary": {
+        "role": "neutral",
+        "displayName": "Ink Tertiary (gray-500)",
+        "canonical": "oklch(55.1% 0.027 264.364)",
+        "tonalRamp": ["oklch(13% 0.028 261.692)", "oklch(21% 0.034 264.665)", "oklch(27.8% 0.033 256.848)", "oklch(37.3% 0.034 259.733)", "oklch(44.6% 0.03 256.802)", "oklch(70.7% 0.022 261.325)", "oklch(87.2% 0.01 258.338)", "oklch(96.7% 0.003 264.542)"]
+      },
+      "ink-muted": {
+        "role": "neutral",
+        "displayName": "Ink Muted (gray-400; 準備中 rows)",
+        "canonical": "oklch(70.7% 0.022 261.325)",
+        "tonalRamp": ["oklch(13% 0.028 261.692)", "oklch(21% 0.034 264.665)", "oklch(27.8% 0.033 256.848)", "oklch(37.3% 0.034 259.733)", "oklch(44.6% 0.03 256.802)", "oklch(70.7% 0.022 261.325)", "oklch(87.2% 0.01 258.338)", "oklch(96.7% 0.003 264.542)"]
+      },
+      "rule-strong": {
+        "role": "neutral",
+        "displayName": "Rule Strong (gray-300)",
+        "canonical": "oklch(87.2% 0.01 258.338)",
+        "tonalRamp": ["oklch(13% 0.028 261.692)", "oklch(21% 0.034 264.665)", "oklch(27.8% 0.033 256.848)", "oklch(37.3% 0.034 259.733)", "oklch(44.6% 0.03 256.802)", "oklch(70.7% 0.022 261.325)", "oklch(87.2% 0.01 258.338)", "oklch(96.7% 0.003 264.542)"]
+      },
+      "rule-light": {
+        "role": "neutral",
+        "displayName": "Rule Light (gray-200)",
+        "canonical": "oklch(92.8% 0.006 264.531)",
+        "tonalRamp": ["oklch(13% 0.028 261.692)", "oklch(21% 0.034 264.665)", "oklch(27.8% 0.033 256.848)", "oklch(37.3% 0.034 259.733)", "oklch(44.6% 0.03 256.802)", "oklch(70.7% 0.022 261.325)", "oklch(87.2% 0.01 258.338)", "oklch(96.7% 0.003 264.542)"]
+      },
+      "night-paper": {
+        "role": "neutral",
+        "displayName": "Night Paper (gray-950; dark mode, unverified visually)",
+        "canonical": "oklch(13% 0.028 261.692)",
+        "tonalRamp": ["oklch(13% 0.028 261.692)", "oklch(21% 0.034 264.665)", "oklch(27.8% 0.033 256.848)", "oklch(37.3% 0.034 259.733)", "oklch(44.6% 0.03 256.802)", "oklch(70.7% 0.022 261.325)", "oklch(87.2% 0.01 258.338)", "oklch(96.7% 0.003 264.542)"]
+      },
+      "night-rule": {
+        "role": "neutral",
+        "displayName": "Night Rule (gray-800; dark mode, unverified visually)",
+        "canonical": "oklch(27.8% 0.033 256.848)",
+        "tonalRamp": ["oklch(13% 0.028 261.692)", "oklch(21% 0.034 264.665)", "oklch(27.8% 0.033 256.848)", "oklch(37.3% 0.034 259.733)", "oklch(44.6% 0.03 256.802)", "oklch(70.7% 0.022 261.325)", "oklch(87.2% 0.01 258.338)", "oklch(96.7% 0.003 264.542)"]
+      },
+      "night-rule-strong": {
+        "role": "neutral",
+        "displayName": "Night Rule Strong (gray-700; dark mode, unverified visually)",
+        "canonical": "oklch(37.3% 0.034 259.733)",
+        "tonalRamp": ["oklch(13% 0.028 261.692)", "oklch(21% 0.034 264.665)", "oklch(27.8% 0.033 256.848)", "oklch(37.3% 0.034 259.733)", "oklch(44.6% 0.03 256.802)", "oklch(70.7% 0.022 261.325)", "oklch(87.2% 0.01 258.338)", "oklch(96.7% 0.003 264.542)"]
+      },
+      "night-ink": {
+        "role": "neutral",
+        "displayName": "Night Ink (gray-100; dark mode, unverified visually)",
+        "canonical": "oklch(96.7% 0.003 264.542)",
+        "tonalRamp": ["oklch(13% 0.028 261.692)", "oklch(21% 0.034 264.665)", "oklch(27.8% 0.033 256.848)", "oklch(37.3% 0.034 259.733)", "oklch(44.6% 0.03 256.802)", "oklch(70.7% 0.022 261.325)", "oklch(87.2% 0.01 258.338)", "oklch(96.7% 0.003 264.542)"]
+      },
+      "amber-incumbent": {
+        "role": "neutral",
+        "displayName": "Amber Incumbent (accent-600; declared, unused on home)",
+        "canonical": "#b45309",
+        "tonalRamp": ["oklch(25% 0.07 60)", "oklch(35% 0.10 60)", "oklch(45% 0.13 60)", "oklch(52% 0.14 60)", "oklch(65% 0.13 60)", "oklch(76% 0.10 60)", "oklch(86% 0.06 60)", "oklch(95% 0.03 60)"]
+      }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Home masthead title only (1.875rem, 2.25rem at sm)." },
+      "display-sm-up": { "displayName": "Display (sm and up)", "purpose": "The masthead title at the sm breakpoint and above." },
+      "wordmark": { "displayName": "Wordmark", "purpose": "Site name in the sticky header, navy." },
+      "headline": { "displayName": "Headline", "purpose": "Section headings over a 2px navy rule." },
+      "title": { "displayName": "Title", "purpose": "Sub-headings over 1px gray rules, row dates, category names." },
+      "body": { "displayName": "Body", "purpose": "Index entries, row titles, nav and footer links." },
+      "label": { "displayName": "Label", "purpose": "Counts, kind labels, more links, explanatory lines, disclaimer." }
+    },
+    "shadows": [],
+    "motion": [
+      { "name": "nav-color", "value": "color 150ms cubic-bezier(0.4, 0, 0.2, 1)", "purpose": "Header nav link hover (Tailwind transition-colors). The only transition on the home surface and shell." }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "lg", "value": "1024px" }
+    ],
+    "darkMode": {
+      "mechanism": ".dark class on <html> (custom variant), color-scheme: dark",
+      "verified": false,
+      "mapping": {
+        "page": "night-paper",
+        "text": "night-ink",
+        "rule-2px": "navy-tint",
+        "rule-1px-strong": "night-rule-strong",
+        "rule-1px-light": "night-rule",
+        "link-and-hover": "navy-tint",
+        "shu": "shu-dark-mode",
+        "focus-outline": "navy-tint"
+      }
+    },
+    "coverage": {
+      "inWorld": ["src/app/page.tsx", "src/components/home/*", "src/components/layout/Header.tsx", "src/components/layout/Footer.tsx"],
+      "outOfWorld": ["article pages (.article-body prose)", "src/components/article/ArticleCard.tsx (rounded-lg, hover:shadow-md)", "src/components/layout/TokushuNavDropdown.tsx (rounded-md, shadow-lg)", "src/components/layout/MobileNav.tsx and ThemeToggle.tsx (rounded-md hover fills)"]
+    }
+  },
+  "components": [
+    {
+      "name": "Masthead",
+      "kind": "custom",
+      "refersTo": "masthead",
+      "description": "Cover line of the handbook: title and issue data on one 2px navy rule.",
+      "html": "<header class=\"ds-masthead\"><h1 class=\"ds-masthead-title\">全国補助金ナビ</h1><p class=\"ds-masthead-issue\">2026年9月26日更新｜掲載 687制度・47都道府県・88市区町村</p></header>",
+      "css": ".ds-masthead { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; column-gap: 24px; row-gap: 4px; border-bottom: 2px solid var(--color-brand-800, #123a63); padding-bottom: 12px; font-family: var(--font-biz), 'BIZ UDPGothic', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Yu Gothic UI', Meiryo, sans-serif; } .ds-masthead-title { margin: 0; font-size: 2.25rem; line-height: 1.11; font-weight: 700; letter-spacing: -0.025em; color: oklch(21% 0.034 264.665); } .ds-masthead-issue { margin: 0; font-size: 0.875rem; line-height: 1.43; color: oklch(44.6% 0.03 256.802); font-variant-numeric: tabular-nums; }"
+    },
+    {
+      "name": "Section Heading",
+      "kind": "custom",
+      "refersTo": "section-heading",
+      "description": "Headline with an optional more link, baseline aligned, closed by a 2px navy rule.",
+      "html": "<div class=\"ds-section-heading\"><h2 class=\"ds-section-title\">締切が近い制度</h2><a class=\"ds-section-more\" href=\"#\">締切カレンダーへ</a></div>",
+      "css": ".ds-section-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; border-bottom: 2px solid var(--color-brand-800, #123a63); padding-bottom: 4px; font-family: var(--font-biz), 'BIZ UDPGothic', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Yu Gothic UI', Meiryo, sans-serif; } .ds-section-title { margin: 0; font-size: 1.125rem; line-height: 1.55; font-weight: 700; color: oklch(21% 0.034 264.665); } .ds-section-more { flex-shrink: 0; font-size: 0.75rem; line-height: 1.33; color: var(--color-brand-600, #1e5a96); text-decoration: none; } .ds-section-more:hover, .ds-section-more:focus-visible { text-decoration: underline; } .ds-section-more:focus-visible { outline: 2px solid var(--color-brand-600, #1e5a96); outline-offset: 2px; }"
+    },
+    {
+      "name": "Leader Link",
+      "kind": "nav",
+      "refersTo": "index-row",
+      "description": "Index row: label, dotted leader, tabular count. Hover turns the leader solid navy and expands the count.",
+      "html": "<ul class=\"ds-index\"><li><a class=\"ds-index-row\" href=\"#\"><span>東京都</span><span class=\"ds-leader\" aria-hidden=\"true\"></span><span class=\"ds-index-count\"><span class=\"ds-count-short\">145</span><span class=\"ds-count-long\">145制度・23市区町村</span></span></a></li><li class=\"ds-index-row ds-index-row-disabled\"><span>山梨県</span><span class=\"ds-leader ds-leader-muted\" aria-hidden=\"true\"></span><span class=\"ds-index-count\">準備中</span></li></ul>",
+      "css": ".ds-index { list-style: none; margin: 0; padding: 0; width: 16rem; font-family: var(--font-biz), 'BIZ UDPGothic', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Yu Gothic UI', Meiryo, sans-serif; } .ds-index-row { display: flex; align-items: baseline; gap: 8px; padding: 4px 0; font-size: 0.875rem; line-height: 1.43; color: oklch(21% 0.034 264.665); text-decoration: none; } .ds-leader { flex: 1 1 0; min-width: 16px; align-self: flex-end; margin-bottom: 0.35em; border-bottom: 1px dotted oklch(70.7% 0.022 261.325); } .ds-index-count { flex-shrink: 0; font-size: 0.75rem; color: oklch(44.6% 0.03 256.802); font-variant-numeric: tabular-nums; } .ds-count-long { display: none; } .ds-index-row:hover, .ds-index-row:focus-visible { color: var(--color-brand-600, #1e5a96); } .ds-index-row:hover .ds-leader, .ds-index-row:focus-visible .ds-leader { border-bottom-style: solid; border-bottom-color: var(--color-brand-600, #1e5a96); } .ds-index-row:hover .ds-index-count, .ds-index-row:focus-visible .ds-index-count { color: var(--color-brand-600, #1e5a96); } .ds-index-row:hover .ds-count-short, .ds-index-row:focus-visible .ds-count-short { display: none; } .ds-index-row:hover .ds-count-long, .ds-index-row:focus-visible .ds-count-long { display: inline; } .ds-index-row:focus-visible { outline: 2px solid var(--color-brand-600, #1e5a96); outline-offset: 2px; } .ds-index-row-disabled { color: oklch(70.7% 0.022 261.325); } .ds-leader-muted { border-bottom-color: oklch(87.2% 0.01 258.338); }"
+    },
+    {
+      "name": "Dated Row",
+      "kind": "custom",
+      "refersTo": "dated-row",
+      "description": "Date | region | title row shared by deadline and update lists. Near deadlines and 速報 use shu.",
+      "html": "<ol class=\"ds-dated\"><li class=\"ds-dated-item\"><a class=\"ds-dated-row\" href=\"#\"><span class=\"ds-dated-date ds-dated-soon\">9月30日<span class=\"ds-dated-suffix\">まで</span></span><span class=\"ds-dated-region\">秋田県</span><span class=\"ds-dated-title\">【秋田県】高校生等奨学給付金｜令和8年度の給付額と9/30期限</span></a></li><li class=\"ds-dated-item\"><a class=\"ds-dated-row\" href=\"#\"><span class=\"ds-dated-date\">9月24日<span class=\"ds-dated-suffix ds-kind-flash\">速報</span></span><span class=\"ds-dated-region\">東京都目黒区</span><span class=\"ds-dated-title\">【目黒区】再エネ助成が予算の75.9%に到達｜エコ住宅助成は今年度で廃止</span></a></li><li class=\"ds-dated-item\"><a class=\"ds-dated-row\" href=\"#\"><span class=\"ds-dated-date\">9月26日<span class=\"ds-dated-suffix ds-kind-update\">更新</span></span><span class=\"ds-dated-region\">北海道</span><span class=\"ds-dated-title\">【北海道】公立高校生等奨学給付金｜年額最大143,700円</span></a></li></ol>",
+      "css": ".ds-dated { list-style: none; margin: 0; padding: 0; width: 40rem; max-width: 100%; font-family: var(--font-biz), 'BIZ UDPGothic', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Yu Gothic UI', Meiryo, sans-serif; } .ds-dated-item { border-bottom: 1px solid oklch(92.8% 0.006 264.531); } .ds-dated-row { display: grid; grid-template-columns: 6.5rem 8rem minmax(0, 1fr); align-items: baseline; column-gap: 12px; padding: 8px 0; font-size: 0.875rem; line-height: 1.43; color: oklch(21% 0.034 264.665); text-decoration: none; } .ds-dated-date { font-weight: 700; font-variant-numeric: tabular-nums; } .ds-dated-soon { color: var(--color-shu-600, #c0392b); } .ds-dated-suffix { font-size: 0.75rem; font-weight: 400; margin-left: 4px; } .ds-kind-flash { color: var(--color-shu-600, #c0392b); } .ds-kind-update { color: oklch(55.1% 0.027 264.364); } .ds-dated-region { color: oklch(44.6% 0.03 256.802); overflow: hidden; white-space: nowrap; text-overflow: ellipsis; } .ds-dated-title { line-height: 1.375; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; } .ds-dated-row:hover .ds-dated-title, .ds-dated-row:focus-visible .ds-dated-title { color: var(--color-brand-600, #1e5a96); text-decoration: underline; } .ds-dated-row:focus-visible { outline: 2px solid var(--color-brand-600, #1e5a96); outline-offset: 2px; }"
+    },
+    {
+      "name": "Sub-heading (compare column head)",
+      "kind": "custom",
+      "refersTo": "sub-heading",
+      "description": "Title-weight head over a 1px gray rule with a small 一覧へ link; list items separated by dotted rules.",
+      "html": "<div class=\"ds-compare\"><h3 class=\"ds-subhead\"><span>自治体比較</span><a class=\"ds-subhead-more\" href=\"#\">一覧へ</a></h3><ul class=\"ds-compare-list\"><li><a class=\"ds-compare-link\" href=\"#\">エネルギー・環境の補助金 自治体比較【2026年度】</a></li><li><a class=\"ds-compare-link\" href=\"#\">住宅・引っ越しの補助金 自治体比較【2026年度】</a></li></ul></div>",
+      "css": ".ds-compare { width: 20rem; font-family: var(--font-biz), 'BIZ UDPGothic', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Yu Gothic UI', Meiryo, sans-serif; } .ds-subhead { display: flex; align-items: baseline; justify-content: space-between; margin: 0; border-bottom: 1px solid oklch(87.2% 0.01 258.338); padding-bottom: 4px; font-size: 0.875rem; line-height: 1.43; font-weight: 700; color: oklch(21% 0.034 264.665); } .ds-subhead-more { font-size: 0.75rem; font-weight: 400; color: var(--color-brand-600, #1e5a96); text-decoration: none; } .ds-subhead-more:hover, .ds-subhead-more:focus-visible { text-decoration: underline; } .ds-compare-list { list-style: none; margin: 4px 0 0; padding: 0; } .ds-compare-list li { border-bottom: 1px dotted oklch(87.2% 0.01 258.338); } .ds-compare-link { display: block; padding: 6px 0; font-size: 0.875rem; line-height: 1.375; color: oklch(21% 0.034 264.665); text-decoration: none; } .ds-compare-link:hover, .ds-compare-link:focus-visible { color: var(--color-brand-600, #1e5a96); text-decoration: underline; }"
+    },
+    {
+      "name": "Colophon",
+      "kind": "custom",
+      "refersTo": "colophon-detail",
+      "description": "奥付: definition list opened by a 2px navy rule; terms in small gray, values in ink.",
+      "html": "<section class=\"ds-colophon\"><dl class=\"ds-colophon-dl\"><dt>発行</dt><dd>全国補助金ナビ 編集部</dd><dt>最終更新</dt><dd class=\"ds-tabular\">2026年9月26日</dd><dt>編集方針</dt><dd>一次情報主義 — 公式発表を原文で確認し、全記事に出典を明記します。</dd></dl><p class=\"ds-colophon-links\"><a href=\"#\">運営者情報・編集方針の詳細</a><a href=\"#\">免責事項</a></p></section>",
+      "css": ".ds-colophon { width: 20rem; border-top: 2px solid var(--color-brand-800, #123a63); padding-top: 12px; font-family: var(--font-biz), 'BIZ UDPGothic', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Yu Gothic UI', Meiryo, sans-serif; } .ds-colophon-dl { display: grid; grid-template-columns: 5rem minmax(0, 1fr); column-gap: 12px; row-gap: 8px; margin: 0; } .ds-colophon-dl dt { font-size: 0.75rem; line-height: 1.33; color: oklch(44.6% 0.03 256.802); } .ds-colophon-dl dd { margin: 0; font-size: 0.875rem; line-height: 1.43; color: oklch(21% 0.034 264.665); } .ds-tabular { font-variant-numeric: tabular-nums; } .ds-colophon-links { display: flex; flex-wrap: wrap; column-gap: 16px; margin: 12px 0 0; font-size: 0.75rem; } .ds-colophon-links a { color: var(--color-brand-600, #1e5a96); text-decoration: none; } .ds-colophon-links a:hover, .ds-colophon-links a:focus-visible { text-decoration: underline; }"
+    },
+    {
+      "name": "Header",
+      "kind": "nav",
+      "refersTo": "header-bar",
+      "description": "Sticky 56px white bar on a 1px gray rule, wordmark in navy, text nav on the right. No shadow.",
+      "html": "<header class=\"ds-header\"><a class=\"ds-wordmark\" href=\"#\">全国補助金ナビ</a><nav><ul class=\"ds-nav\"><li><a href=\"#\">補助金を探す</a></li><li><a href=\"#\">地域から探す</a></li><li><a href=\"#\">地域比較</a></li><li><a href=\"#\">新着・締切情報</a></li><li><a href=\"#\">検索</a></li></ul></nav></header>",
+      "css": ".ds-header { display: flex; align-items: center; justify-content: space-between; column-gap: 24px; height: 56px; padding: 0 16px; background: #fff; border-bottom: 1px solid oklch(87.2% 0.01 258.338); font-family: var(--font-biz), 'BIZ UDPGothic', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Yu Gothic UI', Meiryo, sans-serif; } .ds-wordmark { font-size: 1.25rem; line-height: 1.4; font-weight: 700; letter-spacing: -0.025em; color: var(--color-brand-800, #123a63); text-decoration: none; } .ds-nav { display: flex; align-items: center; column-gap: 16px; list-style: none; margin: 0; padding: 0; font-size: 0.875rem; line-height: 1.43; } .ds-nav a { color: oklch(37.3% 0.034 259.733); text-decoration: none; transition: color 150ms cubic-bezier(0.4, 0, 0.2, 1); } .ds-nav a:hover { color: var(--color-brand-600, #1e5a96); } .ds-nav a:focus-visible, .ds-wordmark:focus-visible { outline: 2px solid var(--color-brand-600, #1e5a96); outline-offset: 2px; }"
+    },
+    {
+      "name": "Footer",
+      "kind": "custom",
+      "refersTo": "footer",
+      "description": "White footer opened by a 2px navy rule; link columns, then a plain disclaimer over a 1px rule.",
+      "html": "<footer class=\"ds-footer\"><div class=\"ds-footer-grid\"><div><p class=\"ds-footer-wordmark\">全国補助金ナビ</p><p class=\"ds-footer-desc\">国・都道府県・市区町村の補助金・助成金を地域ごとに比較できる情報サイト。</p></div><div><p class=\"ds-footer-head\">コンテンツ</p><ul class=\"ds-footer-links\"><li><a href=\"#\">補助金を探す</a></li><li><a href=\"#\">地域から探す</a></li></ul></div></div><div class=\"ds-footer-disclaimer\">本サイトは補助金・助成金制度に関する情報提供を目的としています。掲載情報は執筆時点のものであり、最新の制度内容と異なる場合があります。</div></footer>",
+      "css": ".ds-footer { width: 40rem; max-width: 100%; border-top: 2px solid var(--color-brand-800, #123a63); background: #fff; padding: 40px 16px; font-family: var(--font-biz), 'BIZ UDPGothic', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Yu Gothic UI', Meiryo, sans-serif; } .ds-footer-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; } .ds-footer-wordmark { margin: 0; font-size: 1.125rem; font-weight: 700; color: var(--color-brand-800, #123a63); } .ds-footer-desc { margin: 8px 0 0; font-size: 0.875rem; line-height: 1.625; color: oklch(44.6% 0.03 256.802); } .ds-footer-head { margin: 0; font-size: 0.875rem; font-weight: 700; color: oklch(21% 0.034 264.665); } .ds-footer-links { list-style: none; margin: 8px 0 0; padding: 0; font-size: 0.875rem; } .ds-footer-links a { display: block; padding: 2px 0; color: oklch(44.6% 0.03 256.802); text-decoration: none; } .ds-footer-links a:hover, .ds-footer-links a:focus-visible { color: var(--color-brand-600, #1e5a96); } .ds-footer-disclaimer { margin-top: 32px; border-top: 1px solid oklch(87.2% 0.01 258.338); padding-top: 16px; font-size: 0.75rem; line-height: 1.625; color: oklch(44.6% 0.03 256.802); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "くらしの便利帳 (The Household Handbook)",
+    "overview": "The site's home surface and shared shell are set like the index pages of a Japanese municipal PR magazine: white paper, ink-black text in a UD gothic face, and space divided by rules rather than boxes. There are no cards, no shadows, no icon tiles, and no corner radius on the home surface. Every section is a heading over a 2px navy rule, followed by a ruled list; the reader finds their prefecture in an index whose dotted leader runs to a right-aligned count, exactly as a printed handbook would set it. Density is high and calm: rows are 4px to 8px apart, sections 40px apart, and the type never rises above 2.25rem.\n\nColor is almost entirely ink and navy. Navy (navy-heading) is structural: it draws the mast rule, section rules, the footer's top rule, and the header wordmark. A lighter navy (navy-link) is the only interactive color: hover and focus turn text navy, add an underline, and turn a dotted leader into a solid navy line. Vermilion (shu) is a warning ink reserved for two things, a deadline inside 14 days and a 速報 kind label. Nothing else is allowed to be red.\n\nScope, stated honestly: this world is implemented on src/app/page.tsx (Masthead, RegionIndex, DeadlineList, UpdatesList, CategoryToc, Colophon, CompareList) and on the shared Header and Footer. Article, listing, area, tag, compare, tokushu and news pages were not part of the build and still use the pre-existing styles (the .article-body prose treatment, and ArticleCard.tsx with rounded-lg borders and a hover shadow). New surfaces should follow this document; existing article surfaces carry the old system until they are rebuilt.",
+    "keyCharacteristics": [
+      "White paper, ink text, navy rules; no fills, no cards, no shadows, no radius on the home surface",
+      "Two rule weights carry all hierarchy: 2px navy for sections, 1px gray for sub-heads, columns and rows",
+      "Dotted leaders join a label to its right-aligned tabular count; hover makes the leader solid navy",
+      "One typeface (BIZ UDPGothic) at exactly two weights (400, 700); numerals are always tabular",
+      "Vermilion is a warning ink, used only for near deadlines and 速報"
+    ],
+    "rules": [
+      { "name": "The Shu Rule", "body": "Vermilion appears in exactly two places: a deadline date within 14 days and the 速報 kind label. It is never a link color, never a heading color, never a fill.", "section": "colors" },
+      { "name": "The One Interactive Navy Rule", "body": "Every hover and focus state resolves to the same navy (navy-link in light, navy-tint in dark) plus an underline. There is no second hover treatment, no background change, no motion beyond a color transition on nav links.", "section": "colors" },
+      { "name": "The Tabular Numerals Rule", "body": "Every number that sits in a column (counts, dates, the masthead's issue line, 最終更新) is set with tabular-nums so leaders and dates align down the page.", "section": "typography" },
+      { "name": "The Two-Weight Rule", "body": "Only 400 and 700 are loaded. Do not ask for 500 or 600; the browser will synthesize or snap, and the handbook reads as regular and bold only.", "section": "typography" },
+      { "name": "The No-Card Rule", "body": "Groups of content are separated by rules, never enclosed in bordered or filled boxes. If a block needs a boundary, give it a 1px gray rule above or below.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do open every section with a Headline over a 2px navy-heading rule and close groups with 1px gray rules.",
+      "Do set counts, dates and issue lines in tabular-nums and align them to the right of a dotted leader or to a fixed date column.",
+      "Do make every interactive state the same: text to navy-link (dark: navy-tint), underline, leader to solid navy.",
+      "Do reserve shu for deadlines within 14 days and 速報 labels.",
+      "Do keep the shell on white: header on a 1px gray rule, footer on a 2px navy rule, no fills."
+    ],
+    "donts": [
+      "Don't put home-surface content in cards, filled boxes, or containers with radius or shadow; the world divides space with rules only.",
+      "Don't add icons, icon tiles, kickers or eyebrows; headings are plain text on a rule.",
+      "Don't use a font weight other than 400 or 700, or a second typeface.",
+      "Don't use shu for links, emphasis or decoration, and don't use amber-incumbent on new surfaces.",
+      "Don't claim this world for article pages yet; until they are rebuilt, ArticleCard.tsx and .article-body remain on the pre-existing card and prose styles."
+    ]
+  }
+}

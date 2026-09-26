@@ -1,6 +1,17 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
+import { BIZ_UDPGothic } from "next/font/google";
 import "@/styles/globals.css";
+
+// 自治体広報誌・くらしの便利帳と同じ UD ゴシック。ビルド時に取得して自己ホストする（output: export でも可）。
+// 日本語のサブセットは unicode-range で分割配信されるため preload は行わない。
+const bizUdpGothic = BIZ_UDPGothic({
+  weight: ["400", "700"],
+  subsets: ["latin"],
+  preload: false,
+  display: "swap",
+  variable: "--font-biz",
+});
 import { siteConfig } from "@/config/site";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
@@ -39,7 +50,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="ja">
+    <html lang="ja" className={bizUdpGothic.variable}>
       <body className="flex min-h-screen flex-col">
         <JsonLd data={organizationJsonLd()} />
         <JsonLd data={websiteJsonLd()} />

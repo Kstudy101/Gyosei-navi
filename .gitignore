@@ -34,3 +34,8 @@ workspace/
 
 # 외부 스킬 중 라이선스 표기가 없는 것 — 공개 리포에 재배포하지 않고 로컬에서만 사용 (2026-09-26)
 .claude/skills/humanize-japanese/
+
+# 設計検査ツールの成果物（スクリーンショット等）— コミットしない
+.playwright-mcp/
+.impeccable/review/
+.impeccable/mocks/
