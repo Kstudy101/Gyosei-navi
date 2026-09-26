@@ -46,7 +46,7 @@ Issue 안의 변화 항목마다 아래 점수를 매겨 표로 남긴다. **4�
 ### 5. 낡은 subsidy 기사 갱신 루프 (B)
 
 news-writer가 「낡았다」고 보고한 기존 subsidy 기사마다:
-1. **verifier** Task: 이번 뉴스의 원문 아카이브(`data/sources/<news-slug>/`)와 그 subsidy 기사를 대조해, **원문으로 확인되는 필드 단위 차이만** 목록으로 낸다(예: `subsidy.status: open → closed`, 본문 「予算残額400万円」 → 삭제/갱신). 원문으로 확인 안 되는 항목은 목록에서 뺀다.
+1. **verifier** Task: 이번 뉴스의 원문 아카이브(`data/sources/<news-slug>/`)와 그 subsidy 기사를 대조해, **원문으로 확인되는 필드 단위 차이만** 목록으로 낸다(예: `subsidy.status: open → closed`, 본문 「予算残額400万円」 → 삭제/갱신). 원문으로 확인 안 되는 항목은 목록에서 뺀다. 또한 **확인된 변경과 모순되는 기존 문장**도 목록에 넣는다(예: 受付終了인데 「今から申請」 전제의 안내・체크리스트 → 종료 사실을 앞에 명시하거나 문구를 조정). 모순을 남기면 상태 필드와 본문이 어긋난 오정보가 된다.
 2. **writer** Task(갱신 모드, writer.md 참조): verifier 목록의 항목만 반영한다. `updatedAt`・`subsidy.verifiedAt`은 오늘, `changelog`에 「〇〇を反映（関連ニュース: /news/<slug>）」를 추가.
 3. **editor** Task: 바뀐 문장만 검수.
 4. `npm run validate:content`로 확인. status는 바꾸지 않는다(published는 published 그대로 — 새 발행이 아니라 정정이다).
