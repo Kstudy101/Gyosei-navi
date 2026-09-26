@@ -102,14 +102,14 @@
     {
       "category": "kyoiku",
       "title": "岐阜県高校生等奨学給付金（奨学のための給付金）",
-      "officialUrl": "https://www.pref.gifu.lg.jp/kyoiku/kennai-gakko/koto-gakko/17773/koukousei-syougakukyuuhu.html",
+      "officialUrl": "https://www.pref.gifu.lg.jp/site/edu/11744.html",
       "authority": "prefecture",
       "confidence": "confirmed",
-      "status": "pending",
-      "articleSlug": "",
+      "status": "researched",
+      "articleSlug": "gifu-ken-koukousei-shougaku-kyufukin",
       "foundAt": "2026-09-22",
       "checkedAt": "2026-09-22",
-      "note": "県レベル。低所得世帯（道府県民税・市町村民税所得割非課税）の高校生等保護者向け給付金、返還不要。既存記事は岐阜市の就学援助（市レベル、義務教育段階）のみで対象学齢・制度が異なり重複なし。令和8年度実施継続を公式サイトで確認。"
+      "note": "県レベル。国公立分(県教委 教育財務課)と私立分(私学振興課、page/61422.html)は別ページ・別窓口。令和8年度から所得割182,500円未満(年収490万円相当)まで拡充・国籍要件追加(旧note「非課税世帯向け」は訂正)。第1子/第2子区分なし。2026-09-25 draft作成済み、published転換は権限システムに拒否され未実施。"
     }
   ]
 }

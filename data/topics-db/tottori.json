@@ -1,7 +1,7 @@
 {
   "region": "tottori",
   "regionLabel": "鳥取県",
-  "updatedAt": "2026-09-22",
+  "updatedAt": "2026-09-25",
   "topics": [
     {
       "category": "shussan",
@@ -21,11 +21,11 @@
       "officialUrl": "https://www.pref.tottori.lg.jp/308459.htm",
       "authority": "prefecture",
       "confidence": "confirmed",
-      "status": "researched",
+      "status": "published",
       "articleSlug": "tottori-renest-jutaku-kaishu",
       "foundAt": "2026-09-22",
-      "checkedAt": "2026-09-24",
-      "note": "既存戸建て住宅の断熱改修に対する県の補助金。県公式サイトのカテゴリページで実在確認済み。詳細ページは別途要特定。国の住宅省エネ2025キャンペーンとの併用可との情報あり。"
+      "checkedAt": "2026-09-25",
+      "note": "既存戸建て住宅の断熱改修に対する県の補助金。県公式サイトのカテゴリページで実在確認済み。詳細ページは別途要特定。国の住宅省エネ2025キャンペーンとの併用可との情報あり。 2026-09-25: 交付要綱・フロー・Q&A原文追加取得(02〜06)。R8受付開始日・予算枠は原文で未確認(subsidy.status ongoing+注記)。verifier PASS(再検証)、published。"
     },
     {
       "category": "sogyo",
@@ -117,11 +117,11 @@
       "officialUrl": "https://www.pref.tottori.lg.jp/262195.htm",
       "authority": "prefecture",
       "confidence": "confirmed",
-      "status": "pending",
-      "articleSlug": "",
+      "status": "published",
+      "articleSlug": "tottori-kekkon-shinseikatsu-shien",
       "foundAt": "2026-09-22",
       "checkedAt": "2026-09-22",
-      "note": "県公式サイトで実在確認、所管は鳥取県子ども家庭部子育て王国課。事業名が旧「結婚新生活支援事業」から改称されている点に注意。具体的な補助額・対象要件はページに直接記載がなく、倉吉市・岩美町・若桜町・八頭町・北栄町・伯耆町など各市町村の実施計画ページを個別に確認する必要あり。新婚世帯の住居費等補助という当初制度の実態が残っているか要一次確認。"
+      "note": "県ページ(pref.tottori.lg.jp/262195.htm)は案内型で、講座動画の提供のみ・補助額や申請方法の記載なし。現金補助の実施主体は市町村。2026-09-25に原文確認: 倉吉市・岩美町・八頭町はR8年度の内容を確認(岩美町の対象事業は住宅取得とリフォームのみ)。若桜町はR7年度版の掲載で過去情報扱い。北栄町・伯耆町は県ページ内リンクがHTTP 404で未確認。"
     }
   ]
 }

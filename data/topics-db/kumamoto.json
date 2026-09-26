@@ -9,8 +9,8 @@
       "officialUrl": "https://www.pref.kumamoto.jp/soshiki/217/204196.html",
       "authority": "prefecture",
       "confidence": "confirmed",
-      "status": "pending",
-      "articleSlug": "",
+      "status": "published",
+      "articleSlug": "kumamoto-pref-neko-funinkyosei",
       "foundAt": "2026-09-22",
       "checkedAt": "2026-09-22",
       "note": "熊本市はkumamoto-shiでpet(猫の不妊去勢)を既に公開済みのため差別化ポイントとして、これは熊本県（動物愛護センター所管、県内熊本市を除くエリア対象の可能性）独自事業。対象エリアと熊本市事業との重複有無をgovernment-researcherが要確認。受付は令和8年9月30日で停止との記載あり、募集終了時期に注意。"
@@ -21,11 +21,11 @@
       "officialUrl": "https://www.city.arao.lg.jp/oshirase/boshu/page17822.html",
       "authority": "municipality",
       "confidence": "confirmed",
-      "status": "pending",
+      "status": "rejected",
       "articleSlug": "",
       "foundAt": "2026-09-22",
-      "checkedAt": "2026-09-22",
-      "note": "熊本県内22市町村（令和5年度時点）が結婚新生活支援事業を実施。荒尾市は公式URLを確認済み。他に美里町・多良木町・宇城市も実施確認（URL: town.kumamoto-misato.lg.jp, town.taragi.lg.jp, city.uki.kumamoto.jp）。荒尾市は現状regions.tsに未登録 — 記事化する場合は市区町村登録が先に必要。熊本市自体は政令市のため対象外の可能性が高い（要確認）。"
+      "checkedAt": "2026-09-25",
+      "note": "【2026-09-25 rejected】公式ページ(公開2026-04-17)に「令和7年度の受付は終了いたしました。令和8年度以降につきましては、当該事業の実施予定はありません。」と明記。現在申請できる制度ではないため記事化しない。団体コード43204(総務省)。原文アーカイブ: data/sources/arao-kekkon-shinseikatsu-shien/。令和7年度は夫婦39歳以下・所得500万円未満・上限30万円(29歳以下夫婦は60万円)。県内他実施市町村は美里町・多良木町・宇城市等(令和8年度実施は要再確認)。"
     },
     {
       "category": "jutaku",

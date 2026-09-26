@@ -1,7 +1,7 @@
 {
   "region": "yamanashi",
   "regionLabel": "山梨県",
-  "updatedAt": "2026-09-22",
+  "updatedAt": "2026-09-25",
   "topics": [
     {
       "category": "shussan",
@@ -18,14 +18,14 @@
     {
       "category": "shussan",
       "title": "富士吉田市出産・子育て応援給付金支給事業（妊娠時5万円・出産後5万円）",
-      "officialUrl": "https://www.city.fujiyoshida.yamanashi.jp/info/4554",
+      "officialUrl": "https://www.city.fujiyoshida.yamanashi.jp/site/kosodate/2653.html",
       "authority": "municipality",
       "confidence": "confirmed",
-      "status": "pending",
-      "articleSlug": "",
+      "status": "published",
+      "articleSlug": "fujiyoshida-ninpu-shien-kyufu",
       "foundAt": "2026-09-22",
       "checkedAt": "2026-09-22",
-      "note": "伴走型相談支援とセット。甲府市と同様の国基準制度だが、富士吉田市独自の子育てサイト経由で申請案内あり。"
+      "note": "伴走型相談支援とセット。甲府市と同様の国基準制度だが、富士吉田市独自の子育てサイト経由で申請案内あり。 [2026-09-25] 旧officialUrl info/4554は404のため2653.htmlに差替。原文data/sources/fujiyoshida-ninpu-shien-kyufu/"
     },
     {
       "category": "jutaku",
@@ -69,11 +69,11 @@
       "officialUrl": "https://www.pref.yamanashi.jp/startup/kigyoushienkin2023.html",
       "authority": "prefecture",
       "confidence": "confirmed",
-      "status": "pending",
+      "status": "rejected",
       "articleSlug": "",
       "foundAt": "2026-09-22",
       "checkedAt": "2026-09-22",
-      "note": "内閣府の地域課題解決型起業支援事業を活用した県の制度。県単位のためPillar級記事にしやすい。"
+      "note": "令和8年度は一次(6/11)・二次(7/12)とも締切済み。公式の募集要領PDFが未取得で、令和9年度公募も未定。公募が公表されたら再調査する。詳細はdata/sources/yamanashi-ken-startup-hojokin/README.md"
     },
     {
       "category": "kaigo",
@@ -117,11 +117,11 @@
       "officialUrl": "https://www.pref.yamanashi.jp/shouko-kik/syouene.html",
       "authority": "prefecture",
       "confidence": "confirmed",
-      "status": "pending",
+      "status": "rejected",
       "articleSlug": "",
       "foundAt": "2026-09-22",
       "checkedAt": "2026-09-22",
-      "note": "太陽光発電設備・蓄電池の設備購入費・設計費・設置工事費が対象。県単位でPillar候補。"
+      "note": "事業者向け制度（中小企業者・農林漁業者・福祉施設等）で個人向けではなく、第7次追加募集は令和8年9月30日で受付終了、次回募集時期は原文に記載なし。data/sources/yamanashi-ken-shouene-saiene/README.md参照。"
     },
     {
       "category": "pet",

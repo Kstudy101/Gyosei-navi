@@ -21,11 +21,11 @@
       "officialUrl": "https://www.pref.chiba.lg.jp/keishi/sougyou/shikin2.html",
       "authority": "prefecture",
       "confidence": "confirmed",
-      "status": "pending",
-      "articleSlug": "",
+      "status": "published",
+      "articleSlug": "chiba-ken-sogyo-ouen-joseikin",
       "foundAt": "2026-09-22",
       "checkedAt": "2026-09-22",
-      "note": "対象: 市町村の特定創業支援等事業修了者または県内公的インキュベーション施設入居者で県内創業予定者・創業5年未満の中小企業者。補助率1/2、上限100万円。令和8年度募集は4/2〜4/30。所管: 商工労働部経営支援課 043-223-2712。姉妹制度に千葉県地域課題解決型起業支援事業補助金（条件不利地域23市町村対象、上限200万円）もあり、こちらは県レベル初の記事となる（既存chiba-shi-challenge-shikinは市レベル）。"
+      "note": "対象: 市町村の特定創業支援等事業修了者または県内公的インキュベーション施設入居者で県内創業予定者・創業5年未満の中小企業者。補助率1/2、上限100万円。令和8年度募集は4/2〜4/30。案内窓口: 県商工労働部経営支援課 043-223-2712。実施・申請先は(公財)千葉県産業振興センター活性化支援課 043-299-1078。令和8年度募集は終了(実施団体ページ2026-05-01付、県ページは終了表示なし)。令和9年度は原文で未確認。創業予定者も対象だが特定創業支援等事業の証明書またはインキュベーション施設入居が必須。姉妹制度に千葉県地域課題解決型起業支援事業補助金（条件不利地域23市町村対象、上限200万円）もあり、こちらは県レベル初の記事となる（既存chiba-shi-challenge-shikinは市レベル）。"
     },
     {
       "category": "kekkon",
@@ -93,11 +93,11 @@
       "officialUrl": "https://www.pref.chiba.lg.jp/gakuji/shiritsutou/gakuhi-josei/josei-kyuufukin.html",
       "authority": "prefecture",
       "confidence": "confirmed",
-      "status": "pending",
-      "articleSlug": "",
+      "status": "published",
+      "articleSlug": "chiba-ken-koukou-shogaku-kyufukin",
       "foundAt": "2026-09-22",
       "checkedAt": "2026-09-22",
-      "note": "低所得世帯（非課税世帯等）向けの授業料以外の教育費を支援する返還不要給付金。公立・私立で別ページ・別制度（私立は令和8年度から電子申請対応）。金額詳細は原文調査で要確認。県レベル初のkyoiku記事候補（千葉市kyoiku=chiba-shi-shugaku-enjoは市レベル就学援助で別制度）。"
+      "note": "公立・私立とも令和8年度から電子申請、実施主体・金額・期限・窓口が別"
     },
     {
       "category": "shussan",

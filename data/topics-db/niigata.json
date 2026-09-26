@@ -33,11 +33,11 @@
       "officialUrl": "https://www.nico.or.jp/sien/hojokin/86447/",
       "authority": "prefecture",
       "confidence": "confirmed",
-      "status": "pending",
-      "articleSlug": "",
+      "status": "published",
+      "articleSlug": "niigata-ken-ui-turn-sogyo-oen-jigyo",
       "foundAt": "2026-09-22",
-      "checkedAt": "2026-09-22",
-      "note": "県レベルの創業補助（実施機関: にいがた産業創造機構NICO）。上限200万円、経費の1/2以内。新潟市中小企業開業資金(既存記事)とは主体・対象が異なる(県 vs 市、Uターン限定)ので差別化可能。令和8年度一次募集の公式ページで実在確認済み。"
+      "checkedAt": "2026-09-25",
+      "note": "県レベルの創業補助（実施はにいがた産業創造機構NICO）。令和8年度一次終了・二次未告知(2026-09-25確認)。Uターン限定ではなくU・Iターン+じもと定着起業が対象。上限200万円・経費1/2以内、下限50万円。新潟市中小企業開業資金(既存記事)とは県vs市・補助金vs融資で差別化。"
     },
     {
       "category": "energy",
@@ -57,8 +57,8 @@
       "officialUrl": "https://www.pref.niigata.lg.jp/sec/seikatueisei/1356808219142.html",
       "authority": "prefecture",
       "confidence": "confirmed",
-      "status": "pending",
-      "articleSlug": "",
+      "status": "published",
+      "articleSlug": "niigata-ken-neko-funinkyosei-hojo",
       "foundAt": "2026-09-22",
       "checkedAt": "2026-09-22",
       "note": "既存記事は新潟市の猫不妊去勢手術費助成(niigata-shi-neko-funinkyosei.mdx、市動物愛護協会経由)。本候補は新潟県(県動物愛護センター等)が団体を通じて交付する県レベルの制度で主体が異なる。団体ごとに補助額が異なる(県愛護協会: 雄5,000円/雌10,000円等)点に注意、原文で詳細確認必要。"

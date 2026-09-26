@@ -57,11 +57,11 @@
       "officialUrl": "https://www.pref.toyama.jp/1705/kurashi/kankyoushizen/kankyou/saienehojo.html",
       "authority": "prefecture",
       "confidence": "confirmed",
-      "status": "pending",
+      "status": "rejected",
       "articleSlug": "",
       "foundAt": "2026-09-22",
-      "checkedAt": "2026-09-22",
-      "note": "県内在住者の新車EV購入費用の一部を補助(上限15万円、先着順、購入後90日以内申請、国補助金併用可)。同ページ内の「再生可能エネルギー導入促進補助金」(太陽光・蓄電池)も代替候補。"
+      "checkedAt": "2026-09-25",
+      "note": "県内在住者の新車EV購入費用の一部を補助(上限15万円、先着順、購入後90日以内申請、国補助金併用可)。同ページ内の「再生可能エネルギー導入促進補助金」(太陽光・蓄電池)も代替候補。 [2026-09-25 rejected] 令和7年度分は2026-02-27受付終了、令和8年度の公募は公式に確認できず(県CNポータル・EV普及ページにも県EV補助なし)。公式URLは全て404、根拠はWayback経由のみ(data/sources/toyama-ev-donyu-taisho)。上限15万円は原文で確認不可(原文は定額5万円)。個人対象自体は可(Wayback上)。再公募が確認できれば再検討。"
     },
     {
       "category": "pet",

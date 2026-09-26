@@ -9,11 +9,11 @@
       "officialUrl": "https://www.pref.aomori.lg.jp/soshiki/kenko/kodomo/kosodateoenkin.html",
       "authority": "prefecture",
       "confidence": "confirmed",
-      "status": "pending",
+      "status": "rejected",
       "articleSlug": "",
       "foundAt": "2026-09-22",
-      "checkedAt": "2026-09-22",
-      "note": "児童1人につき30,000円給付。既存記事は青森市の妊婦支援給付のみなので県レベルは差別化になる。"
+      "checkedAt": "2026-09-25",
+      "note": "2026-09-25再確認: 公式URLは404(転送先も404)、課トップにも掲載なし。検索要約では令和5年度物価高騰対応の一時給付(申請期間2023-11-27〜2024-03-15、児童手当を受けない世帯対象)で終了済みの可能性大だが原文未確認。原文を確保できず記事化不可のためrejected。旧note「30,000円」は原文未確認。アーカイブ: data/sources/aomori-ken-kosodate-oenkin/"
     },
     {
       "category": "shussan",
@@ -117,8 +117,8 @@
       "officialUrl": "https://www.pref.aomori.lg.jp/soshiki/kyoiku/e-shisetsu/shougakukyuufukin.html",
       "authority": "prefecture",
       "confidence": "confirmed",
-      "status": "pending",
-      "articleSlug": "",
+      "status": "published",
+      "articleSlug": "aomori-kokoritsu-kokosei-kyufukin",
       "foundAt": "2026-09-22",
       "checkedAt": "2026-09-22",
       "note": "国公立高校生対象、年額32,300〜143,700円（世帯所得・課程により変動）。既存記事は青森市の就学援助のみで県の給付型奨学金は差別化になる。"

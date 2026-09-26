@@ -1,19 +1,19 @@
 {
   "region": "mie",
   "regionLabel": "三重県",
-  "updatedAt": "2026-09-22",
+  "updatedAt": "2026-09-25",
   "topics": [
     {
       "category": "shussan",
-      "title": "三重県特定不妊治療費助成事業（不育症助成含む、県単独助成）",
-      "officialUrl": "https://www.pref.mie.lg.jp/D1KODOMO/000117788.htm",
+      "title": "三重県 不育症検査費用（先進医療）助成（県直接実施）・新たな特定不妊治療費助成（市町実施・県補助）",
+      "officialUrl": "https://www.pref.mie.lg.jp/KODOMOK/HP/m0330400069.htm",
       "authority": "prefecture",
       "confidence": "confirmed",
-      "status": "pending",
-      "articleSlug": "",
+      "status": "researched",
+      "articleSlug": "mie-ken-fuiku-kensa-josei",
       "foundAt": "2026-09-22",
-      "checkedAt": "2026-09-22",
-      "note": "国の不妊治療保険適用（令和4年4月）を受け、県が独自に上乗せする助成事業。実施主体は市町、県が市町へ補助。津市のshussan記事（tsu-ninpu-shien-kyufu）とは別制度（県レベル）で重複しない。"
+      "checkedAt": "2026-09-25",
+      "note": "【2026-09-25原文確認で訂正】旧「特定不妊治療費助成事業」(000117788)は令和4年度で終了(R4.4以降の治療は保険適用で対象外)。現行は(A)県が市町へ補助する新たな特定不妊治療費助成4事業(実施主体は市町、原文 000239950_00001.htm)と(B)県が直接実施する不育症検査費用(先進医療)助成(R8.6.16掲載)。記事は(B)詳述+(A)概要、市町別金額は未確認。draft止まり(published切替は権限システムが拒否)。原文: data/sources/mie-ken-funin-fuiku-josei/"
     },
     {
       "category": "jutaku",
@@ -21,11 +21,11 @@
       "officialUrl": "https://www.pref.mie.lg.jp/JUTAKU/HP/35936031381.htm",
       "authority": "prefecture",
       "confidence": "confirmed",
-      "status": "pending",
-      "articleSlug": "",
+      "status": "published",
+      "articleSlug": "mie-ken-mokuzo-taishin-hojo",
       "foundAt": "2026-09-22",
       "checkedAt": "2026-09-22",
-      "note": "県土整備部住宅政策課が所管。実施主体は各市町だが県が制度枠組みと補助を提供。津市のjutaku記事（tsu-mokuzo-taishin-shien、木造耐震支援）とテーマは近いが、こちらは県レベル制度としての切り口。記事化時は津市記事との差別化（県全体の制度設計・各市町窓口一覧）を明確にする必要あり。"
+      "note": "県土整備部住宅政策課が所管。県の制度は市町が事業を行うことが前提の間接補助で、申請先は各市町窓口（県への直接申請は不可）。県負担は、耐震補強設計が上限9万円（精密診断法は+8万円で県17万円）、工事は市町補助額から国補助金等を除いた額の半分かつ50万円以内。令和8年度の受付期間・予算枠は県ページで未確認。津市のjutaku記事（tsu-mokuzo-taishin-shien）とは、県全体の制度設計・各市町窓口一覧の切り口で差別化。"
     },
     {
       "category": "sogyo",
@@ -55,13 +55,13 @@
       "category": "energy",
       "title": "三重県太陽光発電設備等設置費（個人向け）補助金（令和8年度）",
       "officialUrl": "https://www.pref.mie.lg.jp/EARTH/HP/m0056200187.htm",
-      "authority": "prefecture",
+      "authority": "municipality",
       "confidence": "confirmed",
-      "status": "pending",
+      "status": "rejected",
       "articleSlug": "",
       "foundAt": "2026-09-22",
-      "checkedAt": "2026-09-22",
-      "note": "個人（家庭）向け太陽光発電・蓄電池設置費補助。津市のenergy記事（tsu-jikashohi-taiyoko-hojokin）とは別制度（県レベル、個人向け）で重複しない。事業者向け補助金は別途あり（m0012300381.htm）だが今回は個人向けを候補とした。"
+      "checkedAt": "2026-09-25",
+      "note": "【2026-09-25原文確認で訂正】県が個人へ直接交付する制度ではなく、令和8年度は県内27市町が個人向け太陽光・蓄電池補助を実施予定で、県(地球温暖化対策課)は市町の実施状況を一覧公表しているだけ(財源は環境省 地域脱炭素移行・再エネ推進交付金)。県ページに補助額・受付期間・申請方法の記載なし。受付終了は桑名市・鈴鹿市・伊賀市・伊勢市・尾鷲市、受付停止は四日市市。県レベルの単独記事は不可のためrejected。市町別記事化する場合は各市町のtopics-dbで扱う。原文: data/sources/mie-ken-taiyoko-kojin-hojokin/"
     },
     {
       "category": "kyoiku",
@@ -69,11 +69,11 @@
       "officialUrl": "https://www.pref.mie.lg.jp/KYOZAIMU/HP/singakusien/84767018109.htm",
       "authority": "prefecture",
       "confidence": "confirmed",
-      "status": "pending",
-      "articleSlug": "",
+      "status": "published",
+      "articleSlug": "mie-ken-koukousei-shogaku-kyufukin",
       "foundAt": "2026-09-22",
       "checkedAt": "2026-09-22",
-      "note": "低所得世帯の高校生等を対象とした返還不要の給付金（授業料以外の教育費を支援）。国の制度枠組みを県教育委員会が運用。津市のkyoiku記事（tsu-shugaku-enjo、就学援助＝義務教育段階）とは対象学齢が異なり重複しない。"
+      "note": "返還不要の給付型。令和8年度は7/1時点の認定で7月に在籍校経由で申請（受付終了）。国公立が対象で県教育委員会 教育財務課 修学支援班が窓口、私立は環境生活部私学課（額は未確認）。非課税世帯は年額143,700円（全日・定時・高専）、50,500円（通信制）など区分あり。津市の就学援助（義務教育段階）とは学齢が異なり重複しない。"
     },
     {
       "category": "kekkon",

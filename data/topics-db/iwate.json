@@ -1,7 +1,7 @@
 {
   "region": "iwate",
   "regionLabel": "岩手県",
-  "updatedAt": "2026-09-22",
+  "updatedAt": "2026-09-25",
   "topics": [
     {
       "category": "shussan",
@@ -79,13 +79,13 @@
       "category": "pet",
       "title": "岩手県獣医師会 犬猫不妊・去勢手術助成事業",
       "officialUrl": "https://www.aiinanpo.org/info/20260725_56110/",
-      "authority": "prefecture",
+      "authority": "other",
       "confidence": "confirmed",
-      "status": "pending",
+      "status": "rejected",
       "articleSlug": "",
       "foundAt": "2026-09-22",
       "checkedAt": "2026-09-22",
-      "note": "岩手県内飼育の犬猫・地域ねこ対象、不妊5,000円／去勢2,000円。実施主体は一般社団法人岩手県獣医師会（県獣医師会サイトで実在確認）。行政直営ではないため、記事化時に実施主体の表記に注意。"
+      "note": "【rejected 2026-09-25】実施主体は一般社団法人岩手県獣医師会の独自事業で行政制度ではない(実施要領に県・市町村の補助金・予算措置の記載なし、財源は原文で未確認、topics-dbのauthority=prefectureは誤り)。令和8年度は7/1〜9/30必着の抽選式(雌200頭・雄ねこ50頭枠、不妊5,000円/去勢2,000円は原文と一致)で、締切まで5日・当選保証なし・会員病院限定。行政制度を扱う本サイトの方針に合わず記事化見送り。原文は data/sources/iwate-juishikai-funinkyosei/ に保存。岩手県内市町村の行政補助が見つかれば別トピックで扱う。"
     },
     {
       "category": "shogaisha",

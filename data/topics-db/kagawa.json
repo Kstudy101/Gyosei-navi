@@ -45,8 +45,8 @@
       "officialUrl": "https://www.pref.kagawa.lg.jp/somugakuji/sigaku/keigen/shogakukyuhukin.html",
       "authority": "prefecture",
       "confidence": "confirmed",
-      "status": "pending",
-      "articleSlug": "",
+      "status": "published",
+      "articleSlug": "kagawa-shogaku-kyufukin",
       "foundAt": "2026-09-22",
       "checkedAt": "2026-09-22",
       "note": "高校生等奨学のための給付金(国制度の都道府県実施分)。住民税非課税世帯等が対象、私立全日制非課税世帯で年額最大152,000円。高松市の高校入学準備助成金記事とは別制度、県レベル初のkyoiku記事候補。"
@@ -69,8 +69,8 @@
       "officialUrl": "https://www.city.sanuki.kagawa.jp/life/living/dogsubsidy",
       "authority": "municipality",
       "confidence": "confirmed",
-      "status": "pending",
-      "articleSlug": "",
+      "status": "published",
+      "articleSlug": "sanuki-inu-neko-funinkyosei",
       "foundAt": "2026-09-22",
       "checkedAt": "2026-09-22",
       "note": "犬・猫1頭につき3,000円、一世帯年度内2頭まで。高松市の既存記事(不妊去勢手術・マイクロチップ)とは別自治体。三木町・三豊市・多度津町にも類似制度あり(unconfirmed、URLは検索結果内に個別リンクあり)。"

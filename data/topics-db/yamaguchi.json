@@ -1,7 +1,7 @@
 {
   "region": "yamaguchi",
   "regionLabel": "山口県",
-  "updatedAt": "2026-09-22",
+  "updatedAt": "2026-09-25",
   "topics": [
     {
       "category": "shussan",
@@ -9,11 +9,11 @@
       "officialUrl": "https://www.pref.yamaguchi.lg.jp/soshiki/51/18274.html",
       "authority": "prefecture",
       "confidence": "confirmed",
-      "status": "pending",
-      "articleSlug": "",
+      "status": "published",
+      "articleSlug": "yamaguchi-funin-jinko-jusei",
       "foundAt": "2026-09-22",
-      "checkedAt": "2026-09-22",
-      "note": "県内在住の法律婚夫婦対象、人工授精費を年度9,000円まで通算5年助成。所管: こども・子育て応援局こども政策課。申請は住所地の市町または県健康福祉センター経由。"
+      "checkedAt": "2026-09-25",
+      "note": "県内在住の法律婚夫婦対象、人工授精費を年度9,000円まで通算5年助成。所管: こども・子育て応援局こども政策課。申請は住所地の市町または県健康福祉センター経由。 【2026-09-25原文検証】令和8年度リーフレットで実施確認。所得要件(夫婦合算730万円未満)あり。年度9,000円(1回5,460円/2回以上9,000円)・通算5年、3年目以降は医師が必要と判断した場合のみ。申請先は住所地の市町または県健康福祉センター。令和8年度の具体的締切・事実婚の扱いは未確認。"
     },
     {
       "category": "jutaku",
@@ -33,8 +33,8 @@
       "officialUrl": "https://www.pref.yamaguchi.lg.jp/soshiki/85/208170.html",
       "authority": "prefecture",
       "confidence": "confirmed",
-      "status": "pending",
-      "articleSlug": "",
+      "status": "published",
+      "articleSlug": "yamaguchi-yamaguchi-sogyo-hojokin",
       "foundAt": "2026-09-22",
       "checkedAt": "2026-09-22",
       "note": "県内で創業する個人向け、上限200万円・補助率1/2。所管: 産業労働部経営金融課、公募運営は公益財団法人やまぐち産業振興財団。下関市の創業関連記事（akiya-business-shien）とは対象・制度が別。"

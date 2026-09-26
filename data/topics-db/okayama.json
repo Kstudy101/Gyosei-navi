@@ -6,11 +6,11 @@
     {
       "category": "kekkon",
       "title": "岡山県結婚新生活支援事業（パワーアップ事業含む）",
-      "officialUrl": "https://www.pref.okayama.jp/page/detail/0855667.html",
+      "officialUrl": "https://www.pref.okayama.jp/page/855667.html",
       "authority": "prefecture",
       "confidence": "confirmed",
-      "status": "pending",
-      "articleSlug": "",
+      "status": "published",
+      "articleSlug": "okayama-ken-kekkon-shinseikatsu-shien",
       "foundAt": "2026-09-22",
       "checkedAt": "2026-09-22",
       "note": "国の結婚新生活支援事業を財源に18市町村が実施主体として運用。夫婦とも婚姻日39歳以下・世帯所得500万円未満が対象。両者29歳以下は上限60万円、30〜39歳は上限30万円。県は対象外の独自加算を行う市町村向けにパワーアップ事業（29歳以下+20万円、30〜39歳+10万円）を実施。岡山市には同カテゴリのpublished記事がないため新規カテゴリ。記事化する場合は「実施主体は市町村、県はパワーアップ事業で上乗せ支援」という構造を明確にする必要あり。"
@@ -21,8 +21,8 @@
       "officialUrl": "https://www.pref.okayama.jp/site/16/564414.html",
       "authority": "prefecture",
       "confidence": "confirmed",
-      "status": "pending",
-      "articleSlug": "",
+      "status": "published",
+      "articleSlug": "okayama-ken-koko-kyoiku-kyufukin",
       "foundAt": "2026-09-22",
       "checkedAt": "2026-09-22",
       "note": "国の高等学校等修学支援事業費補助金を活用した返還不要給付金。県立高校・中等教育学校の生徒で保護者県内在住・所得割182,500円未満等が対象。全日制・定時制（国公立）非課税世帯で年額143,700円、通信制は50,500円。実施主体は岡山県教育委員会財務課。岡山市published記事（岡山市高校生等給付型奨学金＝市独自制度）とは対象範囲（県立高校生全般 vs 市の独自給付型）が異なり差別化可能。私立高校生等への県独自補助（私立高等学校納付金減免補助金）も別途あり、こちらも県教育委員会所管で追加候補になりうる（今回は精査せず）。"

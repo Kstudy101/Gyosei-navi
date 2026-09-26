@@ -5,15 +5,15 @@
   "topics": [
     {
       "category": "shussan",
-      "title": "島根県出産・子育て応援給付金（出産応援給付金・子育て応援給付金）",
-      "officialUrl": "https://www1.pref.shimane.lg.jp/kodomo_kosodate/tegoshite_shimane//birth/ninshin/iwaikin.html",
-      "authority": "prefecture",
-      "confidence": "unconfirmed",
-      "status": "pending",
-      "articleSlug": "",
+      "title": "大田市 妊婦のための支援給付金（妊婦支援給付金5万円＋子1人5万円）",
+      "officialUrl": "https://www.city.oda.lg.jp/ohda_city/city_scene/205/9383",
+      "authority": "municipality",
+      "confidence": "confirmed",
+      "status": "published",
+      "articleSlug": "oda-ninpu-shien-kyufu",
       "foundAt": "2026-09-22",
-      "checkedAt": "2026-09-22",
-      "note": "検索結果から妊娠時5万円+出産後5万円（多胎10万円）の給付を確認。国の制度を県内市町村が実施する形の可能性あり。公式ページのWebFetch未実施のためunconfirmed。government-researcherが一次情報で実施主体（県 or 市町村個別）を要確認。"
+      "checkedAt": "2026-09-25",
+      "note": "大田市公式ページで1回目妊婦1人5万円・2回目子1人5万円を確認。県ページ(03)は案内のみで実施主体は大田市。verifier PASS済み。"
     },
     {
       "category": "jutaku",
@@ -45,8 +45,8 @@
       "officialUrl": "https://www.pref.shimane.lg.jp/industry/syoko/sangyo/kigyo/kigyo_sien/wakuwaushimane.html",
       "authority": "prefecture",
       "confidence": "confirmed",
-      "status": "pending",
-      "articleSlug": "",
+      "status": "published",
+      "articleSlug": "shimane-chiiki-kadai-kaiketsu-kigyo-shien",
       "foundAt": "2026-09-22",
       "checkedAt": "2026-09-22",
       "note": "県内で個人事業開業/法人設立し地域課題解決型の社会的事業を行う者向け。対象経費は店舗賃借費・リース費・機械装置費・店舗改修費・広報費・外注委託費。公式URL直接ヒットで実在確認。新規地域最初の記事。"
@@ -66,11 +66,11 @@
     {
       "category": "energy",
       "title": "しまね省エネ住宅・再エネ設備パッケージ補助金",
-      "officialUrl": "https://www.pref.shimane.lg.jp/infra/energy/energy/saisei/hojo/hojo.html",
+      "officialUrl": "https://www.pref.shimane.lg.jp/infra/kankyo/kankyo/datsutanso/zeh_hojyo_r8.html",
       "authority": "prefecture",
       "confidence": "confirmed",
-      "status": "pending",
-      "articleSlug": "",
+      "status": "published",
+      "articleSlug": "shimane-shoene-jutaku-saiene-package",
       "foundAt": "2026-09-22",
       "checkedAt": "2026-09-22",
       "note": "令和8年度に制度拡充、太陽光発電・蓄電池ともkW/kWh単位の計算方式に変更との情報。窓改修と同時施工の蓄電システム・EV充電設備・熱交換型換気設備等も対象。県公式URL直接ヒットで実在確認。新規地域最初の記事。"
@@ -81,8 +81,8 @@
       "officialUrl": "https://www1.pref.shimane.lg.jp/infra/nature/animal/animal_protection/neko_josei.html",
       "authority": "prefecture",
       "confidence": "confirmed",
-      "status": "pending",
-      "articleSlug": "",
+      "status": "researched",
+      "articleSlug": "shimane-neko-funinkyosei",
       "foundAt": "2026-09-22",
       "checkedAt": "2026-09-22",
       "note": "WebFetchで公式ページ実在確認済み。去勢(オス)5,000円/匹・不妊(メス)10,000円/匹、助成予定数オス50匹メス150匹。所管は県健康福祉部薬事衛生課（獣医衛生管理室）、事業委託先は公益社団法人島根県獣医師会。重要: 対象は「飼い主のいない野良猫」のみで、飼い猫（飼い主あり）は助成対象外。記事化する場合はタイトル・本文で対象を正確に区別する必要あり。"
@@ -105,8 +105,8 @@
       "officialUrl": "https://www.pref.shimane.lg.jp/gakkokikaku/syougaku.html",
       "authority": "prefecture",
       "confidence": "confirmed",
-      "status": "pending",
-      "articleSlug": "",
+      "status": "published",
+      "articleSlug": "shimane-kokosei-shogaku-kyufukin",
       "foundAt": "2026-09-22",
       "checkedAt": "2026-09-22",
       "note": "生活保護受給世帯や住民税所得割額合計18万2,500円未満世帯の生徒が対象の給付型支援。県公式URL直接ヒットで実在確認。国の高等学校等就学支援金（授業料無償化）とは別建ての給付金であり県教育委員会所管。新規地域最初の記事。"
@@ -117,8 +117,8 @@
       "officialUrl": "https://www.pref.shimane.lg.jp/education/syoushika/syoushika/genjo/koufukin/kekkonshinseikatsu.html",
       "authority": "municipality",
       "confidence": "confirmed",
-      "status": "pending",
-      "articleSlug": "",
+      "status": "researched",
+      "articleSlug": "shimane-kekkon-shinseikatsu",
       "foundAt": "2026-09-22",
       "checkedAt": "2026-09-22",
       "note": "WebFetchで実施状況確認済み。令和8年度は浜田市・江津市・奥出雲町・川本町・美郷町・邑南町・津和野町・吉賀町の2市6町で実施。夫婦ともに39歳以下・世帯所得500万円未満が対象。29歳以下は上限60万円、30～39歳は上限30万円、指定講座受講が要件。実施主体は各市町村だが県が枠組みを取りまとめ。government-researcherは代表事例として浜田市（人口最大）の一次情報を確認するのが望ましい。"

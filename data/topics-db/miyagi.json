@@ -66,14 +66,14 @@
     {
       "category": "pet",
       "title": "（公社）宮城県獣医師会 飼い主のいない猫の不妊手術費助成事業",
-      "officialUrl": "https://miyaju.jp/information/30-6-1-3-3/",
+      "officialUrl": "https://miyaju.jp/sterilization/",
       "authority": "prefecture",
       "confidence": "confirmed",
-      "status": "pending",
-      "articleSlug": "",
+      "status": "published",
+      "articleSlug": "miyagi-juishikai-neko-funinkyosei",
       "foundAt": "2026-09-22",
-      "checkedAt": "2026-09-22",
-      "note": "公益社団法人宮城県獣医師会の公式ページで実在確認。対象は仙台市を除く宮城県内。オス6,000円・メス12,000円。令和7年度は申請期間2025/4/1〜2026/2/11。仙台市の同種記事(sendai-neko-funinkyosei)とは対象地域が異なり(仙台市除く県内)明確に差別化可能。実施主体が獣医師会のため、県の予算補助スキームまで一次情報で確認要。"
+      "checkedAt": "2026-09-25",
+      "note": "公益社団法人宮城県獣医師会の案内ページ(原文取得2026-09-25)で確認。実施主体は獣医師会、宮城県が交付要綱に基づき一部補助。対象は仙台市を除く県内の飼い主のいない猫、オス6,000円・メス12,000円。令和8年度の手術期間は2026-04-01〜2027-02-11。旧officialUrlは404のため差し替え。予算残・早期終了の有無は未確認。"
     },
     {
       "category": "shogaisha",
@@ -93,8 +93,8 @@
       "officialUrl": "https://www.pref.miyagi.jp/site/sub-jigyou/2022syougakukyufu.html",
       "authority": "prefecture",
       "confidence": "confirmed",
-      "status": "pending",
-      "articleSlug": "",
+      "status": "published",
+      "articleSlug": "miyagi-ken-koukou-shogaku-kyufukin",
       "foundAt": "2026-09-22",
       "checkedAt": "2026-09-22",
       "note": "県公式サイトで実在確認。返済不要の給付型で、国公立高校生向け(pref.miyagi.jp/site/sub-jigyou/2022syougakukyufu.html)と私立高校生向け(pref.miyagi.jp/site/shigaku/kyufu.html)の2制度が並立。授業料以外の教育費(教科書代・教材費・学用品費・修学旅行費等)を給付。仙台市の就学援助(sendai-shugaku-enjo、市立小中対象)とは対象校種・実施主体が異なり明確に差別化可能。"

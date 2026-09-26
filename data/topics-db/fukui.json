@@ -1,7 +1,7 @@
 {
   "region": "fukui",
   "regionLabel": "福井県",
-  "updatedAt": "2026-09-22",
+  "updatedAt": "2026-09-25",
   "topics": [
     {
       "category": "shussan",
@@ -33,8 +33,8 @@
       "officialUrl": "https://www.pref.fukui.lg.jp/doc/kenchikujyuutakuka/mokuzoutaishinkaisyuu.html",
       "authority": "prefecture",
       "confidence": "confirmed",
-      "status": "pending",
-      "articleSlug": "",
+      "status": "published",
+      "articleSlug": "fukui-ken-mokuzo-taishin-hojo",
       "foundAt": "2026-09-22",
       "checkedAt": "2026-09-22",
       "note": "県主導の耐震化補助枠組み。市町の窓口経由。福井市個別記事と差別化するなら県全体制度として整理。"
@@ -56,12 +56,12 @@
       "title": "福井県 福井型スタートアップ創出支援事業補助金",
       "officialUrl": "https://www.pref.fukui.lg.jp/doc/sinsan/sougyou.html",
       "authority": "prefecture",
-      "confidence": "confirmed",
-      "status": "pending",
+      "confidence": "unconfirmed",
+      "status": "rejected",
       "articleSlug": "",
       "foundAt": "2026-09-22",
-      "checkedAt": "2026-09-22",
-      "note": "県内起業・UIターン者向け補助率2/3以内・上限100万円。学生は10/10・上限100万円の別枠あり。"
+      "checkedAt": "2026-09-25",
+      "note": "officialUrl(sinsan/sougyou.html)がHTTP 404(2026-09-25再確認)。同条件のUIターン移住創業支援・学生起業応援は令和6年度で終了、福井型スタートアップ・新事業創出助成金は対象・上限額が不一致。原文確保不可のため記事化見送り。詳細はdata/sources/fukui-startup-sogyo/README.md。"
     },
     {
       "category": "sogyo",

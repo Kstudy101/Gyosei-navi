@@ -1,7 +1,7 @@
 {
   "region": "akita",
   "regionLabel": "秋田県",
-  "updatedAt": "2026-09-24",
+  "updatedAt": "2026-09-25",
   "topics": [
     {
       "category": "jutaku",
@@ -33,10 +33,10 @@
       "officialUrl": "https://www.pref.akita.lg.jp/pages/archive/34797",
       "authority": "prefecture",
       "confidence": "confirmed",
-      "status": "pending",
-      "articleSlug": "",
+      "status": "published",
+      "articleSlug": "akita-shogakukin-henkan-josei",
       "foundAt": "2026-09-22",
-      "checkedAt": "2026-09-22",
+      "checkedAt": "2026-09-25",
       "note": "基本枠は最大3年間60万円、あきた企業連携型（大学卒相当以上）は最大6年間120万円。県内就職者向け。問い合わせ: 人口戦略部移住・定住促進課 018-860-1248。"
     },
     {
@@ -44,12 +44,12 @@
       "title": "秋田県高校生等奨学給付金制度",
       "officialUrl": "https://www.pref.akita.lg.jp/pages/archive/11051",
       "authority": "prefecture",
-      "confidence": "unconfirmed",
-      "status": "pending",
-      "articleSlug": "",
+      "confidence": "confirmed",
+      "status": "published",
+      "articleSlug": "akita-koukousei-shougakukyuufukin",
       "foundAt": "2026-09-22",
-      "checkedAt": "2026-09-22",
-      "note": "低所得世帯の高校生向け返還不要の給付金（授業料以外の教育費対象）。令和8年度私立高校向けページを検索で確認したが金額詳細は原文調査で要確認。"
+      "checkedAt": "2026-09-25",
+      "note": "私立(archive/11051)・国公立(archive/98513)を1記事に統合。原文確認済み(data/sources/akita-koukousei-shougakukyuufukin/)。専攻科・専修各種学校は未確認。"
     },
     {
       "category": "shussan",

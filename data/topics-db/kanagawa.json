@@ -93,11 +93,11 @@
       "officialUrl": "https://www.pref.kanagawa.jp/docs/v3e/jyosei/gakuhisien/syougakukyufukin-tujyo.html",
       "authority": "prefecture",
       "confidence": "confirmed",
-      "status": "pending",
-      "articleSlug": "",
+      "status": "published",
+      "articleSlug": "kanagawa-ken-koko-shogakukyufukin",
       "foundAt": "2026-09-22",
       "checkedAt": "2026-09-22",
-      "note": "県単位の給付型奨学金で、既存published記事(川崎市・横浜市の就学援助)とは異なる高校生向け県制度。非課税世帯等が対象、返済不要。令和8年度申請受付中(締切11/13)。具体的な給付額は原文PDFでの確認が必要。"
+      "note": "県外私立高校等在学者向けの県直接申請ページ(県内私立は在学校経由、国公立は教育局財務課)。対象は所得割0〜182,500円未満または生活保護(生業扶助)世帯で「非課税世帯のみ」ではない。令和8年度通常給付は7/1〜11/13消印(県外校は第1回7/14・第2回9/16・第3回11/13)。給付額は全日制・定時制38,000〜152,000円、通信制13,030〜52,600円(原文確認済)。家計急変給付は別申請(令和9/1/18消印、額は未確認)。"
     },
     {
       "category": "shussan",

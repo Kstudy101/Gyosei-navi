@@ -9,8 +9,8 @@
       "officialUrl": "https://www.pref.kyoto.jp/taishin/wkaisyu.html",
       "authority": "prefecture",
       "confidence": "confirmed",
-      "status": "pending",
-      "articleSlug": "",
+      "status": "researched",
+      "articleSlug": "kyoto-fu-mokuzo-taishin-kaishu",
       "foundAt": "2026-09-22",
       "checkedAt": "2026-09-22",
       "note": "昭和56年5月31日以前着工の木造住宅対象。本格改修最高172.5万円/210万円など。実際の補助窓口は市町村（京都府が制度枠組みを定め市町村が実施）。京都府として新規（既存published記事なし）。"
@@ -33,11 +33,11 @@
       "officialUrl": "https://www.pref.kyoto.jp/bunkyo/syogakukyufukin.html",
       "authority": "prefecture",
       "confidence": "confirmed",
-      "status": "pending",
-      "articleSlug": "",
+      "status": "published",
+      "articleSlug": "kyoto-fu-shogaku-kyufukin-shiritsu",
       "foundAt": "2026-09-22",
       "checkedAt": "2026-09-22",
-      "note": "低中所得世帯対象、返還不要。京都府文化生活部文教課所管。既存published記事はkyoiku-hojokin-kanzen-guide（全国pillar）とjasso-kyufugata-shogakukin（国制度）のみで京都府固有制度は未着手。"
+      "note": "低中所得世帯対象、返還不要。京都府文化生活部文教課所管。2026-09-25 published。令和8年度金額は原文（京都府公式ページ）どおり、topics-db旧noteに数値誤りなし。府外私立校の申請期限は令和8年10月30日。国公立分は別制度（京都府教育庁）で本記事対象外。"
     },
     {
       "category": "energy",

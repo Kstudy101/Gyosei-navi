@@ -33,8 +33,8 @@
       "officialUrl": "https://www.pref.nagasaki.jp/object/tetsuduki-shinsei/tetsuduki-shinseikankei/651166.html",
       "authority": "prefecture",
       "confidence": "confirmed",
-      "status": "pending",
-      "articleSlug": "",
+      "status": "published",
+      "articleSlug": "nagasaki-jigyo-shokei-hojokin",
       "foundAt": "2026-09-22",
       "checkedAt": "2026-09-22",
       "note": "長崎市は既に創業者成長支援補助金（sogyo）で公開済み。本件は県レベルの事業承継支援制度で対象・テーマが異なる（創業ではなく事業承継・後継者支援）ため差別化可能。令和8年度申請受付開始が確認できるプレスリリースあり。"
@@ -69,11 +69,11 @@
       "officialUrl": "https://www.pref.nagasaki.jp/bunrui/kurashi-kankyo/doubutsuaigo-pet/dobutsuaigo-goto/625752.html",
       "authority": "prefecture",
       "confidence": "confirmed",
-      "status": "pending",
+      "status": "rejected",
       "articleSlug": "",
       "foundAt": "2026-09-22",
-      "checkedAt": "2026-09-22",
-      "note": "長崎市は猫の不妊・去勢手術補助金（まちねこ不妊化推進事業）で公開済み。本件は県レベル制度で、公益社団法人日本動物福祉協会と連携した抽選制助成（1頭5,000円）という運営方式。行政の直接補助金と性質が異なる可能性があり、government-researcherによる原文確認で『補助金』としての要件充足性を要検証。"
+      "checkedAt": "2026-09-25",
+      "note": "【2026-09-25 rejected】県公式ページ(625752.html)はHTTP 404で県の一次原文を確保できず。『1頭5,000円・抽選制・900頭』は2023年度(JAWS第30回)の検索スニペット由来で、2026年度の長崎県向け実施・受付状況は未確認。JAWS 2026年度事業は全国枠(原則飼い主のいない猫・犬、一律5,000円、会費3,000円または事務手数料3,000円必要)で長崎県限定・抽選制ではなく、実施主体は民間公益法人JAWSで行政の直接補助ではないため補助金記事の対象外。原文: data/sources/nagasaki-ken-inuneko-funin-kyosei-campaign/。長崎市の制度(nagasaki-shi-neko-funinkyosei)とは別。"
     },
     {
       "category": "shogaisha",
@@ -93,11 +93,11 @@
       "officialUrl": "https://www.pref.nagasaki.jp/bunrui/kanko-kyoiku-bunka/gakkokyoiku/kyoikukankyo/koutougakkoutoushougakukyuufukin/shougakukyuufukin/",
       "authority": "prefecture",
       "confidence": "confirmed",
-      "status": "pending",
-      "articleSlug": "",
+      "status": "published",
+      "articleSlug": "nagasaki-ken-koko-shogakukyufukin",
       "foundAt": "2026-09-22",
-      "checkedAt": "2026-09-22",
-      "note": "長崎市は既に就学援助（市レベル、kyoiku）で公開済み。本件は県レベルの高校生向け奨学給付金制度で対象学齢・所管が異なり差別化可能。令和8年度ページ・要綱PDFも確認できており原文調査の着手ポイントが明確。"
+      "checkedAt": "2026-09-25",
+      "note": "長崎市は既に就学援助（市レベル、kyoiku）で公開済み。本件は県レベルの高校生向け奨学給付金制度で対象学齢・所管が異なり差別化可能。令和8年度通常申請は8/31締切済み。要綱名は原文で未確認。公立限定とは断定できない（私立の窓口は学事振興課）。"
     },
     {
       "category": "kekkon",

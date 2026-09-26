@@ -362,6 +362,9 @@ export interface MunicipalityDef {
  *   各コードは data/sources/_shared-codes/zenkoku-chihokokyodantai-code.pdf 30ページ目・
  *   鹿児島県セクションで確認（鹿屋市462039・霧島市462187・南大隅町464911・曽於市462179、
  *   いずれもチェックデジットを除いた5桁で登録）。鹿児島県として鹿児島市（46201）に次ぐ2〜5件目の登録。
+ * 2026-09-25: 大田市を追加登録（島根県 shussan カテゴリの大田市妊婦のための支援給付金記事のため）。
+ *   団体コード322059＝検査数字込み6桁、検査数字を除いた5桁「32205」で登録（総務省「全国地方公共団体コード」
+ *   一覧PDF・島根県セクションで確認）。一次情報: data/sources/shimane-ninpu-shien-kyufu/README.md 参照。
  */
 export const MUNICIPALITIES: readonly MunicipalityDef[] = [
   { code: "13101", slug: "chiyoda", labelJa: "千代田区", prefCode: "13" },
@@ -425,6 +428,7 @@ export const MUNICIPALITIES: readonly MunicipalityDef[] = [
   { code: "21201", slug: "gifu-shi", labelJa: "岐阜市", prefCode: "21" },
   { code: "29201", slug: "nara-shi", labelJa: "奈良市", prefCode: "29" },
   { code: "37201", slug: "takamatsu", labelJa: "高松市", prefCode: "37" },
+  { code: "37206", slug: "sanuki", labelJa: "さぬき市", prefCode: "37" },
   { code: "42201", slug: "nagasaki-shi", labelJa: "長崎市", prefCode: "42" },
   { code: "01235", slug: "ishikari", labelJa: "石狩市", prefCode: "01" },
   { code: "01202", slug: "hakodate", labelJa: "函館市", prefCode: "01" },
@@ -450,6 +454,9 @@ export const MUNICIPALITIES: readonly MunicipalityDef[] = [
   { code: "46218", slug: "kirishima", labelJa: "霧島市", prefCode: "46" },
   { code: "46491", slug: "minamiosumi", labelJa: "南大隅町", prefCode: "46" },
   { code: "46217", slug: "soo", labelJa: "曽於市", prefCode: "46" },
+  { code: "39201", slug: "kochi-shi", labelJa: "高知市", prefCode: "39" },
+  { code: "32205", slug: "oda", labelJa: "大田市", prefCode: "32" },
+  { code: "19202", slug: "fujiyoshida", labelJa: "富士吉田市", prefCode: "19" },
 ];
 
 export const getPrefectureBySlug = (slug: string): PrefectureDef | undefined =>

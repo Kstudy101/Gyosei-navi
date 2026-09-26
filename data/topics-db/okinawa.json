@@ -1,7 +1,7 @@
 {
   "region": "okinawa",
   "regionLabel": "沖縄県",
-  "updatedAt": "2026-09-22",
+  "updatedAt": "2026-09-25",
   "topics": [
     {
       "category": "kyoiku",
@@ -9,10 +9,10 @@
       "officialUrl": "https://www.pref.okinawa.lg.jp/kyoiku/edu/1008819/1008843/1008848.html",
       "authority": "prefecture",
       "confidence": "confirmed",
-      "status": "pending",
-      "articleSlug": "",
+      "status": "published",
+      "articleSlug": "okinawa-kokosei-shogaku-kyufukin",
       "foundAt": "2026-09-22",
-      "checkedAt": "2026-09-22",
+      "checkedAt": "2026-09-25",
       "note": "低所得世帯対象（年収目安490万円未満）の授業料以外の教育費給付。令和8年度公立高校支給額: 生活保護世帯32,300円、非課税世帯143,700円等。所管: 沖縄県教育庁教育支援課(098-866-2711)。全国共通制度（高校生等奨学給付金）の県実施版のため、既存published記事との重複がないか要確認（全国共通制度の類似記事の有無をgovernment-researcher段階で再チェック）。"
     },
     {

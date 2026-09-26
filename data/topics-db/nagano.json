@@ -1,7 +1,7 @@
 {
   "region": "nagano",
   "regionLabel": "長野県",
-  "updatedAt": "2026-09-22",
+  "updatedAt": "2026-09-25",
   "topics": [
     {
       "category": "jutaku",
@@ -21,11 +21,11 @@
       "officialUrl": "https://www.pref.nagano.lg.jp/keieishien/sangyo/shokogyo/sogyo/sogyouhojokin.html",
       "authority": "prefecture",
       "confidence": "confirmed",
-      "status": "pending",
-      "articleSlug": "",
+      "status": "published",
+      "articleSlug": "nagano-ken-social-business-sogyo-shienkin",
       "foundAt": "2026-09-22",
       "checkedAt": "2026-09-22",
-      "note": "上限200万円・補助率1/2以内。長野県産業振興機構が実施主体。長野市の既発行記事（nagano-shi-startup-shien-hojokin）とは実施主体が異なる県レベル制度で差別化可能。"
+      "note": "令和8年度募集終了(closed)、上限200万円・1/2以内は原文と一致。長野県産業振興機構が実施主体。長野市の既発行記事（nagano-shi-startup-shien-hojokin）とは実施主体が異なる県レベル制度。"
     },
     {
       "category": "energy",
@@ -45,11 +45,11 @@
       "officialUrl": "https://www.pref.nagano.lg.jp/kyoiku/koko/gakko/gakko/hi-kyuhukin.html",
       "authority": "prefecture",
       "confidence": "confirmed",
-      "status": "pending",
-      "articleSlug": "",
+      "status": "published",
+      "articleSlug": "nagano-ken-koukousei-shogaku-kyufukin",
       "foundAt": "2026-09-22",
       "checkedAt": "2026-09-22",
-      "note": "国公立高校生の低中所得世帯対象、年額12,630円〜143,700円（世帯区分により変動）。長野県教育委員会高校教育課所管。長野市の就学援助・フリースクール利用料助成とは対象・所管が異なる県レベル制度。"
+      "note": "令和8年度: 生活保護32,300円、非課税143,700円(通信制50,500円)…拡充あり。長野県教育委員会高校教育課所管。長野市の就学援助・フリースクール利用料助成とは対象・所管が異なる県レベル制度。"
     },
     {
       "category": "kyoiku",

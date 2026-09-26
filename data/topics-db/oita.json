@@ -1,7 +1,7 @@
 {
   "region": "oita",
   "regionLabel": "大分県",
-  "updatedAt": "2026-09-24",
+  "updatedAt": "2026-09-25",
   "topics": [
     {
       "category": "jutaku",
@@ -141,11 +141,11 @@
       "officialUrl": "https://www.pref.oita.jp/site/kyoiku/post-98.html",
       "authority": "prefecture",
       "confidence": "confirmed",
-      "status": "researched",
+      "status": "published",
       "articleSlug": "oita-kokosei-shokyukin",
       "foundAt": "2026-09-24",
-      "checkedAt": "2026-09-24",
-      "note": "原文取得済み（data/sources/oita-kokosei-shokyukin/01_main.txt）。給付額確認：全日制・生活保護32,300円・非課税143,700円・所得割100〜105,500円未満47,900円・105,500〜182,500円未満35,930円。記事作成完了。"
+      "checkedAt": "2026-09-25",
+      "note": "原文取得済み（data/sources/oita-kokosei-shokyukin/01_main.txt）。給付額確認：全日制・生活保護32,300円・非課税143,700円・所得割100〜105,500円未満47,900円・105,500〜182,500円未満35,930円。記事作成完了。 2026-09-25 published。申請受付期間は原文に記載なく未確認（本文注記、periodEnd未設定）。"
     },
     {
       "category": "kekkon",
