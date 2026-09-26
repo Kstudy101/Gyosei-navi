@@ -1,4 +1,4 @@
-# DataForSEO で拾った参考キーワード＋既存published subsidy記事のデータをもとに、
+# 既存published subsidy記事のデータをもとに、
 # AIを呼ばず純粋スクリプト（generate-tokushu.ts）で /tokushu の特集記事を自動生成し、
 # main にコミット→本番デプロイまで同一ジョブで行う。
 # 「2次加工」記事のため AGENTS.md 絶対規則9の例外（人手レビュー・数値対照なしで自動published）を適用する。
@@ -7,7 +7,6 @@
 # API費用ゼロで実行できる）。
 #
 # GitHub Secrets（hourly-ranking.yml と共通）:
-#   DATAFORSEO_TOKEN = .env.local の DataForSEO と同じ値（取得失敗時はseedKeywordsにフォールバックする）
 #   XSERVER_HOST / XSERVER_USER / XSERVER_SSH_KEY / XSERVER_PORT / XSERVER_PASSPHRASE / XSERVER_KNOWN_HOSTS
 #     = deploy-xserver.yml と共通
 name: Tokushu Article (every 3h)
@@ -40,25 +39,6 @@ jobs:
           cache: npm
 
       - run: npm ci
-
-      - name: Restore tokushu-seen-category cache
-        uses: actions/cache/restore@v4
-        with:
-          path: .cache/tokushu-seen-category.json
-          key: tokushu-seen-${{ github.run_id }}
-          restore-keys: |
-            tokushu-seen-
-
-      - name: Pick tokushu keyword/category
-        env:
-          DataForSEO: ${{ secrets.DATAFORSEO_TOKEN }}
-        run: npm run tokushu:pick-keyword --silent
-
-      - name: Save tokushu-seen-category cache
-        uses: actions/cache/save@v4
-        with:
-          path: .cache/tokushu-seen-category.json
-          key: tokushu-seen-${{ github.run_id }}
 
       - name: Generate tokushu article
         id: generate

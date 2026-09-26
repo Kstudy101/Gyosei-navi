@@ -20,6 +20,8 @@
 | 구 v1 URL 301 회수 | `public/.htaccess` (`/guide|practice|exam`) | 상시 |
 | 변화 감지 → Issue | `watch-municipalities.yml` | 매일 07:00 JST |
 | 링크 생존・노후 기사 → Issue | `weekly-audit.yml` | 매주 월 06:00 JST |
+| compare 자동기사 (카테고리당 1건, `/compare/{cat}-hikaku/`) | `scripts/generate-compare.ts` + `scripts/lib/auto-articles.ts` | `auto-compare.yml`. 대상・금액・마감이 바뀐 카테고리만 갱신(publishedAt 유지, updatedAt・changelog 추가). 2026-09-26까지의 날짜 슬러그 45건은 `.htaccess`로 301 |
+| tokushu 자동기사 (카테고리당 1건, `/tokushu/{cat}/{cat}-tokushu/`) | `scripts/generate-tokushu.ts` + 〃 | `tokushu-article.yml`. 금액 상위 10건이 바뀐 카테고리만 갱신. 날짜 슬러그 21건은 301. 금액 추출 5건 미만 카테고리(현재 shogaisha)는 생성 안 함 |
 
 ## 2. 커맨드로 돌리는 것 (사람이 트리거, 실행은 자동)
 

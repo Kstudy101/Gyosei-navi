@@ -21,6 +21,11 @@ AddDefaultCharset UTF-8
 RedirectMatch 301 ^/guide/hojokin(/.*)?$ https://gyosei-navi.jp/subsidy/
 RedirectMatch 301 ^/(guide|practice|exam)(/.*)?$ https://gyosei-navi.jp/
 
+# ---- 自動生成 compare / tokushu の日付付き slug（2026-09-26 廃止）を固定 slug へ 301 ----
+# 同一タイトルの日付違い記事が GSC で重複扱いされたため、カテゴリごとに1本へ統合した（docs/17）。
+RedirectMatch 301 ^/compare/([a-z]+)-hikaku-jido-[0-9]{8}/?$ https://gyosei-navi.jp/compare/$1-hikaku/
+RedirectMatch 301 ^/tokushu/([a-z]+)/[a-z]+-tokushu-jido-[0-9]{8}/?$ https://gyosei-navi.jp/tokushu/$1/$1-tokushu/
+
 # ---- 圧縮 ----
 <IfModule mod_deflate.c>
   AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml application/javascript application/json image/svg+xml
